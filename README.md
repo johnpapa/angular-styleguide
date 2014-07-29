@@ -5,7 +5,6 @@
 Looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications. Then step right in. The styles contained here are based on on my experience with [AngularJS](//angularjs.org), presentations, Pluralsight training courses and working in teams. 
 
 The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and , more importantly, why I choose them. 
- 
 
 ## Community Awesomeness
 Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
@@ -16,6 +15,18 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
   1. [Separations of Concerns](#separation-of-concerns)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
+  1. [Services](#services)
+  1. [Factories](#factories)
+  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
+  1. [Manual Dependency Injection](#manual-dependency-injection)
+  1. [Minification and Annotation](#minification-and-annotation)
+  1. [Exception Handling](#exception-handling)
+  1. [Application Structure](#application-structure)
+  1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
+  1. [Comments](#comments)
+  1. [Angular Docs](#angular-docs)
+  1. [Contributing](#contributing)
+  1. [License](#license)
 
 ## Separation of Concerns
 
@@ -226,7 +237,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
     }
     ```
 
-  - **controllerAs with vm**: Use a capture variable for `this` when using the `controllerAs` syntax. 
+  - **controllerAs with vm**: Use a capture variable for `this` when using the `controllerAs` syntax. Choose a conssitent variable name such as `vm`, which stands for ViewModel.
   
     *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
 
@@ -254,7 +265,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
   var vm = this;
   ```
  
-  - **Bindable Members Up Top**: Place bindable members at the top of the controller and not spread through the controller code.
+  - **Bindable Members Up Top**: Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
   
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
 
@@ -308,30 +319,408 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
     *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
 
+    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+
+    *Why?*: Removes dependencies and hides implementations details from the controller.
+
     ```javascript
     /* avoid */
-    function Customer ($scope) {
+    function Order ($http, $q) {
       var vm = this;
-      vm.name = {};
-      vm.sendMessage = sendMessage;
+      vm.checkCredit = checkCredit;
+      vm.total = 0;
 
-      function sendMessage () { 
-        var msg = 'some message';
-        $scope.$broadcast( /* */);
+      function checkCredit () { 
+        var orderTotal = vm.total;
+        return $http.get('api/creditcheck').then(function (data) {
+            var remaining = data.remaining;
+            return $q.when(!!(remaining > orderTotal));
+        });
       };
     }
     ```
 
     ```javascript
     /* recommended */
-    function Customer (messager) {
+    function Order (creditService) {
       var vm = this;
-      vm.name = {};
-      vm.sendMessage = sendMessage;
+      vm.checkCredit = checkCredit;
+      vm.total = 0;
 
-      function sendMessage () { 
-        var msg = 'some message';
-        messager.send(msg);
+      function checkCredit () { 
+        return creditService.check();
+      };
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
+## Services
+
+  - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Can also use a factory, which I recommend for consistency. 
+  
+  - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+
+    ```javascript
+    // service
+
+    angular
+        .module('app')
+        .service('logger', logger);
+
+    function logger () {
+      this.logError = function (msg) {
+        /* */
+      };
+    }
+    ```
+
+    ```javascript
+    // factory
+    angular
+        .module('app')
+        .factory('logger', logger);
+
+    function logger () {
+      return {
+        logError: function (msg) {
+          /* */
+        }
+      };
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
+## Factories
+
+  - **Single Responsibility**: Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+
+  - **Singletons**: Factories are singletons and return an object that contains the members of the service.
+  
+  - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+
+  - **Public Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+
+    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+
+    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+
+    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+
+
+    ```javascript
+    /* avoid */
+    function dataService () {
+      var someValue = '';
+      function save () { 
+        /* */
+      };
+      function validate () { 
+        /* */
+      };
+
+      return {
+        save: save,
+        someValue: someValue,
+        validate: validate
+      };
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    function dataService () {
+      var someValue = '';
+      var service = {
+        save: save,
+        someValue: someValue,
+        validate: validate
+      };
+      return service;
+
+      ////////////
+      function save () { 
+        /* */
+      };
+
+      function validate () { 
+        /* */
+      };
+    }
+    ```
+
+  - This way bindings are mirrored across the host Object, primitive values cannot update alone using the revealing module pattern
+
+**[Back to top](#table-of-contents)**
+
+## Resolving Promises for a Controller
+
+  - **Controller Activation Promises**: Resolve start-up logic for a controller in an `activate` function.
+     
+    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    
+    ```javascript
+    /* avoid */
+    function Avengers(dataservice) {
+        var vm = this;
+        vm.avengers = [];
+        vm.title = 'Avengers';
+
+        dataservice.getAvengers().then(function(data) {
+            vm.avengers = data;
+            return vm.avengers;
+        });
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    function Avengers(dataservice) {
+        var vm = this;
+        vm.avengers = [];
+        vm.title = 'Avengers';
+
+        activate();
+
+        ////////////
+
+        function activate() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+    }
+    ```
+
+  - **Route Resolve Promises**: When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed.
+
+    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or $http. Using a route resolve allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+
+    ```javascript
+    /* avoid */
+    angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+    function Avengers (movieService) {
+      var vm = this;
+      // unresolved
+      vm.movies;
+      // resolved asynchronously
+      movieService.getMovies().then(function (response) {
+        vm.movies = response.movies;
+      });
+    }
+    ```
+
+    ```javascript
+    /* better */
+
+    // route-config.js
+    angular
+      .module('app')
+      .config(config);
+
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm',
+          resolve: {
+            moviesPrepService: function (movieService) {
+                return movieService.getMovies();
+            }
+          }
+        });
+    }
+
+    // avengers.js
+    angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+    function Avengers (moviesPrepService) {
+      var vm = this;
+      vm.movies = moviesPrepService.movies;
+    }
+
+    ```
+
+**[Back to top](#table-of-contents)**
+
+  - **Resolve for All Routes**: 
+  TODO
+
+**[Back to top](#table-of-contents)**
+
+## Manual Dependency Injection
+
+  - **UnSafe from Minification**: Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  
+      *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+
+    ```javascript
+    /* avoid - not minification-safe*/
+    angular
+      .module('app')
+      .controller('Dashboard', Dashboard);
+
+    function Dashboard(common, dataservice) {
+    }
+    ```
+
+    - This code may produce mangled variables when minified and thus cause runtime errors.
+
+    ```javascript
+    /* avoid - not minification-safe*/
+    angular.module('app').controller('Dashboard', d);function d(a, b) { }
+    ```
+
+
+  - **Manually Identify Dependencies**: Use $inject to manually identify your dependencies for AngularJS components.
+  
+      *Why?*: This technique mirrors the technique used by `ng-annotate`, which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+
+      *Why?*: This safeguards your dependencies from being vulernable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+
+      *Why?*: Avoid creating inline dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+
+    ```javascript
+    /* avoid */
+    angular
+      .module('app')
+      .controller('Dashboard', 
+        ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
+      
+    function Dashboard($location, $routeParams, common, dataservice) {
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    angular
+      .module('app')
+      .controller('Dashboard', Dashboard);
+
+    Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
+      
+    function Dashboard($location, $routeParams, common, dataservice) {
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
+## Minification and Annotation
+
+  - **ng-annotate**: Use [ng-annotate](//github.com/olov/ng-annotate) for Gulp or Grunt and comment functions that need automated dependency injection using `/** @ngInject */`
+  
+      *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+
+      *Why?*: `ng-min` is deprecated 
+
+  - The following code is not using minification safe dependencies.
+
+    ```javascript
+    angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+    /* @ngInject */
+    function Avengers (storageService, avengerService) {
+      var vm = this;
+      vm.heroSearch = '';
+      vm.storeHero = storeHero;
+
+      function storeHero(){
+        var hero = avengerService.find(vm.heroSearch);
+        storageService.save(hero.name, hero);
+      }
+    }
+    ```
+
+  - When the above code is run through ng-annotate it will produces the following output with the `$inject` annotation and become minification-safe.
+
+    ```javascript
+    angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+    /* @ngInject */
+    function Avengers (storageService, avengerService) {
+      var vm = this;
+      vm.heroSearch = '';
+      vm.storeHero = storeHero;
+
+      function storeHero(){
+        var hero = avengerService.find(vm.heroSearch);
+        storageService.save(hero.name, hero);
+      }
+    }
+
+    Avengers.$inject = ['storageService', 'avengerService'];
+
+    ```
+
+  - Note: If `ng-annotate` detects injection has already been made (e.g. @ngInject was detected), it will not duplicate the `$inject` code.
+
+**[Back to top](#table-of-contents)**
+
+## Exception Handling
+TODO
+
+**[Back to top](#table-of-contents)**
+
+## Application Structure
+TODO
+
+**[Back to top](#table-of-contents)**
+
+## Angular $ Wrapper Services
+
+  - **$document and $window**: Use `$document` and `$window` instead of `document` and `window`.
+
+    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This help syou avoid having to mock document and window yourself.
+
+  - **$timeout and $interval**: Use `$timeout` and `$interval` instead of `setTimeout` and `setInterval` .
+
+    *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in synch.
+
+**[Back to top](#table-of-contents)**
+
+## Comments
+
+  - **jsDoc**: If planning to produce documentation, use jsDoc syntax to document function names, description, params and returns
+
+    ```javascript
+    angular
+      .module('app')
+      .factory('logger', logger);
+
+    /**
+     * @name logger
+     * @desc Application wide logger
+     */
+    function logger ($log) {
+      var service = {
+        logError: logError
+      };
+      return service;
+
+      ////////////
+
+      /**
+       * @name logError
+       * @desc Logs errors
+       * @param {String} msg Message to log 
+       * @returns {String}
+       */
+      function logError(msg) {
+        var loggedMsg = 'Error: ' + msg;
+        $log.error(loggedMsg);
+        return loggedMsg;
       };
     }
     ```
@@ -369,3 +758,5 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+**[Back to top](#table-of-contents)**
