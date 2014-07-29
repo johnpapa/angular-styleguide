@@ -353,6 +353,56 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
     }
     ```
 
+  - **Assigning Controllers**: When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
+    
+    - Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
+
+    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using `ng-controller`, that view is always associated with the same controller.
+
+   ```javascript
+    /* avoid - when using with a route and dynamic pairing is desired */
+
+    // route-config.js
+    angular
+      .module('app')
+      .config(config);
+
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html'
+        });
+    }
+    ```
+
+    ```html
+    <div ng-controller="Avengers as vm">
+    </div>
+    ```
+
+    ```javascript
+    /* recommended */
+
+    // route-config.js
+    angular
+      .module('app')
+      .config(config);
+
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm'
+        });
+    }
+    ```
+
+    ```html
+    <div>
+    </div>
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Services
