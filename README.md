@@ -20,6 +20,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
+  1. [Directives](#directives)
   1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
   1. [Manual Dependency Injection](#manual-dependency-injection)
   1. [Minification and Annotation](#minification-and-annotation)
@@ -506,6 +507,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```
 
   - This way bindings are mirrored across the host Object, primitive values cannot update alone using the revealing module pattern
+
+**[Back to top](#table-of-contents)**
+
+## Directives
+TODO
 
 **[Back to top](#table-of-contents)**
 
