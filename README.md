@@ -2,7 +2,7 @@
 
 *Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-Looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications. Then step right in. The styles contained here are based on on my experience with [AngularJS](//angularjs.org), presentations, Pluralsight training courses and working in teams. 
+If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. The styles contained here are based on on my experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses] (http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
 
 The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and , more importantly, why I choose them. 
 
