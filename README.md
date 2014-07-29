@@ -12,7 +12,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
 ## Table of Contents
 
-  1. [Separations of Concerns](#separation-of-concerns)
+  1. [Single Responsibility](#single-responsibility)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
   1. [Services](#services)
@@ -21,6 +21,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
   1. [Manual Dependency Injection](#manual-dependency-injection)
   1. [Minification and Annotation](#minification-and-annotation)
   1. [Exception Handling](#exception-handling)
+  1. [Naming](#naming)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
   1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
@@ -29,7 +30,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
   1. [Contributing](#contributing)
   1. [License](#license)
 
-## Separation of Concerns
+## Single Responsibility
 
   - **Rule of 1**: Define 1 component per file.  
 
@@ -752,6 +753,11 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 **[Back to top](#table-of-contents)**
 
 ## Exception Handling
+TODO
+
+**[Back to top](#table-of-contents)**
+
+## Naming
 TODO
 
 **[Back to top](#table-of-contents)**
