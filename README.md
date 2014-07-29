@@ -203,8 +203,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
 	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
-
     ```html
     <!-- avoid -->
     <div ng-controller="Customer">
