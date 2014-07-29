@@ -22,6 +22,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
   1. [Minification and Annotation](#minification-and-annotation)
   1. [Exception Handling](#exception-handling)
   1. [Application Structure](#application-structure)
+  1. [Modularity](#modularity)
   1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
   1. [Comments](#comments)
   1. [Angular Docs](#angular-docs)
@@ -716,6 +717,36 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
   - Note: If `ng-annotate` detects injection has already been made (e.g. @ngInject was detected), it will not duplicate the `$inject` code.
 
+  - **Use Gulp or Grunt for ng-annotate**: Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject /* @ngInject */ prior to any function that has dependencies.
+  
+      *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+
+    - The following code is an example of a gulp task using ngAnnotate
+
+    ```javascript
+
+    gulp.task('js', ['jshint'], function () {
+        var source = pkg.paths.js;
+        return gulp.src(source)
+            .pipe(sourcemaps.init())
+            .pipe(concat('all.min.js', {newLine: ';'}))
+            // Annotate before uglify so the code get's min'd properly.
+            .pipe(ngAnnotate({
+                // true helps add where @ngInject is not used. It infers.
+                // Doesn't work with resolve, so we must be explicit there
+                add: true
+            }))
+            .pipe(bytediff.start())
+            .pipe(uglify({mangle: true}))
+            .pipe(bytediff.stop())
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest(pkg.paths.dev));
+    });
+    
+    ```
+
+
+
 **[Back to top](#table-of-contents)**
 
 ## Exception Handling
@@ -724,6 +755,11 @@ TODO
 **[Back to top](#table-of-contents)**
 
 ## Application Structure
+TODO
+
+**[Back to top](#table-of-contents)**
+
+## Modularity
 TODO
 
 **[Back to top](#table-of-contents)**
