@@ -717,7 +717,7 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
   - Note: If `ng-annotate` detects injection has already been made (e.g. @ngInject was detected), it will not duplicate the `$inject` code.
 
-  - **Use Gulp or Grunt for ng-annotate**: Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject /* @ngInject */ prior to any function that has dependencies.
+  - **Use Gulp or Grunt for ng-annotate**: Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
   
       *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
 
@@ -742,10 +742,8 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(pkg.paths.dev));
     });
-    
+
     ```
-
-
 
 **[Back to top](#table-of-contents)**
 
