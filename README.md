@@ -186,7 +186,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         .factory('logger', logger);
 
       function logger () { }
-    })();
+    }());
     ```
 
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
