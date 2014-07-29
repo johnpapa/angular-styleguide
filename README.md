@@ -9,7 +9,7 @@ The purpose of this style guide is to provide guidance on building AngularJS app
 ## Community Awesomeness and Credit
 Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, I must call out my friend Ward's indirect contributions to the ultimate evolution of this guide.
+Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward's has certainly helped influence the ultimate evolution of this guide.
 
 
 
