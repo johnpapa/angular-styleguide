@@ -717,6 +717,10 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
   - Note: If `ng-annotate` detects injection has already been made (e.g. @ngInject was detected), it will not duplicate the `$inject` code.
 
+  - Note: Starting from AngularJS 1.3 use the `ngApp` directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+  `<body ng-app="APP" ng-strict-di>`
+
+
   - **Use Gulp or Grunt for ng-annotate**: Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
   
       *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
