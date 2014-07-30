@@ -460,7 +460,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
 
 
     ```javascript
@@ -783,11 +783,11 @@ TODO
 
   - **$document and $window**: Use `$document` and `$window` instead of `document` and `window`.
 
-    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This help syou avoid having to mock document and window yourself.
+    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
 
   - **$timeout and $interval**: Use `$timeout` and `$interval` instead of `setTimeout` and `setInterval` .
 
-    *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in synch.
+    *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
 **[Back to top](#table-of-contents)**
 
