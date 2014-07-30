@@ -775,7 +775,57 @@ TODO
 **[Back to top](#table-of-contents)**
 
 ## Modularity
-TODO
+
+Angular does not come with a built in mechanism for class extensibility and code modularity. 
+We can use third party modules for that.
+
+*Why?*: Using class extensibility will allow you to split you code with supporting modules (eg, SortableClass, AbstractItemClass, etc..) and prevent code duplication
+
+Using [angular-class-extender](https://github.com/roypeled/angular-class-extender) we can:
+```javascript
+/* avoid */
+function Cat($scope){
+	$scope.purr = function(){
+		alert("purr");
+	}
+	
+	$scope.talk = function(){
+		alert("meow");
+	}
+}
+
+function Tiger($scope){
+	$scope.purr = function(){
+		alert("purr");
+	}
+	
+	$scope.talk = function(){
+		alert("roar");
+	}	
+}
+```
+
+```javascript
+/* recommended */
+function Cat($scope){
+	$scope.purr = function(){
+		alert("purr");
+	}
+	
+	$scope.talk = function(){
+		alert("meow");
+	}
+}
+
+function Tiger($extend, $scope){
+	$extend($scope).with(Cat);
+	
+	$scope.talk = function(){
+		alert("roar");
+	}
+}
+```
+
 
 **[Back to top](#table-of-contents)**
 
