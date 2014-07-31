@@ -736,7 +736,6 @@ TODO
     - The following code is an example of a gulp task using ngAnnotate
 
     ```javascript
-
     gulp.task('js', ['jshint'], function () {
         var source = pkg.paths.js;
         return gulp.src(source)
@@ -760,7 +759,37 @@ TODO
 **[Back to top](#table-of-contents)**
 
 ## Exception Handling
-TODO
+
+  - **decorators**: Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator) on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  
+      *Why?*: Provides a consistent manner in which to customize how exceptions are handled for development-time or run-time.
+
+	```javascript
+    angular
+        .module('app.exception')
+        .config(['$provide', exceptionConfig]);
+
+    function exceptionConfig($provide) {
+        $provide.decorator('$exceptionHandler',
+            ['$delegate', '$log', extendExceptionHandler]);
+    }
+
+    function extendExceptionHandler($delegate, $log) {
+        return function (exception, cause) {
+            $delegate(exception, cause);
+            var errorData = {
+                exception: exception,
+                cause: cause
+            };
+            var msg = 'ERROR PREFIX' + exception.message;
+            $log.error(msg, errorData);
+
+            // Log during dev with http://toastrjs.com
+            // or any other technique you prefer
+            toastr.error(msg);
+        };
+    }
+	```
 
 **[Back to top](#table-of-contents)**
 
