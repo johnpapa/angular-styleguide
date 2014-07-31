@@ -4,7 +4,7 @@
 
 If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. The styles contained here are based on on my experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses] (http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
 
-The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and , more importantly, why I choose them. 
+The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. 
 
 ## Community Awesomeness and Credit
 Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
@@ -195,9 +195,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
 ## Controllers
 
-  - **controllerAs View Syntax**: Use the `controllerAs` syntax over the `classic controller with $scope` syntax. 
+  - **controllerAs View Syntax**: Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax. 
 
-	*Why?*: Controllers are constructed, newed up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
+	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
 
 	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
 
@@ -221,9 +221,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
+	  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
 
-  *Why?*: Helps avoid the tempation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using `$emit`, `$broadcast`, or `$on` consider moving these uses to a factory and invoke form the controller. 
+	  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke form the controller. 
 
     ```javascript
     /* avoid */
@@ -241,7 +241,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - **controllerAs with vm**: Use a capture variable for `this` when using the `controllerAs` syntax. Choose a conssitent variable name such as `vm`, which stands for ViewModel.
+  - **controllerAs with vm**: Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
   
     *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
 
@@ -262,7 +262,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - Note: You can avoid any jshint warnings by placing the comment below above the line of code. 
+  - Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
     
   ```javascript
   /* jshint validthis: true */
@@ -273,7 +273,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
 
-    *Why?*: Setting anonymous functions inline can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+    *Why?*: Setting anonymous functions inline can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
 
     ```javascript
     /* avoid */
@@ -361,9 +361,10 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     
     - Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using `ng-controller`, that view is always associated with the same controller.
+    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
 
    ```javascript
+   
     /* avoid - when using with a route and dynamic pairing is desired */
 
     // route-config.js
@@ -504,7 +505,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - This way bindings are mirrored across the host Object, primitive values cannot update alone using the revealing module pattern
+  - This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
 
 **[Back to top](#table-of-contents)**
 
@@ -555,7 +556,7 @@ TODO
 
   - **Route Resolve Promises**: When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed.
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or $http. Using a route resolve allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
 
     ```javascript
     /* avoid */
@@ -611,6 +612,7 @@ TODO
 **[Back to top](#table-of-contents)**
 
   - **Resolve for All Routes**: 
+
   TODO
 
 **[Back to top](#table-of-contents)**
@@ -641,7 +643,7 @@ TODO
 
   - **Manually Identify Dependencies**: Use $inject to manually identify your dependencies for AngularJS components.
   
-      *Why?*: This technique mirrors the technique used by `ng-annotate`, which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+      *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
 
       *Why?*: This safeguards your dependencies from being vulernable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
 
@@ -674,11 +676,11 @@ TODO
 
 ## Minification and Annotation
 
-  - **ng-annotate**: Use [ng-annotate](//github.com/olov/ng-annotate) for Gulp or Grunt and comment functions that need automated dependency injection using `/** @ngInject */`
+  - **ng-annotate**: Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
   
       *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
 
-      *Why?*: `ng-min` is deprecated 
+      *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
 
   - The following code is not using minification safe dependencies.
 
@@ -723,9 +725,9 @@ TODO
 
     ```
 
-  - Note: If `ng-annotate` detects injection has already been made (e.g. @ngInject was detected), it will not duplicate the `$inject` code.
+  - Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
 
-  - Note: Starting from AngularJS 1.3 use the `ngApp` directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+  - Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
   `<body ng-app="APP" ng-strict-di>`
 
 
@@ -760,7 +762,7 @@ TODO
 
 ## Exception Handling
 
-  - **decorators**: Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator) on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - **decorators**: Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
   
       *Why?*: Provides a consistent manner in which to customize how exceptions are handled for development-time or run-time.
 
@@ -810,11 +812,11 @@ TODO
 
 ## Angular $ Wrapper Services
 
-  - **$document and $window**: Use `$document` and `$window` instead of `document` and `window`.
+  - **$document and $window**: Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
 
     *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
 
-  - **$timeout and $interval**: Use `$timeout` and `$interval` instead of `setTimeout` and `setInterval` .
+  - **$timeout and $interval**: Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
@@ -822,7 +824,7 @@ TODO
 
 ## Comments
 
-  - **jsDoc**: If planning to produce documentation, use jsDoc syntax to document function names, description, params and returns
+  - **jsDoc**: If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns
 
     ```javascript
     angular
@@ -868,7 +870,7 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 #### (The MIT License)
 
-Copyright (c) 2014 John Papa
+Copyright (c) 2014 [John Papa](http://johnpapa.net)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
