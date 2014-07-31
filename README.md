@@ -637,6 +637,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   - **Controller Activation Promises**: Resolve start-up logic for a controller in an `activate` function.
      
     *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+
+    - Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
     
     ```javascript
     /* avoid */
@@ -672,7 +674,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - **Route Resolve Promises**: When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed.
+  - **Route Resolve Promises**: When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionall cancel a route before the controller is activated, use a route resolver.
 
     *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
 
