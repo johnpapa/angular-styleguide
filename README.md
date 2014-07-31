@@ -534,23 +534,37 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```javascript
     /* recommended */
 
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @file calendarRange.directive.js
+     * @example <div acme-order-calendar-range></div>
+     */
     angular
       .module('sales.order')
-      /* order directive that is specific to the order module */
-      .directive('orderCalendarRange', orderCalendarRange)
+      .directive('acmeOrderCalendarRange', orderCalendarRange)
 
+    /**
+     * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+     * @file customerInfo.directive.js
+     * @example <div acme-sales-customer-info></div>
+     */    
     angular
       .module('sales.widgets')
-      /* sales directive that can be used anywhere across the sales app */
-      .directive('salesCustomerInfo', salesCustomerInfo);
+      .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
+    /**
+     * @desc spinner directive that can be used anywhere across apps at a company named Acme
+     * @file spinner.directive.js
+     * @example <div acme-shared-spinner></div>
+     */
     angular
       .module('shared.widgets')
-      /* spinner directive that can be used anywhere across apps */
-      .directive('sharedSpinner', sharedSpinner);
+      .directive('acmeSharedSpinner', sharedSpinner);
 
       /* implementation details */
     ```
+
+    -Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
 
 - **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. 
 
