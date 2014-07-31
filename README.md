@@ -510,7 +510,108 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 **[Back to top](#table-of-contents)**
 
 ## Directives
-TODO
+- **Limit 1 Per File**: Create one directive per file. Name the file for the directive. 
+
+    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. Also easier to maintain.
+
+    ```javascript
+    /* avoid */
+    angular
+      .module('app.widgets')
+
+      /* order directive that is specific to the order module */
+      .directive('orderCalendarRange', orderCalendarRange)
+
+      /* sales directive that can be used anywhere across the sales app */
+      .directive('salesCustomerInfo', salesCustomerInfo);
+
+      /* spinner directive that can be used anywhere across apps */
+      .directive('sharedSpinner', sharedSpinner);
+
+      /* implementation details */
+    ```
+
+    ```javascript
+    /* recommended */
+
+    angular
+      .module('sales.order')
+      /* order directive that is specific to the order module */
+      .directive('orderCalendarRange', orderCalendarRange)
+
+    angular
+      .module('sales.widgets')
+      /* sales directive that can be used anywhere across the sales app */
+      .directive('salesCustomerInfo', salesCustomerInfo);
+
+    angular
+      .module('shared.widgets')
+      /* spinner directive that can be used anywhere across apps */
+      .directive('sharedSpinner', sharedSpinner);
+
+      /* implementation details */
+    ```
+
+- **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. 
+
+    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templating)
+
+- **Restrict to Elements and Attributes**: When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+
+    *Why?*: It makes sense.
+
+    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+
+    ```html
+    <!-- avoid -->
+    <div class="my-calendar-range"></div>
+    ```
+
+    ```javascript
+    /* avoid */
+    angular
+        .module('app.widgets')
+        .directive('myCalendarRange', myCalendarRange);
+
+    function myCalendarRange () {
+        var directive = {
+            link: link,
+            templateUrl: '/template/is/located/here.html',
+            restrict: 'C'
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+          /* */
+        }
+    }
+    ```
+
+    ```html
+    <!-- recommended -->
+    <my-calendar-range></my-calendar-range>
+    <div my-calendar-range></div>
+    ```
+    
+    ```javascript
+    /* recommended */
+    angular
+        .module('app.widgets')
+        .directive('myCalendarRange', myCalendarRange);
+
+    function myCalendarRange () {
+        var directive = {
+            link: link,
+            templateUrl: '/template/is/located/here.html',
+            restrict: 'EA'
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+          /* */
+        }
+    }
+    ```
 
 **[Back to top](#table-of-contents)**
 
@@ -608,12 +709,6 @@ TODO
     }
 
     ```
-
-**[Back to top](#table-of-contents)**
-
-  - **Resolve for All Routes**: 
-
-  TODO
 
 **[Back to top](#table-of-contents)**
 
