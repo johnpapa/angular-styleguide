@@ -30,6 +30,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Modularity](#modularity)
   1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
   1. [Comments](#comments)
+  1. [JSHint](#jshint)
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -937,6 +938,10 @@ TODO
 
   - **jsDoc**: If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns
 
+    *Why?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+
+    *Why?*: Provides consistency using a common industry tool.
+
     ```javascript
     angular
       .module('app')
@@ -965,6 +970,64 @@ TODO
         $log.error(loggedMsg);
         return loggedMsg;
       };
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
+## JS Hint
+
+  - **Use an Options File**: Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control.
+
+    *Why?*: Provides a first alert prior to committing any code to source control.
+
+    *Why?*: Provides consistency across your team.
+
+    ```javascript
+    {
+        "asi": true,
+        "boss": false,
+        "browser": true,
+        "camelcase": true,
+        "curly": true,
+        "eqeqeq": true,
+        "eqnull": false,
+        "es5": false,
+        "expr": false,
+        "evil": false,
+        "forin": false,
+        "globals": {
+            "angular": true,
+            "toastr": true,
+            "breeze": true,
+            "moment": true,
+            "q": true
+        },
+        "immed": true,
+        "indent": 4,
+        "latedef": "nofunc",
+        "loopfunc": false,
+        "maxdepth": 4,
+        "maxlen": 120,
+        "maxparams": 10,
+        "newcap": true,
+        "noarg": true,
+        "node": true,
+        "noempty": true,
+        "nomen": false,
+        "nonew": true,
+        "onevar": false,
+        "passfail": false,
+        "plusplus": false,
+        "quotmark": "single",
+        "shadow": false,
+        "strict": false,
+        "sub": true,
+        "supernew": false,
+        "trailing": true,
+        "undef": false,
+        "unused": false,
+        "validthis": true
     }
     ```
 
