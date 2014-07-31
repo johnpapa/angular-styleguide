@@ -977,7 +977,7 @@ TODO
 
 ## JS Hint
 
-  - **Use an Options File**: Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control.
+  - **Use an Options File**: Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
 
     *Why?*: Provides a first alert prior to committing any code to source control.
 
