@@ -534,16 +534,20 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```javascript
     /* recommended */
 
+    // orderCalendarRangeDirective.js
     angular
       .module('sales.order')
       /* order directive that is specific to the order module */
       .directive('orderCalendarRange', orderCalendarRange)
 
+    // salesCustomerInfoRangeDirective.js
     angular
       .module('sales.widgets')
       /* sales directive that can be used anywhere across the sales app */
       .directive('salesCustomerInfo', salesCustomerInfo);
 
+
+    // sharedSpinnerDirective.js
     angular
       .module('shared.widgets')
       /* spinner directive that can be used anywhere across apps */
