@@ -30,7 +30,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Modularity](#modularity)
   1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
   1. [Comments](#comments)
-  1. [JSHint](#jshint)
+  1. [JSHint](#js-hint)
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
