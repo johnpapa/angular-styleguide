@@ -381,6 +381,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```
 
     ```html
+    <!-- avengers.html -->
     <div ng-controller="Avengers as vm">
     </div>
     ```
@@ -404,6 +405,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```
 
     ```html
+    <!-- avengers.html -->
     <div>
     </div>
     ```
