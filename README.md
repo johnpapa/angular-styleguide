@@ -1104,7 +1104,6 @@ TODO
 **[Back to top](#table-of-contents)**
 
 ## Constants
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
   - **Vendor Globals**: Create an AngularJS Constant for vendor libraries' global variables.
 
