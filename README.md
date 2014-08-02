@@ -32,6 +32,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
+  1. [Constants](#constants)
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -1082,6 +1083,29 @@ TODO
         "unused": false,
         "validthis": true
     }
+    ```
+
+**[Back to top](#table-of-contents)**
+
+## Constants
+For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+
+  - **Vendor Globals**: Create an AngularJS Constant for vendor libraries' global variables.
+
+    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. 
+
+    ```javascript
+    // constants.js
+
+    /* global toastr:false, moment:false */
+    (function () {
+        'use strict';
+
+        angular
+            .module('app.core')
+            .constant('toastr', toastr)
+            .constant('moment', moment);
+    })();
     ```
 
 **[Back to top](#table-of-contents)**
