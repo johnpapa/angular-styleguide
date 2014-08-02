@@ -569,7 +569,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       /* implementation details */
     ```
 
-    -Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    - Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
 
 - **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hide and shows, use ngHide/ngShow, but if the directive does more, combining hide and show inside a directive may improve performance as it reduces watchers. 
 
@@ -798,7 +798,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
       *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
 
-  - The following code is not using minification safe dependencies.
+    - The following code is not using minification safe dependencies.
 
     ```javascript
     angular
@@ -818,7 +818,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - When the above code is run through ng-annotate it will produces the following output with the `$inject` annotation and become minification-safe.
+    - When the above code is run through ng-annotate it will produces the following output with the `$inject` annotation and become minification-safe.
 
     ```javascript
     angular
@@ -841,11 +841,10 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
-  - Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    - Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
 
-  - Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
-  `<body ng-app="APP" ng-strict-di>`
-
+    - Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    `<body ng-app="APP" ng-strict-di>`
 
   - **Use Gulp or Grunt for ng-annotate**: Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
   
