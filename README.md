@@ -1108,7 +1108,7 @@ For anything else, API reference, check the [Angular documentation](//docs.angul
 
   - **Vendor Globals**: Create an AngularJS Constant for vendor libraries' global variables.
 
-    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. 
+    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. This improves testability of your code by allowing you to more easily know what the dependencies of your directives/services/controllers/etc. are (avoids leaky abstractions) and it also allows you to mock these dependencies if that makes sense.
 
     ```javascript
     // constants.js
