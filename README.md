@@ -16,6 +16,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 ## Table of Contents
 
   1. [Single Responsibility](#single-responsibility)
+  1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
   1. [Services](#services)
