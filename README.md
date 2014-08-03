@@ -89,6 +89,36 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
 **[Back to top](#table-of-contents)**
 
+## IIFE
+  - **IIFE**: Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
+  
+  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+
+  *Why?*: When your code is minified and bundled into a single file for deployment ot a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  
+    ```javascript
+    /* recommended */
+    // logger.js
+    (function () {
+      angular
+        .module('app')
+        .factory('logger', logger);
+
+      function logger () { }
+    })();
+
+    // storage.js
+    (function () {
+      angular
+        .module('app')
+        .factory('storage', storage);
+
+      function storage () { }
+    })();
+    ```
+
+  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
+
 ## Modules
 
   - **Definitions (aka Setters)**: Declare modules without a variable using the setter syntax. 
@@ -177,22 +207,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     function logger () { }
     ```
-
-  - **IIFE**: Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
-  
-	*Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
-  
-    ```javascript
-    (function () {
-      angular
-        .module('app')
-        .factory('logger', logger);
-
-      function logger () { }
-    })();
-    ```
-
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
 
 **[Back to top](#table-of-contents)**
 
