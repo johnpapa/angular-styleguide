@@ -131,7 +131,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     var app = angular.module('app', [
         'ngAnimate',
         'ngRoute',
-        'app.shared'
+        'app.shared',
         'app.dashboard'
     ]);
     ```
@@ -144,7 +144,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     	.module('app', [
         'ngAnimate',
         'ngRoute',
-        'app.shared'
+        'app.shared',
         'app.dashboard'
     ]);
     ```
