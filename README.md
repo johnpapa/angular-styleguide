@@ -30,11 +30,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
-  1. [Angular $ Wrapper Services](#angular-$-wrapper-services)
+  1. [Angular $ Wrapper Services](#angular--wrapper-services)
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
-  1. [Angular Docs](#angular-docs)
+  1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
 
