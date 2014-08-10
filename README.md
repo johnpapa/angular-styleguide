@@ -366,12 +366,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     /* recommended */
     function Order (creditService) {
       var vm = this;
-      vm.checkCredit = checkCredit;
+      vm.checkCredit = creditService.check;
       vm.total = 0;
-
-      function checkCredit () { 
-        return creditService.check();
-      };
     }
     ```
 
