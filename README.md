@@ -1249,6 +1249,8 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 ## License
 
+  - **tldr;** Use this guide. Attributions are appreciated, but not required. 
+
 #### (The MIT License)
 
 Copyright (c) 2014 [John Papa](http://johnpapa.net)
