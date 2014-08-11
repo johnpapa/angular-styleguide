@@ -337,6 +337,41 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         }
     ```
 
+    - Note: If the function is a 1 liner it consider keeping it right up top, as long as readability is not affected.
+
+    ```javascript
+    /* avoid */
+    function Sessions(data) {
+        var vm = this;
+
+        vm.gotoSession = gotoSession;
+        vm.refresh = function() {
+            /** 
+             * lines 
+             * of
+             * code
+             * affects
+             * readability
+             */
+        };
+        vm.search = search;
+        vm.sessions = [];
+        vm.title = 'Sessions';
+    ```
+
+    ```javascript
+    /* recommended */
+    function Sessions(data) {
+        var vm = this;
+
+        vm.gotoSession = gotoSession;
+        vm.refresh = function() {data.refresh();}; // 1 liner is OK
+        vm.search = search;
+        vm.sessions = [];
+        vm.title = 'Sessions';
+    ```
+
+
   - **Defer Controller Logic**: Defer logic in a controller by delegating to services and factories.
 
     *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
@@ -482,7 +517,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
 
     *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
-
 
     ```javascript
     /* avoid */
