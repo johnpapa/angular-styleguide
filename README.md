@@ -361,16 +361,15 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```javascript
     /* recommended */
-    function Sessions(data) {
+    function Sessions(dataservice) {
         var vm = this;
 
         vm.gotoSession = gotoSession;
-        vm.refresh = function() {data.refresh();}; // 1 liner is OK
+        vm.refresh = dataservice.refresh(); // 1 liner is OK
         vm.search = search;
         vm.sessions = [];
         vm.title = 'Sessions';
     ```
-
 
   - **Defer Controller Logic**: Defer logic in a controller by delegating to services and factories.
 
