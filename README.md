@@ -988,6 +988,35 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
+  - **Route Errors**: Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+
+      *Why?*: Provides a consistent way handle all routing errors.
+
+      *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.
+
+    ```javascript
+    /* recommended */
+    function handleRoutingErrors() {
+        /**
+         * Route cancellation:
+         * On routing error, go to the dashboard.
+         * Provide an exit clause if it tries to do it twice.
+         */
+        $rootScope.$on('$routeChangeError',
+            function (event, current, previous, rejection) {
+                var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
+                    'unknown target';
+                var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
+                /**
+                 * Optionally log using a custom service or $log.
+                 * (Don't forget to inject custom service)
+                 */
+                logger.warning(msg, [current]);
+            }
+        );
+    }
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Naming
