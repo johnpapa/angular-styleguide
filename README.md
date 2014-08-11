@@ -576,7 +576,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       .directive('orderCalendarRange', orderCalendarRange)
 
       /* sales directive that can be used anywhere across the sales app */
-      .directive('salesCustomerInfo', salesCustomerInfo);
+      .directive('salesCustomerInfo', salesCustomerInfo)
 
       /* spinner directive that can be used anywhere across apps */
       .directive('sharedSpinner', sharedSpinner);
@@ -594,7 +594,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
      */
     angular
       .module('sales.order')
-      .directive('acmeOrderCalendarRange', orderCalendarRange)
+      .directive('acmeOrderCalendarRange', orderCalendarRange);
 
     /**
      * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
