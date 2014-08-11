@@ -928,34 +928,65 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **decorators**: Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
   
-      *Why?*: Provides a consistent manner in which to customize how exceptions are handled for development-time or run-time.
+      *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
 
   	```javascript
+    /* recommended */
     angular
-        .module('app.exception')
-        .config(['$provide', exceptionConfig]);
+        .module('blocks.exception')
+        .config(exceptionConfig);
+
+    exceptionConfig.$inject = ['$provide'];
 
     function exceptionConfig($provide) {
-        $provide.decorator('$exceptionHandler',
-            ['$delegate', '$log', extendExceptionHandler]);
+        $provide.decorator('$exceptionHandler', extendExceptionHandler);
     }
 
-    function extendExceptionHandler($delegate, $log) {
+    extendExceptionHandler.$inject = ['$delegate', 'toastr'];
+
+    function extendExceptionHandler($delegate) {
         return function (exception, cause) {
             $delegate(exception, cause);
-            var errorData = {
-                exception: exception,
-                cause: cause
+            var errorData = { 
+              exception: exception, 
+              cause: cause 
             };
-            var msg = 'ERROR PREFIX' + exception.message;
-            $log.error(msg, errorData);
-
-            // Log during dev with http://toastrjs.com
-            // or any other technique you prefer
-            toastr.error(msg);
+            /**
+             * Could add the error to a service's collection,
+             * add errors to $rootScope, log errors to remote web server,
+             * or log locally. Or throw hard. It is entirely up to you.
+             * throw exception;
+             */
+            toastr.error(exception.msg, errorData);
         };
     }
   	```
+
+  - **Exception Catchers**: Create a factory that exposes an interface to catch and gracefully handle exceptions.
+
+      *Why?*: Provides a consistent way to catch exceptions that may thrown in your code (e.g. during XHR calls or promise failures).
+
+    ```javascript
+    /* recommended */
+    angular
+        .module('blocks.exception')
+        .factory('exception', exception);
+
+    exception.$inject = ['logger'];
+
+    function exception(logger) {
+        var service = {
+            catcher: catcher
+        };
+        return service;
+
+        function catcher(message) {
+            return function (reason) {
+                logger.error(message, reason);
+            };
+        }
+    }
+    ```
 
 **[Back to top](#table-of-contents)**
 
