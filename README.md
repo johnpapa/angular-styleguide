@@ -1024,7 +1024,7 @@ TODO
 **[Back to top](#table-of-contents)**
 
 ## Application Structure LIFT Principle
-  - **LIFT**: Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep a `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines. 
+  - **LIFT**: Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines. 
 
       *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
 
@@ -1037,7 +1037,7 @@ TODO
 
   - **Locate**: Make locating your code intuitive, simple and fast.
 
-      *Why?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly, that needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
+      *Why?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly,  they will not be able to work as efficiently as possible, and the structure needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
 
     ```
     /bower_components
