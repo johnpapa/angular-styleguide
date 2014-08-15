@@ -1164,6 +1164,22 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     function xxAvengerProfile(){ }
     ```
 
+  - **Modules**:  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+
+    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
+ 
+    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+
+    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+
+  - **Configuration**: Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js`. A configuration for a module named `admin.module.js` is named `admin.config.js`.
+
+    *Why?*: Separates configuration from module definition, components, and active code.
+
+    *Why?*: Provides a identifiable place to set configuration for a module.
+
+  - **Routes**: Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
+
 **[Back to top](#table-of-contents)**
 
 ## Application Structure LIFT Principle
@@ -1219,13 +1235,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Overall Guidelines**:  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. Small deviations are OK for a set of small, short directives in a `directive.js` file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
-  - **Modules**:  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
 
-    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
- 
-    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
-
-    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
 
 **[Back to top](#table-of-contents)**
 
