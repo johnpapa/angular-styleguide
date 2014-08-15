@@ -1100,9 +1100,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     avenger-profile.directive.spec.js
     ```
 
-  - **Feature Component Names**: Use consistent names for all components.
+  - **Controller Names**: Use consistent names for all controllers named after their feature. Use pascal-casing for controllers, as they are constructors.
 
-      *Why?*: Provides a consistent way to quickly identify and reference components.
+      *Why?*: Provides a consistent way to quickly identify and reference controllers.
+
+      *Why?*: Pascal-casing is conventional for identifying object tht can be instantiated using a constructor.
 
     ```javascript
     /**
@@ -1116,6 +1118,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     function Avengers(){ }
     
+  - **Factory Names**: Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+
+      *Why?*: Provides a consistent way to quickly identify and reference controllers.
+
+    ```javascript
     // logger.service.js
     angular
       .module
