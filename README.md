@@ -278,7 +278,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
+    - Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
     
   ```javascript
   /* jshint validthis: true */
@@ -335,7 +335,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         }
     ```
 
-    - Note: If the function is a 1 liner it consider keeping it right up top, as long as readability is not affected.
+      - Note: If the function is a 1 liner it consider keeping it right up top, as long as readability is not affected.
 
     ```javascript
     /* avoid */
@@ -466,7 +466,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Can also use a factory, which I recommend for consistency. 
   
-  - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
 
     ```javascript
     // service
@@ -505,7 +505,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Singletons**: Factories are singletons and return an object that contains the members of the service.
   
-  - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
 
   - **Public Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
@@ -1235,19 +1235,21 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Overall Guidelines**:  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. Small deviations are OK for a set of small, short directives in a `directive.js` file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
+    - Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+
   - **Layout**: Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
 
-      - *Why?*: Organizes all layout in a single place re-used throughout the application.
+    - *Why?*: Organizes all layout in a single place re-used throughout the application.
 
   - **Folders-by-Feature Structure**: Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
 
-      - *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+    - *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
 
-      - *Why?*: The LIFT guidelines are all covered.
+    - *Why?*: The LIFT guidelines are all covered.
 
-      - *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    - *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
 
-      - *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    - *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
 
     ```javascript
     /**
