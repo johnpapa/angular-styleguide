@@ -1237,8 +1237,86 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Layout**: Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
 
-      - *Why?*: Organizes all layout in a single place reu-used throughout the application.
+      - *Why?*: Organizes all layout in a single place re-used throughout the application.
 
+  - **Folders-by-Feature Structure**: Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
+
+      - *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+
+      - *Why?*: The LIFT guidelines are all covered.
+
+      - *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+
+      - *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    app/
+        app.module.js
+        app.config.js
+        app.routes.js
+        directives.js
+        layout/
+            shell.html      
+            shell.controller.js
+            topnav.html      
+            topnav.controller.js       
+        people/
+            attendees.html
+            attendees.controller.js  
+            speakers.html
+            speakers.controller.js
+            speaker-detail.html
+            speaker-detail.controller.js
+        sessions/
+            sessions.html      
+            sessions.controller.js
+            session-detail.html
+            session-detail.controller.js  
+        services/       
+            data.service.js  
+            localstorage.service.js
+            logger.service.js   
+            spinner.service.js
+    ```
+
+      - Note: Structuring using folders-by-type is another common option. It requires moving to multiple folders when working on a feature. This could get unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+
+    ```javascript
+    /* 
+    * alternative folders-by-type
+    */
+    
+    app/
+        app.module.js
+        app.config.js
+        app.routes.js
+        directives.js
+        controllers/
+            attendees.js            
+            session-detail.js       
+            sessions.js             
+            shell.js                
+            speakers.js             
+            speaker-detail.js       
+            topnav.js               
+        views/
+            attendees.html     
+            session-detail.html
+            sessions.html      
+            shell.html         
+            speakers.html      
+            speaker-detail.html
+            topnav.html         
+        services/       
+            dataservice.js  
+            localstorage.js
+            logger.js   
+            spinner.js
+    ``` 
 
 **[Back to top](#table-of-contents)**
 
