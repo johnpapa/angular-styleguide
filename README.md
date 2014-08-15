@@ -1262,7 +1262,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         app.module.js
         app.config.js
         app.routes.js
-        directives.js
+        components/       
+            calendar.directive.js  
+            calendar.directive.html  
+            user-profile.directive.js  
+            user-profile.directive.html  
         layout/
             shell.html      
             shell.controller.js
@@ -1275,16 +1279,16 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
             speakers.controller.js
             speaker-detail.html
             speaker-detail.controller.js
-        sessions/
-            sessions.html      
-            sessions.controller.js
-            session-detail.html
-            session-detail.controller.js  
         services/       
             data.service.js  
             localstorage.service.js
             logger.service.js   
             spinner.service.js
+        sessions/
+            sessions.html      
+            sessions.controller.js
+            session-detail.html
+            session-detail.controller.js  
     ```
 
       - Note: Structuring using folders-by-type is another common option. It requires moving to multiple folders when working on a feature. This could get unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
@@ -1298,7 +1302,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         app.module.js
         app.config.js
         app.routes.js
-        directives.js
         controllers/
             attendees.js            
             session-detail.js       
@@ -1307,6 +1310,16 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
             speakers.js             
             speaker-detail.js       
             topnav.js               
+        directives/       
+            calendar.directive.js  
+            calendar.directive.html  
+            user-profile.directive.js  
+            user-profile.directive.html  
+        services/       
+            dataservice.js  
+            localstorage.js
+            logger.js   
+            spinner.js
         views/
             attendees.html     
             session-detail.html
@@ -1315,11 +1328,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
             speakers.html      
             speaker-detail.html
             topnav.html         
-        services/       
-            dataservice.js  
-            localstorage.js
-            logger.js   
-            spinner.js
     ``` 
 
 **[Back to top](#table-of-contents)**
