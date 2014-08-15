@@ -1075,6 +1075,14 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - Alternative: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
 
+    ```javascript
+    /**
+     * recommended
+     */
+    avengers.js
+    avengers.spec.js
+    ```
+
   - **Test File Names**: Name test specifications similar to the component they test with a suffix of `spec`.  
 
       *Why?*: Provides a consistent way to quickly identify components.
