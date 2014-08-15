@@ -563,7 +563,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 ## Directives
 - **Limit 1 Per File**: Create one directive per file. Name the file for the directive. 
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. Also easier to maintain.
+    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. 
+
+    *Why?*: One directive per file is easy to maintain.
 
     ```javascript
     /* avoid */
@@ -617,7 +619,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     - Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
 
-- **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hide and shows, use ngHide/ngShow, but if the directive does more, combining hide and show inside a directive may improve performance as it reduces watchers. 
+- **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow, but if the directive does more, combining hide and show inside a directive may improve performance as it reduces watchers. 
 
     *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templating)
 
@@ -807,7 +809,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   
       *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
 
-      *Why?*: This safeguards your dependencies from being vulernable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+      *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
 
       *Why?*: Avoid creating inline dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
 
@@ -1218,13 +1220,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Identify**: When you look at a file you should instantly know what it contains and represents.
 
-      *Why?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping that contents of the file to exactly 1 thing. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable. If not, 1 per file.
+      *Why?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
 
   - **Flat**: Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
 
       *Why?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
 
-  - **T-DRY (Try to Stick to DRY)**: Be DRY, but don't go nuts and sacrfice readability.
+  - **T-DRY (Try to Stick to DRY)**: Be DRY, but don't go nuts and sacrifice readability.
 
       *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
