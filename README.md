@@ -11,8 +11,6 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
 Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
 
-
-
 ## Table of Contents
 
   1. [Single Responsibility](#single-responsibility)
@@ -1019,7 +1017,119 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 **[Back to top](#table-of-contents)**
 
 ## Naming
-TODO
+
+  - **Feature File Names**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+
+      *Why?*: Provides a consistent way to quickly identify components.
+
+      *Why?*: Provides pattern matching for any automated tasks.
+
+    ```javascript
+    /**
+     * common options 
+     */
+
+    // Controllers
+    avengers.js
+    avengers.controller.js
+    avengersController.js
+    avengersCtrl.js
+
+    // Services/Factories
+    logger.js
+    logger.service.js
+    loggerService.js
+    loggerSvc.js
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // controllers
+    avengers.controller.js
+    avengers.controller.spec.js
+
+    // services/factories
+    logger.service.js
+    logger.service.spec.js
+
+    // constants
+    constants.js
+    
+    // module definition
+    avengers.module.js
+
+    // routes
+    avengers.routes.js
+    avengers.routes.spec.js
+
+    // configuration
+    avengers.config.js
+    
+    // directives
+    avenger-profile.directive.js
+    avenger-profile.directive.spec.js
+    ```
+
+  - Alternative: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+
+  - **Test File Names**: Name test specifications similar to the component they test with a suffix of `spec`.  
+
+      *Why?*: Provides a consistent way to quickly identify components.
+
+      *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+
+    ```javascript
+    /**
+     * recommended
+     */
+    avengers.controller.spec.js
+    logger.service.spec.js
+    avengers.routes.spec.js
+    avenger-profile.directive.spec.js
+    ```
+
+  - **Feature Component Names**: Use consistent names for all components.
+
+      *Why?*: Provides a consistent way to quickly identify and reference components.
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // avengers.controller.js
+    angular
+      .module
+      .controller('Avengers', Avengers);
+
+    function Avengers(){ }
+    
+    // logger.service.js
+    angular
+      .module
+      .factory('logger', logger);
+
+    function logger(){ }
+    ```
+
+  - **Directive Component Names**: Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+
+      *Why?*: Provides a consistent way to quickly identify and reference components.
+
+    ```javascript
+
+    // avenger.profile.directive.js    
+    angular
+      .module
+      .directive('xxAvengerProfile', xxAvengerProfile);
+
+    // usage is <xx-avenger-profile> </xx-avenger-profile>
+
+    function xxAvengerProfile(){ }
+    ```
 
 **[Back to top](#table-of-contents)**
 
