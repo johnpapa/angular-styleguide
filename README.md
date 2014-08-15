@@ -1295,7 +1295,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```javascript
     /* 
-    * alternative folders-by-type
+    * Alternative folders-by-type.
+    * I recommend "folders-by-feature", instead.
     */
     
     app/
