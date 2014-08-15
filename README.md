@@ -1117,12 +1117,17 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       .controller('Avengers', Avengers);
 
     function Avengers(){ }
+    ```
     
   - **Factory Names**: Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
 
       *Why?*: Provides a consistent way to quickly identify and reference controllers.
 
     ```javascript
+    /**
+     * recommended
+     */
+
     // logger.service.js
     angular
       .module
@@ -1136,6 +1141,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       *Why?*: Provides a consistent way to quickly identify and reference components.
 
     ```javascript
+    /**
+     * recommended
+     */
 
     // avenger.profile.directive.js    
     angular
