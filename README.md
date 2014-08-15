@@ -1018,6 +1018,15 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
 ## Naming
 
+  - **Naming Guidelines**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
+    *   the file name 
+    *   the registered asset name with Angular
+ 
+
+    *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+
+    *Why?*: The naming conventions should simply help the findability and communication of code. 
+
   - **Feature File Names**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
 
       *Why?*: Provides a consistent way to quickly identify components.
@@ -1207,7 +1216,16 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 **[Back to top](#table-of-contents)**
 
 ## Application Structure
-TODO
+
+  - **Overall Guidelines**:  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. Small deviations are OK for a set of small, short directives in a `directive.js` file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+
+  - **Modules**:  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+
+    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
+ 
+    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+
+    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
 
 **[Back to top](#table-of-contents)**
 
