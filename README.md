@@ -1164,7 +1164,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     function xxAvengerProfile(){ }
     ```
 
-  - **Modules**:  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+  - **Modules**:  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. A single module app might be named `app.js`, omitting the module moniker.
 
     *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
  
@@ -1172,7 +1172,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
 
-  - **Configuration**: Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js`. A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - **Configuration**: Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
 
     *Why?*: Separates configuration from module definition, components, and active code.
 
