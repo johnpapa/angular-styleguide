@@ -29,6 +29,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
+  1. [Testing](#testing)
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
@@ -1242,17 +1243,17 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Layout**: Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
 
-    - *Why?*: Organizes all layout in a single place re-used throughout the application.
+    *Why?*: Organizes all layout in a single place re-used throughout the application.
 
   - **Folders-by-Feature Structure**: Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
 
-    - *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+    *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
 
-    - *Why?*: The LIFT guidelines are all covered.
+    *Why?*: The LIFT guidelines are all covered.
 
-    - *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
 
-    - *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
 
     ```javascript
     /**
@@ -1340,37 +1341,37 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   
   - **Many Small, Self Contained Modules**: Create small modules that enapsulate one responsibility.
 
-    - *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
+    *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
 
   - **Create an App Module**: Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
 
-    - *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
 
   - **Keep the App Module Thin**: Only put logic for pulling together the app in the application module. Leave features in their own modules.
 
-    - *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+    *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
 
   - **Feature Areas are Modules**: Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
 
-    - *Why?*: Self contained modules can be added to the application will little or no friction.
+    *Why?*: Self contained modules can be added to the application will little or no friction.
 
-    - *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
 
-    - *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
+    *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
 
   - **Reusable Blocks are Modules**: Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
 
-    - *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
 
   - **Module Dependencies**: The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.
 
     ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
-    - *Why?*: The main app module contains a quickly identifiable manifest of the application's features. 
+    *Why?*: The main app module contains a quickly identifiable manifest of the application's features. 
 
-    - *Why?*: Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (`app.core` in the image).
+    *Why?*: Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (`app.core` in the image).
 
-    - *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
 
     - Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
 
@@ -1387,6 +1388,50 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   - **$timeout and $interval**: Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
+
+**[Back to top](#table-of-contents)**
+
+## Testing
+
+  - **Testing Library**: Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
+
+    *Why?*: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
+
+    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+
+  - **Test Runner**: Use [Karma](http://karma-runner.github.io) as a test runner.
+
+    *Why?*: Karma is easy to configure to run once or automatically when you change your code.
+
+    *Why?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+
+    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+
+    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+
+  - **Stubbing and Spying**: Use Sinon for stubbing and spying.
+
+    *Why?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+
+    *Why?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+
+  - **Headless Browser**: Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+
+    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safaria, IE, or other browsers on your server. 
+
+    Note: You should still test on all browsers in your environment, as appropriate for your target audience.
+
+  - **Code Analysis**: Run JSHint on your tests. 
+
+    **Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+
+  - **Alleviate JSHint Rules on Tests**: Relax the rules on your test code.
+
+    **Why?*: Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
+
+    ```javascript
+    /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
+    ```
 
 **[Back to top](#table-of-contents)**
 
