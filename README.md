@@ -1334,7 +1334,31 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 **[Back to top](#table-of-contents)**
 
 ## Modularity
-TODO
+  
+  - **Many Small, Self Contained Modules**: Create small modules that enapsulate one responsibility.
+
+      *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
+
+  - **Create an App Module**: Create a application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+
+      *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+
+  - **Keep the App Module Thin**: Only put logic for pulling together the app in the application module. Leave features in their own modules.
+
+      *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+
+  - **Feature Areas are Modules**: Create modules that represent feature areas, such as layout, resuable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+
+      *Why?*: Self contained modules can be added to the application will little no no friction.
+
+      *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+
+      *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
+
+  - **Reusable Blocks are Modules**: Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+
+      *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+
 
 **[Back to top](#table-of-contents)**
 
