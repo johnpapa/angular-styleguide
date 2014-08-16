@@ -1392,7 +1392,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 **[Back to top](#table-of-contents)**
 
 ## Testing
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+  Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+
+      ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
   - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as your write the code for the story.
 
