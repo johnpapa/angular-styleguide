@@ -335,6 +335,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         }
     ```
 
+      ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+
       - Note: If the function is a 1 liner it consider keeping it right up top, as long as readability is not affected.
 
     ```javascript
@@ -557,6 +559,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```
 
   - This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+
+      ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 **[Back to top](#table-of-contents)**
 
@@ -804,7 +808,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-
   - **Manually Identify Dependencies**: Use $inject to manually identify your dependencies for AngularJS components.
   
       *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
@@ -1024,7 +1027,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     *   the file name 
     *   the registered asset name with Angular
  
-
     *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
 
     *Why?*: The naming conventions should simply help the findability and communication of code. 
@@ -1230,7 +1232,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
       *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-
 **[Back to top](#table-of-contents)**
 
 ## Application Structure
@@ -1291,6 +1292,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
             session-detail.controller.js  
     ```
 
+      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+
       - Note: Structuring using folders-by-type is another common option. It requires moving to multiple folders when working on a feature. This could get unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
 
     ```javascript
@@ -1337,28 +1340,41 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   
   - **Many Small, Self Contained Modules**: Create small modules that enapsulate one responsibility.
 
-      *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
+    - *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
 
-  - **Create an App Module**: Create a application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+  - **Create an App Module**: Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
 
-      *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    - *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
 
   - **Keep the App Module Thin**: Only put logic for pulling together the app in the application module. Leave features in their own modules.
 
-      *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+    - *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
 
-  - **Feature Areas are Modules**: Create modules that represent feature areas, such as layout, resuable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+  - **Feature Areas are Modules**: Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
 
-      *Why?*: Self contained modules can be added to the application will little no no friction.
+    - *Why?*: Self contained modules can be added to the application will little or no friction.
 
-      *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    - *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
 
-      *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
+    - *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
 
   - **Reusable Blocks are Modules**: Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
 
-      *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    - *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
 
+  - **Module Dependencies**: The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.
+
+    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+
+    - *Why?*: The main app module contains a quickly identifiable manifest of the application's features. 
+
+    - *Why?*: Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (`app.core` in the image).
+
+    - *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+
+    - Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+
+    >> My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
 **[Back to top](#table-of-contents)**
 
