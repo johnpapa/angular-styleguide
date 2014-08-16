@@ -1392,9 +1392,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 **[Back to top](#table-of-contents)**
 
 ## Testing
-  Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
-
-      ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
 
   - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as your write the code for the story.
 
@@ -1419,8 +1417,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     // and so on
     ```
-
-
 
   - **Testing Library**: Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
 
@@ -1461,6 +1457,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```javascript
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
+
+  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
 **[Back to top](#table-of-contents)**
 
