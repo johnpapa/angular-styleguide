@@ -1,32 +1,32 @@
-# AngularJS Style Guide
+# AngularJS风格指南
 
-*Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*[@john_papa](//twitter.com/john_papa)为团队写的一些自以为是的AngularJS风格指南*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. The styles contained here are based on my experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses] (http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
+如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个正适合你。这里所包含的风格是基于我用[AngularJS](//angularjs.org)、演讲、[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)并且在团队中运用的一些经验。
 
-The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. 
+这个风格指南的目的是通过展示我用到的约定给构建AngularJS应用提供指导，更加重要的是，我为什么要选择它们。
 
 ## Community Awesomeness and Credit
-Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
+永远不要在真空下工作。我发现AngularJS社区是一个热衷于分享经验的令人难以置信的社区，因此，我的一个朋友、AngularJS专家Todd Motto和我合作了多种风格和惯例。我们同意其中的大多数，但是也有一些分歧。我鼓励你去看看[Todd的指引](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
+我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，虽然我们并不总是能达成一致，但是Ward确实影响了本指南的最终演变。
 
 
 
-## Table of Contents
+## 目录
 
-  1. [Single Responsibility](#single-responsibility)
+  1. [单一职责](#single-responsibility)
   1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Directives](#directives)
-  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
-  1. [Manual Dependency Injection](#manual-dependency-injection)
-  1. [Minification and Annotation](#minification-and-annotation)
-  1. [Exception Handling](#exception-handling)
-  1. [Naming](#naming)
+  1. [解决Controller的Promises](#resolving-promises-for-a-controller)
+  1. [手动依赖注入](#manual-dependency-injection)
+  1. [压缩和注释](#minification-and-annotation)
+  1. [异常处理](#exception-handling)
+  1. [命名](#naming)
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
@@ -34,15 +34,15 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
-  1. [AngularJS Docs](#angularjs-docs)
-  1. [Contributing](#contributing)
-  1. [License](#license)
+  1. [AngularJS文档](#angularjs-docs)
+  1. [贡献](#contributing)
+  1. [许可](#license)
 
-## Single Responsibility
+## 单一职责
 
-  - **Rule of 1**: Define 1 component per file.  
+  - **规则一**: 一个文件只定义一个组件。  
 
- 	The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.  
+ 	下面的一个例子在同一个文件中定义了一个`app`的module和它的一些依赖，定义了一个controller，一个factory。   
 
     ```javascript
     /* avoid */
@@ -56,7 +56,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     function someFactory() { }
     ```
     
-	The same components are now separated into their own files.
+	现在相同的组件被分割成单独的文件。
 
     ```javascript
     /* recommended */
@@ -88,14 +88,14 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     function someFactory() { }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 ## IIFE
-  - **IIFE**: Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
+  - **IIFE**: 把AngularJS组件包装到一个立即调用函数表达式中（IIFE）。 
   
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  *为什么？*: 把变量从全局作用域中删除了，这有助于防止变量和函数声明比预期在全局作用域中有更长的生命周期，也有助于避免变量冲突。
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  *为什么？*: 当你的代码为了发布而压缩了并且被合并到同一个文件中时，可能会有变量和很多全局变量的冲突，IIFE通过给每一个文件提供一个单独的作用域来保护你免受这些困扰。
   
     ```javascript
     /* recommended */
@@ -118,13 +118,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     })();
     ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
+  - 注：为了简便起见，本指南余下的示例中将会省略IIFE语法。 
 
 ## Modules
 
-  - **Definitions (aka Setters)**: Declare modules without a variable using the setter syntax. 
+  - **定义 (aka Setters)**: 不使用任何一个使用了setter语法的变量来定义modules。 
 
-	*Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+	*为什么?*: 在一个文件只有一个组件的条件下，很少有需要为一个模块引入一个变量。
 	
     ```javascript
     /* avoid */
@@ -136,7 +136,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ]);
     ```
 
-	Instead use the simple getter syntax.
+	用简单的getter语法来代替。
 
     ```javascript
     /* recommended */
@@ -149,9 +149,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ]);
     ```
 
-  - **Getters**: When using a module, avoid using a variables and instead use   chaining with the getter syntax.
+  - **Getters**: 当使用一个module的时候，避免使用一个变量，而是使用getter语法链接。
 
-	*Why?* : This produces more readable code and avoids variables collisions or leaks.
+	*为什么？* : 这将产生更加易读的代码，并且可以避免变量冲突和泄漏。
 
     ```javascript
     /* avoid */
@@ -170,16 +170,16 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     function SomeController() { }
     ```
 
-  - **Setting vs Getting**: Only set once and get for all other instances.
+  - **Setting vs Getting**: 只要设置一次，并且获取其它所有的实例。
 	
-	*Why?*: A module should only be created once, then retrieved from that point and after.
+	*为什么？*: 一个module只能被创建一次，然后从该点恢复。
   	  
-  	  - Use `angular.module('app', []);` to set a module.
-  	  - Use  `angular.module('app');` to get a module. 
+  	  - 用 `angular.module('app', []);` 设置一个module。
+  	  - 用 `angular.module('app');` 获取一个module。 
 
-  - **Named vs Anonymous Functions**: Use named functions instead of passing an anonymous function in as a callback. 
+  - **命名函数 vs 匿名函数**: 用一个命名函数而不是通过一个匿名函数作为回调函数。 
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+	*为什么？*: 这将产生更加易读的代码，更加方便调试，减少嵌套回调函数的数量。
 
     ```javascript
     /* avoid */
@@ -209,17 +209,17 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     function logger () { }
     ```
 
-**[Back to top](#table-of-contents)**
+**[回到顶部](#table-of-contents)**
 
 ## Controllers
 
-  - **controllerAs View Syntax**: Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax. 
+  - **controllerAs在View中的语法**: 使用[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。 
 
-	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
+	*为什么？*: congtroller被构建的时候，就会有一个新的实例， `controllerAs` 的语法比`经典的$scope语法`更接近JavaScript构造函数
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+	*为什么？*: 这促进在View中对绑定到’dotted‘的对象的使用（例如用`customer.name` 代替`name`），这将更有语境、更容易阅读，也避免了任何没有“dotting”而产生的引用问题。
 
-	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+	*为什么？*: 有助于避免在有嵌套的controllers的Views中调用 `$parent`。
 
     ```html
     <!-- avoid -->
@@ -235,13 +235,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     </div>
     ```
 
-  - **controllerAs Controller Syntax**: Use the `controllerAs` syntax over the `classic controller with $scope` syntax. 
+  - **controllerAs在controller中的语法**: 使用 `controllerAs` 语法代替 `classic controller with $scope` 语法。 
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - `controllerAs` 语法在controllers里面使用被绑定到`$scope`中的`this`。
 
-	  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
+	  *为什么？*: `controllerAs` 是`$scope`的语法修饰，你仍然可以绑定到View上并且访问 `$scope`的方法。 
 
-	  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke form the controller. 
+	  *为什么？*: 有助于避免在controller内部使用 `$scope`中的方法的诱惑，这能够更好地避免它们或把它们移到一个factory中。考虑到在factory中使用`$scope`，或者没办法的时候必须在controller中使用`$scope`，例如当使用[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit)， [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast)，或者 [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on)来发布和订阅事件时，可以考虑把这些调用挪到factory当中，并从controller中调用。
 
     ```javascript
     /* avoid */
@@ -259,9 +259,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - **controllerAs with vm**: Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
-  
-    *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  - **controllerAs with vm**: 使用`controllerAs`语法时把`this` 赋值给一个捕获变量，选择一个相一致的名称，例如`vm`代表ViewModel。
+    *为什么？*: `this`在不同的地方有不同的语义（就是作用域不同），在一个controller中的一个函数内部使用`this`时可能会改变它的上下文。用一个变量来捕获`this`的上下文从而可以避免遇到这个问题。
 
     ```javascript
     /* avoid */
@@ -280,18 +279,18 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
+  - 注：你可以按照下面的做法来避免 [jshint](http://www.jshint.com/)的警告。
     
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
  
-  - **Bindable Members Up Top**: Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - **Bindable Members Up Top**: 把可绑定的成员放到controller的顶部，按字母排序，并且不要通过controller的代码传播。
   
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
+    *为什么？*: 把可绑定的成员放到顶部使代码更易读，并且帮助你可以马上判断controller中的哪些成员可以在View中绑定和使用。 
 
-    *Why?*: Setting anonymous functions inline can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
+    *为什么？*: 设置一个单行的匿名函数是很容易的，但是当这些函数的代码超过一行时，这将极大降低代码的可读性。把函数定义到可绑定成员下面（这些函数被提出来），把具体的代码细节放到下面，可绑定成员放到顶部，这会提高代码的可读性。 
 
     ```javascript
     /* avoid */
@@ -337,7 +336,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         }
     ```
 
-    - Note: If the function is a 1 liner it consider keeping it right up top, as long as readability is not affected.
+    - 注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
 
     ```javascript
     /* avoid */
@@ -371,13 +370,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         vm.title = 'Sessions';
     ```
 
-  - **Defer Controller Logic**: Defer logic in a controller by delegating to services and factories.
+  - **推迟Controller中的逻辑**: 通过委派到service和factory中来推迟controller中的逻辑。
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    *为什么？*: 把逻辑放到service中，并通过一个function暴露，就可以被多个controller重用。
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    *为什么？*: 把逻辑放到service中将会使单元测试的时候更加容易地把它们分离，相反，如果在controller中调用逻辑只会让这变得被别人嘲笑。
 
-    *Why?*: Removes dependencies and hides implementations details from the controller.
+    *为什么？*: 中删除依赖关系并且隐藏实现细节。
 
     ```javascript
     /* avoid */
@@ -409,11 +408,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - **Assigning Controllers**: When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
+  - **Assigning Controllers**: 当一个controller必须匹配一个view时或者任何一个组件可能被其它controller或是view重用时，连同controller的route一起定义。 
     
-    - Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
+    - 注：如果一个view是通过route外的其它形式加载的，那么就用`ng-controller="Avengers as vm"`语法。 
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    *为什么？*: 在route中匹配controller允许不同的路由调用不同的相匹配的controller和view，当在view中通过[`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController)分配controller时，这个view总是和相同的controller相关联。
 
    ```javascript
    
@@ -462,13 +461,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     </div>
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 ## Services
 
-  - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Can also use a factory, which I recommend for consistency. 
+  - **单例**: 用`new`实例化service，用`this`实例化公共方法和变量。也可以用factory，这是我推荐的保持一致性的做法。 
   
-  - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+  - 注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
     ```javascript
     // service
@@ -499,23 +498,23 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 ## Factories
 
-  - **Single Responsibility**: Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - **单一职责**: factory应该是[单一职责](http://en.wikipedia.org/wiki/Single_responsibility_principle)，这是由其上下文进行封装的。一旦一个factory将要处理超过单一的目的时，就应该创建一个新的factory。
 
-  - **Singletons**: Factories are singletons and return an object that contains the members of the service.
+  - **单例**: facotry是一个单例，它返回一个包含service成员的对象。
   
-  - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+  - 注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
-  - **Public Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - **公共成员放到顶部**: 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service中可调用的成员暴露到顶部， 
 
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+    *为什么？*: 把可调用的成员放到顶部使代码更加易读，并且让你可以立即识别service中的哪些成员可以被调用，哪些成员必须进行单元测试（或者被别人嘲笑）。 
 
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    *为什么？*: 当文件变长时，这将非常有用，因为这可以避免需要滚动才能看到暴露了哪些东西。
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *为什么？*: 以你的方式设置函数是很容易的，但当函数代码超过一行时就会降低可读性并造成滚动。通过把实现细节放下面、可调用接口放到顶部的返回service的方式来定义可调用的接口，从而使代码更加易读。
 
     ```javascript
     /* avoid */
@@ -558,14 +557,15 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  - 这种绑定方式复制了宿主对象，原始值不会随着暴露模块模式的使用而更新。
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 ## Directives
-- **Limit 1 Per File**: Create one directive per file. Name the file for the directive. 
+- **一个文件限制一个**: 在一个文件中只创建一个directive，并依照directive来命名文件。 
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. Also easier to maintain.
+    *为什么？*: 把所有directive放到一个文件中很容易，但是当一些directive是跨应用的，一些是跨模块的，一些仅仅在一个模块中使用时，想把它们独立出来是非常困难的。
+    *为什么？*: 一个文件一个directive也更加容易维护。
 
     ```javascript
     /* avoid */
@@ -576,7 +576,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       .directive('orderCalendarRange', orderCalendarRange)
 
       /* sales directive that can be used anywhere across the sales app */
-      .directive('salesCustomerInfo', salesCustomerInfo);
+      .directive('salesCustomerInfo', salesCustomerInfo)
 
       /* spinner directive that can be used anywhere across apps */
       .directive('sharedSpinner', sharedSpinner);
@@ -617,17 +617,17 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       /* implementation details */
     ```
 
-    - Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    - 注意：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时，选择一个让directive和文件都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
 
-- **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hide and shows, use ngHide/ngShow, but if the directive does more, combining hide and show inside a directive may improve performance as it reduces watchers. 
+- **限制DOM操作**: 当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可，但是如果directive还想做更多的事，在directive中结合使用hide和show将会提高性能，因为这能够减少watchers。 
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templating)
+    *为什么？*: DOM操作的测试和调试是很困难的，通常会有更好的方法（CSS、animations、templating）。
 
-- **Restrict to Elements and Attributes**: When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+- **限制元素和属性**: 当创建一个directive需要作为一个独立元素是有意义时，允许限制`E`（自定义元素），可选限制`A`（自定义属性）。一般来说，如果它可能是它自己的控制，用`E`是合适的做法。一般原则是允许`EA`，但是当它是独立的时候这更倾向于作为一个元素来实施，当它是为了增强已存在的DOM元素时则更倾向于作为一个属性来实施。
 
-    *Why?*: It makes sense.
+    *为什么？*: 这很有意义！
 
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    *为什么？*: 虽然我们允许directive被当作一个class来使用，但如果这个directive的行为确实像一个元素的话，那么把directive当作元素或者属性是更有意义的。
 
     ```html
     <!-- avoid -->
@@ -680,15 +680,15 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Resolving Promises for a Controller
+## 解决Controller的Promises
 
-  - **Controller Activation Promises**: Resolve start-up logic for a controller in an `activate` function.
+  - **Controller Activation Promises**: 在`activate`函数中解决controller的启动逻辑。
      
-    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    *为什么？*: 把启动逻辑放在一个controller中固定的位置可以更方便定位、有更加一致性的测试，并能够避免在controller中到处都是激活逻辑。
 
-    - Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    - 注意：如果你需要在开始使用controller之前有条件地取消路由，那么就用route resolve来代替。
     
     ```javascript
     /* avoid */
@@ -724,9 +724,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - **Route Resolve Promises**: When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - **Route Resolve Promises**: 当一个controller依赖于一个promise来解决，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *为什么？*: controller在加载前可能需要一些数据，这些数据可能是从一个通过自定义factory或是[$http](https://docs.angularjs.org/api/ng/service/$http)的promise而来的。[route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider)允许promise在controller的逻辑执行之前解决，因此它可能对从promise中来的数据做一些处理。 
 
     ```javascript
     /* avoid */
@@ -779,13 +779,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Manual Dependency Injection
+## 手动依赖注入
 
-  - **UnSafe from Minification**: Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - **缩写的不安全性**: 声明依赖时避免使用不带安全压缩方法的缩写语法。
   
-      *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+      *为什么？*: 组件的参数（例如controller、factory等等）将会被转换成各种乱七八糟错误的变量。例如，`common`和`dataservice`可能会变成`a`或者`b`，但是这些转换后的变量在AngularJS中是找不到的。
 
     ```javascript
     /* avoid - not minification-safe*/
@@ -797,7 +797,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-    - This code may produce mangled variables when minified and thus cause runtime errors.
+    - 这一段代码在压缩时会产生错误的变量，因此在运行时就会报错。
 
     ```javascript
     /* avoid - not minification-safe*/
@@ -805,13 +805,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```
 
 
-  - **Manually Identify Dependencies**: Use $inject to manually identify your dependencies for AngularJS components.
+  - **手动添加依赖**: 用$inject手动添加AngularJS组件所需的依赖。
   
-      *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+      *为什么？*: 这种技术反映了使用[`ng-annotate`](https://github.com/olov/ng-annotate)的技术，这就是我推荐的对依赖关系进行自动化创建安全压缩的方式，如果`ng-annotate`检测到已经有了注入，那么它就不会再次重复执行。
 
-      *Why?*: This safeguards your dependencies from being vulernable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+      *为什么？*: 可以避免依赖变成其它AngularJS找不到的变量，例如，`common`和`dataservice`可能会变成`a`或者`b`。
 
-      *Why?*: Avoid creating inline dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+      *为什么？*: 避免创建内嵌的依赖，因为一个数组中很长的列表是很难阅读的，此外，内嵌的方式也会让人感到困惑，比如数组是一系列的字符串，但是最后一个却是组件的function。 
 
     ```javascript
     /* avoid */
@@ -836,17 +836,17 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Minification and Annotation
+## 压缩和注释
 
-  - **ng-annotate**: Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
+  - **ng-annotate**: 在[Gulp](http://gulpjs.com)或[Grunt](http://gruntjs.com)中使用[ng-annotate](//github.com/olov/ng-annotate)，用`/** @ngInject */`对需要自动依赖注入的function进行注释。
   
-      *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+      *为什么？*: 可以避免代码中使用到任何会造成不安全压缩的依赖的写法。
 
-      *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
+      *为什么？*: [`ng-min`](https://github.com/btford/ngmin)是不推荐的用法。 
 
-    - The following code is not using minification safe dependencies.
+    - 下面的代码没有使用压缩安全依赖。
 
     ```javascript
     angular
@@ -866,7 +866,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-    - When the above code is run through ng-annotate it will produces the following output with the `$inject` annotation and become minification-safe.
+    - 当上面的代码通过ng-annotate运行时，就会产生如下的带有`$inject`注释的输出结果，这样的话压缩就会安全了。
 
     ```javascript
     angular
@@ -889,16 +889,16 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
-    - Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    - 注意：如果`ng-annotate`检测到已经有注入了（例如发现了`@ngInject`），就不会重复生成`$inject`代码了。
 
-    - Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    - 注意：从AngularJS 1.3 开始用[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)指令的 `ngStrictDi`参数，当以“strict-di”模式创建injector时，会导致应用程序无法调用不使用显示函数注释的函数（这也许不能安全压缩）。记录在控制台的调试信息可以帮助追踪出问题的代码。
     `<body ng-app="APP" ng-strict-di>`
 
-  - **Use Gulp or Grunt for ng-annotate**: Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - **使用Gulp或Grunt结合ng-annotate**: 在自动化任务中使用[gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate)或[grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate)，把`/* @ngInject */`注入到任何有依赖关系函数的前面。
   
-      *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+      *为什么？*: ng-annotate会捕获大部分的依赖关系，但是有时候需要借助于`/* @ngInject */`语法提示。
 
-    - The following code is an example of a gulp task using ngAnnotate
+    - 下面的代码是gulp任务使用ngAnnotate的例子。
 
     ```javascript
     gulp.task('js', ['jshint'], function () {
@@ -921,13 +921,13 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Exception Handling
+## 异常处理
 
-  - **decorators**: Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - **修饰符**: 使用一个[decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator)，在配置的时候用[`$provide`](https://docs.angularjs.org/api/auto/service/$provide)服务，当发生异常时，在[`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler)服务中执行自定义的处理方法。
   
-      *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
+      *为什么？*: 在开发时和运行时提供了一种统一的方式来处理未被捕获的AngularJS异常。
 
   	```javascript
     /* recommended */
@@ -961,9 +961,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
   	```
 
-  - **Exception Catchers**: Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - **异常捕获器**: 创建一个暴露了一个接口的factory来捕获异常并以合适方式处理异常。
 
-      *Why?*: Provides a consistent way to catch exceptions that may thrown in your code (e.g. during XHR calls or promise failures).
+      *为什么？*: 提供了一个统一的方法来捕获代码中抛出的异常。
 
     ```javascript
     /* recommended */
@@ -987,11 +987,11 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-  - **Route Errors**: Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - **路由错误**: 用[`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError)来处理并打印出所有的路由错误信息。
 
-      *Why?*: Provides a consistent way handle all routing errors.
+      *为什么？*: 提供一个统一的方式来处理所有的路由错误。
 
-      *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.
+      *为什么？*: 当一个路由发生错误的时候，如果能把用户带到一个有更多细节或是恢复选项的友好界面的话将会带来更好的用户体验。
 
     ```javascript
     /* recommended */
@@ -1016,28 +1016,190 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Naming
-TODO
+## 命名
+  - **Naming Guidelines**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
+    *   the file name 
+    *   the registered asset name with Angular
+ 
 
-**[Back to top](#table-of-contents)**
+    *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
 
-## Application Structure LIFT Principle
-  - **LIFT**: Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep a `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines. 
+    *Why?*: The naming conventions should simply help the findability and communication of code. 
 
-      *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
 
-    When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines
+  - **Feature File Names**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+
+    *Why?*: Provides a consistent way to quickly identify components.
+
+    *Why?*: Provides pattern matching for any automated tasks.
+
+    ```javascript
+    /**
+     * common options 
+     */
+
+    // Controllers
+    avengers.js
+    avengers.controller.js
+    avengersController.js
+    avengersCtrl.js
+
+    // Services/Factories
+    logger.js
+    logger.service.js
+    loggerService.js
+    loggerSvc.js
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // controllers
+    avengers.controller.js
+    avengers.controller.spec.js
+
+    // services/factories
+    logger.service.js
+    logger.service.spec.js
+
+    // constants
+    constants.js
+    
+    // module definition
+    avengers.module.js
+
+    // routes
+    avengers.routes.js
+    avengers.routes.spec.js
+
+    // configuration
+    avengers.config.js
+    
+    // directives
+    avenger-profile.directive.js
+    avenger-profile.directive.spec.js
+    ```
+
+  - Alternative: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
   
-    1. `L`ocating our code is easy
-    2. `I`dentify code at a glance
-    3. `F`lat structure as long as we can
-    4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
+    ```javascript
+    /**
+     * recommended
+     */
+    // Controllers
+    avengers.js
+    avengers.spec.js
+    ```
 
-  - **Locate**: Make locating your code intuitive, simple and fast.
+  - **Test File Names**: Name test specifications similar to the component they test with a suffix of `spec`.  
 
-      *Why?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly, that needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
+      *Why?*: Provides a consistent way to quickly identify components.
+
+      *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+
+    ```javascript
+    /**
+     * recommended
+     */
+    avengers.controller.spec.js
+    logger.service.spec.js
+    avengers.routes.spec.js
+    avenger-profile.directive.spec.js
+    ```
+
+  - **Controller Names**: Use consistent names for all controllers named after their feature. Use pascal-casing for controllers, as they are constructors.
+
+      *Why?*: Provides a consistent way to quickly identify and reference controllers.
+
+      *Why?*: Pascal-casing is conventional for identifying object tht can be instantiated using a constructor.
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // avengers.controller.js
+    angular
+      .module
+      .controller('Avengers', Avengers);
+
+    function Avengers(){ }    
+    ```
+    
+      - **Factory Names**: Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+
+      *Why?*: Provides a consistent way to quickly identify and reference controllers.
+    
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // logger.service.js
+    angular
+      .module
+      .factory('logger', logger);
+
+    function logger(){ }
+    ```
+
+  - **Directive Component Names**: Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+
+      *Why?*: Provides a consistent way to quickly identify and reference components.
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // avenger.profile.directive.js    
+    angular
+      .module
+      .directive('xxAvengerProfile', xxAvengerProfile);
+
+    // usage is <xx-avenger-profile> </xx-avenger-profile>
+
+    function xxAvengerProfile(){ }
+    ```
+
+  - **Modules**:  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.A single module app might be named `app.js`, omitting the module moniker.
+
+    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
+ 
+    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+
+    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+
+  - **Configuration**: Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js`(or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+
+    *Why?*: Separates configuration from module definition, components, and active code.
+
+    *Why?*: Provides a identifiable place to set configuration for a module.
+
+  - **Routes**: Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
+
+
+**[返回顶部](#table-of-contents)**
+
+## 应用程序结构的LIFT原则
+  - **LIFT**: 构建一个可以快速定位（`L`ocate）代码、一目了然地识别（`I`dentify）代码、拥有一个平整（`F`lattest）的结构、尽量（`T`ry）保持DRY（Don’t Repeat Yourself）的应用程序，其结构应该遵循这4项基本准则。
+
+      *为什么是LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?提供一个有良好扩展的结构，并且是模块化的，更快的找到代码能够帮助开发者提高效率。
+
+    当我发现我的的代码结构很恶心的时候，我就重新看看LIFT准则。
+  
+    1. 轻松定位代码（L）
+    2. 一眼识别代码（I）
+    3. 平整的代码结构（F）
+    4. 尽量保持不要写重复代码（T）
+
+  - **Locate**: 更直观、更简单、更快捷地定位代码
+
+      *为什么？*: 我发现这对于一个项目是非常重要的，如果一个团队不能快速找到他们需要工作的文件，这将不能使团队足够高效地工作，那么这个代码结构就得改变。你可能不知道文件名或是相关的文件放在了哪里，那么就把他们放在最直观的地方，放在一起会节省大量的时间。一个参考目录结构。
 
     ```
     /bower_components
@@ -1057,27 +1219,116 @@ TODO
     .bower.json
     ```
 
-  - **Identify**: When you look at a file you should instantly know what it contains and represents.
+  - **Identify**: 当你看到一个文件时你应该能够立即知道它包含了什么、代表了什么。
 
-      *Why?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping that contents of the file to exactly 1 thing. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable. If not, 1 per file.
+      *为什么？*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
 
   - **Flat**: Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
 
-      *Why?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
+      *为什么？*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
 
-  - **T-DRY (Try to Stick to DRY)**: Be DRY, but don't go nuts and sacrfice readability.
+  - **T-DRY (Try to Stick to DRY)**: Be DRY, but don't go nuts and sacrifice readability.
 
-      *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
+      *为什么？*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-
-**[Back to top](#table-of-contents)**
-
-## Application Structure
-TODO
 
 **[Back to top](#table-of-contents)**
 
-## Modularity
+## 应用程序结构
+  - **Overall Guidelines**:  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. Small deviations are OK for a set of small, short directives in a `directive.js` file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+
+  - **Layout**: Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
+
+    - *Why?*: Organizes all layout in a single place re-used throughout the application.
+    
+  - **Folders-by-Feature Structure**: Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
+
+      - *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+
+      - *Why?*: The LIFT guidelines are all covered.
+
+      - *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+
+      - *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    app/
+        app.module.js
+        app.config.js
+        app.routes.js
+        directives/       
+            calendar.directive.js  
+            calendar.directive.html  
+            user-profile.directive.js  
+            user-profile.directive.html  
+        services/       
+            dataservice.js  
+            localstorage.js
+            logger.js   
+            spinner.js
+        layout/
+            shell.html      
+            shell.controller.js
+            topnav.html      
+            topnav.controller.js       
+        people/
+            attendees.html
+            attendees.controller.js  
+            speakers.html
+            speakers.controller.js
+            speaker-detail.html
+            speaker-detail.controller.js
+        sessions/
+            sessions.html      
+            sessions.controller.js
+            session-detail.html
+            session-detail.controller.js   
+    ```
+
+      - Note: Structuring using folders-by-type is another common option. It requires moving to multiple folders when working on a feature. This could get unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+
+    ```javascript
+    /* 
+     * Alternative folders-by-type.
+     * I recommend "folders-by-feature", instead.
+     */
+    
+    app/
+        app.module.js
+        app.config.js
+        app.routes.js
+        directives.js
+        controllers/
+            attendees.js            
+            session-detail.js       
+            sessions.js             
+            shell.js                
+            speakers.js             
+            speaker-detail.js       
+            topnav.js               
+        views/
+            attendees.html     
+            session-detail.html
+            sessions.html      
+            shell.html         
+            speakers.html      
+            speaker-detail.html
+            topnav.html         
+        services/       
+            dataservice.js  
+            localstorage.js
+            logger.js   
+            spinner.js
+    ``` 
+    
+      
+**[Back to top](#table-of-contents)**
+
+## 模块化
 TODO
 
 **[Back to top](#table-of-contents)**
@@ -1086,11 +1337,11 @@ TODO
 
   - **$document and $window**: Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
 
-    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *为什么？*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
 
   - **$timeout and $interval**: Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
 
-    *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
+    *为什么？*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
 **[Back to top](#table-of-contents)**
 
@@ -1098,9 +1349,9 @@ TODO
 
   - **jsDoc**: If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns
 
-    *Why?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *为什么？*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
 
-    *Why?*: Provides consistency using a common industry tool.
+    *为什么？*: Provides consistency using a common industry tool.
 
     ```javascript
     angular
@@ -1139,9 +1390,9 @@ TODO
 
   - **Use an Options File**: Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
 
-    *Why?*: Provides a first alert prior to committing any code to source control.
+    *为什么？*: Provides a first alert prior to committing any code to source control.
 
-    *Why?*: Provides consistency across your team.
+    *为什么？*: Provides consistency across your team.
 
     ```javascript
     {
@@ -1213,7 +1464,7 @@ TODO
 
   - **Vendor Globals**: Create an AngularJS Constant for vendor libraries' global variables.
 
-    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+    *为什么？*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
 
     ```javascript
     // constants.js
@@ -1236,7 +1487,7 @@ For anything else, API reference, check the [Angular documentation](//docs.angul
 
 ## Contributing
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repo. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repo. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. 为什么？ Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
 
 *By contributing to this repo you are agreeing to make your content available subject to the license of this repo.*
 
