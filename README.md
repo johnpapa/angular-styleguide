@@ -852,29 +852,30 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       function Dashboard($location, $routeParams, common, dataservice) {
       }
       ```
-    
-    - Note: When your function is below a return statement the $inject may be unreachable. You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
+
+    - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
 
     ```javascript
+    // inside a directive definition
     function outer() {
       return {
           controller: DashboardPanel,
       };
 
-      MyCtrl.$inject = ["a"]; // Unreachable
-      function DashboardPanel(a) {
+      MyCtrl.$inject = ['logger']; // Unreachable
+      function DashboardPanel(logger) {
       }
     }
     ```
 
     ```javascript
+    // inside a directive definition
     function outer() {
       MyCtrl.$inject = ['logger']; // reachable
       return {
           controller: DashboardPanel,
       };
 
-      // @ngInject
       function DashboardPanel(logger) {
       }
     }
