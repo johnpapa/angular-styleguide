@@ -862,7 +862,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
           controller: DashboardPanel,
       };
 
-      MyCtrl.$inject = ['logger']; // Unreachable
+      DashboardPanel.$inject = ['logger']; // Unreachable
       function DashboardPanel(logger) {
       }
     }
@@ -871,7 +871,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ```javascript
     // inside a directive definition
     function outer() {
-      MyCtrl.$inject = ['logger']; // reachable
+      DashboardPanel.$inject = ['logger']; // reachable
       return {
           controller: DashboardPanel,
       };
