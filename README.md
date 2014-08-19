@@ -988,7 +988,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     extendExceptionHandler.$inject = ['$delegate', 'toastr'];
 
-    function extendExceptionHandler($delegate) {
+    function extendExceptionHandler($delegate, toastr) {
         return function (exception, cause) {
             $delegate(exception, cause);
             var errorData = { 
