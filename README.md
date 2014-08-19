@@ -841,6 +841,45 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
+    - Note: The array syntax is also a recommended way to inject dependencies.
+
+  ```javascript
+    angular
+      .module('app')
+      .controller('Dashboard', 
+        ['$location', '$routeParams', 'common', 'dataservice', Dashboard];
+
+    function Dashboard($location, $routeParams, common, dataservice) {
+    }
+    ```
+
+    - Note: When your function is below a return statement the $inject may be unreachable. You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
+
+    ```javascript
+    function outer() {
+      return {
+          controller: DashboardPanel,
+      };
+
+      MyCtrl.$inject = ["a"]; // Unreachable
+      function DashboardPanel(a) {
+      }
+    }
+    ```
+
+    ```javascript
+    function outer() {
+      MyCtrl.$inject = ['logger']; // reachable
+      return {
+          controller: DashboardPanel,
+      };
+
+      // @ngInject
+      function DashboardPanel(logger) {
+      }
+    }
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Minification and Annotation
