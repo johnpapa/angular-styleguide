@@ -477,9 +477,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     angular
         .module('app')
-        .service('logger', logger);
+        .service('logger', Logger);
 
-    function logger () {
+    function Logger () {
       this.logError = function (msg) {
         /* */
       };
