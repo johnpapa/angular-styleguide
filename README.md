@@ -841,18 +841,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-    - Note: The array syntax is also a recommended way to inject dependencies.
-
-    ```javascript
-      angular
-        .module('app')
-        .controller('Dashboard', 
-          ['$location', '$routeParams', 'common', 'dataservice', Dashboard];
-
-      function Dashboard($location, $routeParams, common, dataservice) {
-      }
-      ```
-
     - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
 
     ```javascript
