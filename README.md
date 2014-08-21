@@ -19,6 +19,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
+  1. [Data Services](#data-services)
   1. [Directives](#directives)
   1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
   1. [Manual Dependency Injection](#manual-dependency-injection)
@@ -565,6 +566,124 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
       ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 **[Back to top](#table-of-contents)**
+
+## Data Services
+
+  - **Separate Data Calls**: Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+
+    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care ow it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and let's the controller be simpler and more focused on the view.
+
+    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+
+    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+
+    ```javascript
+    /* recommended */
+
+    // dataservice factory
+    angular
+        .module('app.core')
+        .factory('dataservice', dataservice);
+
+    dataservice.$inject = ['$http', 'logger'];
+
+    function dataservice($http, logger) {
+        return {
+            getAvengers: getAvengers
+        };
+
+        function getAvengers() {
+            return $http.get('/api/maa')
+                .then(getAvengersComplete)
+                .catch(getAvengersFailed);
+
+            function getAvengersComplete(data, status, headers, config) {
+                return data.results;
+            }
+
+            function getAvengersFailed(error) {
+                logger.error('XHR Failed for getAvengers.' + error.data);
+            }
+        }
+    }
+    ```
+    - Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+
+    ```javascript
+    /* recommended */
+
+    // controller calling the dataservice factory
+    angular
+        .module('app.avengers')
+        .controller('Avengers', Avengers);
+
+    Avengers.$inject = ['dataservice', 'logger'];
+
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+
+        activate();
+
+        function activate() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        function getAvengers() {
+            return dataservice.getAvengers()
+              .then(function (data) {
+                  vm.avengers = data;
+                  return vm.avengers;
+              });
+        }
+    }      
+    ```
+
+- **Return a Promise from Data Calls**: When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+
+    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+
+    ```javascript
+    /* recommended */
+
+    activate();
+
+    function activate() {
+        /**
+         * Step 1
+         * Ask the getAvengers function for the
+         * avenger data and wait for the promise
+         */
+        return getAvengers().then(function() {
+          /**
+           * Step 4
+           * Perform an action on resolve of final promise
+           */
+          logger.info('Activated Avengers View');
+        });
+    }
+
+    function getAvengers() {
+        /**
+         * Step 2
+         * Ask the data service for the data and wait
+         * for the promise
+         */
+        return dataservice.getAvengers()
+          .then(function (data) {
+              /**
+               * Step 3
+               * set the data and resolve the promise
+               */
+              vm.avengers = data;
+              return vm.avengers;
+          });
+    }
+    ```
+
+    **[Back to top](#table-of-contents)**
 
 ## Directives
 - **Limit 1 Per File**: Create one directive per file. Name the file for the directive. 
