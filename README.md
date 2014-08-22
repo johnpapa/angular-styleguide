@@ -368,7 +368,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         var vm = this;
 
         vm.gotoSession = gotoSession;
-        vm.refresh = dataservice.refresh(); // 1 liner is OK
+        vm.refresh = dataservice.refresh; // 1 liner is OK
         vm.search = search;
         vm.sessions = [];
         vm.title = 'Sessions';
@@ -597,8 +597,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
                 .then(getAvengersComplete)
                 .catch(getAvengersFailed);
 
-            function getAvengersComplete(data, status, headers, config) {
-                return data.results;
+            function getAvengersComplete(response) {
+                return response.data.results;
             }
 
             function getAvengersFailed(error) {
