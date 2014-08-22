@@ -571,7 +571,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - **Separate Data Calls**: Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care ow it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and let's the controller be simpler and more focused on the view.
+    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and let's the controller be simpler and more focused on the view.
 
     *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
 
