@@ -121,6 +121,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
 
+**[Back to top](#table-of-contents)**
+
 ## Modules
 
   - **Definitions (aka Setters)**: Declare modules without a variable using the setter syntax. 
