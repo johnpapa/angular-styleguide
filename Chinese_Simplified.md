@@ -339,7 +339,7 @@
         }
     ```
 
-     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
     - 注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
 
@@ -564,7 +564,7 @@
 
   - 这种绑定方式复制了宿主对象，原始值不会随着暴露模块模式的使用而更新。
 
-  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 **[返回顶部](#table-of-contents)**
 
@@ -1503,46 +1503,46 @@
 
     *为什么？*：分离功能为模块可以更容易测试。
 
-  - **可重用的块就是模块**: Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+  - **可重用的块就是模块**: 为通用service创建代表可重用的应用程序块的模块，例如异常处理、日志记录、诊断、安全性和本地数据储藏等模块。
 
-    *为什么？*：These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    *为什么？*：这些类型的功能在很多应用程序中都需要用到，所以把它们分离到自己的模块中，它们可以变成通用的应用程序，也能被跨应用地进行重用。
      
-  - **Module Dependencies**: The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.
+  - **模块依赖**: 应用程序根模块依赖于应用程序特定的功能模块，功能模块没有直接的依赖关系，跨应用的模块取决于所有通用模块。
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![模块化和依赖](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/modularity-1.png)
 
-    *为什么？*：The main app module contains a quickly identifiable manifest of the application's features. 
+    *为什么？*：主程序模块包含一个能快速识别应用程序功能的清单。
 
-    *为什么？*：Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (`app.core` in the image).
+    *为什么？*：跨应用程序的功能变得更加容易分享。功能一般都是依靠于相同的跨应用模块，这些模块都被合并到一个单独的模块当中（图中所示的`app.core`）。
 
-    *为什么？*：Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *为什么？*：程序内部的功能，如共享数据的服务变得容易定位，并且从`app.core`中共享。
 
-    - Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+    - 注意：这是保持一致性的一种策略，这里有很多不错的选择，选择一种统一的，遵循AngularJS依赖规则，这将易于维护和扩展。
 
-    >> My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind.
+    >> 我的不同项目间的结构略有不同，但是它们都遵循了这些结构和模块化的准则,具体的实施方案会根据功能和团队发生变化。也就是说，不要在一棵树上吊死，但是心中一定要记得保持一致性、可维护性和效率。
 
 
 **[返回顶部](#table-of-contents)**
 
-## Angular $ Wrapper Services
+## Angular $包装的服务
 
-  - **$document and $window**: Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
+  - **$document和$window**: 用[`$document`](https://docs.angularjs.org/api/ng/service/$document)和[`$window`](https://docs.angularjs.org/api/ng/service/$window)代替`document`和`window`。
 
-    *为什么？*：These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *为什么？*：使用内部包装服务将更容易测试，也避免了你自己去模拟document和window。
 
-  - **$timeout and $interval**: Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
+  - **$timeout和$interval**: 用[`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout)和[`$interval`](https://docs.angularjs.org/api/ng/service/$interval)代替`setTimeout`和`setInterval` 。
 
-    *为什么？*：These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
+    *为什么？*：易于测试，处理AngularJS消化周期从而保证数据的同步绑定。
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Testing
+## 测试
 
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.单元测试有助于保持代码的清晰，因此我加入一些关于单元测试的基础和获取更多信息的链接。
 
-  - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as your write the code for the story.
+  - **用故事来编写测试**: 给每一个故事都写一组测试，县创建一个空的测试，然后用你给这个故事写的代码来填充它。
 
-    *为什么？*：Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+    *为什么？*：编写测试有助于明确规定你的故事要做什么、不做什么以及你如何判断是否成功。
 
     ```javascript
     it('should have Avengers controller', function () {
@@ -1564,83 +1564,83 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     // and so on
     ```
 
-  - **Testing Library**: Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
+  - **测试库**: 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://visionmedia.github.io/mocha/)进行单元测试。
 
-    *为什么？*：Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
+    *为什么？*：AngularJS社区中Jasmine和Mocha都用的很广，两者都很稳定，可维护性好，提供强大的测试功能。
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+    注意：使用Mocha时你可以考虑选择一个类似[Chai](http://chaijs.com)的提示库。
 
-  - **Test Runner**: Use [Karma](http://karma-runner.github.io) as a test runner.
+  - **测试运行器**: [Karma](http://karma-runner.github.io)。
 
-    *为什么？*：Karma is easy to configure to run once or automatically when you change your code.
+    *为什么？*：Karma容易配置，代码发生修改时自动运行。
 
-    *为什么？*：Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *为什么？*：可以通过自身或是Grunt、Gulp方便地钩入持续集成的进程。
 
-    *为什么？*：Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *为什么？*：一些IDE已经开始集成Karma了，如[WebStorm](http://www.jetbrains.com/webstorm/)和[Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225)。
 
-    *为什么？*：Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *为什么？*：Karma可以很好的和自动化任务工具如[Grunt](http://www.gruntjs.com)（带有[grunt-karma](https://github.com/karma-runner/grunt-karma)）和[Gulp](http://www.gulpjs.com)（带有[gulp-karma](https://github.com/lazd/gulp-karma)）合作。
 
-  - **Stubbing and Spying**: Use Sinon for stubbing and spying.
+  - **Stubbing和Spying**: 用Sinon。
 
-    *为什么？*：Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *为什么？*：Sinon可以和Jasmine和Mocha合作良好，并且可以扩展它们提供的stubbing和spying。
 
-    *为什么？*：Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *为什么？*：如果你想试试Jasmine和Mocha，用Sinon在它们中间来回切换是很方便的。
 
-  - **Headless Browser**: Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - **Headless Browser**: 在服务器上使用[PhantomJS](http://phantomjs.org/)来运行你的测试。
 
-    *为什么？*：PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safaria, IE, or other browsers on your server. 
+    *为什么？*：PhantomJS是一个headless browser，无需一个“可视”的浏览器来帮助你运行测试。因此你的服务器上不需要安装Chrome、Safaria、IE或是其它浏览器。 
 
-    Note: You should still test on all browsers in your environment, as appropriate for your target audience.
+    注意：你仍然需要在你的环境下测试所有浏览器，来满足用户的需求。
 
-  - **Code Analysis**: Run JSHint on your tests. 
+  - **代码分析**: 在你的测试上运行JSHint。
 
-    **为什么？*：Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    **为什么？*：测试仅仅是代码，JSHint能够帮你识别代码中可能导致测试无法正常工作的的质量问题。
 
-  - **Alleviate JSHint Rules on Tests**: Relax the rules on your test code.
+  - **对测试降低JSHint规则**: 对你的测试代码放松规则。
 
-    **为什么？*：Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
+    **为什么？*：测试并不是最终用户需要用到的，所以不需要太强烈的代码质量规则。例如，测试中可以允许使用全局变量。
 
     ```javascript
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![测试工具](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/testing-tools.png)
 
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Animations
+## 动画
 
-  - **Usage**: Use subtle [animations with AngularJS](https://docs.angularjs.org/guide/animations) to transition between states for views and primary visual elements. Include the [ngAnimate module](https://docs.angularjs.org/api/ngAnimate). The 3 keys are subtle, smooth, seamless.
+  - **用法**: 在view和主要的视觉元素上使用细微的[AngularJS动画](https://docs.angularjs.org/guide/animations)进行过渡，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
 
-    *为什么？*：Subtle animations can improve User Experience when used appropriately.
+    *为什么？*：使用得当的话能够提高用户体验。
 
-    *为什么？*：Subtle animations can improve perceived performance as views transition.
+    *为什么？*：当视图过渡时，微小的动画可以提高感知性。
 
-  - **Sub Second**: Use short durations for animations. I generally start with 300ms and adjust until appropriate.  
+  - **Sub Second**: 使用短持续性的动画，我一般使用300ms，然后调整到合适的时间。 
 
-    *为什么？*：Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
+    *为什么？*：长时间的动画容易造成用户认为程序性能太差的影响。
 
-  - **animate.css**: Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
+  - **animate.css**: 传统动画使用[animate.css](http://daneden.github.io/animate.css/)。
 
-    *为什么？*：The animations that animate.css provides are fast, smooth, and easy to add to your application.
+    *为什么？*：css提供的动画是快速的、流畅的、易于添加到应用程序中的。
 
-    *为什么？*：Provides consistency in your animations.
+    *为什么？*：为动画提供一致性。
 
-    *为什么？*：animate.css is widely used and tested.
+    *为什么？*：animate.css被广泛使用和测试。
 
-    Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    注意：参阅[Matias Niemelä的关于AngularJS动画的文章](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 
-## Comments
+## 注释
 
-  - **jsDoc**: If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns
+  - **jsDoc**: 如果你计划产出一个文档，那么就使用[`jsDoc`](http://usejsdoc.org/)的语法来记录函数名、描述、参数和返回值。
 
-    *为什么？*：You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *为什么？*：你可以从代码中生成（重新生成）文档，而不必从头开始编写文档。
 
-    *为什么？*：Provides consistency using a common industry tool.
+    *为什么？*：使用业内通用工具保持了统一性。
 
     ```javascript
     angular
@@ -1673,15 +1673,15 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 ## JS Hint
 
   - **Use an Options File**: Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
 
-    *为什么？*：Provides a first alert prior to committing any code to source control.
+    *为什么？*：提交代码到原版本之前先发出警告。  
 
-    *为什么？*：Provides consistency across your team.
+    *为什么？*：统一性。
 
     ```javascript
     {
@@ -1747,13 +1747,13 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Constants
+## 常量
 
-  - **Vendor Globals**: Create an AngularJS Constant for vendor libraries' global variables.
+  - **供应全局变量**: 为供应库中的全局变量创建一个AngularJS常量。
 
-    *为什么？*：Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+    *为什么？*：提供一种注入到供应库的方法，否则就是全局变量。通过让你更容易地了解你的组件之间的依赖关系来提高代码的可测试性。这还允许你模拟这些依赖关系，这是很有意义的。
 
     ```javascript
     // constants.js
@@ -1769,28 +1769,28 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## AngularJS docs
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+## AngularJS文档
+[Angular文档](//docs.angularjs.org/api)。
 
-## Contributing
+## 贡献
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repo. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. 为什么？ Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+先打开一个问题讨论潜在的变化和增加。如果你对这篇指南有问题，随时在仓库中提出问题。如果你发现了一个错字，创建一个pull request。这样做是为了保持内容的更新，使用github的原生功能通过问题和PR来帮助讲述这个故事，具体做法可以google一下。为什么？因为如果你有问题，其他人可能有同样的问题，你在这里可以学到如何贡献。
 
-*By contributing to this repo you are agreeing to make your content available subject to the license of this repo.*
+*贡献代码到这个仓库就意味着你同意了本仓库的许可证内容*
 
 
-  - **Process**
-    1. Discuss the changes in an Issue. 
-    1. Open a Pull Request, reference the issue, and explain the change and why it adds value.
-    1. The Pull Request will be evaluated and either merged or declined.
+  - **过程**
+    1. 在一个Issue中讨论这个问题。 
+    1. 打开一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
+    1. pull request将会被进行评估，结果就是合并或是拒绝。
 
-## License
+## 许可证
 
-  - **tldr;** Use this guide. Attributions are appreciated, but not required. 
+  - **tldr;** 使用本指南，我们鼓励指明归属，但这不是必须的。 
 
-#### (The MIT License)
+#### (MIT许可证)
 
 Copyright (c) 2014 [John Papa](http://johnpapa.net)
 
@@ -1813,4 +1813,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
