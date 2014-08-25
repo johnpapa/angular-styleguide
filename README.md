@@ -471,8 +471,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
 ## Services
 
-  - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Can also use a factory, which I recommend for consistency. 
-  
+  - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Can also use a factory, which I recommend for consistency.
+
     - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
 
     ```javascript
@@ -480,9 +480,9 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     angular
         .module('app')
-        .service('logger', logger);
+        .service('logger', Logger);
 
-    function logger () {
+    function Logger () {
       this.logError = function (msg) {
         /* */
       };
