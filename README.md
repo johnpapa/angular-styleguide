@@ -906,6 +906,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
+    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](minification-and-annotation).
+
 **[Back to top](#table-of-contents)**
 
 ## Manual Dependency Injection
@@ -990,6 +992,32 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
+  - **Manually Identify Route Resolver Dependencies**: Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  
+      *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+
+      *Why?*: An `$inject` statement can easily procede the resolver to handle making any dependencies minification safe.
+
+    ```javascript
+    /* recommended */
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm',
+          resolve: {
+            moviesPrepService: moviePrepService
+          }
+        });
+    }
+
+    moviePrepService.$inject =  ['movieService'];
+    function moviePrepService(movieService) {
+        return movieService.getMovies();
+    }
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Minification and Annotation
@@ -1040,10 +1068,28 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
 
     Avengers.$inject = ['storageService', 'avengerService'];
-
     ```
 
     - Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+
+    - When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+
+    ```javascript
+    // Using @ngInject annotations
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm',
+          resolve: { /* @ngInject */
+            moviesPrepService: function (movieService) {
+                return movieService.getMovies();
+            }
+          }
+        });
+    }
+    ```
 
     - Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
     `<body ng-app="APP" ng-strict-di>`
