@@ -906,7 +906,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
-    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](minification-and-annotation).
+    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
 **[Back to top](#table-of-contents)**
 
