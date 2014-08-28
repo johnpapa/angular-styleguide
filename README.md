@@ -1314,7 +1314,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
       *Why?*: Provides a consistent way to quickly identify and reference controllers.
 
-      *Why?*: Pascal-casing is conventional for identifying object tht can be instantiated using a constructor.
+      *Why?*: Pascal-casing is conventional for identifying object that can be instantiated using a constructor.
 
     ```javascript
     /**
