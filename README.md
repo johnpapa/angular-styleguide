@@ -139,7 +139,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ]);
     ```
 
-	Instead use the simple getter syntax.
+	Instead use the simple setter syntax.
 
     ```javascript
     /* recommended */
