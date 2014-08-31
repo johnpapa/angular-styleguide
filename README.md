@@ -142,7 +142,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ]);
     ```
 
-	Instead use the simple getter syntax.
+	Instead use the simple setter syntax.
 
     ```javascript
     /* recommended */
@@ -1317,7 +1317,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       *Why?*: Provides a consistent way to quickly identify and reference controllers.
 
-      *Why?*: Pascal-casing is conventional for identifying object tht can be instantiated using a constructor.
+      *Why?*: Pascal-casing is conventional for identifying object that can be instantiated using a constructor.
 
     ```javascript
     /**
