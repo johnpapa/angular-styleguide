@@ -11,6 +11,9 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
 Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
 
+## See the Styles in a Sample App
+While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab clone it or fork it. Instructions on running it are in its readme.
+
 ## Table of Contents
 
   1. [Single Responsibility](#single-responsibility)
