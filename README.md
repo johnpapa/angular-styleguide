@@ -404,7 +404,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         vm.title = 'Sessions';
     ```
 
-  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the seciton Bindable Members Up Top.
+  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the seciton Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
     
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
 
@@ -667,7 +667,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
-  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file.
+  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
 
