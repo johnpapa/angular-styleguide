@@ -404,6 +404,79 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         vm.title = 'Sessions';
     ```
 
+  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the seciton Bindable Members Up Top.
+    
+    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+
+    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+
+    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+
+    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+
+    *Why?*: Order is critical with function expressions 
+
+    ```javascript
+    /** 
+     * avoid 
+     * Using function expressions.
+     */
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+        vm.title = 'Avengers';
+
+        var activate = function() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        var getAvengers = function() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+
+        vm.getAvengers = getAvengers;
+
+        activate();
+    }
+    ```
+
+  - Notice that the important stuff is scattered in the preceeding example.
+  - In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just esier to read.
+
+    ```javascript
+    /*
+     * recommend
+     * Using function declarations
+     * and bindable members up top.
+     */
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+        vm.getAvengers = getAvengers;
+        vm.title = 'Avengers';
+
+        activate();
+
+        function activate() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        function getAvengers() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+    }
+    ```
+
   - **Defer Controller Logic**: Defer logic in a controller by delegating to services and factories.
 
     *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
@@ -449,7 +522,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
 
    ```javascript
-   
     /* avoid - when using with a route and dynamic pairing is desired */
 
     // route-config.js
@@ -542,7 +614,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   
     - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
 
-  - **Public Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - **Accessible Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
     *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
 
@@ -594,6 +666,102 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
 
       ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+
+  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file.
+
+    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+
+    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+
+    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+
+    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+
+    *Why?*: Order is critical with function expressions 
+
+    ```javascript
+    /**
+     * avoid
+     * Using function expressions
+     */
+     function dataservice($http, $location, $q, exception, logger) {
+        var isPrimed = false;
+        var primePromise;
+
+        var getAvengers = function() {
+          // implementation details go here
+        };
+
+        var getAvengerCount = function() {
+          // implementation details go here
+        };
+
+        var getAvengersCast = function() {
+          // implementation details go here
+        };
+
+        var prime = function() {
+          // implementation details go here
+        };
+
+        var ready = function(nextPromises) {
+          // implementation details go here
+        };
+
+        var service = {
+            getAvengersCast: getAvengersCast,
+            getAvengerCount: getAvengerCount,
+            getAvengers: getAvengers,
+            ready: ready
+        };
+
+        return service;
+    }
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     * Using function declarations
+     * and accessible members up top.
+     */
+    function dataservice($http, $location, $q, exception, logger) {
+        var isPrimed = false;
+        var primePromise;
+
+        var service = {
+            getAvengersCast: getAvengersCast,
+            getAvengerCount: getAvengerCount,
+            getAvengers: getAvengers,
+            ready: ready
+        };
+
+        return service;
+
+        ////////////
+
+        function getAvengers() {
+          // implementation details go here
+        }
+
+        function getAvengerCount() {
+          // implementation details go here
+        }
+
+        function getAvengersCast() {
+          // implementation details go here
+        }
+
+        function prime() {
+          // implementation details go here
+        }
+
+        function ready(nextPromises) {
+          // implementation details go here
+        }
+    }
+    ```
+
 
 **[Back to top](#table-of-contents)**
 
