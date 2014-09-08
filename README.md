@@ -1786,7 +1786,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
 
-  - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as your write the code for the story.
+  - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
 
     *Why?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
 
