@@ -446,7 +446,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
   - Notice that the important stuff is scattered in the preceeding example.
-  - In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just esier to read.
+  - In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
 
     ```javascript
     /*
