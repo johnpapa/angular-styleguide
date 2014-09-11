@@ -17,7 +17,7 @@
 
 ## 目录
 
-  1. [单一职责](#single-responsibility)
+  1. [单一职责](#单一职责)
   1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
@@ -481,7 +481,7 @@
 
     *为什么？*：把逻辑放到service中将会使单元测试的时候更加容易地把它们分离，相反，如果在controller中调用逻辑只会让这变得被别人嘲笑。
 
-    *为什么？*：中删除依赖关系并且隐藏实现细节。
+    *为什么？*：从controller中删除依赖关系并且隐藏实现细节。
 
     ```javascript
     /* avoid */
