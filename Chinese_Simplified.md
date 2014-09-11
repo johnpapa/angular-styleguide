@@ -11,6 +11,8 @@
 
 我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，虽然我们并不总是能达成一致，但是Ward确实影响了本指南的最终演变。
 
+## 在示例App中了解这些风格
+看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
 
 
 ## 目录
@@ -101,7 +103,31 @@
   *为什么？*：当你的代码为了发布而压缩了并且被合并到同一个文件中时，可能会有变量和很多全局变量的冲突，IIFE通过给每一个文件提供一个单独的作用域来保护你免受这些困扰。
   
     ```javascript
-    /* recommended */
+    /* avoid */
+    // logger.js
+    angular
+      .module('app')
+      .factory('logger', logger);
+
+    // logger function is added as a global variable  
+    function logger () { }
+
+    // storage.js
+    angular
+      .module('app')
+      .factory('storage', storage);
+
+    // storage function is added as a global variable  
+    function storage () { }
+    ```
+
+    ```javascript
+    /**
+     * recommended 
+     *
+     * no globals are left behind 
+     */
+
     // logger.js
     (function () {
       angular
@@ -140,7 +166,7 @@
     ]);
     ```
 
-	用简单的getter语法来代替。
+	用简单的setter语法来代替。
 
     ```javascript
     /* recommended */
@@ -376,6 +402,79 @@
         vm.title = 'Sessions';
     ```
 
+  - **函数声明隐藏实现细节**：函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
+    
+    *为什么？*: 易读，易识别哪些成员可以在View中绑定和使用。
+
+    *为什么？*: 把函数的实现细节放到后面，你可以更清楚地看到重要的东西。
+
+    *为什么？*: 由于函数声明会被提到顶部，所以没有必要担心在声明它之前就使用函数的问题。
+
+    *为什么？*: 你再也不用担心当 `a`依赖于 `b`时，把`var a`放到`var b`之前会中断你的代码的函数声明问题。 
+
+    *为什么？*: 函数表达式中顺序是至关重要的。
+
+    ```javascript
+    /** 
+     * avoid 
+     * Using function expressions.
+     */
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+        vm.title = 'Avengers';
+
+        var activate = function() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        var getAvengers = function() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+
+        vm.getAvengers = getAvengers;
+
+        activate();
+    }
+    ```
+
+  - 注意这里重要的代码分散在代码执行过程中。
+  - 下面的示例中，可以看到重要的代码都放到了顶部。实现的详细细节都在下方，这样的代码当然是更易读的。
+
+    ```javascript
+    /*
+     * recommend
+     * Using function declarations
+     * and bindable members up top.
+     */
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+        vm.getAvengers = getAvengers;
+        vm.title = 'Avengers';
+
+        activate();
+
+        function activate() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        function getAvengers() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+    }
+    ```
+
   - **推迟Controller中的逻辑**: 通过委派到service和factory中来推迟controller中的逻辑。
 
     *为什么？*：把逻辑放到service中，并通过一个function暴露，就可以被多个controller重用。
@@ -421,7 +520,6 @@
     *为什么？*：在route中匹配controller允许不同的路由调用不同的相匹配的controller和view，当在view中通过[`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController)分配controller时，这个view总是和相同的controller相关联。
 
    ```javascript
-   
     /* avoid - when using with a route and dynamic pairing is desired */
 
     // route-config.js
@@ -514,7 +612,7 @@
   
   - 注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
-  - **公共成员放到顶部**: 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service中可调用的成员暴露到顶部， 
+  - **可访问的成员放到顶部**: 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service中可调用的成员暴露到顶部， 
 
     *为什么？*：把可调用的成员放到顶部使代码更加易读，并且让你可以立即识别service中的哪些成员可以被调用，哪些成员必须进行单元测试（或者被别人嘲笑）。 
 
@@ -566,6 +664,101 @@
   - 这种绑定方式复制了宿主对象，原始值不会随着暴露模块模式的使用而更新。
 
   ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/above-the-fold-2.png)
+
+  - **函数声明隐藏实现细节**：函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
+
+    *为什么？*: 易读，易识别哪些成员可以在View中绑定和使用。
+
+    *为什么？*: 把函数的实现细节放到后面，你可以更清楚地看到重要的东西。
+
+    *为什么？*: 由于函数声明会被提到顶部，所以没有必要担心在声明它之前就使用函数的问题。
+
+    *为什么？*: 你再也不用担心当 `a`依赖于 `b`时，把`var a`放到`var b`之前会中断你的代码的函数声明问题。 
+
+    *为什么？*: 函数表达式中顺序是至关重要的。 
+
+    ```javascript
+    /**
+     * avoid
+     * Using function expressions
+     */
+     function dataservice($http, $location, $q, exception, logger) {
+        var isPrimed = false;
+        var primePromise;
+
+        var getAvengers = function() {
+          // implementation details go here
+        };
+
+        var getAvengerCount = function() {
+          // implementation details go here
+        };
+
+        var getAvengersCast = function() {
+          // implementation details go here
+        };
+
+        var prime = function() {
+          // implementation details go here
+        };
+
+        var ready = function(nextPromises) {
+          // implementation details go here
+        };
+
+        var service = {
+            getAvengersCast: getAvengersCast,
+            getAvengerCount: getAvengerCount,
+            getAvengers: getAvengers,
+            ready: ready
+        };
+
+        return service;
+    }
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     * Using function declarations
+     * and accessible members up top.
+     */
+    function dataservice($http, $location, $q, exception, logger) {
+        var isPrimed = false;
+        var primePromise;
+
+        var service = {
+            getAvengersCast: getAvengersCast,
+            getAvengerCount: getAvengerCount,
+            getAvengers: getAvengers,
+            ready: ready
+        };
+
+        return service;
+
+        ////////////
+
+        function getAvengers() {
+          // implementation details go here
+        }
+
+        function getAvengerCount() {
+          // implementation details go here
+        }
+
+        function getAvengersCast() {
+          // implementation details go here
+        }
+
+        function prime() {
+          // implementation details go here
+        }
+
+        function ready(nextPromises) {
+          // implementation details go here
+        }
+    }
+    ```
 
 **[返回顶部](#table-of-contents)**
 
@@ -905,6 +1098,9 @@
     }
 
     ```
+    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](minification-and-annotation).
+    - 注意：示例代码中的`movieService`不是安全压缩的做法，可以到[依赖注入](#manual-dependency-injection)和[压缩和注释](#minification-and-annotation)部分学习如何安全压缩。
+
 
 **[返回顶部](#table-of-contents)**
 
@@ -987,6 +1183,32 @@
 
       function DashboardPanel(logger) {
       }
+    }
+    ```
+
+  - **手动确定路由解析器依赖**: 用$inject手动给AngularJS组件添加路由解析器依赖。
+  
+      *为什么？*: 这种技术打破了路由解析的匿名函数的形式，易读。
+
+      *为什么？*: `$inject`语句可以让任何依赖都可以安全压缩。
+
+    ```javascript
+    /* recommended */
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm',
+          resolve: {
+            moviesPrepService: moviePrepService
+          }
+        });
+    }
+
+    moviePrepService.$inject =  ['movieService'];
+    function moviePrepService(movieService) {
+        return movieService.getMovies();
     }
     ```
 
