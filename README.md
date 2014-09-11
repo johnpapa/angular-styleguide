@@ -11,6 +11,9 @@ Never work in a vacuum. I find that the AngularJS community is an incredible gro
 
 Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
 
+## See the Styles in a Sample App
+While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+
 ## Table of Contents
 
   1. [Single Responsibility](#single-responsibility)
@@ -19,6 +22,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   1. [Controllers](#controllers)
   1. [Services](#services)
   1. [Factories](#factories)
+  1. [Data Services](#data-services)
   1. [Directives](#directives)
   1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
   1. [Manual Dependency Injection](#manual-dependency-injection)
@@ -96,9 +100,34 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
 
   *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+
+    ```javascript
+    /* avoid */
+    // logger.js
+    angular
+      .module('app')
+      .factory('logger', logger);
+
+    // logger function is added as a global variable  
+    function logger () { }
+
+    // storage.js
+    angular
+      .module('app')
+      .factory('storage', storage);
+
+    // storage function is added as a global variable  
+    function storage () { }
+    ```
+
   
     ```javascript
-    /* recommended */
+    /**
+     * recommended 
+     *
+     * no globals are left behind 
+     */
+
     // logger.js
     (function () {
       angular
@@ -120,6 +149,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
 
+**[Back to top](#table-of-contents)**
+
 ## Modules
 
   - **Definitions (aka Setters)**: Declare modules without a variable using the setter syntax. 
@@ -136,7 +167,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     ]);
     ```
 
-	Instead use the simple getter syntax.
+	Instead use the simple setter syntax.
 
     ```javascript
     /* recommended */
@@ -367,10 +398,83 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
         var vm = this;
 
         vm.gotoSession = gotoSession;
-        vm.refresh = dataservice.refresh(); // 1 liner is OK
+        vm.refresh = dataservice.refresh; // 1 liner is OK
         vm.search = search;
         vm.sessions = [];
         vm.title = 'Sessions';
+    ```
+
+  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+    
+    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+
+    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+
+    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+
+    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+
+    *Why?*: Order is critical with function expressions 
+
+    ```javascript
+    /** 
+     * avoid 
+     * Using function expressions.
+     */
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+        vm.title = 'Avengers';
+
+        var activate = function() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        var getAvengers = function() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+
+        vm.getAvengers = getAvengers;
+
+        activate();
+    }
+    ```
+
+  - Notice that the important stuff is scattered in the preceeding example.
+  - In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+
+    ```javascript
+    /*
+     * recommend
+     * Using function declarations
+     * and bindable members up top.
+     */
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+        vm.getAvengers = getAvengers;
+        vm.title = 'Avengers';
+
+        activate();
+
+        function activate() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        function getAvengers() {
+            return dataservice.getAvengers().then(function(data) {
+                vm.avengers = data;
+                return vm.avengers;
+            });
+        }
+    }
     ```
 
   - **Defer Controller Logic**: Defer logic in a controller by delegating to services and factories.
@@ -418,7 +522,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
 
    ```javascript
-   
     /* avoid - when using with a route and dynamic pairing is desired */
 
     // route-config.js
@@ -511,7 +614,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
   
     - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
 
-  - **Public Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - **Accessible Members Up Top**: Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
     *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
 
@@ -564,7 +667,221 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
       ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
+  - **Function Declarations to Hide Implementation Details**: Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+
+    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+
+    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+
+    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+
+    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+
+    *Why?*: Order is critical with function expressions 
+
+    ```javascript
+    /**
+     * avoid
+     * Using function expressions
+     */
+     function dataservice($http, $location, $q, exception, logger) {
+        var isPrimed = false;
+        var primePromise;
+
+        var getAvengers = function() {
+          // implementation details go here
+        };
+
+        var getAvengerCount = function() {
+          // implementation details go here
+        };
+
+        var getAvengersCast = function() {
+          // implementation details go here
+        };
+
+        var prime = function() {
+          // implementation details go here
+        };
+
+        var ready = function(nextPromises) {
+          // implementation details go here
+        };
+
+        var service = {
+            getAvengersCast: getAvengersCast,
+            getAvengerCount: getAvengerCount,
+            getAvengers: getAvengers,
+            ready: ready
+        };
+
+        return service;
+    }
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     * Using function declarations
+     * and accessible members up top.
+     */
+    function dataservice($http, $location, $q, exception, logger) {
+        var isPrimed = false;
+        var primePromise;
+
+        var service = {
+            getAvengersCast: getAvengersCast,
+            getAvengerCount: getAvengerCount,
+            getAvengers: getAvengers,
+            ready: ready
+        };
+
+        return service;
+
+        ////////////
+
+        function getAvengers() {
+          // implementation details go here
+        }
+
+        function getAvengerCount() {
+          // implementation details go here
+        }
+
+        function getAvengersCast() {
+          // implementation details go here
+        }
+
+        function prime() {
+          // implementation details go here
+        }
+
+        function ready(nextPromises) {
+          // implementation details go here
+        }
+    }
+    ```
+
+
 **[Back to top](#table-of-contents)**
+
+## Data Services
+
+  - **Separate Data Calls**: Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+
+    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+
+    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+
+    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+
+    ```javascript
+    /* recommended */
+
+    // dataservice factory
+    angular
+        .module('app.core')
+        .factory('dataservice', dataservice);
+
+    dataservice.$inject = ['$http', 'logger'];
+
+    function dataservice($http, logger) {
+        return {
+            getAvengers: getAvengers
+        };
+
+        function getAvengers() {
+            return $http.get('/api/maa')
+                .then(getAvengersComplete)
+                .catch(getAvengersFailed);
+
+            function getAvengersComplete(response) {
+                return response.data.results;
+            }
+
+            function getAvengersFailed(error) {
+                logger.error('XHR Failed for getAvengers.' + error.data);
+            }
+        }
+    }
+    ```
+    - Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+
+    ```javascript
+    /* recommended */
+
+    // controller calling the dataservice factory
+    angular
+        .module('app.avengers')
+        .controller('Avengers', Avengers);
+
+    Avengers.$inject = ['dataservice', 'logger'];
+
+    function Avengers(dataservice, logger) {
+        var vm = this;
+        vm.avengers = [];
+
+        activate();
+
+        function activate() {
+            return getAvengers().then(function() {
+                logger.info('Activated Avengers View');
+            });
+        }
+
+        function getAvengers() {
+            return dataservice.getAvengers()
+              .then(function (data) {
+                  vm.avengers = data;
+                  return vm.avengers;
+              });
+        }
+    }      
+    ```
+
+- **Return a Promise from Data Calls**: When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+
+    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+
+    ```javascript
+    /* recommended */
+
+    activate();
+
+    function activate() {
+        /**
+         * Step 1
+         * Ask the getAvengers function for the
+         * avenger data and wait for the promise
+         */
+        return getAvengers().then(function() {
+          /**
+           * Step 4
+           * Perform an action on resolve of final promise
+           */
+          logger.info('Activated Avengers View');
+        });
+    }
+
+    function getAvengers() {
+        /**
+         * Step 2
+         * Ask the data service for the data and wait
+         * for the promise
+         */
+        return dataservice.getAvengers()
+          .then(function (data) {
+              /**
+               * Step 3
+               * set the data and resolve the promise
+               */
+              vm.avengers = data;
+              return vm.avengers;
+          });
+    }
+    ```
+
+    **[Back to top](#table-of-contents)**
 
 ## Directives
 - **Limit 1 Per File**: Create one directive per file. Name the file for the directive. 
@@ -785,6 +1102,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
     ```
 
+    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+
 **[Back to top](#table-of-contents)**
 
 ## Manual Dependency Injection
@@ -841,18 +1160,6 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
     ```
 
-    - Note: The array syntax is also a recommended way to inject dependencies.
-
-    ```javascript
-      angular
-        .module('app')
-        .controller('Dashboard', 
-          ['$location', '$routeParams', 'common', 'dataservice', Dashboard];
-
-      function Dashboard($location, $routeParams, common, dataservice) {
-      }
-      ```
-
     - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
 
     ```javascript
@@ -878,6 +1185,32 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
       function DashboardPanel(logger) {
       }
+    }
+    ```
+
+  - **Manually Identify Route Resolver Dependencies**: Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  
+      *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+
+      *Why?*: An `$inject` statement can easily procede the resolver to handle making any dependencies minification safe.
+
+    ```javascript
+    /* recommended */
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm',
+          resolve: {
+            moviesPrepService: moviePrepService
+          }
+        });
+    }
+
+    moviePrepService.$inject =  ['movieService'];
+    function moviePrepService(movieService) {
+        return movieService.getMovies();
     }
     ```
 
@@ -931,10 +1264,28 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
     }
 
     Avengers.$inject = ['storageService', 'avengerService'];
-
     ```
 
     - Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+
+    - When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+
+    ```javascript
+    // Using @ngInject annotations
+    function config ($routeProvider) {
+      $routeProvider
+        .when('/avengers', {
+          templateUrl: 'avengers.html',
+          controller: 'Avengers',
+          controllerAs: 'vm',
+          resolve: { /* @ngInject */
+            moviesPrepService: function (movieService) {
+                return movieService.getMovies();
+            }
+          }
+        });
+    }
+    ```
 
     - Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
     `<body ng-app="APP" ng-strict-di>`
@@ -1159,7 +1510,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 
       *Why?*: Provides a consistent way to quickly identify and reference controllers.
 
-      *Why?*: Pascal-casing is conventional for identifying object tht can be instantiated using a constructor.
+      *Why?*: Pascal-casing is conventional for identifying object that can be instantiated using a constructor.
 
     ```javascript
     /**
@@ -1435,7 +1786,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
 
-  - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as your write the code for the story.
+  - **Write Tests with Stories**: Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
 
     *Why?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
 
