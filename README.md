@@ -1248,7 +1248,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    - When the above code is run through ng-annotate it will produces the following output with the `$inject` annotation and become minification-safe.
+    - When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
 
     ```javascript
     angular
@@ -1363,7 +1363,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - **Exception Catchers**: Create a factory that exposes an interface to catch and gracefully handle exceptions.
 
-      *Why?*: Provides a consistent way to catch exceptions that may thrown in your code (e.g. during XHR calls or promise failures).
+      *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
 
     ```javascript
     /* recommended */
@@ -1844,11 +1844,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   - **Code Analysis**: Run JSHint on your tests. 
 
-    **Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
 
   - **Alleviate JSHint Rules on Tests**: Relax the rules on your test code.
 
-    **Why?*: Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
+    *Why?*: Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
 
     ```javascript
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
