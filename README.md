@@ -130,6 +130,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     // logger.js
     (function () {
+      'use strict';
+      
       angular
         .module('app')
         .factory('logger', logger);
@@ -139,6 +141,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     // storage.js
     (function () {
+      'use strict';
+
       angular
         .module('app')
         .factory('storage', storage);
