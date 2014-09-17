@@ -2055,6 +2055,12 @@ AngularJS snippets and file templates that follow these styles and guidelines. Y
   3. Choose the `Import Settings` menu option
   4. Select the file and click `OK`
 
+  ```javascript
+  ng-c // creates an Angular controller
+  ng-f // creates an Angular factory
+  ng-m // creates an Angular module
+  ```
+
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
