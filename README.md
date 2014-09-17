@@ -1140,7 +1140,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
 
-      *Why?*: Avoid creating inline dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+      *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
 
     ```javascript
     /* avoid */
@@ -1165,7 +1165,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
+    - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax. 
+
+    - Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
 
     ```javascript
     // inside a directive definition
