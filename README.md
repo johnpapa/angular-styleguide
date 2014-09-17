@@ -1427,7 +1427,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
  
     *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
 
-    *Why?*: The naming conventions should simply help the findability and communication of code. 
+    *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand. 
 
   - **Feature File Names**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
 
@@ -1839,7 +1839,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   - **Headless Browser**: Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
 
-    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safaria, IE, or other browsers on your server. 
+    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. 
 
     Note: You should still test on all browsers in your environment, as appropriate for your target audience.
 
