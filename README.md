@@ -2025,41 +2025,39 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
 
-### Sublime Text
-AngularJS snippets that follow these styles and guidelines. 
+  - **Sublime Text**: AngularJS snippets that follow these styles and guidelines. 
 
- 1. Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
- 2. Place it in your Packages folder
- 3. Restart Sublime 
+    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
+    - Place it in your Packages folder
+    - Restart Sublime 
+    - In a JavaScript file type these commands followed by a `TAB`
  
-In a JavaScript file type these commands followed by a `TAB`:
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective // creates an Angular directive
+    ngfactory // creates an Angular factory
+    ngmodule // creates an Angular module
+    ```
 
-  ```javascript
-  ngcontroller // creates an Angular controller
-  ngdirective // creates an Angular directive
-  ngfactory // creates an Angular factory
-  ngmodule // creates an Angular module
-  ```
+  - **Visual Studio**: AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
 
-### Visual Studio
-AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+    - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
+    - Run the vsix file
+    - Restart Visual Studio
 
-  1. Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
-  2. Run the vsix file
-  3. Restart Visual Studio
+  - **WebStorm**: AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
 
-### WebStorm
-AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
-  1. Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-templates.zip) 
-  2. Open WebStorm and go to the `File` menu
-  3. Choose the `Import Settings` menu option
-  4. Select the file and click `OK`
+    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-templates.zip) 
+    - Open WebStorm and go to the `File` menu
+    - Choose the `Import Settings` menu option
+    - Select the file and click `OK`
+    - In a JavaScript file type these commands followed by a `TAB`:
 
-  ```javascript
-  ng-c // creates an Angular controller
-  ng-f // creates an Angular factory
-  ng-m // creates an Angular module
-  ```
+    ```javascript
+    ng-c // creates an Angular controller
+    ng-f // creates an Angular factory
+    ng-m // creates an Angular module
+    ```
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
