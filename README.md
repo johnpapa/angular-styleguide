@@ -2028,11 +2028,11 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### Sublime Text
 AngularJS snippets that follow these styles and guidelines. 
 
-  1. Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
-  2. Place it in your Packages folder
-  3. Restart Sublime
-
-  In a JavaScript file type these commands followed by a `TAB`:
+ 1. Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
+ 2. Place it in your Packages folder
+ 3. Restart Sublime 
+ 
+In a JavaScript file type these commands followed by a `TAB`:
 
   ```javascript
   ngcontroller // creates an Angular controller
