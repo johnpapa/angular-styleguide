@@ -2047,7 +2047,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - **WebStorm**: AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
 
-    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-templates.settings.jar) 
+    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
     - Open WebStorm and go to the `File` menu
     - Choose the `Import Settings` menu option
     - Select the file and click `OK`
