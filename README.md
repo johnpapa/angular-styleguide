@@ -38,6 +38,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
+  1. [File Templates and Snippets](#snippets)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -326,7 +327,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
 
-    *Why?*: Setting anonymous functions inline can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
+    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
 
     ```javascript
     /* avoid */
@@ -449,7 +450,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-  - Notice that the important stuff is scattered in the preceeding example.
+  - Notice that the important stuff is scattered in the preceding example.
   - In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
 
     ```javascript
@@ -2019,15 +2020,47 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 **[Back to top](#table-of-contents)**
 
+## File Templates and Snippets
+Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
+
+### Sublime Text
+AngularJS snippets that follow these styles and guidelines. 
+
+  1. Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
+  2. Place it in your Packages folder
+  3. Restart Sublime
+
+  In a JavaScript file type these commands followed by a `TAB`:
+
+  ```javascript
+  ngcontroller // creates an Angular controller
+  ngdirective // creates an Angular directive
+  ngfactory // creates an Angular factory
+  ngmodule // creates an Angular module
+  ```
+
+### Visual Studio
+AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+
+  1. Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
+  2. Run the vsix file
+  3. Restart Visual Studio
+
+### WebStorm
+AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  1. Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-templates.zip) 
+  2. Open WebStorm and go to the `File` menu
+  3. Choose the `Import Settings` menu option
+  4. Select the file and click `OK`
+
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
 ## Contributing
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repo. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
 
-*By contributing to this repo you are agreeing to make your content available subject to the license of this repo.*
-
+*By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
 
   - **Process**
     1. Discuss the changes in an Issue. 
