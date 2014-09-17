@@ -38,7 +38,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
-  1. [File Templates and Snippets](#snippets)
+  1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
