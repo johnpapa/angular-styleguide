@@ -1017,6 +1017,64 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
+- **Directives and ControllerAs**: Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+
+    *Why?*: It makes sense and it's not difficult.
+
+    - Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I inlined the template just to keep it all in one place. 
+
+    ```html
+    <div my-example max="77"></div>
+    ```
+
+    ```javascript
+    angular
+        .module('app')
+        .directive('myExample', myExample);
+
+    function myExample() {
+        var directive = {
+            restrict: 'EA',
+            // TODO: Use a templateUrl instead
+            template: '<div>hello world</div> \
+                        <div>max={{exVm.max}} \
+                            <input ng-model="exVm.max"/> \
+                        </div> \
+                        <div>min={{exVm.min}} \
+                            <input ng-model="exVm.min"/> \
+                        </div> \
+            ',
+            scope: {
+                max: '='
+            },
+            link: linkFunc,
+            controller : DirCtrl,
+            controllerAs: 'exVm'
+        };
+        return directive;
+
+        /* @ngInject */
+        function DirCtrl($scope) {
+            // Injecting $scope just for comparison
+            /* jshint validthis:true */
+            var exVm = this;
+
+            exVm.min = 3; 
+            exVm.max = $scope.max; 
+            console.log('CTRL: $scope.max = %i', $scope.max);
+            console.log('CTRL: exVm.min = %i', exVm.min);
+            console.log('CTRL: exVm.max = %i', exVm.max);
+        }
+
+        /* @ngInject */
+        function(scope, el, attr, ctrl) {
+            console.log('LINK: scope.max = %i', scope.max);
+            console.log('LINK: scope.exVm.min = %i', scope.exVm.min);
+            console.log('LINK: scope.exVm.max = %i', scope.exVm.max);
+        }
+    }
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Resolving Promises for a Controller
