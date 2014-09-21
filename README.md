@@ -38,6 +38,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
+  1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -130,6 +131,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     // logger.js
     (function () {
+      'use strict';
+      
       angular
         .module('app')
         .factory('logger', logger);
@@ -139,6 +142,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     // storage.js
     (function () {
+      'use strict';
+
       angular
         .module('app')
         .factory('storage', storage);
@@ -313,16 +318,25 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     - Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
     
-  ```javascript
-  /* jshint validthis: true */
-  var vm = this;
-  ```
- 
+    ```javascript
+    /* jshint validthis: true */
+    var vm = this;
+    ```
+   
+    - Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+
+    ```javascript
+    $scope.$watch('vm.title', function(current, original) {
+        $log.info('vm.title was %s', original);
+        $log.info('vm.title is now %s', current);
+    });
+    ```
+
   - **Bindable Members Up Top**: Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
   
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
 
-    *Why?*: Setting anonymous functions inline can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
+    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
 
     ```javascript
     /* avoid */
@@ -445,7 +459,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-  - Notice that the important stuff is scattered in the preceeding example.
+  - Notice that the important stuff is scattered in the preceding example.
   - In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
 
     ```javascript
@@ -944,7 +958,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 - **Limit DOM Manipulation**: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow, but if the directive does more, combining hide and show inside a directive may improve performance as it reduces watchers. 
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templating)
+    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
 
 - **Restrict to Elements and Attributes**: When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
 
@@ -999,6 +1013,64 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
         function link(scope, element, attrs) {
           /* */
+        }
+    }
+    ```
+
+- **Directives and ControllerAs**: Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+
+    *Why?*: It makes sense and it's not difficult.
+
+    - Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I inlined the template just to keep it all in one place. 
+
+    ```html
+    <div my-example max="77"></div>
+    ```
+
+    ```javascript
+    angular
+        .module('app')
+        .directive('myExample', myExample);
+
+    function myExample() {
+        var directive = {
+            restrict: 'EA',
+            // TODO: Use a templateUrl instead
+            template: '<div>hello world</div> \
+                        <div>max={{exVm.max}} \
+                            <input ng-model="exVm.max"/> \
+                        </div> \
+                        <div>min={{exVm.min}} \
+                            <input ng-model="exVm.min"/> \
+                        </div> \
+            ',
+            scope: {
+                max: '='
+            },
+            link: linkFunc,
+            controller : DirCtrl,
+            controllerAs: 'exVm'
+        };
+        return directive;
+
+        /* @ngInject */
+        function DirCtrl($scope) {
+            // Injecting $scope just for comparison
+            /* jshint validthis:true */
+            var exVm = this;
+
+            exVm.min = 3; 
+            exVm.max = $scope.max; 
+            console.log('CTRL: $scope.max = %i', $scope.max);
+            console.log('CTRL: exVm.min = %i', exVm.min);
+            console.log('CTRL: exVm.max = %i', exVm.max);
+        }
+
+        /* @ngInject */
+        function(scope, el, attr, ctrl) {
+            console.log('LINK: scope.max = %i', scope.max);
+            console.log('LINK: scope.exVm.min = %i', scope.exVm.min);
+            console.log('LINK: scope.exVm.max = %i', scope.exVm.max);
         }
     }
     ```
@@ -1135,7 +1207,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
 
-      *Why?*: Avoid creating inline dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+      *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
 
     ```javascript
     /* avoid */
@@ -1160,7 +1232,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
+    - Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax. 
+
+    - Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
 
     ```javascript
     // inside a directive definition
@@ -1244,7 +1318,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    - When the above code is run through ng-annotate it will produces the following output with the `$inject` annotation and become minification-safe.
+    - When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
 
     ```javascript
     angular
@@ -1359,7 +1433,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - **Exception Catchers**: Create a factory that exposes an interface to catch and gracefully handle exceptions.
 
-      *Why?*: Provides a consistent way to catch exceptions that may thrown in your code (e.g. during XHR calls or promise failures).
+      *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
 
     ```javascript
     /* recommended */
@@ -1422,7 +1496,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
  
     *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
 
-    *Why?*: The naming conventions should simply help the findability and communication of code. 
+    *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand. 
 
   - **Feature File Names**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
 
@@ -1834,17 +1908,17 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   - **Headless Browser**: Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
 
-    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safaria, IE, or other browsers on your server. 
+    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. 
 
     Note: You should still test on all browsers in your environment, as appropriate for your target audience.
 
   - **Code Analysis**: Run JSHint on your tests. 
 
-    **Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
 
   - **Alleviate JSHint Rules on Tests**: Relax the rules on your test code.
 
-    **Why?*: Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
+    *Why?*: Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
 
     ```javascript
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
@@ -2015,15 +2089,53 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 **[Back to top](#table-of-contents)**
 
+## File Templates and Snippets
+Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
+
+  - **Sublime Text**: AngularJS snippets that follow these styles and guidelines. 
+
+    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
+    - Place it in your Packages folder
+    - Restart Sublime 
+    - In a JavaScript file type these commands followed by a `TAB`
+ 
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective // creates an Angular directive
+    ngfactory // creates an Angular factory
+    ngmodule // creates an Angular module
+    ```
+
+  - **Visual Studio**: AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+
+    - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
+    - Run the vsix file
+    - Restart Visual Studio
+
+  - **WebStorm**: AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+
+    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
+    - Open WebStorm and go to the `File` menu
+    - Choose the `Import Settings` menu option
+    - Select the file and click `OK`
+    - In a JavaScript file type these commands followed by a `TAB`:
+
+    ```javascript
+    ng-c // creates an Angular controller
+    ng-f // creates an Angular factory
+    ng-m // creates an Angular module
+    ```
+
+**[Back to top](#table-of-contents)**
+
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
 ## Contributing
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repo. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
 
-*By contributing to this repo you are agreeing to make your content available subject to the license of this repo.*
-
+*By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
 
   - **Process**
     1. Discuss the changes in an Issue. 
