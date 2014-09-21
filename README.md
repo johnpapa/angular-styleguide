@@ -323,6 +323,15 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   var vm = this;
   ```
  
+    - Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+
+  ```javascript
+  $scope.$watch('vm.title', function(current, original) {
+      $log.info('vm.title was %s', original);
+      $log.info('vm.title is now %s', current);
+  });
+  ```
+
   - **Bindable Members Up Top**: Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
   
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
