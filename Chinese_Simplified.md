@@ -33,7 +33,7 @@
   1. [应用程序结构LIFT原则](#应用程序结构LIFT原则)
   1. [应用程序结构](#应用程序结构)
   1. [模块化](#模块化)
-  1. [Angular $ Wrapper Services](#angular--wrapper-services)
+  1. [Angular $ Wrapper Services](#angular-wrapper-services)
   1. [Testing](#testing)
   1. [Animations](#animations) 
   1. [Comments](#comments)
@@ -1761,7 +1761,7 @@
 
 ## 测试
 
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.单元测试有助于保持代码的清晰，因此我加入一些关于单元测试的基础和获取更多信息的链接。
+单元测试有助于保持代码的清晰，因此我加入一些关于单元测试的基础和获取更多信息的链接。
 
   - **用故事来编写测试**: 给每一个故事都写一组测试，县创建一个空的测试，然后用你给这个故事写的代码来填充它。
 
