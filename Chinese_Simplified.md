@@ -94,7 +94,7 @@
     function someFactory() { }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## IIFE
   - **IIFE**： 把AngularJS组件包装到一个立即调用函数表达式中（IIFE）。 
@@ -153,7 +153,7 @@
     ```
 
   - 注：为了简便起见，本指南余下的示例中将会省略IIFE语法。 
-  **[返回顶部](#table-of-contents)**
+  **[返回顶部](#目录)**
 
 ## Modules
 
@@ -244,7 +244,7 @@
     function logger () { }
     ```
 
-**[回到顶部](#table-of-contents)**
+**[回到顶部](#目录)**
 
 ## Controllers
 
@@ -579,7 +579,7 @@
     </div>
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## Services
 
@@ -616,7 +616,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## Factories
 
@@ -774,7 +774,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## Data Services
 
@@ -892,7 +892,7 @@
     }
     ```
 
-    **[返回顶部](#table-of-contents)**
+    **[返回顶部](#目录)**
 
 
 ## Directives
@@ -1072,7 +1072,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 解决Controller的Promises
 
@@ -1174,7 +1174,7 @@
     - 注意：示例代码中的`movieService`不是安全压缩的做法，可以到[依赖注入](#依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
 
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 手动依赖注入
 
@@ -1287,7 +1287,7 @@
     ```
 
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 压缩和注释
 
@@ -1372,7 +1372,7 @@
 
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 异常处理
 
@@ -1467,7 +1467,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 命名
   - **命名原则**：遵循以描述组件功能，然后是类型（可选）的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。大多数文件都有2个名字。
@@ -1618,7 +1618,7 @@
 
   - **模块**：当有很多的模块时，主模块文件命名成`app.module.js`，其它依赖模块以它们代表的东西来命名。例如，一个管理员模块命名成`admin.module.js`。它们各自的注册模块名字就是`app`和`admin`，一个单一的app模块也许被命名成省略了module尾巴的`app.js`。
 
-    *为什么？*：一个只有一个模块的app命名成`app.js`，它就代表这个app，所以为什么不简单的呢？
+    *为什么？*：一个只有一个模块的app命名成`app.js`，它就代表这个app，所以为什么不简单点呢？
  
     *为什么？*：给多模块的应用提供统一的方式，这也是为了扩展大型应用。
 
@@ -1633,7 +1633,7 @@
   - **路由**：把路由的配置独立到单独的文件。主模块的路由可能是`app.route.js`，`admin`模块的路由可能是`admin.route.js`。即使是在很小的应用中，我也喜欢把路由的配置从其余的配置中分离出来。另一种方式是用一个很长的名字，例如`admin.config.route.js`。
 
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 应用程序结构的LIFT准则
   - **LIFT**：构建一个可以快速定位（`L`ocate）代码、一目了然地识别（`I`dentify）代码、拥有一个平直（`F`lattest）的结构、尽量（`T`ry）坚持DRY（Don’t Repeat Yourself）的应用程序，其结构应该遵循这4项基本准则。
@@ -1682,7 +1682,7 @@
       *为什么？*：保持DRY很重要，但是如果牺牲了其它LIFT，那么它就没那么重要了，这就是为什么说尽量坚持DRY。
 
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 应用程序结构
   - **总指南**：有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件，允许把一些小的、短的directive放到一个`directive.js`文件中。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
@@ -1776,7 +1776,7 @@
     ``` 
     
       
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 模块化
   
@@ -1819,7 +1819,7 @@
     >> 我的不同项目间的结构略有不同，但是它们都遵循了这些结构和模块化的准则,具体的实施方案会根据功能和团队发生变化。也就是说，不要在一棵树上吊死，但是心中一定要记得保持一致性、可维护性和效率。
 
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## Angular $包装的服务
 
@@ -1831,7 +1831,7 @@
 
     *为什么？*：易于测试，处理AngularJS消化周期从而保证数据的同步绑定。
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 测试
 
@@ -1904,7 +1904,7 @@
   ![测试工具](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/testing-tools.png)
 
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 动画
 
@@ -1928,7 +1928,7 @@
 
     注意：参阅[Matias Niemelä的关于AngularJS动画的文章](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 
 ## 注释
@@ -1970,7 +1970,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## JS Hint
 
@@ -2044,7 +2044,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 常量
 
@@ -2066,7 +2066,7 @@
     })();
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## AngularJS文档
 [Angular文档](//docs.angularjs.org/api)。
@@ -2105,7 +2105,7 @@
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
 
 ## 贡献
 
@@ -2146,4 +2146,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[返回顶部](#table-of-contents)**
+**[返回顶部](#目录)**
