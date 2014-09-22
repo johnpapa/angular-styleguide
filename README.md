@@ -1067,7 +1067,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         }
 
         /* @ngInject */
-        function(scope, el, attr, ctrl) {
+        function linkFunc(scope, el, attr, ctrl) {
             console.log('LINK: scope.max = %i', scope.max);
             console.log('LINK: scope.exVm.min = %i', scope.exVm.min);
             console.log('LINK: scope.exVm.max = %i', scope.exVm.max);
