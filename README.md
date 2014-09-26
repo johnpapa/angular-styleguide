@@ -129,17 +129,14 @@ define(['angular'], function (angular) {
 
 When testing require the testing code with a define statement and use the angular `module` to load the angular module for testing. 
 
-```javascript
-
+``` javascript
 define('app/scripts/directives/myDirective', function(){
-'use strict' 
-
+ 'use strict' 
  describe('myDirective', function () {
-            beforeEach(function () {     module('myApp.directives.myDirective');
-                        })
+    beforeEach(function () {     
+      module('myApp.directives.myDirective');
+    });
 });
-
-
 ```
 
 ## IIFE
