@@ -127,7 +127,7 @@ define(['angular'], function (angular) {
 });
 ```
 
-When testing require the testing code with a define statement and use the angular `module` to load the angular module for testing. 
+When testing use require for the unit test file. In the test file require code with a define statement and use the angular `module` to load the angular module under test. 
 
 ``` javascript
 define('app/scripts/directives/myDirective', function(){
