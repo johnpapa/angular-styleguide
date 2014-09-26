@@ -95,15 +95,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Requirejs
 
-Use requirejs to encapsulate each file and make sure to use the convention for module (and their dependencies). This approach is based on both Yeoman [generator-angular-require](https://github.com/aaronallport/generator-angular-require).
+Encapsulate each file with Requirejs define statement and make sure all the dependencies are declared properly in the define statement as in the examples below. This approach is based on both Yeoman [generator-angular-require](https://github.com/aaronallport/generator-angular-require).
  
-Each file should be should define a separate module and include module dependencies. We can follow the conventions of using file-path as a module name.
+Each file should be should define a separate module and include module dependencies. We follow the conventions of using file-path as a module name.
 
 ````javascript
 app/scripts/directives/myDirective.js
 
-
-define(['angular', 'app/scripts/services/myService'], function (angular) {
+define(['angular', 'app/scripts/services/myService'],     function (angular) {
   'use strict';
   angular.module('myApp.directives.myDirective', ['myApp.services.myService'])
     .directive('myDirective', function () {
@@ -117,7 +116,6 @@ define(['angular', 'app/scripts/services/myService'], function (angular) {
     });
   });
 
-
 app/scripts/services/myService.js
 
 define(['angular'], function (angular) {
@@ -127,13 +125,21 @@ define(['angular'], function (angular) {
       // ...
     });
 });
-
-
-// test
-define('app/scripts/directives/myDirective')
-
-module('myApp.directives.myDirective')
 ```
+
+When testing require the testing code with a define statement and use the angular `module` to load the angular module for testing. 
+
+```javascript
+
+define('app/scripts/directives/myDirective', function(){
+'use strict' 
+
+ describe('myDirective', function () {
+            beforeEach(function () {     module('myApp.directives.myDirective');
+                        })
+});
+
+
 ```
 
 ## IIFE
