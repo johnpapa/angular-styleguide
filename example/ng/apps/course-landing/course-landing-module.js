@@ -4,12 +4,12 @@ define(['angular',
     ],
 
     function (angular) /*invoke*/ {
-        'use strict'
+        'use strict';
 
         angular
             .module('courseLanding', [
                 'courseLanding.courseLandingDirective',
                 'courseLanding.courseLandingService'
-            ])
+            ]);
     }
 );
