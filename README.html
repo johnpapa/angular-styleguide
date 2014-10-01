@@ -1,0 +1,3002 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 0.5em 1em 0.5em 1em;
+  color: #888888;
+  background-color: #F7F7F7;
+  border: 1px solid #888888;
+}
+
+.markdown-body .admonition blockquote {
+  color: rgba(136, 136, 136, 0.5);
+  border-left: 4px solid rgba(136, 136, 136, 0.5);
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+  margin: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition-icon {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  float: left;
+}
+
+.markdown-body .attention {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border: 1px solid #4F8A10;
+}
+
+.markdown-body .caution {
+  color: #D63301;
+  background-color: #FFCCBA;
+  border: 1px solid #D63301;
+}
+
+.markdown-body .hint {
+  color: #00529B;
+  background-color: #BDE5F8;
+  border: 1px solid #00529B;
+}
+
+.markdown-body .danger {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border: 1px solid #D8000C;
+}
+
+.markdown-body .question {
+  color: #00049b;
+  background-color: #BDC8F8;
+  border: 1px solid #00049b;
+}
+
+.markdown-body .note {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  border: 1px solid #9F6000;
+}
+
+.markdown-body .attention {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border: 1px solid #4F8A10;
+}
+
+.markdown-body .caution blockquote {
+  color: rgba(214, 51, 1, .5);
+  border-left: 4px solid rgba(214, 51, 1, .5);
+}
+
+.markdown-body .hint blockquote {
+  color: rgba(0, 82, 155, .5);
+  border-left: 4px solid rgba(0, 82, 155, .5);
+}
+
+.markdown-body .danger blockquote {
+  color: rgba(216, 0, 12, .5);
+  border-left: 4px solid rgba(216, 0, 12, .5);
+}
+
+.markdown-body .question blockquote {
+  color: rgba(0, 4, 155, .5);
+  border-left: 4px solid rgba(0, 4, 155, .5);;
+}
+
+.markdown-body .note blockquote {
+  color: rgba(159, 96, 0, .5);
+  border-left: 4px solid rgba(159, 96, 0, .5);
+}
+
+.markdown-body .admonition-icon:before {
+  content: "\f040\00a0";
+}
+
+.markdown-body .attention > .admonition-icon:before {
+  content: "\f058\00a0";
+}
+
+.markdown-body .caution > .admonition-icon:before {
+  content: "\f06a\00a0";
+}
+
+.markdown-body .hint > .admonition-icon:before {
+  content: "\f05a\00a0";
+}
+
+.markdown-body .danger > .admonition-icon:before {
+  content: "\f056\00a0";
+}
+
+.markdown-body .question > .admonition-icon:before {
+  content: "\f059\00a0";
+}
+
+.markdown-body .note > .admonition-icon:before {
+  content: "\f040\00a0";
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #F8F8F8;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  border-right: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #34c2e3;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #1ee038;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #86e01e;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #f2d31b;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #f2b01e;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #f27011;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #f63a0f;
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset -1px 1px 0 rgba(255, 255, 255, .5),
+    inset 0 -4px 12px rgba(255, 255, 255, .7),
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05),
+    inset 1px -1px 0 rgba(255, 255, 255, .2);
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    box-shadow: none;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>README</title></head><body><article class="markdown-body"><h1 id="angularjs-style-guide"><a name="user-content-angularjs-style-guide" href="#angularjs-style-guide" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>AngularJS Style Guide</h1>
+<p><em>Opinionated AngularJS style guide for teams by <a href="//twitter.com/john_papa">@john_papa</a></em></p>
+<p>The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. </p>
+<h2 id="community-awesomeness-and-credit"><a name="user-content-community-awesomeness-and-credit" href="#community-awesomeness-and-credit" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Community Awesomeness and Credit</h2>
+<p>Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out <a href="https://github.com/toddmotto/angularjs-styleguide">Todd&rsquo;s  guidelines</a> to get a sense for his approach and how it compares.</p>
+<p>Many of my styles have been from the many pair programming sessions <a href="http://twitter.com/wardbell">Ward Bell</a> and I have had. While we don&rsquo;t always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.</p>
+<h2 id="see-the-styles-in-a-sample-app"><a name="user-content-see-the-styles-in-a-sample-app" href="#see-the-styles-in-a-sample-app" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>See the Styles in a Sample App</h2>
+<p>While this guide explains the <em>what</em>, <em>why</em> and <em>how</em>, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the <a href="https://github.com/johnpapa/ng-demos">sample application (named modular) here</a> in the <code>modular</code> folder. Feel free to grab it, clone it, or fork it. <a href="https://github.com/johnpapa/ng-demos/tree/master/modular">Instructions on running it are in its readme</a>.</p>
+<h2 id="table-of-contents"><a name="user-content-table-of-contents" href="#table-of-contents" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Table of Contents</h2>
+<ol>
+<li><a href="#single-responsibility">Single Responsibility</a></li>
+<li><a href="#requirejs">Requirejs</a></li>
+<li><a href="#iife">IIFE</a></li>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#controllers">Controllers</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#factories">Factories</a></li>
+<li><a href="#data-services">Data Services</a></li>
+<li><a href="#directives">Directives</a></li>
+<li><a href="#resolving-promises-for-a-controller">Resolving Promises for a Controller</a></li>
+<li><a href="#manual-dependency-injection">Manual Dependency Injection</a></li>
+<li><a href="#minification-and-annotation">Minification and Annotation</a></li>
+<li><a href="#exception-handling">Exception Handling</a></li>
+<li><a href="#naming">Naming</a></li>
+<li><a href="#application-structure-lift-principle">Application Structure LIFT Principle</a></li>
+<li><a href="#application-structure">Application Structure</a></li>
+<li><a href="#modularity">Modularity</a></li>
+<li><a href="#angular--wrapper-services">Angular $ Wrapper Services</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#animations">Animations</a> </li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#js-hint">JSHint</a></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#file-templates-and-snippets">File Templates and Snippets</a></li>
+<li><a href="#angularjs-docs">AngularJS Docs</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ol>
+<h2 id="single-responsibility"><a name="user-content-single-responsibility" href="#single-responsibility" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Single Responsibility</h2>
+<ul>
+<li><strong>Rule of 1</strong>: Define 1 component per file.  </li>
+</ul>
+<p>The following example defines the <code>app</code> module and its dependencies, defines a controller, and defines a factory all in the same file.  </p>
+<pre><code>```javascript
+/* avoid */
+angular
+  .module(&lsquo;app&rsquo;, [&lsquo;ngRoute&rsquo;])
+  .controller(&lsquo;SomeController&rsquo; , SomeController)
+  .factory(&lsquo;SomeFactory&rsquo; , SomeFactory);
+
+function SomeController() { }
+
+function SomeFactory() { }
+```</code></pre>
+<p>The same components are now separated into their own files.</p>
+<pre><code>```javascript
+/* recommended */
+
+// app.module.js
+angular
+  .module(&lsquo;app&rsquo;, [&lsquo;ngRoute&rsquo;]);
+```
+
+```javascript
+/* recommended */
+
+// someController.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .controller(&lsquo;SomeController&rsquo; , SomeController);
+
+function SomeController() { }
+```
+
+```javascript
+/* recommended */
+
+// someFactory.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .factory(&lsquo;SomeFactory&rsquo; , SomeFactory);
+
+function SomeFactory() { }
+```</code></pre>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="requirejs"><a name="user-content-requirejs" href="#requirejs" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Requirejs</h2>
+<p>Encapsulate each file with Requirejs define statement and make sure all the dependencies are declared properly in the define statement as in the examples below. This approach is based on both Yeoman <a href="https://github.com/aaronallport/generator-angular-require">generator-angular-require</a>.</p>
+<p>Each file should be should define a separate module and include module dependencies. We follow the conventions of using file-path as a module name.</p>
+<p>````javascript<br />
+app/scripts/directives/myDirective.js</p>
+<p>define([&lsquo;angular&rsquo;, &lsquo;app/scripts/services/myService&rsquo;],     function (angular) {<br />
+  &lsquo;use strict&rsquo;;<br />
+  angular.module(&lsquo;myApp.directives.myDirective&rsquo;, [&lsquo;myApp.services.myService&rsquo;])<br />
+    .directive(&lsquo;myDirective&rsquo;, function () {<br />
+      return {<br />
+        template: &lsquo;<div></div>&lsquo;,<br />
+        restrict: &lsquo;E&rsquo;,<br />
+        link: function postLink(scope, element, attrs) {<br />
+          element.text(&lsquo;this is the myDirective directive&rsquo;);<br />
+        }<br />
+      };<br />
+    });<br />
+  });</p>
+<p>app/scripts/services/myService.js</p>
+<p>define([&lsquo;angular&rsquo;], function (angular) {<br />
+  &lsquo;use strict&rsquo;;<br />
+  angular.module(&lsquo;myApp.services.myService&rsquo;, [])<br />
+    .service(&lsquo;myService&rsquo;, function () {<br />
+      // &hellip;<br />
+    });<br />
+});</p>
+<pre><code>
+When testing require the testing code with a define statement and use the angular `module` to load the angular module for testing. 
+
+```javascript
+
+define('app/scripts/directives/myDirective', function(){
+'use strict' 
+
+ describe('myDirective', function () {
+            beforeEach(function () {     module('myApp.directives.myDirective');
+                        })
+});
+
+
+</code></pre>
+
+<h2 id="iife"><a name="user-content-iife" href="#iife" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>IIFE</h2>
+<ul>
+<li><strong>IIFE</strong>: Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). </li>
+</ul>
+<p><em>Why?</em>: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.</p>
+<p><em>Why?</em>: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.</p>
+<pre><code>```javascript
+/* avoid */
+// logger.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .factory(&lsquo;logger&rsquo;, logger);
+
+// logger function is added as a global variable  
+function logger () { }
+
+// storage.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .factory(&lsquo;storage&rsquo;, storage);
+
+// storage function is added as a global variable  
+function storage () { }
+```
+
+
+```javascript
+/**
+ * recommended 
+ *
+ * no globals are left behind 
+ */
+
+// logger.js
+(function () {
+  &lsquo;use strict&rsquo;;
+
+  angular
+    .module(&lsquo;app&rsquo;)
+    .factory(&lsquo;logger&rsquo;, logger);
+
+  function logger () { }
+})();
+
+// storage.js
+(function () {
+  &lsquo;use strict&rsquo;;
+
+  angular
+    .module(&lsquo;app&rsquo;)
+    .factory(&lsquo;storage&rsquo;, storage);
+
+  function storage () { }
+})();
+```</code></pre>
+<ul>
+<li>Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. </li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="modules"><a name="user-content-modules" href="#modules" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Modules</h2>
+<ul>
+<li><strong>Definitions (aka Setters)</strong>: Declare modules without a variable using the setter syntax. </li>
+</ul>
+<p><em>Why?</em>: With 1 component per file, there is rarely a need to introduce a variable for the module.</p>
+<pre><code>```javascript
+/* avoid */
+var app = angular.module(&lsquo;app&rsquo;, [
+    &lsquo;ngAnimate&rsquo;,
+    &lsquo;ngRoute&rsquo;,
+    &lsquo;app.shared&rsquo;,
+    &lsquo;app.dashboard&rsquo;
+]);
+```</code></pre>
+<p>Instead use the simple setter syntax.</p>
+<pre><code>```javascript
+/* recommended */
+angular
+  .module(&lsquo;app&rsquo;, [
+    &lsquo;ngAnimate&rsquo;,
+    &lsquo;ngRoute&rsquo;,
+    &lsquo;app.shared&rsquo;,
+    &lsquo;app.dashboard&rsquo;
+]);
+```</code></pre>
+<ul>
+<li><strong>Getters</strong>: When using a module, avoid using a variables and instead use   chaining with the getter syntax.</li>
+</ul>
+<p><em>Why?</em> : This produces more readable code and avoids variables collisions or leaks.</p>
+<pre><code>```javascript
+/* avoid */
+var app = angular.module(&lsquo;app&rsquo;);
+app.controller(&lsquo;SomeController&rsquo; , SomeController);
+
+function SomeController() { }
+```
+
+```javascript
+/* recommended */
+angular
+  .module(&lsquo;app&rsquo;)
+  .controller(&lsquo;SomeController&rsquo; , SomeController);
+
+function SomeController() { }
+```</code></pre>
+<ul>
+<li><strong>Setting vs Getting</strong>: Only set once and get for all other instances.</li>
+</ul>
+<p><em>Why?</em>: A module should only be created once, then retrieved from that point and after.</p>
+<pre><code>  - Use `angular.module(&lsquo;app&rsquo;, []);` to set a module.
+  - Use  `angular.module(&lsquo;app&rsquo;);` to get a module.</code></pre>
+<ul>
+<li><strong>Named vs Anonymous Functions</strong>: Use named functions instead of passing an anonymous function in as a callback. </li>
+</ul>
+<p><em>Why?</em>: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.</p>
+<pre><code>```javascript
+/* avoid */
+angular
+  .module(&lsquo;app&rsquo;)
+  .controller(&lsquo;Dashboard&rsquo;, function () { });
+  .factory(&lsquo;logger&rsquo;, function () { });
+```
+
+```javascript
+/* recommended */
+
+// dashboard.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .controller(&lsquo;Dashboard&rsquo;, Dashboard);
+
+function Dashboard () { }
+```
+
+```javascript
+// logger.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .factory(&lsquo;logger&rsquo;, logger);
+
+function logger () { }
+```</code></pre>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="controllers"><a name="user-content-controllers" href="#controllers" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Controllers</h2>
+<ul>
+<li><strong>controllerAs View Syntax</strong>: Use the <a href="http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/"><code>controllerAs</code></a> syntax over the <code>classic controller with $scope</code> syntax. </li>
+</ul>
+<p><em>Why?</em>: Controllers are constructed, &ldquo;newed&rdquo; up, and provide a single new instance, and the <code>controllerAs</code> syntax is closer to that of a JavaScript constructor than the <code>classic $scope syntax</code>. </p>
+<p><em>Why?</em>: It promotes the use of binding to a &ldquo;dotted&rdquo; object in the View (e.g. <code>customer.name</code> instead of <code>name</code>), which is more contextual, easier to read, and avoids any reference issues that may occur without &ldquo;dotting&rdquo;.</p>
+<p><em>Why?</em>: Helps avoid using <code>$parent</code> calls in Views with nested controllers.</p>
+<pre><code>```html
+&lt;!&ndash; avoid &ndash;&gt;
+&lt;div ng-controller=&rdquo;Customer&rdquo;&gt;
+  {{ name }}
+&lt;/div&gt;
+```
+
+```html
+&lt;!&ndash; recommended &ndash;&gt;
+&lt;div ng-controller=&rdquo;Customer as customer&rdquo;&gt;
+  {{ customer.name }}
+&lt;/div&gt;
+```</code></pre>
+<ul>
+<li>
+<p><strong>controllerAs Controller Syntax</strong>: Use the <code>controllerAs</code> syntax over the <code>classic controller with $scope</code> syntax. </p>
+</li>
+<li>
+<p>The <code>controllerAs</code> syntax uses <code>this</code> inside controllers which gets bound to <code>$scope</code></p>
+<p><em>Why?</em>: <code>controllerAs</code> is syntactic sugar over <code>$scope</code>. You can still bind to the View and still access <code>$scope</code> methods.  </p>
+<p><em>Why?</em>: Helps avoid the temptation of using <code>$scope</code> methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using <code>$scope</code> in a factory, or if in a controller just when needed. For example when publishing and subscribing events using <a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit"><code>$emit</code></a>, <a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast"><code>$broadcast</code></a>, or <a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on"><code>$on</code></a> consider moving these uses to a factory and invoke from the controller. </p>
+<p><code>javascript
+/* avoid */
+function Customer ($scope) {
+  $scope.name = {};
+  $scope.sendMessage = function () { };
+}</code></p>
+<p><code>javascript
+/* recommended - but see next section */
+function Customer () {
+  this.name = {};
+  this.sendMessage = function () { };
+}</code></p>
+</li>
+<li>
+<p><strong>controllerAs with vm</strong>: Use a capture variable for <code>this</code> when using the <code>controllerAs</code> syntax. Choose a consistent variable name such as <code>vm</code>, which stands for ViewModel.</p>
+<p><em>Why?</em>: The <code>this</code> keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of <code>this</code> avoids encountering this problem.</p>
+<p><code>javascript
+/* avoid */
+function Customer () {
+  this.name = {};
+  this.sendMessage = function () { };
+}</code></p>
+<p><code>javascript
+/* recommended */
+function Customer () {
+  var vm = this;
+  vm.name = {};
+  vm.sendMessage = function () { };
+}</code></p>
+<ul>
+<li>Note: You can avoid any <a href="http://www.jshint.com/">jshint</a> warnings by placing the comment below above the line of code. </li>
+</ul>
+<p><code>javascript
+/* jshint validthis: true */
+var vm = this;</code></p>
+<ul>
+<li>Note: When creating watches in a controller using <code>controller as</code>, you can watch the <code>vm.*</code> member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)</li>
+</ul>
+<p><code>javascript
+$scope.$watch('vm.title', function(current, original) {
+    $log.info('vm.title was %s', original);
+    $log.info('vm.title is now %s', current);
+});</code></p>
+</li>
+<li>
+<p><strong>Bindable Members Up Top</strong>: Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.</p>
+<p><em>Why?</em>: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. </p>
+<p><em>Why?</em>: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. </p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+function Sessions() {<br />
+    var vm = this;</p>
+<pre><code>vm.gotoSession = function() {
+  /* &hellip; */
+};
+vm.refresh = function() {
+  /* &hellip; */
+};
+vm.search = function() {
+  /* &hellip; */
+};
+vm.sessions = [];
+vm.title = &lsquo;Sessions&rsquo;;</code></pre>
+<p>```</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+function Sessions() {<br />
+    var vm = this;</p>
+<pre><code>vm.gotoSession = gotoSession;
+vm.refresh = refresh;
+vm.search = search;
+vm.sessions = [];
+vm.title = &lsquo;Sessions&rsquo;;
+
+////////////
+
+function gotoSession() {
+  /* */
+}
+
+function refresh() {
+  /* */
+}
+
+function search() {
+  /* */
+}</code></pre>
+<p>```</p>
+<p><img alt="Controller Using &quot;Above the Fold&quot;" src="https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png" /></p>
+<ul>
+<li>Note: If the function is a 1 liner it consider keeping it right up top, as long as readability is not affected.</li>
+</ul>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+function Sessions(data) {<br />
+    var vm = this;</p>
+<pre><code>vm.gotoSession = gotoSession;
+vm.refresh = function() {
+    /** 
+     * lines 
+     * of
+     * code
+     * affects
+     * readability
+     */
+};
+vm.search = search;
+vm.sessions = [];
+vm.title = &lsquo;Sessions&rsquo;;</code></pre>
+<p>```</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+function Sessions(dataservice) {<br />
+    var vm = this;</p>
+<pre><code>vm.gotoSession = gotoSession;
+vm.refresh = dataservice.refresh; // 1 liner is OK
+vm.search = search;
+vm.sessions = [];
+vm.title = &lsquo;Sessions&rsquo;;</code></pre>
+<p>```</p>
+</li>
+<li>
+<p><strong>Function Declarations to Hide Implementation Details</strong>: Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see <a href="http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code">this post</a>.</p>
+<p><em>Why?</em>: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)</p>
+<p><em>Why?</em>: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.</p>
+<p><em>Why?</em>: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).</p>
+<p><em>Why?</em>: You never have to worry with function declarations that moving <code>var a</code> before <code>var b</code> will break your code because <code>a</code> depends on <code>b</code>.     </p>
+<p><em>Why?</em>: Order is critical with function expressions </p>
+<p>```javascript<br />
+/*<em> <br />
+ * avoid <br />
+ * Using function expressions.<br />
+</em>/<br />
+function Avengers(dataservice, logger) {<br />
+    var vm = this;<br />
+    vm.avengers = [];<br />
+    vm.title = &lsquo;Avengers&rsquo;;</p>
+<pre><code>var activate = function() {
+    return getAvengers().then(function() {
+        logger.info(&lsquo;Activated Avengers View&rsquo;);
+    });
+}
+
+var getAvengers = function() {
+    return dataservice.getAvengers().then(function(data) {
+        vm.avengers = data;
+        return vm.avengers;
+    });
+}
+
+vm.getAvengers = getAvengers;
+
+activate();</code></pre>
+<p>}<br />
+```</p>
+</li>
+<li>
+<p>Notice that the important stuff is scattered in the preceding example.</p>
+</li>
+<li>
+<p>In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as <code>vm.avengers</code> and <code>vm.title</code>. The implementation details are down below. This is just easier to read.</p>
+<p>```javascript<br />
+/<em><br />
+ * recommend<br />
+ * Using function declarations<br />
+ * and bindable members up top.<br />
+</em>/<br />
+function Avengers(dataservice, logger) {<br />
+    var vm = this;<br />
+    vm.avengers = [];<br />
+    vm.getAvengers = getAvengers;<br />
+    vm.title = &lsquo;Avengers&rsquo;;</p>
+<pre><code>activate();
+
+function activate() {
+    return getAvengers().then(function() {
+        logger.info(&lsquo;Activated Avengers View&rsquo;);
+    });
+}
+
+function getAvengers() {
+    return dataservice.getAvengers().then(function(data) {
+        vm.avengers = data;
+        return vm.avengers;
+    });
+}</code></pre>
+<p>}<br />
+```</p>
+</li>
+<li>
+<p><strong>Defer Controller Logic</strong>: Defer logic in a controller by delegating to services and factories.</p>
+<p><em>Why?</em>: Logic may be reused by multiple controllers when placed within a service and exposed via a function.</p>
+<p><em>Why?</em>: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.</p>
+<p><em>Why?</em>: Removes dependencies and hides implementations details from the controller.</p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+function Order ($http, $q) {<br />
+  var vm = this;<br />
+  vm.checkCredit = checkCredit;<br />
+  vm.total = 0;</p>
+<p>function checkCredit () { <br />
+    var orderTotal = vm.total;<br />
+    return $http.get(&lsquo;api/creditcheck&rsquo;).then(function (data) {<br />
+        var remaining = data.remaining;<br />
+        return $q.when(!!(remaining &gt; orderTotal));<br />
+    });<br />
+  };<br />
+}<br />
+```</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+function Order (creditService) {<br />
+  var vm = this;<br />
+  vm.checkCredit = checkCredit;<br />
+  vm.total = 0;</p>
+<p>function checkCredit () { <br />
+    return creditService.check();<br />
+  };<br />
+}<br />
+```</p>
+</li>
+<li>
+<p><strong>Assigning Controllers</strong>: When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. </p>
+<ul>
+<li>Note: If a View is loaded via another means besides a route, then use the <code>ng-controller="Avengers as vm"</code> syntax. </li>
+</ul>
+<p><em>Why?</em>: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using <a href="https://docs.angularjs.org/api/ng/directive/ngController"><code>ng-controller</code></a>, that view is always associated with the same controller.</p>
+</li>
+</ul>
+<p>```javascript<br />
+    /<em> avoid - when using with a route and dynamic pairing is desired </em>/</p>
+<pre><code>// route-config.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .config(config);
+
+function config ($routeProvider) {
+  $routeProvider
+    .when(&lsquo;/avengers&rsquo;, {
+      templateUrl: &lsquo;avengers.html&rsquo;
+    });
+}
+```
+
+```html
+&lt;!&ndash; avengers.html &ndash;&gt;
+&lt;div ng-controller=&rdquo;Avengers as vm&rdquo;&gt;
+&lt;/div&gt;
+```
+
+```javascript
+/* recommended */
+
+// route-config.js
+angular
+  .module(&lsquo;app&rsquo;)
+  .config(config);
+
+function config ($routeProvider) {
+  $routeProvider
+    .when(&lsquo;/avengers&rsquo;, {
+      templateUrl: &lsquo;avengers.html&rsquo;,
+      controller: &lsquo;Avengers&rsquo;,
+      controllerAs: &lsquo;vm&rsquo;
+    });
+}
+```
+
+```html
+&lt;!&ndash; avengers.html &ndash;&gt;
+&lt;div&gt;
+&lt;/div&gt;
+```</code></pre>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="services"><a name="user-content-services" href="#services" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Services</h2>
+<ul>
+<li>
+<p><strong>Singletons</strong>: Services are instantiated with the <code>new</code> keyword, use <code>this</code> for public methods and variables. Can also use a factory, which I recommend for consistency. </p>
+<ul>
+<li>Note: <a href="https://docs.angularjs.org/guide/services">All AngularJS services are singletons</a>. This means that there is only one instance of a given service per injector.</li>
+</ul>
+<p>```javascript<br />
+// service</p>
+<p>angular<br />
+    .module(&lsquo;app&rsquo;)<br />
+    .service(&lsquo;logger&rsquo;, logger);</p>
+<p>function logger () {<br />
+  this.logError = function (msg) {<br />
+    /<em> </em>/<br />
+  };<br />
+}<br />
+```</p>
+<p>```javascript<br />
+// factory<br />
+angular<br />
+    .module(&lsquo;app&rsquo;)<br />
+    .factory(&lsquo;logger&rsquo;, logger);</p>
+<p>function logger () {<br />
+  return {<br />
+    logError: function (msg) {<br />
+      /<em> </em>/<br />
+    }<br />
+  };<br />
+}<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="factories"><a name="user-content-factories" href="#factories" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Factories</h2>
+<ul>
+<li>
+<p><strong>Single Responsibility</strong>: Factories should have a <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">single responsibility</a>, that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.</p>
+</li>
+<li>
+<p><strong>Singletons</strong>: Factories are singletons and return an object that contains the members of the service.</p>
+<ul>
+<li>Note: <a href="https://docs.angularjs.org/guide/services">All AngularJS services are singletons</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Accessible Members Up Top</strong>: Expose the callable members of the service (it&rsquo;s interface) at the top, using a technique derived from the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript">Revealing Module Pattern</a>. </p>
+<p><em>Why?</em>: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). </p>
+<p><em>Why?</em>: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.</p>
+<p><em>Why?</em>: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.</p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+function dataService () {<br />
+  var someValue = &lsquo;&rsquo;;<br />
+  function save () { <br />
+    /<em> </em>/<br />
+  };<br />
+  function validate () { <br />
+    /<em> </em>/<br />
+  };</p>
+<p>return {<br />
+    save: save,<br />
+    someValue: someValue,<br />
+    validate: validate<br />
+  };<br />
+}<br />
+```</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+function dataService () {<br />
+  var someValue = &lsquo;&rsquo;;<br />
+  var service = {<br />
+    save: save,<br />
+    someValue: someValue,<br />
+    validate: validate<br />
+  };<br />
+  return service;</p>
+<p>////////////<br />
+  function save () { <br />
+    /<em> </em>/<br />
+  };</p>
+<p>function validate () { <br />
+    /<em> </em>/<br />
+  };<br />
+}<br />
+```</p>
+</li>
+<li>
+<p>This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern</p>
+<p><img alt="Factories Using &quot;Above the Fold&quot;" src="https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png" /></p>
+</li>
+<li>
+<p><strong>Function Declarations to Hide Implementation Details</strong>: Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see <a href="http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code">this post</a>.</p>
+<p><em>Why?</em>: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.</p>
+<p><em>Why?</em>: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.</p>
+<p><em>Why?</em>: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).</p>
+<p><em>Why?</em>: You never have to worry with function declarations that moving <code>var a</code> before <code>var b</code> will break your code because <code>a</code> depends on <code>b</code>.     </p>
+<p><em>Why?</em>: Order is critical with function expressions </p>
+<p>```javascript<br />
+/*<em><br />
+ * avoid<br />
+ * Using function expressions<br />
+</em>/<br />
+ function dataservice($http, $location, $q, exception, logger) {<br />
+    var isPrimed = false;<br />
+    var primePromise;</p>
+<pre><code>var getAvengers = function() {
+  // implementation details go here
+};
+
+var getAvengerCount = function() {
+  // implementation details go here
+};
+
+var getAvengersCast = function() {
+  // implementation details go here
+};
+
+var prime = function() {
+  // implementation details go here
+};
+
+var ready = function(nextPromises) {
+  // implementation details go here
+};
+
+var service = {
+    getAvengersCast: getAvengersCast,
+    getAvengerCount: getAvengerCount,
+    getAvengers: getAvengers,
+    ready: ready
+};
+
+return service;
+</code></pre>
+<p>}<br />
+```</p>
+<p>```javascript<br />
+/*<em><br />
+ * recommended<br />
+ * Using function declarations<br />
+ * and accessible members up top.<br />
+</em>/<br />
+function dataservice($http, $location, $q, exception, logger) {<br />
+    var isPrimed = false;<br />
+    var primePromise;</p>
+<pre><code>var service = {
+    getAvengersCast: getAvengersCast,
+    getAvengerCount: getAvengerCount,
+    getAvengers: getAvengers,
+    ready: ready
+};
+
+return service;
+
+////////////
+
+function getAvengers() {
+  // implementation details go here
+}
+
+function getAvengerCount() {
+  // implementation details go here
+}
+
+function getAvengersCast() {
+  // implementation details go here
+}
+
+function prime() {
+  // implementation details go here
+}
+
+function ready(nextPromises) {
+  // implementation details go here
+}
+</code></pre>
+<p>}<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="data-services"><a name="user-content-data-services" href="#data-services" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Data Services</h2>
+<ul>
+<li>
+<p><strong>Separate Data Calls</strong>: Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.</p>
+<p><em>Why?</em>: The controller&rsquo;s responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.</p>
+<p><em>Why?</em>: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.</p>
+<p><em>Why?</em>: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.</p>
+<p>```javascript<br />
+/<em> recommended </em>/</p>
+<p>// dataservice factory<br />
+angular<br />
+    .module(&lsquo;app.core&rsquo;)<br />
+    .factory(&lsquo;dataservice&rsquo;, dataservice);</p>
+<p>dataservice.$inject = [&lsquo;$http&rsquo;, &lsquo;logger&rsquo;];</p>
+<p>function dataservice($http, logger) {<br />
+    return {<br />
+        getAvengers: getAvengers<br />
+    };</p>
+<pre><code>function getAvengers() {
+    return $http.get(&lsquo;/api/maa&rsquo;)
+        .then(getAvengersComplete)
+        .catch(getAvengersFailed);
+
+    function getAvengersComplete(response) {
+        return response.data.results;
+    }
+
+    function getAvengersFailed(error) {
+        logger.error(&lsquo;XHR Failed for getAvengers.&rsquo; + error.data);
+    }
+}</code></pre>
+<p>}<br />
+```<br />
+- Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.</p>
+<p>```javascript<br />
+/<em> recommended </em>/</p>
+<p>// controller calling the dataservice factory<br />
+angular<br />
+    .module(&lsquo;app.avengers&rsquo;)<br />
+    .controller(&lsquo;Avengers&rsquo;, Avengers);</p>
+<p>Avengers.$inject = [&lsquo;dataservice&rsquo;, &lsquo;logger&rsquo;];</p>
+<p>function Avengers(dataservice, logger) {<br />
+    var vm = this;<br />
+    vm.avengers = [];</p>
+<pre><code>activate();
+
+function activate() {
+    return getAvengers().then(function() {
+        logger.info(&lsquo;Activated Avengers View&rsquo;);
+    });
+}
+
+function getAvengers() {
+    return dataservice.getAvengers()
+      .then(function (data) {
+          vm.avengers = data;
+          return vm.avengers;
+      });
+}</code></pre>
+<p>}    <br />
+```</p>
+</li>
+<li>
+<p><strong>Return a Promise from Data Calls</strong>: When calling a data service that returns a promise such as $http, return a promise in your calling function too.</p>
+<p><em>Why?</em>: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.</p>
+<p>```javascript<br />
+/<em> recommended </em>/</p>
+<p>activate();</p>
+<p>function activate() {<br />
+    /<strong><br />
+     * Step 1<br />
+     * Ask the getAvengers function for the<br />
+     * avenger data and wait for the promise<br />
+     */<br />
+    return getAvengers().then(function() {<br />
+      /</strong><br />
+       * Step 4<br />
+       * Perform an action on resolve of final promise<br />
+       */<br />
+      logger.info(&lsquo;Activated Avengers View&rsquo;);<br />
+    });<br />
+}</p>
+<p>function getAvengers() {<br />
+    /<strong><br />
+     * Step 2<br />
+     * Ask the data service for the data and wait<br />
+     * for the promise<br />
+     */<br />
+    return dataservice.getAvengers()<br />
+      .then(function (data) {<br />
+          /</strong><br />
+           * Step 3<br />
+           * set the data and resolve the promise<br />
+           */<br />
+          vm.avengers = data;<br />
+          return vm.avengers;<br />
+      });<br />
+}<br />
+```</p>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+</li>
+</ul>
+<h2 id="directives"><a name="user-content-directives" href="#directives" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Directives</h2>
+<ul>
+<li>
+<p><strong>Limit 1 Per File</strong>: Create one directive per file. Name the file for the directive. </p>
+<p><em>Why?</em>: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. </p>
+<p><em>Why?</em>: One directive per file is easy to maintain.</p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+angular<br />
+  .module(&lsquo;app.widgets&rsquo;)</p>
+<p>/<em> order directive that is specific to the order module </em>/<br />
+  .directive(&lsquo;orderCalendarRange&rsquo;, orderCalendarRange)</p>
+<p>/<em> sales directive that can be used anywhere across the sales app </em>/<br />
+  .directive(&lsquo;salesCustomerInfo&rsquo;, salesCustomerInfo)</p>
+<p>/<em> spinner directive that can be used anywhere across apps </em>/<br />
+  .directive(&lsquo;sharedSpinner&rsquo;, sharedSpinner);</p>
+<p>/<em> implementation details </em>/<br />
+```</p>
+<p>```javascript<br />
+/<em> recommended </em>/</p>
+<p>/*<em><br />
+ * @desc order directive that is specific to the order module at a company named Acme<br />
+ * @file calendarRange.directive.js<br />
+ * @example <div acme-order-calendar-range></div><br />
+</em>/<br />
+angular<br />
+  .module(&lsquo;sales.order&rsquo;)<br />
+  .directive(&lsquo;acmeOrderCalendarRange&rsquo;, orderCalendarRange);</p>
+<p>/*<em><br />
+ * @desc spinner directive that can be used anywhere across the sales app at a company named Acme<br />
+ * @file customerInfo.directive.js<br />
+ * @example <div acme-sales-customer-info></div><br />
+</em>/  <br />
+angular<br />
+  .module(&lsquo;sales.widgets&rsquo;)<br />
+  .directive(&lsquo;acmeSalesCustomerInfo&rsquo;, salesCustomerInfo);</p>
+<p>/*<em><br />
+ * @desc spinner directive that can be used anywhere across apps at a company named Acme<br />
+ * @file spinner.directive.js<br />
+ * @example <div acme-shared-spinner></div><br />
+</em>/<br />
+angular<br />
+  .module(&lsquo;shared.widgets&rsquo;)<br />
+  .directive(&lsquo;acmeSharedSpinner&rsquo;, sharedSpinner);</p>
+<p>/<em> implementation details </em>/<br />
+```</p>
+<ul>
+<li>Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it&rsquo;s file name distinct and clear. Some examples are below, but see the naming section for more recommendations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Limit DOM Manipulation</strong>: When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the <a href="https://docs.angularjs.org/api/ngAnimate">animation services</a>, Angular templating, <a href="https://docs.angularjs.org/api/ng/directive/ngShow"><code>ngShow</code></a> or <a href="https://docs.angularjs.org/api/ng/directive/ngHide"><code>ngHide</code></a>, then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow, but if the directive does more, combining hide and show inside a directive may improve performance as it reduces watchers. </p>
+<p><em>Why?</em>: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)</p>
+</li>
+<li>
+<p><strong>Restrict to Elements and Attributes</strong>: When creating a directive that makes sense as a standalone element, allow restrict <code>E</code> (custom element) and optionally restrict <code>A</code> (custom attribute). Generally, if it could be its own control, <code>E</code> is appropriate. General guideline is allow <code>EA</code> but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.</p>
+<p><em>Why?</em>: It makes sense.</p>
+<p><em>Why?</em>: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.</p>
+<p><code>html
+&lt;!-- avoid --&gt;
+&lt;div class="my-calendar-range"&gt;&lt;/div&gt;</code></p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+angular<br />
+    .module(&lsquo;app.widgets&rsquo;)<br />
+    .directive(&lsquo;myCalendarRange&rsquo;, myCalendarRange);</p>
+<p>function myCalendarRange () {<br />
+    var directive = {<br />
+        link: link,<br />
+        templateUrl: &lsquo;/template/is/located/here.html&rsquo;,<br />
+        restrict: &lsquo;C&rsquo;<br />
+    };<br />
+    return directive;</p>
+<pre><code>function link(scope, element, attrs) {
+  /* */
+}
+</code></pre>
+<p>}<br />
+```</p>
+<p><code>html
+&lt;!-- recommended --&gt;
+&lt;my-calendar-range&gt;&lt;/my-calendar-range&gt;
+&lt;div my-calendar-range&gt;&lt;/div&gt;</code></p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+angular<br />
+    .module(&lsquo;app.widgets&rsquo;)<br />
+    .directive(&lsquo;myCalendarRange&rsquo;, myCalendarRange);</p>
+<p>function myCalendarRange () {<br />
+    var directive = {<br />
+        link: link,<br />
+        templateUrl: &lsquo;/template/is/located/here.html&rsquo;,<br />
+        restrict: &lsquo;EA&rsquo;<br />
+    };<br />
+    return directive;</p>
+<pre><code>function link(scope, element, attrs) {
+  /* */
+}
+</code></pre>
+<p>}<br />
+```</p>
+</li>
+<li>
+<p><strong>Directives and ControllerAs</strong>: Use <code>controller as</code> syntax with a directive to be consistent with using <code>controller as</code> with view and controller pairings.</p>
+<p><em>Why?</em>: It makes sense and it&rsquo;s not difficult.</p>
+<ul>
+<li>Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I inlined the template just to keep it all in one place. </li>
+</ul>
+<p><code>html
+&lt;div my-example max="77"&gt;&lt;/div&gt;</code></p>
+<p>```javascript<br />
+angular<br />
+    .module(&lsquo;app&rsquo;)<br />
+    .directive(&lsquo;myExample&rsquo;, myExample);</p>
+<p>function myExample() {<br />
+    var directive = {<br />
+        restrict: &lsquo;EA&rsquo;,<br />
+        // TODO: Use a templateUrl instead<br />
+        template: &lsquo;<div>hello world</div> \<br />
+                    <div>max={{exVm.max}} \<br />
+                        <input ng-model="exVm.max"/> \<br />
+                    </div> \<br />
+                    <div>min={{exVm.min}} \<br />
+                        <input ng-model="exVm.min"/> \<br />
+                    </div> \<br />
+        &lsquo;,<br />
+        scope: {<br />
+            max: &lsquo;=&rsquo;<br />
+        },<br />
+        link: linkFunc,<br />
+        controller : DirCtrl,<br />
+        controllerAs: &lsquo;exVm&rsquo;<br />
+    };<br />
+    return directive;</p>
+<pre><code>/* @ngInject */
+function DirCtrl($scope) {
+    // Injecting $scope just for comparison
+    /* jshint validthis:true */
+    var exVm = this;
+
+    exVm.min = 3; 
+    exVm.max = $scope.max; 
+    console.log(&lsquo;CTRL: $scope.max = %i&rsquo;, $scope.max);
+    console.log(&lsquo;CTRL: exVm.min = %i&rsquo;, exVm.min);
+    console.log(&lsquo;CTRL: exVm.max = %i&rsquo;, exVm.max);
+}
+
+/* @ngInject */
+function linkFunc(scope, el, attr, ctrl) {
+    console.log(&lsquo;LINK: scope.max = %i&rsquo;, scope.max);
+    console.log(&lsquo;LINK: scope.exVm.min = %i&rsquo;, scope.exVm.min);
+    console.log(&lsquo;LINK: scope.exVm.max = %i&rsquo;, scope.exVm.max);
+}</code></pre>
+<p>}<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="resolving-promises-for-a-controller"><a name="user-content-resolving-promises-for-a-controller" href="#resolving-promises-for-a-controller" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Resolving Promises for a Controller</h2>
+<ul>
+<li>
+<p><strong>Controller Activation Promises</strong>: Resolve start-up logic for a controller in an <code>activate</code> function.</p>
+<p><em>Why?</em>: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.</p>
+<ul>
+<li>Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.</li>
+</ul>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+function Avengers(dataservice) {<br />
+    var vm = this;<br />
+    vm.avengers = [];<br />
+    vm.title = &lsquo;Avengers&rsquo;;</p>
+<pre><code>dataservice.getAvengers().then(function(data) {
+    vm.avengers = data;
+    return vm.avengers;
+});
+</code></pre>
+<p>}<br />
+```</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+function Avengers(dataservice) {<br />
+    var vm = this;<br />
+    vm.avengers = [];<br />
+    vm.title = &lsquo;Avengers&rsquo;;</p>
+<pre><code>activate();
+
+////////////
+
+function activate() {
+    return dataservice.getAvengers().then(function(data) {
+        vm.avengers = data;
+        return vm.avengers;
+    });
+}
+</code></pre>
+<p>}<br />
+```</p>
+</li>
+<li>
+<p><strong>Route Resolve Promises</strong>: When a controller depends on a promise to be resolved, resolve those dependencies in the <code>$routeProvider</code> before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.</p>
+<p><em>Why?</em>: A controller may require data before it loads. That data may come from a promise via a custom factory or <a href="https://docs.angularjs.org/api/ng/service/$http">$http</a>. Using a <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">route resolve</a> allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.</p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Avengers&rsquo;, Avengers);</p>
+<p>function Avengers (movieService) {<br />
+  var vm = this;<br />
+  // unresolved<br />
+  vm.movies;<br />
+  // resolved asynchronously<br />
+  movieService.getMovies().then(function (response) {<br />
+    vm.movies = response.movies;<br />
+  });<br />
+}<br />
+```</p>
+<p>```javascript<br />
+/<em> better </em>/</p>
+<p>// route-config.js<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .config(config);</p>
+<p>function config ($routeProvider) {<br />
+  $routeProvider<br />
+    .when(&lsquo;/avengers&rsquo;, {<br />
+      templateUrl: &lsquo;avengers.html&rsquo;,<br />
+      controller: &lsquo;Avengers&rsquo;,<br />
+      controllerAs: &lsquo;vm&rsquo;,<br />
+      resolve: {<br />
+        moviesPrepService: function (movieService) {<br />
+            return movieService.getMovies();<br />
+        }<br />
+      }<br />
+    });<br />
+}</p>
+<p>// avengers.js<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Avengers&rsquo;, Avengers);</p>
+<p>function Avengers (moviesPrepService) {<br />
+  var vm = this;<br />
+  vm.movies = moviesPrepService.movies;<br />
+}</p>
+<p>```</p>
+<ul>
+<li>Note: The code example&rsquo;s dependency on <code>movieService</code> is not minification safe on its own. For details on how to make this code minification safe, see the sections on <a href="#manual-dependency-injection">dependency injection</a> and on <a href="#minification-and-annotation">minification and annotation</a>.</li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="manual-dependency-injection"><a name="user-content-manual-dependency-injection" href="#manual-dependency-injection" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Manual Dependency Injection</h2>
+<ul>
+<li>
+<p><strong>UnSafe from Minification</strong>: Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.</p>
+<p><em>Why?</em>: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, <code>common</code> and <code>dataservice</code> may become <code>a</code> or <code>b</code> and not be found by AngularJS.</p>
+<p>```javascript<br />
+/<em> avoid - not minification-safe</em>/<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Dashboard&rsquo;, Dashboard);</p>
+<p>function Dashboard(common, dataservice) {<br />
+}<br />
+```</p>
+<ul>
+<li>This code may produce mangled variables when minified and thus cause runtime errors.</li>
+</ul>
+<p><code>javascript
+/* avoid - not minification-safe*/
+angular.module('app').controller('Dashboard', d);function d(a, b) { }</code></p>
+</li>
+<li>
+<p><strong>Manually Identify Dependencies</strong>: Use $inject to manually identify your dependencies for AngularJS components.</p>
+<p><em>Why?</em>: This technique mirrors the technique used by <a href="https://github.com/olov/ng-annotate"><code>ng-annotate</code></a>, which I recommend for automating the creation of minification safe dependencies. If <code>ng-annotate</code> detects injection has already been made, it will not duplicate it.</p>
+<p><em>Why?</em>: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, <code>common</code> and <code>dataservice</code> may become <code>a</code> or <code>b</code> and not be found by AngularJS.</p>
+<p><em>Why?</em>: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component&rsquo;s function. </p>
+<p>```javascript<br />
+/<em> avoid </em>/<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Dashboard&rsquo;, <br />
+    [&lsquo;$location&rsquo;, &lsquo;$routeParams&rsquo;, &lsquo;common&rsquo;, &lsquo;dataservice&rsquo;, Dashboard]);</p>
+<p>function Dashboard($location, $routeParams, common, dataservice) {<br />
+}<br />
+```</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Dashboard&rsquo;, Dashboard);</p>
+<p>Dashboard.$inject = [&lsquo;$location&rsquo;, &lsquo;$routeParams&rsquo;, &lsquo;common&rsquo;, &lsquo;dataservice&rsquo;];</p>
+<p>function Dashboard($location, $routeParams, common, dataservice) {<br />
+}<br />
+```</p>
+<ul>
+<li>
+<p>Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax. </p>
+</li>
+<li>
+<p>Note: <a href="https://github.com/olov/ng-annotate"><code>ng-annotate 0.10.0</code></a> introduced a feature where it moves the <code>$inject</code> to where it is reachable.</p>
+</li>
+</ul>
+<p>```javascript<br />
+// inside a directive definition<br />
+function outer() {<br />
+  return {<br />
+      controller: DashboardPanel,<br />
+  };</p>
+<p>DashboardPanel.$inject = [&lsquo;logger&rsquo;]; // Unreachable<br />
+  function DashboardPanel(logger) {<br />
+  }<br />
+}<br />
+```</p>
+<p>```javascript<br />
+// inside a directive definition<br />
+function outer() {<br />
+  DashboardPanel.$inject = [&lsquo;logger&rsquo;]; // reachable<br />
+  return {<br />
+      controller: DashboardPanel,<br />
+  };</p>
+<p>function DashboardPanel(logger) {<br />
+  }<br />
+}<br />
+```</p>
+</li>
+<li>
+<p><strong>Manually Identify Route Resolver Dependencies</strong>: Use $inject to manually identify your route resolver dependencies for AngularJS components.</p>
+<p><em>Why?</em>: This technique breaks out the anonymous function for the route resolver, making it easier to read.</p>
+<p><em>Why?</em>: An <code>$inject</code> statement can easily procede the resolver to handle making any dependencies minification safe.</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+function config ($routeProvider) {<br />
+  $routeProvider<br />
+    .when(&lsquo;/avengers&rsquo;, {<br />
+      templateUrl: &lsquo;avengers.html&rsquo;,<br />
+      controller: &lsquo;Avengers&rsquo;,<br />
+      controllerAs: &lsquo;vm&rsquo;,<br />
+      resolve: {<br />
+        moviesPrepService: moviePrepService<br />
+      }<br />
+    });<br />
+}</p>
+<p>moviePrepService.$inject =  [&lsquo;movieService&rsquo;];<br />
+function moviePrepService(movieService) {<br />
+    return movieService.getMovies();<br />
+}<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="minification-and-annotation"><a name="user-content-minification-and-annotation" href="#minification-and-annotation" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Minification and Annotation</h2>
+<ul>
+<li>
+<p><strong>ng-annotate</strong>: Use <a href="//github.com/olov/ng-annotate">ng-annotate</a> for <a href="http://gulpjs.com">Gulp</a> or <a href="http://gruntjs.com">Grunt</a> and comment functions that need automated dependency injection using <code>/** @ngInject */</code></p>
+<p><em>Why?</em>: This safeguards your code from any dependencies that may not be using minification-safe practices.</p>
+<p><em>Why?</em>: <a href="https://github.com/btford/ngmin"><code>ng-min</code></a> is deprecated </p>
+<ul>
+<li>The following code is not using minification safe dependencies.</li>
+</ul>
+<p>```javascript<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Avengers&rsquo;, Avengers);</p>
+<p>/<em> @ngInject </em>/<br />
+function Avengers (storageService, avengerService) {<br />
+  var vm = this;<br />
+  vm.heroSearch = &lsquo;&rsquo;;<br />
+  vm.storeHero = storeHero;</p>
+<p>function storeHero(){<br />
+    var hero = avengerService.find(vm.heroSearch);<br />
+    storageService.save(hero.name, hero);<br />
+  }<br />
+}<br />
+```</p>
+<ul>
+<li>When the above code is run through ng-annotate it will produce the following output with the <code>$inject</code> annotation and become minification-safe.</li>
+</ul>
+<p>```javascript<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .controller(&lsquo;Avengers&rsquo;, Avengers);</p>
+<p>/<em> @ngInject </em>/<br />
+function Avengers (storageService, avengerService) {<br />
+  var vm = this;<br />
+  vm.heroSearch = &lsquo;&rsquo;;<br />
+  vm.storeHero = storeHero;</p>
+<p>function storeHero(){<br />
+    var hero = avengerService.find(vm.heroSearch);<br />
+    storageService.save(hero.name, hero);<br />
+  }<br />
+}</p>
+<p>Avengers.$inject = [&lsquo;storageService&rsquo;, &lsquo;avengerService&rsquo;];<br />
+```</p>
+<ul>
+<li>
+<p>Note: If <code>ng-annotate</code> detects injection has already been made (e.g. <code>@ngInject</code> was detected), it will not duplicate the <code>$inject</code> code.</p>
+</li>
+<li>
+<p>When using a route resolver you can prefix the resolver&rsquo;s function with <code>/* @ngInject */</code> and it will produce properly annotated code, keeping any injected dependencies minification safe.</p>
+</li>
+</ul>
+<p><code>javascript
+// Using @ngInject annotations
+function config ($routeProvider) {
+  $routeProvider
+    .when('/avengers', {
+      templateUrl: 'avengers.html',
+      controller: 'Avengers',
+      controllerAs: 'vm',
+      resolve: { /* @ngInject */
+        moviesPrepService: function (movieService) {
+            return movieService.getMovies();
+        }
+      }
+    });
+}</code></p>
+<ul>
+<li>Note: Starting from AngularJS 1.3 use the <a href="https://docs.angularjs.org/api/ng/directive/ngApp"><code>ngApp</code></a> directive&rsquo;s <code>ngStrictDi</code> parameter. When present the injector will be created in &ldquo;strict-di&rdquo; mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.<br />
+<code>&lt;body ng-app="APP" ng-strict-di&gt;</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Use Gulp or Grunt for ng-annotate</strong>: Use <a href="https://www.npmjs.org/package/gulp-ng-annotate">gulp-ng-annotate</a> or <a href="https://www.npmjs.org/package/grunt-ng-annotate">grunt-ng-annotate</a> in an automated build task. Inject <code>/* @ngInject */</code> prior to any function that has dependencies.</p>
+<p><em>Why?</em>: ng-annotate will catch most dependencies, but it sometimes requires hints using the <code>/* @ngInject */</code> syntax.</p>
+<ul>
+<li>The following code is an example of a gulp task using ngAnnotate</li>
+</ul>
+<p>```javascript<br />
+gulp.task(&lsquo;js&rsquo;, [&lsquo;jshint&rsquo;], function () {<br />
+    var source = pkg.paths.js;<br />
+    return gulp.src(source)<br />
+        .pipe(sourcemaps.init())<br />
+        .pipe(concat(&lsquo;all.min.js&rsquo;, {newLine: &lsquo;;&rsquo;}))<br />
+        // Annotate before uglify so the code get&rsquo;s min&rsquo;d properly.<br />
+        .pipe(ngAnnotate({<br />
+            // true helps add where @ngInject is not used. It infers.<br />
+            // Doesn&rsquo;t work with resolve, so we must be explicit there<br />
+            add: true<br />
+        }))<br />
+        .pipe(bytediff.start())<br />
+        .pipe(uglify({mangle: true}))<br />
+        .pipe(bytediff.stop())<br />
+        .pipe(sourcemaps.write(&lsquo;./&rsquo;))<br />
+        .pipe(gulp.dest(pkg.paths.dev));<br />
+});</p>
+<p>```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="exception-handling"><a name="user-content-exception-handling" href="#exception-handling" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Exception Handling</h2>
+<ul>
+<li>
+<p><strong>decorators</strong>: Use a <a href="https://docs.angularjs.org/api/auto/service/$provide#decorator">decorator</a>, at config time using the <a href="https://docs.angularjs.org/api/auto/service/$provide"><code>$provide</code></a> service, on the <a href="https://docs.angularjs.org/api/ng/service/$exceptionHandler"><code>$exceptionHandler</code></a> service to perform custom actions when exceptions occur.</p>
+<p><em>Why?</em>: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+angular<br />
+    .module(&lsquo;blocks.exception&rsquo;)<br />
+    .config(exceptionConfig);</p>
+<p>exceptionConfig.$inject = [&lsquo;$provide&rsquo;];</p>
+<p>function exceptionConfig($provide) {<br />
+    $provide.decorator(&lsquo;$exceptionHandler&rsquo;, extendExceptionHandler);<br />
+}</p>
+<p>extendExceptionHandler.$inject = [&lsquo;$delegate&rsquo;, &lsquo;toastr&rsquo;];</p>
+<p>function extendExceptionHandler($delegate, toastr) {<br />
+    return function (exception, cause) {<br />
+        $delegate(exception, cause);<br />
+        var errorData = { <br />
+          exception: exception, <br />
+          cause: cause <br />
+        };<br />
+        /*<em><br />
+         * Could add the error to a service&rsquo;s collection,<br />
+         * add errors to $rootScope, log errors to remote web server,<br />
+         * or log locally. Or throw hard. It is entirely up to you.<br />
+         * throw exception;<br />
+</em>/<br />
+        toastr.error(exception.msg, errorData);<br />
+    };<br />
+}<br />
+```</p>
+</li>
+<li>
+<p><strong>Exception Catchers</strong>: Create a factory that exposes an interface to catch and gracefully handle exceptions.</p>
+<p><em>Why?</em>: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).</p>
+<p>```javascript<br />
+/<em> recommended </em>/<br />
+angular<br />
+    .module(&lsquo;blocks.exception&rsquo;)<br />
+    .factory(&lsquo;exception&rsquo;, exception);</p>
+<p>exception.$inject = [&lsquo;logger&rsquo;];</p>
+<p>function exception(logger) {<br />
+    var service = {<br />
+        catcher: catcher<br />
+    };<br />
+    return service;</p>
+<pre><code>function catcher(message) {
+    return function (reason) {
+        logger.error(message, reason);
+    };
+}
+</code></pre>
+<p>}<br />
+```</p>
+</li>
+<li>
+<p><strong>Route Errors</strong>: Handle and log all routing errors using <a href="https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError"><code>$routeChangeError</code></a>.</p>
+<p><em>Why?</em>: Provides a consistent way handle all routing errors.</p>
+<p><em>Why?</em>: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.</p>
+<p><code>javascript
+/* recommended */
+function handleRoutingErrors() {
+    /**
+     * Route cancellation:
+     * On routing error, go to the dashboard.
+     * Provide an exit clause if it tries to do it twice.
+     */
+    $rootScope.$on('$routeChangeError',
+        function (event, current, previous, rejection) {
+            var destination = (current &amp;&amp; (current.title || current.name || current.loadedTemplateUrl)) ||
+                'unknown target';
+            var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
+            /**
+             * Optionally log using a custom service or $log.
+             * (Don't forget to inject custom service)
+             */
+            logger.warning(msg, [current]);
+        }
+    );
+}</code></p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="naming"><a name="user-content-naming" href="#naming" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Naming</h2>
+<ul>
+<li>
+<p><strong>Naming Guidelines</strong>: Use consistent names for all components following a pattern that describes the component&rsquo;s feature then (optionally) its type. My recommended pattern is <code>feature.type.js</code>. There are 2 names for most assets:</p>
+<ul>
+<li>the file name </li>
+<li>the registered asset name with Angular</li>
+</ul>
+<p><em>Why?</em>: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.</p>
+<p><em>Why?</em>: The naming conventions should simply help you find your code faster and make it easier to understand. </p>
+</li>
+<li>
+<p><strong>Feature File Names</strong>: Use consistent names for all components following a pattern that describes the component&rsquo;s feature then (optionally) its type. My recommended pattern is <code>feature.type.js</code>.</p>
+<p><em>Why?</em>: Provides a consistent way to quickly identify components.</p>
+<p><em>Why?</em>: Provides pattern matching for any automated tasks.</p>
+<p>```javascript<br />
+/*<em><br />
+ * common options <br />
+</em>/</p>
+<p>// Controllers<br />
+avengers.js<br />
+avengers.controller.js<br />
+avengersController.js<br />
+avengersCtrl.js</p>
+<p>// Services/Factories<br />
+logger.js<br />
+logger.service.js<br />
+loggerService.js<br />
+loggerSvc.js<br />
+```</p>
+<p>```javascript<br />
+/*<em><br />
+ * recommended<br />
+</em>/</p>
+<p>// controllers<br />
+avengers.controller.js<br />
+avengers.controller.spec.js</p>
+<p>// services/factories<br />
+logger.service.js<br />
+logger.service.spec.js</p>
+<p>// constants<br />
+constants.js</p>
+<p>// module definition<br />
+avengers.module.js</p>
+<p>// routes<br />
+avengers.routes.js<br />
+avengers.routes.spec.js</p>
+<p>// configuration<br />
+avengers.config.js</p>
+<p>// directives<br />
+avenger-profile.directive.js<br />
+avenger-profile.directive.spec.js<br />
+```</p>
+</li>
+<li>
+<p>Alternative: Another common convention is naming controller files without the word <code>controller</code> in the file name such as <code>avengers.js</code> instead of <code>avengers.controller.js</code>. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.</p>
+<p><code>javascript
+/**
+ * recommended
+ */
+// Controllers
+avengers.js
+avengers.spec.js</code></p>
+</li>
+<li>
+<p><strong>Test File Names</strong>: Name test specifications similar to the component they test with a suffix of <code>spec</code>.  </p>
+<p><em>Why?</em>: Provides a consistent way to quickly identify components.</p>
+<p><em>Why?</em>: Provides pattern matching for <a href="http://karma-runner.github.io/">karma</a> or other test runners.</p>
+<p><code>javascript
+/**
+ * recommended
+ */
+avengers.controller.spec.js
+logger.service.spec.js
+avengers.routes.spec.js
+avenger-profile.directive.spec.js</code></p>
+</li>
+<li>
+<p><strong>Controller Names</strong>: Use consistent names for all controllers named after their feature. Use pascal-casing for controllers, as they are constructors.</p>
+<p><em>Why?</em>: Provides a consistent way to quickly identify and reference controllers.</p>
+<p><em>Why?</em>: Pascal-casing is conventional for identifying object that can be instantiated using a constructor.</p>
+<p>```javascript<br />
+/*<em><br />
+ * recommended<br />
+</em>/</p>
+<p>// avengers.controller.js<br />
+angular<br />
+  .module<br />
+  .controller(&lsquo;Avengers&rsquo;, Avengers);</p>
+<p>function Avengers(){ }<br />
+```</p>
+</li>
+<li>
+<p><strong>Factory Names</strong>: Use consistent names for all factories named after their feature. Use camel-casing for services and factories.</p>
+<p><em>Why?</em>: Provides a consistent way to quickly identify and reference controllers.</p>
+<p>```javascript<br />
+/*<em><br />
+ * recommended<br />
+</em>/</p>
+<p>// logger.service.js<br />
+angular<br />
+  .module<br />
+  .factory(&lsquo;logger&rsquo;, logger);</p>
+<p>function logger(){ }<br />
+```</p>
+</li>
+<li>
+<p><strong>Directive Component Names</strong>: Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).</p>
+<p><em>Why?</em>: Provides a consistent way to quickly identify and reference components.</p>
+<p>```javascript<br />
+/*<em><br />
+ * recommended<br />
+</em>/</p>
+<p>// avenger.profile.directive.js  <br />
+angular<br />
+  .module<br />
+  .directive(&lsquo;xxAvengerProfile&rsquo;, xxAvengerProfile);</p>
+<p>// usage is <xx-avenger-profile> </xx-avenger-profile></p>
+<p>function xxAvengerProfile(){ }<br />
+```</p>
+</li>
+<li>
+<p><strong>Modules</strong>:  When there are multiple modules, the main module file is named <code>app.module.js</code> while other dependent modules are named after what they represent. For example, an admin module is named <code>admin.module.js</code>. The respective registered module names would be <code>app</code> and <code>admin</code>. A single module app might be named <code>app.js</code>, omitting the module moniker.</p>
+<p><em>Why?</em>: An app with 1 module is named <code>app.js</code>. It is the app, so why not be super simple.</p>
+<p><em>Why?</em>: Provides consistency for multiple module apps, and for expanding to large applications.</p>
+<p><em>Why?</em>: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).</p>
+</li>
+<li>
+<p><strong>Configuration</strong>: Separate configuration for a module into its own file named after the module. A configuration file for the main <code>app</code> module is named <code>app.config.js</code> (or simply <code>config.js</code>). A configuration for a module named <code>admin.module.js</code> is named <code>admin.config.js</code>.</p>
+<p><em>Why?</em>: Separates configuration from module definition, components, and active code.</p>
+<p><em>Why?</em>: Provides a identifiable place to set configuration for a module.</p>
+</li>
+<li>
+<p><strong>Routes</strong>: Separate route configuration into its own file. Examples might be <code>app.route.js</code> for the main module and <code>admin.route.js</code> for the <code>admin</code> module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as <code>admin.config.route.js</code>.</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="application-structure-lift-principle"><a name="user-content-application-structure-lift-principle" href="#application-structure-lift-principle" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Application Structure LIFT Principle</h2>
+<ul>
+<li>
+<p><strong>LIFT</strong>: Structure your app such that you can <code>L</code>ocate your code quickly, <code>I</code>dentify the code at a glance, keep the <code>F</code>lattest structure you can, and <code>T</code>ry to stay DRY. The structure should follow these 4 basic guidelines. </p>
+<p><em>Why LIFT?</em>: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?</p>
+<p>When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines</p>
+<ol>
+<li><code>L</code>ocating our code is easy</li>
+<li><code>I</code>dentify code at a glance</li>
+<li><code>F</code>lat structure as long as we can</li>
+<li><code>T</code>ry to stay DRY (Don’t Repeat Yourself) or T-DRY</li>
+</ol>
+</li>
+<li>
+<p><strong>Locate</strong>: Make locating your code intuitive, simple and fast.</p>
+<p><em>Why?</em>: I find this to be super important for a project. If the team cannot find the files they need to work on quickly,  they will not be able to work as efficiently as possible, and the structure needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.</p>
+<p><code>/bower_components
+/client
+  /app
+    /avengers
+    /blocks
+      /exception
+      /logger
+    /core
+    /dashboard
+    /data
+    /layout
+    /widgets
+  /content
+  index.html
+.bower.json</code></p>
+</li>
+<li>
+<p><strong>Identify</strong>: When you look at a file you should instantly know what it contains and represents.</p>
+<p><em>Why?</em>: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.</p>
+</li>
+<li>
+<p><strong>Flat</strong>: Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.</p>
+<p><em>Why?</em>: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.</p>
+</li>
+<li>
+<p><strong>T-DRY (Try to Stick to DRY)</strong>: Be DRY, but don&rsquo;t go nuts and sacrifice readability.</p>
+<p><em>Why?</em>: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. </p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="application-structure"><a name="user-content-application-structure" href="#application-structure" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Application Structure</h2>
+<ul>
+<li>
+<p><strong>Overall Guidelines</strong>:  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app&rsquo;s code goes in a root folder named <code>app</code>. All content is 1 feature per file. Each controller, service, module, view is in its own file. Small deviations are OK for a set of small, short directives in a <code>directive.js</code> file. All 3rd party vendor scripts are stored in another root folder and not in the <code>app</code> folder. I didn&rsquo;t write them and I don&rsquo;t want them cluttering my app (<code>bower_components</code>, <code>scripts</code>, <code>lib</code>).</p>
+<ul>
+<li>Note: Find more details and reasoning behind the structure at <a href="http://www.johnpapa.net/angular-app-structuring-guidelines/">this original post on application structure</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Layout</strong>: Place components that define the overall layout of the application in a folder named <code>layout</code>. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. </p>
+<p><em>Why?</em>: Organizes all layout in a single place re-used throughout the application.</p>
+</li>
+<li>
+<p><strong>Folders-by-Feature Structure</strong>: Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. </p>
+<p><em>Why?</em>: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. </p>
+<p><em>Why?</em>: The LIFT guidelines are all covered.</p>
+<p><em>Why?</em>: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.</p>
+<p><em>Why?</em>: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.</p>
+<p>```javascript<br />
+/*<em><br />
+ * recommended<br />
+</em>/</p>
+<p>app/<br />
+    app.module.js<br />
+    app.config.js<br />
+    app.routes.js<br />
+    components/     <br />
+        calendar.directive.js<br />
+        calendar.directive.html<br />
+        user-profile.directive.js<br />
+        user-profile.directive.html<br />
+    layout/<br />
+        shell.html    <br />
+        shell.controller.js<br />
+        topnav.html    <br />
+        topnav.controller.js     <br />
+    people/<br />
+        attendees.html<br />
+        attendees.controller.js<br />
+        speakers.html<br />
+        speakers.controller.js<br />
+        speaker-detail.html<br />
+        speaker-detail.controller.js<br />
+    services/     <br />
+        data.service.js<br />
+        localstorage.service.js<br />
+        logger.service.js <br />
+        spinner.service.js<br />
+    sessions/<br />
+        sessions.html    <br />
+        sessions.controller.js<br />
+        session-detail.html<br />
+        session-detail.controller.js<br />
+```</p>
+<p><img alt="Sample App Structure" src="https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png" /></p>
+<ul>
+<li>Note: Structuring using folders-by-type is another common option. It requires moving to multiple folders when working on a feature. This could get unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.</li>
+</ul>
+<p>```javascript<br />
+/<em> <br />
+</em> Alternative folders-by-type.<br />
+<em> I recommend &ldquo;folders-by-feature&rdquo;, instead.<br />
+</em>/</p>
+<p>app/<br />
+    app.module.js<br />
+    app.config.js<br />
+    app.routes.js<br />
+    controllers/<br />
+        attendees.js          <br />
+        session-detail.js     <br />
+        sessions.js           <br />
+        shell.js              <br />
+        speakers.js           <br />
+        speaker-detail.js     <br />
+        topnav.js             <br />
+    directives/     <br />
+        calendar.directive.js<br />
+        calendar.directive.html<br />
+        user-profile.directive.js<br />
+        user-profile.directive.html<br />
+    services/     <br />
+        dataservice.js<br />
+        localstorage.js<br />
+        logger.js <br />
+        spinner.js<br />
+    views/<br />
+        attendees.html   <br />
+        session-detail.html<br />
+        sessions.html    <br />
+        shell.html       <br />
+        speakers.html    <br />
+        speaker-detail.html<br />
+        topnav.html       <br />
+``` </p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="modularity"><a name="user-content-modularity" href="#modularity" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Modularity</h2>
+<ul>
+<li>
+<p><strong>Many Small, Self Contained Modules</strong>: Create small modules that enapsulate one responsibility.</p>
+<p><em>Why?</em>: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.</p>
+</li>
+<li>
+<p><strong>Create an App Module</strong>: Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.</p>
+<p><em>Why?</em>: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.</p>
+</li>
+<li>
+<p><strong>Keep the App Module Thin</strong>: Only put logic for pulling together the app in the application module. Leave features in their own modules.</p>
+<p><em>Why?</em>: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.</p>
+</li>
+<li>
+<p><strong>Feature Areas are Modules</strong>: Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).</p>
+<p><em>Why?</em>: Self contained modules can be added to the application will little or no friction.</p>
+<p><em>Why?</em>: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.</p>
+<p><em>Why?</em>: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. </p>
+</li>
+<li>
+<p><strong>Reusable Blocks are Modules</strong>: Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.</p>
+<p><em>Why?</em>: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.</p>
+</li>
+<li>
+<p><strong>Module Dependencies</strong>: The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.</p>
+<p><img alt="Modularity and Dependencies" src="https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png" /></p>
+<p><em>Why?</em>: The main app module contains a quickly identifiable manifest of the application&rsquo;s features. </p>
+<p><em>Why?</em>: Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (<code>app.core</code> in the image).</p>
+<p><em>Why?</em>: Intra-App features such as shared data services become easy to locate and share from within <code>app.core</code> (choose your favorite name for this module).</p>
+<ul>
+<li>Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS&rsquo;s dependency rules, and is easy to maintain and scale.</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don&rsquo;t get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. </p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="angular-wrapper-services"><a name="user-content-angular-wrapper-services" href="#angular-wrapper-services" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Angular $ Wrapper Services</h2>
+<ul>
+<li>
+<p><strong>$document and $window</strong>: Use <a href="https://docs.angularjs.org/api/ng/service/$document"><code>$document</code></a> and <a href="https://docs.angularjs.org/api/ng/service/$window"><code>$window</code></a> instead of <code>document</code> and <code>window</code>.</p>
+<p><em>Why?</em>: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.</p>
+</li>
+<li>
+<p><strong>$timeout and $interval</strong>: Use <a href="https://docs.angularjs.org/api/ng/service/$timeout"><code>$timeout</code></a> and <a href="https://docs.angularjs.org/api/ng/service/$interval"><code>$interval</code></a> instead of <code>setTimeout</code> and <code>setInterval</code> .</p>
+<p><em>Why?</em>: These services are wrapped by Angular and more easily testable and handle AngularJS&rsquo;s digest cycle thus keeping data binding in sync.</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="testing"><a name="user-content-testing" href="#testing" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Testing</h2>
+<p>Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.</p>
+<ul>
+<li>
+<p><strong>Write Tests with Stories</strong>: Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.</p>
+<p><em>Why?</em>: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.</p>
+<p>```javascript<br />
+it(&lsquo;should have Avengers controller&rsquo;, function () {<br />
+    //TODO<br />
+});</p>
+<p>it(&lsquo;should find 1 Avenger when filtered by name&rsquo;, function () {<br />
+    //TODO<br />
+});</p>
+<p>it(&lsquo;should have 10 Avengers&rsquo;, function () {}<br />
+    //TODO (mock data?)<br />
+});</p>
+<p>it(&lsquo;should return Avengers via XHR&rsquo;, function () {}<br />
+    //TODO ($httpBackend?)<br />
+});</p>
+<p>// and so on<br />
+```</p>
+</li>
+<li>
+<p><strong>Testing Library</strong>: Use <a href="http://jasmine.github.io/">Jasmine</a> or <a href="http://visionmedia.github.io/mocha/">Mocha</a> for unit testing.</p>
+<p><em>Why?</em>: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.</p>
+<p>Note: When using Mocha, also consider choosing an assert library such as <a href="http://chaijs.com">Chai</a>.</p>
+</li>
+<li>
+<p><strong>Test Runner</strong>: Use <a href="http://karma-runner.github.io">Karma</a> as a test runner.</p>
+<p><em>Why?</em>: Karma is easy to configure to run once or automatically when you change your code.</p>
+<p><em>Why?</em>: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.</p>
+<p><em>Why?</em>: Some IDE&rsquo;s are beginning to integrate with Karma, such as <a href="http://www.jetbrains.com/webstorm/">WebStorm</a> and <a href="http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225">Visual Studio</a>.</p>
+<p><em>Why?</em>: Karma works well with task automation leaders such as <a href="http://www.gruntjs.com">Grunt</a> (with <a href="https://github.com/karma-runner/grunt-karma">grunt-karma</a>) and <a href="http://www.gulpjs.com">Gulp</a> (with <a href="https://github.com/lazd/gulp-karma">gulp-karma</a>).</p>
+</li>
+<li>
+<p><strong>Stubbing and Spying</strong>: Use Sinon for stubbing and spying.</p>
+<p><em>Why?</em>: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.</p>
+<p><em>Why?</em>: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.</p>
+</li>
+<li>
+<p><strong>Headless Browser</strong>: Use <a href="http://phantomjs.org/">PhantomJS</a> to run your tests on a server.</p>
+<p><em>Why?</em>: PhantomJS is a headless browser that helps run your tests without needing a &ldquo;visual&rdquo; browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. </p>
+<p>Note: You should still test on all browsers in your environment, as appropriate for your target audience.</p>
+</li>
+<li>
+<p><strong>Code Analysis</strong>: Run JSHint on your tests. </p>
+<p><em>Why?</em>: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.</p>
+</li>
+<li>
+<p><strong>Alleviate JSHint Rules on Tests</strong>: Relax the rules on your test code.</p>
+<p><em>Why?</em>: Your tests won&rsquo;t be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.</p>
+<p><code>javascript
+/*global sinon, describe, it, afterEach, beforeEach, expect, inject */</code></p>
+</li>
+</ul>
+<p><img alt="Testing Tools" src="https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png" /></p>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="animations"><a name="user-content-animations" href="#animations" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Animations</h2>
+<ul>
+<li>
+<p><strong>Usage</strong>: Use subtle <a href="https://docs.angularjs.org/guide/animations">animations with AngularJS</a> to transition between states for views and primary visual elements. Include the <a href="https://docs.angularjs.org/api/ngAnimate">ngAnimate module</a>. The 3 keys are subtle, smooth, seamless.</p>
+<p><em>Why?</em>: Subtle animations can improve User Experience when used appropriately.</p>
+<p><em>Why?</em>: Subtle animations can improve perceived performance as views transition.</p>
+</li>
+<li>
+<p><strong>Sub Second</strong>: Use short durations for animations. I generally start with 300ms and adjust until appropriate.  </p>
+<p><em>Why?</em>: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.</p>
+</li>
+<li>
+<p><strong>animate.css</strong>: Use <a href="http://daneden.github.io/animate.css/">animate.css</a> for conventional animations.</p>
+<p><em>Why?</em>: The animations that animate.css provides are fast, smooth, and easy to add to your application.</p>
+<p><em>Why?</em>: Provides consistency in your animations.</p>
+<p><em>Why?</em>: animate.css is widely used and tested.</p>
+<p>Note: See this <a href="http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html">great post by Matias Niemelä on AngularJS animations</a></p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="comments"><a name="user-content-comments" href="#comments" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Comments</h2>
+<ul>
+<li>
+<p><strong>jsDoc</strong>: If planning to produce documentation, use <a href="http://usejsdoc.org/"><code>jsDoc</code></a> syntax to document function names, description, params and returns</p>
+<p><em>Why?</em>: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.</p>
+<p><em>Why?</em>: Provides consistency using a common industry tool.</p>
+<p>```javascript<br />
+angular<br />
+  .module(&lsquo;app&rsquo;)<br />
+  .factory(&lsquo;logger&rsquo;, logger);</p>
+<p>/*<em><br />
+ * @name logger<br />
+ * @desc Application wide logger<br />
+</em>/<br />
+function logger ($log) {<br />
+  var service = {<br />
+    logError: logError<br />
+  };<br />
+  return service;</p>
+<p>////////////</p>
+<p>/*<em><br />
+   * @name logError<br />
+   * @desc Logs errors<br />
+   * @param {String} msg Message to log <br />
+   * @returns {String}<br />
+</em>/<br />
+  function logError(msg) {<br />
+    var loggedMsg = &lsquo;Error: &lsquo; + msg;<br />
+    $log.error(loggedMsg);<br />
+    return loggedMsg;<br />
+  };<br />
+}<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="js-hint"><a name="user-content-js-hint" href="#js-hint" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>JS Hint</h2>
+<ul>
+<li>
+<p><strong>Use an Options File</strong>: Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the <a href="http://www.jshint.com/docs/">JS Hint docs</a> for details on the options.</p>
+<p><em>Why?</em>: Provides a first alert prior to committing any code to source control.</p>
+<p><em>Why?</em>: Provides consistency across your team.</p>
+<p>```javascript<br />
+{<br />
+    &ldquo;bitwise&rdquo;: true,<br />
+    &ldquo;camelcase&rdquo;: true,<br />
+    &ldquo;curly&rdquo;: true,<br />
+    &ldquo;eqeqeq&rdquo;: true,<br />
+    &ldquo;es3&rdquo;: false,<br />
+    &ldquo;forin&rdquo;: true,<br />
+    &ldquo;freeze&rdquo;: true,<br />
+    &ldquo;immed&rdquo;: true,<br />
+    &ldquo;indent&rdquo;: 4,<br />
+    &ldquo;latedef&rdquo;: &ldquo;nofunc&rdquo;,<br />
+    &ldquo;newcap&rdquo;: true,<br />
+    &ldquo;noarg&rdquo;: true,<br />
+    &ldquo;noempty&rdquo;: true,<br />
+    &ldquo;nonbsp&rdquo;: true,<br />
+    &ldquo;nonew&rdquo;: true,<br />
+    &ldquo;plusplus&rdquo;: false,<br />
+    &ldquo;quotmark&rdquo;: &ldquo;single&rdquo;,<br />
+    &ldquo;undef&rdquo;: true,<br />
+    &ldquo;unused&rdquo;: false,<br />
+    &ldquo;strict&rdquo;: false,<br />
+    &ldquo;maxparams&rdquo;: 10,<br />
+    &ldquo;maxdepth&rdquo;: 5,<br />
+    &ldquo;maxstatements&rdquo;: 40,<br />
+    &ldquo;maxcomplexity&rdquo;: 8,<br />
+    &ldquo;maxlen&rdquo;: 120,</p>
+<pre><code>&ldquo;asi&rdquo;: false,
+&ldquo;boss&rdquo;: false,
+&ldquo;debug&rdquo;: false,
+&ldquo;eqnull&rdquo;: true,
+&ldquo;esnext&rdquo;: false,
+&ldquo;evil&rdquo;: false,
+&ldquo;expr&rdquo;: false,
+&ldquo;funcscope&rdquo;: false,
+&ldquo;globalstrict&rdquo;: false,
+&ldquo;iterator&rdquo;: false,
+&ldquo;lastsemic&rdquo;: false,
+&ldquo;laxbreak&rdquo;: false,
+&ldquo;laxcomma&rdquo;: false,
+&ldquo;loopfunc&rdquo;: true,
+&ldquo;maxerr&rdquo;: false,
+&ldquo;moz&rdquo;: false,
+&ldquo;multistr&rdquo;: false,
+&ldquo;notypeof&rdquo;: false,
+&ldquo;proto&rdquo;: false,
+&ldquo;scripturl&rdquo;: false,
+&ldquo;shadow&rdquo;: false,
+&ldquo;sub&rdquo;: true,
+&ldquo;supernew&rdquo;: false,
+&ldquo;validthis&rdquo;: false,
+&ldquo;noyield&rdquo;: false,
+
+&ldquo;browser&rdquo;: true,
+&ldquo;node&rdquo;: true,
+
+&ldquo;globals&rdquo;: {
+    &ldquo;angular&rdquo;: false,
+    &ldquo;$&rdquo;: false
+}</code></pre>
+<p>}<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="constants"><a name="user-content-constants" href="#constants" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Constants</h2>
+<ul>
+<li>
+<p><strong>Vendor Globals</strong>: Create an AngularJS Constant for vendor libraries&rsquo; global variables.</p>
+<p><em>Why?</em>: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.</p>
+<p>```javascript<br />
+// constants.js</p>
+<p>/<em> global toastr:false, moment:false </em>/<br />
+(function () {<br />
+    &lsquo;use strict&rsquo;;</p>
+<pre><code>angular
+    .module(&lsquo;app.core&rsquo;)
+    .constant(&lsquo;toastr&rsquo;, toastr)
+    .constant(&lsquo;moment&rsquo;, moment);</code></pre>
+<p>})();<br />
+```</p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="file-templates-and-snippets"><a name="user-content-file-templates-and-snippets" href="#file-templates-and-snippets" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>File Templates and Snippets</h2>
+<p>Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.</p>
+<ul>
+<li>
+<p><strong>Sublime Text</strong>: AngularJS snippets that follow these styles and guidelines. </p>
+<ul>
+<li>Download the <a href="/Users/sergeyshteyn/dev/udemy/angularjs-styleguide/assets/sublime-angular-snippets.zip">Sublime Angular snippets</a> </li>
+<li>Place it in your Packages folder</li>
+<li>Restart Sublime </li>
+<li>In a JavaScript file type these commands followed by a <code>TAB</code></li>
+</ul>
+<p><code>javascript
+ngcontroller // creates an Angular controller
+ngdirective // creates an Angular directive
+ngfactory // creates an Angular factory
+ngmodule // creates an Angular module</code></p>
+</li>
+<li>
+<p><strong>Visual Studio</strong>: AngularJS file templates that follow these styles and guidelines can be found at <a href="http://www.sidewaffle.com">SideWaffle</a></p>
+<ul>
+<li>Download the <a href="http://www.sidewaffle.com">SideWaffle</a> Visual Studio extension (vsix file)</li>
+<li>Run the vsix file</li>
+<li>Restart Visual Studio</li>
+</ul>
+</li>
+<li>
+<p><strong>WebStorm</strong>: AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:</p>
+<ul>
+<li>Download the <a href="/Users/sergeyshteyn/dev/udemy/angularjs-styleguide/assets/webstorm-angular-file-template.settings.jar">WebStorm AngularJS file templates and snippets</a> </li>
+<li>Open WebStorm and go to the <code>File</code> menu</li>
+<li>Choose the <code>Import Settings</code> menu option</li>
+<li>Select the file and click <code>OK</code></li>
+<li>In a JavaScript file type these commands followed by a <code>TAB</code>:</li>
+</ul>
+<p><code>javascript
+ng-c // creates an Angular controller
+ng-f // creates an Angular factory
+ng-m // creates an Angular module</code></p>
+</li>
+</ul>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p>
+<h2 id="angularjs-docs"><a name="user-content-angularjs-docs" href="#angularjs-docs" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>AngularJS docs</h2>
+<p>For anything else, API reference, check the <a href="//docs.angularjs.org/api">Angular documentation</a>.</p>
+<h2 id="contributing"><a name="user-content-contributing" href="#contributing" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Contributing</h2>
+<p>Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.</p>
+<p><em>By contributing to this repository you are agreeing to make your content available subject to the license of this repository.</em></p>
+<ul>
+<li><strong>Process</strong><ol>
+<li>Discuss the changes in an Issue. </li>
+<li>Open a Pull Request, reference the issue, and explain the change and why it adds value.</li>
+<li>The Pull Request will be evaluated and either merged or declined.</li>
+</ol>
+</li>
+</ul>
+<h2 id="license"><a name="user-content-license" href="#license" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>License</h2>
+<ul>
+<li><strong>tldr;</strong> Use this guide. Attributions are appreciated, but not required. </li>
+</ul>
+<h4 id="the-mit-license"><a name="user-content-the-mit-license" href="#the-mit-license" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>(The MIT License)</h4>
+<p>Copyright (c) 2014 <a href="http://johnpapa.net">John Papa</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining<br />
+a copy of this software and associated documentation files (the<br />
+&lsquo;Software&rsquo;), to deal in the Software without restriction, including<br />
+without limitation the rights to use, copy, modify, merge, publish,<br />
+distribute, sublicense, and/or sell copies of the Software, and to<br />
+permit persons to whom the Software is furnished to do so, subject to<br />
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be<br />
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &lsquo;AS IS&rsquo;, WITHOUT WARRANTY OF ANY KIND,<br />
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF<br />
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.<br />
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY<br />
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,<br />
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE<br />
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<p><strong><a href="#table-of-contents">Back to top</a></strong></p></article></body></html>
