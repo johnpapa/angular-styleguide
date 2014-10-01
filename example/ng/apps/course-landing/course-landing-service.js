@@ -3,7 +3,7 @@ define(['angular'], function (angular) {
     angular.module('courseLanding.courseLandingService')
         .factory('CourseLandingService', CourseLandingService);
 
-    function CourseLandingService($http) {
+    function CourseLandingService() {
         return {
             doesSomething: doesSomething
         };
