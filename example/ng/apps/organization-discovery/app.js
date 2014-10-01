@@ -1,10 +1,10 @@
 define(['angular',
   ],
   function(angular) /*invoke*/ {
-    'use strict'
+    'use strict';
 
     angular.module('common', [
       'common.comment',
       'common.courseLearningGoal'
-    ])
+    ]);
   });
