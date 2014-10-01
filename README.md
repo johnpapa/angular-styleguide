@@ -2,8 +2,6 @@
 
 *Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. The styles contained here are based on my experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses] (http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
-
 The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. 
 
 ## Community Awesomeness and Credit
@@ -15,8 +13,8 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Table of Contents
-
   1. [Single Responsibility](#single-responsibility)
+  2. [Requirejs](#requirejs)
   1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
@@ -47,28 +45,28 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - **Rule of 1**: Define 1 component per file.  
 
- 	The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.  
+  The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.  
 
     ```javascript
     /* avoid */
     angular
-    	.module('app', ['ngRoute'])
-    	.controller('SomeController' , SomeController)
-    	.factory('someFactory' , someFactory);
-    	
+      .module('app', ['ngRoute'])
+      .controller('SomeController' , SomeController)
+      .factory('SomeFactory' , SomeFactory);
+      
     function SomeController() { }
 
-    function someFactory() { }
+    function SomeFactory() { }
     ```
     
-	The same components are now separated into their own files.
+  The same components are now separated into their own files.
 
     ```javascript
     /* recommended */
     
     // app.module.js
     angular
-    	.module('app', ['ngRoute']);
+      .module('app', ['ngRoute']);
     ```
 
     ```javascript
@@ -76,8 +74,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     
     // someController.js
     angular
-    	.module('app')
-    	.controller('SomeController' , SomeController);
+      .module('app')
+      .controller('SomeController' , SomeController);
 
     function SomeController() { }
     ```
@@ -87,13 +85,60 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     
     // someFactory.js
     angular
-    	.module('app')
-    	.factory('someFactory' , someFactory);
-    	
-    function someFactory() { }
+      .module('app')
+      .factory('SomeFactory' , SomeFactory);
+      
+    function SomeFactory() { }
     ```
 
 **[Back to top](#table-of-contents)**
+
+## Requirejs
+
+Encapsulate each file with Requirejs define statement and make sure all the dependencies are declared properly in the define statement as in the examples below. This approach is based on both Yeoman [generator-angular-require](https://github.com/aaronallport/generator-angular-require).
+ 
+Each file should be should define a separate module and include module dependencies. We follow the conventions of using file-path as a module name.
+
+````javascript
+app/scripts/directives/my-directive.js
+
+define(['angular', 'app/scripts/services/myService'],     function (angular) {
+  'use strict';
+  angular.module('myApp.directives.myDirective', ['myApp.services.myService'])
+    .directive('myDirective', function () {
+      return {
+        template: '<div></div>',
+        restrict: 'E',
+        link: function postLink(scope, element, attrs) {
+          element.text('this is the myDirective directive');
+        }
+      };
+    });
+  });
+
+app/scripts/services/my-service.js
+
+define(['angular'], function (angular) {
+  'use strict';
+  angular.module('myApp.services.myService', [])
+    .service('myService', function () {
+      // ...
+    });
+});
+```
+
+When testing use require for the unit test file. In the test file require code with a define statement and use the angular `module` to load the angular module under test. 
+
+``` javascript
+define('app/scripts/directives/my-directive', function(){
+  'use strict' 
+  describe('myDirective', function () {
+    beforeEach(function () {     
+      module('myApp.directives.myDirective');
+    });
+  });
+});
+```
 
 ## IIFE
   - **IIFE**: Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
@@ -160,8 +205,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - **Definitions (aka Setters)**: Declare modules without a variable using the setter syntax. 
 
-	*Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
-	
+  *Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  
     ```javascript
     /* avoid */
     var app = angular.module('app', [
@@ -172,12 +217,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ]);
     ```
 
-	Instead use the simple setter syntax.
+  Instead use the simple setter syntax.
 
     ```javascript
     /* recommended */
     angular
-    	.module('app', [
+      .module('app', [
         'ngAnimate',
         'ngRoute',
         'app.shared',
@@ -187,7 +232,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - **Getters**: When using a module, avoid using a variables and instead use   chaining with the getter syntax.
 
-	*Why?* : This produces more readable code and avoids variables collisions or leaks.
+  *Why?* : This produces more readable code and avoids variables collisions or leaks.
 
     ```javascript
     /* avoid */
@@ -207,15 +252,15 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
   - **Setting vs Getting**: Only set once and get for all other instances.
-	
-	*Why?*: A module should only be created once, then retrieved from that point and after.
-  	  
-  	  - Use `angular.module('app', []);` to set a module.
-  	  - Use  `angular.module('app');` to get a module. 
+  
+  *Why?*: A module should only be created once, then retrieved from that point and after.
+      
+      - Use `angular.module('app', []);` to set a module.
+      - Use  `angular.module('app');` to get a module. 
 
   - **Named vs Anonymous Functions**: Use named functions instead of passing an anonymous function in as a callback. 
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
 
     ```javascript
     /* avoid */
@@ -251,11 +296,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - **controllerAs View Syntax**: Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax. 
 
-	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
+  *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+  *Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
 
-	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+  *Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
 
     ```html
     <!-- avoid -->
@@ -275,9 +320,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
 
-	  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
+    *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
 
-	  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller. 
+    *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller. 
 
     ```javascript
     /* avoid */
@@ -1399,7 +1444,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   
       *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
 
-  	```javascript
+    ```javascript
     /* recommended */
     angular
         .module('blocks.exception')
@@ -1429,7 +1474,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
             toastr.error(exception.msg, errorData);
         };
     }
-  	```
+    ```
 
   - **Exception Catchers**: Create a factory that exposes an interface to catch and gracefully handle exceptions.
 
@@ -2000,70 +2045,15 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Provides a first alert prior to committing any code to source control.
 
     *Why?*: Provides consistency across your team.
-
-    ```javascript
-    {
-        "bitwise": true,
-        "camelcase": true,
-        "curly": true,
-        "eqeqeq": true,
-        "es3": false,
-        "forin": true,
-        "freeze": true,
-        "immed": true,
-        "indent": 4,
-        "latedef": "nofunc",
-        "newcap": true,
-        "noarg": true,
-        "noempty": true,
-        "nonbsp": true,
-        "nonew": true,
-        "plusplus": false,
-        "quotmark": "single",
-        "undef": true,
-        "unused": false,
-        "strict": false,
-        "maxparams": 10,
-        "maxdepth": 5,
-        "maxstatements": 40,
-        "maxcomplexity": 8,
-        "maxlen": 120,
-
-        "asi": false,
-        "boss": false,
-        "debug": false,
-        "eqnull": true,
-        "esnext": false,
-        "evil": false,
-        "expr": false,
-        "funcscope": false,
-        "globalstrict": false,
-        "iterator": false,
-        "lastsemic": false,
-        "laxbreak": false,
-        "laxcomma": false,
-        "loopfunc": true,
-        "maxerr": false,
-        "moz": false,
-        "multistr": false,
-        "notypeof": false,
-        "proto": false,
-        "scripturl": false,
-        "shadow": false,
-        "sub": true,
-        "supernew": false,
-        "validthis": false,
-        "noyield": false,
-
-        "browser": true,
-        "node": true,
-
-        "globals": {
-            "angular": false,
-            "$": false
-        }
-    }
+    
+    To run jshint on the example project :
+	
+    ````
+    npm install jshint -g 
+    jshint example 
     ```
+    
+    Use the [.jshint](.jshintrc) file for your project for consistent codebase. 
 
 **[Back to top](#table-of-contents)**
 
