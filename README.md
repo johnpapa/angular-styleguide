@@ -2053,7 +2053,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     jshint example 
     ```
     
-    Use the [.jshint](.jshint) file for your project for consistent codebase. 
+    Use the [.jshint](.jshintrc) file for your project for consistent codebase. 
 
 **[Back to top](#table-of-contents)**
 
