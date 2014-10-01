@@ -1,9 +1,9 @@
 define(['angular'], function (angular) {
     'use strict';
-    angular.module('courseLanding.courseLandingService')
-        .factory('CourseLandingService', CourseLandingService);
+    angular.module('courseLanding.discovery.DiscoveryService')
+        .factory('DiscoveryService', DiscoveryService);
 
-    function CourseLandingService() {
+    function DiscoveryService() {
         return {
             doesSomething: doesSomething
         };

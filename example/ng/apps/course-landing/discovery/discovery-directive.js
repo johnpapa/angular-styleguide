@@ -1,13 +1,13 @@
 define(['angular'], function (angular) {
     'use strict';
     angular
-        .module('courseLanding.courseLandingDirective', [])
-        .directive('courseLanding', courseLandingDirective);
+        .module('courseLanding.discovery.discoveryDirective', [])
+        .directive('discovery', discoveryDirective);
 
-    function courseLandingDirective() {
+    function discoveryDirective() {
         var directive = {
             link: link,
-            templateUrl: './course-landing-directive.tpl.html',
+            templateUrl: './discovery.tpl.html',
             restrict: 'EA'
         };
         return directive;
