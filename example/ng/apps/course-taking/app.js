@@ -1,5 +1,5 @@
 define(['angular', './discussion/discussion-module', './announcement/announcement-module'],
-  function(angular) /*invoke*/ {
+  function(angular){
     'use strict';
 
     angular.module('courseTakingApp', [
