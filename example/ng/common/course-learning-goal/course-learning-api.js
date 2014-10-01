@@ -1,9 +1,9 @@
 define(['angular'], function(angular) {
-  'use strict';
+    "use strict";
 
   // StudentLearningGoalApi factory
   angular.module('common.courseLearningGoal.courseLearningApi')
-    .factory('StudentLearningGoal', StudentLearningGoalApi);
+    .factory('StudentLearningGoal', CourseLearningGoalApi);
 
   CourseLearningGoalApi.$inject = ['$http'];
 
@@ -15,8 +15,8 @@ define(['angular'], function(angular) {
 
     function getGoals() {
       return $http.get('/api/goals')
-        .then(getAvengersComplete)
-        .catch(getAvengersFailed);
+        .then(getGoalsComplete)
+        .catch(getFailed);
     }
 
     function getGoalsComplete(response) {
@@ -24,7 +24,6 @@ define(['angular'], function(angular) {
     }
 
     function getFailed(error) {
-      console.error('XHR Failed for getGoals.' + error.data);
     }
   }
 });

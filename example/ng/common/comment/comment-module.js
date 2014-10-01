@@ -4,12 +4,12 @@ define(['angular',
     './reply-service'
   ],
   function(angular) /*invoke*/ {
-    'use strict'
+      "use strict";
 
      angular
       .module('common.comment', [
         'common.comment.commentDirective',
         'common.comment.replyDirective',
         'common.comments.replyService'
-      ])
+      ]);
   });

@@ -5,5 +5,5 @@ define(['angular', './learning-goal'], function(angular) {
       'common.courseLearningGoal.learningGoal',
       'common.courseLearningGoal.courseLearningGoalApi',
       'common.courseLearningGoal.studentLearningGoalApi'
-    ])
+    ]);
 });

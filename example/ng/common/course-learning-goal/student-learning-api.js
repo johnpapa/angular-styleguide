@@ -14,8 +14,8 @@ define(['angular'], function(angular) /*invoke*/ {
 
       function getGoals() {
         return $http.get('/api/goals')
-          .then(getAvengersComplete)
-          .catch(getAvengersFailed);
+          .then(getGoalsComplete)
+          .catch(getFailed);
       }
 
       function getGoalsComplete(response) {
@@ -23,8 +23,6 @@ define(['angular'], function(angular) /*invoke*/ {
       }
 
       function getFailed(error) {
-        console.error('XHR Failed for getGoals.' + error.data);
       }
     }
-  }
 });
