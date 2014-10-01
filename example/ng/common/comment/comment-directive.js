@@ -7,7 +7,7 @@ define(['angular'], function(angular) /*invoke*/ {
   function commentDirective() {
     var directive = {
       link: link,
-      templateUrl: './comment.tpl.html',
+      templateUrl: './comment-directive.tpl.html',
       restrict: 'EA'
     };
     return directive;

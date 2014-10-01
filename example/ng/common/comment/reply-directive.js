@@ -8,7 +8,7 @@ define(['angular'], function(angular) /*invoke*/ {
   function replyDirective() {
     var directive = {
       link: link,
-      templateUrl: './reply.tpl.html',
+      templateUrl: './reply-directive.tpl.html',
       restrict: 'EA'
     };
     return directive;
