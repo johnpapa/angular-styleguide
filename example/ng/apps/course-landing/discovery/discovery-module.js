@@ -8,8 +8,8 @@ define(['angular',
 
         angular
             .module('courseLanding.discovery', [
-                'courseLanding.discovery.DiscoveryDirective',
-                'courseLanding.discovery.DiscoveryService'
+                'courseLanding.discovery.discoveryDirective',
+                'courseLanding.discovery.discoveryService'
             ]);
     }
 );
