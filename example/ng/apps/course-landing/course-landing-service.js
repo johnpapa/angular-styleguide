@@ -1,12 +1,11 @@
-define(['angular'], function(angular) {
+define(['angular'], function (angular) {
     'use strict';
     angular.module('courseLanding.courseLandingService')
-      .factory('CourseLandingService', CourseLandingService)
+        .factory('CourseLandingService', CourseLandingService)
 
     function CourseLandingService($http) {
-      return {
-        doesSomething: doesSomething
-      };
+        return {
+            doesSomething: doesSomething
+        };
     }
-  }
 });
