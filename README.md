@@ -100,7 +100,7 @@ Encapsulate each file with Requirejs define statement and make sure all the depe
 Each file should be should define a separate module and include module dependencies. We follow the conventions of using file-path as a module name.
 
 ````javascript
-app/scripts/directives/myDirective.js
+app/scripts/directives/my-directive.js
 
 define(['angular', 'app/scripts/services/myService'],     function (angular) {
   'use strict';
@@ -116,7 +116,7 @@ define(['angular', 'app/scripts/services/myService'],     function (angular) {
     });
   });
 
-app/scripts/services/myService.js
+app/scripts/services/my-service.js
 
 define(['angular'], function (angular) {
   'use strict';
@@ -130,7 +130,7 @@ define(['angular'], function (angular) {
 When testing use require for the unit test file. In the test file require code with a define statement and use the angular `module` to load the angular module under test. 
 
 ``` javascript
-define('app/scripts/directives/myDirective', function(){
+define('app/scripts/directives/my-directive', function(){
   'use strict' 
   describe('myDirective', function () {
     beforeEach(function () {     
@@ -2045,70 +2045,15 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Provides a first alert prior to committing any code to source control.
 
     *Why?*: Provides consistency across your team.
-
-    ```javascript
-    {
-        "bitwise": true,
-        "camelcase": true,
-        "curly": true,
-        "eqeqeq": true,
-        "es3": false,
-        "forin": true,
-        "freeze": true,
-        "immed": true,
-        "indent": 4,
-        "latedef": "nofunc",
-        "newcap": true,
-        "noarg": true,
-        "noempty": true,
-        "nonbsp": true,
-        "nonew": true,
-        "plusplus": false,
-        "quotmark": "single",
-        "undef": true,
-        "unused": false,
-        "strict": false,
-        "maxparams": 10,
-        "maxdepth": 5,
-        "maxstatements": 40,
-        "maxcomplexity": 8,
-        "maxlen": 120,
-
-        "asi": false,
-        "boss": false,
-        "debug": false,
-        "eqnull": true,
-        "esnext": false,
-        "evil": false,
-        "expr": false,
-        "funcscope": false,
-        "globalstrict": false,
-        "iterator": false,
-        "lastsemic": false,
-        "laxbreak": false,
-        "laxcomma": false,
-        "loopfunc": true,
-        "maxerr": false,
-        "moz": false,
-        "multistr": false,
-        "notypeof": false,
-        "proto": false,
-        "scripturl": false,
-        "shadow": false,
-        "sub": true,
-        "supernew": false,
-        "validthis": false,
-        "noyield": false,
-
-        "browser": true,
-        "node": true,
-
-        "globals": {
-            "angular": false,
-            "$": false
-        }
-    }
+    
+    To run jshint on the example project :
+	
+    ````
+    npm install jshint -g 
+    jshint example 
     ```
+    
+    Use the [.jshint](.jshint) file for your project for consistent codebase. 
 
 **[Back to top](#table-of-contents)**
 
