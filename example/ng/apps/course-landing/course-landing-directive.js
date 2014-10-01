@@ -1,4 +1,4 @@
-define(['angular'], function (angular) /*invoke*/ {
+define(['angular'], function (angular) {
     'use strict';
     angular
         .module('courseLanding.courseLandingDirective', [])
