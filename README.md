@@ -1601,7 +1601,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     
   - **Factory Names**: Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
 
-      *Why?*: Provides a consistent way to quickly identify and reference controllers.
+      *Why?*: Provides a consistent way to quickly identify and reference factories.
 
     ```javascript
     /**
