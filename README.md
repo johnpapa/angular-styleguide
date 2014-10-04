@@ -535,6 +535,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
+  - **Keep Controllers Focused**: Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view. 
+  
+    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability large applications.
+
   - **Assigning Controllers**: When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
     
     - Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
