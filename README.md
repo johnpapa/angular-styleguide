@@ -1084,15 +1084,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     function myExample() {
         var directive = {
             restrict: 'EA',
-            // TODO: Use a templateUrl instead
-            template: '<div>hello world</div> \
-                        <div>max={{exVm.max}} \
-                            <input ng-model="exVm.max"/> \
-                        </div> \
-                        <div>min={{exVm.min}} \
-                            <input ng-model="exVm.min"/> \
-                        </div> \
-            ',
+            templateUrl: 'app/feature/example.directive.html',
             scope: {
                 max: '='
             },
@@ -1122,6 +1114,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
             console.log('LINK: scope.vm.max = %i', scope.vm.max);
         }
     }
+    ```
+
+    ```html
+    /* example.directive.html */
+    <div>hello world</div>
+    <div>max={{exVm.max}}<input ng-model="exVm.max"/></div>
+    <div>min={{exVm.min}}<input ng-model="exVm.min"/></div>
     ```
 
 **[Back to top](#table-of-contents)**
