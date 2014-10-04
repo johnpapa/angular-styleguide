@@ -1854,10 +1854,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      - Note: Structuring using folders-by-type is another common option. It requires moving to multiple folders when working on a feature. This could get unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      - Note: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
 
     ```javascript
     /* 
+    * avoid
     * Alternative folders-by-type.
     * I recommend "folders-by-feature", instead.
     */
