@@ -153,10 +153,16 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
+  
+  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
 
 **[Back to top](#table-of-contents)**
 
 ## Modules
+
+  - **Avoid Naming Collisions**: Use unique naming conventions with separators for sub-modules. 
+
+  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`. 
 
   - **Definitions (aka Setters)**: Declare modules without a variable using the setter syntax. 
 
