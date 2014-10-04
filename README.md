@@ -1659,6 +1659,39 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     function Avengers(){ }
     ```
     
+  - **Controller Name Suffix**: Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+
+      *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+
+      *Why?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
+
+    ```javascript
+    /**
+     * recommended: Option 1
+     */
+
+    // avengers.controller.js
+    angular
+      .module
+      .controller('Avengers', Avengers);
+
+    function Avengers(){ }
+    ```
+
+    ```javascript
+    /**
+     * recommended: Option 2
+     */
+
+    // avengers.controller.js
+    angular
+      .module
+      .controller('AvengersController', AvengersController);
+
+    function AvengersController(){ }
+    ```
+
+
   - **Factory Names**: Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
 
       *Why?*: Provides a consistent way to quickly identify and reference factories.
