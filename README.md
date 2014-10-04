@@ -916,52 +916,83 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* avoid */
+    /* directives.js */
+
     angular
-      .module('app.widgets')
+        .module('app.widgets')
 
-      /* order directive that is specific to the order module */
-      .directive('orderCalendarRange', orderCalendarRange)
+        /* order directive that is specific to the order module */
+        .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
-      .directive('salesCustomerInfo', salesCustomerInfo)
+        /* sales directive that can be used anywhere across the sales app */
+        .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
-      .directive('sharedSpinner', sharedSpinner);
+        /* spinner directive that can be used anywhere across apps */
+        .directive('sharedSpinner', sharedSpinner);
 
-      /* implementation details */
+
+    function orderCalendarRange() {
+        /* implementation details */
+    }
+
+    function salesCustomerInfo() {
+        /* implementation details */
+    }
+
+    function sharedSpinner() {
+        /* implementation details */
+    }
     ```
 
     ```javascript
     /* recommended */
+    /* calendarRange.directive.js */
 
     /**
      * @desc order directive that is specific to the order module at a company named Acme
-     * @file calendarRange.directive.js
      * @example <div acme-order-calendar-range></div>
      */
     angular
-      .module('sales.order')
-      .directive('acmeOrderCalendarRange', orderCalendarRange);
+        .module('sales.order')
+        .directive('acmeOrderCalendarRange', orderCalendarRange);
+
+    function orderCalendarRange() {
+        /* implementation details */
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    /* customerInfo.directive.js */
 
     /**
      * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
-     * @file customerInfo.directive.js
      * @example <div acme-sales-customer-info></div>
      */    
     angular
-      .module('sales.widgets')
-      .directive('acmeSalesCustomerInfo', salesCustomerInfo);
+        .module('sales.widgets')
+        .directive('acmeSalesCustomerInfo', salesCustomerInfo);
+
+    function salesCustomerInfo() {
+        /* implementation details */
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    /* spinner.directive.js */
 
     /**
      * @desc spinner directive that can be used anywhere across apps at a company named Acme
-     * @file spinner.directive.js
      * @example <div acme-shared-spinner></div>
      */
     angular
-      .module('shared.widgets')
-      .directive('acmeSharedSpinner', sharedSpinner);
+        .module('shared.widgets')
+        .directive('acmeSharedSpinner', sharedSpinner);
 
-      /* implementation details */
+    function sharedSpinner() {
+        /* implementation details */
+    }
     ```
 
     - Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one the makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
