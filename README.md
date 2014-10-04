@@ -1457,6 +1457,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   
       *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
 
+      - Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+
   	```javascript
     /* recommended */
     angular
@@ -1492,6 +1494,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - **Exception Catchers**: Create a factory that exposes an interface to catch and gracefully handle exceptions.
 
       *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+
+      - Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
 
     ```javascript
     /* recommended */
