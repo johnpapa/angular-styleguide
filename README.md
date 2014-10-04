@@ -2,7 +2,7 @@
 
 *Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. The styles contained here are based on my experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses] (http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
+If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. The styles contained here are based on my experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
 
 The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. 
 
@@ -1089,13 +1089,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
                 max: '='
             },
             link: linkFunc,
-            controller : DirController,
+            controller : ExampleController,
             controllerAs: 'vm'
         };
         return directive;
 
-        /* @ngInject */
-        function DirController($scope) {
+        ExampleController.$inject = ['$scope'];
+        function ExampleController($scope) {
             // Injecting $scope just for comparison
             /* jshint validthis:true */
             var vm = this;
@@ -1107,7 +1107,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
             console.log('CTRL: vm.max = %i', vm.max);
         }
 
-        /* @ngInject */
         function linkFunc(scope, el, attr, ctrl) {
             console.log('LINK: scope.max = %i', scope.max);
             console.log('LINK: scope.vm.min = %i', scope.vm.min);
