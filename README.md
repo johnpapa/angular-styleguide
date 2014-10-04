@@ -1249,7 +1249,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-  - **Manually Identify Dependencies**: Use $inject to manually identify your dependencies for AngularJS components.
+  - **Manually Identify Dependencies**: Use `$inject` to manually identify your dependencies for AngularJS components.
   
       *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
 
@@ -1324,7 +1324,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   
       *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
 
-      *Why?*: An `$inject` statement can easily procede the resolver to handle making any dependencies minification safe.
+      *Why?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
 
     ```javascript
     /* recommended */
