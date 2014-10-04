@@ -1226,7 +1226,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 **[Back to top](#table-of-contents)**
 
-## Manual Dependency Injection
+## Manual Annotating for Dependency Injection
 
   - **UnSafe from Minification**: Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
   
@@ -1256,6 +1256,16 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
 
       *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+
+    ```javascript
+    /* avoid */
+    angular
+        .module('app')
+        .controller('Dashboard', 
+            ['$location', '$routeParams', 'common', 'dataservice', 
+                function Dashboard($location, $routeParams, common, dataservice) {}
+            ]);      
+    ```
 
     ```javascript
     /* avoid */
