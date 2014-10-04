@@ -1173,17 +1173,17 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     /* avoid */
     angular
-      .module('app')
-      .controller('Avengers', Avengers);
+        .module('app')
+        .controller('Avengers', Avengers);
 
     function Avengers(movieService) {
-      var vm = this;
-      // unresolved
-      vm.movies;
-      // resolved asynchronously
-      movieService.getMovies().then(function(response) {
-        vm.movies = response.movies;
-      });
+        var vm = this;
+        // unresolved
+        vm.movies;
+        // resolved asynchronously
+        movieService.getMovies().then(function(response) {
+            vm.movies = response.movies;
+        });
     }
     ```
 
@@ -1192,33 +1192,34 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     // route-config.js
     angular
-      .module('app')
-      .config(config);
+        .module('app')
+        .config(config);
 
     function config($routeProvider) {
-      $routeProvider
-        .when('/avengers', {
-          templateUrl: 'avengers.html',
-          controller: 'Avengers',
-          controllerAs: 'vm',
-          resolve: {
-            moviesPrepService: function(movieService) {
-                return movieService.getMovies();
-            }
-          }
-        });
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html',
+                controller: 'Avengers',
+                controllerAs: 'vm',
+                resolve: {
+                    moviesPrepService: function(movieService) {
+                        return movieService.getMovies();
+                    }
+                }
+            });
     }
 
     // avengers.js
     angular
-      .module('app')
-      .controller('Avengers', Avengers);
+        .module('app')
+        .controller('Avengers', Avengers);
 
+    Avengers.$inject = ['moviesPrepService'];
     function Avengers(moviesPrepService) {
-      var vm = this;
-      vm.movies = moviesPrepService.movies;
+          /* jshint validthis:true */
+          var vm = this;
+          vm.movies = moviesPrepService.movies;
     }
-
     ```
 
     - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](#minification-and-annotation).
