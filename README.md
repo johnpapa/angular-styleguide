@@ -1657,9 +1657,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     // avengers.controller.js
     angular
         .module
-        .controller('Avengers', Avengers);
+        .controller('HeroAvengers', HeroAvengers);
 
-    function Avengers(){ }
+    function HeroAvengers(){ }
     ```
     
   - **Controller Name Suffix**: Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
