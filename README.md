@@ -110,7 +110,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .factory('logger', logger);
 
     // logger function is added as a global variable  
-    function logger () { }
+    function logger() { }
 
     // storage.js
     angular
@@ -118,7 +118,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .factory('storage', storage);
 
     // storage function is added as a global variable  
-    function storage () { }
+    function storage() { }
     ```
 
   
@@ -130,25 +130,25 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
      */
 
     // logger.js
-    (function () {
+    (function() {
       'use strict';
       
       angular
         .module('app')
         .factory('logger', logger);
 
-      function logger () { }
+      function logger() { }
     })();
 
     // storage.js
-    (function () {
+    (function() {
       'use strict';
 
       angular
         .module('app')
         .factory('storage', storage);
 
-      function storage () { }
+      function storage() { }
     })();
     ```
 
@@ -227,8 +227,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     /* avoid */
     angular
       .module('app')
-      .controller('Dashboard', function () { });
-      .factory('logger', function () { });
+      .controller('Dashboard', function() { });
+      .factory('logger', function() { });
     ```
 
     ```javascript
@@ -239,7 +239,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .controller('Dashboard', Dashboard);
 
-    function Dashboard () { }
+    function Dashboard() { }
     ```
 
     ```javascript
@@ -248,7 +248,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .factory('logger', logger);
 
-    function logger () { }
+    function logger() { }
     ```
 
 **[Back to top](#table-of-contents)**
@@ -287,17 +287,17 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* avoid */
-    function Customer ($scope) {
+    function Customer($scope) {
       $scope.name = {};
-      $scope.sendMessage = function () { };
+      $scope.sendMessage = function() { };
     }
     ```
 
     ```javascript
     /* recommended - but see next section */
-    function Customer () {
+    function Customer() {
       this.name = {};
-      this.sendMessage = function () { };
+      this.sendMessage = function() { };
     }
     ```
 
@@ -307,18 +307,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* avoid */
-    function Customer () {
+    function Customer() {
       this.name = {};
-      this.sendMessage = function () { };
+      this.sendMessage = function() { };
     }
     ```
 
     ```javascript
     /* recommended */
-    function Customer () {
+    function Customer() {
       var vm = this;
       vm.name = {};
-      vm.sendMessage = function () { };
+      vm.sendMessage = function() { };
     }
     ```
 
@@ -507,14 +507,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* avoid */
-    function Order ($http, $q) {
+    function Order($http, $q) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.total = 0;
 
-      function checkCredit () { 
+      function checkCredit() { 
         var orderTotal = vm.total;
-        return $http.get('api/creditcheck').then(function (data) {
+        return $http.get('api/creditcheck').then(function(data) {
             var remaining = data.remaining;
             return $q.when(!!(remaining > orderTotal));
         });
@@ -524,12 +524,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* recommended */
-    function Order (creditService) {
+    function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.total = 0;
 
-      function checkCredit () { 
+      function checkCredit() { 
         return creditService.check();
       };
     }
@@ -549,7 +549,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .config(config);
 
-    function config ($routeProvider) {
+    function config($routeProvider) {
       $routeProvider
         .when('/avengers', {
           templateUrl: 'avengers.html'
@@ -571,7 +571,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .config(config);
 
-    function config ($routeProvider) {
+    function config($routeProvider) {
       $routeProvider
         .when('/avengers', {
           templateUrl: 'avengers.html',
@@ -602,8 +602,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .module('app')
         .service('logger', logger);
 
-    function logger () {
-      this.logError = function (msg) {
+    function logger() {
+      this.logError = function(msg) {
         /* */
       };
     }
@@ -615,9 +615,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .module('app')
         .factory('logger', logger);
 
-    function logger () {
+    function logger() {
       return {
-        logError: function (msg) {
+        logError: function(msg) {
           /* */
         }
       };
@@ -644,12 +644,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* avoid */
-    function dataService () {
+    function dataService() {
       var someValue = '';
-      function save () { 
+      function save() { 
         /* */
       };
-      function validate () { 
+      function validate() { 
         /* */
       };
 
@@ -663,7 +663,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* recommended */
-    function dataService () {
+    function dataService() {
       var someValue = '';
       var service = {
         save: save,
@@ -673,11 +673,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       return service;
 
       ////////////
-      function save () { 
+      function save() { 
         /* */
       };
 
-      function validate () { 
+      function validate() { 
         /* */
       };
     }
@@ -851,7 +851,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
         function getAvengers() {
             return dataservice.getAvengers()
-              .then(function (data) {
+              .then(function(data) {
                   vm.avengers = data;
                   return vm.avengers;
               });
@@ -890,7 +890,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
          * for the promise
          */
         return dataservice.getAvengers()
-          .then(function (data) {
+          .then(function(data) {
               /**
                * Step 3
                * set the data and resolve the promise
@@ -983,7 +983,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .module('app.widgets')
         .directive('myCalendarRange', myCalendarRange);
 
-    function myCalendarRange () {
+    function myCalendarRange() {
         var directive = {
             link: link,
             templateUrl: '/template/is/located/here.html',
@@ -1009,7 +1009,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .module('app.widgets')
         .directive('myCalendarRange', myCalendarRange);
 
-    function myCalendarRange () {
+    function myCalendarRange() {
         var directive = {
             link: link,
             templateUrl: '/template/is/located/here.html',
@@ -1135,12 +1135,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .controller('Avengers', Avengers);
 
-    function Avengers (movieService) {
+    function Avengers(movieService) {
       var vm = this;
       // unresolved
       vm.movies;
       // resolved asynchronously
-      movieService.getMovies().then(function (response) {
+      movieService.getMovies().then(function(response) {
         vm.movies = response.movies;
       });
     }
@@ -1154,14 +1154,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .config(config);
 
-    function config ($routeProvider) {
+    function config($routeProvider) {
       $routeProvider
         .when('/avengers', {
           templateUrl: 'avengers.html',
           controller: 'Avengers',
           controllerAs: 'vm',
           resolve: {
-            moviesPrepService: function (movieService) {
+            moviesPrepService: function(movieService) {
                 return movieService.getMovies();
             }
           }
@@ -1173,7 +1173,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .controller('Avengers', Avengers);
 
-    function Avengers (moviesPrepService) {
+    function Avengers(moviesPrepService) {
       var vm = this;
       vm.movies = moviesPrepService.movies;
     }
@@ -1276,7 +1276,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* recommended */
-    function config ($routeProvider) {
+    function config($routeProvider) {
       $routeProvider
         .when('/avengers', {
           templateUrl: 'avengers.html',
@@ -1312,7 +1312,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers (storageService, avengerService) {
+    function Avengers(storageService, avengerService) {
       var vm = this;
       vm.heroSearch = '';
       vm.storeHero = storeHero;
@@ -1332,7 +1332,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers (storageService, avengerService) {
+    function Avengers(storageService, avengerService) {
       var vm = this;
       vm.heroSearch = '';
       vm.storeHero = storeHero;
@@ -1352,14 +1352,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     // Using @ngInject annotations
-    function config ($routeProvider) {
+    function config($routeProvider) {
       $routeProvider
         .when('/avengers', {
           templateUrl: 'avengers.html',
           controller: 'Avengers',
           controllerAs: 'vm',
           resolve: { /* @ngInject */
-            moviesPrepService: function (movieService) {
+            moviesPrepService: function(movieService) {
                 return movieService.getMovies();
             }
           }
@@ -1377,7 +1377,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     - The following code is an example of a gulp task using ngAnnotate
 
     ```javascript
-    gulp.task('js', ['jshint'], function () {
+    gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
         return gulp.src(source)
             .pipe(sourcemaps.init())
@@ -1420,7 +1420,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     extendExceptionHandler.$inject = ['$delegate', 'toastr'];
 
     function extendExceptionHandler($delegate, toastr) {
-        return function (exception, cause) {
+        return function(exception, cause) {
             $delegate(exception, cause);
             var errorData = { 
               exception: exception, 
@@ -1456,7 +1456,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         return service;
 
         function catcher(message) {
-            return function (reason) {
+            return function(reason) {
                 logger.error(message, reason);
             };
         }
@@ -1478,7 +1478,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
          * Provide an exit clause if it tries to do it twice.
          */
         $rootScope.$on('$routeChangeError',
-            function (event, current, previous, rejection) {
+            function(event, current, previous, rejection) {
                 var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
                 var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
@@ -1871,19 +1871,19 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
 
     ```javascript
-    it('should have Avengers controller', function () {
+    it('should have Avengers controller', function() {
         //TODO
     });
 
-    it('should find 1 Avenger when filtered by name', function () {
+    it('should find 1 Avenger when filtered by name', function() {
         //TODO
     });
 
-    it('should have 10 Avengers', function () {}
+    it('should have 10 Avengers', function() {}
         //TODO (mock data?)
     });
 
-    it('should return Avengers via XHR', function () {}
+    it('should return Avengers via XHR', function() {}
         //TODO ($httpBackend?)
     });
 
@@ -1975,7 +1975,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
      * @name logger
      * @desc Application wide logger
      */
-    function logger ($log) {
+    function logger($log) {
       var service = {
         logError: logError
       };
@@ -2083,7 +2083,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     // constants.js
 
     /* global toastr:false, moment:false */
-    (function () {
+    (function() {
         'use strict';
 
         angular
