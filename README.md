@@ -1640,11 +1640,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     avenger-profile.directive.spec.js
     ```
 
-  - **Controller Names**: Use consistent names for all controllers named after their feature. Use pascal-casing for controllers, as they are constructors.
+  - **Controller Names**: Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
 
       *Why?*: Provides a consistent way to quickly identify and reference controllers.
 
-      *Why?*: Pascal-casing is conventional for identifying object that can be instantiated using a constructor.
+      *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
 
     ```javascript
     /**
