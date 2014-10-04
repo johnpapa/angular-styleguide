@@ -1089,13 +1089,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
                 max: '='
             },
             link: linkFunc,
-            controller : DirCtrl,
+            controller : DirController,
             controllerAs: 'vm'
         };
         return directive;
 
         /* @ngInject */
-        function DirCtrl($scope) {
+        function DirController($scope) {
             // Injecting $scope just for comparison
             /* jshint validthis:true */
             var vm = this;
@@ -1561,13 +1561,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     avengers.js
     avengers.controller.js
     avengersController.js
-    avengersCtrl.js
 
     // Services/Factories
     logger.js
     logger.service.js
     loggerService.js
-    loggerSvc.js
     ```
 
     ```javascript
