@@ -2010,9 +2010,9 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
 
-  - **Alleviate JSHint Rules on Tests**: Relax the rules on your test code.
+  - **Alleviate Globals for JSHint Rules on Tests**: Relax the rules on your test code to allow for common globals such as `describe` and `expect`.
 
-    *Why?*: Your tests won't be run by your end users and do not require as strenuous of code quality rules. Global variables, for example, can be relaxed by including this in your test specs.
+    *Why?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
 
     ```javascript
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
