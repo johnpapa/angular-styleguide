@@ -1553,8 +1553,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Naming
 
   - **Naming Guidelines**: Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    *   the file name 
-    *   the registered asset name with Angular
+    *   the file name (`avengers.controller.js`)
+    *   the registered asset name with Angular (`AvengersController`)
  
     *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
 
