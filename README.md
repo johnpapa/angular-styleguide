@@ -1357,6 +1357,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
 
+      >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+
     - The following code is not using minification safe dependencies.
 
     ```javascript
