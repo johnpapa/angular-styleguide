@@ -1318,15 +1318,15 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     /* recommended */
     function config($routeProvider) {
-      $routeProvider
-        .when('/avengers', {
-          templateUrl: 'avengers.html',
-          controller: 'Avengers',
-          controllerAs: 'vm',
-          resolve: {
-            moviesPrepService: moviePrepService
-          }
-        });
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html',
+                controller: 'Avengers',
+                controllerAs: 'vm',
+                resolve: {
+                    moviesPrepService: moviePrepService
+                }
+            });
     }
 
     moviePrepService.$inject =  ['movieService'];
