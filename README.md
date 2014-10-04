@@ -595,7 +595,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Services
 
-  - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Can also use a factory, which I recommend for consistency. 
+  - **Singletons**: Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency. 
   
     - Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
 
@@ -879,28 +879,28 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
          * avenger data and wait for the promise
          */
         return getAvengers().then(function() {
-          /**
-           * Step 4
-           * Perform an action on resolve of final promise
-           */
-          logger.info('Activated Avengers View');
+            /**
+             * Step 4
+             * Perform an action on resolve of final promise
+             */
+            logger.info('Activated Avengers View');
         });
     }
 
     function getAvengers() {
-        /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
-         */
-        return dataservice.getAvengers()
-          .then(function(data) {
-              /**
-               * Step 3
-               * set the data and resolve the promise
-               */
-              vm.avengers = data;
-              return vm.avengers;
+          /**
+           * Step 2
+           * Ask the data service for the data and wait
+           * for the promise
+           */
+          return dataservice.getAvengers()
+              .then(function(data) {
+                  /**
+                   * Step 3
+                   * set the data and resolve the promise
+                   */
+                  vm.avengers = data;
+                  return vm.avengers;
           });
     }
     ```
