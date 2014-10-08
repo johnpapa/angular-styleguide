@@ -1119,8 +1119,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```html
     /* example.directive.html */
     <div>hello world</div>
-    <div>max={{exVm.max}}<input ng-model="exVm.max"/></div>
-    <div>min={{exVm.min}}<input ng-model="exVm.min"/></div>
+    <div>max={{vm.max}}<input ng-model="vm.max"/></div>
+    <div>min={{vm.min}}<input ng-model="vm.min"/></div>
     ```
 
 **[Back to top](#table-of-contents)**
