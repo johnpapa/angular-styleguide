@@ -27,7 +27,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Data Services](#data-services)
   1. [Directives](#directives)
   1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
-  1. [Manual Dependency Injection](#manual-dependency-injection)
+  1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
   1. [Minification and Annotation](#minification-and-annotation)
   1. [Exception Handling](#exception-handling)
   1. [Naming](#naming)
@@ -1225,7 +1225,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    - Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
 **[Back to top](#table-of-contents)**
 
