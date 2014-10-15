@@ -1904,7 +1904,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Modularity
   
-  - **Many Small, Self Contained Modules**: Create small modules that enapsulate one responsibility.
+  - **Many Small, Self Contained Modules**: Create small modules that encapsulate one responsibility.
 
     *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
 
