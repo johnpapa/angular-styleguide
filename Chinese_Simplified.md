@@ -4,6 +4,8 @@
 
 如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个正适合你。这里所包含的风格是基于我用[AngularJS](//angularjs.org)、演讲、[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)并且在团队中运用的一些经验。
 
+>If you like this guide, check out my [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight.如果你喜欢这个指南，在Pluralsight上check out我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
+
 这个风格指南的目的是通过展示我用到的约定给构建AngularJS应用提供指导，更加重要的是，我为什么要选择它们。
 
 ## Community Awesomeness and Credit
@@ -69,7 +71,7 @@
     
     // app.module.js
     angular
-    	.module('app', ['ngRoute']);
+        .module('app', ['ngRoute']);
     ```
 
     ```javascript
@@ -77,8 +79,8 @@
     
     // someController.js
     angular
-    	.module('app')
-    	.controller('SomeController' , SomeController);
+      	.module('app')
+      	.controller('SomeController' , SomeController);
 
     function SomeController() { }
     ```
@@ -88,8 +90,8 @@
     
     // someFactory.js
     angular
-    	.module('app')
-    	.factory('someFactory' , someFactory);
+      	.module('app')
+      	.factory('someFactory' , someFactory);
     	
     function someFactory() { }
     ```
@@ -107,19 +109,19 @@
     /* avoid */
     // logger.js
     angular
-      .module('app')
-      .factory('logger', logger);
+        .module('app')
+        .factory('logger', logger);
 
     // logger function is added as a global variable  
-    function logger () { }
+    function logger() { }
 
     // storage.js
     angular
-      .module('app')
-      .factory('storage', storage);
+        .module('app')
+        .factory('storage', storage);
 
     // storage function is added as a global variable  
-    function storage () { }
+    function storage() { }
     ```
 
     ```javascript
@@ -130,32 +132,39 @@
      */
 
     // logger.js
-    (function () {
-      'use strict';
+    (function() {
+        'use strict';
 
-      angular
-        .module('app')
-        .factory('logger', logger);
+        angular
+            .module('app')
+            .factory('logger', logger);
 
-      function logger () { }
+        function logger() { }
     })();
 
     // storage.js
-    (function () {
-      'use strict';
+    (function() {
+        'use strict';
 
-      angular
-        .module('app')
-        .factory('storage', storage);
+        angular
+            .module('app')
+            .factory('storage', storage);
 
-      function storage () { }
+        function storage() { }
     })();
     ```
 
   - 注：为了简便起见，本指南余下的示例中将会省略IIFE语法。 
+
+  - 注：IIFE阻止了测试代码访问私有成员（正则表达式、helper函数等），这对于自身测试是非常友好的。然而你可以把这些私有成员暴露到可访问成员中进行测试，例如把私有成员（正则表达式、helper函数等）放到factory或是constant中。
+
   **[返回顶部](#目录)**
 
 ## Modules
+
+  - **避免命名冲突**：给独立子模块使用唯一的命名约定。
+
+  *为什么*：避免冲突，每个模块也可以方便定义子模块。
 
   - **定义 (aka Setters)**： 不使用任何一个使用了setter语法的变量来定义modules。 
 
@@ -176,12 +185,12 @@
     ```javascript
     /* recommended */
     angular
-    	.module('app', [
-        'ngAnimate',
-        'ngRoute',
-        'app.shared',
-        'app.dashboard'
-    ]);
+      	.module('app', [
+          'ngAnimate',
+          'ngRoute',
+          'app.shared',
+          'app.dashboard'
+      ]);
     ```
 
   - **Getters**：当使用一个module的时候，避免使用一个变量，而是使用getter语法链接。
@@ -199,8 +208,8 @@
     ```javascript
     /* recommended */
     angular
-      .module('app')
-      .controller('SomeController' , SomeController);
+        .module('app')
+        .controller('SomeController' , SomeController);
     
     function SomeController() { }
     ```
@@ -219,9 +228,9 @@
     ```javascript
     /* avoid */
     angular
-      .module('app')
-      .controller('Dashboard', function () { });
-      .factory('logger', function () { });
+        .module('app')
+        .controller('Dashboard', function() { });
+        .factory('logger', function() { });
     ```
 
     ```javascript
@@ -229,8 +238,8 @@
 
     // dashboard.js
     angular
-      .module('app')
-      .controller('Dashboard', Dashboard);
+        .module('app')
+        .controller('Dashboard', Dashboard);
 
     function Dashboard () { }
     ```
@@ -238,8 +247,8 @@
     ```javascript
     // logger.js
     angular
-      .module('app')
-      .factory('logger', logger);
+        .module('app')
+        .factory('logger', logger);
 
     function logger () { }
     ```
@@ -281,16 +290,16 @@
     ```javascript
     /* avoid */
     function Customer ($scope) {
-      $scope.name = {};
-      $scope.sendMessage = function () { };
+        $scope.name = {};
+        $scope.sendMessage = function() { };
     }
     ```
 
     ```javascript
     /* recommended - but see next section */
     function Customer () {
-      this.name = {};
-      this.sendMessage = function () { };
+        this.name = {};
+        this.sendMessage = function() { };
     }
     ```
 
@@ -299,18 +308,18 @@
 
     ```javascript
     /* avoid */
-    function Customer () {
-      this.name = {};
-      this.sendMessage = function () { };
+    function Customer() {
+        this.name = {};
+        this.sendMessage = function() { };
     }
     ```
 
     ```javascript
     /* recommended */
     function Customer () {
-      var vm = this;
-      vm.name = {};
-      vm.sendMessage = function () { };
+        var vm = this;
+        vm.name = {};
+        vm.sendMessage = function() { };
     }
     ```
 
@@ -500,32 +509,36 @@
     ```javascript
     /* avoid */
     function Order ($http, $q) {
-      var vm = this;
-      vm.checkCredit = checkCredit;
-      vm.total = 0;
+        var vm = this;
+        vm.checkCredit = checkCredit;
+        vm.total = 0;
 
-      function checkCredit () { 
-        var orderTotal = vm.total;
-        return $http.get('api/creditcheck').then(function (data) {
-            var remaining = data.remaining;
-            return $q.when(!!(remaining > orderTotal));
-        });
-      };
+        function checkCredit () { 
+            var orderTotal = vm.total;
+            return $http.get('api/creditcheck').then(function(data) {
+                var remaining = data.remaining;
+                return $q.when(!!(remaining > orderTotal));
+            });
+        };
     }
     ```
 
     ```javascript
     /* recommended */
     function Order (creditService) {
-      var vm = this;
-      vm.checkCredit = checkCredit;
-      vm.total = 0;
+        var vm = this;
+        vm.checkCredit = checkCredit;
+        vm.total = 0;
 
-      function checkCredit () { 
-        return creditService.check();
-      };
+        function checkCredit () { 
+          return creditService.check();
+        };
     }
     ```
+
+  - **保持Controller的专一性**：一个view定义一个controller，尽量不要在其它view中使用这个controller。把可重用的逻辑放到factory中，保证controller的单一，只专注于当前视图。 
+  
+    *为什么？*：不同的view用同一个controller是非常不科学的，良好的端对端测试覆盖率对于保证大型应用稳定性是必需的。
 
   - **分配Controller**：当一个controller必须匹配一个view时或者任何一个组件可能被其它controller或是view重用时，连同controller的route一起定义。 
     
@@ -538,14 +551,14 @@
 
     // route-config.js
     angular
-      .module('app')
-      .config(config);
+        .module('app')
+        .config(config);
 
     function config ($routeProvider) {
-      $routeProvider
-        .when('/avengers', {
-          templateUrl: 'avengers.html'
-        });
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html'
+            });
     }
     ```
 
@@ -560,16 +573,16 @@
 
     // route-config.js
     angular
-      .module('app')
-      .config(config);
+        .module('app')
+        .config(config);
 
     function config ($routeProvider) {
-      $routeProvider
-        .when('/avengers', {
-          templateUrl: 'avengers.html',
-          controller: 'Avengers',
-          controllerAs: 'vm'
-        });
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html',
+                controller: 'Avengers',
+                controllerAs: 'vm'
+            });
     }
     ```
 
@@ -583,7 +596,7 @@
 
 ## Services
 
-  - **单例**：用`new`实例化service，用`this`实例化公共方法和变量。也可以用factory，这是我推荐的保持一致性的做法。 
+  - **单例**：用`new`实例化service，用`this`实例化公共方法和变量，由于这和facotry是类似的，所以推荐用facotry来代替。
   
   - 注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
@@ -595,9 +608,9 @@
         .service('logger', logger);
 
     function logger () {
-      this.logError = function (msg) {
-        /* */
-      };
+        this.logError = function(msg) {
+          /* */
+        };
     }
     ```
 
@@ -608,11 +621,11 @@
         .factory('logger', logger);
 
     function logger () {
-      return {
-        logError: function (msg) {
-          /* */
-        }
-      };
+        return {
+            logError: function(msg) {
+              /* */
+            }
+        };
     }
     ```
 
@@ -637,41 +650,41 @@
     ```javascript
     /* avoid */
     function dataService () {
-      var someValue = '';
-      function save () { 
-        /* */
-      };
-      function validate () { 
-        /* */
-      };
+        var someValue = '';
+        function save () { 
+          /* */
+        };
+        function validate () { 
+          /* */
+        };
 
-      return {
-        save: save,
-        someValue: someValue,
-        validate: validate
-      };
+        return {
+            save: save,
+            someValue: someValue,
+            validate: validate
+        };
     }
     ```
 
     ```javascript
     /* recommended */
     function dataService () {
-      var someValue = '';
-      var service = {
-        save: save,
-        someValue: someValue,
-        validate: validate
-      };
-      return service;
+        var someValue = '';
+        var service = {
+            save: save,
+            someValue: someValue,
+            validate: validate
+        };
+        return service;
 
-      ////////////
-      function save () { 
-        /* */
-      };
+        ////////////
+        function save () { 
+          /* */
+        };
 
-      function validate () { 
-        /* */
-      };
+        function validate () { 
+          /* */
+        };
     }
     ```
 
@@ -842,7 +855,7 @@
 
         function getAvengers() {
             return dataservice.getAvengers()
-              .then(function (data) {
+              .then(function(data) {
                   vm.avengers = data;
                   return vm.avengers;
               });
@@ -881,7 +894,7 @@
          * for the promise
          */
         return dataservice.getAvengers()
-          .then(function (data) {
+          .then(function(data) {
               /**
                * Step 3
                * set the data and resolve the promise
@@ -904,64 +917,100 @@
     ```javascript
     /* avoid */
     angular
-      .module('app.widgets')
+        .module('app.widgets')
 
-      /* order directive that is specific to the order module */
-      .directive('orderCalendarRange', orderCalendarRange)
+        /* order directive that is specific to the order module */
+        .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
-      .directive('salesCustomerInfo', salesCustomerInfo)
+        /* sales directive that can be used anywhere across the sales app */
+        .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
-      .directive('sharedSpinner', sharedSpinner);
+        /* spinner directive that can be used anywhere across apps */
+        .directive('sharedSpinner', sharedSpinner);
 
-      /* implementation details */
+    function orderCalendarRange() {
+        /* implementation details */
+    }
+
+    function salesCustomerInfo() {
+        /* implementation details */
+    }
+
+    function sharedSpinner() {
+        /* implementation details */
+    }
     ```
 
     ```javascript
     /* recommended */
+    /* calendarRange.directive.js */
 
     /**
      * @desc order directive that is specific to the order module at a company named Acme
-     * @file calendarRange.directive.js
      * @example <div acme-order-calendar-range></div>
      */
     angular
-      .module('sales.order')
-      .directive('acmeOrderCalendarRange', orderCalendarRange)
+        .module('sales.order')
+        .directive('acmeOrderCalendarRange', orderCalendarRange);
+
+    function orderCalendarRange() {
+        /* implementation details */
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    /* customerInfo.directive.js */
 
     /**
      * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
-     * @file customerInfo.directive.js
      * @example <div acme-sales-customer-info></div>
      */    
     angular
-      .module('sales.widgets')
-      .directive('acmeSalesCustomerInfo', salesCustomerInfo);
+        .module('sales.widgets')
+        .directive('acmeSalesCustomerInfo', salesCustomerInfo);
+
+    function salesCustomerInfo() {
+        /* implementation details */
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    /* spinner.directive.js */
 
     /**
      * @desc spinner directive that can be used anywhere across apps at a company named Acme
-     * @file spinner.directive.js
      * @example <div acme-shared-spinner></div>
      */
     angular
-      .module('shared.widgets')
-      .directive('acmeSharedSpinner', sharedSpinner);
+        .module('shared.widgets')
+        .directive('acmeSharedSpinner', sharedSpinner);
 
-      /* implementation details */
+    function sharedSpinner() {
+        /* implementation details */
+    }
     ```
 
     - 注意：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时，选择一个让directive和文件都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
 
-- **限制DOM操作**：当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可，但是如果directive还想做更多的事，在directive中结合使用hide和show将会提高性能，因为这能够减少watchers。 
+- **限制DOM操作**：当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可。
 
     *为什么？*：DOM操作的测试和调试是很困难的，通常会有更好的方法（CSS、animations、templates）。
+
+- **提供一个唯一的Directive前缀**：提供一个短小、唯一、具有描述性的directive前缀，例如`acmeSalesCustomerInfo`在HTML中声明为`acme-sales-customer-info`。
+
+    *为什么？*：方便快速识别directive的内容和起源，例如`acme-`可能预示着这个directive是服务于Acme company。
+
+    - 注：避免使用`ng-`为前缀，研究一下其它广泛使用的directive避免命名冲突，例如[Ionic Framework](http://ionicframework.com/)的`ion-`。
 
 - **限制元素和属性**：当创建一个directive需要作为一个独立元素是有意义时，允许限制`E`（自定义元素），可选限制`A`（自定义属性）。一般来说，如果它可能是它自己的控制，用`E`是合适的做法。一般原则是允许`EA`，但是当它是独立的时候这更倾向于作为一个元素来实施，当它是为了增强已存在的DOM元素时则更倾向于作为一个属性来实施。
 
     *为什么？*：这很有意义！
 
     *为什么？*：虽然我们允许directive被当作一个class来使用，但如果这个directive的行为确实像一个元素的话，那么把directive当作元素或者属性是更有意义的。
+
+    - 注：AngularJS 1.3 +默认使用EA。
 
     ```html
     <!-- avoid -->
@@ -1032,44 +1081,42 @@
     function myExample() {
         var directive = {
             restrict: 'EA',
-            // TODO: Use a templateUrl instead
-            template: '<div>hello world</div> \
-                        <div>max={{exVm.max}} \
-                            <input ng-model="exVm.max"/> \
-                        </div> \
-                        <div>min={{exVm.min}} \
-                            <input ng-model="exVm.min"/> \
-                        </div> \
-            ',
+            templateUrl: 'app/feature/example.directive.html',
             scope: {
                 max: '='
             },
             link: linkFunc,
-            controller : DirCtrl,
-            controllerAs: 'exVm'
+            controller : ExampleController,
+            controllerAs: 'vm'
         };
         return directive;
 
-        /* @ngInject */
-        function DirCtrl($scope) {
+        ExampleController.$inject = ['$scope'];
+        function ExampleController($scope) {
             // Injecting $scope just for comparison
             /* jshint validthis:true */
-            var exVm = this;
+            var vm = this;
 
-            exVm.min = 3; 
-            exVm.max = $scope.max; 
+            vm.min = 3; 
+            vm.max = $scope.max; 
             console.log('CTRL: $scope.max = %i', $scope.max);
-            console.log('CTRL: exVm.min = %i', exVm.min);
-            console.log('CTRL: exVm.max = %i', exVm.max);
+            console.log('CTRL: vm.min = %i', vm.min);
+            console.log('CTRL: vm.max = %i', vm.max);
         }
 
-        /* @ngInject */
-        function(scope, el, attr, ctrl) {
+        function linkFunc(scope, el, attr, ctrl) {
             console.log('LINK: scope.max = %i', scope.max);
-            console.log('LINK: scope.exVm.min = %i', scope.exVm.min);
-            console.log('LINK: scope.exVm.max = %i', scope.exVm.max);
+            console.log('LINK: scope.vm.min = %i', scope.vm.min);
+            console.log('LINK: scope.vm.max = %i', scope.vm.max);
         }
     }
+    ```
+
+    ```html
+    /* example.directive.html */
+    <div>hello world</div>
+    <div>max={{vm.max}}<input ng-model={vm.max"/></div>
+    <div>min={{vm.min}}<input ng-model={vm.min"/></div>
     ```
 
 **[返回顶部](#目录)**
@@ -1123,17 +1170,17 @@
     ```javascript
     /* avoid */
     angular
-      .module('app')
-      .controller('Avengers', Avengers);
+        .module('app')
+        .controller('Avengers', Avengers);
 
     function Avengers (movieService) {
-      var vm = this;
-      // unresolved
-      vm.movies;
-      // resolved asynchronously
-      movieService.getMovies().then(function (response) {
-        vm.movies = response.movies;
-      });
+        var vm = this;
+        // unresolved
+        vm.movies;
+        // resolved asynchronously
+        movieService.getMovies().then(function(response) {
+          vm.movies = response.movies;
+        });
     }
     ```
 
@@ -1142,31 +1189,31 @@
 
     // route-config.js
     angular
-      .module('app')
-      .config(config);
+        .module('app')
+        .config(config);
 
     function config ($routeProvider) {
-      $routeProvider
-        .when('/avengers', {
-          templateUrl: 'avengers.html',
-          controller: 'Avengers',
-          controllerAs: 'vm',
-          resolve: {
-            moviesPrepService: function (movieService) {
-                return movieService.getMovies();
-            }
-          }
-        });
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html',
+                controller: 'Avengers',
+                controllerAs: 'vm',
+                resolve: {
+                  moviesPrepService: function(movieService) {
+                      return movieService.getMovies();
+                  }
+                }
+            });
     }
 
     // avengers.js
     angular
-      .module('app')
-      .controller('Avengers', Avengers);
+        .module('app')
+        .controller('Avengers', Avengers);
 
     function Avengers (moviesPrepService) {
-      var vm = this;
-      vm.movies = moviesPrepService.movies;
+        var vm = this;
+        vm.movies = moviesPrepService.movies;
     }
 
     ```
@@ -1185,8 +1232,8 @@
     ```javascript
     /* avoid - not minification-safe*/
     angular
-      .module('app')
-      .controller('Dashboard', Dashboard);
+        .module('app')
+        .controller('Dashboard', Dashboard);
 
     function Dashboard(common, dataservice) {
     }
@@ -1199,7 +1246,7 @@
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-  - **手动添加依赖**：用$inject手动添加AngularJS组件所需的依赖。
+  - **手动添加依赖**：用`$inject`手动添加AngularJS组件所需的依赖。
   
       *为什么？*：这种技术反映了使用[`ng-annotate`](https://github.com/olov/ng-annotate)的技术，这就是我推荐的对依赖关系进行自动化创建安全压缩的方式，如果`ng-annotate`检测到已经有了注入，那么它就不会再次重复执行。
 
@@ -1210,9 +1257,20 @@
     ```javascript
     /* avoid */
     angular
-      .module('app')
-      .controller('Dashboard', 
-        ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
+        .module('app')
+        .controller('Dashboard', 
+            ['$location', '$routeParams', 'common', 'dataservice', 
+                function Dashboard($location, $routeParams, common, dataservice) {}
+            ]);      
+    ```
+
+    ```javascript
+
+    /* avoid */
+    angular
+        .module('app')
+        .controller('Dashboard', 
+          ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
       
     function Dashboard($location, $routeParams, common, dataservice) {
     }
@@ -1221,8 +1279,8 @@
     ```javascript
     /* recommended */
     angular
-      .module('app')
-      .controller('Dashboard', Dashboard);
+        .module('app')
+        .controller('Dashboard', Dashboard);
 
     Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
       
@@ -1237,26 +1295,26 @@
     ```javascript
     // inside a directive definition
     function outer() {
-      return {
-          controller: DashboardPanel,
-      };
+        return {
+            controller: DashboardPanel,
+        };
 
-      DashboardPanel.$inject = ['logger']; // Unreachable
-      function DashboardPanel(logger) {
-      }
+        DashboardPanel.$inject = ['logger']; // Unreachable
+        function DashboardPanel(logger) {
+        }
     }
     ```
 
     ```javascript
     // inside a directive definition
     function outer() {
-      DashboardPanel.$inject = ['logger']; // reachable
-      return {
-          controller: DashboardPanel,
-      };
+        DashboardPanel.$inject = ['logger']; // reachable
+        return {
+            controller: DashboardPanel,
+        };
 
-      function DashboardPanel(logger) {
-      }
+        function DashboardPanel(logger) {
+        }
     }
     ```
 
@@ -1269,15 +1327,15 @@
     ```javascript
     /* recommended */
     function config ($routeProvider) {
-      $routeProvider
-        .when('/avengers', {
-          templateUrl: 'avengers.html',
-          controller: 'Avengers',
-          controllerAs: 'vm',
-          resolve: {
-            moviesPrepService: moviePrepService
-          }
-        });
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html',
+                controller: 'Avengers',
+                controllerAs: 'vm',
+                resolve: {
+                    moviesPrepService: moviePrepService
+                }
+            });
     }
 
     moviePrepService.$inject =  ['movieService'];
@@ -1295,25 +1353,27 @@
   
       *为什么？*：可以避免代码中使用到任何会造成不安全压缩的依赖的写法。
 
-      *为什么？*：[`ng-min`](https://github.com/btford/ngmin)是不推荐的用法。 
+      *为什么？*：[`ng-min`](https://github.com/btford/ngmin)是不推荐的用法。
+
+      >我更喜欢Gulp，因为我觉得它是易写易读易调试的。
 
     - 下面的代码没有使用压缩安全依赖。
 
     ```javascript
     angular
-      .module('app')
-      .controller('Avengers', Avengers);
+        .module('app')
+        .controller('Avengers', Avengers);
 
     /* @ngInject */
     function Avengers (storageService, avengerService) {
-      var vm = this;
-      vm.heroSearch = '';
-      vm.storeHero = storeHero;
+        var vm = this;
+        vm.heroSearch = '';
+        vm.storeHero = storeHero;
 
-      function storeHero(){
-        var hero = avengerService.find(vm.heroSearch);
-        storageService.save(hero.name, hero);
-      }
+        function storeHero(){
+          var hero = avengerService.find(vm.heroSearch);
+          storageService.save(hero.name, hero);
+        }
     }
     ```
 
@@ -1321,19 +1381,19 @@
 
     ```javascript
     angular
-      .module('app')
-      .controller('Avengers', Avengers);
+        .module('app')
+        .controller('Avengers', Avengers);
 
     /* @ngInject */
     function Avengers (storageService, avengerService) {
-      var vm = this;
-      vm.heroSearch = '';
-      vm.storeHero = storeHero;
+        var vm = this;
+        vm.heroSearch = '';
+        vm.storeHero = storeHero;
 
-      function storeHero(){
-        var hero = avengerService.find(vm.heroSearch);
-        storageService.save(hero.name, hero);
-      }
+        function storeHero(){
+          var hero = avengerService.find(vm.heroSearch);
+          storageService.save(hero.name, hero);
+        }
     }
 
     Avengers.$inject = ['storageService', 'avengerService'];
@@ -1352,7 +1412,7 @@
     - 下面的代码是gulp任务使用ngAnnotate的例子。
 
     ```javascript
-    gulp.task('js', ['jshint'], function () {
+    gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
         return gulp.src(source)
             .pipe(sourcemaps.init())
@@ -1380,6 +1440,8 @@
   
       *为什么？*：在开发时和运行时提供了一种统一的方式来处理未被捕获的AngularJS异常。
 
+      - 注：另一个选项是用来覆盖service的，这个可以代替decorator，这是一个非常nice的选项，但是如果你想保持默认行为，那么推荐你拓展一个decorator。
+
   	```javascript
     /* recommended */
     angular
@@ -1395,7 +1457,7 @@
     extendExceptionHandler.$inject = ['$delegate', 'toastr'];
 
     function extendExceptionHandler($delegate, toastr) {
-        return function (exception, cause) {
+        return function(exception, cause) {
             $delegate(exception, cause);
             var errorData = { 
               exception: exception, 
@@ -1416,6 +1478,8 @@
 
       *为什么？*：提供了一个统一的方法来捕获代码中抛出的异常。
 
+      - 注：异常捕获器对特殊异常的捕获和反应是非常好的，例如，使用XHR从远程服务获取数据时，你想要捕获所有异常并做出不同的反应。
+
     ```javascript
     /* recommended */
     angular
@@ -1431,7 +1495,7 @@
         return service;
 
         function catcher(message) {
-            return function (reason) {
+            return function(reason) {
                 logger.error(message, reason);
             };
         }
@@ -1453,7 +1517,7 @@
          * Provide an exit clause if it tries to do it twice.
          */
         $rootScope.$on('$routeChangeError',
-            function (event, current, previous, rejection) {
+            function(event, current, previous, rejection) {
                 var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
                 var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
@@ -1471,8 +1535,8 @@
 
 ## 命名
   - **命名原则**：遵循以描述组件功能，然后是类型（可选）的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。大多数文件都有2个名字。
-    *   文件名 
-    *   带有Angular的注册文件名
+    *   文件名 (`avengers.controller.js`)
+    *   带有Angular的注册组件名 (`AvengersController`)
  
     *为什么？*：命名约定有助于为一目了然地找到内容提供一个统一的方式，在项目中和团队中保持统一性是非常重要的，保持统一性对于跨公司来说提供了巨大的效率。
 
@@ -1494,13 +1558,11 @@
     avengers.js
     avengers.controller.js
     avengersController.js
-    avengersCtrl.js
 
     // Services/Factories
     logger.js
     logger.service.js
     loggerService.js
-    loggerSvc.js
     ```
 
     ```javascript
@@ -1561,11 +1623,11 @@
     avenger-profile.directive.spec.js
     ```
 
-  - **Controller命名**：为所有controller提供统一的名称，特征然后名字，鉴于controller是构造函数，所以要采用pascal-casing（每个单词首字母大写）的方式。
+  - **Controller命名**：为所有controller提供统一的名称，特征然后名字，鉴于controller是构造函数，所以要采用UpperCamelCase（每个单词首字母大写）的方式。
 
       *为什么？*：为快速识别和引用controller提供统一的方式。
 
-      *为什么？*：Pascal-casing是常规的识别一个可以用构造函数来实例化的对象的方式。
+      *为什么？*：UpperCamelCase是常规的识别一个可以用构造函数来实例化的对象的方式。
 
     ```javascript
     /**
@@ -1574,15 +1636,47 @@
 
     // avengers.controller.js
     angular
-      .module
-      .controller('Avengers', Avengers);
+        .module
+        .controller('HeroAvengers', HeroAvengers);
 
-    function Avengers(){ }    
+    function HeroAvengers(){ }    
+    ```
+
+  - **Controller命名后缀**：使用`Controller`后缀或者不加后缀。
+
+      *为什么？*：`Controller`使用更广泛、更明确、更具有描述性。
+
+      *为什么？*：省略后缀则更简洁，但这样就不太好识别了。
+
+    ```javascript
+    /**
+     * recommended: Option 1
+     */
+
+    // avengers.controller.js
+    angular
+        .module
+        .controller('Avengers', Avengers);
+
+    function Avengers(){ }
+    ```
+
+    ```javascript
+    /**
+     * recommended: Option 2
+     */
+
+    // avengers.controller.js
+    angular
+        .module
+        .controller('AvengersController', AvengersController);
+
+    function AvengersController(){ }
     ```
     
   - **Factory命名**：一样要统一，对service和factory使用camel-casing（驼峰式，第一个单词首字母小写，后面单词首字母大写）方式。
 
-      *为什么？*：可以快速识别和引用controller。
+      *为什么？*：可以快速识别和引用factory。
     
     ```javascript
     /**
@@ -1591,8 +1685,8 @@
 
     // logger.service.js
     angular
-      .module
-      .factory('logger', logger);
+        .module
+        .factory('logger', logger);
 
     function logger(){ }
     ```
@@ -1608,8 +1702,8 @@
 
     // avenger.profile.directive.js    
     angular
-      .module
-      .directive('xxAvengerProfile', xxAvengerProfile);
+        .module
+        .directive('xxAvengerProfile', xxAvengerProfile);
 
     // usage is <xx-avenger-profile> </xx-avenger-profile>
 
@@ -1685,7 +1779,7 @@
 **[返回顶部](#目录)**
 
 ## 应用程序结构
-  - **总指南**：有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件，允许把一些小的、短的directive放到一个`directive.js`文件中。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
+  - **总指南**：有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
 
   - **Layout**：把定义应用程序总体布局的组件放到`layout`文件夹中，如导航、内容区等等。
 
@@ -1739,10 +1833,11 @@
             session-detail.controller.js   
     ```
 
-      - 注意：使用按类型划分文件夹结构是另一种常见的选择。不过这样的话，当做一个功能时，需要在多个文件夹中来回切换。当应用程序有5个、10个，甚至是25个以上的view、controller（或其他feature）时，这种方式将迅速变得不实用，这就使得它定位文件比按功能分文件夹的方式要困难的多。
+      - 注意：不要使用按类型划分文件夹结构，因为如果这样的话，当做一个功能时，需要在多个文件夹中来回切换。当应用程序有5个、10个，甚至是25个以上的view、controller（或其他feature）时，这种方式将迅速变得不实用，这就使得它定位文件比按功能分文件夹的方式要困难的多。
 
     ```javascript
     /* 
+     * avoid
      * Alternative folders-by-type.
      * I recommend "folders-by-feature", instead.
      */
@@ -1780,7 +1875,7 @@
 
 ## 模块化
   
-  - **许多小的、独立的模块**：创建只有一个职责的小模块。
+  - **许多小的、独立的模块**：创建只封装一个职责的小模块。
 
     *为什么？*：模块化的应用程序很容易插入新的功能。
 
@@ -1842,19 +1937,19 @@
     *为什么？*：编写测试有助于明确规定你的故事要做什么、不做什么以及你如何判断是否成功。
 
     ```javascript
-    it('should have Avengers controller', function () {
+    it('should have Avengers controller', function() {
         //TODO
     });
 
-    it('should find 1 Avenger when filtered by name', function () {
+    it('should find 1 Avenger when filtered by name', function() {
         //TODO
     });
 
-    it('should have 10 Avengers', function () {}
+    it('should have 10 Avengers', function() {}
         //TODO (mock data?)
     });
 
-    it('should return Avengers via XHR', function () {}
+    it('should return Avengers via XHR', function() {}
         //TODO ($httpBackend?)
     });
 
@@ -1891,11 +1986,11 @@
 
   - **代码分析**：在你的测试上运行JSHint。
 
-    *为什么？*：测试仅仅是代码，JSHint能够帮你识别代码中可能导致测试无法正常工作的的质量问题。
+    *为什么？*：测试也是代码，JSHint能够帮你识别代码中可能导致测试无法正常工作的的质量问题。
 
-  - **对测试降低JSHint规则**：对你的测试代码放松规则。
+  - **对测试降低全局JSHint规则**：对你的测试代码放松规则，这样可以允许使用`describe`和`expect`等类似通用的全局方法。
 
-    *为什么？*：测试并不是最终用户需要用到的，所以不需要太强烈的代码质量规则。例如，测试中可以允许使用全局变量。
+    *为什么？*：测试也是代码，因此要和对待其它生产代码一样重视测试代码的质量。然而，测试框架中允许使用全局变量，例如，在你的测试单例中允许使用this。
 
     ```javascript
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
@@ -1933,41 +2028,50 @@
 
 ## 注释
 
-  - **jsDoc**：如果你计划产出一个文档，那么就使用[`jsDoc`](http://usejsdoc.org/)的语法来记录函数名、描述、参数和返回值。
+  - **jsDoc**：如果你计划产出一个文档，那么就使用[`jsDoc`](http://usejsdoc.org/)的语法来记录函数名、描述、参数和返回值。使用`@namespace`和`@memberOf`来匹配应用程序结构。
 
     *为什么？*：你可以从代码中生成（重新生成）文档，而不必从头开始编写文档。
 
     *为什么？*：使用业内通用工具保持了统一性。
 
     ```javascript
-    angular
-      .module('app')
-      .factory('logger', logger);
-
     /**
-     * @name logger
-     * @desc Application wide logger
+     * Logger Factory
+     * @namespace Factories
      */
-    function logger ($log) {
-      var service = {
-        logError: logError
-      };
-      return service;
-
-      ////////////
+    (function() {
+      angular
+          .module('app')
+          .factory('logger', logger);
 
       /**
-       * @name logError
-       * @desc Logs errors
-       * @param {String} msg Message to log 
-       * @returns {String}
+       * @name logger
+       * @namespace Logger
+       * @desc Application wide logger
+       * @memberOf Factories
        */
-      function logError(msg) {
-        var loggedMsg = 'Error: ' + msg;
-        $log.error(loggedMsg);
-        return loggedMsg;
-      };
-    }
+      function logger ($log) {
+          var service = {
+              logError: logError
+          };
+          return service;
+
+          ////////////
+
+          /**
+           * @name logError
+           * @desc Logs errors
+           * @param {String} msg Message to log 
+           * @returns {String}
+           * @memberOf Factories.Logger
+           */
+          function logError(msg) {
+              var loggedMsg = 'Error: ' + msg;
+              $log.error(loggedMsg);
+              return loggedMsg;
+          };
+      }
+    })();
     ```
 
 **[返回顶部](#目录)**
@@ -2056,7 +2160,7 @@
     // constants.js
 
     /* global toastr:false, moment:false */
-    (function () {
+    (function() {
         'use strict';
 
         angular
