@@ -887,7 +887,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }      
     ```
 
-### turn a Promise from Data Calls:
+### Return a Promise from Data Calls:
   -  When calling a data service that returns a promise such as $http, return a promise in your calling function too.
 
     *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
