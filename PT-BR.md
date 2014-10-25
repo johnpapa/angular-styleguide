@@ -53,16 +53,16 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   1. [Contributing](#contributing)
   1. [License](#license)
 
-## Single Responsibility
+## Single Responsibility - *Responsabilidade Única*
 
-### Rule of 1
+### Regra nº 1
 
-  - Define 1 component per file.  
+  - Defina um componente por arquivo.
 
- 	The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.  
+  O exemplo seguinte define um módulo `app` e suas dependências, define um controller e define um factory, todos no mesmo arquivo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
     	.module('app', ['ngRoute'])
     	.controller('SomeController' , SomeController)
@@ -72,11 +72,11 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
   function someFactory() { }
   ```
-    
-	The same components are now separated into their own files.
+
+  Os mesmos componentes agora estão separados em seus próprios arquivos.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   
   // app.module.js
   angular
@@ -84,7 +84,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   
   // someController.js
   angular
@@ -95,7 +95,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   
   // someFactory.js
   angular
@@ -105,25 +105,25 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   function someFactory() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## IIFE
 ### JavaScript Closures
 
-  - Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
-  
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  - Envolva os componentes AngularJS em uma *Immediately Invoked Function Expression (IIFE - Expressão de função imediatamente invocada)*.
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  **Why? ~>** Uma IIFE remove as variáveis do escopo global. Isso ajuda a prevenir declarações de variáveis e funções de viverem por mais tempo que o esperado no escopo global, que também auxilia evitar colisões de variáveis.
+
+  **Why? ~>** Quando seu código é minificado e empacotado dentro de um único arquivo para *deployment* no servidor de produção, você pode ter conflitos de variáveis e muitas variáveis globais. Uma IIFE o protege em todos estes aspectos provendo escopo de variável para cada arquivo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   // logger.js
   angular
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable  
+  // função logger é adicionada como uma variável global
   function logger() { }
 
   // storage.js
@@ -131,16 +131,16 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable  
+  // função storage é adicionada como uma variável global
   function storage() { }
   ```
 
   
   ```javascript
   /**
-   * recommended 
+   * recomendado 
    *
-   * no globals are left behind 
+   * nenhuma global é deixada para trás 
    */
 
   // logger.js
@@ -166,11 +166,11 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
-  
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+  - **Nota**: Apenas para agilizar, o resto dos exemplos neste guia omitirão a sintaxe IIFE. 
 
-**[Back to top](#table-of-contents)**
+  - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
+
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Modules
 
@@ -275,7 +275,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Controllers
 
@@ -630,7 +630,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Services
 
@@ -668,7 +668,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Factories
 
@@ -835,7 +835,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Data Services
 
@@ -958,7 +958,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   }
   ```
 
-    **[Back to top](#table-of-contents)**
+    **[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1185,7 +1185,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Resolving Promises for a Controller
 
@@ -1291,7 +1291,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Manual Annotating for Dependency Injection
 
@@ -1419,7 +1419,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Minification and Annotation
 
@@ -1528,7 +1528,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Exception Handling
 
@@ -1633,7 +1633,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Naming
 
@@ -1848,7 +1848,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1906,7 +1906,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Application Structure
 
@@ -2015,7 +2015,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
             topnav.html         
     ``` 
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Modularity
   
@@ -2069,7 +2069,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Angular $ Wrapper Services
 
@@ -2085,7 +2085,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2170,7 +2170,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Animations
 
@@ -2200,7 +2200,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Comments
 
@@ -2251,7 +2251,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## JS Hint
 
@@ -2327,7 +2327,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## Constants
 
@@ -2351,7 +2351,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -2396,7 +2396,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -2439,4 +2439,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
