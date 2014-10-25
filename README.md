@@ -530,7 +530,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
 
-    *Why?*: Removes dependencies and hides implementations details from the controller.
+    *Why?*: Removes dependencies and hides implementation details from the controller.
 
   ```javascript
   /* avoid */
