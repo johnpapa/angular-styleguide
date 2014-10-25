@@ -1,6 +1,6 @@
 # Guia de Modelos AngularJS
 
-*Guia de Modelos Opinativo sobre AngularJS para times por [@john_papa](//twitter.com/john_papa)*
+*Guia de Modelos Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
 
 Se você procura por um guia de modelos opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes modelos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
 
