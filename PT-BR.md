@@ -1,22 +1,32 @@
-# AngularJS Style Guide
+# Guia de Modelos AngularJS
 
-*Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*Guia de Modelos Opinativo sobre AngularJS para times por [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. These styles are based on my development experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
+Se você procura por um guia de modelos opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes modelos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
 
->If you like this guide, check out my [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight.
+> Se você gostar deste modelo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
 
-The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. 
+A proposta deste guia de modelos é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso e, o mais importante, porque eu as escolhi.
 
-## Community Awesomeness and Credit
-Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
+## Créditos e uma Grande Comunidade
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
+Nunca trabalhe no vazio. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários modelos e convenções. Nós concordamos na maioria, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
-## See the Styles in a Sample App
+Vários de meus modelos vieram de várias sessões de programação em par que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora nem sempre concordamos, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
+
+## Veja os modelos em uma aplicativo de exemplo
+
 While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
-## Table of Contents
+Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de amostra que segue estes modelos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegâ-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
+
+> **Nota de tradução**: Os títulos originais de cada seção será mantido, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
+>
+> Após o titúlo, estará a tradução auxiliar, quando necessária, visto que alguns termos são mais facilmente entendidos quando não traduzidos, por fazerem parte do núcleo do estudo em questão.
+>
+> Para eventuais erros de digitação e/ou tradução, favor enviar um pull-request! 
+
+## Tabela de Conteúdo
 
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
