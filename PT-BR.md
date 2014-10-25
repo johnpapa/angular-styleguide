@@ -53,7 +53,8 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   1. [Contributing](#contributing)
   1. [License](#license)
 
-## Single Responsibility - *Responsabilidade Única*
+## Single Responsibility
+ou *Responsabilidade Única*
 
 ### Regra nº 1
 
@@ -105,7 +106,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   function someFactory() { }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## IIFE
 ### JavaScript Closures
@@ -170,7 +171,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
   - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
 
@@ -275,7 +276,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   function logger() { }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Controllers
 
@@ -630,7 +631,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   </div>
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Services
 
@@ -668,7 +669,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Factories
 
@@ -835,7 +836,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Data Services
 
@@ -958,7 +959,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   }
   ```
 
-    **[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+    **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1185,7 +1186,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Resolving Promises for a Controller
 
@@ -1291,7 +1292,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Manual Annotating for Dependency Injection
 
@@ -1419,7 +1420,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Minification and Annotation
 
@@ -1528,7 +1529,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Exception Handling
 
@@ -1633,7 +1634,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Naming
 
@@ -1848,7 +1849,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1906,7 +1907,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure
 
@@ -2015,7 +2016,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
             topnav.html         
     ``` 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modularity
   
@@ -2069,7 +2070,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Angular $ Wrapper Services
 
@@ -2085,7 +2086,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2170,7 +2171,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Animations
 
@@ -2200,7 +2201,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Comments
 
@@ -2251,7 +2252,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## JS Hint
 
@@ -2327,7 +2328,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Constants
 
@@ -2351,7 +2352,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -2396,7 +2397,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -2439,4 +2440,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conteudo)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
