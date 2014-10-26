@@ -174,21 +174,24 @@ ou *Responsabilidade Única*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
+ou Módulos
 
-### Avoid Naming Collisions
+### Evitando Colisão de Nomes
 
-  - Use unique naming conventions with separators for sub-modules. 
+  - Use uma única convenção de nomes com separadores para sub-módulos.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`. 
+  **Por que?** Nomes únicos ajudam a evitar colisão de nomes no módulo. Separadores ajudam a definir a hierarquia de módulos e submódulos. Por exemplo, `app` pode ser seu módulo raiz, enquanto `app.dashboard` e `app.users` podem ser módulos que são usados como dependências de `app`. 
 
-### Definitions (aka Setters)
+### Definições (*aka Setters*)
 
-  - Declare modules without a variable using the setter syntax. 
+> ps: **aka** é o acrônimo de **A**lso **Know** **A**s, de forma traduzida, **também conhecido como**.
 
-	*Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  - Declare os módulos sem uma variável usando a sintaxe *setter*.
+
+  **Por que?** Com 1 componente por arquivo, raramente será necessário criar uma variável para o módulo.
 	
   ```javascript
-  /* avoid */
+  /* evite */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -197,10 +200,10 @@ ou *Responsabilidade Única*
   ]);
   ```
 
-	Instead use the simple setter syntax.
+  Ao invés, use a simples sintaxe *setter*.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
     	.module('app', [
           'ngAnimate',
@@ -210,14 +213,14 @@ ou *Responsabilidade Única*
       ]);
   ```
 
-### Getters
+### *Getters*
 
-  - When using a module, avoid using a variables and instead use   chaining with the getter syntax.
+  - Quando usando um módulo, evite usar as variáveis e então use o encadeamento com a sintaxe *getter*.
 
-	*Why?* : This produces more readable code and avoids variables collisions or leaks.
+  **Por que?** Isso produz um código mais legível e evite colisão de variáveis ou vazamentos.
 
   ```javascript
-  /* avoid */
+  /* evite */
   var app = angular.module('app');
   app.controller('SomeController' , SomeController);
   
@@ -225,7 +228,7 @@ ou *Responsabilidade Única*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app')
       .controller('SomeController' , SomeController);
@@ -233,23 +236,25 @@ ou *Responsabilidade Única*
   function SomeController() { }
   ```
 
-### Setting vs Getting
+### *Setting* vs *Getting* 
+ou *Definindo* vs *Obtendo*
 
-  - Only set once and get for all other instances.
+  - Apenas *set* (configure) uma vez e *get* (receba) em todas as outras instâncias.
 	
-	*Why?*: A module should only be created once, then retrieved from that point and after.
+  **Por que?** Um módulo deve ser criado somente uma vez, então recupere-o deste ponto em diante. 
   	  
-	  - Use `angular.module('app', []);` to set a module.
-	  - Use  `angular.module('app');` to get a module. 
+	  - Use `angular.module('app', []);` para definir (*set*) um módulo.
+	  - Use  `angular.module('app');` para pegar (*get*) este módulo. 
 
-### Named vs Anonymous Functions
+### Funções Nomeadas vs Funções Anônimas
 
-  - Use named functions instead of passing an anonymous function in as a callback. 
+  - Use funções nomeadas ao invés de passar uma função anônima como um callback. 
 
 	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  **Por que?** Isso produz um código mais legível, é muito fácil de *debugar*, e reduz a quantidade de callbacks aninhados no código.
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app')
       .controller('Dashboard', function() { });
@@ -257,7 +262,7 @@ ou *Responsabilidade Única*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // dashboard.js
   angular
