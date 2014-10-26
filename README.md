@@ -2066,9 +2066,44 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Startup Logic
 
+### Configuration
+  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidaes include providers and constants.
+
+    *Why?:* This makes it easier to have a less places for configuration.
+
+  ```javascript
+  app
+    .module('app')
+    .config(configure);
+
+  /* @ngInject */
+  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
+      exceptionHandlerProvider.configure(config.appErrorPrefix);
+      configureStateHelper();
+
+      toastr.options.timeOut = 4000;
+      toastr.options.positionClass = 'toast-bottom-right';
+
+      ////////////////
+
+      function configureStateHelper() {
+          var resolveAlways = { /* @ngInject */
+              ready: function(dataservice) {
+                  return dataservice.ready();
+              }
+          };
+
+          routerHelperProvider.configure({
+              docTitle: 'NG-Modular: ',
+              resolveAlways: resolveAlways
+          });
+      }
+  }
+  ```
+
 ### Run Blocks
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the run block.
+  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
     *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
 
