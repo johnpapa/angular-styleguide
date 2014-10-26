@@ -2,6 +2,8 @@
 
 *Guia de Estilo Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
 
+>Consider the [original English version](../) the source of truth, as it is maintained and updated first.
+
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
 
 > Se você gostar deste estilo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
