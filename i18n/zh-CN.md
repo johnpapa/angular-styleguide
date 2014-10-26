@@ -39,7 +39,8 @@
   1. [应用程序结构LIFT原则](#应用程序结构LIFT原则)
   1. [应用程序结构](#应用程序结构)
   1. [模块化](#模块化)
-  1. [Angular $包装服务](#angular $包装服务)
+  1. [启动逻辑](#启动逻辑)
+  1. [Angular $包装服务](#angular-包装服务)
   1. [测试](#测试)
   1. [动画](#动画) 
   1. [注释](#注释)
@@ -2046,7 +2047,60 @@
 
 **[返回顶部](#目录)**
 
-## Angular $包装的服务
+## 启动逻辑
+
+### 配置
+  - 必须在angular应用启动前进行配置才能把代码注入到[模块配置](https://docs.angularjs.org/guide/module#module-loading-dependencies)，理想的一些case应该包括providers和constants。
+
+    *为什么？*：这使得在更少的地方进行配置变得容易。
+
+  ```javascript
+  angular
+      .module('app')
+      .config(configure);
+
+  configure.$inject = 
+      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
+      
+  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
+      exceptionHandlerProvider.configure(config.appErrorPrefix);
+      configureStateHelper();
+
+      toastr.options.timeOut = 4000;
+      toastr.options.positionClass = 'toast-bottom-right';
+
+      ////////////////
+
+      function configureStateHelper() {
+          routerHelperProvider.configure({
+              docTitle: 'NG-Modular: '
+          });
+      }
+  }
+  ```
+
+### 运行块
+
+  - 任何在应用程序启动时需要运行的代码都应该在factory中声明，通过一个function暴露出来，然后注入到[运行块](https://docs.angularjs.org/guide/module#module-loading-dependencies)。
+
+    *为什么？*：直接在运行块处写代码将会使得测试变得很困难，相反，如果放到facotry则会使的抽象和模拟变得很简单。
+
+  ```javascript
+  angular
+      .module('app')
+      .run(runBlock);
+
+    runBlock.$inject = ['authenticator', 'translator'];
+
+    function runBlock(authenticator, translator) {
+        authenticator.initialize();
+        translator.initialize();
+    }
+  ```
+
+**[返回顶部](#目录)**
+
+##Angular $包装服务
 
 ###$document和$window
 
