@@ -2,6 +2,10 @@
 
 *AngularJS风格指南[@john_papa](//twitter.com/john_papa)*
 
+*Translation by [kerncink](https://github.com/natee)*
+
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+
 如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个正适合你。这里所包含的风格是基于我用[AngularJS](//angularjs.org)、演讲、[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)并且在团队中运用的一些经验。
 
 >如果你喜欢这个指南，在Pluralsight上check out我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
