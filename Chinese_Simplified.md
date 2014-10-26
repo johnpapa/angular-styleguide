@@ -4,7 +4,7 @@
 
 如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个正适合你。这里所包含的风格是基于我用[AngularJS](//angularjs.org)、演讲、[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)并且在团队中运用的一些经验。
 
->If you like this guide, check out my [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight.如果你喜欢这个指南，在Pluralsight上check out我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
+>如果你喜欢这个指南，在Pluralsight上check out我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
 
 这个风格指南的目的是通过展示我用到的约定给构建AngularJS应用提供指导，更加重要的是，我为什么要选择它们。
 
@@ -389,7 +389,7 @@
         }
     ```
 
-     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/above-the-fold-1.png)
+     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
     - 注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
 
@@ -690,7 +690,7 @@
 
   - 这种绑定方式复制了宿主对象，原始值不会随着暴露模块模式的使用而更新。
 
-  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/above-the-fold-2.png)
+  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
   - **函数声明隐藏实现细节**：函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
 
@@ -1901,7 +1901,7 @@
      
   - **模块依赖**：应用程序根模块依赖于应用程序特定的功能模块，功能模块没有直接的依赖关系，跨应用的模块取决于所有通用模块。
 
-    ![模块化和依赖](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/modularity-1.png)
+    ![模块化和依赖](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
     *为什么？*：主程序模块包含一个能快速识别应用程序功能的清单。
 
@@ -1996,7 +1996,7 @@
     /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
 
-  ![测试工具](https://raw.githubusercontent.com/natee/angularjs-styleguide/master/assets/testing-tools.png)
+  ![测试工具](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
 
 **[返回顶部](#目录)**
@@ -2225,29 +2225,11 @@
 
 ## 许可证
 
-  - **tldr;** 使用本指南，我们鼓励指明归属，但这不是必须的。 
+  - **tldr;** 如果可以的话，使用本指南的时候还是指明归属吧。 
 
 #### (MIT许可证)
 
 Copyright (c) 2014 [John Papa](http://johnpapa.net)
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[返回顶部](#目录)**
