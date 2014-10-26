@@ -166,7 +166,7 @@
 
 ## Modules
 
- ###避免命名冲突
+###避免命名冲突
 
   - 给独立子模块使用唯一的命名约定。
 
@@ -295,7 +295,7 @@
   </div>
   ```
 
- ###controllerAs在controller中的语法
+###controllerAs在controller中的语法
 
   - 使用 `controllerAs` 语法代替 `经典的$scope语法` 语法。 
 
@@ -414,7 +414,7 @@
 
   ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  - 注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
+  注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
 
   ```javascript
   /* avoid */
@@ -491,8 +491,8 @@
   }
   ```
 
-  - 注意这里重要的代码分散在前面的例子中。
-  - 下面的示例中，可以看到重要的代码都放到了顶部。实现的详细细节都在下方，这样的代码当然是更易读的。
+  注意这里重要的代码分散在前面的例子中。
+  下面的示例中，可以看到重要的代码都放到了顶部。实现的详细细节都在下方，这样的代码当然是更易读的。
 
   ```javascript
   /*
@@ -631,7 +631,7 @@
 
   - 用`new`实例化service，用`this`实例化公共方法和变量，由于这和facotry是类似的，所以推荐用facotry来代替。
   
-  - 注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
+  注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
   ```javascript
   // service
@@ -1308,7 +1308,7 @@
   angular.module('app').controller('Dashboard', d);function d(a, b) { }
   ```
 
-###手动添加依赖**
+###手动添加依赖
 
   - 用`$inject`手动添加AngularJS组件所需的依赖。
   
@@ -1760,7 +1760,7 @@
   function AvengersController(){ }
   ```
     
- ###Factory命名
+###Factory命名
 
   - 一样要统一，对service和factory使用camel-casing（驼峰式，第一个单词首字母小写，后面单词首字母大写）方式。
 
