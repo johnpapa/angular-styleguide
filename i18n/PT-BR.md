@@ -1,25 +1,34 @@
-# AngularJS Style Guide
+# Guia de Estilo AngularJS
 
-*Opinionated AngularJS style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring AngularJS applications, then step right in. These styles are based on my development experience with [AngularJS](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams. 
+*Translation by [Eric Douglas](https://github.com/ericdouglas) and [Ciro Nunes](https://github.com/cironunes)*
 
->If you like this guide, check out my [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight.
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-The purpose of this style guide is to provide guidance on building AngularJS applications by showing the conventions I use and, more importantly, why I choose them. 
+Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
 
-## Community Awesomeness and Credit
-Never work in a vacuum. I find that the AngularJS community is an incredible group who are passionate about sharing experiences. As such, a friend  and  AngularJS expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
+> Se você gostar deste estilo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
+A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso e, o mais importante, porque eu as escolhi.
 
-## See the Styles in a Sample App
-While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+## Créditos e uma Grande Comunidade
 
-##Translations 
-[Translations of this Angular style guide](./i18n) are maintained by the community and can be found here.
+Nunca trabalhe no vazio. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilo e convenções. Nós concordamos na maioria, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
-## Table of Contents
+Vários de meus estilos vieram de várias sessões de programação em par que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora nem sempre concordamos, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
+
+## Veja os estilos em um aplicativo de exemplo
+
+Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de amostra que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegâ-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
+
+> **Nota de tradução**: Os títulos originais de cada seção será mantido, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
+>
+> Após o titúlo, estará a tradução auxiliar, quando necessária, visto que alguns termos são mais facilmente entendidos quando não traduzidos, por fazerem parte do núcleo do estudo em questão.
+>
+> Para eventuais erros de digitação e/ou tradução, favor enviar um pull-request! 
+
+## Tabela de Conteúdo
 
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
@@ -37,7 +46,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
-  1. [Startup Logic](#startup-logic)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
   1. [Testing](#testing)
   1. [Animations](#animations) 
@@ -50,15 +58,16 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [License](#license)
 
 ## Single Responsibility
+ou *Responsabilidade Única*
 
-### Rule of 1
+### Regra nº 1
 
-  - Define 1 component per file.  
+  - Defina um componente por arquivo.
 
- 	The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.  
+  O exemplo seguinte define um módulo `app` e suas dependências, define um controller e define um factory, todos no mesmo arquivo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
     	.module('app', ['ngRoute'])
     	.controller('SomeController' , SomeController)
@@ -68,11 +77,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   function someFactory() { }
   ```
-    
-	The same components are now separated into their own files.
+
+  Os mesmos componentes agora estão separados em seus próprios arquivos.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   
   // app.module.js
   angular
@@ -80,7 +89,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   
   // someController.js
   angular
@@ -91,7 +100,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   
   // someFactory.js
   angular
@@ -101,25 +110,25 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function someFactory() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## IIFE
 ### JavaScript Closures
 
-  - Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
-  
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  - Envolva os componentes AngularJS em uma *Immediately Invoked Function Expression (IIFE - Expressão de função imediatamente invocada)*.
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  **Por que?** Uma IIFE remove as variáveis do escopo global. Isso ajuda a prevenir declarações de variáveis e funções de viverem por mais tempo que o esperado no escopo global, que também auxilia evitar colisões de variáveis.
+
+  **Por que?** Quando seu código é minificado e empacotado dentro de um único arquivo para *deployment* no servidor de produção, você pode ter conflitos de variáveis e muitas variáveis globais. Uma IIFE o protege em todos estes aspectos provendo escopo de variável para cada arquivo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   // logger.js
   angular
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable  
+  // função logger é adicionada como uma variável global
   function logger() { }
 
   // storage.js
@@ -127,16 +136,16 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable  
+  // função storage é adicionada como uma variável global
   function storage() { }
   ```
 
   
   ```javascript
   /**
-   * recommended 
+   * recomendado 
    *
-   * no globals are left behind 
+   * nenhuma global é deixada para trás 
    */
 
   // logger.js
@@ -162,28 +171,31 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax. 
-  
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+  - **Nota**: Apenas para agilizar, o resto dos exemplos neste guia omitirão a sintaxe IIFE. 
 
-**[Back to top](#table-of-contents)**
+  - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
+
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
+ou Módulos
 
-### Avoid Naming Collisions
+### Evitando Colisão de Nomes
 
-  - Use unique naming conventions with separators for sub-modules. 
+  - Use uma única convenção de nomes com separadores para sub-módulos.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`. 
+  **Por que?** Nomes únicos ajudam a evitar colisão de nomes no módulo. Separadores ajudam a definir a hierarquia de módulos e submódulos. Por exemplo, `app` pode ser seu módulo raiz, enquanto `app.dashboard` e `app.users` podem ser módulos que são usados como dependências de `app`. 
 
-### Definitions (aka Setters)
+### Definições (*aka Setters*)
 
-  - Declare modules without a variable using the setter syntax. 
+> ps: **aka** é o acrônimo de **A**lso **Know** **A**s, de forma traduzida, **também conhecido como**.
 
-	*Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  - Declare os módulos sem uma variável usando a sintaxe *setter*.
+
+  **Por que?** Com 1 componente por arquivo, raramente será necessário criar uma variável para o módulo.
 	
   ```javascript
-  /* avoid */
+  /* evite */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -192,10 +204,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ]);
   ```
 
-	Instead use the simple setter syntax.
+  Ao invés, use a simples sintaxe *setter*.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
     	.module('app', [
           'ngAnimate',
@@ -205,14 +217,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       ]);
   ```
 
-### Getters
+### *Getters*
 
-  - When using a module, avoid using a variables and instead use   chaining with the getter syntax.
+  - Quando usando um módulo, evite usar as variáveis e então use o encadeamento com a sintaxe *getter*.
 
-	*Why?* : This produces more readable code and avoids variables collisions or leaks.
+  **Por que?** Isso produz um código mais legível e evite colisão de variáveis ou vazamentos.
 
   ```javascript
-  /* avoid */
+  /* evite */
   var app = angular.module('app');
   app.controller('SomeController' , SomeController);
   
@@ -220,7 +232,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app')
       .controller('SomeController' , SomeController);
@@ -228,23 +240,25 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function SomeController() { }
   ```
 
-### Setting vs Getting
+### *Setting* vs *Getting* 
+ou *Definindo* vs *Obtendo*
 
-  - Only set once and get for all other instances.
+  - Apenas *set* (configure) uma vez e *get* (receba) em todas as outras instâncias.
 	
-	*Why?*: A module should only be created once, then retrieved from that point and after.
+  **Por que?** Um módulo deve ser criado somente uma vez, então recupere-o deste ponto em diante. 
   	  
-	  - Use `angular.module('app', []);` to set a module.
-	  - Use  `angular.module('app');` to get a module. 
+	  - Use `angular.module('app', []);` para definir (*set*) um módulo.
+	  - Use  `angular.module('app');` para pegar (*get*) este módulo. 
 
-### Named vs Anonymous Functions
+### Funções Nomeadas vs Funções Anônimas
 
-  - Use named functions instead of passing an anonymous function in as a callback. 
+  - Use funções nomeadas ao invés de passar uma função anônima como um callback. 
 
 	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  **Por que?** Isso produz um código mais legível, é muito fácil de *debugar*, e reduz a quantidade de callbacks aninhados no código.
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app')
       .controller('Dashboard', function() { });
@@ -252,7 +266,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // dashboard.js
   angular
@@ -271,7 +285,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Controllers
 
@@ -626,7 +640,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Services
 
@@ -664,7 +678,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Factories
 
@@ -831,7 +845,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Data Services
 
@@ -954,7 +968,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    **[Back to top](#table-of-contents)**
+    **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1181,7 +1195,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Resolving Promises for a Controller
 
@@ -1287,7 +1301,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Manual Annotating for Dependency Injection
 
@@ -1415,7 +1429,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Minification and Annotation
 
@@ -1524,7 +1538,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Exception Handling
 
@@ -1629,7 +1643,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Naming
 
@@ -1844,7 +1858,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1902,7 +1916,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure
 
@@ -2011,7 +2025,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
             topnav.html         
     ``` 
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modularity
   
@@ -2065,60 +2079,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
-**[Back to top](#table-of-contents)**
-
-## Startup Logic
-
-### Configuration
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidaes include providers and constants.
-
-    *Why?*: This makes it easier to have a less places for configuration.
-
-  ```javascript
-  angular
-      .module('app')
-      .config(configure);
-
-  configure.$inject = 
-      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
-
-  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
-      exceptionHandlerProvider.configure(config.appErrorPrefix);
-      configureStateHelper();
-
-      toastr.options.timeOut = 4000;
-      toastr.options.positionClass = 'toast-bottom-right';
-
-      ////////////////
-
-      function configureStateHelper() {
-          routerHelperProvider.configure({
-              docTitle: 'NG-Modular: '
-          });
-      }
-  }
-  ```
-
-### Run Blocks
-
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
-
-    *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
-
-  ```javascript
-  angular
-      .module('app')
-      .run(runBlock);
-
-    runBlock.$inject = ['authenticator', 'translator'];
-
-    function runBlock(authenticator, translator) {
-        authenticator.initialize();
-        translator.initialize();
-    }
-  ```
-
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Angular $ Wrapper Services
 
@@ -2134,7 +2095,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2219,7 +2180,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Animations
 
@@ -2249,7 +2210,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Comments
 
@@ -2300,7 +2261,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## JS Hint
 
@@ -2376,7 +2337,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Constants
 
@@ -2400,7 +2361,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -2445,7 +2406,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -2488,4 +2449,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
