@@ -34,6 +34,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
+  1. [Startup Logic](#startup-logic)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
   1. [Testing](#testing)
   1. [Animations](#animations) 
@@ -2060,6 +2061,28 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
+
+**[Back to top](#table-of-contents)**
+
+## Startup Logic
+
+### Run Blocks
+
+  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the run block.
+
+    *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+
+  ```javascript
+  angular
+      .module('app')
+      .run(runBlock);
+
+    /* @ngInject */
+    function runBlock(authenticator, translator) {
+        authenticator.initialize();
+        translator.initialize();
+    }
+  ```
 
 **[Back to top](#table-of-contents)**
 
