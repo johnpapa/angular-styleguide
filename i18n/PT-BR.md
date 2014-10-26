@@ -1,22 +1,22 @@
-# Guia de Modelos AngularJS
+# Guia de Estilo AngularJS
 
-*Guia de Modelos Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
 
-Se você procura por um guia de modelos opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes modelos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
+Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
 
-> Se você gostar deste modelo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
+> Se você gostar deste estilo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
 
-A proposta deste guia de modelos é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso e, o mais importante, porque eu as escolhi.
+A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso e, o mais importante, porque eu as escolhi.
 
 ## Créditos e uma Grande Comunidade
 
-Nunca trabalhe no vazio. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários modelos e convenções. Nós concordamos na maioria, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe no vazio. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilo e convenções. Nós concordamos na maioria, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
-Vários de meus modelos vieram de várias sessões de programação em par que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora nem sempre concordamos, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
+Vários de meus estilos vieram de várias sessões de programação em par que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora nem sempre concordamos, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
-## Veja os modelos em um aplicativo de exemplo
+## Veja os estilos em um aplicativo de exemplo
 
-Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de amostra que segue estes modelos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegâ-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de amostra que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegâ-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 > **Nota de tradução**: Os títulos originais de cada seção será mantido, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
 >
