@@ -2072,11 +2072,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?:* This makes it easier to have a less places for configuration.
 
   ```javascript
-  app
-    .module('app')
-    .config(configure);
+  angular
+      .module('app')
+      .config(configure);
 
-  /* @ngInject */
+  configure.$inject = 
+      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
+      
   function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
       exceptionHandlerProvider.configure(config.appErrorPrefix);
       configureStateHelper();
@@ -2087,15 +2089,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       ////////////////
 
       function configureStateHelper() {
-          var resolveAlways = { /* @ngInject */
-              ready: function(dataservice) {
-                  return dataservice.ready();
-              }
-          };
-
           routerHelperProvider.configure({
-              docTitle: 'NG-Modular: ',
-              resolveAlways: resolveAlways
+              docTitle: 'NG-Modular: '
           });
       }
   }
@@ -2112,7 +2107,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .run(runBlock);
 
-    /* @ngInject */
+    runBlock.$inject = ['authenticator', 'translator'];
+
     function runBlock(authenticator, translator) {
         authenticator.initialize();
         translator.initialize();
