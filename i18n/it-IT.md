@@ -1532,13 +1532,13 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Gestione delle eccezzioni
 
-### decorators
+### decoratori (decorator)
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - Usa un [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), al momento del config una un servizio [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sul servizio [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) per eseguire azioni ad hoc quando l'eccezione occorre.
   
-    *Perché?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
+    *Perché?*: Fornisci un modo consistente per la gestione delle eccezioni che non trattate da AngularJS sia durante lo sviluppo che a runtime.
 
-    Nota: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    Nota: Un'altra opzione è di fare l'override del servizio invece che usare un decorator. Questa è una buona opzione ma se vuoi tenere il comportamento di default ed estenderlo un decorator è consigliato.
 
   	```javascript
     /* raccomandato */
@@ -1562,23 +1562,23 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
                 cause: cause 
             };
             /**
-             * Could add the error to a service's collection,
-             * add errors to $rootScope, log errors to remote web server,
-             * or log locally. Or throw hard. It is entirely up to you.
-             * throw exception;
+             * Potresti aggiungere l'errore ad una collezione del servizio,
+             * aggiungere l'errore a $rootScope, fare il log degli errori ad un server web remoto,
+             * oppure farlo localmente. O lanciare l'eccezione solamente. Sta del tutto a te.
+             * lancia l'eccezione;
              */
             toastr.error(exception.msg, errorData);
         };
     }
   	```
 
-### Exception Catchers
+### Ricevitore di eccezioni
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - Crea una factory che espone un'interfaccia per ricevere ee elegantemente gestire le eccezioni.
 
-    *Perché?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *Perché?*: Fornisce un modo consistente di rivecere le eccezioni che possono essere lanciate nel tuo codice (p.e. durante una chiamata XHR o il fallimento di promesse).
 
-    Nota: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Nota: Il ricevitore di eccezioni è buopno per ricevere e reagire a specifiche eccezioni da chiamate che sai ne possono generare una. Per esempio, quando fai una chiamata XHR per il recupero di dati da un servizio di un server web remoto e vuoi ricevere qualsiasi eccezione da ciò e reagire univocamente.
 
     ```javascript
     /* raccomandato */
@@ -1602,21 +1602,21 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     }
     ```
 
-### Route Errors
+### Errori di routing
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Gestisti e fai il log di tutti gli errori di routing usando [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *Perché?*: Provides a consistent way handle all routing errors.
+    *Perché?*: Fornisce un modo consistente di gestire tutti gli errori di routing.
 
-    *Perché?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.
+    *Perché?*: Potenzialmente fornisce una migliore esperienza all'utente se si verifica un errore di routing e li puoi indirizzare ad una schermata di aiuto o con opzioni di recupero.
 
     ```javascript
     /* raccomandato */
     function handleRoutingErrors() {
         /**
-         * Route cancellation:
-         * On routing error, go to the dashboard.
-         * Provide an exit clause if it tries to do it twice.
+         * Annullamento del route:
+         * Su un errore di routing, vai alla dashboard.
+         * Fornisci una clausola di uscita se tenta di farlo per una seconda volta.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
@@ -1626,6 +1626,10 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
                 /**
                  * Optionally log using a custom service or $log.
                  * (Don't forget to inject custom service)
+                 */
+                /**
+                 * A scelta fai il log usando un servizio ad hoc o $log.
+                 * (Non dimenticare di iniettare il servizio ad hoc)
                  */
                 logger.warning(msg, [current]);
             }
