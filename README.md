@@ -247,7 +247,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* avoid */
   angular
       .module('app')
-      .controller('Dashboard', function() { });
+      .controller('Dashboard', function() { })
       .factory('logger', function() { });
   ```
 
