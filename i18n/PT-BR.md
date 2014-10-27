@@ -1,22 +1,22 @@
 # Guia de Estilo AngularJS
 
-*Guia de Estilo Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo opinativo de AngularJS para times. Por [@john_papa](//twitter.com/john_papa)*
 
-*Translation by [Eric Douglas](https://github.com/ericdouglas) and [Ciro Nunes](https://github.com/cironunes)*
+*Traduzido por [Eric Douglas](https://github.com/ericdouglas) e [Ciro Nunes](https://github.com/cironunes)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
 
-> Se você gostar deste estilo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
+> Se você gostar deste estilo, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
 
-A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso e, o mais importante, porque eu as escolhi.
+A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
 
-## Créditos e uma Grande Comunidade
+## A Importância da Comunidade e Creditos
 
-Nunca trabalhe no vazio. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilo e convenções. Nós concordamos na maioria, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe fechado no vácuo. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
-Vários de meus estilos vieram de várias sessões de programação em par que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora nem sempre concordamos, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
+Vários de meus estilos vieram de várias sessões de pair-programming que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não corcordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
 ## Veja os estilos em um aplicativo de exemplo
 
