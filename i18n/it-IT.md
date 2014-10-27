@@ -631,11 +631,11 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Service
 
-### Singletons
+### Singleton
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency. 
+  - I Service sono instanziati con la keyword  `new`, usa `this` per metodi e variabili pubbliche. Dal momento che sono molto simili alle factory, usa queste ultime per consistenza. 
   
-    Nota: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    Nota: [Tutti i servizi di AngularJS sono singleton](https://docs.angularjs.org/guide/services). Questo significa che c'è soltanto una istanza di un dato servizio per iniettore.
 
   ```javascript
   // service
@@ -669,25 +669,25 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Factory
 
-### Single Responsibility
+### Singola responsabilità 
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Le factory dovrebbero avere la [singola responsabilità](http://en.wikipedia.org/wiki/Single_responsibility_principle) che è incapsulata nel proprio contesto. Una volta che una factory eccede quello che è un sigolo scopo, una nuova facotry dovrebbe essere creata.
 
-### Singletons
+### Singleton
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Le factory sono singleton e ritornano un oggetto che contiene i membri del servizio.
   
-    Nota: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Tutti i servizi di AngularJS sono singleton](https://docs.angularjs.org/guide/services).
 
-### Accessible Members Up Top
+### Membri accessibili in cima
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Esponi tutti i membri richiamabili del servizio (l'interfaccia) in cima, usando una tecnica derivata dal [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
-    *Perché?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+    *Perché?*: Porre i membri richiamabili in cima lo rende semplice da leggere e aiuta ad identificare istantaneamente quali membri del servizio possono essere richiamati ed essere oggetto di unit test (e/o simulati). 
 
-    *Perché?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    *Perché?*: Questo è particolarmente utile quando i file iniziano ad allungarsi così come aiuta la necessità di scorrere per leggere cosa è esposto.
 
-    *Perché?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *Perché?*: Settare funzioni mentre procedi può essere facile ma quando tali funzioni sono più lunghe di 1 linea di codice possono ridurre la leggibilità e causare maggiore scorrimento. Definire l'interfaccia richiamabile attraverso i servizi ritornati sposta i dettagli di implementazione in basso, tiene l'interfaccia richiamabile in cima e rende più facile al lettura.
 
   ```javascript
   /* evitare */
@@ -731,51 +731,52 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  In questo modo i binding si riflettono in tutto l'oggetto host, i valori di base non possono essere solamente aggiornati usando il revealing module pattern.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
-### Function Declarations to Hide Implementation Details
+    ![Factory che usano "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
-  - Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+### Dichiarazioni di funzione per nascondere i dettagli di implementazione
 
-    *Perché?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+  - Usa le dichiarazioni di funzioni per nascondere i dettagli di implementazione. Tieni i membri accessibili della facotry in cima. Puntali alle dichiarazioni di funzioni che compaiono dopo nel file. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
 
-    *Perché?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Perché?*: Porre i membri richiamabili in cima lo rende semplice da leggere e aiuta ad identificare istantaneamente quali funzioni della factory possono accessibili esternamente. 
 
-    *Perché?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Perché?*: Porre i dettagli di implementazione di una funzione dopo nel file sposta la complessità fuori dalla vista così che puoi vedere le cose importanti in cima.
 
-    *Perché?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+    *Perché?*: Le dichiarazioni di funzione sono richiamate così da non avere preoccupazioni circa l'uso di una funzione prima della sua definizione (come sarebbe nel caso di espressioni di funzione).
 
-    *Perché?*: Order is critical with function expressions 
+    *Perché?*: Non dovrai mai preoccuparti di dichiarazioni di funzione che spostano `var a` prima di `var b` rompendo il codice perché `a` dipende da `b`.     
+
+    *Perché?*: Con le espressioni di funzione l'ordine è critico. 
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
+   * evita
+   * Uso di espressioni di funzioni
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
 
       var getAvengers = function() {
-         // implementation details go here
+         // dettagli di implementazione vanno qui
       };
 
       var getAvengerCount = function() {
-          // implementation details go here
+          // dettagli di implementazione vanno qui
       };
 
       var getAvengersCast = function() {
-         // implementation details go here
+          // dettagli di implementazione vanno qui
       };
 
       var prime = function() {
-         // implementation details go here
+          // dettagli di implementazione vanno qui
       };
 
       var ready = function(nextPromises) {
-          // implementation details go here
+          // dettagli di implementazione vanno qui
       };
 
       var service = {
@@ -791,9 +792,9 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
   ```javascript
   /**
-   * recommended
-   * Using function declarations
-   * and accessible members up top.
+   * raccomandato
+   * Uso di dichiarazioni di funzioni
+   * e membri accessibili in cima.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -811,23 +812,23 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
       ////////////
 
       function getAvengers() {
-         // implementation details go here
+          // dettagli di implementazione vanno qui
       }
 
       function getAvengerCount() {
-          // implementation details go here
+          // dettagli di implementazione vanno qui
       }
 
       function getAvengersCast() {
-         // implementation details go here
+          // dettagli di implementazione vanno qui
       }
 
       function prime() {
-          // implementation details go here
+          // dettagli di implementazione vanno qui
       }
 
       function ready(nextPromises) {
-          // implementation details go here
+          // dettagli di implementazione vanno qui
       }
   }
   ```
@@ -836,20 +837,21 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Data Service
 
-### Separate Data Calls
+### Separare le chiamate ai dati
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - Rivedi la logica per gestire le oprazioni con i dati e con la loro interazione delegandola ad una factory.
 
-    *Perché?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    *Perché?*: La responsabilità del controller è per la presentazione e raccolta di informazioni dalla view. Non dovrebbe occuparsi di come recuperare i dati, soltanto sapere a chi chiederli. La separazione dei servizi per i dati sposta la logica su come reperirli al servizio dei dati, rendendo il controller più semplice e più focalizzato sulla view.
 
-    *Perché?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
 
-    *Perché?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *Perché?*: Ciò rende più semplice da testare (vere o simulate) le chiamate ai dati quando si testa un controller che usa un servizio ai dati.
+
+    *Perché?*: L'implementazione di un serzio ai dati può avere del codice molto specifico su come trattare i repository dei dati. Questo può includere header, come comunicare con i dati o altri servizi quali $http. Separare la logica in un servizio ai dati incapsula questa logica in un posto unico nascondendo l'implementazione ai consumatori esterni (forse un controller), rendendo inoltre più semplice cambiarne l'implementazione.
 
   ```javascript
   /* raccomandato */
 
-  // dataservice factory
+  // factory del servizio ai dati 
   angular
       .module('app.core')
       .factory('dataservice', dataservice);
@@ -877,12 +879,12 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
     
-    Nota: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+    Nota: Il servizio ai dati è chiamato dai consumatori, come un controller, nascondendo l'implementazione ai consumatori, come mostrato sotto.
 
   ```javascript
   /* raccomandato */
 
-  // controller calling the dataservice factory
+  // controller che chiama la factory del servizio ai dati
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -911,11 +913,11 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }      
   ```
 
-### Return a Promise from Data Calls
+### Ritornare una promessa dalle chiamate ai dati
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - Quando si chiama un servizio ai dati che ritorna una promessa come $http, ritorna a tua volta una promessa nella tua funzione di chiamata.
 
-    *Perché?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    *Perché?*: Puoi concatenare le promesse insieme e prendere ulteriori azioni dopo che la chiamata ai dati è completata e risolvere o rigettare la promessa.
 
   ```javascript
   /* raccomandato */
@@ -924,14 +926,14 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
   function activate() {
       /**
-       * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Passo 1
+       * Chiedi alla funzione getAvengers per i
+       * dati sugli avenger e aspetta la promessa
        */
       return getAvengers().then(function() {
-          /**
-           * Step 4
-           * Perform an action on resolve of final promise
+		 /**
+           * Passo 4
+           * Produci un'azione sulla risoluzione della promessa conclusiva
            */
           logger.info('Activated Avengers View');
       });
@@ -939,15 +941,15 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
   function getAvengers() {
         /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Passo 2
+         * Chiedi al servizio i dati e aspetta
+         * la promessa
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
-                 * Step 3
-                 * set the data and resolve the promise
+                 * Passo 3
+                 * set the data and resolve the promise setta i dati e risolvi la promessa
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -958,13 +960,13 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     **[Torna all'inizio](#table-of-contents)**
 
 ## Directive
-### Limit 1 Per File
+### Limite di 1 per file
 
-  - Create one directive per file. Name the file for the directive. 
+  - Crea una directive per file. Nomina il file per la directive.  
 
-    *Perché?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. 
+    *Perché?*: È facile mescolare tutte le directive in un unico file ma difficoltoso da separarle così che alcune siano condivise tra le applicazioni, alcune tra moduli, altre solo per un module. 
 
-    *Perché?*: One directive per file is easy to maintain.
+    *Perché?*: Una directive per file è semplice da manutenere.
 
   ```javascript
   /* evitare */
@@ -973,26 +975,26 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* directive di ordini che è specifica per il modulo degli ordini */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* directive delle vendite che può essere usata dovunque nelle app di vendita */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* dirctive dello spinner che può essere usata dovunque nelle app */
       .directive('sharedSpinner', sharedSpinner);
 
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* dettagli di implementazione */
   }
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* dettagli di implementazione */
   }
 
   function sharedSpinner() {
-      /* implementation details */
+      /* dettagli di implementazione */
   }
   ```
 
@@ -1001,7 +1003,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   /* calendarRange.directive.js */
 
   /**
-   * @desc order directive that is specific to the order module at a company named Acme
+   * @desc directive di ordini che è specifica al modulo ordini in una azienda di nome Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1009,7 +1011,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* dettagli di implementazione */
   }
   ```
 
@@ -1018,7 +1020,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc directive dello spinner che può essere usato docunque nella applicazione di vendita di una azienda di nome Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1026,7 +1028,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* dettagli di implementazione */
   }
   ```
 
@@ -1035,7 +1037,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   /* spinner.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across apps at a company named Acme
+   * @desc directive dello spinner che può essere usato docunque nella applicazione di vendita di una azienda di nome Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1043,38 +1045,38 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
       .directive('acmeSharedSpinner', sharedSpinner);
 
   function sharedSpinner() {
-      /* implementation details */
+      /* dettagli di implementazione */
   }
   ```
 
-    Nota: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o largi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sul dare i nomi per maggiori raccomandazioni.
 
-### Limit DOM Manipulation
+### Limiti alla manipolazione del DOM
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow. 
+  - Quando devi manipolare direttamente il DOM, usa una directive. Se possono essere usate delle alternative come settare stili CSS o i [servizi di animazione](https://docs.angularjs.org/api/ngAnimate), templating di Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oppure [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), piuttosto usa questi. Per esempio, se la directive semplicemente nasconde e mostra, usa ngHide/ngShow. 
 
-    *Perché?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    *Perché?*: Manipolare il DOM può essere difficoltoso da testare, debuggare e spesso ci sono modi migliori (p.e. CSS, animazioni, template)
 
-### Provide a Unique Directive Prefix
+### Utilizza un prefisso unico per la Directive
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Utilizza un corto, unico e descrittico prefizzo alla directive come `acmeSalesCustomerInfo` che è dichiarato in HTML come `acme-sales-customer-info`.
 
-    *Perché?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company. 
+	*Perché?*: L'unico breve prefisso identifica il contesto delle directive e l'origine. Per esempio un prefisso `cc-` potrebbe indicare che la directive è parte di una app CodeCamper mentre `acme-` potrebbe indicare una direttiva per l'azienda Acme. 
+ 
+	Nota: Evita `ng-` poiché queste sono riservate per le directive di AngularJS. Cerca directive che sono largamente utilizzate per evitare il conflitto di nomi, come `ion-` per il [Framework Ionic ](http://ionicframework.com/). 
 
-    Nota: Avoid `ng-` as these are reserved for AngularJS directives.Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/). 
+### Restringi a Elementi and Attributi
 
-### Restrict to Elements and Attributes
+  - Quando crei una directive che abbia senso come elemento a se stante, considera la restrizione a `E` (elemento custom) e facoltativamente restringere a `A` (attributo custom). In generale, se può essere il suo stesso controllo, `E` è appropriato. Le linee guida generali sono di permettere `EA` ma tendono verso l'implementazione come un elemento quando è a se stante e come attributo quando accresce il proprio elemento DOM esistente.
 
-  - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+    *Perché?*: È sensato.
 
-    *Perché?*: It makes sense.
+    *Perché?*: Mentre è possibile consentire che la directive sia usata come una classe, se questa agisce davvero con un elemento è più sensato usarla un elemento o al meno come un attributo.
 
-    *Perché?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
-
-    Nota: EA is the default for AngularJS 1.3 +
+    Nota: EA è il default per AngularJS 1.3 e successivi
 
   ```html
-  <!-- avoid -->
+  <!-- evitare -->
   <div class="my-calendar-range"></div>
   ```
 
@@ -1099,7 +1101,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- raccomandato -->
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
@@ -1124,13 +1126,13 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
 
-### Directives and ControllerAs
+### Directive e ControllerAs
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - USa la sintassi `controller as` con una directive per essere consistente con l'utilizzo di `controller as` con una coppia di view e controller.
 
-    *Perché?*: It makes sense and it's not difficult.
+    *Perché?*: È sensato e non è difficile.
 
-    Nota: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+    Nota: Le directive sotto dimostrano alcuni dei modi in cui puoi usare lo scope all'interno di link e controller di directive usando controllerAs. Ho usato sulla stessa linea il template solo per mettere tutto in un unico posto. 
 
   ```html
   <div my-example max="77"></div>
@@ -1156,7 +1158,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
       ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
-          // Injecting $scope just for comparison
+          // Iniettare $scope solo per confronto
           /* jshint validthis:true */
           var vm = this;
 
@@ -1186,13 +1188,13 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Risoluzioni di promesse per un controller
 
-### Controller Activation Promises
+### Promesse di attivazione di un Controller
 
-  - Resolve start-up logic for a controller in an `activate` function.
+  - Risolvi la lofica di start-up per un controller in una funzione `activate`.
      
-    *Perché?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    *Perché?*: Porre la logica di start-up in una posizione consistente nel controller la rende semplice da localizzare, più consistente da testare e aiuta a precenire la diffusione di logica su tutto il controller.
 
-    Nota: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    Nota: Se hai necessità di annullare condizionalmente il route prima di inziare ad usare il controller, usa piuttosto una risoluzione nella route.
     
   ```javascript
   /* evitare */
@@ -1228,11 +1230,11 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
 
-### Route Resolve Promises
+### Promesse risolte nel route
 
-  - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - Quando un controller dipende dalla dal fatto che una promessa sia risoltam risolvi queste dipendenze nel `$routeProvider` prima che la logica del controller sia eseguita. Se hai bisogno di annullare condizionalmente una route prima che il controller sia attivato, usa un resolver della route.
 
-    *Perché?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *Perché?*: Un controller può richiedere dei dati prima che si carichi. Quei dati potrebbero venire da una promessa di una factory su misura oppure [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [resolver della route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) aconsenti che la promessa sia risolta prima che la logica del controller sia eseguita, così da poter prendere decisioni basandosi sui dati provenienti dalla promessa.
 
   ```javascript
   /* evitare */
@@ -1242,9 +1244,9 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
   function Avengers(movieService) {
       var vm = this;
-      // unresolved
+      // non risolta
       vm.movies;
-      // resolved asynchronously
+      // risolta in modo asincrono
       movieService.getMovies().then(function(response) {
           vm.movies = response.movies;
       });
@@ -1252,7 +1254,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   ```
 
   ```javascript
-  /* better */
+  /* migliore */
 
   // route-config.js
   angular
@@ -1286,20 +1288,20 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
 
-    Nota: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    Nota: La dipendenza del codice di esempio da `movieService` non è a prova di minificazione in se stessa. Per i dettagli su come rendere questo codice a prova di minificazione, vedi la sezione sulla [dependency injection](#manual-annotating-for-dependency-injection) e sulla [minificazione e annotazione](#minification-and-annotation).
 
 **[Torna all'inizio](#table-of-contents)**
 
 ## Annotazioni manuali per la Dependency Injection
 
-### UnSafe from Minification
+### Non sicuro per la minificazione
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - Evita di usare abbrevizioni sintattiche per la dichiarazione di dipendenze senza usara un approccio a prova di minificazione.
   
-    *Perché?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *Perché?*: I paramentri dei componenti (p.e. controller, factory, etc) saranno convertiti in variabili dal nome ridotto. Per esempio, `common` e `dataservice` potrebbero diventare `a` o `b` e non essere piò ritrovate da AngularJS.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evita - non a prova di minificazione*/
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1308,22 +1310,22 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Questo codice può produrre variabili da nome ridotto e perciò causare errori a runtime.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evita - non a prova di minificazione*/
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Manually Identify Dependencies
+### Indentificazione manuale delle dipendenze
 
-  - Use `$inject` to manually identify your dependencies for AngularJS components.
+  - Usa `$inject` per identificare manualemmnte le tue dipendenze per i componenti di AngularJS.
   
-    *Perché?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *Perché?*: Questa tecnica rispecchia la tecnica usata da [`ng-annotate`](https://github.com/olov/ng-annotate), che raccomando per l'automazione della creazione della minificazione che sia a sicura per le dipendenze. Se `ng-annotate` rileva che una iniezione è stata fatta, non la duplicherà.
 
-    *Perché?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *Perché?*: Questo salavguarda le tue dipendenze dal essere vulnerabili alla questione della minificazione quando i parametri possono essere passati con nomi ridotti. Per esempio, `common` e `dataservice` possono divetare `a` o `b` e non essere più trovati da AngularJS.
 
-    *Perché?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+    *Perché?*: Evita la creazione di dipendenze sulla stessa linea dal momente che lunghe liste possono essere difficili da leggere nell'array. Inoltre può essere furviante che l'array è una serie di stringhe mentre l'ultimo elemento è una funzione. 
 
     ```javascript
     /* evitare */
@@ -1358,12 +1360,12 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     }
     ```
 
-    Nota: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax. 
+    Nota: Quando la tua funzione si trova sotto una dichiarazione di return, $inject potrebbe essere non raggiungibile (ciò può accadere in una directive). Puoi ricolvere ciò sia spostando l'$inject sopra la dichiarazione di return oppure usando la sintassi di array di iniezione alternativa.  
 
-    Nota: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
+    Nota: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduce una caratteristica che sposta l'`$inject`  dove è raggiungibile.
 
     ```javascript
-    // inside a directive definition
+    // dentro la definizione di una directive
     function outer() {
         return {
             controller: DashboardPanel,
@@ -1376,7 +1378,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     ```
 
     ```javascript
-    // inside a directive definition
+    // dentro la definizione di una directive
     function outer() {
         DashboardPanel.$inject = ['logger']; // reachable
         return {
@@ -1388,13 +1390,13 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     }
     ```
 
-### Manually Identify Route Resolver Dependencies
+### Intetificazione manuale delle dipendenze di resolver della route
 
-  - Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  - Usa $inject per identificare manualmente le tue dipendenze di resolver della route per i componenti di AngularJS.
   
-    *Perché?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *Perché?*: Questa tecnica evade le funzioni anonime per il di resolver della route, rendendolo più semplice da leggere.
 
-    *Perché?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *Perché?*: Una dichiarazione `$inject` può facilmente precedere il resolver della route per gestistire la produzione di dipendenze che siano a prova di minificazione.
 
     ```javascript
     /* raccomandato */
@@ -1422,15 +1424,16 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ### ng-annotate
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare il dependency injection usando `/** @ngInject */`
   
-    *Perché?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *Perché?*: Questo salvaguarda il tuo codice da ogni dipendenza che non segua le pratiche a prova di minificazione
 
-    *Perché?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
+    *Perché?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
+    *Perché?*: [`ng-min`](https://github.com/btford/ngmin) è deprecato.  
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    >Preferisco Gulp poiché lo ritengo più semplice da scrivere, leggere e fare il debug.
 
-    The following code is not using minification safe dependencies.
+    Il codice che segue non usa dipendeze che sono a prova di minificazione.
 
     ```javascript
     angular
@@ -1450,7 +1453,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Quando il codice soprastante è eseguito da ng-annotate procude il seguente output con l'annotazione `$inject` e diventa a prova di minificazione.
 
     ```javascript
     angular
@@ -1472,12 +1475,12 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Nota: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Nota: Se `ng-annotate` rileva che l'iniezione è già stata fatta (p.e. `@ngInject` è stato rilevato), non duplicherà il codice di `$inject`.
 
-    Nota: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Nota: Quando si usa un resolver della route, puoi fare precedere il resolver della funzione con `/* @ngInject */` e ciò produrrà codice opportunamento annotato, mantenendo ogni iniezione delle dipendenze a prova di minificazione.
 
     ```javascript
-    // Using @ngInject annotations
+    // Usare l'annotazione @ngInject
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1493,16 +1496,16 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     }
     ```
 
-    > Nota: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    > Nota: A partire da AngularJS 1.3 usa il paramettro `ngStrictDi` della directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, l'iniettore sarà creato in modalità "strict-di" causando il fallimento dell'invocazione di funzioni che non fanno uso esplicito di annotazione delle funzioni da parte dell'applicazione (queste potrebbero non essere a prova di minificazione). Informazioni di debug saranno mostrate nella console per aiutare nel tracciare il codice non confacente.
     `<body ng-app="APP" ng-strict-di>`
 
-### Use Gulp or Grunt for ng-annotate
+### Usa Gulp o Grunt per ng-annotate
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in un task di build automatizzato. Inietta `/* @ngInject */` prima di qualunque funzione che abbia delle dipendenze.
   
-    *Perché?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+    *Perché?*: ng-annotate carpirà la maggior parte delle dipendenze ma talvolta necessita dell'uso del suggerimento sintattico `/* @ngInject */`.
 
-    The following code is an example of a gulp task using ngAnnotate
+    Il seguente codice è un esempio di un task di gulp che utilizza ngAnnotate.
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
@@ -1510,10 +1513,10 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
-            // Annotate before uglify so the code get's min'd properly.
+            // Annota prima di fare l'uglify così che il codice sarà minificato correttamente.
             .pipe(ngAnnotate({
-                // true helps add where @ngInject is not used. It infers.
-                // Doesn't work with resolve, so we must be explicit there
+                // true aiuta ad aggiunge @ngInject dove non usato. Inferisce.
+                // Non funzione con resolve, quindi deve essere esplicitato qui
                 add: true
             }))
             .pipe(bytediff.start())
