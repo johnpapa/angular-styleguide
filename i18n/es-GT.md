@@ -19,7 +19,7 @@ Mientras que esta guía explica el *qué*, *cómo* y *por qué*, Encuentro sumam
 ##Traducciones 
 [Las traducciones de esta guía de estilo Angular](../i18n) son mantenidos por la comunidad y se encuentran aquí.
 
-> **Notas de la traducción en español:** Se mantendrán los títulos originales de cada sección, porque si deseas investigar en un buscador mas sobre cada tema en el futuro, tal búsqueda en inglés dará un resultado **mucho** mejor.
+> **Notas de la traducción en español:** Algunos de los títulos así como algunos terminos se mantendrán en inglés, porque si deseas investigar en un buscador mas sobre cada tema en el futuro, tal búsqueda en inglés dará un resultado **mucho** mejor.
 >
 > Después del título habrá una ayuda de traducción, cuando sea necesario, ya que algunos términos son más fáciles de entender cuando no son traducidos.
 >
@@ -51,9 +51,9 @@ Mientras que esta guía explica el *qué*, *cómo* y *por qué*, Encuentro sumam
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [AngularJS Docs](#angularjs-docs)
-  1. [Contributing](#contributing)
-  1. [License](#license)
+  1. [Documentación de AngularJS](#angularjs-docs)
+  1. [Colaboraciones](#contributing)
+  1. [Licencia](#license)
 
 ## Single Responsibility
 o *Única Responsabilidad*
@@ -115,9 +115,9 @@ o *Única Responsabilidad*
 
   - Encierra los componentes AngularJS en una Immediately Invoked Function Expression (IIFE Expresión de función ejecutada inmediatamente). 
   
-  *Por qué?*: Una IIFE quita las variables del ámbito global. Esto ayuda a prevenir declaraciones de funciones y variables que puedan vivir mas tiempo de lo esperado en el ámbito global, Lo que tambien ayuda a prevenir colisión de variables.
+  *¿Por qué?*: Una IIFE quita las variables del ámbito global. Esto ayuda a prevenir declaraciones de funciones y variables que puedan vivir mas tiempo de lo esperado en el ámbito global, Lo que tambien ayuda a prevenir colisión de variables.
 
-  *Por qué?*: Cuando tu código es minificado y empaquetado en un único archivo para ser publicado en un servidor de producción,podrías tener colisión de variables y muchas variables globales. Una IIFE te protege de estas dos cosas proveyendo un ámbito de variables distinto por cada archivo.
+  *¿Por qué?*: Cuando tu código es minificado y empaquetado en un único archivo para ser publicado en un servidor de producción,podrías tener colisión de variables y muchas variables globales. Una IIFE te protege de estas dos cosas proveyendo un ámbito de variables distinto por cada archivo.
 
   ```javascript
   /* evita */
@@ -176,21 +176,22 @@ o *Única Responsabilidad*
 **[Ir hacia arriba](#table-of-contents)**
 
 ## Modules
+o *Módulos*
 
-### Avoid Naming Collisions
+### Evitando colisión de nombres
 
-  - Use unique naming conventions with separators for sub-modules. 
+  - Utiliza una única convensión de nombres con separadores por sub-módulos. 
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`. 
+  *¿Por qué?*: Nombres únicos ayudan a evitar la colisión de nombres de módulos. Los separadores ayudan a definir módulos y su jerarquía de sub-módulos. Por ejemplo `app` puede ser tu módulo principal mientras que `app.dashboard` y `app.users` pueden ser módulos que son usados como dependencias de `app`. 
 
-### Definitions (aka Setters)
+### Asignadores (también conocidos como Setters)
 
-  - Declare modules without a variable using the setter syntax. 
+  - Declara módulos sin una variable, usando la sintaxis de asignación (setter). 
 
-	*Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+	*¿Por qué?*: Con 1 componente por archivo, raramente habrá necesidad de introducir una variable para el módulo.
 	
   ```javascript
-  /* avoid */
+  /* evita */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -199,10 +200,10 @@ o *Única Responsabilidad*
   ]);
   ```
 
-	Instead use the simple setter syntax.
+	En su lugar utiliza la sintaxis simple de asignación.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
     	.module('app', [
           'ngAnimate',
@@ -214,12 +215,12 @@ o *Única Responsabilidad*
 
 ### Getters
 
-  - When using a module, avoid using a variables and instead use   chaining with the getter syntax.
+  - Cuando estes utilizando un módulo evita usar una variable y en su lugar usa el encadenamiento con la sintaxis *getter*.
 
-	*Why?* : This produces more readable code and avoids variables collisions or leaks.
+	*¿Por qué?*: Esto produce código más legible y evita colisión de variables o fugas.
 
   ```javascript
-  /* avoid */
+  /* evita */
   var app = angular.module('app');
   app.controller('SomeController' , SomeController);
   
@@ -227,7 +228,7 @@ o *Única Responsabilidad*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app')
       .controller('SomeController' , SomeController);
@@ -237,21 +238,21 @@ o *Única Responsabilidad*
 
 ### Setting vs Getting
 
-  - Only set once and get for all other instances.
+  - Solamente asigna una vez y obtén en todas las demás circunstancias.
 	
-	*Why?*: A module should only be created once, then retrieved from that point and after.
+	*¿Por qué?*: Un módulo debe ser creado una única vez, entonces obtenlo a partir de ese punto y despues de eso.
   	  
-	  - Use `angular.module('app', []);` to set a module.
-	  - Use  `angular.module('app');` to get a module. 
+	  - Usa `angular.module('app', []);` para asignar un módulo.
+	  - Use  `angular.module('app');` para obtener un módulo. 
 
-### Named vs Anonymous Functions
+### Funciones Anónimas vs Nombradas
 
-  - Use named functions instead of passing an anonymous function in as a callback. 
+  - Usa funciones nombradas en lugar de pasar una función anónima como un callback. 
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+	*¿Por qué?*: Esto produce código más legible, es mucho más fácil de depurar, y reduce la cantidad de código callback anidado.
 
   ```javascript
-  /* avoid */
+  /* evita */
   angular
       .module('app')
       .controller('Dashboard', function() { });
@@ -259,7 +260,7 @@ o *Única Responsabilidad*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // dashboard.js
   angular
@@ -278,7 +279,7 @@ o *Única Responsabilidad*
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Controllers
 
@@ -633,7 +634,7 @@ o *Única Responsabilidad*
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Services
 
@@ -671,7 +672,7 @@ o *Única Responsabilidad*
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Factories
 
@@ -838,7 +839,7 @@ o *Única Responsabilidad*
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Data Services
 
@@ -961,7 +962,7 @@ o *Única Responsabilidad*
   }
   ```
 
-    **[Back to top](#table-of-contents)**
+    **[Ir hacia arriba](#table-of-contents)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1188,7 +1189,7 @@ o *Única Responsabilidad*
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Resolving Promises for a Controller
 
@@ -1294,7 +1295,7 @@ o *Única Responsabilidad*
 
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Manual Annotating for Dependency Injection
 
@@ -1422,7 +1423,7 @@ o *Única Responsabilidad*
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Minification and Annotation
 
@@ -1531,7 +1532,7 @@ o *Única Responsabilidad*
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Exception Handling
 
@@ -1636,7 +1637,7 @@ o *Única Responsabilidad*
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Naming
 
@@ -1851,7 +1852,7 @@ o *Única Responsabilidad*
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1909,7 +1910,7 @@ o *Única Responsabilidad*
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Application Structure
 
@@ -2018,7 +2019,7 @@ o *Única Responsabilidad*
             topnav.html         
     ``` 
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Modularity
   
@@ -2072,7 +2073,7 @@ o *Única Responsabilidad*
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Startup Logic
 
@@ -2125,7 +2126,7 @@ o *Única Responsabilidad*
     }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Angular $ Wrapper Services
 
@@ -2141,7 +2142,7 @@ o *Única Responsabilidad*
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2226,7 +2227,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Animations
 
@@ -2256,7 +2257,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Comments
 
@@ -2307,7 +2308,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## JS Hint
 
@@ -2383,7 +2384,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## Constants
 
@@ -2407,7 +2408,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -2452,25 +2453,25 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
 
-## AngularJS docs
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+## Documentación de AngularJS
+Para algo más, referencias de la API, echale un ojo a la [documentación de Angular](//docs.angularjs.org/api).
 
-## Contributing
+## Colaboraciones
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+Primero abre un issue para discutir cambios/adiciones potenciales. Si tienes consultas acerca de la guía, sientete libre de dejarlas como un issue en el repositorio. Si encuentras un error tipográfico, crea un pull request. La idea es mantener el contenido actualizado y usar las caracteristicas nativas de github para ayudar a contar la historia con los issues y los pull requests, estos son completamente buscables vía google. ¿Por qué? porque las probabilidades indican de que si tienes una consulta, ¡alguién más la tendrá también! puedes aprender más aqui acerca de cómo colaborar.
 
-*By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
+*Para conlaborar con este repositorio debes estar de acuerdo con que tu contenido disponible sea sujeto a la licencia de este repositorio.*
 
-### Process
-    1. Discuss the changes in an Issue. 
-    1. Open a Pull Request, reference the issue, and explain the change and why it adds value.
-    1. The Pull Request will be evaluated and either merged or declined.
+### Proceso
+    1. Discute el cambio en un Issue. 
+    1. Abre un Pull Request, referencia el issue, y explica el cambio así como el por qué éste agrega valor.
+    1. El Pull Request será evaluado y posteriormente integrado o rechazado.
 
-## License
+## Licencia
 
-_tldr; Use this guide. Attributions are appreciated._
+_tldr; Usa esta guía. Las atribuciones son apreciadas._
 
 ### (The MIT License)
 
@@ -2495,4 +2496,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[Ir hacia arriba](#table-of-contents)**
