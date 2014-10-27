@@ -1,29 +1,29 @@
 # Guía de estilo AngularJS
 
-*Guia de estilo AngularJS «obstinado» para equipos por [@john_papa](//twitter.com/john_papa)*
+*Guía de estilo AngularJS «obstinado» para equipos por [@john_papa](//twitter.com/john_papa)*
 
 Si estás buscando una guía de estilo «obstinada» para sintaxis, convenciones, y estructuración de aplicaciones AngularJS, entonces pasa adelante. Esta guía está basada en mi experiencia desarrollando con [AngularJS](//angularjs.org), presentaciones, [cursos de entrenamiento Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipo. 
 
->Si te gusta esta guia, échale un vistazo a mi curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) en Pluralsight.
+>Si te gusta esta guía, échale un vistazo a mi curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) en Pluralsight.
 
 El propósito de esta guía de estilo es proveer orientación en la construcción de aplicaciones AngularJS mostrando las convenciones que yo utilizo y, más importante, por qué las he elegido. 
 
 ## Créditos y una Alucinante Comunidad
-Nunca trabaje en el vacío. He encontrado que la comunidad AngularJS es un group increible a los que les apasiona compartir experiencias. Como tal, Todd Motto un amigo y experto en AngularJS y yo hemos colaborado en muchos estilos y convenciones. Nosotros concordamos la mayoría de las veces, y algunas discrepamos. Te invito a echar un vistazo a las [Directrices de Todd](https://github.com/toddmotto/angularjs-styleguide) para tener una idea de su enfoque y cómo se compara.
+Nunca trabaje en el vacío. He encontrado que la comunidad AngularJS es un grupo increíble a los que les apasiona compartir experiencias. Como tal, Todd Motto (un amigo y experto en AngularJS) y yo hemos colaborado en muchos estilos y convenciones. Nosotros concordamos la mayoría de las veces, y algunas discrepamos. Te invito a echar un vistazo a las [Directrices de Todd](https://github.com/toddmotto/angularjs-styleguide) para tener una idea de su enfoque y cómo se compara.
 
 Muchos de mis estilos han sido producto de muchas sesiones de programación en pareja que [Ward Bell](http://twitter.com/wardbell) y yo hemos tenido. A pesar que no siempre hemos estado de acuerdo, mi amigo Ward ciertamente ayudó influenciando la última evolución de esta guía.
 
-## Ve los Estilos en una App de ejemplo
+## Ve los Estilos en una Aplicación de ejemplo
 Mientras que esta guía explica el *qué*, *cómo* y *por qué*, Encuentro sumamente útil el verlo en práctica. Esta guía se encuentra acompañada por una aplicación de ejemplo que sigue estos estilos y patrones. Puedes encontrar la [aplicación de ejemplo (llamada modular) aquí](https://github.com/johnpapa/ng-demos) en la carpeta `modular`. Siéntete libre de tomarlo, clonarlo y *forkearlo*. [Las instrucciones para ejecutarla están es su archivo readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Traducciones 
 [Las traducciones de esta guía de estilo Angular](../i18n) son mantenidos por la comunidad y se encuentran aquí.
 
-> **Notas de la traducción en español:** Algunos de los títulos así como algunos terminos se mantendrán en inglés, porque si deseas investigar en un buscador mas sobre cada tema en el futuro, tal búsqueda en inglés dará un resultado **mucho** mejor.
+> **Notas de la traducción en español:** Algunos de los títulos así como algunos términos se mantendrán en inglés, porque si deseas investigar en un buscador mas sobre cada tema en el futuro, tal búsqueda en inglés dará un resultado **mucho** mejor.
 >
 > Después del título habrá una ayuda de traducción, cuando sea necesario, ya que algunos términos son más fáciles de entender cuando no son traducidos.
 >
-> Para posibles errores de digitación y/o traducción, por favor enviar un pull-request!.
+> Para posibles errores de escritura y/o traducción, por favor enviar un pull-request!.
 
 ## Tabla de contenido
 
@@ -115,9 +115,9 @@ o *Única Responsabilidad*
 
   - Encierra los componentes AngularJS en una Immediately Invoked Function Expression (IIFE Expresión de función ejecutada inmediatamente). 
   
-  *¿Por qué?*: Una IIFE quita las variables del ámbito global. Esto ayuda a prevenir declaraciones de funciones y variables que puedan vivir mas tiempo de lo esperado en el ámbito global, Lo que tambien ayuda a prevenir colisión de variables.
+  *¿Por qué?*: Una IIFE quita las variables del ámbito global. Esto ayuda a prevenir declaraciones de funciones y variables que puedan vivir mas tiempo de lo esperado en el ámbito global, Lo que también ayuda a prevenir colisión de variables.
 
-  *¿Por qué?*: Cuando tu código es minificado y empaquetado en un único archivo para ser publicado en un servidor de producción,podrías tener colisión de variables y muchas variables globales. Una IIFE te protege de estas dos cosas proveyendo un ámbito de variables distinto por cada archivo.
+  *¿Por qué?*: Cuando tu código es «minificado» y empaquetado en un único archivo para ser publicado en un servidor de producción,podrías tener colisión de variables y muchas variables globales. Una IIFE te protege de estas dos cosas proveyendo un ámbito de variables distinto por cada archivo.
 
   ```javascript
   /* evita */
@@ -171,7 +171,7 @@ o *Única Responsabilidad*
 
   - Nota: Únicamente por brevedad, en el resto de ejemplos de esta guía se podrá omitir la sintaxis IIFE. 
   
-  - Nota: Las IIFE evitan que el código de pruebas alcance miembros privados como expresiones regulares o funciones auxiliares que a menudo es mejor probarlas por pruebas unitarias que les pertenecen directamente a ellas. Sin embargo puedes probar estas por medio de miembros de acceso o exponiendolas por medio de su propio componente. Por ejemplo: colocando funciones auxiliares, expresiones regulares o constantes en sus propios factory o constant.
+  - Nota: Las IIFE evitan que el código de pruebas alcance miembros privados como expresiones regulares o funciones auxiliares que a menudo es mejor probarlas por pruebas unitarias que les pertenecen directamente a ellas. Sin embargo puedes probar estas por medio de miembros de acceso o exponiéndolas por medio de su propio componente. Por ejemplo: colocando funciones auxiliares, expresiones regulares o constantes en sus propios factory o constant.
 
 **[Ir hacia arriba](#table-of-contents)**
 
@@ -180,11 +180,11 @@ o *Módulos*
 
 ### Evitando colisión de nombres
 
-  - Utiliza una única convensión de nombres con separadores por sub-módulos. 
+  - Utiliza una única convención de nombres con separadores por sub-módulos. 
 
   *¿Por qué?*: Nombres únicos ayudan a evitar la colisión de nombres de módulos. Los separadores ayudan a definir módulos y su jerarquía de sub-módulos. Por ejemplo `app` puede ser tu módulo principal mientras que `app.dashboard` y `app.users` pueden ser módulos que son usados como dependencias de `app`. 
 
-### Asignadores (también conocidos como Setters)
+### Definiciones (también conocidos como Setters)
 
   - Declara módulos sin una variable, usando la sintaxis de asignación (setter). 
 
@@ -215,7 +215,7 @@ o *Módulos*
 
 ### Getters
 
-  - Cuando estes utilizando un módulo evita usar una variable y en su lugar usa el encadenamiento con la sintaxis *getter*.
+  - Cuando estés utilizando un módulo evita usar una variable y en su lugar usa el encadenamiento con la sintaxis *getter*.
 
 	*¿Por qué?*: Esto produce código más legible y evita colisión de variables o fugas.
 
@@ -240,7 +240,7 @@ o *Módulos*
 
   - Solamente asigna una vez y obtén en todas las demás circunstancias.
 	
-	*¿Por qué?*: Un módulo debe ser creado una única vez, entonces obtenlo a partir de ese punto y despues de eso.
+	*¿Por qué?*: Un módulo debe ser creado una única vez, entonces obtenlo a partir de ese punto y después de eso.
   	  
 	  - Usa `angular.module('app', []);` para asignar un módulo.
 	  - Use  `angular.module('app');` para obtener un módulo. 
@@ -2456,13 +2456,13 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 **[Ir hacia arriba](#table-of-contents)**
 
 ## Documentación de AngularJS
-Para algo más, referencias de la API, echale un ojo a la [documentación de Angular](//docs.angularjs.org/api).
+Para algo más, referencias de la API, échale un ojo a la [documentación de Angular](//docs.angularjs.org/api).
 
 ## Colaboraciones
 
-Primero abre un issue para discutir cambios/adiciones potenciales. Si tienes consultas acerca de la guía, sientete libre de dejarlas como un issue en el repositorio. Si encuentras un error tipográfico, crea un pull request. La idea es mantener el contenido actualizado y usar las caracteristicas nativas de github para ayudar a contar la historia con los issues y los pull requests, estos son completamente buscables vía google. ¿Por qué? porque las probabilidades indican de que si tienes una consulta, ¡alguién más la tendrá también! puedes aprender más aqui acerca de cómo colaborar.
+Primero abre un issue para discutir cambios/adiciones potenciales. Si tienes consultas acerca de la guía, siéntete libre de dejarlas como un issue en el repositorio. Si encuentras un error tipográfico, crea un pull request. La idea es mantener el contenido actualizado y usar las características nativas de github para ayudar a contar la historia con los issues y los pull requests, estos son completamente «buscables» vía google. ¿Por qué? porque las probabilidades indican de que si tienes una consulta, ¡alguien más la tendrá también! puedes aprender más aquí acerca de cómo colaborar.
 
-*Para conlaborar con este repositorio debes estar de acuerdo con que tu contenido disponible sea sujeto a la licencia de este repositorio.*
+*Para colaborar con este repositorio debes estar de acuerdo con que tu contenido disponible sea sujeto a la licencia de este repositorio.*
 
 ### Proceso
     1. Discute el cambio en un Issue. 
