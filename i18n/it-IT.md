@@ -35,7 +35,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   1. [Annotazioni manuali per la Dependency Injection](#manual-annotating-for-dependency-injection)
   1. [Minificazione e Annotazioni](#minification-and-annotation)
   1. [Gestione delle eccezzioni](#exception-handling)
-  1. [Dare i nomi](#naming)
+  1. [Nomenclatura](#naming)
   1. [Principio "LIFT" per la struttura dell'applicazione](#application-structure-lift-principle)
   1. [Struttura dell'applicazione](#application-structure)
   1. [Modularità](#modularity)
@@ -1049,7 +1049,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
 
-    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o largi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sul dare i nomi per maggiori raccomandazioni.
+    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o largi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla nomenclatura per maggiori raccomandazioni.
 
 ### Limiti alla manipolazione del DOM
 
@@ -1639,29 +1639,29 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 **[Torna all'inizio](#table-of-contents)**
 
-## Dare i nomi
+## Nomenclatura
 
-### Naming Guidelines
+### Linee guida per assegnare i nomi
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    *   the file name (`avengers.controller.js`)
-    *   the registered component name with Angular (`AvengersController`)
+  - Usa nomi consistenti per tutti i componenti seguendo uno schema che descriva le funzionalità dei componenti e poi (a scelta) il suo tipo. Lo schema che consiglio è `feature.type.js`. Ci sono 2 nomi per la maggior parte dei componenti:
+    *   il nome del file (`avengers.controller.js`)
+    *   il nome del componente registrato con Angular (`AvengersController`)
  
-    *Perché?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+    *Perché?*: Convezioni sui nomi aiutano a fornire un modo consistente per trovate i contenuti a colpo d'occhio. Essere consisteni in un progetto è vitale. Essere consistenti in un team è importante. Essere consistenti nell'insieme di un'azienda è tremendamente efficiente.
 
-    *Perché?*: The naming conventions should simply help you find your code faster and make it easier to understand. 
+    *Perché?*: Le convezioni sulla nomenclatura dovrebbe semplicemente aiutare a trovare il tuo codice più rapidamente e renderlo più semplice da comprendere. 
 
-### Feature File Names
+### Nomi dei file per funzionalità
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - Usa nomi consistenti per tutti i componenti seguendo uno schema che descriva le funzionalità dei componenti e poi (a scelta) il suo tipo. Lo schema che consiglio è `feature.type.js`.
 
-    *Perché?*: Provides a consistent way to quickly identify components.
+    *Perché?*: Fornisce un modo consistente per identificare facilmente i componenti.
 
-    *Perché?*: Provides pattern matching for any automated tasks.
+    *Perché?*: Fornisce uno schema di corrispondenza per qualsiasi processo di automatizzazione.
 
     ```javascript
     /**
-     * common options 
+     * opzioni compuni 
      */
 
     // Controllers
@@ -1677,7 +1677,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
     ```javascript
     /**
-     * recommended
+     * raccomandato
      */
 
     // controllers
@@ -1706,28 +1706,28 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     avenger-profile.directive.spec.js
     ```
 
-  Nota: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Nota: Un'altra concenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team.
 
     ```javascript
     /**
-     * recommended
+     * raccomandato
      */
     // Controllers
     avengers.js
     avengers.spec.js
     ```
 
-### Test File Names
+### Nomi dei file di test
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.  
+  - Nomina le specifiche dei test in modo similare al componente che testano aggiundendo il suffisso `spec`.   
 
-    *Perché?*: Provides a consistent way to quickly identify components.
+    *Perché?*: Fornisce un modo consistente per identificare facilmente i componenti.
 
-    *Perché?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+	*Perché?*: Fornisce uno schema di corrispondeza per [karma](http://karma-runner.github.io/) o altri esecutori di test.
 
     ```javascript
     /**
-     * recommended
+     * raccomandato
      */
     avengers.controller.spec.js
     logger.service.spec.js
@@ -1735,17 +1735,17 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     avenger-profile.directive.spec.js
     ```
 
-### Controller Names
+### Nomi dei controller
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Usa nomi consistenti per tutti i controller nominandoli come le loro funzionalità. Usa UpperCamelCase per i constroller, dal momento che sono costruttori.
 
-    *Perché?*: Provides a consistent way to quickly identify and reference controllers.
+    *Perché?*: Fornisce un modo consistente per identificare e referenziare facilmente i controller.
 
-    *Perché?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *Perché?*: UpperCamelCase è una convezione per identificare un oggetto che può essere instanziato usando un costruttore.
 
     ```javascript
     /**
-     * recommended
+     * raccomandato
      */
 
     // avengers.controller.js
@@ -1756,17 +1756,17 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     function HeroAvengers(){ }
     ```
     
-### Controller Name Suffix
+### Suffisso nel nome di un controller
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - Aggiungi `Controller` alla fine del nome del controller o no. Segline 1 non entrambi.
 
-    *Perché?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+    *Perché?*: Il suffisso `Controller` è quello più comunemente usato ed è più esplicitamente descrittivo.
 
-    *Perché?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
+    *Perché?*: L'omissione del sufficco è più coinciso ed il controller è spesso facilmente indentificabile anche senza suffisso.
 
     ```javascript
     /**
-     * recommended: Option 1
+     * raccomandato: Opzione 1
      */
 
     // avengers.controller.js
@@ -1779,7 +1779,7 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
     ```javascript
     /**
-     * recommended: Option 2
+     * raccomandato: Opzione 2
      */
 
     // avengers.controller.js
@@ -1790,15 +1790,15 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     function AvengersController(){ }
     ```
 
-### Factory Names
+### Nomi delle factory
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Usa una nomenclatura consistente per tutte le factory dando i nomi date le loro funzionalità. Usa il camel-case per service e factory.
 
-    *Perché?*: Provides a consistent way to quickly identify and reference factories.
+    *Perché?*: Fornisce un modo consistente per identificare facilmente e referenziare le factory.
 
     ```javascript
     /**
-     * recommended
+     * raccomandato
      */
 
     // logger.service.js
@@ -1809,15 +1809,15 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     function logger(){ }
     ```
 
-### Directive Component Names
+### Nomi dei componenti directive
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Usa nomi consistenti per putte le directive usando il camel-case. Usa un breve previsso che descriva l'area alla quale la directive appartiene (alcuni esempi sono presiffi relativi all'azienda o al progetto).
 
-    *Perché?*: Provides a consistent way to quickly identify and reference components.
+    *Perché?*: Fornisce un modo consistente per identificare e referenziare facilmente i componenti.
 
     ```javascript
     /**
-     * recommended
+     * raccomandato
      */
 
     // avenger.profile.directive.js    
@@ -1830,49 +1830,49 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     function xxAvengerProfile(){ }
     ```
 
-### Modules
+### Moduli
 
-  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. A single module app might be named `app.js`, omitting the module moniker.
+  -  Quando di sono moduli multipli, il modulo principale è nominato come `app.module.js` mentre altri moduli dipendenti prendono i nomi da ciò che rappresentano. Per esempio, un modulo admin è nominato `admin.module.js`. I rispettivi nomi con i quali sono registrati saranno `app` e `admin`. Una app a modulo singolo si chiamerà `app.js`, omettendo l'appellativo module.
 
-    *Perché?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
+    *Perché?*: Una app con 1 modulo si chiama `app.js`. È l'app, quindi perché non estremamente semplice.
  
-    *Perché?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *Perché?*: Fornisce consistenza per app che hanno più di un modulo e per poter espandare verso applicazioni a larga scala.
 
-    *Perché?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *Perché?*: Fornisci un modo semplice al fine di usare processi automatici per caricare prima tutte le definizioni di moduli, successivamente tutti gli altri file di Angular (per il bunndling).
 
-### Configuration
+### Configurazione
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - Separa la configurazione di un modulo nel proprio file chiamato come il modulo. Un file di configurazione per il modulo principale `app` è chiamato `app.config.js` (o semplicemente `config.js`). Un file di configurazione per un modulo chiamato `admin.module.js` sarà `admin.config.js`.
 
-    *Perché?*: Separates configuration from module definition, components, and active code.
+    *Perché?*: Separa la configurazione dalla definizione, componenti e codice di attivazione del modulo.
 
-    *Perché?*: Provides a identifiable place to set configuration for a module.
+    *Perché?*: Fornisci una posiszione identificabile per settare la configurazione di un modulo.
 
-### Routes
+### Route
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
+  - Separa la configurazione delle route nei propri file. Esempi possono essere `app.route.js` per il modulo principale e `admin.route.js` per il modulo `admin`. Anche in piccole app preferisco questa separazione dal resto della configurazione. Una alternativa è un nome più esteso quale `admin.config.route.js`.
 
 **[Torna all'inizio](#table-of-contents)**
 
 ## Principio "LIFT" per la struttura dell'applicazione
 ### LIFT
 
-  - Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines. 
+  - Struttura la tua app tale da poter `L`ocate (localizzare) il codice facilmente, `I`dentify (identificare) il codice con uno sguardo, tenere la stuttura più `F`lattest (piatta) che puoi, e `T`ry (provare) a rimanere DRY (Don't Repeat Yourself - Non ripetersi). La struttura dovrebbe seguire queste 4 linee guida basilari. 
 
-    *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
+    *Perché LIFT?*: Fornisce una struttura consistente che scala bene, è modulare e rende più semplice aumentare l'efficienza nel trovare facilmente il codice. Un altro modo per verificare la struttura della tua app è chiedeti: Quanto rapidamente puoi aprire e lavorare ad una funzionalità in tutti i file che sono collegati?
 
-    When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines
+    Quando ritengo che la mia struttura non sia confortevole, torno indietro a rivedere le linee guida LIFT
   
-    1. `L`ocating our code is easy
-    2. `I`dentify code at a glance
-    3. `F`lat structure as long as we can
-    4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
+    1. `L`ocalizzare il nostro codice con facilità
+    2. `I`dentificare il codice a vista
+    3. `F`lat (pitta) struttura quanto più possibile
+    4. `T`ry (prova) a rimanere DRY (Don’t Repeat Yourself) o T-DRY
 
-### Locate
+### Locate - localizzare
 
-  - Make locating your code intuitive, simple and fast.
+  - Rendi intuitivo, semplice e facile localizzare il codice.
 
-    *Perché?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly,  they will not be able to work as efficiently as possible, and the structure needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
+    *Perché?*: Ritengo ciò essere estremamente importante per il progetto. Se il team non è in grado di trovare i file di cui necessita rapidamente, non sarà in grado di lavorare il più efficacemente possibile, per cui la struttura necessita un cambiamento. Potresti non sapere il nome del file o dove sono i file a questo correlati quindi posizionarli in nel posto più intuitivo e prossimi gli uni agli altri fa risparmiare un mucchio di tempo. Una descrittiva struttura delle cartelle può essere d'aiuto.
 
     ```
     /bower_components
@@ -1892,23 +1892,24 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
     .bower.json
     ```
 
-### Identify
+### Identify - identificare
 
-  - When you look at a file you should instantly know what it contains and represents.
+  - Guardando un file dovresti istantaneamente sapere ciò che contiene e cosa rappresenta.
 
-    *Perché?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
+    *Perché?*: Spendi meno tempo a rintracciare e beccare il codice e diventa più efficente. Se per fare ciò hai bisogno di nomi dei file più lunghi, fallo. Si descrittivo con i nomi dei file e tieni il contenuto del file con esattamente 1 componente. Evita file con più di un controller, diversi service o un misto. Ci sono delle eccezioni alla regola "1 per file" ovvero quando ho una serie di piccole funzionalità correlate l'un l'altra: continuano ad essere facilmente identificabili.
 
-### Flat
+### Flat - piatto
 
-  - Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
 
-    *Perché?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
+  - Tieni la struttura delle cartelle piatta il più a lungo possibile. Quando arrivi ad avere 7 o più file, inizia a considerarne una separazione.
 
-### T-DRY (Try to Stick to DRY)
+    *Perché?*: Nessuno vuole cercare 7 livelli di cartelle per trovare un file. Pensa ai menù di un sito web.. qualunche cosa oltre i 2 livelli dovrebbe esser presa in considerazione. Nella struttura di cartella non c'è una regola con un numero esattamente definito ma quando una cartella contiene 7-10 file, è il momento di creare una sottocartella. Basalo su un livello a te comodo. Usa una struttura più piatta fino a che c'è l'ovvia necessità (praticando il resto dei principi LIFT) di creare una nuova cartella.
 
-  - Be DRY, but don't go nuts and sacrifice readability.
+### T-DRY (Try to Stick to DRY) - Prova a non ripeterti
 
-    *Perché?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
+  - Si DRY, ma non diventare pazzo e sacrificare la leggibilità.
+
+    *Perché?*: Non ripetersi è importante ma non crocuale se sacrifica altri principi LIFT, per questo il principio è Try (provare) DRY. Non voglio digitare session-view.html perché è ovvio essere una view. Se non è ovvio o se per convenzione allora nominala così.  
 
 **[Torna all'inizio](#table-of-contents)**
 
