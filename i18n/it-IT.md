@@ -2078,10 +2078,11 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Logica di Startup
 
-### Configuration
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidaes include providers and constants.
+### Configurazione
 
-    *Why?:* This makes it easier to have a less places for configuration.
+  - Inietta codice nel  [modulo di configurazione](https://docs.angularjs.org/guide/module#module-loading-dependencies) che deve essere configurato prima dell'esecuzione dell'app angular. I candidati ideali includono provider e costanti.
+
+    *Perché?:* Questo rende più facile ottenere pochi posti atti alla configurazione
 
   ```javascript
   angular
@@ -2108,11 +2109,11 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
   }
   ```
 
-### Run Blocks
+### Blocchi Run
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Qualunche codice che necessiti di essere eseguito quando un'applicazione si avvia dovrebbe essere dichiarato in una factory, esposto tramite funzione ed iniettato nel [blocco run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *Perché?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+    *Perché?*: Codice posto direttamente in un blocco run può essere difficile da testate. Metterlo in una factory lo rende più astratto e simulabile (farne un mock).
 
   ```javascript
   angular
@@ -2131,102 +2132,102 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Wrapper dei Servizi $ di Angular
 
-### $document and $window
+### $document e $window
 
-  - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
+  - Usa [`$document`](https://docs.angularjs.org/api/ng/service/$document) e [`$window`](https://docs.angularjs.org/api/ng/service/$window) al posto di `document` e `window`.
 
-    *Perché?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *Perché?*: Questi servizi sono gestiti da Angular e più facilmente testabili che l'uso di document e window nei test. Ciò ti aiuta ad evitare di fare mock di document e window.
 
-### $timeout and $interval
+### $timeout e $interval
 
-  - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
+  - Usa [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) e [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) al posto di `setTimeout` e `setInterval` .
 
-    *Perché?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
+	*Perché?*: Questi servizi sono gestiti da Angular e più facilmente testabili e trattano il ciclo di digest di AngularJS quindi tengono il data binding sincronizzato.
 
 **[Torna all'inizio](#table-of-contents)**
 
 ## Test
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcune mie raccomandazioni fondamentali per lo unit testing con link e uteriori informazioni.
 
-### Write Tests with Stories
+### Scrivi i test con le Storie
 
-  - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
+  - Scrivi un set di test per ogni storia. Inizia con un test vuoto e riempilo fino a scrivere il codice per la storia.
 
-    *Perché?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+    *Perché?*: Scrivere la descrizione del test aiuta a definire chiaramente cosa la tua stoia farà, non farà e come puoi misurarne il successo.
 
     ```javascript
-    it('should have Avengers controller', function() {
+    it('dovrebbe avere il controller Avenger', function() {
         //TODO
     });
 
-    it('should find 1 Avenger when filtered by name', function() {
+    it('dovrebbe trovare 1 Avenger quando filtrato per nome', function() {
         //TODO
     });
 
-    it('should have 10 Avengers', function() {}
-        //TODO (mock data?)
+    it('dovrebbe avere 10 Avenger', function() {}
+        //TODO (fare un mock dei dati?)
     });
 
-    it('should return Avengers via XHR', function() {}
+    it('dovrebbe ritornare Avenger via XHR', function() {}
         //TODO ($httpBackend?)
     });
 
-    // and so on
+    // continuare
     ```
 
 ### Testing Library
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
+  - Usa [Jasmine](http://jasmine.github.io/) oppure [Mocha](http://visionmedia.github.io/mocha/) per lo unit testing.
 
-    *Perché?*: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
+    *Perché?*: Sia Jasmine che Mocha sono largamente utilizzati nella comunità di AngularJS. Entrambi son stabili, ben manutenut e forniscono funzinalità solide per i test.
 
-    Nota: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+    Nota: Usando Mocha, tieni in considerazione di usare anche una libreria di asserzione come [Chai](http://chaijs.com).
 
-### Test Runner
+### Esecutori di Test
 
-  - Use [Karma](http://karma-runner.github.io) as a test runner.
+  - Usa [Karma](http://karma-runner.github.io) come esecutore di test.
 
-    *Perché?*: Karma is easy to configure to run once or automatically when you change your code.
+    *Perché?*: Karma è facilmente configurabile per essere eseguito una sola volta o automaticamante quando cambia il tuo codice.
 
-    *Perché?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *Perché?*: Karma si aggangia facilmente al tuo processo di Integrazione Continua da solo o attraverso Grunt o Gulp.
 
-    *Perché?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Perché?*: Alcuni IDE cominciamo ad integrare Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Perché?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
 
-### Stubbing and Spying
+### Stubbing e Spying
 
-  - Use Sinon for stubbing and spying.
+  - Usa Sinon per lo stubbing e spying.
 
-    *Perché?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *Perché?*: Sinon lavora bene sia con Jasmine che Mocha ed estende le funzionalità di stubbing e spying che questi offrono.
 
-    *Perché?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *Perché?*: Sinon rende pià semplice il passagio tra Jasmine e Mocha, nel caso voglia usarli entrambi.
 
 ### Headless Browser
 
-  - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - Usa [PhantomJS](http://phantomjs.org/) per eseguire i test su un server.
 
-    *Perché?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. 
+    *Perché?*: PhantomJS è un headless browser che aiuta l'esecuzione di test senza la necessità di un browser "visuale". Quindi non devi installare Chrome, Safari, IE o altri browser sul server. 
 
-    Nota: You should still test on all browsers in your environment, as appropriate for your target audience.
+    Nota: Dovresti in ogni caso testare tutti i browser del tuo ambiente, come appropriato per il pubblico che è il target.
 
-### Code Analysis
+### Analisi del codice
 
-  - Run JSHint on your tests. 
+  - Esegui JSHint sui tuoi test. 
 
-    *Perché?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Perché?*: I test sono codice. JSHint può aiutare ad identificare problemi di qualità del cosice che causano il'improprio funzionamento del test.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Alleviare le regole sulle variabili globali di JSHint per i Test 
 
-  - Relax the rules on your test code to allow for common globals such as `describe` and `expect`.
+  - Rilassa le regole sul codice dei test per consentendoli per variabili globali comuni quali `describe` ed `expect`.
 
-    *Perché?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
+    *Perché?*: I tuoi test sono codice e richiedono al medesima attenzione e regole per la qualità del codice come tutto il resto del codice di produzione. Comunque, variabili globali usate dai framework di test, per esempio, possono essere rilassate includendole nelle specifiche dei test.
 
     ```javascript
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
 **[Torna all'inizio](#table-of-contents)**
 
