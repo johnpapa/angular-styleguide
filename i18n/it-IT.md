@@ -36,7 +36,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [Minificazione e Annotazioni](#minificazione-e-annotazioni)
   1. [Gestione delle eccezioni](#gestione-delle-eccezioni)
   1. [Nomenclatura](#nomenclatura)
-  1. [Principio "LIFT" per la struttura dell'applicazione](#principio--lift--per-la-struttura-dell-applicazione)
+  1. [Principio "LIFT" per la struttura dell'applicazione](#principio--lift--per-la-struttura-dell--applicazione)
   1. [Struttura dell'applicazione](#struttura-dell--applicazione)
   1. [Modularità](#modularità)
   1. [Logica di Startup](#logica-di-startup)
