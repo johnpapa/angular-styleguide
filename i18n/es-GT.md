@@ -60,7 +60,7 @@ Mientras que esta guía explica el *qué*, *cómo* y *por qué*, Encuentro sumam
 ## Single Responsibility
 o *Única Responsabilidad*
 
-### La regla de 1
+### La regla del 1
 
   - Definir 1 componente por archivo.  
 
@@ -284,6 +284,7 @@ o *Módulos*
 **[Ir hacia arriba](#table-of-contents)**
 
 ## Controllers
+o *Controladores*
 
 ### Sintaxis controllerAs en Vistas
 
@@ -536,9 +537,9 @@ o *Módulos*
   }
   ```
 
-### Aplazar la lógica del Controller
+### Abstraer la lógica del Controller
 
-  - Aplazar la lógica en un controller delegándola a servicios y factories.
+  - Abstraer la lógica en un controller delegándola a servicios y factories.
 
     *¿Por qué?*: La lógica puede ser reutilizada por múltiples controllers cuando es colocada en un servicio y expuesta vía una función.
 
