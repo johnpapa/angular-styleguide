@@ -32,15 +32,15 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [Data Service](#data-service)
   1. [Directive](#directive)
   1. [Risoluzioni di promesse per un controller](#risoluzioni-di-promesse-per-un-controller)
-  1. [Annotazioni manuali per la Dependency Injection](#annotazioni-manuali-per-la-Dependency-Injection)
-  1. [Minificazione e Annotazioni](#minificazione-e-Annotazioni)
-  1. [Gestione delle eccezzioni](#gestione-delle-eccezzioni)
+  1. [Annotazioni manuali per la Dependency Injection](#annotazioni-manuali-per-la-dependency-injection)
+  1. [Minificazione e Annotazioni](#minificazione-e-annotazioni)
+  1. [Gestione delle eccezioni](#gestione-delle-eccezioni)
   1. [Nomenclatura](#nomenclatura)
-  1. [Principio "LIFT" per la struttura dell'applicazione](#principio-LIFT-per-la-struttura-dell-applicazione)
-  1. [Struttura dell'applicazione](#struttura-dell-applicazione)
+  1. [Principio "LIFT" per la struttura dell'applicazione](#principio--LIFT--per-la-struttura-dell-applicazione)
+  1. [Struttura dell'applicazione](#struttura-dell--applicazione)
   1. [Modularità](#modularità)
-  1. [Logica di Startup](#logica-di-Startup)
-  1. [Wrapper dei Servizi $ di Angular](#wrapper-dei-Servizi--di-Angular)
+  1. [Logica di Startup](#logica-di-startup)
+  1. [Wrapper dei Servizi $ di Angular](#wrapper-dei-Servizi--di-angular)
   1. [Test](#test)
   1. [Animazioni](#animazioni) 
   1. [Commenti](#commenti)
@@ -103,7 +103,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   function someFactory() { }
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## IIFE
 ### JavaScript Closures
@@ -167,7 +167,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   
   - Nota: Le IIFE evitano che il codice di test possa raggiungere membri privati come regular expression o funzioni di supporto le quali sono spesso oggetto dei propri unit test. In ogni caso, queste possono essere testate per mezzo di membri accessibili o attraverso l'esposizione di propri componenti. Per esempio ponendo funzioni di supporto, regular expression o costanti nelle proprie factory o costanti.
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Moduli
 
@@ -272,7 +272,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   function logger() { }
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Controller
 
@@ -627,7 +627,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   </div>
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Service
 
@@ -665,7 +665,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Factory
 
@@ -833,7 +833,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Data Service
 
@@ -957,7 +957,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-    **[Torna all'inizio](#table-of-contents)**
+    **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Directive
 ### Limite di 1 per file
@@ -1184,7 +1184,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Risoluzioni di promesse per un controller
 
@@ -1290,7 +1290,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     Nota: La dipendenza del codice di esempio da `movieService` non è a prova di minificazione in se stessa. Per i dettagli su come rendere questo codice a prova di minificazione, vedi la sezione sulla [dependency injection](#manual-annotating-for-dependency-injection) e sulla [minificazione e annotazione](#minification-and-annotation).
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Annotazioni manuali per la Dependency Injection
 
@@ -1418,7 +1418,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     }
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Minificazione e Annotazioni
 
@@ -1528,7 +1528,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Gestione delle eccezioni
 
@@ -1637,7 +1637,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     }
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Nomenclatura
 
@@ -1852,7 +1852,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
   - Separa la configurazione delle route nei propri file. Esempi possono essere `app.route.js` per il modulo principale e `admin.route.js` per il modulo `admin`. Anche in piccole app preferisco questa separazione dal resto della configurazione. Una alternativa è un nome più esteso quale `admin.config.route.js`.
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Principio "LIFT" per la struttura dell'applicazione
 ### LIFT
@@ -1911,7 +1911,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     *Perché?*: Non ripetersi è importante ma non è cruciale se sacrifica altri principi LIFT, per questo il principio è Try (provare) DRY. Non voglio digitare session-view.html perché è ovvio essere una view. Se non è ovvio o se per convenzione allora nominala così.  
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Struttura dell'applicazione
 
@@ -2020,7 +2020,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
             topnav.html         
     ``` 
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Modularità
 
@@ -2074,7 +2074,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     > La mia struttura varia leggermente tra progetti ma tutti seguono queste linee guida per la strutturazione e modularità. L'implementazione può variare in relazione alle funzionalità ed al team. In altre parole, non ti bloccare su una struttura che sia esattamente uguale ma giustifica la tua struttura tenendo a mente l'uso di consistenza, manutenibilità ed efficienza. 
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Logica di Startup
 
@@ -2128,7 +2128,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     }
   ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Wrapper dei Servizi $ di Angular
 
@@ -2144,7 +2144,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
 	*Perché?*: Questi servizi sono gestiti da Angular e più facilmente testabili e trattano il ciclo di digest di AngularJS quindi tengono il data binding sincronizzato.
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Test
 Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcune mie raccomandazioni fondamentali per lo unit testing con link e ulteriori informazioni.
@@ -2229,7 +2229,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
   ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Animazioni
 
@@ -2259,7 +2259,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     Nota: Leggi questo [ottimo posto di Matias Niemelä sulle animazioni di AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Commenti
 
@@ -2310,9 +2310,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     })();
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
-## JS Hint
+## JSHint
 
 ### Usa un file di opzioni
 
@@ -2386,7 +2386,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     }
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Costanti
 
@@ -2410,7 +2410,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     })();
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## File Template e Snippet
 Usa file template o snippet che ti aiutino a seguire stili e schemi consistentemente. Qui trovi alcuni template e/o snippet per alcuni degli editor per lo sviluppo wbe e IDE.
@@ -2455,7 +2455,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ng-m // crea un modulo Angular
     ```
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Documentazione di AngularJS
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -2499,4 +2499,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Torna all'inizio](#table-of-contents)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
