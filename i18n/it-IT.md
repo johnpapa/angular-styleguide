@@ -1915,33 +1915,33 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 
 ## Struttura dell'applicazione
 
-### Overall Guidelines
+### Linee guida generali
 
-  -  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutti i contenuti rispettano 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze party sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non volgio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
 
-    Nota: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Nota: Trovi più dettagli e le motivazioni di questa struttura nel [post originale sulla struttura delle applicazioni](http://www.johnpapa.net/angular-app-structuring-guidelines/) (in inglese).
 
 ### Layout
 
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
+  - Metti i componenti che definiscono il layout globale dell'applicazione in una cartella con il nome `layout`. Questi possono includere un shell view e controller che agiscono come contenitori per l'app, navigazione, menù, aree per i contenuti ed altre regioni.  
 
-    *Perché?*: Organizes all layout in a single place re-used throughout the application.
+    *Perché?*: Organizza tutto il layout in una sola posizione riutilizzabile lungo tutta l'applicazione.
 
-### Folders-by-Feature Structure
+### Struttura Cartella-per-Funzionalità
 
-  - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
+  - Crea cartelle che abbiamo in nome per la funzionalità che rappresentano. Quando una cartella cresce fino a contenere più di 7 file, inizia a considerare la creazione di un'altra cartella. La tua soglia potrebbe essere differente, aggiustala di conseguenza.
 
-    *Perché?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+    *Perché?*: Uno sviluppatore può localizzare il codice, identificare ciò che rappresenta a colpo d'occhio, la struttura è piatta come deve essere e non c'è ripetitività o nomi ridondanti.
 
-    *Perché?*: The LIFT guidelines are all covered.
+    *Perché?*: Le linee guida LIFT sono tutte coperte.
 
-    *Perché?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    *Perché?*: Aiuta a ridurre la possibilità che l'app divenga disordinata per mezzo dell'organizzazione dei contenuti mantenendola allineata con i principi LIFT.
 
-    *Perché?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    *Perché?*: Quando ci sono parecchi file (più di 10) la loro localizzazione è più semplice con una struttura di cartelle che sia consistente e più fifficile in una struttura piatta.
 
     ```javascript
     /**
-     * recommended
+     * raccomanadato
      */
 
     app/
@@ -1977,15 +1977,15 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
             session-detail.controller.js  
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+	  ![Struttura dell'App di Esempio](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      Nota: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Nota: Non utilizzare una strutturazione del tipo cartella-per-tipo. Questo richiede spostarsi tra molte cartelle quando si lavora su una funzionalità e diventa rapidamente scomodo quando l'app cresce di 5, 10 o più di 25 tra view e controller (ed altre funzionalità), per cui è più difficile rispetto alla localizzazione basata su cartella-per-funzionalità.
 
     ```javascript
     /* 
-    * avoid
-    * Alternative folders-by-type.
-    * I recommend "folders-by-feature", instead.
+    * evitare
+    * Alternativa cartella-per-tipo
+    * Consiglio invece "cartella-per-funzionalità".
     */
     
     app/
@@ -2023,56 +2023,56 @@ Nonostante questa guida speghi i *cosa*, *come* e *perché*, trovo che sia di ai
 **[Torna all'inizio](#table-of-contents)**
 
 ## Modularità
-  
-### Many Small, Self Contained Modules
 
-  - Create small modules that encapsulate one responsibility.
+### Molti moduli piccoli e autonomi
 
-    *Perché?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
+  - Crea moduli piccoli che incapsulino una responsabilità.
 
-### Create an App Module
+    *Perché?*: Applicazioni modulari rendono semplice l'inclusione dal momento che consentono ai team di sviluppo la costruizione di tagli verticali dell'applicazione e il suo roll out incrementale. Questo significa che è possibile aggiungere nuove funzionalità mentre vengono sviluppate.
 
-  - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+### Creare un modulo App
 
-    *Perché?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+  - Crea un modulo principale per l'applicazione il cui ruolo sia di mettere insieme tutti gli altri moduli e funzionalità della tua applicazione. Chiamalo con il nome della tua applicazione.
 
-### Keep the App Module Thin
+    *Perché?*: AngularJS incoraggia la modularità e schemi di separazione. La creazione di un modulo principale per una pallicazione il cui ruoli sia quello di legante tra gli altri moduli concente un modo lineare di aggiungere o rimuovere moduli dall'applicazione.
 
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
+### Tinere il modulo App snello
 
-    *Perché?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+  - Nel modulo pricipale metti solo la logica che serva da collante per l'app. Lascia le funzioni ognuno al proprio modulo.
 
-### Feature Areas are Modules
+    *Perché?*: L'aggiunta di ruoli addizionali al modulo principale per il recupero dei dati, il mostrare viste o altra logica non correlata al tenere insieme l'applicazione sporca il modulo principale e rende entrambi gli insiemi di funzionalità più complessi da riusare o rimuovere.
 
-  - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+### Aree di funzionalistà sono Moduli
 
-    *Perché?*: Self contained modules can be added to the application will little or no friction.
+  - Crea moduli che rappresentino aree di funzionalità come layout, servizi riusabili e condivisi, pannelli di controllo e funzioni specifiche all'app (p.e. clienti, amministrazione, vendite).
 
-    *Perché?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    *Perché?*: Moduli autonomi possono essere aggiunti all'applicazione con piccola o nessuna frizione.
 
-    *Perché?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
+    *Perché?*: Sprint o iterazioni possono focalizzarsi sulle aree di funzionalità e renderle disponibili alla fine dello sprint o dell'iterazione.
 
-### Reusable Blocks are Modules
+    *Perché?*: Separare aree di funzioni in moduli rende più semplice testare i moduli in isolamento e il riutilizzo del codice. 
 
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+### Blocchi riutilizzabili sono Moduli
 
-    *Perché?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+  - Crea moduli che rappresentino blocchi di applicazione riutilizzabili per servizi comuni quali la gestione delle eccezioni, il log, la diagnostica, sicurezza e il data stashing locale.
 
-### Module Dependencies
+    *Perché?*: Questi tipi di funzionalità sono richieste in molte applicazioni, perciò tenerle separate in moduli possono essere generiche  l'applicazione e riutilizzate in applicazioni diverse.
 
-  - The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.
+### Dipendenze dei Moduli
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+  - Il modulo principale dell'applicazione dipende dai moduli di funzionalità specifiche dell'app, i moduli delle funzionalità non hanno dipendenze dirette, moduli trans-applicazione dipendono da moduli generici.
 
-    *Perché?*: The main app module contains a quickly identifiable manifest of the application's features. 
+    ![Modularità e Dipendenze](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
-    *Perché?*: Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (`app.core` in the image).
+    *Perché?*: Il modulo principale dell'app contiene un manifesto che sia facilmente identificabile con le funzionalità dell'applicazione. 
 
-    *Perché?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *Perché?*: Funzionalità trans-applicazione diventano semplici da condividere. Le funzionalità generalmente dipendono dagli stessi moduli tras-applicazione, che sono consolidati in in singolo modulo (`app.core` nell'immagine).
 
-    Nota: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventanto facilmente localizzabili da dentro `app.core` (questi il nome che più di piaccia per questo modulo).
 
-    > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
+    Nota: Questa è una strategia per la consistenza. Ci sono diverse buone opzioni in questo caso. Scegline una che sia consistente, segua le regole delle dipendenze di AngularJS e sia facile da manutenere e scalabile.
+
+    > La mia struttura varia leggermente tra progetti ma tutti seguono queste linee guida per la strutturazione e modularità. L'implementazione può variare in relazione alle funzionalità ed al team. In altre parole, non ti bloccare su una struttura che sia esattamente uguale ma giustifica la tua struttura tenendo a mente l'uso di consistenza, manutenibilità ed efficienza. 
 
 **[Torna all'inizio](#table-of-contents)**
 
