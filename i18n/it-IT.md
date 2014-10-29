@@ -2,6 +2,10 @@
 
 *Guida stilistica dogmatica ad AngularJS per i team di [@john_papa](//twitter.com/john_papa)*
 
+*Traduzido por [Angelo Chiello](https://github.com/angelochiello)*
+
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+
 Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team. 
 
 >Se ti piace questa guida, dai un'occhiata al mio corso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight.

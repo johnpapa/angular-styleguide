@@ -4,11 +4,14 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
 
 *All translations are created by and maintained by the community.*
 
-1. [Portuguese-Brazilian](PT-BR.md)
+1. [Italian](it-IT.md)
+1. [Portuguese-Brazil](PT-BR.md)
 1. [Simplified Chinese](zh-CN.md)
 
 ## Contributing
 Language translations are welcomed and encouraged. The succcess of these translations depends on the community. I highly encourage new translation contributions and help to keep them up to date. 
+
+All translations must preserve the intention of the original document.
 
 > All contributions fall under the [MIT License of this repository](https://github.com/johnpapa/angularjs-styleguide#license). In other words, you would be providing these free to the community.
 
