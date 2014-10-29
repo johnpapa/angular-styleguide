@@ -2,7 +2,7 @@
 
 *Guida stilistica dogmatica ad AngularJS per i team di [@john_papa](//twitter.com/john_papa)*
 
-*Traduzido por [Angelo Chiello](https://github.com/angelochiello)*
+*Traduzione di [Angelo Chiello](https://github.com/angelochiello)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
@@ -14,8 +14,6 @@ L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione
 
 ## Eccezionalità della comunità e riconoscimenti
 Mai lavorare nel vuoto. Ritengo che la comunità intorno ad AngularJS sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di AngularJS, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
-
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
 
 Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](http://twitter.com/wardbell) ed io abbiamo avuto. Seppur non sempre in sintonia, il mio amico Ward ha di certo una influenza sull'evoluzione finale di questa guida.
 
