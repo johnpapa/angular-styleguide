@@ -1131,6 +1131,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
 
+    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
+
   ```html
   <div my-example max="77"></div>
   ```
