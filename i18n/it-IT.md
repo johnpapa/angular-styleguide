@@ -1136,6 +1136,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     Nota: Le directive sotto dimostrano alcuni dei modi in cui puoi usare lo scope all'interno di link e controller di directive usando controllerAs. Ho usato sulla stessa linea il template solo per mettere tutto in un unico posto. 
 
+    Nota: In relazione alla dependency injection, guarda [Annotazioni manuali per la Dependency Injection](#annotazioni-manuali-per-la-dependency-injection). 
+
   ```html
   <div my-example max="77"></div>
   ```
