@@ -2,18 +2,18 @@
 
 *AngularJS风格指南[@john_papa](//twitter.com/john_papa)*
 
-*翻译出自[kerncink](https://github.com/natee)*
+*由[kerncink](https://github.com/natee)翻译*
 
 >[原始英文版本](http://jpapa.me/ngstyles)将会在第一时间维护和更新，翻译版本的更新将会在这之后。
 
-如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个正适合你。这里所包含的风格是基于我用[AngularJS](//angularjs.org)、演讲、[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)并且在团队中运用的一些经验。
+如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个repo正适合你。这里所包含的风格是基于我在团队中使用[AngularJS](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
 
->如果你喜欢这个指南，在Pluralsight上check out我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
+>如果你喜欢这个指南，请在Pluralsight上检出我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
 
-这个风格指南的目的是通过展示我用到的约定给构建AngularJS应用提供指导，更加重要的是，我为什么要选择它们。
+这个风格指南的目的是为构建AngularJS应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
 
 ## Community Awesomeness and Credit
-我发现AngularJS社区是一个热衷于分享经验的令人难以置信的社区，因此，我的一个朋友、AngularJS专家Todd Motto和我合作了多种风格和惯例。我们同意其中的大多数，但是也有一些分歧。我鼓励你去看看[Todd的指引](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
+我发现AngularJS社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是AngularJS专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
 
 我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，虽然我们并不总是能达成一致，但是Ward确实影响了本指南的最终演变。
 
@@ -31,12 +31,12 @@
   1. [Factories](#factories)
   1. [Data Services](#data-services)
   1. [Directives](#directives)
-  1. [解决Controller的Promises](#解决Controller的Promises)
+  1. [解决Controller的Promises](#解决controller的promises)
   1. [手动依赖注入](#手动依赖注入)
   1. [压缩和注释](#压缩和注释)
   1. [异常处理](#异常处理)
   1. [命名](#命名)
-  1. [应用程序结构LIFT原则](#应用程序结构LIFT原则)
+  1. [应用程序结构LIFT原则](#应用程序结构lift原则)
   1. [应用程序结构](#应用程序结构)
   1. [模块化](#模块化)
   1. [启动逻辑](#启动逻辑)
@@ -47,7 +47,7 @@
   1. [JSHint](#js-hint)
   1. [常量](#常量)
   1. [文件模板和片段](#文件模板和片段)
-  1. [AngularJS文档](#AngularJS文档)
+  1. [AngularJS文档](#angularjs文档)
   1. [贡献](#贡献)
   1. [许可](#许可)
 
@@ -57,7 +57,7 @@
 
   - 一个文件只定义一个组件。  
 
- 	下面的一个例子在同一个文件中定义了一个`app`的module和它的一些依赖，定义了一个controller，一个factory。   
+ 	下面的一个例子在同一个文件中定义了一个`app`的module和它的一些依赖、一个controller和一个factory。   
 
   ```javascript    
   /* avoid */    
@@ -71,7 +71,7 @@
   function someFactory() { }
   ```
       
-  	现在相同的组件被分割成单独的文件。
+  现在把相同的组件分割成单独的文件。
 
   ```javascript
   /* recommended */
@@ -181,7 +181,7 @@
 
   - 不使用任何一个使用了setter语法的变量来定义modules。 
 
-	*为什么?*: 在一个文件只有一个组件的条件下，很少有需要为一个模块引入一个变量。
+	*为什么?*：在一个文件只有一个组件的条件下，很少有需要为一个模块引入一个变量。
 	
   ```javascript
   /* avoid */
@@ -497,7 +497,7 @@
   ```
 
   注意这里重要的代码分散在前面的例子中。
-  下面的示例中，可以看到重要的代码都放到了顶部。实现的详细细节都在下方，这样的代码当然是更易读的。
+  下面的示例中，可以看到重要的代码都放到了顶部。实现的详细细节都在下方，显然这样的代码更易读。
 
   ```javascript
   /*
@@ -534,7 +534,7 @@
 
   *为什么？*：把逻辑放到service中，并通过一个function暴露，就可以被多个controller重用。
 
-  *为什么？*：把逻辑放到service中将会使单元测试的时候更加容易地把它们分离，相反，如果在controller中调用逻辑只会让这变得被别人嘲笑。
+  *为什么？*：把逻辑放到service中将会使单元测试的时候更加容易地把它们分离，相反，如果在controller中调用逻辑就显得很二了。
 
   *为什么？*：从controller中删除依赖关系并且隐藏实现细节。
 
@@ -679,7 +679,7 @@
 
   - facotry是一个单例，它返回一个包含service成员的对象。
   
-    注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
+    注：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
 ###可访问的成员放到顶部###
 
@@ -962,7 +962,7 @@
 
 ###一个文件限制一个
 
-  - 在一个文件中只创建一个directive，并依照directive来命名文件。 
+  - 一个文件中只创建一个directive，并依照directive来命名文件。 
 
     *为什么？*：把所有directive放到一个文件中很容易，但是当一些directive是跨应用的，一些是跨模块的，一些仅仅在一个模块中使用时，想把它们独立出来是非常困难的。
 
@@ -1046,7 +1046,7 @@
   }
   ```
 
-    注意：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时，选择一个让directive和文件都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
+    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时，选择一个让directive和文件都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
 
 ###限制DOM操作
 
@@ -1130,6 +1130,8 @@
     *为什么？*：因为不难且有必要这样做。
 
     注意：下面的directive演示了一些你可以在link和directivedirective控制器中使用scope的方法，用controllerAs。这里把template放在行内是为了在一个地方写出这些代码。
+
+    注意：关于依赖注入的内容，请看[手动依赖注入](#手动依赖注入)。
 
   ```html
   <div my-example max="77"></div>
@@ -1283,7 +1285,7 @@
   }
   ```
     
-    注意：示例代码中的`movieService`不是安全压缩的做法，可以到[依赖注入](#依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
+    注意：示例代码中的`movieService`不是安全压缩的做法，可以到[手动依赖注入](#手动依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
 
 
 **[返回顶部](#目录)**
@@ -2079,11 +2081,11 @@
   }
   ```
 
-### 运行块
+### 运行代码块
 
-  - 任何在应用程序启动时需要运行的代码都应该在factory中声明，通过一个function暴露出来，然后注入到[运行块](https://docs.angularjs.org/guide/module#module-loading-dependencies)。
+  - 任何在应用程序启动时需要运行的代码都应该在factory中声明，通过一个function暴露出来，然后注入到[运行代码块](https://docs.angularjs.org/guide/module#module-loading-dependencies)中。
 
-    *为什么？*：直接在运行块处写代码将会使得测试变得很困难，相反，如果放到facotry则会使的抽象和模拟变得很简单。
+    *为什么？*：直接在运行代码块处写代码将会使得测试变得很困难，相反，如果放到facotry则会使的抽象和模拟变得很简单。
 
   ```javascript
   angular
