@@ -23,35 +23,35 @@
 
 ## Содржина
 
-  1. [Единствена одговорност](#single-responsibility)
+  1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
-  1. [Модули](#modules)
-  1. [Контролери](#controllers)
-  1. [Сервиси](#services)
-  1. [Фабрики](#factories)
-  1. [Податочни сервиси](#data-services)
-  1. [Директиви](#directives)
-  1. [Решавање Promises за Контролерот](#resolving-promises-for-a-controller)
-  1. [Рачни анотации за Dependency Injection](#manual-annotating-for-dependency-injection)
-  1. [Минификација и анотација](#minification-and-annotation)
-  1. [Справување со исклучоци](#exception-handling)
-  1. [Именување](#naming)
-  1. [Структура на апликација LIFT принцип](#application-structure-lift-principle)
-  1. [Структура на апликација](#application-structure)
-  1. [Модуларност](#modularity)
-  1. [Логика на започнување](#startup-logic)
-  1. [Angular $ Wrapper сервиси](#angular--wrapper-services)
-  1. [Тестирање](#testing)
-  1. [Анимации](#animations) 
-  1. [Коментари](#comments)
+  1. [Modules](#modules)
+  1. [Controllers](#controllers)
+  1. [Services](#services)
+  1. [Factories](#factories)
+  1. [Data Services](#data-services)
+  1. [Directives](#directives)
+  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
+  1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
+  1. [Minification and Annotation](#minification-and-annotation)
+  1. [Exception Handling](#exception-handling)
+  1. [Naming](#naming)
+  1. [Application Structure LIFT Principle](#application-structure-lift-principle)
+  1. [Application Structure](#application-structure)
+  1. [Modularity](#modularity)
+  1. [Startup Logic](#startup-logic)
+  1. [Angular $ Wrapper Services](#angular--wrapper-services)
+  1. [Testing](#testing)
+  1. [Animations](#animations) 
+  1. [Comments](#comments)
   1. [JSHint](#js-hint)
-  1. [Константи](#constants)
-  1. [Шаблони на датотеки и краток код](#file-templates-and-snippets)
-  1. [AngularJS Документација](#angularjs-docs)
-  1. [Придонес](#contributing)
-  1. [Лиценца](#license)
+  1. [Constants](#constants)
+  1. [File Templates and Snippets](#file-templates-and-snippets)
+  1. [AngularJS Docs](#angularjs-docs)
+  1. [Contributing](#contributing)
+  1. [License](#license)
 
-## Единствена одговорност
+## Single Responsibility
 
 ### Правило од 1
 
@@ -170,7 +170,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Модули
+## Modules
 
 ### Избегнувајте судири во именување
 
@@ -275,7 +275,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Контролери
+## Controllers
 
 ### controllerAs синтакса во Изглед
 
@@ -630,7 +630,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Сервиси
+## Services
 
 ### Singletons
 
@@ -668,7 +668,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Фабрика
+## Factories
 
 ### Единствена одговорност
 
@@ -835,7 +835,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Податочни Сервиси
+## Data Services
 
 ### Одделени податочни повици
 
@@ -958,7 +958,7 @@
 
     **[Назад кон содржината](#table-of-contents)**
 
-## Директиви
+## Directives
 ### Ограничувајте се на 1 на датотека
 
   - Создадете една директива по датотека. Именувајте ја според директивата. 
@@ -1187,7 +1187,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Решавање на Promises за Контролерот
+## Resolving Promises for a Controller
 
 ### Активација на Promises во контролерот
 
@@ -1293,7 +1293,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Рачна анотација за Dependency Injection
+## Manual Annotating for Dependency Injection
 
 ### Опасно за минифкација
 
@@ -1421,7 +1421,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Минификација и анотација
+## Minification and Annotation
 
 ### ng-annotate
 
@@ -1530,7 +1530,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Решавање на исклучоци
+## Exception Handling
 
 ### Декоратори
 
@@ -1635,7 +1635,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Именување
+## Naming
 
 ### Водич во именување
 
@@ -1850,7 +1850,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Структура на апликација LIFT принцип
+## Application Structure LIFT Principle
 ### LIFT
 
   - Поставете ја пликацијата така што `L` (брзо лоцирање на кодот), `I` (идентификација на кодот со поглед), `F` (најрамна структура што можете) и `T` (обидете се да останете DRY). Структурата треба да ги задоволува овие 4 основни водичи. 
@@ -1908,7 +1908,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Структура на апликација
+## Application Structure
 
 ### Целокупните водиши
 
@@ -2017,7 +2017,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Модуларност
+## Modularity
   
 ### Многу мали, само содржани модулу
 
@@ -2071,7 +2071,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Логика на започнување
+## Startup Logic
 
 ### Конфигурација
   - Внесете го кодот во [конфигурацијата на модулот](https://docs.angularjs.org/guide/module#module-loading-dependencies) што мора да биде извршен пред почетокот на апликацијата. Идеални кандидати се провајдери и константи.
@@ -2122,9 +2122,9 @@
     }
   ```
 
-**[Назад конд содржината](#table-of-contents)**
+**[Назад кон содржината](#table-of-contents)**
 
-## Angular $ Wrapper сервиси
+## Angular $ Wrapper Services
 
 ### $document и $window
 
@@ -2140,7 +2140,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Тестирање
+## Testing
 Тестирање на единки се справува со чистење на кодот и затоа внесов неколку препораки во основи на тестирање во линковите подоле кои содржат повеќе информации за нив.
 
 ### Напишете тестови со Сценарија
@@ -2225,7 +2225,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Анимации
+## Animations
 
 ### Употреба
 
@@ -2255,7 +2255,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Коментари
+## Comments
 
 ### jsDoc
 
@@ -2382,7 +2382,7 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## Константи
+## Constants
 
 ### Глобални од продавачот
 
@@ -2404,9 +2404,9 @@
     })();
     ```
 
-**[Назад кон сдоржината](#table-of-contents)**
+**[Назад кон содржината](#table-of-contents)**
 
-## Датотечни шаблони и кратки кодови
+## File Templates and Snippets
 Употребете датотечни шаблони и кратки кодови за да следите конзистентен стил и шаблон во вашиот код. Евен неколку шаблони и/или кратки кодови од IDE и едитори за веб развој.
 
 ### Sublime Text
@@ -2451,10 +2451,10 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
-## AngularJS документација
+## AngularJS Docs
 За се останато, референцирајте се до неговото API во [Angular документацијата](//docs.angularjs.org/api).
 
-## Придонесување
+## Contributing
 
 Отворете Issue прво за да дискутираме за можни промени/додатоци. Доколку имате прашања со водичот, слободно отворете Issue во складиштето. Доколку најдете пропуст, создадете Pull Request. Идеата е да ја одржуваме содржината ажурирана и со функционалноста на github да си помогнеме во проширување на приказната со Issue и PR, кои може да се пронајдат од Google. Зошто? Бидејќи шансите се доколку имате прашање, може и некој друг да го има истото! Можете да научите повеќе за начинот на кој придонесуваме.
 
@@ -2465,7 +2465,7 @@
     1. Отворете Pull Request, поставете референца до Issue и објаснете ја промената и како додава на вредност.
     1. Pull Request ќе биде оценето и биде или споено или одбиено.
 
-## Лиценца
+## License
 
 _tldr; Use this guide. Attributions are appreciated._
 
