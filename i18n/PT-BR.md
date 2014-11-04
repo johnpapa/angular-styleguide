@@ -6,21 +6,21 @@
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
+Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipes.
 
 > Se você gostar deste estilo, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
 
 A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
 
-## A Importância da Comunidade e Creditos
+## A Importância da Comunidade e Créditos
 
-Nunca trabalhe fechado no vácuo. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe sozinho. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
 Vários de meus estilos vieram de várias sessões de pair-programming que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não corcordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
 ## Veja os estilos em um aplicativo de exemplo
 
-Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de amostra que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegâ-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de exemplo que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegá-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 > **Nota de tradução**: Os títulos originais de cada seção será mantido, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
 >
@@ -221,7 +221,7 @@ ou Módulos
 
   - Quando usando um módulo, evite usar as variáveis e então use o encadeamento com a sintaxe *getter*.
 
-  **Por que?** Isso produz um código mais legível e evite colisão de variáveis ou vazamentos.
+  **Por que?** Isso produz um código mais legível e evita colisão de variáveis ou vazamentos.
 
   ```javascript
   /* evite */
@@ -254,7 +254,6 @@ ou *Definindo* vs *Obtendo*
 
   - Use funções nomeadas ao invés de passar uma função anônima como um callback. 
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
   **Por que?** Isso produz um código mais legível, é muito fácil de *debugar*, e reduz a quantidade de callbacks aninhados no código.
 
   ```javascript
@@ -291,23 +290,23 @@ ou *Definindo* vs *Obtendo*
 
 ### controllerAs View Syntax
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax. 
+  - Utilize a sintaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) ao invés da sintaxe `clássica controller com $scope`. 
 
 	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
 
 	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
 
-	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+	**Por que?**: Ajuda a evitar o uso de chamadas ao `$parent` nas Views com controllers aninhados.
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <div ng-controller="Customer">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <div ng-controller="Customer as customer">
      {{ customer.name }}
   </div>
@@ -315,16 +314,16 @@ ou *Definindo* vs *Obtendo*
 
 ### controllerAs Controller Syntax
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax. 
+  - Utilize a sintaxe `controllerAs` ao invés invés da sintaxe `clássica controller com $scope`. 
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - A sintaxe `controllerAs` usa o `this` dentro dos controllers que fica ligado ao `$scope`.
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
+  **Por que?**: O `controllerAs` é uma forma mais simples de lidar com o `$scope`. Você ainda poderá fazer o bind para a View e ainda poderá acessar os métodos do `$scope`.  
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller. 
+  **Por que?**: Ajuda a evitar a tentação de usar o métodos do `$scope` dentro de um controller quando seria melhor evitá-los ou movê-los para um factory. Considere utilizar o  `$scope` em um factory, ou em um controller apenas quando necessário. Por exemplo, quando publicar e subscrever eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considere mover estes casos para um factory e invocá-los a partir do controller.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Customer($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -332,7 +331,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* recomendado - mas veja a próxima sessão */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -341,12 +340,12 @@ ou *Definindo* vs *Obtendo*
 
 ### controllerAs with vm
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Utilize uma variável de captura para o `this` quando usar a sintaxe `controllerAs`. Escolha um nome de variável consistente como `vm`, que representa o ViewModel.
   
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  **Por  que?**: A palavra-chave `this` é contextual e quando usada em uma função dentro de um controller pode mudar seu contexto. Capturando o contexto do `this` evita a ocorrência deste problema.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -354,7 +353,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Customer() {
       var vm = this;
       vm.name = {};
@@ -362,7 +361,7 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
+  Nota: Você pode evitar qualquer [jshint](http://www.jshint.com/) warnings colocando o comentário abaixo acima da linha de código. 
     
   ```javascript
   /* jshint validthis: true */
