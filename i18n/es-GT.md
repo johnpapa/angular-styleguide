@@ -340,7 +340,7 @@ o *Controladores*
 
   - Usa una variable de captura para `this` cuando estés utilizando la sintaxis `controllerAs`. elige un nombre consistente para la variable como `vm`, que es estándar para ViewModel.
   
-  *¿Por qué?*: La palabra clave `this`es contextual y cuando es usada en una función dentro de un controller puede cambiar su contexto. Capturando el contexto de `this` evita tropezarse con este problema.
+  *¿Por qué?*: La palabra clave `this` es contextual y cuando es usada en una función dentro de un controller puede cambiar su contexto. Capturando el contexto de `this` evita tropezarse con este problema.
 
   ```javascript
   /* evita */
@@ -381,7 +381,7 @@ o *Controladores*
   
     *¿Por qué?*: Colocando los miembros enlazables en la parte superior hace más fácil la lectura y ayuda a identificar instantáneamente qué miembros del controller pueden ser enlazados y utilizados en la vista.
 
-    *¿Por qué?: Asignar funciones anónimas en-linea puede ser fácil, pero cuando estas funciones son más de 1 linea de código pueden reducir la legibilidad. Definiendo estas funciones por debajo de los miembros enlazables (las funciones serán hoisted) moviendo los detalles de la implementación hacia abajo, manteniendo los miembros enlazables en la parte superior, y los hace más fácil de leer. 
+    *¿Por qué?: Asignar funciones anónimas en-linea puede ser fácil, pero cuando estas funciones son más de 1 linea de código pueden reducir la legibilidad. Definiendo estas funciones por debajo de los miembros enlazables (las funciones serán alzadas *javascript hoisting*) moviendo los detalles de la implementación hacia abajo, manteniendo los miembros enlazables en la parte superior, y los hace más fácil de leer. 
 
   ```javascript
   /* evita */
@@ -471,7 +471,7 @@ o *Controladores*
 
     *¿Por qué?*: Colocando los detalles de la implementación de una función mas abajo en el archivo mueve la complejidad fuera de la vista entonces puedes ver las cosas importantes en la parte superior.
 
-    *¿Por qué?*: La declaración de una función es hoisted entonces no hay que preocuparse por el uso de una función antes de su definición (cosa que no se puede con las function expressions).
+    *¿Por qué?*: La declaración de una función es alzada (*javascript hoisting*) entonces no hay que preocuparse por el uso de una función antes de su definición (cosa que no se puede con las function expressions).
 
     *¿Por qué?*: Nunca debes preocuparte que si mueves las declaraciones de las funciones `var a` antes que `var b` se arruinará tu código porque `a` depende de `b`.     
 
@@ -591,7 +591,7 @@ o *Controladores*
 
     *¿Por qué?*: Emparejando el controller en la ruta permite que diferentes rutas invoquen diferentes parejas de controllers y vistas. Cuando los controllers son asignados en la vista utilizando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esa vista está siempre asociada con el mismo controller.
 
- ```javascript
+  ```javascript
   /* evita - cuando usamos con una ruta y deseamos emparejar dinámicamente */
 
   // route-config.js
@@ -639,16 +639,18 @@ o *Controladores*
 
 **[Ir hacia arriba](#table-of-contents)**
 
+
 ## Services
+o *Servicios*
 
 ### Singletons
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency. 
+  - Los Servicios son instanciados con la palabra clave `new`, utiliza `this` para métodos y variables públicas. Debido a que esto es muy similar a las factories, utiliza una factory en su lugar por consistencia. 
   
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services). Esto quiere decir que hay solamente una instancia del servicio dado por inyector.
 
   ```javascript
-  // service
+  // servicio
   angular
       .module('app')
       .service('logger', logger);
@@ -678,29 +680,31 @@ o *Controladores*
 **[Ir hacia arriba](#table-of-contents)**
 
 ## Factories
+o *Fábricas*
 
 ### Single Responsibility
+o *Única responsabilidad*
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Los Factories deberían de tener una [sola responsabilidad](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Toda vez un factory comienza a exceder su singular proposito, un nuevo factory debería ser creado.
 
 ### Singletons
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Los Factories son singletons y retornan un objeto que contiene miembros de un servicio.
   
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services).
 
-### Accessible Members Up Top
+### Miembros Accesibles Al Inicio
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Expone los miembros invocables del servicio (su interfaz) al inicio, usando una técnica derivada del [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+    *¿Por qué?*: Colocando los miembros invocables al inicio hace más facil de leer y facilita instantaneamente la identificación de qué miembros del servicio pueden ser invocados y pueden ser probados con tests unitarios (y/o mockeados). 
 
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    *¿Por qué?*: Esto es especialmente útil cuando el archivo resulta demasiado largo por lo que ayuda a evitar tener que scrolear para ver que está expuesto.
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *¿Por qué?*: Asginar funciones a medida que se avanza puede ser fácil, pero cuando estas funciones son de más de 1 linea de código estas pueden reducir la legibilidad y causar mas scrolling. Definiendo la interfaz invocable vía el servicio retornado mueve los detalles de la implementación hacia abajo, mantiene la interfaz invocable en la parte superior y hace más fácil la lectura.
 
   ```javascript
-  /* avoid */
+  /* evita */
   function dataService() {
     var someValue = '';
     function save() { 
@@ -719,7 +723,7 @@ o *Controladores*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function dataService() {
       var someValue = '';
       var service = {
@@ -741,51 +745,51 @@ o *Controladores*
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  Esta forma de los bindings son reflejados a través del objeto host, los valores primitivos no pueden ser actualizados solamente utilizando el patrón revealing module.
 
     ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
-### Function Declarations to Hide Implementation Details
+### Function Declarations para Ocultar Detalles de Implementación
 
-  - Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utiliza function declarations para ocultar detalles de implementación. Mantén los miembros accesibles en la parte superior del factory. Apunta estos a function declarations que aparecen mas adelante en el archivo. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+    *¿Por qué?*: Colocando los miembros accesibles al inicio los hace más fácil de leer y te ayuda instantaneamente a identificar a que funciones del factory puedes acceder externamente.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *¿Por qué?*: Colocando los detalles de la implementación de una función más adelante en el archivo mueve la compejidad fuera de la vista por lo que pueden ver las cosas importantes al inicio.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *¿Por qué?*: Las declaraciones de funciones son alzadas (javascript hoisting) por lo que no hay que preocuparse acerca del uso de funciones antes de ser definidas (lo que socedería con expresiones de función).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+    *¿Por qué?*: Nunca tendrás que preocuparte con declaración de funciones que si moviendo `var a` antes de `var b` pueda romper tu código porque `a` depende de `b`.
 
-    *Why?*: Order is critical with function expressions 
+    *¿Por qué?*: El orden es crítico con expresiones de función 
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
+   * evita
+   * Usando expresiones de función
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
 
       var getAvengers = function() {
-         // implementation details go here
+         // los detalles de la implementación van aquí
       };
 
       var getAvengerCount = function() {
-          // implementation details go here
+          // los detalles de la implementación van aquí
       };
 
       var getAvengersCast = function() {
-         // implementation details go here
+         // los detalles de la implementación van aquí
       };
 
       var prime = function() {
-         // implementation details go here
+         // ilos detalles de la implementación van aquí
       };
 
       var ready = function(nextPromises) {
-          // implementation details go here
+          // los detalles de la implementación van aquí
       };
 
       var service = {
@@ -801,9 +805,9 @@ o *Controladores*
 
   ```javascript
   /**
-   * recommended
-   * Using function declarations
-   * and accessible members up top.
+   * recomendado
+   * Usando declaraciones de funciones
+   * y los miembros accesibles al inicio.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -821,23 +825,23 @@ o *Controladores*
       ////////////
 
       function getAvengers() {
-         // implementation details go here
+         // los detalles de la implementación van aquí
       }
 
       function getAvengerCount() {
-          // implementation details go here
+          // los detalles de la implementación van aquí
       }
 
       function getAvengersCast() {
-         // implementation details go here
+         // los detalles de la implementación van aquí
       }
 
       function prime() {
-          // implementation details go here
+          // los detalles de la implementación van aquí
       }
 
       function ready(nextPromises) {
-          // implementation details go here
+          // los detalles de la implementación van aquí
       }
   }
   ```
@@ -845,19 +849,20 @@ o *Controladores*
 **[Ir hacia arriba](#table-of-contents)**
 
 ## Data Services
+o *Servicios de datos*
 
-### Separate Data Calls
+### Separar las Llamadas a Datos
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - Refactorizar la lógica para hacer las operaciones de datos e interacciones con datos a un factory. Haz los servicios de datos responsables de las llamadas XHR, local storage, stashing en memoria o cualquier otra operación de datos.
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    *¿Por qué?*: La responsabilidad de los controller es de presentacion y obtención de información para la vista. No le debería de importar cómo son obtenidos los datos, solamente conocer cómo debe preguntar por ellos. Separando los servicios de datos mueve la lógica de cómo obtenerlos hacia el servicio de datos, y le permite al controller ser más simple y enfocarse más en la vista.
 
-    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    *¿Por qué?*: Esto hace mas fácil probar (mock o real) las llamadas a los datos cuándo probamos un controller que usa un servicio de datos.
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *¿Por qué?*: La implementación de un servicio de datos puede tener mucho código específico para manejar el repositorio de datos. Esto puede incluir headers, cómo hablar con los datos, u otros servicios como el $http. Separando la lógica en un servicio de datos encapsula esta lógica en un único lugar ocultando la implementación de consumidores externos (tal vez un controller), además hace mas fácil de cambiar la implementación.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // dataservice factory
   angular
@@ -887,12 +892,12 @@ o *Controladores*
   }
   ```
     
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+    Nota: El servicio de datos es llamado desde los consumidores, como un controller, ocultando la implementacion a estos consumidores, como se muestra a continuación.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // controller calling the dataservice factory
+  // controller llamando al dataservice factory
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -921,27 +926,27 @@ o *Controladores*
   }      
   ```
 
-### Return a Promise from Data Calls
+### Retornar una Promise (Promesa) desde una Llamada de Datos
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - Cuándo se llamas un servicio de datos que retorna una promesa como el $http, retorna una promesa en tu función también.
 
-    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    *¿Por qué?*: Puedes encadenar promesas juntas y ralizar acciones adicionales despues de que la llamada de datos se complete y la promesa sea rechazada o resuelta.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   activate();
 
   function activate() {
       /**
-       * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Paso 1
+       * Consultar a la función getAvengers por los
+       * datos de los avenger y esperar por la promesa
        */
       return getAvengers().then(function() {
           /**
-           * Step 4
-           * Perform an action on resolve of final promise
+           * Paso 4
+           * Ejecutar una accion al resolver la promesa final
            */
           logger.info('Activated Avengers View');
       });
@@ -949,15 +954,15 @@ o *Controladores*
 
   function getAvengers() {
         /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Paso 2
+         * Consultar al servicio de datos por los datos y esperar
+         * por la promesa
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
-                 * Step 3
-                 * set the data and resolve the promise
+                 * Paso 3
+                 * asignar los datos y resolver la promesa
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -968,7 +973,9 @@ o *Controladores*
     **[Ir hacia arriba](#table-of-contents)**
 
 ## Directives
-### Limit 1 Per File
+o *Directivas*
+
+### Limitar 1 Por Archivo
 
   - Create one directive per file. Name the file for the directive. 
 
