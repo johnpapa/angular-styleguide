@@ -543,7 +543,7 @@ o *Controladores*
 
     *¿Por qué?*: La lógica puede ser reutilizada por múltiples controllers cuando es colocada en un servicio y expuesta vía una función.
 
-    *¿Por qué?*: La lógica en un servicio puede ser mas fácil de aislar en una prueba unitaria, mientras las llamadas a la lógica en el controller pueden ser facilmente «mockeadas».
+    *¿Por qué?*: La lógica en un servicio puede ser mas fácil de aislar en una prueba unitaria, mientras las llamadas a la lógica en el controller pueden ser fácilmente «mockeadas».
 
     *¿Por qué?*: Remueve dependencias y oculta detalles de implementación del controller.
 
@@ -577,7 +577,7 @@ o *Controladores*
   }
   ```
 
-### Manten los Controllers enfocados
+### Mantén los Controllers enfocados
 
   - Define un controller por vista, y trata de no reutilizar el controller para otras vistas. En su lugar, mueve la lógica reutilizable a factories y mantén el controller simple y enfocado en su vista.
   
@@ -928,7 +928,7 @@ o *Servicios de datos*
 
 ### Retornar una Promise (Promesa) desde una Llamada de Datos
 
-  - Cuándo se llamas un servicio de datos que retorna una promesa como el $http, retorna una promesa en tu función también.
+  - Cuándo llames un servicio de datos que retorna una promesa como el $http, retorna una promesa en tu función también.
 
     *¿Por qué?*: Puedes encadenar promesas juntas y ralizar acciones adicionales despues de que la llamada de datos se complete y la promesa sea rechazada o resuelta.
 
@@ -977,48 +977,48 @@ o *Directivas*
 
 ### Limitar 1 Por Archivo
 
-  - Create one directive per file. Name the file for the directive. 
+  - Crear una directiva por archivo. nombra el archivo para la directiva.
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. 
+    *¿Por qué?*: Es fácil combinar todas las directivas en un archivo, pero difícil romper esto porque algunas son compartidos a través de aplicaciones, algunas a través de módulos, algunas solamente por un módulo.
 
-    *Why?*: One directive per file is easy to maintain.
+    *¿Por qué?*: Una directiva por archivo es fácil de mantener.
 
   ```javascript
-  /* avoid */
+  /* evita */
   /* directives.js */
 
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* directiva order que es específica para el módulo order */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* directiva sales que puede ser utilizada en cualquier lugar de la aplicación sales */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* directiva spinner que puede ser utilizada en cualquier lugar entre aplicaciones */
       .directive('sharedSpinner', sharedSpinner);
 
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalles de implementación */
   }
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalles de implementación */
   }
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* calendarRange.directive.js */
 
   /**
-   * @desc order directive that is specific to the order module at a company named Acme
+   * @desc directiva order que es específica para el módulo order de la compañía llamada Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1026,16 +1026,16 @@ o *Directivas*
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc directiva spinner que puede utilizarse en cualquier lugar de la aplicación sales de la compañía llamada Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1043,16 +1043,16 @@ o *Directivas*
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* spinner.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across apps at a company named Acme
+   * @desc directiva spinner que puede utilizarse en cualquier lugar a través de las aplicaciones de la compañía Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1060,43 +1060,43 @@ o *Directivas*
       .directive('acmeSharedSpinner', sharedSpinner);
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Nota: Existen muchas opciones para nombrar directivas, especialmente porque pueden ser utilizadas en ámbitos anchos o estrechos. elije una que haga el nombre de la directiva y del archivo distintivo y claro. Algunos ejemplos están mas abajo, pero mira la sección de nombrado para más recomendaciones.
 
-### Limit DOM Manipulation
+### Limita la Manipulación del DOM
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow. 
+  - Cuándo manipulas directamente el DOM, utiliza una directiva. Si puedes utilizar formas alternativas como aplicar CSS para estilos o [servicios de animación](https://docs.angularjs.org/api/ngAnimate), plantillas de Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) o [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), entonces utiliza estas en su lugar. Por ejemplo si la directiva simplemente oculta y muestra, utiliza ngHide/ngShow. 
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    *¿Por qué?*: La manipulación del DOM puede resultar difícil para el test, debug, y existen regularmente mejores formas (p. ej. CSS, animaciones, plantillas)
 
-### Provide a Unique Directive Prefix
+### Provee un Prefijo Único de Directiva
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Provee un corto, único y descriptivo prefijo de directiva como `acmeSalesCustomerInfo` el cual es declarado en el HTML como `acme-sales-customer-info`.
 
-    *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company. 
+    *¿Por qué?*: El prefijo unico y corto identifica el contexto y origen de la directiva. Por ejemplo un prefijo de `cc-` puede indicar que la directiva es parte de una aplicación CodeCamper mientras que `acme-` puede indicar una directiva para la compañía Acme.
 
-    Note: Avoid `ng-` as these are reserved for AngularJS directives.Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/). 
+    Nota: Evita `ng-` por estar reservado para las directivas AngularJS. Investiga extensamente directivas utilizadas para evitar el conflicto de nombres como `ion-` para el [Framework Ionic](http://ionicframework.com/). 
 
-### Restrict to Elements and Attributes
+### Restringe a Elementos y Atributos
 
-  - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+  - Al crear una directiva que tiene sentido como un elemento independiente, dejar restringido `E` (custom element) y opcionalmente restringir `A` (custom attribute). Generalmente, si puede ser su propio control, `E` es apropiado. Las guía general es dejar `EA` pero la inclinación es implementar como un elemento cuando es independiente y como un atributo cuando se altera su elemento DOM existente.
 
-    *Why?*: It makes sense.
+    *¿Por qué?*: Tiene sentido.
 
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    *¿Por qué?*: Podríamos permitir que la directiva sea utilizada como una clase, Pero si la directiva realmente está actuando como un elemento tiene mas sentido utilizarla como elemento o al menos como un atributo.
 
-    Note: EA is the default for AngularJS 1.3 +
+    Nota: EA el lo predeterminado para AngularJS 1.3 +
 
   ```html
-  <!-- avoid -->
+  <!-- evita -->
   <div class="my-calendar-range"></div>
   ```
 
   ```javascript
-  /* avoid */
+  /* evita */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1104,7 +1104,7 @@ o *Directivas*
   function myCalendarRange() {
       var directive = {
           link: link,
-          templateUrl: '/template/is/located/here.html',
+          templateUrl: '/la/plantilla/está/ubicada/aquí.html',
           restrict: 'C'
       };
       return directive;
@@ -1116,13 +1116,13 @@ o *Directivas*
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
   
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1130,7 +1130,7 @@ o *Directivas*
   function myCalendarRange() {
       var directive = {
           link: link,
-          templateUrl: '/template/is/located/here.html',
+          templateUrl: '/la/plantilla/está/ubicada/aquí.html',
           restrict: 'EA'
       };
       return directive;
@@ -1141,13 +1141,13 @@ o *Directivas*
   }
   ```
 
-### Directives and ControllerAs
+### Directivas y ControllerAs
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - Utiliza la sintaxis `controller as` con una directiva para ser consistente con el uso de `controller as` en el emparejamiento view controller.
 
-    *Why?*: It makes sense and it's not difficult.
+    *¿Por qué?*: Tiene sentido y no es difícil.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+    Nota: La directiva de abajo demuestra algunas de las formas en la que puedes usar el scope dentro de un link y directivas de controllers, utilizando controllerAs. dejé la plantilla in-lined solamente para mantener todo en un mismo lugar. 
 
   ```html
   <div my-example max="77"></div>
@@ -1173,7 +1173,7 @@ o *Directivas*
 
       ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
-          // Injecting $scope just for comparison
+          // Inyectando el $scope solo para comparar
           /* jshint validthis:true */
           var vm = this;
 
@@ -1194,7 +1194,7 @@ o *Directivas*
 
   ```html
   /* example.directive.html */
-  <div>hello world</div>
+  <div>hola mundo</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
