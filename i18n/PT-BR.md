@@ -2,7 +2,7 @@
 
 *Guia de Estilo opinativo de AngularJS para times. Por [@john_papa](//twitter.com/john_papa)*
 
-*Traduzido por [Eric Douglas](https://github.com/ericdouglas) e [Ciro Nunes](https://github.com/cironunes)*
+*Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes) e [Jean Lucas de Carvalho](https://github.com/jlcarvalho)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
@@ -292,9 +292,9 @@ ou *Definindo* vs *Obtendo*
 
   - Utilize a sintaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) ao invés da sintaxe `clássica controller com $scope`. 
 
-	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
+	**Por que?**: Controllers são construídos, "iniciados", e fornecem um nova instância única, e a sintaxe `controlerAs` é mais próxima de um construtor JavaScriptar do que a `sintaxe clássica do $scope`.
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+	**Por que?**: Isso promove o uso do binding de um objeto "pontuado", ou seja, com propriedades na View (ex. `customer.name` ao invés de `name`), que é mais contextual, legível, e evita qualquer problema com referências que podem ocorrer sem a "pontuação"
 
 	**Por que?**: Ajuda a evitar o uso de chamadas ao `$parent` nas Views com controllers aninhados.
 
@@ -368,7 +368,7 @@ ou *Definindo* vs *Obtendo*
   var vm = this;
   ```
    
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+ Nota: Quando watches são criados no controller utilizando o `controller as`, você pode observar o objeto `vm.*` utilizando a seguinte sintaxe. (Crie watches com cuidado pois eles deixam o ciclo de digest mais "carregado".)
 
   ```javascript
   $scope.$watch('vm.title', function(current, original) {
@@ -379,14 +379,14 @@ ou *Definindo* vs *Obtendo*
 
 ### Bindable Members Up Top
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Coloque os objetos que precisam de bind no início do controller, em ordem alfabética, e não espalhados através do código do controller.
   
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
+    **Por que?**: Colocar os objetos que precisam de bind no início torna mais fácil de ler e te ajuda a instantaneamente identificar quais objetos do controller podem ser utilizados na View.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
+    **Por que?**: Setar funções anônimas pode ser fácil, mas quando essas funções possuem mais de 1 linha do código elas podem dificultar a legibilidade. Definindo as funções abaixo dos objetos que necessitam de bind as funções serão elevedas pelo JavaScript Hoisting move os detalhes de implementação para o final do controller, mantém os objetos que necessitam de bind no topo, e deixa o código mais fácil de se ler.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Sessions() {
       var vm = this;
 
@@ -404,7 +404,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Sessions() {
       var vm = this;
 
@@ -431,21 +431,22 @@ ou *Definindo* vs *Obtendo*
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+   Nota: Se a função possuir apenas 1 linha considere matê-la no topo, desde que a legibilidade não seja afetada.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Sessions(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
           /** 
-           * lines 
-           * of
-           * code
-           * affects
-           * readability
+           * linhas 
+           * de
+           * código
+           * afetam
+           * a
+           * legibilidade
            */
       };
       vm.search = search;
@@ -454,12 +455,12 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Sessions(dataservice) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = dataservice.refresh; // 1 linha está OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
@@ -467,22 +468,22 @@ ou *Definindo* vs *Obtendo*
 
 ### Function Declarations to Hide Implementation Details
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilize declarações de funções para esconder detalhes de implementação. Mantenha seus objetos que necessitam de bind no topo. Quando você precisar de fazer o bind de uma função no controller, aponte ela para a declaração de função que aparece no final do arquivo. Ela está ligada diretamente aos objetos que precisam de bind no início do arquivo. Para mais detalhes veja [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
     
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    **Por que?**: Colocar os objetos que precisam de bind no início torna mais fácil de ler e te ajuda a instantaneamente identificar quais objetos do controller podem ser utilizados na View. (Mesmo do item anterior.)
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    **Por que?**: Colocar os detalhes de implementação de uma função no final do arquivo coloca a complexidade fora do foco, logo, você pode focar nas coisas importantes no topo.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    **Por que?**: Declarações de funções são içadas, logo, não existe problema de se utilizar uma função antes dela ser definida (como haveria com expressões de função).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+    **Por que?**: Você nunca precisará se preocupar com declarações de funções quebrarem seu código por colocar `var a` antes de `var b` por que `a` depende de `b`.     
 
-    *Why?*: Order is critical with function expressions 
+    **Por que?**: A ordenação é crítica em expressões de função.
 
   ```javascript
   /** 
-   * avoid 
-   * Using function expressions.
+   * evite 
+   * Usar expressões de funções.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -508,13 +509,13 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Note-se que as coisas importantes estão espalhadas no exemplo anterior. No exemplo abaixo, nota-se que as coisas importantes do javascript estão logo no topo. Por exemplo, os objetos que precisam de bind no controller como `vm.avengers` e `vm.title`. Os detalhes de implementação estão abaixo. Isto é mais fácil de ler.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * recomendado
+   * Usar declarações de funções
+   * e objetos que precisam de bind no topo.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -541,16 +542,16 @@ ou *Definindo* vs *Obtendo*
 
 ### Defer Controller Logic
 
-  - Defer logic in a controller by delegating to services and factories.
+  - Remova a lógica do controller delegando ela a services e factories.
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    **Por que?**: A lógica pode ser reutilizada em múltiplos controllers quando colocada em um service e exposta através de uma função.
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    **Por que?**: A lógica em um serviço pode ser mais facilmente isolada em um teste unitário, enquanto  in a service can more easily be isolated in a unit test, enquanto a lógica feita no controlador pode ser facilmente [mockada](http://www.thoughtworks.com/pt/insights/blog/mockists-are-dead-long-live-classicists).
 
-    *Why?*: Removes dependencies and hides implementation details from the controller.
+    **Por que?**: Remove as dependências e esconde os detalhes de implementação do controlador.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Order($http, $q) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -567,7 +568,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -581,20 +582,20 @@ ou *Definindo* vs *Obtendo*
 
 ### Keep Controllers Focused
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view. 
+  - Defina um controller para a view, e tente não reutilizar o controller para outras views. Ao invés disso, coloque as lógicas reaproveitáveis em factories e mantenha o controller simples e focado em sua view.
   
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    **Por que?**: Reutilizar controllers em várias views é arriscado e um boa cobertura de testes end to end (e2e) é obrigatório para se garantir estabilidade em grandes aplicações.
 
 ### Assigning Controllers
 
-  - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
+  - Quando um controller deve ser pareado com sua view e algum componente pode ser reutilizado por outros controllers ou views, defina controladores juntamente de suas rotas. 
     
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
+    Nota: Se uma View é carregada de outra forma que não seja através de uma rota, então utilize a sintaxe `ng-controller="Avengers as vm"`. 
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    **Por que?**: Parear os controllers nas rotas permite diferentes rotas invocarem diferentes pares de controllers e views. Quando um controller é utilizado na view usando a sintaxe [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esta view sempre será associada ao mesmo controller.
 
  ```javascript
-  /* avoid - when using with a route and dynamic pairing is desired */
+  /* evite - quando utilizar com uma rota e emparelhamento dinâmico é desejado */
 
   // route-config.js
   angular
@@ -616,7 +617,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // route-config.js
   angular
