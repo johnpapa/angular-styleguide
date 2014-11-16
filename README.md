@@ -1153,9 +1153,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           controller : ExampleController,
           controllerAs: 'vm'
       };
+      
+      ExampleController.$inject = ['$scope'];
+
       return directive;
 
-      ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
           // Injecting $scope just for comparison
           /* jshint validthis:true */
