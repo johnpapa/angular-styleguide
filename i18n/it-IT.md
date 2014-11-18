@@ -2473,8 +2473,8 @@ Apri prima una "issue" per discutere potenziali cambiamenti/aggiunte. Se hai del
 ### Processo
 
     1. Discuti i cambiamenti in un Issue. 
-    1. Apri una Pull Request, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
-    1. La Pull Request sarà vagliata e quindi fatto un merge o declinata.
+    2. Apri una Pull Request, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
+    3. La Pull Request sarà vagliata e quindi fatto un merge o declinata.
 
 ## Licenza
 
