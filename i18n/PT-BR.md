@@ -546,7 +546,7 @@ ou *Definindo* vs *Obtendo*
 
     **Por que?**: A lógica pode ser reutilizada em múltiplos controllers quando colocada em um service e exposta através de uma função.
 
-    **Por que?**: A lógica em um serviço pode ser mais facilmente isolada em um teste unitário, enquanto  in a service can more easily be isolated in a unit test, enquanto a lógica feita no controlador pode ser facilmente [mockada](http://www.thoughtworks.com/pt/insights/blog/mockists-are-dead-long-live-classicists).
+    **Por que?**: A lógica em um serviço pode ser mais facilmente isolada em um teste unitário, enquanto a lógica feita no controlador pode ser facilmente [mockada](http://www.thoughtworks.com/pt/insights/blog/mockists-are-dead-long-live-classicists).
 
     **Por que?**: Remove as dependências e esconde os detalhes de implementação do controlador.
 
