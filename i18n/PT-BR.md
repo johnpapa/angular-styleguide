@@ -681,29 +681,32 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Factories
+ou *Fábricas*
 
 ### Single Responsibility
+ou *Responsabilidade Única*
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Factories devem ter [responsabilidade única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que é encapsulado pelo seu contexto. Assim que uma factory começa a exceder a proposta de singularidade, uma nova factory deve ser criada.
 
 ### Singletons
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Factories são singletons e retornam um objeto que contém os membros do serviço.
   
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services).
 
 ### Accessible Members Up Top
+ou *Membros acessíveis no topo*
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Exponha os membros que podem ser invocados no serviço (a interface) no topo, utilizando uma técnica derivada do [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+    **Por que?**: Colocando no topo os membros que podem ser invocados da factory, a leitura torna-se mais fácil e ajuda a identificar imediatamente quais membros da factory podem ser invocados e testados através de teste unitário (e/ou mock). 
 
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    **Por que?**: É especialmente útil quando o arquivo torna-se muito longo e ajuda a evitar a necessidade de rolagem para ver o que é exposto.
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    **Por que?**: Definir as funções conforme você escreve o código pode ser fácil, mas quando essas funções tem mais que 1 linha de código, elas podem reduzir a leitura e causar rolagem. Definir a interface no topo do que pode ser invocado da factory, torna a leitura mais fácil e mantém os detalhes de implementação mais abaixo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function dataService() {
     var someValue = '';
     function save() { 
@@ -722,7 +725,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function dataService() {
       var someValue = '';
       var service = {
@@ -744,51 +747,52 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  Dessa forma, os bindings são espelhados através do objeto da interface da factory e os valores primitivos não podem ser atualizados sozinhos utilizando o revealing module pattern
 
     ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
+ou *Declarações de função para esconder detalhes de implementação*
 
-  - Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations (declarações de função) para esconder detalhes de implementação. Mantenha os membros acessíveis da factory no topo. Aponte as function declarations que aparecem posteriormente no arquivo. Para mais detalhes leia [esse post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+    **Por que?**: Colocando os membros acessíveis no topo, a leitura torna-se mais fácil e ajuda a identificar imediatamente quais membros da factory podem ser acessados externamente.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    **Por que?**: Colocando os detalhes de implementação da função posteriormente no arquivo move a complexidade para fora da visão, permitindo que você veja as coisas mais importantes no topo.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    **Por que?**: Function declarations (declarações de função) são içadas (hoisted) para que não hajam preocupações em utilizar uma função antes que ela seja definida (como haveria com function expressions (expressões de função)).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+    **Por que?**: Você nunca deve se preocupar com function declaration (declarações de função) onde `var a` está antes de `var b` vai ou não quebrar o seu código porque `a` depende de `b`.     
 
-    *Why?*: Order is critical with function expressions 
+    **Por que?**: A ordem é crítica com function expressions (expressões de função) 
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
+   * evite
+   * Utilizando function expressions (expressões de função)
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
 
       var getAvengers = function() {
-         // implementation details go here
+         // detalhes de implementação
       };
 
       var getAvengerCount = function() {
-          // implementation details go here
+          // detalhes de implementação
       };
 
       var getAvengersCast = function() {
-         // implementation details go here
+         // detalhes de implementação
       };
 
       var prime = function() {
-         // implementation details go here
+         // detalhes de implementação
       };
 
       var ready = function(nextPromises) {
-          // implementation details go here
+          // detalhes de implementação
       };
 
       var service = {
@@ -804,9 +808,9 @@ ou *Definindo* vs *Obtendo*
 
   ```javascript
   /**
-   * recommended
-   * Using function declarations
-   * and accessible members up top.
+   * recomendado
+   * Utilizando function declarations (declarações de função)
+   * e membros acessíveis no topo.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -824,23 +828,23 @@ ou *Definindo* vs *Obtendo*
       ////////////
 
       function getAvengers() {
-         // implementation details go here
+         // detalhes de implementação
       }
 
       function getAvengerCount() {
-          // implementation details go here
+          // detalhes de implementação
       }
 
       function getAvengersCast() {
-         // implementation details go here
+         // detalhes de implementação
       }
 
       function prime() {
-          // implementation details go here
+          // detalhes de implementação
       }
 
       function ready(nextPromises) {
-          // implementation details go here
+          // detalhes de implementação
       }
   }
   ```
