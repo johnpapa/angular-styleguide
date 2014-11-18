@@ -736,7 +736,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ### Function Declarations to Hide Implementation Details
 
-  - Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
 
@@ -1131,6 +1131,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
 
+    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
+
   ```html
   <div my-example max="77"></div>
   ```
@@ -1151,9 +1153,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           controller : ExampleController,
           controllerAs: 'vm'
       };
+      
+      ExampleController.$inject = ['$scope'];
+
       return directive;
 
-      ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
           // Injecting $scope just for comparison
           /* jshint validthis:true */
@@ -2458,8 +2462,8 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 ### Process
     1. Discuss the changes in an Issue. 
-    1. Open a Pull Request, reference the issue, and explain the change and why it adds value.
-    1. The Pull Request will be evaluated and either merged or declined.
+    2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
+    3. The Pull Request will be evaluated and either merged or declined.
 
 ## License
 

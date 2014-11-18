@@ -5,6 +5,7 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
 *All translations are created by and maintained by the community.*
 
 1. [Italian](it-IT.md)
+1. [Macedonian](mk-MK.md)
 1. [Portuguese-Brazil](PT-BR.md)
 1. [Simplified Chinese](zh-CN.md)
 
