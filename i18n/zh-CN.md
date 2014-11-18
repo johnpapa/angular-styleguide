@@ -1153,9 +1153,10 @@
           controller : ExampleController,
           controllerAs: 'vm'
       };
+      
+      ExampleController.$inject = ['$scope'];
       return directive;
 
-      ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
           // Injecting $scope just for comparison
           /* jshint validthis:true */
@@ -2442,8 +2443,8 @@
 
 ###过程
     1. 在一个Issue中讨论这个问题。 
-    1. 打开一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
-    1. pull request将会被进行评估，结果就是合并或是拒绝。
+    2. 打开一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
+    3. pull request将会被进行评估，结果就是合并或是拒绝。
 
 ## 许可证
 
