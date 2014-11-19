@@ -852,21 +852,23 @@ ou *Declarações de função para esconder detalhes de implementação*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Data Services
+ou *Serviços de dados*
 
 ### Separate Data Calls
+ou *Chamadas de dados separadas*
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - A lógica de refatoração (refactor) para operações com dados e interação com dados na factory. Faça serviços de dados responsáveis por chamadas XHR, armazenamento local (local storage), armazenamento em memória (stashing) ou outras operações com dados.
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    **Por que?**: A responsabilidade dos controladores (controllers) é para a apresentação e coleta de informações da view. Eles não devem se importar como os dados são adquiridos, somente como "perguntar" por eles. Separar os serviços de dados (data services), move a lógica de como adquiri-los para o serviço e deixa o controlador (controller) mais simples e focado na view.
 
-    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    **Por que?**: Isso torna mais fácil testar (mock ou real) as chamadas de dados quando estiver testando um controlador (controller) que utiliza um serviço de dados (data service).
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    **Por que?**: A implementação de um serviço de dados (data service) pode ter um código bem específico para lidar com o repositório de dados. Isso pode incluir cabeçalhos (headers), como comunicar com os dados ou outros serviços, como $http. Separando a lógica de dados em um serviço, coloca toda a lógica somente em um local e esconde a implementação de consumidores de fora (talvez um controlador (controller)), tornado mais fácil mudar a implementação.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // dataservice factory
+  // factory de serviço de dados (data service factory)
   angular
       .module('app.core')
       .factory('dataservice', dataservice);
@@ -894,12 +896,12 @@ ou *Declarações de função para esconder detalhes de implementação*
   }
   ```
     
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+    Nota: O serviço de dados (data service) é chamado pelos consumidores, como um controlador (controller), escondendo a implementação dos consumidores, como mostrado abaixo.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // controller calling the dataservice factory
+  // controlador chamando uma factory de serviço de dados
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -929,26 +931,27 @@ ou *Declarações de função para esconder detalhes de implementação*
   ```
 
 ### Return a Promise from Data Calls
+ou *Retorne uma promessa de chamadas de dados*
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - Quando chamar um serviço de dados (data service) que retorna uma promessa (promise), como o $http, retorne uma promessa (promise) na função que está chamando também.
 
-    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    **Por que?**: Você pode encandear as promessas (promises) juntas e definir ações após a promessa (promise) da chamada do dado ser completada, resolvendo ou rejeitando a promessa (promise).
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   activate();
 
   function activate() {
       /**
-       * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Passo 1
+       * Chame a função getAvengers para os dados
+       * dos vingadores (avengers) e espere pela promessa (promise)
        */
       return getAvengers().then(function() {
           /**
-           * Step 4
-           * Perform an action on resolve of final promise
+           * Passo 4
+           * Faça uma ação resolvendo a promessa (promise) finalizada
            */
           logger.info('Activated Avengers View');
       });
@@ -956,15 +959,15 @@ ou *Declarações de função para esconder detalhes de implementação*
 
   function getAvengers() {
         /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Passo 2
+         * Chame o serviço de dados (data service) e espere
+         * pela promessa (promise)
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
-                 * Step 3
-                 * set the data and resolve the promise
+                 * Passo 3
+                 * Atribua os dados e resolva a promessa (promise)
                  */
                 vm.avengers = data;
                 return vm.avengers;
