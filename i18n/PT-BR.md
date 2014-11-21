@@ -179,9 +179,10 @@ ou *Responsabilidade Única*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
-ou Módulos
+ou *Módulos*
 
-### Evitando Colisão de Nomes
+### Avoid Naming Collisions
+ou *Evitando Colisão de Nomes*
 
   - Use uma única convenção de nomes com separadores para sub-módulos.
 
@@ -251,7 +252,8 @@ ou *Definindo* vs *Obtendo*
 	  - Use `angular.module('app', []);` para definir (*set*) um módulo.
 	  - Use  `angular.module('app');` para pegar (*get*) este módulo. 
 
-### Funções Nomeadas vs Funções Anônimas
+### Named vs Anonymous Functions
+ou *unções Nomeadas vs Funções Anônimas*
 
   - Use funções nomeadas ao invés de passar uma função anônima como um callback. 
 
@@ -644,6 +646,7 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Services
+ou *Serviços*
 
 ### Singletons
 
