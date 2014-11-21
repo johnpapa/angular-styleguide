@@ -348,6 +348,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
+  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+    
+  ```javascript
+  /* jshint validthis: true */
+  var vm = this;
+  ```   
+
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
   ```javascript
