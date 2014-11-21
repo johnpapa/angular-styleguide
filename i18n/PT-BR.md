@@ -2,7 +2,7 @@
 
 *Guia de Estilo opinativo de AngularJS para times. Por [@john_papa](//twitter.com/john_papa)*
 
-*Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes) e [Jean Lucas de Carvalho](https://github.com/jlcarvalho)*
+*Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes), [Jean Lucas de Carvalho](https://github.com/jlcarvalho) e [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 >A [versão original em inglês](http://jpapa.me/ngstyles) é a fonte da verdade, já que é corrigida e atualizada primeiro.
