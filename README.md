@@ -51,7 +51,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Single Responsibility
 
-### Rule of 1
+### Rule of 1 
 
   - Define 1 component per file.  
 
