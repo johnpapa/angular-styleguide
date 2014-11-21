@@ -1213,17 +1213,19 @@ ou *Diretivas e "ControladorComo"*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Resolving Promises for a Controller
+ou *Resolvendo promessas para um controlador*
 
 ### Controller Activation Promises
+ou *Ativação de promessas no controlador*
 
-  - Resolve start-up logic for a controller in an `activate` function.
+  - Resolva a lógica de inicialização no controlador (controller) em uma função `iniciar`.
      
-    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    **Por que?**: Colocando a lógica de inicialização em um lugar consistente no controlador (controller), torna mais fácil de localizar, mais consistente para testar e ajuda a evitar o espalhamento da lógica de inicialização pelo controlador (controller).
 
-    Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    Nota: Se vocẽ precisa cancelar a rota condicionalmente antes de utilizar o controlador (controller), utilize uma resolução de rota (route resolve).
     
   ```javascript
-  /* avoid */
+  /* evite */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1237,17 +1239,17 @@ ou *Diretivas e "ControladorComo"*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
 
-      activate();
+      iniciar();
 
       ////////////
 
-      function activate() {
+      function iniciar() {
           return dataservice.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
@@ -1257,22 +1259,23 @@ ou *Diretivas e "ControladorComo"*
   ```
 
 ### Route Resolve Promises
+ou *Resolução de promessas na rota*
 
-  - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se vocẽ precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    **Por que?**: Um controlador (controller) pode precisar de dados antes de ser carregado. Esses dados podem vir de uma promessa (promise) através de uma factory personalizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Utilizando [resolução de rota (route resolve)](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite as promessas (promises) serem resolvidas antes da lógica do controlador (controller) ser executada, então ele pode executar ações através dos dados dessa promessa (promise).
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app')
       .controller('Avengers', Avengers);
 
   function Avengers(movieService) {
       var vm = this;
-      // unresolved
+      // não resolvida
       vm.movies;
-      // resolved asynchronously
+      // resolvida assíncrona
       movieService.getMovies().then(function(response) {
           vm.movies = response.movies;
       });
@@ -1280,7 +1283,7 @@ ou *Diretivas e "ControladorComo"*
   ```
 
   ```javascript
-  /* better */
+  /* melhor */
 
   // route-config.js
   angular
@@ -1314,7 +1317,7 @@ ou *Diretivas e "ControladorComo"*
   }
   ```
 
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    Nota: As dependências no código de exemplos do `movieService` não estão seguras da minificação. Para mais detalhes de como fazer o código minificado seguro, veja as seções [injeção de dependência (dependency injection)](#manual-annotating-for-dependency-injection) e [minificação e anotação (minification and annotation)](#minification-and-annotation).
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
