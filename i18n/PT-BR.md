@@ -979,50 +979,53 @@ ou *Retorne uma promessa de chamadas de dados*
     **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Directives
+ou *Diretivas*
+
 ### Limit 1 Per File
+ou *Limite 1 por arquivo*
 
-  - Create one directive per file. Name the file for the directive. 
+  - Crie uma diretiva (directive) por arquivo. Nomeie o arquivo pela diretiva.
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. 
+    **Por que?**: É fácil misturar todas as diretivas em um arquivo, mas é difícil depois separá-las, já que algumas são compartilhadas entre aplicativos, outras pelos módulos (modules) e algumas somente para um módulo. 
 
-    *Why?*: One directive per file is easy to maintain.
+    **Por que?**: Uma diretiva (directive) por arquivo é mais fácil de dar manutenção.
 
   ```javascript
-  /* avoid */
+  /* evite */
   /* directives.js */
 
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* diretiva de pedido (order) que é específica para o módulo de pedido */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* diretiva de vendas (sales) que pode ser usada em qualquer lugar do aplicativo de vendas */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* diretiva de spinner que pode ser usada em qualquer lugar dos aplicativos */
       .directive('sharedSpinner', sharedSpinner);
 
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* calendarRange.directive.js */
 
   /**
-   * @desc order directive that is specific to the order module at a company named Acme
+   * @desc diretiva de pedido (order) que é específica para o módulo de pedido em uma companhia chamada Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1030,16 +1033,16 @@ ou *Retorne uma promessa de chamadas de dados*
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc diretiva de spinner que pode ser usada em qualquer lugar de um aplicativo de vendas em uma companhia chamada Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1047,16 +1050,16 @@ ou *Retorne uma promessa de chamadas de dados*
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* spinner.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across apps at a company named Acme
+   * @desc diretiva de spinner que pode ser usada em qualquer lugar de aplicativo em uma companhia chamada Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1064,43 +1067,46 @@ ou *Retorne uma promessa de chamadas de dados*
       .directive('acmeSharedSpinner', sharedSpinner);
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Nota: Há diferentes opções de nomear diretivas (directives), especialmente quando elas podem ser usadas em escopes (scopes) variados. Escolha uma que faça a diretiva e o nome do arquivo distinto e simples. Alguns exemplos são mostrados abaixo, mas veja a seção de nomeação para mais recomendações.
 
 ### Limit DOM Manipulation
+ou *Limite a manipulação do DOM*
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow. 
+  - Quando estiver manipulando o DOM diretamente, utilize uma diretiva (directive). Se formas alternativas podem ser utilizadas, como utilizar CSS para setar estilos ou [serviços de animação (animation services)](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), então prefira utilizá-los. Por exemplo, se uma diretiva simplesmente esconde ou mostra um elemento, use ngHide/ngShow. 
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    **Por que?**: A manipulação do DOM pode ser difícil de testar, debugar, e há melhores maneiras (ex: CSS, animações (animations), templates).
 
 ### Provide a Unique Directive Prefix
+ou *Forneça um prefixo único para as diretivas*
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Forneça um curto, único e descritivo prefixo para a diretiva, como `acmeSalesCustomerInfo`, que é declarado no HTML como `acme-sales-customer-info`.
 
-    *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company. 
+    **Por que?**: Um prefixo curto e único identifica o contexto e a origem da diretiva. Por exemplo, o prefixo `cc-` pode indicar que a diretiva é parte de um aplicativo da CodeCamper, enquanto a diretiva `acme-` pode indicar uma diretiva para a companhia Acme. 
 
-    Note: Avoid `ng-` as these are reserved for AngularJS directives.Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/). 
+    Nota: Evite `ng-`, pois são reservadas para as diretivas do AngularJS. Pesquisa largamente as diretivas utilizadas para evitar conflitos de nomes, como `ion-` que são utilizadas para o [Ionic Framework](http://ionicframework.com/). 
 
 ### Restrict to Elements and Attributes
+ou *Restringir para elementos e atributos*
 
-  - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+  - Quando criar uma diretiva que faça sentido por si só como um elemento, utilize restrição `E` (elemento personalizado) e opcionalmente `A` (atributo personalizado). Geralmente, se ela pode ter o seu próprio controlador (controller), `E` é o apropriado. Em linhas gerais, `EA` é permitido, mas atente para a implementação como elemento quando faz sentido por si só e como atributo quando estende algo existente no DOM.
 
-    *Why?*: It makes sense.
+    **Por que?**: Faz sentido.
 
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    **Por que?**: Nós podemos utilizar uma diretiva como uma classe (class), mas se a diretiva está realmente agindo como um elemento, faz mais sentido utilizar como um elemento, ou pelo menos como um atributo.
 
-    Note: EA is the default for AngularJS 1.3 +
+    Nota: EA é o padrão para o AngularJS 1.3 +
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <div class="my-calendar-range"></div>
   ```
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1120,13 +1126,13 @@ ou *Retorne uma promessa de chamadas de dados*
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
   
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1146,12 +1152,13 @@ ou *Retorne uma promessa de chamadas de dados*
   ```
 
 ### Directives and ControllerAs
+ou *Diretivas e "ControladorComo"*
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - Utilize a sintaxe `controller as` com uma diretiva para consistência com o uso de `controller as` com os pares view e controlador (controller).
 
-    *Why?*: It makes sense and it's not difficult.
+    **Por que?**: Faz sentido e não é difícil.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+    Nota: A diretiva (directive) abaixo demonstra algumas maneiras que você pode utilizar escopos (scopes) dentro de link e controller de uma diretiva, utilizando controllerAs. Eu coloquei o template somente para manter tudo em um mesmo local. 
 
   ```html
   <div my-example max="77"></div>
@@ -1177,7 +1184,7 @@ ou *Retorne uma promessa de chamadas de dados*
 
       ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
-          // Injecting $scope just for comparison
+          // Injetando $scope somente para comparação
           /* jshint validthis:true */
           var vm = this;
 
