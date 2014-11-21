@@ -52,7 +52,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Single Responsibility
 
 ### Rule of 1 
-Style [#Y001](#Y001)
+###### Style [Y001](#Y001)
 
   - Define 1 component per file.  
 
