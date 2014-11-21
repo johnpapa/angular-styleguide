@@ -1129,7 +1129,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: It makes sense and it's not difficult.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+    Starting in AngularJS 1.3, use `bindToController` to bind values on the isolate scope to properties on the controller instance. This enables two-way databinding scenarios and avoids the need to inject `$scope` into the controller.
+
+    Note: In AngularJS 1.2, `$scope` must be injected into the controller to gain access to values on the isolate scope.
+
+    Note: The directive below demonstrates some of the ways you can use scope inside of link, using `controllerAs`.
 
     Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
@@ -1151,27 +1155,24 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller : ExampleController,
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          bindToController: true
       };
-      
-      ExampleController.$inject = ['$scope'];
+
+      ExampleController.$inject = [];
 
       return directive;
 
-      function ExampleController($scope) {
-          // Injecting $scope just for comparison
+      function ExampleController() {
           /* jshint validthis:true */
           var vm = this;
 
-          vm.min = 3; 
-          vm.max = $scope.max; 
-          console.log('CTRL: $scope.max = %i', $scope.max);
+          vm.min = 3;
           console.log('CTRL: vm.min = %i', vm.min);
           console.log('CTRL: vm.max = %i', vm.max);
       }
 
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
           console.log('LINK: scope.vm.min = %i', scope.vm.min);
           console.log('LINK: scope.vm.max = %i', scope.vm.max);
       }
