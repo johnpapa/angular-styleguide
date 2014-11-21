@@ -348,13 +348,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
-    
-  ```javascript
-  /* jshint validthis: true */
-  var vm = this;
-  ```
-   
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
   ```javascript
@@ -1160,7 +1153,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       function ExampleController($scope) {
           // Injecting $scope just for comparison
-          /* jshint validthis:true */
           var vm = this;
 
           vm.min = 3; 
@@ -1283,7 +1275,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   Avengers.$inject = ['moviesPrepService'];
   function Avengers(moviesPrepService) {
-        /* jshint validthis:true */
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
