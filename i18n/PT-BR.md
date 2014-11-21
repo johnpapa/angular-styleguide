@@ -288,6 +288,7 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Controllers
+ou *Controladores*
 
 ### controllerAs View Syntax
 
