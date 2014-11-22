@@ -2360,11 +2360,13 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 ## Constants
 
-### Vendor Globals
+*ou Constantes*
 
-  - Create an AngularJS Constant for vendor libraries' global variables.
+### Globais de terceiros (*vendors*)
 
-    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+  - Cria uma *Constant* no AngularJS para variáveis globais de bibliotecas de terceiros.
+
+    *Por que?*: Fornece uma forma de injetar bibliotecas de terceiros que de outra forma seriam globais. Isso melhora a testabilidade do código permitindo a você conhecer mais facilmente quais dependências os seus componentes têm (evita vazamento de abstrações). Também permite que você simule estas dependências, o que faz sentido. 
 
     ```javascript
     // constants.js
