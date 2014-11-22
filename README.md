@@ -51,7 +51,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Single Responsibility
 
-### Rule of 1
+### Rule of 1 
+###### [Style [Y001](#style-y001)]
 
   - Define 1 component per file.  
 
@@ -105,6 +106,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## IIFE
 ### JavaScript Closures
+###### [Style [Y010](#style-y010)]
 
   - Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE). 
   
@@ -171,12 +173,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Modules
 
 ### Avoid Naming Collisions
+###### [Style [Y020](#style-y020)]
 
   - Use unique naming conventions with separators for sub-modules. 
 
   *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`. 
 
 ### Definitions (aka Setters)
+###### [Style [Y021](#style-y021)]
 
   - Declare modules without a variable using the setter syntax. 
 
@@ -206,10 +210,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Getters
+###### [Style [Y022](#style-y022)]
 
-  - When using a module, avoid using a variables and instead use   chaining with the getter syntax.
+  - When using a module, avoid using a variable and instead use   chaining with the getter syntax.
 
-	*Why?* : This produces more readable code and avoids variables collisions or leaks.
+	*Why?* : This produces more readable code and avoids variable collisions or leaks.
 
   ```javascript
   /* avoid */
@@ -229,6 +234,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Setting vs Getting
+###### [Style [Y023](#style-y023)]
 
   - Only set once and get for all other instances.
 	
@@ -238,6 +244,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 	  - Use  `angular.module('app');` to get a module. 
 
 ### Named vs Anonymous Functions
+###### [Style [Y024](#style-y024)]
 
   - Use named functions instead of passing an anonymous function in as a callback. 
 
@@ -247,7 +254,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* avoid */
   angular
       .module('app')
-      .controller('Dashboard', function() { });
+      .controller('Dashboard', function() { })
       .factory('logger', function() { });
   ```
 
@@ -276,6 +283,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Controllers
 
 ### controllerAs View Syntax
+###### [Style [Y030](#style-y030)]
 
   - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax. 
 
@@ -300,6 +308,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### controllerAs Controller Syntax
+###### [Style [Y031](#style-y031)]
 
   - Use the `controllerAs` syntax over the `classic controller with $scope` syntax. 
 
@@ -326,6 +335,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### controllerAs with vm
+###### [Style [Y032](#style-y032)]
 
   - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
   
@@ -348,13 +358,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
+  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
     
   ```javascript
   /* jshint validthis: true */
   var vm = this;
-  ```
-   
+  ```   
+
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
   ```javascript
@@ -365,6 +375,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Bindable Members Up Top
+###### [Style [Y033](#style-y033)]
 
   - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
   
@@ -453,6 +464,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Function Declarations to Hide Implementation Details
+###### [Style [Y034](#style-y034)]
 
   - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
     
@@ -527,6 +539,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Defer Controller Logic
+###### [Style [Y035](#style-y036)]
 
   - Defer logic in a controller by delegating to services and factories.
 
@@ -567,12 +580,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Keep Controllers Focused
+###### [Style [Y037](#style-y037)]
 
   - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view. 
   
     *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
 
 ### Assigning Controllers
+###### [Style [Y038](#style-y038)]
 
   - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
     
@@ -631,6 +646,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Services
 
 ### Singletons
+###### [Style [Y040](#style-y040)]
 
   - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency. 
   
@@ -669,16 +685,19 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Factories
 
 ### Single Responsibility
+###### [Style [Y050](#style-y050)]
 
   - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
 
 ### Singletons
+###### [Style [Y051](#style-y051)]
 
   - Factories are singletons and return an object that contains the members of the service.
   
     Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
 
 ### Accessible Members Up Top
+###### [Style [Y052](#style-y052)]
 
   - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
@@ -735,8 +754,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
+###### [Style [Y053](#style-y053)]
 
-  - Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
 
@@ -836,6 +856,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Data Services
 
 ### Separate Data Calls
+###### [Style [Y060](#style-y060)]
 
   - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
 
@@ -911,6 +932,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Return a Promise from Data Calls
+###### [Style [Y061](#style-y061)]
 
   - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
 
@@ -958,6 +980,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Directives
 ### Limit 1 Per File
+###### [Style [Y070](#style-y070)]
 
   - Create one directive per file. Name the file for the directive. 
 
@@ -1049,12 +1072,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
 
 ### Limit DOM Manipulation
+###### [Style [Y072](#style-y072)]
 
   - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow. 
 
     *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
 
 ### Provide a Unique Directive Prefix
+###### [Style [Y073](#style-y073)]
 
   - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
 
@@ -1063,6 +1088,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: Avoid `ng-` as these are reserved for AngularJS directives.Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/). 
 
 ### Restrict to Elements and Attributes
+###### [Style [Y074](#style-y074)]
 
   - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
 
@@ -1124,12 +1150,15 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Directives and ControllerAs
+###### [Style [Y075](#style-y075)]
 
   - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
 
     *Why?*: It makes sense and it's not difficult.
 
     Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+
+    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
   ```html
   <div my-example max="77"></div>
@@ -1151,12 +1180,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           controller : ExampleController,
           controllerAs: 'vm'
       };
+      
+      ExampleController.$inject = ['$scope'];
+
       return directive;
 
-      ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
           // Injecting $scope just for comparison
-          /* jshint validthis:true */
           var vm = this;
 
           vm.min = 3; 
@@ -1186,6 +1216,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Resolving Promises for a Controller
 
 ### Controller Activation Promises
+###### [Style [Y080](#style-y080)]
 
   - Resolve start-up logic for a controller in an `activate` function.
      
@@ -1228,6 +1259,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Route Resolve Promises
+###### [Style [Y081](#style-y081)]
 
   - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
 
@@ -1279,7 +1311,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   Avengers.$inject = ['moviesPrepService'];
   function Avengers(moviesPrepService) {
-        /* jshint validthis:true */
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
@@ -1292,6 +1323,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Manual Annotating for Dependency Injection
 
 ### UnSafe from Minification
+###### [Style [Y090](#style-y090)]
 
   - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
   
@@ -1315,6 +1347,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Manually Identify Dependencies
+###### [Style [Y091](#style-y091)]
 
   - Use `$inject` to manually identify your dependencies for AngularJS components.
   
@@ -1388,6 +1421,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Manually Identify Route Resolver Dependencies
+###### [Style [Y092](#style-y092)]
 
   - Use $inject to manually identify your route resolver dependencies for AngularJS components.
   
@@ -1420,6 +1454,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Minification and Annotation
 
 ### ng-annotate
+###### [Style [Y100](#style-y100)]
 
   - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
   
@@ -1496,6 +1531,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
+###### [Style [Y101](#style-y101)]
 
   - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
   
@@ -1529,6 +1565,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Exception Handling
 
 ### decorators
+###### [Style [Y110](#style-y110)]
 
   - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
   
@@ -1569,6 +1606,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   	```
 
 ### Exception Catchers
+###### [Style [Y111](#style-y111)]
 
   - Create a factory that exposes an interface to catch and gracefully handle exceptions.
 
@@ -1599,6 +1637,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Route Errors
+###### [Style [Y112](#style-y112)]
 
   - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
@@ -1634,6 +1673,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Naming
 
 ### Naming Guidelines
+###### [Style [Y120](#style-y120)]
 
   - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
     *   the file name (`avengers.controller.js`)
@@ -1644,6 +1684,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand. 
 
 ### Feature File Names
+###### [Style [Y121](#style-y121)]
 
   - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
 
@@ -1710,6 +1751,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Test File Names
+###### [Style [Y122](#style-y122)]
 
   - Name test specifications similar to the component they test with a suffix of `spec`.  
 
@@ -1728,6 +1770,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Controller Names
+###### [Style [Y123](#style-y123)]
 
   - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
 
@@ -1749,6 +1792,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
     
 ### Controller Name Suffix
+###### [Style [Y124](#style-y124)]
 
   - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
 
@@ -1783,6 +1827,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Factory Names
+###### [Style [Y125](#style-y125)]
 
   - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
 
@@ -1802,6 +1847,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Directive Component Names
+###### [Style [Y126](#style-y126)]
 
   - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
 
@@ -1823,6 +1869,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Modules
+###### [Style [Y127](#style-y127)]
 
   -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. A single module app might be named `app.js`, omitting the module moniker.
 
@@ -1833,6 +1880,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
 
 ### Configuration
+###### [Style [Y128](#style-y128)]
 
   - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
 
@@ -1841,6 +1889,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Provides a identifiable place to set configuration for a module.
 
 ### Routes
+###### [Style [Y129](#style-y129)]
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
 
@@ -1848,6 +1897,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ## Application Structure LIFT Principle
 ### LIFT
+###### [Style [Y140](#style-y140)]
 
   - Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines. 
 
@@ -1861,6 +1911,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
 
 ### Locate
+###### [Style [Y141](#style-y141)]
 
   - Make locating your code intuitive, simple and fast.
 
@@ -1885,18 +1936,21 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Identify
+###### [Style [Y142](#style-y142)]
 
   - When you look at a file you should instantly know what it contains and represents.
 
     *Why?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
 
 ### Flat
+###### [Style [Y143](#style-y143)]
 
   - Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
 
     *Why?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
 
 ### T-DRY (Try to Stick to DRY)
+###### [Style [Y144](#style-y144)]
 
   - Be DRY, but don't go nuts and sacrifice readability.
 
@@ -1907,18 +1961,21 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Application Structure
 
 ### Overall Guidelines
+###### [Style [Y150](#style-y150)]
 
   -  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
     Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
+###### [Style [Y151](#style-y151)]
 
   - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
 
     *Why?*: Organizes all layout in a single place re-used throughout the application.
 
 ### Folders-by-Feature Structure
+###### [Style [Y152](#style-y152)]
 
   - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
 
@@ -2016,24 +2073,28 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Modularity
   
 ### Many Small, Self Contained Modules
+###### [Style [Y160](#style-y160)]
 
   - Create small modules that encapsulate one responsibility.
 
     *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
 
 ### Create an App Module
+###### [Style [Y161](#style-y161)]
 
   - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
 
     *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
 
 ### Keep the App Module Thin
+###### [Style [Y162](#style-y162)]
 
   - Only put logic for pulling together the app in the application module. Leave features in their own modules.
 
     *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
 
 ### Feature Areas are Modules
+###### [Style [Y163](#style-y163)]
 
   - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
 
@@ -2044,12 +2105,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
 
 ### Reusable Blocks are Modules
+###### [Style [Y164](#style-y164)]
 
   - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
 
     *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
 
 ### Module Dependencies
+###### [Style [Y165](#style-y165)]
 
   - The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.
 
@@ -2070,9 +2133,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Startup Logic
 
 ### Configuration
+###### [Style [Y170](#style-y170)]
+
   - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidaes include providers and constants.
 
-    *Why?:* This makes it easier to have a less places for configuration.
+    *Why?*: This makes it easier to have a less places for configuration.
 
   ```javascript
   angular
@@ -2100,6 +2165,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Run Blocks
+###### [Style [Y171](#style-y171)]
 
   - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
@@ -2123,12 +2189,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Angular $ Wrapper Services
 
 ### $document and $window
+###### [Style [Y180](#style-y180)]
 
   - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
 
     *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
 
 ### $timeout and $interval
+###### [Style [Y181](#style-y181)]
 
   - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
 
@@ -2140,6 +2208,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
 
 ### Write Tests with Stories
+###### [Style [Y190](#style-y190)]
 
   - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
 
@@ -2166,6 +2235,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     ```
 
 ### Testing Library
+###### [Style [Y191](#style-y191)]
 
   - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
 
@@ -2174,6 +2244,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
 
 ### Test Runner
+###### [Style [Y192](#style-y192)]
 
   - Use [Karma](http://karma-runner.github.io) as a test runner.
 
@@ -2186,6 +2257,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
 
 ### Stubbing and Spying
+###### [Style [Y193](#style-y193)]
 
   - Use Sinon for stubbing and spying.
 
@@ -2194,6 +2266,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
 
 ### Headless Browser
+###### [Style [Y194](#style-y194)]
 
   - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
 
@@ -2202,12 +2275,14 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     Note: You should still test on all browsers in your environment, as appropriate for your target audience.
 
 ### Code Analysis
+###### [Style [Y195](#style-y195)]
 
   - Run JSHint on your tests. 
 
     *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
 
 ### Alleviate Globals for JSHint Rules on Tests
+###### [Style [Y196](#style-y196)]
 
   - Relax the rules on your test code to allow for common globals such as `describe` and `expect`.
 
@@ -2224,6 +2299,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ## Animations
 
 ### Usage
+###### [Style [Y210](#style-y210)]
 
   - Use subtle [animations with AngularJS](https://docs.angularjs.org/guide/animations) to transition between states for views and primary visual elements. Include the [ngAnimate module](https://docs.angularjs.org/api/ngAnimate). The 3 keys are subtle, smooth, seamless.
 
@@ -2232,12 +2308,14 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Subtle animations can improve perceived performance as views transition.
 
 ### Sub Second
+###### [Style [Y211](#style-y211)]
 
   - Use short durations for animations. I generally start with 300ms and adjust until appropriate.  
 
     *Why?*: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
 
 ### animate.css
+###### [Style [Y212](#style-y212)]
 
   - Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
 
@@ -2254,6 +2332,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ## Comments
 
 ### jsDoc
+###### [Style [Y220](#style-y220)]
 
   - If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns. Use `@namespace` and `@memberOf` to match your app structure.
 
@@ -2305,6 +2384,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ## JS Hint
 
 ### Use an Options File
+###### [Style [Y230](#style-y230)]
 
   - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
 
@@ -2381,6 +2461,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ## Constants
 
 ### Vendor Globals
+###### [Style [Y240](#style-y240)]
 
   - Create an AngularJS Constant for vendor libraries' global variables.
 
@@ -2406,6 +2487,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
 
 ### Sublime Text
+###### [Style [Y250](#style-y250)]
 
   - AngularJS snippets that follow these styles and guidelines. 
 
@@ -2422,6 +2504,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ```
 
 ### Visual Studio
+###### [Style [Y251](#style-y251)]
 
   - AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
 
@@ -2430,6 +2513,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - Restart Visual Studio
 
 ### WebStorm
+###### [Style [Y252](#style-y252)]
 
   - AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
 
@@ -2458,8 +2542,8 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 ### Process
     1. Discuss the changes in an Issue. 
-    1. Open a Pull Request, reference the issue, and explain the change and why it adds value.
-    1. The Pull Request will be evaluated and either merged or declined.
+    2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
+    3. The Pull Request will be evaluated and either merged or declined.
 
 ## License
 
