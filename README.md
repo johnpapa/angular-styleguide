@@ -2035,6 +2035,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
 
+    *Why?*: The app module becomes a manifest that describes which modules help define the application. 
+
 ### Feature Areas are Modules
 
   - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
