@@ -1816,7 +1816,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
      * recommended
      */
 
-    // avenger.profile.directive.js    
+    // avenger-profile.directive.js    
     angular
         .module
         .directive('xxAvengerProfile', xxAvengerProfile);
@@ -1828,10 +1828,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ### Modules
 
-  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. A single module app might be named `app.js`, omitting the module moniker.
+  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. 
 
-    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
- 
     *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
 
     *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
@@ -1846,7 +1844,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ### Routes
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
+  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. 
 
 **[Back to top](#table-of-contents)**
 
