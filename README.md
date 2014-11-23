@@ -1133,6 +1133,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
+    Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
+
   ```html
   <div my-example max="77"></div>
   ```
@@ -1154,26 +1156,26 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           controllerAs: 'vm'
       };
       
-      ExampleController.$inject = ['$scope'];
-
       return directive;
-
-      function ExampleController($scope) {
-          // Injecting $scope just for comparison
-          var vm = this;
-
-          vm.min = 3; 
-          vm.max = $scope.max; 
-          console.log('CTRL: $scope.max = %i', $scope.max);
-          console.log('CTRL: vm.min = %i', vm.min);
-          console.log('CTRL: vm.max = %i', vm.max);
-      }
 
       function linkFunc(scope, el, attr, ctrl) {
           console.log('LINK: scope.max = %i', scope.max);
           console.log('LINK: scope.vm.min = %i', scope.vm.min);
           console.log('LINK: scope.vm.max = %i', scope.vm.max);
       }
+  }
+
+  ExampleController.$inject = ['$scope'];
+
+  function ExampleController($scope) {
+      // Injecting $scope just for comparison
+      var vm = this;
+
+      vm.min = 3; 
+      vm.max = $scope.max; 
+      console.log('CTRL: $scope.max = %i', $scope.max);
+      console.log('CTRL: vm.min = %i', vm.min);
+      console.log('CTRL: vm.max = %i', vm.max);
   }
   ```
 
