@@ -2100,7 +2100,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
 
-    *Why?*: Self contained modules can be added to the application will little or no friction.
+    *Why?*: Self contained modules can be added to the application with little or no friction.
 
     *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
 
