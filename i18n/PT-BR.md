@@ -253,7 +253,7 @@ ou *Definindo* vs *Obtendo*
 	  - Use  `angular.module('app');` para pegar (*get*) este módulo. 
 
 ### Named vs Anonymous Functions
-ou *unções Nomeadas vs Funções Anônimas*
+ou *Funções Nomeadas vs Funções Anônimas*
 
   - Use funções nomeadas ao invés de passar uma função anônima como um callback. 
 
