@@ -1076,7 +1076,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla nomenclatura per maggiori raccomandazioni.
 
-### Limiti alla manipolazione del DOM
+### Manipolare il DOM in una Directive
 ###### [Stile [Y072](#stile-y072)]
 
   - Quando devi manipolare direttamente il DOM, usa una directive. Se possono essere usate delle alternative come settare stili CSS o i [servizi di animazione](https://docs.angularjs.org/api/ngAnimate), templating di Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oppure [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), piuttosto usa questi. Per esempio, se la directive semplicemente nasconde e mostra, usa ngHide/ngShow. 
