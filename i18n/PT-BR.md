@@ -1,30 +1,31 @@
 # Guia de Estilo AngularJS
 
-*Guia de Estilo Opinativo para times sobre AngularJS por [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo opinativo de AngularJS para times. Por [@john_papa](//twitter.com/john_papa)*
 
-*Translation by [Eric Douglas](https://github.com/ericdouglas) and [Ciro Nunes](https://github.com/cironunes)*
+*Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes), [Jean Lucas de Carvalho](https://github.com/jlcarvalho) e [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+>A [versão original em inglês](http://jpapa.me/ngstyles) é a fonte da verdade, já que é corrigida e atualizada primeiro.
 
-Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Plurasight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalho em times.
+Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipes.
 
-> Se você gostar deste estilo, olhe meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
+> Se você gostar deste estilo, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
 
-A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso e, o mais importante, porque eu as escolhi.
+A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
 
-## Créditos e uma Grande Comunidade
+## A Importância da Comunidade e Créditos
 
-Nunca trabalhe no vazio. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilo e convenções. Nós concordamos na maioria, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe sozinho. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
-Vários de meus estilos vieram de várias sessões de programação em par que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora nem sempre concordamos, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
+Vários de meus estilos vieram de várias sessões de pair-programming que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não corcordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
 ## Veja os estilos em um aplicativo de exemplo
 
-Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de amostra que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegâ-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de exemplo que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegá-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 > **Nota de tradução**: Os títulos originais de cada seção será mantido, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
 >
-> Após o titúlo, estará a tradução auxiliar, quando necessária, visto que alguns termos são mais facilmente entendidos quando não traduzidos, por fazerem parte do núcleo do estudo em questão.
+> Após o título, estará a tradução auxiliar, quando necessária, visto que alguns termos são mais facilmente entendidos quando não traduzidos, por fazerem parte do núcleo do estudo em questão.
 >
 > Para eventuais erros de digitação e/ou tradução, favor enviar um pull-request! 
 
@@ -173,14 +174,15 @@ ou *Responsabilidade Única*
 
   - **Nota**: Apenas para agilizar, o resto dos exemplos neste guia omitirão a sintaxe IIFE. 
 
-  - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
+  - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto, você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
-ou Módulos
+ou *Módulos*
 
-### Evitando Colisão de Nomes
+### Avoid Naming Collisions
+ou *Evitando Colisão de Nomes*
 
   - Use uma única convenção de nomes com separadores para sub-módulos.
 
@@ -188,7 +190,7 @@ ou Módulos
 
 ### Definições (*aka Setters*)
 
-> ps: **aka** é o acrônimo de **A**lso **Know** **A**s, de forma traduzida, **também conhecido como**.
+> ps: **aka** é o acrônimo de **A**lso **K**nown** **A**s, de forma traduzida, **também conhecido como**.
 
   - Declare os módulos sem uma variável usando a sintaxe *setter*.
 
@@ -221,7 +223,7 @@ ou Módulos
 
   - Quando usando um módulo, evite usar as variáveis e então use o encadeamento com a sintaxe *getter*.
 
-  **Por que?** Isso produz um código mais legível e evite colisão de variáveis ou vazamentos.
+  **Por que?** Isso produz um código mais legível e evita colisão de variáveis ou vazamentos.
 
   ```javascript
   /* evite */
@@ -250,11 +252,11 @@ ou *Definindo* vs *Obtendo*
 	  - Use `angular.module('app', []);` para definir (*set*) um módulo.
 	  - Use  `angular.module('app');` para pegar (*get*) este módulo. 
 
-### Funções Nomeadas vs Funções Anônimas
+### Named vs Anonymous Functions
+ou *Funções Nomeadas vs Funções Anônimas*
 
   - Use funções nomeadas ao invés de passar uma função anônima como um callback. 
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
   **Por que?** Isso produz um código mais legível, é muito fácil de *debugar*, e reduz a quantidade de callbacks aninhados no código.
 
   ```javascript
@@ -288,26 +290,27 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Controllers
+ou *Controladores*
 
 ### controllerAs View Syntax
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax. 
+  - Utilize a sintaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) ao invés da sintaxe `clássica controller com $scope`. 
 
-	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`. 
+	**Por que?**: Controllers são construídos, "iniciados", e fornecem um nova instância única, e a sintaxe `controlerAs` é mais próxima de um construtor JavaScriptar do que a `sintaxe clássica do $scope`.
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+	**Por que?**: Isso promove o uso do binding de um objeto "pontuado", ou seja, com propriedades na View (ex. `customer.name` ao invés de `name`), que é mais contextual, legível, e evita qualquer problema com referências que podem ocorrer sem a "pontuação"
 
-	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+	**Por que?**: Ajuda a evitar o uso de chamadas ao `$parent` nas Views com controllers aninhados.
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <div ng-controller="Customer">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <div ng-controller="Customer as customer">
      {{ customer.name }}
   </div>
@@ -315,16 +318,16 @@ ou *Definindo* vs *Obtendo*
 
 ### controllerAs Controller Syntax
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax. 
+  - Utilize a sintaxe `controllerAs` ao invés invés da sintaxe `clássica controller com $scope`. 
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - A sintaxe `controllerAs` usa o `this` dentro dos controllers que fica ligado ao `$scope`.
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.  
+  **Por que?**: O `controllerAs` é uma forma mais simples de lidar com o `$scope`. Você ainda poderá fazer o bind para a View e ainda poderá acessar os métodos do `$scope`.  
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller. 
+  **Por que?**: Ajuda a evitar a tentação de usar o métodos do `$scope` dentro de um controller quando seria melhor evitá-los ou movê-los para um factory. Considere utilizar o  `$scope` em um factory, ou em um controller apenas quando necessário. Por exemplo, quando publicar e subscrever eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considere mover estes casos para um factory e invocá-los a partir do controller.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Customer($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -332,7 +335,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* recomendado - mas veja a próxima sessão */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -341,12 +344,12 @@ ou *Definindo* vs *Obtendo*
 
 ### controllerAs with vm
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Utilize uma variável de captura para o `this` quando usar a sintaxe `controllerAs`. Escolha um nome de variável consistente como `vm`, que representa o ViewModel.
   
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  **Por  que?**: A palavra-chave `this` é contextual e quando usada em uma função dentro de um controller pode mudar seu contexto. Capturando o contexto do `this` evita a ocorrência deste problema.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -354,7 +357,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Customer() {
       var vm = this;
       vm.name = {};
@@ -362,14 +365,14 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. 
+  Nota: Você pode evitar qualquer [jshint](http://www.jshint.com/) warnings colocando o comentário abaixo acima da linha de código. 
     
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
    
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+ Nota: Quando watches são criados no controller utilizando o `controller as`, você pode observar o objeto `vm.*` utilizando a seguinte sintaxe. (Crie watches com cuidado pois eles deixam o ciclo de digest mais "carregado".)
 
   ```javascript
   $scope.$watch('vm.title', function(current, original) {
@@ -380,14 +383,14 @@ ou *Definindo* vs *Obtendo*
 
 ### Bindable Members Up Top
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Coloque os objetos que precisam de bind no início do controller, em ordem alfabética, e não espalhados através do código do controller.
   
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. 
+    **Por que?**: Colocar os objetos que precisam de bind no início torna mais fácil de ler e te ajuda a instantaneamente identificar quais objetos do controller podem ser utilizados na View.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read. 
+    **Por que?**: Setar funções anônimas pode ser fácil, mas quando essas funções possuem mais de 1 linha do código elas podem dificultar a legibilidade. Definir as funções abaixo dos objetos que necessitam de bind (as funções serão elevadas pelo JavaScript Hoisting) move os detalhes de implementação para o final do controller, mantém os objetos que necessitam de bind no topo, e deixa o código mais fácil de se ler.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Sessions() {
       var vm = this;
 
@@ -405,7 +408,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Sessions() {
       var vm = this;
 
@@ -432,21 +435,22 @@ ou *Definindo* vs *Obtendo*
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+   Nota: Se a função possuir apenas 1 linha considere matê-la no topo, desde que a legibilidade não seja afetada.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Sessions(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
           /** 
-           * lines 
-           * of
-           * code
-           * affects
-           * readability
+           * linhas 
+           * de
+           * código
+           * afetam
+           * a
+           * legibilidade
            */
       };
       vm.search = search;
@@ -455,12 +459,12 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Sessions(dataservice) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = dataservice.refresh; // 1 linha está OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
@@ -468,22 +472,22 @@ ou *Definindo* vs *Obtendo*
 
 ### Function Declarations to Hide Implementation Details
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilize declarações de funções para esconder detalhes de implementação. Mantenha seus objetos que necessitam de bind no topo. Quando você precisar fazer o bind de uma função no controller, aponte ela para a declaração de função que aparece no final do arquivo. Ela está ligada diretamente aos objetos que precisam de bind no início do arquivo. Para mais detalhes veja [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
     
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    **Por que?**: Colocar os objetos que precisam de bind no início torna mais fácil de ler e te ajuda a instantaneamente identificar quais objetos do controller podem ser utilizados na View. (Mesmo do item anterior.)
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    **Por que?**: Colocar os detalhes de implementação de uma função no final do arquivo coloca a complexidade fora do foco, logo, você pode focar nas coisas importantes no topo.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    **Por que?**: Declarações de funções são içadas, logo, não existe problema de se utilizar uma função antes dela ser definida (como haveria com expressões de função).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+    **Por que?**: Você nunca precisará se preocupar com declarações de funções quebrarem seu código por colocar `var a` antes de `var b` por que `a` depende de `b`.     
 
-    *Why?*: Order is critical with function expressions 
+    **Por que?**: A ordenação é crítica em expressões de função.
 
   ```javascript
   /** 
-   * avoid 
-   * Using function expressions.
+   * evite 
+   * Usar expressões de funções.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -509,13 +513,13 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Note-se que as coisas importantes estão espalhadas no exemplo anterior. No exemplo abaixo, nota-se que as coisas importantes do javascript estão logo no topo. Por exemplo, os objetos que precisam de bind no controller como `vm.avengers` e `vm.title`. Os detalhes de implementação estão abaixo. Isto é mais fácil de ler.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * recomendado
+   * Usar declarações de funções
+   * e objetos que precisam de bind no topo.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -542,16 +546,16 @@ ou *Definindo* vs *Obtendo*
 
 ### Defer Controller Logic
 
-  - Defer logic in a controller by delegating to services and factories.
+  - Remova a lógica do controller delegando ela a services e factories.
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    **Por que?**: A lógica pode ser reutilizada em múltiplos controllers quando colocada em um service e exposta através de uma função.
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    **Por que?**: A lógica em um serviço pode ser mais facilmente isolada em um teste unitário, enquanto a lógica feita no controlador pode ser facilmente [mockada](http://www.thoughtworks.com/pt/insights/blog/mockists-are-dead-long-live-classicists).
 
-    *Why?*: Removes dependencies and hides implementation details from the controller.
+    **Por que?**: Remove as dependências e esconde os detalhes de implementação do controlador.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function Order($http, $q) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -568,7 +572,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -582,20 +586,20 @@ ou *Definindo* vs *Obtendo*
 
 ### Keep Controllers Focused
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view. 
+  - Defina um controller para a view, e tente não reutilizar o controller para outras views. Ao invés disso, coloque as lógicas reaproveitáveis em factories e mantenha o controller simples e focado em sua view.
   
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    **Por que?**: Reutilizar controllers em várias views é arriscado e um boa cobertura de testes end to end (e2e) é obrigatório para se garantir estabilidade em grandes aplicações.
 
 ### Assigning Controllers
 
-  - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
+  - Quando um controller deve ser pareado com sua view e algum componente pode ser reutilizado por outros controllers ou views, defina controllers juntamente de suas rotas. 
     
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
+    Nota: Se uma View é carregada de outra forma que não seja através de uma rota, então utilize a sintaxe `ng-controller="Avengers as vm"`. 
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    **Por que?**: Parear os controllers nas rotas permite diferentes rotas invocarem diferentes pares de controllers e views. Quando um controller é utilizado na view usando a sintaxe [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esta view sempre será associada ao mesmo controller.
 
  ```javascript
-  /* avoid - when using with a route and dynamic pairing is desired */
+  /* evite - quando utilizar com uma rota e emparelhamento dinâmico é desejado */
 
   // route-config.js
   angular
@@ -617,7 +621,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // route-config.js
   angular
@@ -643,12 +647,13 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Services
+ou *Serviços*
 
 ### Singletons
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency. 
+  - Services são instanciados com a palavra-chave `new`, use `this` para métodos públicos e variáveis. Services são bastante similares a factories, use um factory para consistência. 
   
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services). Isso significa que há apenas uma instância do serviço para cada injetor.
 
   ```javascript
   // service
@@ -681,29 +686,32 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Factories
+ou *Fábricas*
 
 ### Single Responsibility
+ou *Responsabilidade Única*
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Factories devem ter [responsabilidade única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que é encapsulado pelo seu contexto. Assim que uma factory começa a exceder a proposta de singularidade, uma nova factory deve ser criada.
 
 ### Singletons
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Factories são singletons e retornam um objeto que contém os membros do serviço.
   
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services).
 
 ### Accessible Members Up Top
+ou *Membros acessíveis no topo*
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Exponha os membros que podem ser invocados no serviço (a interface) no topo, utilizando uma técnica derivada do [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+    **Por que?**: Colocando no topo os membros que podem ser invocados da factory, a leitura torna-se mais fácil e ajuda a identificar imediatamente quais membros da factory podem ser invocados e testados através de teste unitário (e/ou mock). 
 
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    **Por que?**: É especialmente útil quando o arquivo torna-se muito longo e ajuda a evitar a necessidade de rolagem para ver o que é exposto.
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    **Por que?**: Definir as funções conforme você escreve o código pode ser fácil, mas quando essas funções tem mais que 1 linha de código, elas podem reduzir a leitura e causar rolagem. Definir a interface no topo do que pode ser invocado da factory, torna a leitura mais fácil e mantém os detalhes de implementação mais abaixo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function dataService() {
     var someValue = '';
     function save() { 
@@ -722,7 +730,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function dataService() {
       var someValue = '';
       var service = {
@@ -744,51 +752,52 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  Dessa forma, os bindings são espelhados através do objeto da interface da factory e os valores primitivos não podem ser atualizados sozinhos utilizando o revealing module pattern
 
     ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
+ou *Declarações de função para esconder detalhes de implementação*
 
-  - Use function declarations to hide implementation details. Keep your acessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations (declarações de função) para esconder detalhes de implementação. Mantenha os membros acessíveis da factory no topo. Aponte as function declarations que aparecem posteriormente no arquivo. Para mais detalhes leia [esse post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+    **Por que?**: Colocando os membros acessíveis no topo, a leitura torna-se mais fácil e ajuda a identificar imediatamente quais membros da factory podem ser acessados externamente.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    **Por que?**: Colocando os detalhes de implementação da função posteriormente no arquivo move a complexidade para fora da visão, permitindo que você veja as coisas mais importantes no topo.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    **Por que?**: Function declarations (declarações de função) são içadas (hoisted) para que não hajam preocupações em utilizar uma função antes que ela seja definida (como haveria com function expressions (expressões de função)).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.     
+    **Por que?**: Você nunca deve se preocupar com function declaration (declarações de função) onde `var a` está antes de `var b` vai ou não quebrar o seu código porque `a` depende de `b`.     
 
-    *Why?*: Order is critical with function expressions 
+    **Por que?**: A ordem é crítica com function expressions (expressões de função) 
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
+   * evite
+   * Utilizando function expressions (expressões de função)
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
 
       var getAvengers = function() {
-         // implementation details go here
+         // detalhes de implementação
       };
 
       var getAvengerCount = function() {
-          // implementation details go here
+          // detalhes de implementação
       };
 
       var getAvengersCast = function() {
-         // implementation details go here
+         // detalhes de implementação
       };
 
       var prime = function() {
-         // implementation details go here
+         // detalhes de implementação
       };
 
       var ready = function(nextPromises) {
-          // implementation details go here
+          // detalhes de implementação
       };
 
       var service = {
@@ -804,9 +813,9 @@ ou *Definindo* vs *Obtendo*
 
   ```javascript
   /**
-   * recommended
-   * Using function declarations
-   * and accessible members up top.
+   * recomendado
+   * Utilizando function declarations (declarações de função)
+   * e membros acessíveis no topo.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -824,23 +833,23 @@ ou *Definindo* vs *Obtendo*
       ////////////
 
       function getAvengers() {
-         // implementation details go here
+         // detalhes de implementação
       }
 
       function getAvengerCount() {
-          // implementation details go here
+          // detalhes de implementação
       }
 
       function getAvengersCast() {
-         // implementation details go here
+         // detalhes de implementação
       }
 
       function prime() {
-          // implementation details go here
+          // detalhes de implementação
       }
 
       function ready(nextPromises) {
-          // implementation details go here
+          // detalhes de implementação
       }
   }
   ```
@@ -848,21 +857,23 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Data Services
+ou *Serviços de dados*
 
 ### Separate Data Calls
+ou *Chamadas de dados separadas*
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - A lógica de refatoração (refactor) para operações com dados e interação com dados na factory. Faça serviços de dados responsáveis por chamadas XHR, armazenamento local (local storage), armazenamento em memória (stashing) ou outras operações com dados.
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    **Por que?**: A responsabilidade dos controladores (controllers) é para a apresentação e coleta de informações da view. Eles não devem se importar como os dados são adquiridos, somente como "perguntar" por eles. Separar os serviços de dados (data services), move a lógica de como adquiri-los para o serviço e deixa o controlador (controller) mais simples e focado na view.
 
-    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    **Por que?**: Isso torna mais fácil testar (mock ou real) as chamadas de dados quando estiver testando um controlador (controller) que utiliza um serviço de dados (data service).
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    **Por que?**: A implementação de um serviço de dados (data service) pode ter um código bem específico para lidar com o repositório de dados. Isso pode incluir cabeçalhos (headers), como comunicar com os dados ou outros serviços, como $http. Separando a lógica de dados em um serviço, coloca toda a lógica somente em um local e esconde a implementação de consumidores de fora (talvez um controlador (controller)), tornado mais fácil mudar a implementação.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // dataservice factory
+  // factory de serviço de dados (data service factory)
   angular
       .module('app.core')
       .factory('dataservice', dataservice);
@@ -890,12 +901,12 @@ ou *Definindo* vs *Obtendo*
   }
   ```
     
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+    Nota: O serviço de dados (data service) é chamado pelos consumidores, como um controlador (controller), escondendo a implementação dos consumidores, como mostrado abaixo.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // controller calling the dataservice factory
+  // controlador chamando uma factory de serviço de dados
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -925,26 +936,27 @@ ou *Definindo* vs *Obtendo*
   ```
 
 ### Return a Promise from Data Calls
+ou *Retorne uma promessa de chamadas de dados*
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - Quando chamar um serviço de dados (data service) que retorna uma promessa (promise), como o $http, retorne uma promessa (promise) na função que está chamando também.
 
-    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    **Por que?**: Você pode encandear as promessas (promises) juntas e definir ações após a promessa (promise) da chamada do dado ser completada, resolvendo ou rejeitando a promessa (promise).
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   activate();
 
   function activate() {
       /**
-       * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Passo 1
+       * Chame a função getAvengers para os dados
+       * dos vingadores (avengers) e espere pela promessa (promise)
        */
       return getAvengers().then(function() {
           /**
-           * Step 4
-           * Perform an action on resolve of final promise
+           * Passo 4
+           * Faça uma ação resolvendo a promessa (promise) finalizada
            */
           logger.info('Activated Avengers View');
       });
@@ -952,15 +964,15 @@ ou *Definindo* vs *Obtendo*
 
   function getAvengers() {
         /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Passo 2
+         * Chame o serviço de dados (data service) e espere
+         * pela promessa (promise)
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
-                 * Step 3
-                 * set the data and resolve the promise
+                 * Passo 3
+                 * Atribua os dados e resolva a promessa (promise)
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -971,50 +983,53 @@ ou *Definindo* vs *Obtendo*
     **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Directives
+ou *Diretivas*
+
 ### Limit 1 Per File
+ou *Limite 1 por arquivo*
 
-  - Create one directive per file. Name the file for the directive. 
+  - Crie uma diretiva (directive) por arquivo. Nomeie o arquivo pela diretiva.
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. 
+    **Por que?**: É fácil misturar todas as diretivas em um arquivo, mas é difícil depois separá-las, já que algumas são compartilhadas entre aplicativos, outras pelos módulos (modules) e algumas somente para um módulo. 
 
-    *Why?*: One directive per file is easy to maintain.
+    **Por que?**: Uma diretiva (directive) por arquivo é mais fácil de dar manutenção.
 
   ```javascript
-  /* avoid */
+  /* evite */
   /* directives.js */
 
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* diretiva de pedido (order) que é específica para o módulo de pedido */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* diretiva de vendas (sales) que pode ser usada em qualquer lugar do aplicativo de vendas */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* diretiva de spinner que pode ser usada em qualquer lugar dos aplicativos */
       .directive('sharedSpinner', sharedSpinner);
 
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* calendarRange.directive.js */
 
   /**
-   * @desc order directive that is specific to the order module at a company named Acme
+   * @desc diretiva de pedido (order) que é específica para o módulo de pedido em uma companhia chamada Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1022,16 +1037,16 @@ ou *Definindo* vs *Obtendo*
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc diretiva de spinner que pode ser usada em qualquer lugar de um aplicativo de vendas em uma companhia chamada Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1039,16 +1054,16 @@ ou *Definindo* vs *Obtendo*
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* spinner.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across apps at a company named Acme
+   * @desc diretiva de spinner que pode ser usada em qualquer lugar de aplicativo em uma companhia chamada Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1056,43 +1071,46 @@ ou *Definindo* vs *Obtendo*
       .directive('acmeSharedSpinner', sharedSpinner);
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Nota: Há diferentes opções de nomear diretivas (directives), especialmente quando elas podem ser usadas em escopes (scopes) variados. Escolha uma que faça a diretiva e o nome do arquivo distinto e simples. Alguns exemplos são mostrados abaixo, mas veja a seção de nomeação para mais recomendações.
 
 ### Limit DOM Manipulation
+ou *Limite a manipulação do DOM*
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow. 
+  - Quando estiver manipulando o DOM diretamente, utilize uma diretiva (directive). Se formas alternativas podem ser utilizadas, como utilizar CSS para setar estilos ou [serviços de animação (animation services)](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), então prefira utilizá-los. Por exemplo, se uma diretiva simplesmente esconde ou mostra um elemento, use ngHide/ngShow. 
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    **Por que?**: A manipulação do DOM pode ser difícil de testar, debugar, e há melhores maneiras (ex: CSS, animações (animations), templates).
 
 ### Provide a Unique Directive Prefix
+ou *Forneça um prefixo único para as diretivas*
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Forneça um curto, único e descritivo prefixo para a diretiva, como `acmeSalesCustomerInfo`, que é declarado no HTML como `acme-sales-customer-info`.
 
-    *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company. 
+    **Por que?**: Um prefixo curto e único identifica o contexto e a origem da diretiva. Por exemplo, o prefixo `cc-` pode indicar que a diretiva é parte de um aplicativo da CodeCamper, enquanto a diretiva `acme-` pode indicar uma diretiva para a companhia Acme. 
 
-    Note: Avoid `ng-` as these are reserved for AngularJS directives.Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/). 
+    Nota: Evite `ng-`, pois são reservadas para as diretivas do AngularJS. Pesquisa largamente as diretivas utilizadas para evitar conflitos de nomes, como `ion-` que são utilizadas para o [Ionic Framework](http://ionicframework.com/). 
 
 ### Restrict to Elements and Attributes
+ou *Restringir para elementos e atributos*
 
-  - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+  - Quando criar uma diretiva que faça sentido por si só como um elemento, utilize restrição `E` (elemento personalizado) e opcionalmente `A` (atributo personalizado). Geralmente, se ela pode ter o seu próprio controlador (controller), `E` é o apropriado. Em linhas gerais, `EA` é permitido, mas atente para a implementação como elemento quando faz sentido por si só e como atributo quando estende algo existente no DOM.
 
-    *Why?*: It makes sense.
+    **Por que?**: Faz sentido.
 
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    **Por que?**: Nós podemos utilizar uma diretiva como uma classe (class), mas se a diretiva está realmente agindo como um elemento, faz mais sentido utilizar como um elemento, ou pelo menos como um atributo.
 
-    Note: EA is the default for AngularJS 1.3 +
+    Nota: EA é o padrão para o AngularJS 1.3 +
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <div class="my-calendar-range"></div>
   ```
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1112,13 +1130,13 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
   
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1138,12 +1156,13 @@ ou *Definindo* vs *Obtendo*
   ```
 
 ### Directives and ControllerAs
+ou *Diretivas e "ControladorComo"*
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - Utilize a sintaxe `controller as` com uma diretiva para consistência com o uso de `controller as` com os pares view e controlador (controller).
 
-    *Why?*: It makes sense and it's not difficult.
+    **Por que?**: Faz sentido e não é difícil.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+    Nota: A diretiva (directive) abaixo demonstra algumas maneiras que você pode utilizar escopos (scopes) dentro de link e controller de uma diretiva, utilizando controllerAs. Eu coloquei o template somente para manter tudo em um mesmo local. 
 
   ```html
   <div my-example max="77"></div>
@@ -1169,7 +1188,7 @@ ou *Definindo* vs *Obtendo*
 
       ExampleController.$inject = ['$scope'];
       function ExampleController($scope) {
-          // Injecting $scope just for comparison
+          // Injetando $scope somente para comparação
           /* jshint validthis:true */
           var vm = this;
 
@@ -1198,17 +1217,19 @@ ou *Definindo* vs *Obtendo*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Resolving Promises for a Controller
+ou *Resolvendo promessas para um controlador*
 
 ### Controller Activation Promises
+ou *Ativação de promessas no controlador*
 
-  - Resolve start-up logic for a controller in an `activate` function.
+  - Resolva a lógica de inicialização no controlador (controller) em uma função `iniciar`.
      
-    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    **Por que?**: Colocando a lógica de inicialização em um lugar consistente no controlador (controller), torna mais fácil de localizar, mais consistente para testar e ajuda a evitar o espalhamento da lógica de inicialização pelo controlador (controller).
 
-    Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    Nota: Se vocẽ precisa cancelar a rota condicionalmente antes de utilizar o controlador (controller), utilize uma resolução de rota (route resolve).
     
   ```javascript
-  /* avoid */
+  /* evite */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1222,17 +1243,17 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
 
-      activate();
+      iniciar();
 
       ////////////
 
-      function activate() {
+      function iniciar() {
           return dataservice.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
@@ -1242,22 +1263,23 @@ ou *Definindo* vs *Obtendo*
   ```
 
 ### Route Resolve Promises
+ou *Resolução de promessas na rota*
 
-  - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se vocẽ precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    **Por que?**: Um controlador (controller) pode precisar de dados antes de ser carregado. Esses dados podem vir de uma promessa (promise) através de uma factory personalizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Utilizando [resolução de rota (route resolve)](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite as promessas (promises) serem resolvidas antes da lógica do controlador (controller) ser executada, então ele pode executar ações através dos dados dessa promessa (promise).
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app')
       .controller('Avengers', Avengers);
 
   function Avengers(movieService) {
       var vm = this;
-      // unresolved
+      // não resolvida
       vm.movies;
-      // resolved asynchronously
+      // resolvida assíncrona
       movieService.getMovies().then(function(response) {
           vm.movies = response.movies;
       });
@@ -1265,7 +1287,7 @@ ou *Definindo* vs *Obtendo*
   ```
 
   ```javascript
-  /* better */
+  /* melhor */
 
   // route-config.js
   angular
@@ -1299,7 +1321,7 @@ ou *Definindo* vs *Obtendo*
   }
   ```
 
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    Nota: As dependências no código de exemplos do `movieService` não estão seguras da minificação. Para mais detalhes de como fazer o código minificado seguro, veja as seções [injeção de dependência (dependency injection)](#manual-annotating-for-dependency-injection) e [minificação e anotação (minification and annotation)](#minification-and-annotation).
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
@@ -2341,11 +2363,13 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 ## Constants
 
-### Vendor Globals
+*ou Constantes*
 
-  - Create an AngularJS Constant for vendor libraries' global variables.
+### Globais de terceiros (*vendors*)
 
-    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+  - Cria uma *Constant* no AngularJS para variáveis globais de bibliotecas de terceiros.
+
+    *Por que?*: Fornece uma forma de injetar bibliotecas de terceiros que de outra forma seriam globais. Isso melhora a testabilidade do código permitindo a você conhecer mais facilmente quais dependências os seus componentes têm (evita vazamento de abstrações). Também permite que você simule estas dependências, o que faz sentido. 
 
     ```javascript
     // constants.js
