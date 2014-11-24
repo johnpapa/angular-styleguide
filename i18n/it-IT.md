@@ -1076,7 +1076,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla nomenclatura per maggiori raccomandazioni.
 
-### Limiti alla manipolazione del DOM
+### Manipolare il DOM in una Directive
 ###### [Stile [Y072](#stile-y072)]
 
   - Quando devi manipolare direttamente il DOM, usa una directive. Se possono essere usate delle alternative come settare stili CSS o i [servizi di animazione](https://docs.angularjs.org/api/ngAnimate), templating di Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oppure [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), piuttosto usa questi. Per esempio, se la directive semplicemente nasconde e mostra, usa ngHide/ngShow. 
@@ -1164,6 +1164,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     Nota: Le directive sotto dimostrano alcuni dei modi in cui puoi usare lo scope all'interno di link e controller di directive usando controllerAs. Ho usato sulla stessa linea il template solo per mettere tutto in un unico posto. 
 
     Nota: In relazione alla dependency injection, guarda [Annotazioni manuali per la Dependency Injection](#annotazioni-manuali-per-la-dependency-injection). 
+    
+    Nota: Notare che il controller della directive è al di fuori della closure della directive. Questo stile elimina problematiche dove l'iniezione viene creata come codice non raggiungibile dopo un `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1187,24 +1189,24 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
       };
       return directive;
 
-      ExampleController.$inject = ['$scope'];
-      function ExampleController($scope) {
-          // Iniettare $scope solo per confronto
-          /* jshint validthis:true */
-          var vm = this;
-
-          vm.min = 3; 
-          vm.max = $scope.max; 
-          console.log('CTRL: $scope.max = %i', $scope.max);
-          console.log('CTRL: vm.min = %i', vm.min);
-          console.log('CTRL: vm.max = %i', vm.max);
-      }
-
       function linkFunc(scope, el, attr, ctrl) {
           console.log('LINK: scope.max = %i', scope.max);
           console.log('LINK: scope.vm.min = %i', scope.vm.min);
           console.log('LINK: scope.vm.max = %i', scope.vm.max);
       }
+  }
+  
+  ExampleController.$inject = ['$scope'];
+  
+  function ExampleController($scope) {
+     // Iniettare $scope solo per confronto
+       var vm = this;
+
+       vm.min = 3; 
+       vm.max = $scope.max; 
+       console.log('CTRL: $scope.max = %i', $scope.max);
+       console.log('CTRL: vm.min = %i', vm.min);
+       console.log('CTRL: vm.max = %i', vm.max);
   }
   ```
 
@@ -1868,7 +1870,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
      * consigliato
      */
 
-    // avenger.profile.directive.js    
+    // avenger-profile.directive.js    
     angular
         .module
         .directive('xxAvengerProfile', xxAvengerProfile);
@@ -1881,10 +1883,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Moduli
 ###### [Stile [Y127](#stile-y127)]
 
-  -  Quando i sono moduli multipli, il modulo principale è nominato come `app.module.js` mentre altri moduli dipendenti prendono i nomi da ciò che rappresentano. Per esempio, un modulo admin è nominato `admin.module.js`. I rispettivi nomi con i quali sono registrati saranno `app` e `admin`. Una app a modulo singolo si chiamerà `app.js`, omettendo l'appellativo module.
+  -  Quando i sono moduli multipli, il modulo principale è nominato come `app.module.js` mentre altri moduli dipendenti prendono i nomi da ciò che rappresentano. Per esempio, un modulo admin è nominato `admin.module.js`. I rispettivi nomi con i quali sono registrati saranno `app` e `admin`.
 
-    *Perché?*: Una app con 1 modulo si chiama `app.js`. È l'app, quindi perché non estremamente semplice.
- 
     *Perché?*: Fornisce consistenza per app che hanno più di un modulo e per poter espandere verso applicazioni a larga scala.
 
     *Perché?*: Fornisci un modo semplice al fine di usare processi automatici per caricare prima tutte le definizioni di moduli, successivamente tutti gli altri file di Angular (per il bundling).
@@ -1901,7 +1901,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Route
 ###### [Stile [Y129](#stile-y129)]
 
-  - Separa la configurazione delle route nei propri file. Esempi possono essere `app.route.js` per il modulo principale e `admin.route.js` per il modulo `admin`. Anche in piccole app preferisco questa separazione dal resto della configurazione. Una alternativa è un nome più esteso quale `admin.config.route.js`.
+  - Separa la configurazione delle route nei propri file. Esempi possono essere `app.route.js` per il modulo principale e `admin.route.js` per il modulo `admin`. Anche in piccole app preferisco questa separazione dal resto della configurazione.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
@@ -2103,6 +2103,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   - Nel modulo principale metti solo la logica che serva da collante per l'app. Lascia le funzioni ognuno al proprio modulo.
 
     *Perché?*: L'aggiunta di ruoli addizionali al modulo principale per il recupero dei dati, il mostrare viste o altra logica non correlata al tenere insieme l'applicazione sporca il modulo principale e rende entrambi gli insiemi di funzionalità più complessi da riusare o rimuovere.
+    
+    *Perché?*: Il modulo app diventa un manifesto che descrive quali moduli aiutano a definire l'applicazione.
 
 ### Aree di funzionalità sono Moduli
 ###### [Stile [Y163](#stile-y163)]
