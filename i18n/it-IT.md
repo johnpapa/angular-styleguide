@@ -2103,6 +2103,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   - Nel modulo principale metti solo la logica che serva da collante per l'app. Lascia le funzioni ognuno al proprio modulo.
 
     *Perché?*: L'aggiunta di ruoli addizionali al modulo principale per il recupero dei dati, il mostrare viste o altra logica non correlata al tenere insieme l'applicazione sporca il modulo principale e rende entrambi gli insiemi di funzionalità più complessi da riusare o rimuovere.
+    
+    *Perché?*: Il modulo app diventa un manifesto che descrive quali moduli aiutano a definire l'applicazione.
 
 ### Aree di funzionalità sono Moduli
 ###### [Stile [Y163](#stile-y163)]
