@@ -5,11 +5,10 @@
 *Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes), [Jean Lucas de Carvalho](https://github.com/jlcarvalho) e [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
->A [versão original em inglês](http://jpapa.me/ngstyles) é a fonte da verdade, já que é corrigida e atualizada primeiro.
 
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipes.
 
-> Se você gostar deste estilo, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Plurasight.
+> Se você gostar deste estilo, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Pluralsight.
 
 A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
 
@@ -1321,20 +1320,22 @@ ou *Resolução de promessas na rota*
   }
   ```
 
-    Nota: As dependências no código de exemplos do `movieService` não estão seguras da minificação. Para mais detalhes de como fazer o código minificado seguro, veja as seções [injeção de dependência (dependency injection)](#manual-annotating-for-dependency-injection) e [minificação e anotação (minification and annotation)](#minification-and-annotation).
+    Nota: As dependências no código de exemplos do `movieService` não estão seguras para minificação. Para mais detalhes de como fazer o código seguro para minificação, veja as seções [injeção de dependência (dependency injection)](#manual-annotating-for-dependency-injection) e [minificação e anotação (minification and annotation)](#minification-and-annotation).
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Manual Annotating for Dependency Injection
+ou *Anotação Manual para Injeção de Dependência*
 
-### UnSafe from Minification
+### UnSafe for Minification
+ou *Não seguro para Minificação*
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - Evite usar o atalho de sintaxe de declarar dependências sem usar uma abordagem segura para minificação.
   
-    *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *Por que?*: Os parâmetros do componente (por ex. controller, factory, etc) serão convertidos em variáveis encurtadas. Por exemplo, `common` e `dataservice` podem virar `a` ou `b` e não serem encontrados pelo AngularJS.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evite - não seguro para minificação*/
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1343,25 +1344,26 @@ ou *Resolução de promessas na rota*
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Este código pode produzir variáveis encurtadas quando minificado e, assim, causar erro em tempo de execução.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evite - não seguro para minificação*/
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
 ### Manually Identify Dependencies
+ou *Identifique Dependências Manualmente*
 
-  - Use `$inject` to manually identify your dependencies for AngularJS components.
+  - Use `$inject` para identificar manualmente suas dependências de componentes do AngularJS.
   
-    *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *Por que?*: Esta técnica espelha a técnica usada por [`ng-annotate`](https://github.com/olov/ng-annotate), a qual eu recomendo para automatizar a criação de dependências seguras para minificação. Se `ng-annotate` detectar que a injeção já foi feita, ela não será duplicada.
 
-    *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
-
-    *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+    *Por que?*: Isto salvaguarda suas dependências de serem vulneráveis a problemas de minificação quando parâmetros podem ser encurtados. Por exemplo, `common` e `dataservice` podem se tornar `a` ou `b` e não serem encontrados pelo AngularJS.
+    
+    *Por que?*: Evite criar dependências in-line pois listas longas podem ser difíceis de ler no array. Além disso, pode ser confuso o array ser uma série de strings enquanto o último item é a função do componente.
 
     ```javascript
-    /* avoid */
+    /* evite */
     angular
         .module('app')
         .controller('Dashboard', 
@@ -1371,7 +1373,7 @@ ou *Resolução de promessas na rota*
     ```
 
     ```javascript
-    /* avoid */
+    /* evite */
     angular
       .module('app')
       .controller('Dashboard', 
@@ -1382,7 +1384,7 @@ ou *Resolução de promessas na rota*
     ```
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1393,12 +1395,12 @@ ou *Resolução de promessas na rota*
     }
     ```
 
-    Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax. 
+    Nota: Quando sua função estiver abaixo de um return o $inject pode ficar inacessível (isso pode acontecer em uma diretiva). Você pode resolver isso movendo o $inject para acima do return ou usando a sintaxe alternativa de injeção de array. 
 
-    Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
+    Nota: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduziu um comportamento em que ele move o `$inject` para onde ele possa ser acessado.
 
     ```javascript
-    // inside a directive definition
+    // dentro da definição de diretiva
     function outer() {
         return {
             controller: DashboardPanel,
@@ -1411,7 +1413,7 @@ ou *Resolução de promessas na rota*
     ```
 
     ```javascript
-    // inside a directive definition
+    // dentro da definição de diretiva
     function outer() {
         DashboardPanel.$inject = ['logger']; // reachable
         return {
@@ -1424,15 +1426,16 @@ ou *Resolução de promessas na rota*
     ```
 
 ### Manually Identify Route Resolver Dependencies
+ou *Identifique Dependências do Resolvedor de Rotas Manualmente*
 
-  - Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  - Use $inject para identificar manualmente as dependências do seu resolvedor de rotas para componentes do AngularJS.
   
-    *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *Por que?*: Esta técnica separa a função anônima do resolvedor de rota, tornando-a mais fácil de ler.
 
-    *Why?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *Por que?*: Uma chamada a `$inject` pode facilmente preceder o resolvedor para fazer qualquer dependência segura para minificação.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
