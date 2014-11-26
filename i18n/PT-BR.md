@@ -1439,18 +1439,19 @@ ou *Retorne uma promessa de chamadas de dados*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Minification and Annotation
+ou *Minificação e Anotação*
 
 ### ng-annotate
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
+  - Use [ng-annotate](//github.com/olov/ng-annotate) para [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) e comente as funções que precisam de injeção de dependência automatizada usando `/** @ngInject */`
   
-    *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *Por que?*: Isso protege seu código de qualquer dependência que pode não estar usando práticas seguras para minificação.
 
-    *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
+    *Por que?*: [`ng-min`](https://github.com/btford/ngmin) está deprecated. 
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    > Eu prefiro Gulp pois sinto que é mais fácil de escrever, de ler, e de debugar.
 
-    The following code is not using minification safe dependencies.
+    O código a seguir não está usando dependências seguras para minificação.
 
     ```javascript
     angular
@@ -1470,7 +1471,7 @@ ou *Retorne uma promessa de chamadas de dados*
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Quando o código acima é executado através de ng-annotate produzirá a seguinte saída com a anotação `$inject` e se tornará seguro para minificação.
 
     ```javascript
     angular
@@ -1492,12 +1493,12 @@ ou *Retorne uma promessa de chamadas de dados*
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Nota: Se `ng-annotate` detectar que a injeção já foi feita (por ex. `@ngInject` foi detectado), o código do `$inject` não será duplicado.
 
-    Note: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Nota: Quando usar um resolvedor de rotas você pode prefixar a função do resolvedor com `/* @ngInject */` o que produzirá código devidamente anotado, mantendo qualquer dependência injetada segura para minificação.
 
     ```javascript
-    // Using @ngInject annotations
+    // Usando anotação @ngInject
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1513,7 +1514,7 @@ ou *Retorne uma promessa de chamadas de dados*
     }
     ```
 
-    > Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    > Nota: Apartir do AngularJS 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
