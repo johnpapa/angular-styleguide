@@ -54,7 +54,7 @@
 ## 单一职责
 
 ###规则一
-###### [style [Y001](#style-y001)]
+###### [Style [Y001](#style-y001)]
 
   - 一个文件只定义一个组件。  
 
@@ -108,7 +108,7 @@
 
 ## IIFE
 ### JavaScript闭包
-###### [style [Y010](#style-y010)]
+###### [Style [Y010](#style-y010)]
 
   - 把AngularJS组件包装到一个立即调用函数表达式中（IIFE）。 
   
