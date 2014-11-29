@@ -54,6 +54,7 @@
 ## 单一职责
 
 ###规则一
+###### [Style [Y001](#style-y001)]
 
   - 一个文件只定义一个组件。  
 
@@ -106,7 +107,8 @@
 **[返回顶部](#目录)**
 
 ## IIFE
-###IIFE
+### JavaScript闭包
+###### [Style [Y010](#style-y010)]
 
   - 把AngularJS组件包装到一个立即调用函数表达式中（IIFE）。 
   
@@ -172,12 +174,14 @@
 ## Modules
 
 ###避免命名冲突
+###### [Style [Y020](#style-y020)]
 
   - 给独立子模块使用唯一的命名约定。
 
   *为什么*：避免冲突，每个模块也可以方便定义子模块。
 
 ###定义(aka Setters)
+###### [Style [Y021](#style-y021)]
 
   - 不使用任何一个使用了setter语法的变量来定义modules。 
 
@@ -207,6 +211,7 @@
   ```
 
 ###Getters
+###### [Style [Y022](#style-y022)]
 
   - 当使用一个module的时候，避免使用一个变量，而是使用getter语法链接。
 
@@ -230,6 +235,7 @@
   ```
 
 ###Setting vs Getting
+###### [Style [Y023](#style-y023)]
 
   - 设置一次，获取其它所有的实例。
 	
@@ -239,6 +245,7 @@
   	  - 用 `angular.module('app');` 获取一个module。 
 
 ###命名函数 vs 匿名函数
+###### [Style [Y024](#style-y024)]
 
   - 用一个命名函数而不是通过一个匿名函数作为回调函数。 
 
@@ -277,6 +284,7 @@
 ## Controllers
 
 ###controllerAs在View中的语法
+###### [Style [Y030](#style-y030)]
 
   - 使用[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。 
 
@@ -301,6 +309,7 @@
   ```
 
 ###controllerAs在controller中的语法
+###### [Style [Y031](#style-y031)]
 
   - 使用 `controllerAs` 语法代替 `经典的$scope语法` 语法。 
 
@@ -349,7 +358,7 @@
   }
   ```
 
-  - 注：你可以按照下面的做法来避免 [jshint](http://www.jshint.com/)的警告。
+  - 注：你可以按照下面的做法来避免 [jshint](http://www.jshint.com/)的警告。但是构造函数（函数名首字母大写）是不需要这个的.
     
   ```javascript
   /* jshint validthis: true */
@@ -366,6 +375,7 @@
 
  
 ###可绑定成员放到顶部
+###### [Style [Y033](#style-y033)]
 
   - 把可绑定的成员放到controller的顶部，按字母排序，并且不要通过controller的代码传播。
   
@@ -454,6 +464,7 @@
   ```
 
 ###函数声明隐藏实现细节
+###### [Style [Y034](#style-y034)]
 
   - 函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
     
@@ -529,6 +540,7 @@
   ```
 
 ###推迟Controller中的逻辑
+###### [Style [Y035](#style-y036)]
 
   - 通过委派到service和factory中来推迟controller中的逻辑。
 
@@ -569,12 +581,14 @@
   ```
 
 ###保持Controller的专一性
+###### [Style [Y037](#style-y037)]
 
   - 一个view定义一个controller，尽量不要在其它view中使用这个controller。把可重用的逻辑放到factory中，保证controller的单一，只专注于当前视图。 
   
   *为什么？*：不同的view用同一个controller是非常不科学的，良好的端对端测试覆盖率对于保证大型应用稳定性是必需的。
 
 ###分配Controller
+###### [Style [Y038](#style-y038)]
 
   - 当一个controller必须匹配一个view时或者任何一个组件可能被其它controller或是view重用时，连同controller的route一起定义。 
     
@@ -633,6 +647,7 @@
 ## Services
 
 ###单例
+###### [Style [Y040](#style-y040)]
 
   - 用`new`实例化service，用`this`实例化公共方法和变量，由于这和facotry是类似的，所以推荐用facotry来代替。
   
@@ -672,6 +687,7 @@
 ## Factories
 
 ###单一职责
+###### [Style [Y051](#style-y051)]
 
   - factory应该是[单一职责](http://en.wikipedia.org/wiki/Single_responsibility_principle)，这是由其上下文进行封装的。一旦一个factory将要处理超过单一的目的时，就应该创建一个新的factory。
 
@@ -682,6 +698,7 @@
     注：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
 ###可访问的成员放到顶部###
+###### [Style [Y052](#style-y052)]
 
   - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service中可调用的成员暴露到顶部， 
 
@@ -737,6 +754,7 @@
   ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 ###函数声明隐藏实现细节
+###### [Style [Y053](#style-y053)]
 
   - 函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
 
@@ -838,6 +856,7 @@
 ## Data Services
 
 ###独立的数据调用
+###### [Style [Y060](#style-y060)]
 
   - 把进行数据操作和数据交互的逻辑放到factory中，数据服务负责XHR请求、本地存储、内存存储和其它任何数据操作。
 
@@ -912,6 +931,7 @@
   ```
 
 ###从Data调用那里返回一个Promise
+###### [Style [Y061](#style-y061)]
 
   - 就像$http一样，当调用data service时返回一个promise，在你的调用函数中也返回一个promise。
 
@@ -961,6 +981,7 @@
 ## Directives
 
 ###一个文件限制一个
+###### [Style [Y070](#style-y070)]
 
   - 一个文件中只创建一个directive，并依照directive来命名文件。 
 
@@ -1048,13 +1069,15 @@
 
     注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时，选择一个让directive和文件都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
 
-###限制DOM操作
+###在directive中操作DOM
+###### [Style [Y072](#style-y072)]
 
   - 当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可。
 
     *为什么？*：DOM操作的测试和调试是很困难的，通常会有更好的方法（CSS、animations、templates）。
 
 ###提供一个唯一的Directive前缀
+###### [Style [Y073](#style-y073)]
 
   - 提供一个短小、唯一、具有描述性的directive前缀，例如`acmeSalesCustomerInfo`在HTML中声明为`acme-sales-customer-info`。
 
@@ -1063,6 +1086,7 @@
     注：避免使用`ng-`为前缀，研究一下其它广泛使用的directive避免命名冲突，例如[Ionic Framework](http://ionicframework.com/)的`ion-`。
 
 ###限制元素和属性
+###### [Style [Y074](#style-y074)]
 
   - 当创建一个directive需要作为一个独立元素是有意义时，允许限制`E`（自定义元素），可选限制`A`（自定义属性）。一般来说，如果它可能是它自己的控制，用`E`是合适的做法。一般原则是允许`EA`，但是当它是独立的时候这更倾向于作为一个元素来实施，当它是为了增强已存在的DOM元素时则更倾向于作为一个属性来实施。
 
@@ -1124,6 +1148,7 @@
   ```
 
 ###Directives和ControllerAs
+###### [Style [Y075](#style-y075)]
 
   - directive使用`controller as`语法，和view使用`controller as`保持一致。
 
@@ -1132,6 +1157,9 @@
     注意：下面的directive演示了一些你可以在link和directivedirective控制器中使用scope的方法，用controllerAs。这里把template放在行内是为了在一个地方写出这些代码。
 
     注意：关于依赖注入的内容，请看[手动依赖注入](#手动依赖注入)。
+
+    注意：directive的控制器是在directive外部的，这种风格避免了由于注入造成的`return`之后的代码无法访问的情况。
+
 
   ```html
   <div my-example max="77"></div>
@@ -1154,27 +1182,29 @@
           controllerAs: 'vm'
       };
       
-      ExampleController.$inject = ['$scope'];
       return directive;
-
-      function ExampleController($scope) {
-          // Injecting $scope just for comparison
-          /* jshint validthis:true */
-          var vm = this;
-
-          vm.min = 3; 
-          vm.max = $scope.max; 
-          console.log('CTRL: $scope.max = %i', $scope.max);
-          console.log('CTRL: vm.min = %i', vm.min);
-          console.log('CTRL: vm.max = %i', vm.max);
-      }
-
+      
       function linkFunc(scope, el, attr, ctrl) {
           console.log('LINK: scope.max = %i', scope.max);
           console.log('LINK: scope.vm.min = %i', scope.vm.min);
           console.log('LINK: scope.vm.max = %i', scope.vm.max);
       }
   }
+  
+  ExampleController.$inject = ['$scope'];
+
+  function ExampleController($scope) {
+      // Injecting $scope just for comparison
+      var vm = this;
+
+      vm.min = 3; 
+      vm.max = $scope.max; 
+      console.log('CTRL: $scope.max = %i', $scope.max);
+      console.log('CTRL: vm.min = %i', vm.min);
+      console.log('CTRL: vm.max = %i', vm.max);
+  }
+
+
   ```
 
   ```html
@@ -1189,6 +1219,7 @@
 ## 解决Controller的Promises
 
 ###Controller Activation Promises
+###### [Style [Y080](#style-y080)]
 
   - 在`activate`函数中解决controller的启动逻辑。
      
@@ -1231,6 +1262,7 @@
   ```
 
 ###Route Resolve Promises
+###### [Style [Y081](#style-y081)]
 
   - 当一个controller依赖于一个promise来解决，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
 
@@ -1294,6 +1326,7 @@
 ## 手动依赖注入
 
 ###缩写的不安全性
+###### [Style [Y090](#style-y090)]
 
   - 声明依赖时避免使用不安全缩写方法的缩写语法。
   
@@ -1317,6 +1350,7 @@
   ```
 
 ###手动添加依赖
+###### [Style [Y091](#style-y091)]
 
   - 用`$inject`手动添加AngularJS组件所需的依赖。
   
@@ -1391,6 +1425,7 @@
   ```
 
 ###手动确定路由解析器依赖
+###### [Style [Y092](#style-y092)]
 
   - 用$inject手动给AngularJS组件添加路由解析器依赖。
   
@@ -1424,6 +1459,7 @@
 ## 压缩和注释
 
 ###ng-annotate
+###### [Style [Y100](#style-y100)]
 
   - 在[Gulp](http://gulpjs.com)或[Grunt](http://gruntjs.com)中使用[ng-annotate](//github.com/olov/ng-annotate)，用`/** @ngInject */`对需要自动依赖注入的function进行注释。
   
@@ -1482,6 +1518,7 @@
     `<body ng-app="APP" ng-strict-di>`
 
 ###使用Gulp或Grunt结合ng-annotate
+###### [Style [Y101](#style-y101)]
 
   - 在自动化任务中使用[gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate)或[grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate)，把`/* @ngInject */`注入到任何有依赖关系函数的前面。
   
@@ -1515,6 +1552,7 @@
 ## 异常处理
 
 ###修饰符
+###### [Style [Y110](#style-y110)]
 
   - 使用一个[decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator)，在配置的时候用[`$provide`](https://docs.angularjs.org/api/auto/service/$provide)服务，当发生异常时，在[`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler)服务中执行自定义的处理方法。
   
@@ -1555,6 +1593,7 @@
 	```
 
 ###异常捕获器
+###### [Style [Y111](#style-y111)]
 
   - 创建一个暴露了一个接口的factory来捕获异常并以合适方式处理异常。
 
@@ -1585,6 +1624,7 @@
   ```
 
 ###路由错误
+###### [Style [Y112](#style-y112)]
 
   - 用[`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError)来处理并打印出所有的路由错误信息。
 
@@ -1620,6 +1660,7 @@
 ## 命名
 
 ###命名原则
+###### [Style [Y120](#style-y120)]
 
   - 遵循以描述组件功能，然后是类型（可选）的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。大多数文件都有2个名字。
     *   文件名 (`avengers.controller.js`)
@@ -1630,6 +1671,7 @@
     *为什么？*：命名约定应该只为代码的检索和沟通提供方便。 
 
 ###功能文件命名
+###### [Style [Y121](#style-y121)]
 
   - 遵循以描述组件功能，然后是类型（可选）的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。
 
@@ -1696,6 +1738,7 @@
   ```
 
 ###测试文件命名
+###### [Style [Y122](#style-y122)]
 
   - 和组件命名差不多，带上一个`spec`后缀。 
 
@@ -1714,6 +1757,7 @@
   ```
 
 ###Controller命名
+###### [Style [Y123](#style-y123)]
 
   - 为所有controller提供统一的名称，特征然后名字，鉴于controller是构造函数，所以要采用UpperCamelCase（每个单词首字母大写）的方式。
 
@@ -1735,6 +1779,7 @@
   ```
 
 ###Controller命名后缀
+###### [Style [Y124](#style-y124)]
 
   - 使用`Controller`后缀或者不加后缀。
 
@@ -1769,6 +1814,7 @@
   ```
     
 ###Factory命名
+###### [Style [Y125](#style-y125)]
 
   - 一样要统一，对service和factory使用camel-casing（驼峰式，第一个单词首字母小写，后面单词首字母大写）方式。
 
@@ -1788,6 +1834,7 @@
   ```
 
 ###Directive组件命名
+###### [Style [Y126](#style-y126)]
 
   - 使用camel-case方式，用一个短的前缀来描述directive在哪个区域使用（一些例子中是使用公司前缀或是项目前缀）。
 
@@ -1798,7 +1845,7 @@
    * recommended
    */
 
-  // avenger.profile.directive.js    
+  // avenger-profile.directive.js    
   angular
       .module
       .directive('xxAvengerProfile', xxAvengerProfile);
@@ -1809,16 +1856,16 @@
   ```
 
 ###模块
+###### [Style [Y127](#style-y127)]
 
-  - 当有很多的模块时，主模块文件命名成`app.module.js`，其它依赖模块以它们代表的东西来命名。例如，一个管理员模块命名成`admin.module.js`。它们各自的注册模块名字就是`app`和`admin`，一个单一的app模块也许被命名成省略了module尾巴的`app.js`。
+  - 当有很多的模块时，主模块文件命名成`app.module.js`，其它依赖模块以它们代表的东西来命名。例如，一个管理员模块命名成`admin.module.js`，它们各自的注册模块名字就是`app`和`admin`。
 
-    *为什么？*：一个只有一个模块的app命名成`app.js`，它就代表这个app，所以为什么不简单点呢？
- 
     *为什么？*：给多模块的应用提供统一的方式，这也是为了扩展大型应用。
 
     *为什么？*：对使用任务来自动化加载所有模块的定义（先）和其它所有的angular文件（后）提供了一种简单的方式。
 
 ###配置
+###### [Style [Y128](#style-y128)]
 
   - 把一个模块的配置独立到它自己的文件中，以这个模块为基础命名。`app`模块的配置文件命名成`app.config.js`（或是`config.js`），`admin.module.js`的配置文件命名成`admin.config.js`。
 
@@ -1827,8 +1874,9 @@
     *为什么？*：为设置模块的配置提供了一个可识别的地方。
 
 ###路由
+###### [Style [Y129](#style-y129)]
 
-  - 把路由的配置独立到单独的文件。主模块的路由可能是`app.route.js`，`admin`模块的路由可能是`admin.route.js`。即使是在很小的应用中，我也喜欢把路由的配置从其余的配置中分离出来。另一种方式是用一个很长的名字，例如`admin.config.route.js`。
+  - 把路由的配置独立到单独的文件。主模块的路由可能是`app.route.js`，`admin`模块的路由可能是`admin.route.js`。即使是在很小的应用中，我也喜欢把路由的配置从其余的配置中分离出来。
 
 
 **[返回顶部](#目录)**
@@ -1836,6 +1884,7 @@
 ## 应用程序结构的LIFT准则
 
 ###LIFT
+###### [Style [Y140](#style-y140)]
 
   - 构建一个可以快速定位（`L`ocate）代码、一目了然地识别（`I`dentify）代码、拥有一个平直（`F`lattest）的结构、尽量（`T`ry）坚持DRY（Don’t Repeat Yourself）的应用程序，其结构应该遵循这4项基本准则。
 
@@ -1849,6 +1898,7 @@
     4. 尽量保持不要写重复代码（T）
 
 ###Locate
+###### [Style [Y141](#style-y141)]
 
   - 更直观、更简单、更快捷地定位代码
 
@@ -1873,18 +1923,21 @@
   ```
 
 ###Identify
+###### [Style [Y142](#style-y142)]
   
   - 当你看到一个文件时你应该能够立即知道它包含了什么、代表了什么。
 
     *为什么？*：你花费更少的时间来了解代码代表了什么，并且变得更加高效。如果这意味着你需要更长的名字，那么就这么干吧。文件名一定要具有描述性，保持和文件内容互为一体。避免文件中有多个controller，多个service，甚至是混合的。
 
 ###Flat
+###### [Style [Y143](#style-y143)]
 
   - 尽可能长时间地保持一个平直的文件夹结构，如果你的文件夹层级超过7+，那么就开始考虑分离。
 
     *为什么？*：没有谁想在一个7级文件夹中寻找一个文件，你可以考虑一下网页导航栏有那么多层。文件夹结构没有硬性规则，但是当一个文件夹下的文件有7-10个，那么就是时候创建子文件夹了，文件夹的层级一定要把握好。一直使用一个平直的结构，直到确实有必要（帮助其它的LIFT）创建一个新的文件夹。
 
 ###T-DRY（尽量坚持DRY）
+###### [Style [Y144](#style-y144)]
 
   - 坚持DRY，但是不要疯了一样的做却牺牲了可读性。
 
@@ -1896,16 +1949,19 @@
 ## 应用程序结构
 
 ###总指南
+###### [Style [Y150](#style-y150)]
 
   - 有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
 
 ###Layout
+###### [Style [Y151](#style-y151)]
 
   - 把定义应用程序总体布局的组件放到`layout`文件夹中，如导航、内容区等等。
 
     *为什么？*：复用。
     
 ###按功能划分文件夹结构
+###### [Style [Y152](#style-y152)]
 
   - 按照它们代表的功能来给创建的文件夹命名，当文件夹包含的文件超过7个（根据需要自行调整数量限制），就考虑新建文件夹。
 
@@ -1998,24 +2054,30 @@
 ## 模块化
   
 ###许多小的、独立的模块
+###### [Style [Y160](#style-y160)]
 
   - 创建只封装一个职责的小模块。
 
     *为什么？*：模块化的应用程序很容易插入新的功能。
 
 ###创建一个App Module
+###### [Style [Y161](#style-y161)]
 
   - 创建一个应用程序的根模块，它的职责是把应用程序中所有的模块和功能都放到一起。
 
     *为什么？*：AngularJS鼓励模块化和分离模式。创建根模块的作用是把其它模块都绑定到一起，这为增加或是删除一个模块提供了非常简单的方法。
 
+    *为什么？*：应用程序模块变成了一个描述哪些模块有助于定义应用程序的清单。
+
 ###保持App Module的精简
+###### [Style [Y162](#style-y162)]
 
   - app module中只放聚合其它模块的逻辑，具体功能在它们自己的模块中实现。
 
     *为什么？*：添加额外的代码（获取数据、展现视图、其它和聚合模块无关的代码）到app module中使app module变得很糟糕，也使得模块难以重用和关闭。
 
 ###功能区域就是模块
+###### [Style [Y163](#style-y163)]
 
   - 创建代表功能区的模块，例如布局、可重用、共享服务、仪表盘和app的特殊功能（例如客户、管理、销售）。
 
@@ -2026,12 +2088,14 @@
     *为什么？*：分离功能为模块可以更容易测试。
 
 ###可重用的块就是模块
+###### [Style [Y164](#style-y164)]
 
   - 为通用service创建代表可重用的应用程序块的模块，例如异常处理、日志记录、诊断、安全性和本地数据储藏等模块。
 
     *为什么？*：这些类型的功能在很多应用程序中都需要用到，所以把它们分离到自己的模块中，它们可以变成通用的应用程序，也能被跨应用地进行重用。
      
 ###模块依赖
+###### [Style [Y165](#style-y165)]
 
   - 应用程序根模块依赖于应用程序特定的功能模块，功能模块没有直接的依赖关系，跨应用的模块取决于所有通用模块。
 
@@ -2053,6 +2117,8 @@
 ## 启动逻辑
 
 ### 配置
+###### [Style [Y170](#style-y170)]
+
   - 必须在angular应用启动前进行配置才能把代码注入到[模块配置](https://docs.angularjs.org/guide/module#module-loading-dependencies)，理想的一些case应该包括providers和constants。
 
     *为什么？*：这使得在更少的地方进行配置变得容易。
@@ -2083,6 +2149,7 @@
   ```
 
 ### 运行代码块
+###### [Style [Y171](#style-y171)]
 
   - 任何在应用程序启动时需要运行的代码都应该在factory中声明，通过一个function暴露出来，然后注入到[运行代码块](https://docs.angularjs.org/guide/module#module-loading-dependencies)中。
 
@@ -2106,12 +2173,14 @@
 ##Angular $包装服务
 
 ###$document和$window
+###### [Style [Y180](#style-y180)]
 
   - 用[`$document`](https://docs.angularjs.org/api/ng/service/$document)和[`$window`](https://docs.angularjs.org/api/ng/service/$window)代替`document`和`window`。
 
     *为什么？*：使用内部包装服务将更容易测试，也避免了你自己去模拟document和window。
 
 ###$timeout和$interval
+###### [Style [Y181](#style-y181)]
 
   - 用[`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout)和[`$interval`](https://docs.angularjs.org/api/ng/service/$interval)代替`setTimeout`和`setInterval` 。
 
@@ -2124,6 +2193,7 @@
 单元测试有助于保持代码的清晰，因此我加入一些关于单元测试的基础和获取更多信息的链接。
 
 ###用故事来编写测试
+###### [Style [Y190](#style-y190)]
 
   - 给每一个故事都写一组测试，县创建一个空的测试，然后用你给这个故事写的代码来填充它。
 
@@ -2150,6 +2220,7 @@
   ```
 
 ###测试库
+###### [Style [Y191](#style-y191)]
 
   - 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://visionmedia.github.io/mocha/)进行单元测试。
 
@@ -2158,6 +2229,7 @@
     注意：使用Mocha时你可以考虑选择一个类似[Chai](http://chaijs.com)的提示库。
 
 ###测试运行器
+###### [Style [Y192](#style-y192)]
 
   - [Karma](http://karma-runner.github.io)。
 
@@ -2170,6 +2242,7 @@
     *为什么？*：Karma可以很好的和自动化任务工具如[Grunt](http://www.gruntjs.com)（带有[grunt-karma](https://github.com/karma-runner/grunt-karma)）和[Gulp](http://www.gulpjs.com)（带有[gulp-karma](https://github.com/lazd/gulp-karma)）合作。
 
 ###Stubbing和Spying
+###### [Style [Y193](#style-y193)]
 
   - 用Sinon。
 
@@ -2178,6 +2251,7 @@
     *为什么？*：如果你想试试Jasmine和Mocha，用Sinon在它们中间来回切换是很方便的。
 
 ###Headless Browser
+###### [Style [Y194](#style-y194)]
 
   - 在服务器上使用[PhantomJS](http://phantomjs.org/)来运行你的测试。
 
@@ -2186,12 +2260,14 @@
     注意：你仍然需要在你的环境下测试所有浏览器，来满足用户的需求。
 
 ###代码分析
+###### [Style [Y195](#style-y195)]
 
   -在你的测试上运行JSHint。
 
     *为什么？*：测试也是代码，JSHint能够帮你识别代码中可能导致测试无法正常工作的的质量问题。
 
 ###对测试降低全局JSHint规则
+###### [Style [Y196](#style-y196)
 
   - 对你的测试代码放松规则，这样可以允许使用`describe`和`expect`等类似通用的全局方法。
 
@@ -2209,6 +2285,7 @@
 ## 动画
 
 ###用法
+###### [Style [Y210](#style-y210)]
 
   - 在view和主要的视觉元素上使用细微的[AngularJS动画](https://docs.angularjs.org/guide/animations)进行过渡，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
 
@@ -2217,12 +2294,14 @@
     *为什么？*：当视图过渡时，微小的动画可以提高感知性。
 
 ###Sub Second
+###### [Style [Y211](#style-y211)]
 
   - 使用短持续性的动画，我一般使用300ms，然后调整到合适的时间。 
 
     *为什么？*：长时间的动画容易造成用户认为程序性能太差的影响。
 
 ###animate.css
+###### [Style [Y212](#style-y212)]
 
   - 传统动画使用[animate.css](http://daneden.github.io/animate.css/)。
 
@@ -2240,6 +2319,7 @@
 ## 注释
 
 ###jsDoc
+###### [Style [Y220](#style-y220)]
 
   - 如果你计划产出一个文档，那么就使用[`jsDoc`](http://usejsdoc.org/)的语法来记录函数名、描述、参数和返回值。使用`@namespace`和`@memberOf`来匹配应用程序结构。
 
@@ -2292,6 +2372,7 @@
 ## JS Hint
 
 ###使用一个选项文件
+###### [Style [Y230](#style-y230)]
 
   - 用JS Hint来分析你的JavaScript代码，确保你自定义了JS Hint选项文件并且包含在源控制里。详细信息：[JS Hint文档](http://www.jshint.com/docs/)。
 
@@ -2368,6 +2449,7 @@
 ## 常量
 
 ###供应全局变量
+###### [Style [Y240](#style-y240)]
 
   - 为供应库中的全局变量创建一个AngularJS常量。
 
@@ -2396,6 +2478,7 @@
 使用文件模板和片段帮助保持一致性的风格，这里有针对一些web开发的编辑器和IDE的模板和（或）片段。
 
 ###Sublime Text
+###### [Style [Y250](#style-y250)]
 
   - AngularJS片段遵循这些风格指南。 
 
@@ -2412,12 +2495,14 @@
   ```
 
 ###Visual Studio
+###### [Style [Y251](#style-y251)]
 
     - 下载Visual Studio扩展文件[SideWaffle](http://www.sidewaffle.com)
     - 运行下载的vsix文件
     - 重启Visual Studio
 
 ###WebStorm
+###### [Style [Y252](#style-y252)]
 
   - 你可以把它们导入到WebStorm设置中:
 
