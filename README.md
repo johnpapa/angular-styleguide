@@ -2122,7 +2122,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: The main app module contains a quickly identifiable manifest of the application's features. 
 
-    *Why?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency and still work. 
+    *Why?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency in other applications and still work. 
 
     *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
 
