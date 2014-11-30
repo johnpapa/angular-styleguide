@@ -17,7 +17,7 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Translations 
-[Translations of this Angular style guide](./i18n) are maintained by the community and can be found here.
+[Translations of this Angular style guide](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) are maintained by the community and can be found here.
 
 ## Table of Contents
 

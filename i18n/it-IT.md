@@ -21,7 +21,7 @@ Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [W
 Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di aiuto vederle in pratica. Questa guida è accompagnata da una applicazione di esempio che segue questi stili e schemi. Troverai l'[applicazione di esempio (chiamata modular) qui](https://github.com/johnpapa/ng-demos) nella cartella `modular`. Prendila, clonala o fanne un fork liberamente. [Le istruzioni su come eseguirla sono nel proprio readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Traduzioni 
-[Traduzioni di questa guida stilistica ad AngularJS](./i18n) sono gestite dalla comunità e possono essere trovate qui.
+[Traduzioni di questa guida stilistica ad AngularJS](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sono gestite dalla comunità e possono essere trovate qui.
 
 ## Tavola dei contenuti
 
