@@ -2127,19 +2127,21 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Dipendenze dei Moduli
 ###### [Stile [Y165](#stile-y165)]
 
-  - Il modulo principale dell'applicazione dipende dai moduli di funzionalità specifiche dell'app, i moduli delle funzionalità non hanno dipendenze dirette, moduli trans-applicazione dipendono da moduli generici.
+  - Il modulo principale dell'applicazione dipende dai moduli di funzionalità specifiche dell'app e da qualunque altro modulo che sia condiviso o riusabile.
 
     ![Modularità e Dipendenze](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
     *Perché?*: Il modulo principale dell'app contiene un manifesto che sia facilmente identificabile con le funzionalità dell'applicazione. 
 
-    *Perché?*: Funzionalità trans-applicazione diventano semplici da condividere. Le funzionalità generalmente dipendono dagli stessi moduli tras-applicazione, che sono consolidati in in singolo modulo (`app.core` nell'immagine).
+    *Perché?*: Ogni area di funzionalità contiene un manifesto di ciò da cui dipende, in modo tale da poter essere usato come dipendenza in altre applicazioni e continuare a funzionare.
 
     *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (questi il nome che più di piaccia per questo modulo).
 
     Nota: Questa è una strategia per la consistenza. Ci sono diverse buone opzioni in questo caso. Scegline una che sia consistente, segua le regole delle dipendenze di AngularJS e sia facile da manutenere e scalabile.
 
     > La mia struttura varia leggermente tra progetti ma tutti seguono queste linee guida per la strutturazione e modularità. L'implementazione può variare in relazione alle funzionalità ed al team. In altre parole, non ti bloccare su una struttura che sia esattamente uguale ma giustifica la tua struttura tenendo a mente l'uso di consistenza, manutenibilità ed efficienza. 
+    
+    > In una applicazione piccola, si può considerare di mettere tutte le dipendenze condivise nel modulo dell'app dove i moduli delle funzionalità non hanno dipendenze dirette. Ciò rende più semplice mantenere l'applicazione più piccola ma rende più difficile riutilizzare i moduli fuori dell'applicazione stessa.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
