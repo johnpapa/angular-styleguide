@@ -62,8 +62,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* avoid */
   angular
     	.module('app', ['ngRoute'])
-    	.controller('SomeController' , SomeController)
-    	.factory('someFactory' , someFactory);
+    	.controller('SomeController', SomeController)
+    	.factory('someFactory', someFactory);
   	
   function SomeController() { }
 
@@ -86,7 +86,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   // someController.js
   angular
     	.module('app')
-    	.controller('SomeController' , SomeController);
+    	.controller('SomeController', SomeController);
 
   function SomeController() { }
   ```
@@ -97,7 +97,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   // someFactory.js
   angular
     	.module('app')
-    	.factory('someFactory' , someFactory);
+    	.factory('someFactory', someFactory);
   	
   function someFactory() { }
   ```
@@ -219,7 +219,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```javascript
   /* avoid */
   var app = angular.module('app');
-  app.controller('SomeController' , SomeController);
+  app.controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
@@ -228,7 +228,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* recommended */
   angular
       .module('app')
-      .controller('SomeController' , SomeController);
+      .controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
