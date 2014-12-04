@@ -20,6 +20,8 @@
 ## 在示例App中了解这些风格
 看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
 
+##翻译 
+[AngularJS风格指南翻译版本](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n)。
 
 ##目录
 
@@ -64,8 +66,8 @@
   /* avoid */    
   angular
   	.module('app', ['ngRoute'])
-  	.controller('SomeController' , SomeController)
-  	.factory('someFactory' , someFactory);
+  	.controller('SomeController', SomeController)
+  	.factory('someFactory', someFactory);
   	
   function SomeController() { }
 
@@ -88,7 +90,7 @@
   // someController.js
   angular
     	.module('app')
-    	.controller('SomeController' , SomeController);
+    	.controller('SomeController', SomeController);
 
   function SomeController() { }
   ```
@@ -99,7 +101,7 @@
   // someFactory.js
   angular
     	.module('app')
-    	.factory('someFactory' , someFactory);
+    	.factory('someFactory', someFactory);
   	
   function someFactory() { }
   ```
@@ -220,7 +222,7 @@
   ```javascript
   /* avoid */
   var app = angular.module('app');
-  app.controller('SomeController' , SomeController);
+  app.controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
@@ -229,7 +231,7 @@
   /* recommended */
   angular
       .module('app')
-      .controller('SomeController' , SomeController);
+      .controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
@@ -2097,13 +2099,13 @@
 ###模块依赖
 ###### [Style [Y165](#style-y165)]
 
-  - 应用程序根模块依赖于应用程序特定的功能模块，功能模块没有直接的依赖关系，跨应用的模块取决于所有通用模块。
+  - 应用程序根模块依赖于应用程序特定的功能模块、共享的和可复用的模块。
 
     ![模块化和依赖](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
     *为什么？*：主程序模块包含一个能快速识别应用程序功能的清单。
 
-    *为什么？*：跨应用程序的功能变得更加容易分享。功能一般都是依靠于相同的跨应用模块，这些模块都被合并到一个单独的模块当中（图中所示的`app.core`）。
+    *为什么？*：每个功能区都包含一个它依赖了哪些模块的列表，因此其它应用可以把它当作一个依赖引入进来。
 
     *为什么？*：程序内部的功能，如共享数据的服务变得容易定位，并且从`app.core`中共享。
 
