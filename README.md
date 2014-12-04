@@ -2227,11 +2227,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         //TODO
     });
 
-    it('should have 10 Avengers', function() {}
+    it('should have 10 Avengers', function() {
         //TODO (mock data?)
     });
 
-    it('should return Avengers via XHR', function() {}
+    it('should return Avengers via XHR', function() {
         //TODO ($httpBackend?)
     });
 
