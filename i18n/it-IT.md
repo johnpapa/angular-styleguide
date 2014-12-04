@@ -66,8 +66,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   /* evitare */
   angular
     	.module('app', ['ngRoute'])
-    	.controller('SomeController' , SomeController)
-    	.factory('someFactory' , someFactory);
+    	.controller('SomeController', SomeController)
+    	.factory('someFactory', someFactory);
   	
   function SomeController() { }
 
@@ -90,7 +90,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   // someController.js
   angular
     	.module('app')
-    	.controller('SomeController' , SomeController);
+    	.controller('SomeController', SomeController);
 
   function SomeController() { }
   ```
@@ -101,7 +101,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   // someFactory.js
   angular
     	.module('app')
-    	.factory('someFactory' , someFactory);
+    	.factory('someFactory', someFactory);
   	
   function someFactory() { }
   ```
@@ -222,7 +222,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   ```javascript
   /* evitare */
   var app = angular.module('app');
-  app.controller('SomeController' , SomeController);
+  app.controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
@@ -231,7 +231,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   /* consigliato */
   angular
       .module('app')
-      .controller('SomeController' , SomeController);
+      .controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
