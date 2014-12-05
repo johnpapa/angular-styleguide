@@ -2238,11 +2238,11 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
         //TODO
     });
 
-    it('dovrebbe avere 10 Avenger', function() {}
+    it('dovrebbe avere 10 Avenger', function() {
         //TODO (fare un mock dei dati?)
     });
 
-    it('dovrebbe ritornare Avenger via XHR', function() {}
+    it('dovrebbe ritornare Avenger via XHR', function() {
         //TODO ($httpBackend?)
     });
 
