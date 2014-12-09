@@ -4,7 +4,7 @@
 
 *Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes), [Jean Lucas de Carvalho](https://github.com/jlcarvalho) e [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)*
 
->The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+>A [versão original em inglês](http://jpapa.me/ngstyles) é a fonte da verdade, pois ela é mantida e atualizada primeiramente.
 
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipes.
 
