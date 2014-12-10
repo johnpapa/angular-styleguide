@@ -2210,11 +2210,11 @@
       //TODO
   });
 
-  it('should have 10 Avengers', function() {}
+  it('should have 10 Avengers', function() {
       //TODO (mock data?)
   });
 
-  it('should return Avengers via XHR', function() {}
+  it('should return Avengers via XHR', function() {
       //TODO ($httpBackend?)
   });
 
@@ -2484,7 +2484,7 @@
 
   - AngularJS片段遵循这些风格指南。 
 
-    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
+    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
     - 把它放到Packages文件夹中
     - 重启Sublime 
     - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
@@ -2508,7 +2508,7 @@
 
   - 你可以把它们导入到WebStorm设置中:
 
-    - 下载[WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
+    - 下载[WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - 打开WebStorm点击`File`菜单
     - 选择`Import Settings`菜单选项
     - 选择文件点击`OK`
