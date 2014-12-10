@@ -2227,11 +2227,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         //TODO
     });
 
-    it('should have 10 Avengers', function() {}
+    it('should have 10 Avengers', function() {
         //TODO (mock data?)
     });
 
-    it('should return Avengers via XHR', function() {}
+    it('should return Avengers via XHR', function() {
         //TODO ($httpBackend?)
     });
 
@@ -2495,7 +2495,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - AngularJS snippets that follow these styles and guidelines. 
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
+    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
     - Place it in your Packages folder
     - Restart Sublime 
     - In a JavaScript file type these commands followed by a `TAB`
@@ -2521,7 +2521,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
 
-    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
+    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Open WebStorm and go to the `File` menu
     - Choose the `Import Settings` menu option
     - Select the file and click `OK`
