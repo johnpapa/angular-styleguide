@@ -2506,7 +2506,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 
   - Snippet di AngularJS che seguono questi stili e linee guida. 
 
-    - Scarica gli [snippet di Angular per Sublime](assets/sublime-angular-snippets.zip) 
+    - Scarica gli [snippet di Angular per Sublime](assets/sublime-angular-snippets.zip?raw=true) 
     - Mettili nella tua cartella Packages
     - Riavvia Sublime 
     - In un file JavaScript digita questi comandi seguiti da `TAB`
@@ -2532,7 +2532,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 
   - Snippet di Angular JS e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
 
-    - Scarica i [file dei template e gli snippet diAngularJS per WebStorm](assets/webstorm-angular-file-template.settings.jar) 
+    - Scarica i [file dei template e gli snippet diAngularJS per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Apri WebStorm e vai al menù `File`
     - Scegli la voce di menù `Import Settings`
     - Seleziona il file e clicca `OK`
