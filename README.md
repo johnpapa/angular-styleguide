@@ -548,7 +548,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Defer Controller Logic
-###### [Style [Y035](#style-y036)]
+###### [Style [Y035](#style-y035)]
 
   - Defer logic in a controller by delegating to services and factories.
 
