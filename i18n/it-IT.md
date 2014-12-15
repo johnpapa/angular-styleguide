@@ -370,11 +370,20 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
    
   Nota: Quando di creano watch in un controller usando `controller as`, puoi fare il watch del membro `vm.*` usando la seguente sintassi. (Crea watch con cautela poiché aggiungono carico al ciclo di digest.)
 
+  ```html
+   <input ng-model="vm.title"/>
+  ```
+ 
   ```javascript
-  $scope.$watch('vm.title', function(current, original) {
-      $log.info('vm.title was %s', original);
-      $log.info('vm.title is now %s', current);
-  });
+  function SomeController($scope, $log) {
+      var vm = this;
+      vm.title = 'Some Title';
+    
+      $scope.$watch('vm.title', function(current, original) {
+          $log.info('vm.title was %s', original);
+          $log.info('vm.title is now %s', current);
+      });
+  }
   ```
 
 ### Membri che possono fare il bind in cima
