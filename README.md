@@ -367,11 +367,20 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
+  ```html
+  <input ng-model="vm.title"/>
+  ```
+
   ```javascript
-  $scope.$watch('vm.title', function(current, original) {
-      $log.info('vm.title was %s', original);
-      $log.info('vm.title is now %s', current);
-  });
+  function SomeController($scope, $log) {
+      var vm = this;
+      vm.title = 'Some Title';
+    
+      $scope.$watch('vm.title', function(current, original) {
+          $log.info('vm.title was %s', original);
+          $log.info('vm.title is now %s', current);
+      });
+  }
   ```
 
 ### Bindable Members Up Top
