@@ -68,8 +68,8 @@
   /* избегнувајте */
   angular
     	.module('app', ['ngRoute'])
-    	.controller('someController' , someController)
-    	.factory('someFactory' , someFactory);
+    	.controller('someController', someController)
+    	.factory('someFactory', someFactory);
   	
   function SomeController() { }
 
@@ -92,7 +92,7 @@
   // someController.js
   angular
     	.module('app')
-    	.controller('SomeController' , SomeController);
+    	.controller('SomeController', SomeController);
 
   function SomeController() { }
   ```
@@ -103,7 +103,7 @@
   // someFactory.js
   angular
     	.module('app')
-    	.factory('someFactory' , someFactory);
+    	.factory('someFactory', someFactory);
   	
   function someFactory() { }
   ```
@@ -221,7 +221,7 @@
   ```javascript
   /* избегнувајте */
   var app = angular.module('app');
-  app.controller('SomeController' , SomeController);
+  app.controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
@@ -230,7 +230,7 @@
   /* препорачано */
   angular
       .module('app')
-      .controller('SomeController' , SomeController);
+      .controller('SomeController', SomeController);
   
   function SomeController() { }
   ```
@@ -533,7 +533,7 @@
   ```
 
 ### Одлагање Логика во Контролерот
-###### [Style [Y035](#style-Y036)]
+###### [Style [Y035](#style-Y035)]
   - Одлагајте логика на во контролерот со делегирање до сервиси и фабрики.
 
     *Зошто?*: Логиката може да биде повторно искористена кога е во сервис, од повеќе контролери и изложена преку функција.
@@ -544,18 +544,31 @@
 
   ```javascript
   /* избегнувајте */
-  function Order($http, $q) {
+  function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
-      function checkCredit() { 
-          var orderTotal = vm.total;
-          return $http.get('api/creditcheck').then(function(data) {
-              var remaining = data.remaining;
-              return $q.when(!!(remaining > orderTotal));
-          });
-      };
+      function checkCredit() {
+        var settings = {};
+        // Земете го URL-то на сервисот за кредит од config датотеката
+        // Поставете ги потребните заглавија
+        // Спремете го потребното URL барање или потребниот податочен објект за побарување на податоците
+        // Додадете инфо за идентификација на корисникот за сервисот да добие точниот лимит на кредитот за овој корисник
+        // Употребете JSONP за овој пребарувач доколку не подржува CORS
+        return $http.get(settings)
+            .then(function(data) {
+               // Отпакувајте го JSON податокот во одговорот
+               // за да го најдете maxRemainingAmount
+               vm.isCreditOk = vm.total <= maxRemainingAmount
+            })
+            .catch(function(error) {
+               // Интерпретирајте ја грешката
+               // Спремете се со истекување на време? пробување пак? друг сервис?
+               // Повторно одбиете за корисникот да ја забележи соодветната порака 
+            });
+    };
   }
   ```
 
@@ -564,10 +577,14 @@
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
       function checkCredit() { 
-         return creditService.check();
+         return creditService.isOrderTotalOk(vm.total)
+          .then(function(isOk) { vm.isCreditOk = isOk; })
+          .catch(showServiceError);
+    };
       };
   }
   ```
@@ -2167,11 +2184,11 @@
         //TODO
     });
 
-    it('should have 10 Avengers', function() {}
+    it('should have 10 Avengers', function() {
         //TODO (mock data?)
     });
 
-    it('should return Avengers via XHR', function() {}
+    it('should return Avengers via XHR', function() {
         //TODO ($httpBackend?)
     });
 
@@ -2422,7 +2439,7 @@
 ###### [Style [Y250](#style-Y250)]
   - AngularJS кратки кодови кои ги следат овие водичи и стилови на код. 
 
-    - Симнете ги [Sublime Angular кратки кодови](assets/sublime-angular-snippets.zip) 
+    - Симнете ги [Sublime Angular кратки кодови](assets/sublime-angular-snippets.zip?raw=true) 
     - Поставете ги во вашата Packages папка
     - Рестартирајте го Sublime 
     - Во JavaScript датотека напишете ја следната команда и потоа кликнете на `TAB`
@@ -2446,7 +2463,7 @@
 ###### [Style [Y252](#style-Y252)]
   - AngularJS кратки кодови и датотечни шаблони кои ги следат овие стилови и водичи на код. Можете да ги внесете во вашите WebStorm подесувања:
 
-    - Симнете ги [WebStorm AngularJS датотечни шаблони и кратки кодови](assets/webstorm-angular-file-template.settings.jar) 
+    - Симнете ги [WebStorm AngularJS датотечни шаблони и кратки кодови](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Отворете го WebStorm и одберете го `File` менито
     - Одберете го `Import Settings`
     - Одберете ја датотеката и кликнете `OK`
