@@ -562,31 +562,49 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     *Perché?*: Rimuove dipendenze e nasconde dettagli di implementazione dal controller.
 
   ```javascript
+
   /* evitare */
-  function Order($http, $q) {
+  function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
-      function checkCredit() { 
-          var orderTotal = vm.total;
-          return $http.get('api/creditcheck').then(function(data) {
-              var remaining = data.remaining;
-              return $q.when(!!(remaining > orderTotal));
-          });
+      function checkCredit() {
+		  var settings = {};
+          // Prendi la URL di base per il servizio del credito
+          // Setta le intestazioni necessarie per il servizio del credito
+          // Prepara le URL della query string o i data object con i dati richiesti
+          // Aggiungi le informazioni sull'identificazione dell'utente così il servizio prende i dati sul limite del credito corretto
+          // Usare JSONP per questo browser se CORS non è supportato
+          return $http.get(settings)
+              .then(function(data) {
+	             // Unpack JSON data in the response object
+                 // to find maxRemainingAmount
+                 vm.isCreditOk = vm.total <= maxRemainingAmount
+              })
+              .catch(function(error) {
+                 // Errore dell'interprete
+                 // Affronta timeout? nuovo tentativo? provare servizi alternativi?
+                 // Rilancia con l'errore appropriato per essere letto dall'utente
+              });
       };
   }
   ```
 
   ```javascript
+
   /* consigliato */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
       function checkCredit() { 
-         return creditService.check();
+         return creditService.isOrderTotalOk(vm.total)
+			.then(function(isOk) { vm.isCreditOk = isOk; })
+            .catch(showServiceError);
       };
   }
   ```
