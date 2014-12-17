@@ -39,7 +39,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Modularity](#modularity)
   1. [Startup Logic](#startup-logic)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
-  1. [Layout](#layout)
+  1. [HTML Layout](#html-layout)
   1. [Testing](#testing)
   1. [Animations](#animations) 
   1. [Comments](#comments)
@@ -2515,22 +2515,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 **[Back to top](#table-of-contents)**
 
-## Layout
-### Cloak your HTML
-Before Angular is loaded, the user will see your application layout HTML in raw (including the {{uglyBrackets}} instead of the value). Then, it will display the real content as soon as Angular is ready. To prevent the flickering, I use `ng-cloak` to hide the raw HTML.
-
-I cloak only the parts that are necessary so that the loading of the page is progressive and feel smooth.
-
-```html
-<!DOCTYPE html>
-<html ng-app="app">
-<body>
-  <h1>This title is never hidden</h1>
-  <div ng-cloak>This part is hidden until Angular is ready</div>
-</body>
-</tml>
-```
-
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
 
@@ -2576,6 +2560,26 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
+
+**[Back to top](#table-of-contents)**
+
+## HTML Layout
+### Cloak your HTML
+###### [Style [Y253](#style-y253)]
+
+Before Angular is loaded, the user will see your application layout HTML in raw (including the {{uglyBrackets}} instead of the value). Then, it will display the real content as soon as Angular is ready. To prevent the flickering, I use `ng-cloak` to hide the raw HTML.
+
+I cloak only the parts that are necessary so that the loading of the page is progressive and feel smooth.
+
+```html
+<!DOCTYPE html>
+<html ng-app="app">
+<body>
+  <h1>This title is never hidden</h1>
+  <div ng-cloak>This part is hidden until Angular is ready</div>
+</body>
+</tml>
+```
 
 **[Back to top](#table-of-contents)**
 
