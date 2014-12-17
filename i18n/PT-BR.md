@@ -1535,13 +1535,13 @@ ou *Minificação e Anotação*
     > Nota: Apartir do AngularJS 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
     `<body ng-app="APP" ng-strict-di>`
 
-### Use Gulp or Grunt for ng-annotate
+### Utilize Gulp ou Grunt para o ng-annotate
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - Utilize [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ou [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) para tarefas de build automatizadas. Injete `/* @ngInject */` antes de qualquer função que tenha dependências.
   
-    *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+    *Por que?*: ng-annotate vai capturar todas as dependências, mas as vezes requer dicas utilizando a sintaxe `/* @ngInject */` .
 
-    The following code is an example of a gulp task using ngAnnotate
+    O código abaixo é um exemplo de uma task Gulp utilizando ngAnnotate
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
@@ -1570,11 +1570,11 @@ ou *Minificação e Anotação*
 
 ### decorators
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - Utilize um [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), no seu configutilizando o serviço [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) , no serviço [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar ações customizadas quando um erro ocorrer.
   
-    *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
+    *Por que?*: Fornece um caminho consistente para manipular erros não tratados pelo AngularJS em tempo de desenvolvimento ou run-time.
 
-    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    Nota: Outra opção é sobrescrever o serviço ao invés de utilizar um decorator. Esta é uma boa opção, mas se você quer manter o comportamento padrão e estender o decorator é recomendado.
 
   	```javascript
     /* recommended */
@@ -1610,9 +1610,9 @@ ou *Minificação e Anotação*
 
 ### Exception Catchers
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - Criar um factory que expôe uma interface para capturar excessões.
 
-    *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *Por que?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
 
     Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
 
