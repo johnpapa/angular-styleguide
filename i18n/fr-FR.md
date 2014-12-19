@@ -2,15 +2,11 @@
 
 *Le guide d'un certain point de vue stylistique sur AngularJS par [@john_papa](//twitter.com/john_papa)*
 
-Si vous cherchez un guide d'un certain point de vue stylistique pour la syntaxe, les conventions, et la structuration
-d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec
-[AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa)
-et mon travail au sein des équipes.
+Si vous cherchez un guide d'un certain point de vue stylistique pour la syntaxe, les conventions, et la structuration d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
 
 >Si vous appréciez ce guide, visitez mon cours [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight.
 
-Le but de ce guide stylistique est de proposer des conseils sur le développement d'applications AngularJS en montrant
-les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
+Le but de ce guide stylistique est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
 
 ## Supprématie de la Communauté et Remerciements
 Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
@@ -18,15 +14,10 @@ Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est
 De nombreux de mes styles proviennent des maintes scéances de pair programming que [Ward Bell](http://twitter.com/wardbell) et moi avons eu. Même si nous n'étions pas toujours d'accord, mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
 
 ## Visualiser les Styles dans une Application d'Exemple
-Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a été utile de les visualiser dans la
-pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces motifs. Vous pouvez trouver
-l'[application d'exemple (appellée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`.
-Vous pouvez librement le récupérer, le cloner, ou le dupliquer pour le modifier. [Les instructions pour l'éxécuter sont
-contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a été utile de les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces motifs. Vous pouvez trouver l'[application d'exemple (appellée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le dupliquer pour le modifier. [Les instructions pour l'éxécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
-[Des traductions de ce guide stylistique Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n)
-sont maintenues par la communauté et peuvent être trouvées ici.
+[Des traductions de ce guide stylistique Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
 
 ## Table des matières
 
@@ -65,11 +56,10 @@ sont maintenues par la communauté et peuvent être trouvées ici.
 
   - Définir 1 composant par fichier.
 
- 	L'exemple suivant définit le module `app` et ses dépendances, définit un controlleur, et définit une factory le tout
- 	dans le même fichier.
+  L'exemple suivant définit le module `app` et ses dépendances, définit un controlleur, et définit une factory le tout dans le même fichier.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   angular
     	.module('app', ['ngRoute'])
     	.controller('SomeController', SomeController)
@@ -118,19 +108,14 @@ sont maintenues par la communauté et peuvent être trouvées ici.
 ### Les Closures JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Encapsuler les composants AngularJS dans une Immediately Invoked Function Expression (IIFE) ou Expression de
-    Fonction Immédiatement Invoquée.
+  - Encapsuler les composants AngularJS dans une Immediately Invoked Function Expression (IIFE) ou Expression de Fonction Immédiatement Invoquée.
 
-  *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables
-  et de fonctions ne vivent plus longtemps qu'attendu dans le scope global, ce qui aide aussi à éviter les collisions de
-  variables.
+  *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables et de fonctions ne vivent plus longtemps qu'attendu dans le scope global, ce qui aide aussi à éviter les collisions de variables.
 
-  *Pourquoi ?* : Lorsque votre code est minifié et embarqué dans un unique fichier pour le déploiement dans un serveur
-  de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE protège
-  contre ces derniers en fournissant un scope de variable pour chaque fichier.
+  *Pourquoi ?* : Lorsque votre code est minifié et embarqué dans un unique fichier pour le déploiement dans un serveur de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE protège contre ces derniers en fournissant un scope de variable pour chaque fichier.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   // logger.js
   angular
       .module('app')
@@ -179,34 +164,30 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   })();
   ```
 
-  - Note : Pour des raisons de concision seulement, le reste des examples de ce guide peuvent avoir omis la syntaxe
-    IIFE.
+  - Note : Pour des raisons de concision seulement, le reste des examples de ce guide peuvent avoir omis la syntaxe IIFE.
 
-  - Note : Les IIFE empêchent le code code de test d'atteindre des membres privés comme des expressions régulières ou
-    des fonctions helper ce qui est bon pour tester unitairement directement indépendamment. Cependant, vous pouvez les
-    tester à travers des membres accessibles ou en les exposant à travers leur propre composant. Par exemple en plaçant
-    des fonctions helper, des expressions régulières ou des constantes dans leur propre factory ou contante.
+  - Note : Les IIFE empêchent le code code de test d'atteindre des membres privés comme des expressions régulières ou des fonctions helper ce qui est bon pour tester unitairement directement indépendamment. Cependant, vous pouvez les tester à travers des membres accessibles ou en les exposant à travers leur propre composant. Par exemple en plaçant des fonctions helper, des expressions régulières ou des constantes dans leur propre factory ou contante.
 
 **[Retour en haut de page](#table-des-matières)**
 
 ## Modules
 
-### Avoid Naming Collisions
+### Éviter les Collisions de Nommage
 ###### [Style [Y020](#style-y020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - Utilisez des conventions de nommages uniques avec des séparations pour les sous-modules.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *Pourquoi ?* : Les noms uniques aident à éviter les collisions de nom de module. Les séparateurs aident à définir les modules et leur hiérarchie de sous-modules. Par exemple, `app` pourrait être le module racine tandis que `app.dashboard` et `app.users` serait les modules qui sont utilisés en tant que dépendances de `app`.
 
-### Definitions (aka Setters)
+### Définitions (i.e. Setters)
 ###### [Style [Y021](#style-y021)]
 
-  - Declare modules without a variable using the setter syntax.
+  - Déclarer des modules sans variable en utilisant la syntaxe setter.
 
-	*Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  *Pourquoi ?* : Avec 1 composant par fichier, on ne devrait pas avoir besoin d'introduire une variable pour le module.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -215,10 +196,10 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   ]);
   ```
 
-	Instead use the simple setter syntax.
+  Utiliser à la place la syntaxe setter simple.
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   angular
     	.module('app', [
           'ngAnimate',
@@ -231,12 +212,12 @@ sont maintenues par la communauté et peuvent être trouvées ici.
 ### Getters
 ###### [Style [Y022](#style-y022)]
 
-  - When using a module, avoid using a variable and instead use   chaining with the getter syntax.
+  - Lorsque vous utilisez un module, évitez d'utiliser une variable en utilisant plutôt le chaînage avec la syntaxe du getter.
 
-	*Why?* : This produces more readable code and avoids variable collisions or leaks.
+  *Pourquoi ?* : Cela produit du code plus lisible et évite les collisions de variable ou les fuites.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   var app = angular.module('app');
   app.controller('SomeController', SomeController);
 
@@ -244,7 +225,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   angular
       .module('app')
       .controller('SomeController', SomeController);
@@ -252,25 +233,25 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   function SomeController() { }
   ```
 
-### Setting vs Getting
+### Setting contre Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Only set once and get for all other instances.
+  - Ne `settez` qu'une fois et `gettez` pour toutes les autres instances.
 
-	*Why?*: A module should only be created once, then retrieved from that point and after.
+  *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point et après.
 
-	  - Use `angular.module('app', []);` to set a module.
-	  - Use  `angular.module('app');` to get a module.
+	  - Utilisez `angular.module('app', []);` pour setter un module.
+	  - Utilisez `angular.module('app');` pour getter un module.
 
-### Named vs Anonymous Functions
+### Fonctions Nommées contre Anonymes
 ###### [Style [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - Utilisez des fonctions nommées au lieu de passer une fonction anonyme comme callback.
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Pourquoi ?* : Celà produit du code plus lisible, est plus facile à débugguer, et réduit la quantité de code callback imbriqué.
 
   ```javascript
-  /* avoid */
+  /* éviter */
   angular
       .module('app')
       .controller('Dashboard', function() { })
@@ -278,7 +259,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   ```
 
   ```javascript
-  /* recommended */
+  /* recommendé */
 
   // dashboard.js
   angular
@@ -297,7 +278,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Controllers
 
