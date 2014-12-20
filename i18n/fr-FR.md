@@ -24,7 +24,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Responsabilité Unique](#responsabilité-unique)
   1. [IIFE](#iife)
   1. [Modules](#modules)
-  1. [Controllers](#controllers)
+  1. [Controlleurs](#controlleurs)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Data Services](#data-services)
@@ -133,7 +133,6 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   function storage() { }
   ```
 
-
   ```javascript
   /**
    * recommandé
@@ -196,7 +195,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ]);
   ```
 
-  Utiliser à la place la syntaxe setter simple.
+  Utilisez à la place la syntaxe setter simple.
 
   ```javascript
   /* recommandé */
@@ -233,17 +232,17 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   function SomeController() { }
   ```
 
-### Setting contre Getting
+### Setting ou Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Ne `settez` qu'une fois et `gettez` pour toutes les autres instances.
+  - Ne settez qu'une fois et gettez pour toutes les autres instances.
 
   *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point et après.
 
 	  - Utilisez `angular.module('app', []);` pour setter un module.
 	  - Utilisez `angular.module('app');` pour getter un module.
 
-### Fonctions Nommées contre Anonymes
+### Fonctions Nommées ou Anonymes
 ###### [Style [Y024](#style-y024)]
 
   - Utilisez des fonctions nommées au lieu de passer une fonction anonyme comme callback.
@@ -251,7 +250,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   *Pourquoi ?* : Celà produit du code plus lisible, est plus facile à débugguer, et réduit la quantité de code callback imbriqué.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   angular
       .module('app')
       .controller('Dashboard', function() { })
@@ -280,46 +279,46 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Controllers
+## Controlleurs
 
-### controllerAs View Syntax
+### La Syntaxe Vue controllerAs
 ###### [Style [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Utilisez la syntaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) au lieu de la syntaxe de `controlleur classique avec $scope`.
 
-	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+	*Pourquoi ?* : Les controlleurs sont constuits, "new-és", and fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+	*Pourquoi ?* : Il promeut l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
 
-	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+	*Pourquoi ?* : Permet d'éviter l'usage des appels à `$parent` dans les Vues avec des controlleurs imbriqués.
 
   ```html
-  <!-- avoid -->
+  <!-- à éviter -->
   <div ng-controller="Customer">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recommendé -->
   <div ng-controller="Customer as customer">
      {{ customer.name }}
   </div>
   ```
 
-### controllerAs Controller Syntax
+### La Syntaxe de Controlleur controllerAs
 ###### [Style [Y031](#style-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - Utilisez la syntaxe `controllerAs` au lieu de la syntaxe de `controlleur classique avec $scope`.
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - La syntaxe `controllerAs` utilise `this` à l'intérieur des controlleurs qui se font relier au `$scope`.
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *Pourquoi ?* : `controllerAs` est un sucre syntaxique sur le `$scope`. Vous pouvez toujours vous relier à la Vue et toujours accéder aux métodes du `$scope`.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller.
+  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes du `$scope` à l'intérieur d'un controlleur alors qu'il serait par ailleurs meilleur de les éviter ou de les déplacer dans une factory. Considérez utiliser le `$scope` dans une factory, ou seulement si nécessaire dans un controlleur. Par exemple lorsqu'il faut publier ou souscrire des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le controlleur.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Customer($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -327,22 +326,22 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* recommandé - mais voir la section suivante */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
   }
   ```
 
-### controllerAs with vm
+### controllerAs avec vm
 ###### [Style [Y032](#style-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Utilisez une variable de capture pour `this` quand vous utilisez la syntaxe `controllerAs`. Choisissez un nom de variable consistant tel que `vm`, qui signifie ViewModel.
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *Pourquoi ?* : Le mot clé `this` est contextuel et son utilisation au sein d'une fonction à l'intérieur d'un controlleur pourrait changer son contexte. Capturer le contexte de `this` évite de rencontrer ce problème.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -350,7 +349,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   function Customer() {
       var vm = this;
       vm.name = {};
@@ -358,14 +357,14 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Note : Vous pouvez évitez n'importe quel avertissement [jshint](http://www.jshint.com/) en plaçant le commentaire ci-dessous au dessus de la ligne de code. Cependant, ce n'est pas nécesaire lorsque la fonction est nommée en utilisant la CasseEnMajuscule, puisque cette convention signifie que c'est une fonction constructeur, ce qu'est un controlleur en Angular.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Note : Lors de la création de watchs dans un controlleur en utilisant `controller as`, vous pouvez watcher les membres `vm.*` en utilisant la syntaxe suivante. (Créez des watchs avec prudence puisqu'ils ajoutent plus de charge au cycle de digest.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -383,14 +382,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Bindable Members Up Top
+### Les Membres Bindable au Début
 ###### [Style [Y033](#style-y033)]
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Placez les membres bindables au début du controlleur, par ordre alphabétique, et non pas dispersés à travers le code du controlleur.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View.
+  *Pourquoi ?* : Placer les membres bindables au début permet de faciliter la lecture et vous aide à identifier instantanément quels membres du controlleur peut être bindé et utilisés dans la Vue.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+  *Pourquoi ?* : Placer les fonction anonymes sur la même ligne peut être facile, mais lorsque ces fonctions ont plus d'une ligne de code elles peuvent réduire la lisibilité. Définir les fonctions sous les membres bindables (les fonctions seront hissées) déplace les détails d'implémentation en bas, guardant les membres bindables en haut,
+  Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
 
   ```javascript
   /* avoid */
@@ -436,12 +436,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Les Controlleur Utilisant "Au dessus de la Réduction"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  Note : Si la fonction est un one-liner, considérez de la garder bien en haut, tant que la lisibilité n'est pas affectée.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Sessions(data) {
       var vm = this;
 
@@ -461,36 +461,36 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   function Sessions(dataservice) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = dataservice.refresh; // Le one-liner est acceptable
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
   ```
 
-### Function Declarations to Hide Implementation Details
+### Déclaration de Fonctions pour Cacher les Détails d'Implémentation
 ###### [Style [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilisez les déclarations de fonctions pour cacher les détails d'implémentation. Gardez vos membres bindables tout en haut. Quand vous avez besoin de binder une fonction dans un controlleur, faites-la pointer vers la déclaration de la fonction plus bas dans le fichier. Ceci est directement lié à la section des Membres Bindable au Début. Pour plus de détails, vous pouvez lire [cet article](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *Pourquoi ?* : Placer les membres bindables en haut rend plus facile la lecture et vous aide instantanément à identifier quels membres du controlleur peuvent être bindés et utilisés dans la Vue. (Même chose que plus haut.)
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Pourquoi ?* : Placer les détails d'implémentation d'une fonction plus bas dans le fichier déplace cette complexité en dehors du regard ainsi vous pouvez ne voir que les choses importantes en haut.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Pourquoi ?* : Les déclarations de fichiers sont remontées donc il n'y a aucun problème à utiliser une fonction avant qu'elle ne soit définie (alors que ça le serait avec les expressions de fonction).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Pourquoi ?* : Vous ne vous préocuperez plus des déclarations de fonctions déplaçant `var a` avant `var b` cassant ainsi votre code car `a` dépend de `b`.
 
-    *Why?*: Order is critical with function expressions
+    *Pourquoi ?* : L'ordre est critique avec les expressions de fonction
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions.
+   * à éviter
+   * L'utilisation des expressions de fonction.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -516,13 +516,13 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Remarquez que les choses importantes sont dispersées dans l'exemple précédent. Dans l'exemple ci-dessous, remarquez que les choses importantes sont tout en haut. Par exemple, les membres bindés au controlleur tels que `vm.avengers` et `vm.title`. Les détails d'implémentation sont plus bas dessous. C'est simplement plus facile à lire.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * recommandé
+   * L'utilisation des déclarations de fonction
+   * et les membres bindables tout en haut.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -547,20 +547,20 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Defer Controller Logic
+### Déplacer la Logique des Controlleurs
 ###### [Style [Y035](#style-y035)]
 
-  - Defer logic in a controller by delegating to services and factories.
+  - Déplacer la logique d'un controlleur en la déléguant à des services et des factories. 
+  
+    *Pourquoi ?* : La logique peut être ré-utilisée par plusieurs controlleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    *Pourquoi ?* : La logique d'un service peut plus facilement être isolée dans un test unitaire, tandis que la logique d'appel dans le controlleur peut facilement être mockée.
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
-
-    *Why?*: Removes dependencies and hides implementation details from the controller.
+    *Pourquoi ?* : Cela supprime des dépendances et cache les détails d'implémentation au controlleur.
 
   ```javascript
 
-  /* avoid */
+  /* à éviter */
   function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -568,22 +568,23 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       vm.total = 0;
 
       function checkCredit() {
-		  var settings = {};
-          // Get the credit service base URL from config
-          // Set credit service required headers
-          // Prepare URL query string or data object with request data
-          // Add user-identifying info so service gets the right credit limit for this user.
-          // Use JSONP for this browser if it doesn't support CORS
+          var settings = {};
+          // Obtenir l'URL de base du service credit à partir de la config
+          // Positionne les headers requis pour le service credit
+          // Prépare l'URL query string ou l'objet de données avec les données de requête.
+          // Ajoute les infos d'identification de l'utilsiateur afin que le service obtienne
+          // les bons droits de limite credit pour cet utilisateur.
+          // Utilise JSONP pour ce navigateur s'il ne supporte pas CORS
           return $http.get(settings)
               .then(function(data) {
-	             // Unpack JSON data in the response object
-                 // to find maxRemainingAmount
+	         // Décompresse les données JSON dans l'objet réponse
+	         // afin de rechercher maxRemainingAmount
                  vm.isCreditOk = vm.total <= maxRemainingAmount
               })
               .catch(function(error) {
-                 // Interpret error
-                 // Cope w/ timeout? retry? try alternate service?
-                 // Re-reject with appropriate error for a user to see
+                 // Interpréter l'erreur
+                 // Gérer le timeout ? Réessayer ? Essayer un service alternatif ?
+                 // Re-rejetter avec une erreur appropriée à la vue de l'utilisateur
               });
       };
   }
@@ -591,7 +592,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   ```javascript
 
-  /* recommended */
+  /* recommandé */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -606,24 +607,24 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Keep Controllers Focused
+### Gardez des Controlleurs Focalisés
 ###### [Style [Y037](#style-y037)]
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
+  - Définir un controlleur pour une vue, et n'essayez pas de ré-utiliser le controlleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers des factories et gardez le controlleur simple et focalisé sur sa vue.
 
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    *Pourquoi ?*: La réutilisation de controlleurs sur plusieurs vues est fragile et une bonne couverture de tests de bout en bout ("end to end" ou "e2e") est requise afin d'assurer la stabilité dans les grosses applications.
 
-### Assigning Controllers
+### Assigner les Controlleurs
 ###### [Style [Y038](#style-y038)]
 
-  - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes.
+  - Lorsqu'un controlleur doit être associé à une vue et qu'un composant pourrait être ré-utilisé par d'autres controlleurs ou vues, définissez les controlleurs avec leurs routes.
 
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax.
+    Note : Si une Vue est chargée via d'autres moyens que la route, alors utilisez la syntaxe `ng-controller="Avengers as vm"`.
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    *Pourquoi ?* : Associer le controlleur dans la route permet que différentes routes invoquent d'autres paires de controlleurs et vues. Lorsque les controlleurs sont assignés dans la vue avec [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), cette vue est toujours associée avec le même controlleur.
 
  ```javascript
-  /* avoid - when using with a route and dynamic pairing is desired */
+  /* à éviter - lorsque l'utilisation avec une route et une association dynamique est voulue */
 
   // route-config.js
   angular
@@ -645,7 +646,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
 
   // route-config.js
   angular
@@ -668,7 +669,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-of-contents)**
 
 ## Services
 
