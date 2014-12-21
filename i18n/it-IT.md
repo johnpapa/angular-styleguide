@@ -370,11 +370,20 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
    
   Nota: Quando di creano watch in un controller usando `controller as`, puoi fare il watch del membro `vm.*` usando la seguente sintassi. (Crea watch con cautela poiché aggiungono carico al ciclo di digest.)
 
+  ```html
+   <input ng-model="vm.title"/>
+  ```
+ 
   ```javascript
-  $scope.$watch('vm.title', function(current, original) {
-      $log.info('vm.title was %s', original);
-      $log.info('vm.title is now %s', current);
-  });
+  function SomeController($scope, $log) {
+      var vm = this;
+      vm.title = 'Some Title';
+    
+      $scope.$watch('vm.title', function(current, original) {
+          $log.info('vm.title was %s', original);
+          $log.info('vm.title is now %s', current);
+      });
+  }
   ```
 
 ### Membri che possono fare il bind in cima
@@ -553,31 +562,49 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     *Perché?*: Rimuove dipendenze e nasconde dettagli di implementazione dal controller.
 
   ```javascript
+
   /* evitare */
-  function Order($http, $q) {
+  function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
-      function checkCredit() { 
-          var orderTotal = vm.total;
-          return $http.get('api/creditcheck').then(function(data) {
-              var remaining = data.remaining;
-              return $q.when(!!(remaining > orderTotal));
-          });
+      function checkCredit() {
+		  var settings = {};
+          // Prendi la URL di base per il servizio del credito
+          // Setta le intestazioni necessarie per il servizio del credito
+          // Prepara le URL della query string o i data object con i dati richiesti
+          // Aggiungi le informazioni sull'identificazione dell'utente così il servizio prende i dati sul limite del credito corretto
+          // Usare JSONP per questo browser se CORS non è supportato
+          return $http.get(settings)
+              .then(function(data) {
+	             // Unpack JSON data in the response object
+                 // to find maxRemainingAmount
+                 vm.isCreditOk = vm.total <= maxRemainingAmount
+              })
+              .catch(function(error) {
+                 // Errore dell'interprete
+                 // Affronta timeout? nuovo tentativo? provare servizi alternativi?
+                 // Rilancia con l'errore appropriato per essere letto dall'utente
+              });
       };
   }
   ```
 
   ```javascript
+
   /* consigliato */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
       function checkCredit() { 
-         return creditService.check();
+         return creditService.isOrderTotalOk(vm.total)
+			.then(function(isOk) { vm.isCreditOk = isOk; })
+            .catch(showServiceError);
       };
   }
   ```
@@ -2506,7 +2533,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 
   - Snippet di AngularJS che seguono questi stili e linee guida. 
 
-    - Scarica gli [snippet di Angular per Sublime](assets/sublime-angular-snippets.zip) 
+    - Scarica gli [snippet di Angular per Sublime](assets/sublime-angular-snippets.zip?raw=true) 
     - Mettili nella tua cartella Packages
     - Riavvia Sublime 
     - In un file JavaScript digita questi comandi seguiti da `TAB`
@@ -2532,7 +2559,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 
   - Snippet di Angular JS e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
 
-    - Scarica i [file dei template e gli snippet diAngularJS per WebStorm](assets/webstorm-angular-file-template.settings.jar) 
+    - Scarica i [file dei template e gli snippet diAngularJS per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Apri WebStorm e vai al menù `File`
     - Scegli la voce di menù `Import Settings`
     - Seleziona il file e clicca `OK`

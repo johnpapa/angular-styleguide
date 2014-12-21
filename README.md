@@ -367,11 +367,20 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
+  ```html
+  <input ng-model="vm.title"/>
+  ```
+
   ```javascript
-  $scope.$watch('vm.title', function(current, original) {
-      $log.info('vm.title was %s', original);
-      $log.info('vm.title is now %s', current);
-  });
+  function SomeController($scope, $log) {
+      var vm = this;
+      vm.title = 'Some Title';
+    
+      $scope.$watch('vm.title', function(current, original) {
+          $log.info('vm.title was %s', original);
+          $log.info('vm.title is now %s', current);
+      });
+  }
   ```
 
 ### Bindable Members Up Top
@@ -539,7 +548,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Defer Controller Logic
-###### [Style [Y035](#style-y036)]
+###### [Style [Y035](#style-y035)]
 
   - Defer logic in a controller by delegating to services and factories.
 
@@ -550,31 +559,49 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Removes dependencies and hides implementation details from the controller.
 
   ```javascript
+
   /* avoid */
-  function Order($http, $q) {
+  function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
-      function checkCredit() { 
-          var orderTotal = vm.total;
-          return $http.get('api/creditcheck').then(function(data) {
-              var remaining = data.remaining;
-              return $q.when(!!(remaining > orderTotal));
-          });
+      function checkCredit() {
+		  var settings = {};
+          // Get the credit service base URL from config
+          // Set credit service required headers
+          // Prepare URL query string or data object with request data
+          // Add user-identifying info so service gets the right credit limit for this user.
+          // Use JSONP for this browser if it doesn't support CORS
+          return $http.get(settings)
+              .then(function(data) {
+	             // Unpack JSON data in the response object
+                 // to find maxRemainingAmount
+                 vm.isCreditOk = vm.total <= maxRemainingAmount
+              })
+              .catch(function(error) {
+                 // Interpret error
+                 // Cope w/ timeout? retry? try alternate service?
+                 // Re-reject with appropriate error for a user to see
+              });
       };
   }
   ```
 
   ```javascript
+
   /* recommended */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
       function checkCredit() { 
-         return creditService.check();
+         return creditService.isOrderTotalOk(vm.total)
+			.then(function(isOk) { vm.isCreditOk = isOk; })
+            .catch(showServiceError);
       };
   }
   ```
