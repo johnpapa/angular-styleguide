@@ -368,11 +368,20 @@
   ```
   - 注：在controller中用`controller as`创建了一个watch时，可以用下面的语法监测`vm.*`的成员。（创建watch时要谨慎，因为它会增加更多的负载）
 
+  ```html
+  <input ng-model="vm.title"/>
+  ```
+
   ```javascript
-  $scope.$watch('vm.title', function(current, original) {
-      $log.info('vm.title was %s', original);
-      $log.info('vm.title is now %s', current);
-  });
+  function SomeController($scope, $log) {
+      var vm = this;
+      vm.title = 'Some Title';
+    
+      $scope.$watch('vm.title', function(current, original) {
+          $log.info('vm.title was %s', original);
+          $log.info('vm.title is now %s', current);
+      });
+  }
   ```
 
  
@@ -542,7 +551,7 @@
   ```
 
 ###推迟Controller中的逻辑
-###### [Style [Y035](#style-y036)]
+###### [Style [Y035](#style-y035)]
 
   - 通过委派到service和factory中来推迟controller中的逻辑。
 
@@ -554,30 +563,47 @@
 
   ```javascript
   /* avoid */
-  function Order ($http, $q) {
+  function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
       function checkCredit () { 
-          var orderTotal = vm.total;
-          return $http.get('api/creditcheck').then(function(data) {
-              var remaining = data.remaining;
-              return $q.when(!!(remaining > orderTotal));
-          });
+          var settings = {};
+          // Get the credit service base URL from config
+          // Set credit service required headers
+          // Prepare URL query string or data object with request data
+          // Add user-identifying info so service gets the right credit limit for this user.
+          // Use JSONP for this browser if it doesn't support CORS
+          return $http.get(settings)
+              .then(function(data) {
+               // Unpack JSON data in the response object
+                 // to find maxRemainingAmount
+                 vm.isCreditOk = vm.total <= maxRemainingAmount
+              })
+              .catch(function(error) {
+                 // Interpret error
+                 // Cope w/ timeout? retry? try alternate service?
+                 // Re-reject with appropriate error for a user to see
+              });
       };
   }
   ```
 
   ```javascript
+
   /* recommended */
   function Order (creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
+      vm.isCreditOk;
       vm.total = 0;
 
       function checkCredit () { 
-        return creditService.check();
+         return creditService.isOrderTotalOk(vm.total)
+            .then(function(isOk) { vm.isCreditOk = isOk; })
+            .catch(showServiceError);
       };
   }
   ```
