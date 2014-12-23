@@ -2301,7 +2301,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Stubbing e Spying
 ###### [Stile [Y193](#stile-y193)]
 
-  - Usa Sinon per lo stubbing e spying.
+  - Usa [Sinon](http://sinonjs.org) per lo stubbing e spying.
 
     *Perché?*: Sinon lavora bene sia con Jasmine che Mocha ed estende le funzionalità di stubbing e spying che questi offrono.
 
