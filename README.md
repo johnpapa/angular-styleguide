@@ -39,13 +39,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Modularity](#modularity)
   1. [Startup Logic](#startup-logic)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
+  1. [HTML Layout](#html-layout)
   1. [Testing](#testing)
   1. [Animations](#animations) 
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [HTML Layout](#html-layout)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2565,7 +2565,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ## HTML Layout
 ### Cloak your HTML
-###### [Style [Y260](#style-y260)]
+###### [Style [Y253](#style-y253)]
 
 Before Angular is loaded, the user will see your application layout HTML in raw (including the {{uglyBrackets}} instead of the value). Then, it will display the real content as soon as Angular is ready. To prevent the flickering, I use `ng-cloak` to hide the raw HTML.
 
