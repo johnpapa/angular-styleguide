@@ -25,7 +25,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
 ## Table des matières
 
-  1. [La responsabilité singulière](#la-responsabilite-singuliere)
+  1. [La responsabilité singulière](#la-responsabilité-singulière)
   1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
@@ -107,7 +107,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   function someFactory() { }
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## IIFE
 ### Fermetures JavaScript
@@ -173,7 +173,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   
   - Note: IIFE prévient le code de test d'atteindre les membres privés comme les expressions régulières ou les fonctions d'aide, qui sommt généralement pratique de tester intégralement. Par contre, vous pouvez les tester en utilisant des membres accessibles ou en les exposant dans votre composante. Par exemple en plaçant les fonctions d'aide, les expressions régulières ou les constantes dans leurs propres factory ou constante.
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Modules
 
@@ -283,7 +283,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   function logger() { }
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 
 # TO CONTINUE HERE
@@ -677,7 +677,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   </div>
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Services
 
@@ -716,7 +716,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   }
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Factories
 
@@ -887,7 +887,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   }
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Data Services
 
@@ -1012,7 +1012,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   }
   ```
 
-    **[Retourner en haut](#table-des-matieres)**
+    **[Retourner en haut](#table-des-matières)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1249,7 +1249,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Resolving Promises for a Controller
 
@@ -1356,7 +1356,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Manual Annotating for Dependency Injection
 
@@ -1487,7 +1487,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
     }
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Minification and Annotation
 
@@ -1598,7 +1598,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Exception Handling
 
@@ -1706,7 +1706,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
     }
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Naming
 
@@ -1929,7 +1929,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. 
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1992,7 +1992,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Application Structure
 
@@ -2104,7 +2104,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
             topnav.html         
     ``` 
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Modularity
   
@@ -2168,7 +2168,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
     > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Startup Logic
 
@@ -2224,7 +2224,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
     }
   ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Angular $ Wrapper Services
 
@@ -2242,7 +2242,7 @@ Pendant que ce guide explique le *quoi*, le *pourquoi* et le *comment*, j'ai rem
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2334,7 +2334,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Animations
 
@@ -2367,7 +2367,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Comments
 
@@ -2419,7 +2419,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## JS Hint
 
@@ -2496,7 +2496,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## Constants
 
@@ -2521,7 +2521,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -2569,7 +2569,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## HTML Layout
 ### Cloak your HTML
@@ -2589,7 +2589,7 @@ I cloak only the parts that are necessary so that the loading of the page is pro
 </tml>
 ```
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -2632,4 +2632,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Retourner en haut](#table-des-matieres)**
+**[Retourner en haut](#table-des-matières)**
