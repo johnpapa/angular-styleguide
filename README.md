@@ -45,6 +45,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
+  1. [HTML Layout](#html-layout)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2559,6 +2560,26 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
+
+**[Back to top](#table-of-contents)**
+
+## HTML Layout
+### Cloak your HTML
+###### [Style [Y260](#style-y260)]
+
+Before Angular is loaded, the user will see your application layout HTML in raw (including the {{uglyBrackets}} instead of the value). Then, it will display the real content as soon as Angular is ready. To prevent the flickering, I use `ng-cloak` to hide the raw HTML.
+
+I cloak only the parts that are necessary so that the loading of the page is progressive and feel smooth.
+
+```html
+<!DOCTYPE html>
+<html ng-app="app">
+<body>
+  <h1>This title is never hidden</h1>
+  <div ng-cloak>This part is hidden until Angular is ready</div>
+</body>
+</tml>
+```
 
 **[Back to top](#table-of-contents)**
 
