@@ -2166,7 +2166,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Configuration
 ###### [Style [Y170](#style-y170)]
 
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidaes include providers and constants.
+  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidates include providers and constants.
 
     *Why?*: This makes it easier to have a less places for configuration.
 
@@ -2290,7 +2290,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Stubbing and Spying
 ###### [Style [Y193](#style-y193)]
 
-  - Use Sinon for stubbing and spying.
+  - Use [Sinon](http://sinonjs.org/) for stubbing and spying.
 
     *Why?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
 
