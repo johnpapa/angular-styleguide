@@ -2272,7 +2272,7 @@
 ###Stubbing和Spying
 ###### [Style [Y193](#style-y193)]
 
-  - 用Sinon。
+  - 用[Sinon](http://sinonjs.org/)。
 
     *为什么？*：Sinon可以和Jasmine和Mocha合作良好，并且可以扩展它们提供的stubbing和spying。
 
