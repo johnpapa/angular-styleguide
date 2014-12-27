@@ -1327,7 +1327,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: The example below shows the route resolve function becomes a named function, which is easier to debug and easier to handle dependency injection.
+    Note: The example below shows the route resolve points to a named function, which is easier to debug and easier to handle dependency injection.
 
   ```javascript
   /* even better */
