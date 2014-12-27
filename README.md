@@ -1251,7 +1251,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
      
     *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
 
-    Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    *Why?*: The controller `activate` makes it convenient to re-use the logic for a refresh for the controller/View, keeps the logic together, gets the user to the View faster, makes animations easy on the `ng-view` or `ui-view`, and feels snappier to the user.
+
+    Note: If you need to conditionally cancel the route before you start use the controller, use a [route resolve](#style-y081) instead.
     
   ```javascript
   /* avoid */
@@ -1292,7 +1294,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - When a controller depends on a promise to be resolved before the controller is activated, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
 
+  - Use a route resolve when you want to decide to cancel the route before ever transitioning to the View.
+
     *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+
+    *Why?*: The code executes after the route and in the controller’s activate function. The View starts to load right away. Data binding kicks in when the activate promise resolves. A “busy” animation can be shown during the view transition (via ng-view or ui-view)
+
+    Note: The code executes before the route via a promise. Rejecting the promise cancels the route. Resolve makes the new view wait for the route to resolve. A “busy” animation can be shown before the resolve and through the view transition. If you want to get to the View faster and do not require a checkpoint to decide if you can get to the View, consider the [controller `activate` technique](#style-y080) instead.
 
   ```javascript
   /* avoid */
