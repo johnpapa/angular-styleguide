@@ -1272,7 +1272,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Route Resolve Promises
 ###### [Style [Y081](#style-y081)]
 
-  - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - When a controller depends on a promise to be resolved before the controller is activated, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
 
     *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
 
@@ -1327,6 +1327,43 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
+    Note: The example below shows the route resolve function becomes a named function, which is easier to debug and easier to handle dependency injection.
+
+  ```javascript
+  /* even better */
+
+  // route-config.js
+  angular
+      .module('app')
+      .config(config);
+
+  function config($routeProvider) {
+      $routeProvider
+          .when('/avengers', {
+              templateUrl: 'avengers.html',
+              controller: 'Avengers',
+              controllerAs: 'vm',
+              resolve: {
+                  moviesPrepService: moviesPrepService
+              }
+          });
+  }
+
+  function(movieService) {
+      return movieService.getMovies();
+  }
+
+  // avengers.js
+  angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+  Avengers.$inject = ['moviesPrepService'];
+  function Avengers(moviesPrepService) {
+        var vm = this;
+        vm.movies = moviesPrepService.movies;
+  }
+  ```
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
 **[Back to top](#table-of-contents)**
