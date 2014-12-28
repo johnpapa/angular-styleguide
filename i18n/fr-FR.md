@@ -676,9 +676,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency.
+  - Les Services sont instanciés avec le mot clé `new`, utilisez `this` pour les méthodes publiques et les variables. Puisque ces derniers sont tellement similaires aux factories, utilisez à la place une factory pour la cohérence.
 
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    Note : [Tous les serices AngularJS services sont des singletons](https://docs.angularjs.org/guide/services). Celà signifie qu'il n'y a qu'une seule instance d'un service donné par injecteur.
 
   ```javascript
   // service
@@ -708,7 +708,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en faut de page](#table-of-contents)**
 
 ## Factories
 
