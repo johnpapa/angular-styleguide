@@ -1294,7 +1294,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Promesse risolte nel route
 ###### [Stile [Y081](#stile-y081)]
 
-  - Quando un controller dipende dalla dal fatto che una promessa sia risolta risolvi queste dipendenze nel `$routeProvider` prima che la logica del controller sia eseguita. Se hai bisogno di annullare condizionalmente una route prima che il controller sia attivato, usa un resolver della route.
+  - Quando un controller dipende dal fatto che una promessa sia risolta prima che il controller sia attivato, risolvi queste dipendenze nel `$routeProvider` prima che la logica del controller sia eseguita. Se hai bisogno di annullare condizionalmente una route prima che il controller sia attivato, usa un resolver della route.
 
     *Perché?*: Un controller può richiedere dei dati prima che si carichi. Quei dati potrebbero venire da una promessa di una factory su misura oppure [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [resolver della route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) acconsenti che la promessa sia risolta prima che la logica del controller sia eseguita, così da poter prendere decisioni basandosi sui dati provenienti dalla promessa.
 
@@ -1349,7 +1349,44 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
         vm.movies = moviesPrepService.movies;
   }
   ```
+  
+    Note: L'esempio sotto mostra il punto di risoluzione della route in una funzione con il nome per cui è più semplice da fare il debug e più semplice da gestire nella iniezione delle dependenze.
 
+  ```javascript
+  /* even better */
+
+  // route-config.js
+  angular
+      .module('app')
+      .config(config);
+
+  function config($routeProvider) {
+      $routeProvider
+          .when('/avengers', {
+              templateUrl: 'avengers.html',
+              controller: 'Avengers',
+              controllerAs: 'vm',
+              resolve: {
+                  moviesPrepService: moviesPrepService
+              }
+          });
+  }
+
+  function moviePrepService(movieService) {
+      return movieService.getMovies();
+  }
+
+  // avengers.js
+  angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+  Avengers.$inject = ['moviesPrepService'];
+  function Avengers(moviesPrepService) {
+        var vm = this;
+        vm.movies = moviesPrepService.movies;
+  }
+  ```
     Nota: La dipendenza del codice di esempio da `movieService` non è a prova di minificazione in se stessa. Per i dettagli su come rendere questo codice a prova di minificazione, vedi la sezione sulla [dependency injection](#manual-annotating-for-dependency-injection) e sulla [minificazione e annotazione](#minification-and-annotation).
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
