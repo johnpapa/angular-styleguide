@@ -712,31 +712,31 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 ## Factories
 
-### Single Responsibility
+### Responsabilité Unique
 ###### [Style [Y050](#style-y050)]
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Les factories ne devraient avoir qu'une [unique responsabilité](http://en.wikipedia.org/wiki/Single_responsibility_principle), c'est-à-dire encapsulé par son contexte. Une fois qu'une factory commence à dépasser ce but unique, une nouvelle factory devrait être créée.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Les factories sont des singletons et renvoient un objet qui contient les membres du service.
 
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    Note : [Tous les services AngularJS sont des singletons](https://docs.angularjs.org/guide/services).
 
-### Accessible Members Up Top
+### Membres Accessibles Tout en Haut
 ###### [Style [Y052](#style-y052)]
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Exposer les membres appellables du services (son interface) en haut, utilisant une technique dérivée du Principe du Module Révélateur ou [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked).
+    *Pourquoi ?* : Placer les membres appellables tout en haut le rend facile à lire et vous aide à identifier instantanément quels membres du service peut être appellé et doit être testé unitairement (et/ou mocké).
 
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    *Pourquoi ?* : Ceci est spécialement conseillé lorsque le fichier devient un peu long et celà aide à éviter le besoin de faire défiler pour voir ce qui est exposé.
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *Pourquoi ?* : Placer les fonctions au fil de l'écriture semble être facile, mais quand ces fonctions ont plus d'une ligne de code, elles peuvent réduire la lisibilité et causer plus de défilement. Définir l'interface à appeller via le service renvoyé déplace les détails d'implémentation plus bas, garde l'interface appellante tout en haut, et rend le tout plus facile à lire.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function dataService() {
     var someValue = '';
     function save() {
@@ -755,7 +755,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   function dataService() {
       var someValue = '';
       var service = {
@@ -777,52 +777,52 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  De cette façon, les bindings sont dupliqués à travers l'objet hôte, les valeurs primitives ne peuvant se mettre à jour toutes seules grâce au principe du module révélateur.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Utilisants "Au dessus du Pliage"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
-### Function Declarations to Hide Implementation Details
+### Déclaration de Fonctions pour Cacher les Détails d'Implémentation
 ###### [Style [Y053](#style-y053)]
 
-  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilisez les déclarations de fonction pour cacher les détails d'implémentation. Gardez les membres accessibles de la factory tout en haut. Faites-les pointer vers les déclarations de fonction qui apparaissent plus loin dans le fichier. Pour plus de détails, voir [ce post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+    *Pourquoi ?* : Placer les membres accessibles tout en haut permet de le rendre facile à lire et vous aide à identifier instantanément quelles fonctions de la factory vous pouvez accéder de l'extérieur.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Pourquoi ?* : Placer les détails d'implémentation d'une fonction plus loin dans le fichier déplace cette complexité en dehors de la vue afin de voir les choses importantes tout en haut.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Pourquoi ?* : Les déclarations de fonctions sont hissées de telle sorte qu'il n'y ait aucun soucis à utiliser une fonction avant qu'elle ne soit définie (comme il serait de mise avec les expressions fonctionnelles).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Pourquoi ?* : Vous n'aurez plus jamais à vous en faire avec les déclarations de fonction dont le déplacement de `var a` avant `var b` pourrait casser votre code à cause d'une dépendance de `a` vers `b`.
 
-    *Why?*: Order is critical with function expressions
+    *Pourquoi ?* : L'ordre est critique avec les expressions fonctionnelles.
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
+   * À éviter
+   * L'utilisation des expressions fonctionnelles
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
 
       var getAvengers = function() {
-         // implementation details go here
+         // avec les détails d'implémentation ici
       };
 
       var getAvengerCount = function() {
-          // implementation details go here
+          // avec les détails d'implémentation ici
       };
 
       var getAvengersCast = function() {
-         // implementation details go here
+         // avec les détails d'implémentation ici
       };
 
       var prime = function() {
-         // implementation details go here
+         // avec les détails d'implémentation ici
       };
 
       var ready = function(nextPromises) {
-          // implementation details go here
+          // avec les détails d'implémentation ici
       };
 
       var service = {
@@ -838,9 +838,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   ```javascript
   /**
-   * recommended
-   * Using function declarations
-   * and accessible members up top.
+   * recommandé
+   * L'utilisation des déclararions de fonction
+   * et des membres accessibles tout en haut.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -858,28 +858,28 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       ////////////
 
       function getAvengers() {
-         // implementation details go here
+         // avec les détails d'implémentation ici
       }
 
       function getAvengerCount() {
-          // implementation details go here
+          // avec les détails d'implémentation ici
       }
 
       function getAvengersCast() {
-         // implementation details go here
+         // avec les détails d'implémentation ici
       }
 
       function prime() {
-          // implementation details go here
+          // avec les détails d'implémentation ici
       }
 
       function ready(nextPromises) {
-          // implementation details go here
+          // avec les détails d'implémentation ici
       }
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Data Services
 
