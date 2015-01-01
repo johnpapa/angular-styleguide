@@ -2556,6 +2556,31 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
             .constant('moment', moment);
     })();
     ```
+    
+###### [Style [Y241](#style-y241)]
+
+  - Use constants for values that do not change and do not come from another service. When constants are used only for a module that may be reused in multiple applications, place constants in a file per module named after the module. Until this is required, keep constants in the main module in a `constants.js` file.
+
+    *Why?*: A value that may change, even infrequently, should be retrieved from a service so you do not have to change the source code. For example, a url for a data service could be placed in a constants but a better place would be to load it from a web service.
+
+    *Why?*: Constants can be injected into any angular component, including providers.
+
+    *Why?*: When an application is separated into modules that may be reused in other applications, each standlone module should be able to operation on its own including any dependent constants. 
+
+    ```javascript
+    // Constants used by the entire app
+    angular
+        .module('app.core')
+        .constant('moment', moment);
+
+    // Constants used only by the sales module
+    angular
+        .module('app.sales')
+        .constant('events', {
+            ORDER_CREATED: 'event_order_created',
+            INVENTORY_DEPLETED: 'event_inventory_depleted'
+        });
+    ```
 
 **[Back to top](#table-of-contents)**
 
