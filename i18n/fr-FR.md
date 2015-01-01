@@ -881,23 +881,23 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Data Services
+## Services de Données
 
-### Separate Data Calls
+### Séparer les Appels de Données
 ###### [Style [Y060](#style-y060)]
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - Refactorer la logique pour faire les opérations sur les données et les interactions avec la donnée dans une factory. Rendez les services de données responsables des appels ajax, du local storage, du stockage en mémoire, ou toute autre opérations sur les données.
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    *Pourquoi ?* : La responsabilité du controlleur est la présentation et l'assemblage des informations pour la vue. Il ne devrait pas se soucier de la façon dont la donnée est récupérée, mais seulement de la façon de la demander. Séparer des services de données déplace la logique du 'comment récupérer une donnée' dans ce service de donnée, et laisse le controlleur plus simple et plus focalisé sur la vue.
 
-    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    *Pourquoi ?* : Cela le rend plus facile à tester (en mockant ou avec le vrai) les appels aux données lorsque l'on teste un controlleur qui utilise un service de données.
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *Pourquoi ?* : L'implémentation d'un service de données peut avoir du code très spécifique pour gérer le référentiel des données. Celà peut inclure des entêtes, la façon de dialoguer avec la donnée, ou des dépendances vers d'autres services tels que $http. La séparation de la logique vers un service de données encapsule cette logique dans un unique endroit en cachant les détails d'implémentation du consommateur externe (peut-être un controlleur), en rendant également plus simple les changements d'implémentation.
 
   ```javascript
-  /* recommended */
+  /* Recommandé */
 
-  // dataservice factory
+  // une factory service de données
   angular
       .module('app.core')
       .factory('dataservice', dataservice);
@@ -925,12 +925,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+    Note : Le service de données est appellé depuis des consommateurs, tels que des controlleurs, en leur cachant l'implémentation, comme le montre l'éxemple ci-dessous.
 
   ```javascript
-  /* recommended */
+  /* Recommandé */
 
-  // controller calling the dataservice factory
+  // un controller qui appelle la factory du service de données
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -959,28 +959,28 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Return a Promise from Data Calls
+### Retourner une promesse depuis un appel de donnée
 ###### [Style [Y061](#style-y061)]
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - Lorsqu'un service de données retourne une promesse telle que $http, retournez une promesse dans votre fonction appelée.
 
-    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    *Pourquoi ?* : Vous pouvez chainez les promesses entre elles et ajouter des actions après que l'appel des données soit terminé puis résoudre ou rejeter la promesse.
 
   ```javascript
-  /* recommended */
+  /* Recommandé */
 
   activate();
 
   function activate() {
       /**
-       * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Etape 1
+       * Appel la fonction getAvengers pour récupérer
+       * les données avenger et attend la promesse
        */
       return getAvengers().then(function() {
           /**
-           * Step 4
-           * Perform an action on resolve of final promise
+           * Etape 4
+           * Exécute une action à la résolution de la promesse finale
            */
           logger.info('Activated Avengers View');
       });
@@ -988,15 +988,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   function getAvengers() {
         /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Etape 2
+         * Appel du service de données pour récupérer les données
+         * et attend la promesse
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
-                 * Step 3
-                 * set the data and resolve the promise
+                 * Etape 3
+                 * Défini les donnée et résoue la promesse
                  */
                 vm.avengers = data;
                 return vm.avengers;
