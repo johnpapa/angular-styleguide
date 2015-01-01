@@ -1117,7 +1117,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
 
-  - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its stand-alone and as an attribute when it enhances its existing DOM element.
 
     *Why?*: It makes sense.
 
@@ -2565,7 +2565,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Constants can be injected into any angular component, including providers.
 
-    *Why?*: When an application is separated into modules that may be reused in other applications, each standlone module should be able to operation on its own including any dependent constants. 
+    *Why?*: When an application is separated into modules that may be reused in other applications, each stand-alone module should be able to operate on its own including any dependent constants. 
 
     ```javascript
     // Constants used by the entire app
