@@ -2570,13 +2570,13 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     
 ###### [Stile [Y241](#stile-y241)]
 
-  - Usa constanti per i valori che non cambiano e che non provengono da un altro servizio. Quando le costanti sono utilizzate sonlo per un modulo che potrebbe essere riutilizzato in più applicazioni, metti le costanti in un file per modulo e nominalo come il modulo. Fintanto che tale necesstià non si presenti, tieni le constanti nel modulo principale in un file `constants.js`.
+  - Usa constanti per i valori che non cambiano e che non provengono da un altro servizio. Quando le costanti sono utilizzate solo per un modulo che potrebbe essere riutilizzato in più applicazioni, metti le costanti in un file per modulo e nominalo come il modulo. Fintanto che tale necesstià non si presenti, tieni le constanti nel modulo principale in un file `constants.js`.
 
     *Perché*: Un valore che potrebbe variare, anche non di frequente, dovrebbe essere recuperato da un servizio così che non sia necessario cambiare il sorgente. Per esempio, una URL per un servizio di accesso ai dati può essere messo in una costante ma un miglior posizionamento sarebbe quello di caricarlo da un web service.
 
     *Perché?*: Le costanti possono essere iniettate in un componente di angular, provider inclusi.
 
-    *Perché?*: Quando una applicazione è separata in modulo che potrebbero essere usati in altre applicazioni, ogni modulo a se stante dovrbbe essre in grado di funzionare da solo ivi incluse ogni costante da cui dipende.
+    *Perché?*: Quando una applicazione è separata in modulo che potrebbero essere usati in altre applicazioni, ogni modulo a se stante dovrebbe essere in grado di funzionare da solo ivi incluse ogni costante da cui dipende.
 
     ```javascript
     // Costanti usate dall'intera applicazione
