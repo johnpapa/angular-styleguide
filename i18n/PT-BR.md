@@ -1567,17 +1567,19 @@ ou *Minificação e Anotação*
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
 ## Exception Handling
+ou *Tratamento de exceção*
 
 ### decorators
+ou *decoradores*
 
-  - Utilize um [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), no seu configutilizando o serviço [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) , no serviço [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar ações customizadas quando um erro ocorrer.
+  - Utilize um [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), no seu config utilizando o serviço [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), no serviço [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar ações customizadas quando um erro ocorrer.
   
-    *Por que?*: Fornece um caminho consistente para manipular erros não tratados pelo AngularJS em tempo de desenvolvimento ou run-time.
+    **Por que?**: Fornece um caminho consistente para manipular erros não tratados pelo AngularJS em tempo de desenvolvimento ou execução (run-time).
 
-    Nota: Outra opção é sobrescrever o serviço ao invés de utilizar um decorator. Esta é uma boa opção, mas se você quer manter o comportamento padrão e estender o decorator é recomendado.
+    Nota: Outra opção é sobrescrever o serviço ao invés de utilizar um decorator. Esta é uma boa opção, mas se você quer manter o comportamento padrão e estender, o decorator é recomendado.
 
   	```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('blocks.exception')
         .config(exceptionConfig);
@@ -1598,9 +1600,9 @@ ou *Minificação e Anotação*
                 cause: cause 
             };
             /**
-             * Could add the error to a service's collection,
-             * add errors to $rootScope, log errors to remote web server,
-             * or log locally. Or throw hard. It is entirely up to you.
+             * Pode adicionar o erro para um serviço de coleções,
+             * adicionar os erros no $rootScope, logar os erros em um servidor remoto
+             * ou logar localmente. Ou lançar a exceção. Isso cabe interiamente à você.
              * throw exception;
              */
             toastr.error(exception.msg, errorData);
@@ -1609,15 +1611,16 @@ ou *Minificação e Anotação*
   	```
 
 ### Exception Catchers
+ou *Coletores de exceção*
 
-  - Criar um factory que expôe uma interface para capturar excessões.
+  - Criar um factory que expôe uma interface para capturar e tratar adequadamente as exceções.
 
-    *Por que?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *Por que?*: Fornece uma forma consistente de coletar exceções que podem ser lançadas no seu código (ex. durante uma chamada XHR ou uma promessa (promise) que falhou).
 
-    Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Nota: O coletor de exceção é bom para coletar e reagir às exceções específicas das chamadas que você sabe que podem ser lançadas. Por exemplo, quando realizar uma chamada XHR que retorna dados de um serviço remoto e você quer coletar qualquer exceção desse serviço, reagindo de uma maneira única.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('blocks.exception')
         .factory('exception', exception);
