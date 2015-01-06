@@ -1967,6 +1967,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 **[Back to top](#table-of-contents)**
 
+### Constants
+###### [Style [Y130](#style-y130)]
+
+  - Separate constants for a module into its own file named after the module. The constants file for the main `app` module is named `app.constants.js` (or simply `constants.js`). The constants file for a module named `admin.module.js` is named `admin.constants.js`.
+
+**[Back to top](#table-of-contents)**
+
+
 ## Application Structure LIFT Principle
 ### LIFT
 ###### [Style [Y140](#style-y140)]
