@@ -1245,17 +1245,17 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 ## Resolving Promises for a Controller
 
-### Controller Activation Promises
+### Promesses d'Activation du Controller
 ###### [Style [Y080](#style-y080)]
 
-  - Resolve start-up logic for a controller in an `activate` function.
+  - Résolvez la logique de démarrage d'un controlleur dans une fonction `activate`.
 
-    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    *Pourquoi ?* : Placer la logique de démarrage toujours au même endroit permet de le rendre plus facile à localiser, plus cohérent à tester, et permet d'éviter la dispersion de la logique d'activation à travers le controlleur.
 
-    Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le controlleur, utilisez une résolution de route à la place.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1269,7 +1269,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1288,24 +1288,24 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Route Resolve Promises
+### Promesses de Résolution de Route
 ###### [Style [Y081](#style-y081)]
 
-  - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - Lorsqu'un controlleur dépend d'une promesse qui doit être résolue, résolvez ces dépendances dans le `$routeProvider` avant que la logique du controlleur soit éxécutée. Si vous avez besoin d'annuler une route sous certaines conditions avant que le controlleur soit activé, utilisez un resolver de route.
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *Pourquoi ?* : Un controlleur pourrait avoir besoin de données avant qu'il se charge. Cette donnée pourrait venir d'une promesse via une factory personnalisée ou de  [$http](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [resolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du controlleur s'éxécute, ainsi on peut prendre des actions basées sur cette donnée à partir de la promesse.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   angular
       .module('app')
       .controller('Avengers', Avengers);
 
   function Avengers(movieService) {
       var vm = this;
-      // unresolved
+      // non-résolue
       vm.movies;
-      // resolved asynchronously
+      // résolue de façon asynchrone
       movieService.getMovies().then(function(response) {
           vm.movies = response.movies;
       });
@@ -1313,7 +1313,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* better */
+  /* mieux */
 
   // route-config.js
   angular
@@ -1346,9 +1346,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    Note : Les dépendances dans l'exemple de code sur `movieService` n'est pas directement compatible avec la minification. Pour les détails sur la façon de rendre ce code compatible avec la minification, voir la section sur l'[injection de dépendance](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-of-contents)**
 
 ## Manual Annotating for Dependency Injection
 
