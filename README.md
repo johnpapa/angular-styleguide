@@ -2367,6 +2367,32 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
+### Organizing Tests
+###### [Style [Y197](#style-y197)]
+
+  - Place unit test files (specs) side-by-side with your client code. Place specs that cover server integration or test multiple components in a separate `tests` folder.
+
+    *Why?*: Unit tests have a direct correlation to a specific component and file in source code. 
+
+    *Why?*: It is easier to keep them up to date since they are always in sight. When coding whether you do TDD or test during development or test after development, the specs are side-by-side and never out of sight nor mind, and thus more likely to be maintained which also helps maintain code coverage.
+
+    *Why?*: When you update source code it is easier to go update the tests at the same time.
+
+    *Why?*: Placing them side-by-side makes it easy to find them and easy to move them with the source code if you move the source.
+
+
+    *Why?*: Separating specs so they are not in a distributed build is easy with grunt or gulp.
+
+    ```
+    /src/client/app/customers/customer-detail.controller.js
+                             /customer-detail.controller.spec.js
+                             /customers.controller.spec.js
+                             /customers.controller-detail.spec.js
+                             /customers.module.js
+                             /customers.route.js
+                             /customers.route.spec.js
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Animations
