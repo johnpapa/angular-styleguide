@@ -1346,21 +1346,21 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-    Note : Les dépendances dans l'exemple de code sur `movieService` n'est pas directement compatible avec la minification. Pour les détails sur la façon de rendre ce code compatible avec la minification, voir la section sur l'[injection de dépendance](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
+    Note : Les dépendances dans l'exemple de code sur `movieService` ne sont pas directement compatibles avec la minification. Pour les détails sur la façon de rendre ce code compatible avec la minification, voir la section sur l'[injection de dépendance](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
 
 **[Retour en haut de page](#table-of-contents)**
 
-## Manual Annotating for Dependency Injection
+## Annoter Manuellement pour l'Injection de Dépendances
 
-### UnSafe from Minification
+### Non Sur pour la Minification
 ###### [Style [Y090](#style-y090)]
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - Eviter l'utilisation de la syntaxe raccourcie de déclaration des dépendances sans utiliser une approche sûre pour la minification.
 
-    *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *Pourquoi ?* : Les paramètres du composant (ex: controlleur, factory, etc.) seront converties en variables mutilées. Par exemple, ˋcommonˋet ˋdataserviceˋ deviendraient ˋaˋet ˋbˋ et ne seraient pas trouvées par AngularJS.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* à éviter - non sûr pour la minification */
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1369,26 +1369,26 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Ce code pourrait produire des variables mutilées après minification et en cela provoquer des erreurs à l'éxécution.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* à éviter - non sûr pour la minification */
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Manually Identify Dependencies
+### Identifier Manuellement les Dépendances
 ###### [Style [Y091](#style-y091)]
 
-  - Use `$inject` to manually identify your dependencies for AngularJS components.
+  - Utilisez ˋ$injectˋpour identifier manuellement vos dépendances de composants AngularJS.
 
-    *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *Pourquoi ? * : Cette technique est la même que celle utilisée par [`ng-annotate`](https://github.com/olov/ng-annotate), que je recommande pour automatiser la création de dépendances sûres pour la minification. Si ˋng-annotateˋ détecte que l'injection a déjà été faite, celà ne la dupliquera pas.
 
-    *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *Pourquoi ?* : Ca préserve vos dépendances d'être vulnérable aux problèmes de minification lorsque les paramètres sont mutilés. Par exemple, ˋcommonˋet ˋdataserviceˋpourraient devenir ˋaˋ et ˋbˋ et ne pas être trouvés par AngularJS.
 
-    *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function.
+    *Pourquoi ?* : Eviter de créer en ligne une longue liste de dépendances peut rendre le tableau difficile à lire. De même, il peut entraîner une confusion dans la mesure où le tableau est une série de chaînes de caratères alors que le dernier élément est le nom de la fonction du composant.
 
     ```javascript
-    /* avoid */
+    /* à éviter */
     angular
         .module('app')
         .controller('Dashboard',
@@ -1398,7 +1398,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     ```
 
     ```javascript
-    /* avoid */
+    /* à éviter */
     angular
       .module('app')
       .controller('Dashboard',
@@ -1409,7 +1409,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     ```
 
     ```javascript
-    /* recommended */
+    /* recommandé */
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1420,12 +1420,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-    Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
+    Note : Lorsque votre fonction est sous une instruction de return, le $inject peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez résoudre ça soit en déplaçant le $inject au dessus de l'instruction de return soit en utilisant la syntaxe d'injection avec le tableau.
 
-    Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
+    Note : [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) a introduit une fonctionnalité où il déplace le ˋ$injectˋ là où il devient accessible.
 
     ```javascript
-    // inside a directive definition
+    // à l'intérieur d'une définition de directive
     function outer() {
         return {
             controller: DashboardPanel,
@@ -1438,7 +1438,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     ```
 
     ```javascript
-    // inside a directive definition
+    // à l'intérieur d'une définition de directive.
     function outer() {
         DashboardPanel.$inject = ['logger']; // reachable
         return {
@@ -1450,17 +1450,17 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-### Manually Identify Route Resolver Dependencies
+### Identifier Manuellement les Dépendances du Route Resolver
 ###### [Style [Y092](#style-y092)]
 
-  - Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  - Utilisez $inject pour identifier manuellement vos dépendances du route resolver pour les composants AngularJS.
 
-    *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *Pourquoi ?* : Cette technique divise la fonction anonyme pour le route resolver, la rendant plsu facile à lire.
 
-    *Why?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *Pourquoi ?* : Une instruction `$inject` peut facilement précéder le resolver à manipuler rendant n'importe quelle dépendance sûre à la minification.
 
     ```javascript
-    /* recommended */
+    /* recommandé */
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1479,7 +1479,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matieres)**
 
 ## Minification and Annotation
 
