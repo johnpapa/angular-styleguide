@@ -2382,6 +2382,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Placing them side-by-side makes it easy to find them and easy to move them with the source code if you move the source.
 
+    *Why?*: Having the spec nearby makes it easier for the source code reader to learn how the component is supposed to be used and to discover its known limitations.
 
     *Why?*: Separating specs so they are not in a distributed build is easy with grunt or gulp.
 
