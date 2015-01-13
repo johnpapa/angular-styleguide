@@ -2395,7 +2395,8 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     *Perché?*: Quando aggiorni i sorgenti, è più semplice andare ad aggiornare anche i test.
 
     *Perché?*: Posizionarli vicino rende semplice trovarli e spostarli con i sorgenti qualora ciò accada.
-
+    
+    *Perché?*: Avere le specifiche vicino rende più facile al lettore del codice sorgente imparare come il componente dovrebbe essere usato e scoprire le sue limitazioni.
 
     *Perché?*: Separare le specifiche così da non essere nella build di distribuzione è semplice con grunt o gulp.
 
