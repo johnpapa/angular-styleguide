@@ -1481,20 +1481,20 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matieres)**
 
-## Minification and Annotation
+## Minification et Annotation
 
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
+  - Utilisez [ng-annotate](//github.com/olov/ng-annotate) pour [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) et commentez les fonctions qui nécessitent l'injection de dépendances automatique en utilisant `/** @ngInject */`.
 
-    *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *Pourquoi ?* : Ca préserve votre code de n'importe quelle dépendance qui pourrait ne pas utiliser les pratiques sûres à la minification.
 
-    *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
+    *Pourquoi ?*: [`ng-min`](https://github.com/btford/ngmin) est déprécié.
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    >Je préfère Gulp car ça me paraît plus facile à écrire, lire et débugger.
 
-    The following code is not using minification safe dependencies.
+    Le code suivant n'utilise pas de dépendances sûres à la minification.
 
     ```javascript
     angular
@@ -1514,7 +1514,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Lorsque le code ci-dessus est éxécuté par ng-annotate il produira le résultat suivant avec l'annotation ˋ$injectˋ et deviendra sûr à la minification.
 
     ```javascript
     angular
@@ -1536,12 +1536,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Note : Si ˋng-annotateˋ détecte que l'injection a déjà été faite (ex : ˋ@ngInjectˋ a été détécté), il ne dupliquera pas le code ˋ$injectˋ.
 
-    Note: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Note : Lors de l'utilisation d'un route resolver, vous pouvez préfixer la fonction de résolution avec `/* @ngInject */` et cela produira le code proprepement annoté, en gardant toute dépendance injectée sûre à la minification.
 
     ```javascript
-    // Using @ngInject annotations
+    // En utilisant les annotations @ngInject
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1557,17 +1557,17 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-    > Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    > Note : A partir d'AngularJS 1.3, utilisez le paramètre ˋngStrictDiˋ de la directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Avec ce paramètre, l'injecteur sera créé en mode "strict-di" qui rendra fera échouer les invocations de fonctions de l'application qui n'utilisent pas explicitement les annotation de fonction (ceci peut ne pas être sûr à la minification). Débugger les informations qui seront logguées dans la console peut aider à débusquer le code à l'origine.
     `<body ng-app="APP" ng-strict-di>`
 
-### Use Gulp or Grunt for ng-annotate
+### Utilisation de Gulp ou Grunt pour ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - Utilisez [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ou [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) dans une tâche de build automatisée. Injectez `/* @ngInject */` avant toute fonction qui possède des dépendances.
 
-    *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+    *Pourquoi ?* : ng-annotate va intercepter la plupart des dépendances, mais parfois va nécessiter des indices grâce à l'utilisation de la syntaxe `/* @ngInject */ˋ.
 
-    The following code is an example of a gulp task using ngAnnotate
+    Le code ci-dessous est un exemple d'une tâche gulp qui utilise ngAnnotate
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
@@ -1575,10 +1575,10 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
-            // Annotate before uglify so the code get's min'd properly.
+            // Annotate est avant uglify pour que le code soit minifié correctement.
             .pipe(ngAnnotate({
-                // true helps add where @ngInject is not used. It infers.
-                // Doesn't work with resolve, so we must be explicit there
+                // true permet de l'ajouter là où @ngInject n'est pas utilisé. C'est inféré.
+                // Ne fonctionne pas avec resolve, donc nous devons être explicite ici.
                 add: true
             }))
             .pipe(bytediff.start())
@@ -1590,7 +1590,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Exception Handling
 
