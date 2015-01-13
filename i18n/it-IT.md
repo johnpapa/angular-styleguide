@@ -8,9 +8,11 @@
 
 Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team. 
 
+L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con AngularJS mostrando le convenzioni che uso e, più importante, perché le uso.
+
 >Se ti piace questa guida, dai un'occhiata al mio corso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight.
 
-L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con AngularJS mostrando le convenzioni che uso e, più importante, perché le uso.
+  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Eccezionalità della comunità e riconoscimenti
 Mai lavorare nel vuoto. Ritengo che la comunità intorno ad AngularJS sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di AngularJS, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
@@ -2380,6 +2382,32 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     ```
 
   ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+
+### Organizzazione dei test
+###### [Stile [Y197](#stile-y197)]
+
+  - Posiziona i file degli unit test vicino al codice del client. Posiziona le specifiche che coprono l'integrazione con il server o che testano più componenti in una cartella separata `tests`.
+
+    *Perché?*: Gli unit test hanno una correlazione diretta con un componente specifico e un file nei sogenti. 
+
+    *Perché?*: È più semplice da tenere aggiornati dal momento che sono sempre a vista. Quando scrivi codice, sia che tu faccia TDD o fai i test durante o dopo lo sviluppo, le scpecifiche sono sempre di fianco e mai fuori dalla vista o dai pensieri, quindi è più probabile che siano aggiornati e ciò consente inoltre a mantenere una migliore copertura del codice.
+
+    *Perché?*: Quando aggiorni i sorgenti, è più semplice andare ad aggiornare anche i test.
+
+    *Perché?*: Posizionarli vicino rende semplice trovarli e spostarli con i sorgenti qualora ciò accada.
+
+
+    *Perché?*: Separare le specifiche così da non essere nella build di distribuzione è semplice con grunt o gulp.
+
+    ```
+    /src/client/app/customers/customer-detail.controller.js
+                             /customer-detail.controller.spec.js
+                             /customers.controller.spec.js
+                             /customers.controller-detail.spec.js
+                             /customers.module.js
+                             /customers.route.js
+                             /customers.route.spec.js
+    ```
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
