@@ -13,7 +13,7 @@
 
 >Ако ви се допаѓа овој водич, тогаш проверете ми го курсот [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) на Pluralsight.
 
-![AngularJs Шаблон: Чист Код](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)
+[![AngularJs Шаблон: Чист Код](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Величествена заедница и заслуга
 Никогаш не работи во вакуум. Јас сметам дека AngularJS заедницата е неверојатна група кои се страсни за споделување искуство. Како резултат, јас и мојот пријател кој е AngularJS експерт, Todd Motto соработувавме со многу стилови и конвенции. Се согласуваме на повеќето, додека на останатите се разликуваме. Ве охрабрувам да ги погледнете на [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) со цел да добиете осет за неговиот пристап и како се споредува.
