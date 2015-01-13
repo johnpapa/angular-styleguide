@@ -27,7 +27,7 @@
 ##Преводи 
 [Преводи од овој AngularJS водич на кодирање](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) се одржувани од заедницата и можете да ги најдете тука.
 
-## Содржина
+## Table of contents
 
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
