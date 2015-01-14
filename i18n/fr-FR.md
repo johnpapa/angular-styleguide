@@ -32,7 +32,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
   1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
   1. [Minification and Annotation](#minification-and-annotation)
-  1. [Exception Handling](#exception-handling)
+  1. [Gestion des Exceptions](#gestion-des-exceptions)
   1. [Naming](#naming)
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
@@ -1592,19 +1592,19 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Exception Handling
+## Gestion des Exceptions
 
-### decorators
+### decorateurs
 ###### [Style [Y110](#style-y110)]
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - Utilisez un [decorateur](https://docs.angularjs.org/api/auto/service/$provide#decorator), au moment de la configuration en utilisant le service [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sur le service [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) pour effecture des actions personnalisées lorsque des exceptions se produisent.
 
-    *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
+    *Pourquoi ?* : Fournir un moyen cohérent pour gérer les exceptions non interceptées d'AngularJS pendant le développement ou à l'éxécution.
 
-    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    Note : Une autre possibilité serait de surcharger le service au lieu d'utiliser un décorateur. C'est une bonne possibilité, mais si vou voulez garder le comportement par défaut et l'étendre, un décorateur est plus approprié.
 
   	```javascript
-    /* recommended */
+    /* recommandé */
     angular
         .module('blocks.exception')
         .config(exceptionConfig);
@@ -1625,9 +1625,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
                 cause: cause
             };
             /**
-             * Could add the error to a service's collection,
-             * add errors to $rootScope, log errors to remote web server,
-             * or log locally. Or throw hard. It is entirely up to you.
+             * On pourrait ajouter l'erreur à une collection d'un service,
+             * ajouter les erreurs au $rootScope, loguer les erreurs vers un serveur distant,
+             * ou loguer locallement. Ou rejetter directement. C'est entièrement votre choix.
              * throw exception;
              */
             toastr.error(exception.msg, errorData);
@@ -1635,17 +1635,17 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
   	```
 
-### Exception Catchers
+### Catcher d'Exceptions
 ###### [Style [Y111](#style-y111)]
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - Créer une factory qui expose une interface pour attraper et gérer correctement les exceptions.
 
-    *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *Pourquoi ?* : Fournir un moyen cohérent pour gérer les exception qui peuvent être déclenchées dans votre code (par example, pendant un appel Ajax ou lors d'un échec d'une promesse).
 
-    Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Note : Le catcher d'axception est bon pour attraper et réagir à des exceptions spécifiques provenant d'appels dont vous savez qu'elles sont déclenchées. Par exemple, lorsque on fait un appel Ajax pour récuppérer des données d'un serveur distant et que vous voulez attraper n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celui-ci.
 
     ```javascript
-    /* recommended */
+    /* recommandé */
     angular
         .module('blocks.exception')
         .factory('exception', exception);
@@ -1666,22 +1666,22 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-### Route Errors
+### Erreurs de Routage
 ###### [Style [Y112](#style-y112)]
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Gérez et loguez toute erreur de routage en utilisant [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *Why?*: Provides a consistent way handle all routing errors.
+    *Pourquoi ?* : Fournir un moyen cohérent de gérer les erreurs de routage.
 
-    *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.
+    *Pourquoi ?* : Fournir potentiellement une meilleure expérience utilisateur si une erreur de routage se produit et les rediriger vers un écran convivial avec plus de détails ou les possibilités de s'en sortir.
 
     ```javascript
-    /* recommended */
+    /* recommandé */
     function handleRoutingErrors() {
         /**
-         * Route cancellation:
-         * On routing error, go to the dashboard.
-         * Provide an exit clause if it tries to do it twice.
+         * Annulation du routage:
+         * Sur une erreur de routage, aller au dashboard.
+         * Fournir une clause de sortie s'il essaye de le faire deux fois.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
@@ -1689,8 +1689,8 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
                     'unknown target';
                 var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
                 /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
+                 * Loguer éventuellement en utilisant un service personnalisé ou $log.
+                 * (N'oubliez pas d'injecter votre service personnalisé)
                  */
                 logger.warning(msg, [current]);
             }
@@ -1698,7 +1698,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matieres)**
 
 ## Naming
 
