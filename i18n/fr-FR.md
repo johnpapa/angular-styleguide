@@ -1700,34 +1700,34 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matieres)**
 
-## Naming
+## Nommage
 
-### Naming Guidelines
+### Règles de Nommage
 ###### [Style [Y120](#style-y120)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    *   the file name (`avengers.controller.js`)
-    *   the registered component name with Angular (`AvengersController`)
+  - Utilisez des noms cohérents pour tous les composants en utilisant un pattern qui décrit la fonctionnalité de ce composant puis (éventuellement) son type. Le pattern que je recommande est `fonctionnalité.type.js`. Il y a 2 noms pour la plupart des resources:
+    *   le nom du fichier (`avengers.controller.js`)
+    *   le nom du composant déclaré à Angular (`AvengersController`)
 
-    *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+    *Pourquoi ?* : Les conventions de nommage donnent une façon cohérente de s'y retrouver en un clin d'oeil. La cohérence dans tout le projet est vitale. La cohérence au sein de l'équipe est importante. La cohérence dans l'entreprise apporte une efficacité redoutable.
 
-    *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand.
+    *Pourquoi ?* : Les conventions de nommage doivent simplement vous aider à naviguer dans le code plus vite et le rendre plus facile à comprendre.
 
-### Feature File Names
+### Nom des Fichiers de Fonctionnalités
 ###### [Style [Y121](#style-y121)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - Utilisez des noms cohérents pour tous les composants qui suivent un pattern qui décrit la fonctionnalité d'un composant et (éventuellent) son type. Le pattern que je recommande est `fonctionnalité.type.js`.
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *Pourquoi ?* : Offre une façon cohérente d'identifier rapidement les composants.
 
-    *Why?*: Provides pattern matching for any automated tasks.
+    *Pourquoi ?* : Fournit un pattern matching pour automatiser des tâches.
 
     ```javascript
     /**
-     * common options
+     * possibilités couramment rencontrées.
      */
 
-    // Controllers
+    // Controlleurs
     avengers.js
     avengers.controller.js
     avengersController.js
@@ -1740,10 +1740,10 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     ```javascript
     /**
-     * recommended
+     * recommandé
      */
 
-    // controllers
+    // controlleurs
     avengers.controller.js
     avengers.controller.spec.js
 
@@ -1751,10 +1751,10 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     logger.service.js
     logger.service.spec.js
 
-    // constants
+    // constantes
     constants.js
 
-    // module definition
+    // definition de module
     avengers.module.js
 
     // routes
@@ -1769,29 +1769,29 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Note : Une autre convention courante consiste à nommer les fichiers de controlleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions étant maintenues avec un suffixe par type. Les controlleurs étant les les types de composant les plus courants, ça permet d'économiser la frappe au clavier tout en étant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe.
 
     ```javascript
     /**
-     * recommended
+     * recommandé
      */
-    // Controllers
+    // Controlleurs
     avengers.js
     avengers.spec.js
     ```
 
-### Test File Names
+### Nommage des Fichiers de Test
 ###### [Style [Y122](#style-y122)]
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.
+  - Les spécifications du nommage des tests est similaire à celui du composant qu'il teste avec un suffixe `spec`.
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement les composants.
 
-    *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *Pourquoi ?* : Permet le pattern matching pour [karma](http://karma-runner.github.io/) ou d'autres moteurs de tests.
 
     ```javascript
     /**
-     * recommended
+     * recommandé
      */
     avengers.controller.spec.js
     logger.service.spec.js
@@ -1799,18 +1799,18 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     avenger-profile.directive.spec.js
     ```
 
-### Controller Names
+### Nommage des Controlleurs
 ###### [Style [Y123](#style-y123)]
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Utilisez des noms cohérents pour tous les controlleurs nommés d'après leur fonctionnalité. Utilisez le CamelCaseEnMajuscule, puisque ce sont des constructeurs.
 
-    *Why?*: Provides a consistent way to quickly identify and reference controllers.
+    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les controlleurs.
 
-    *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *Pourquoi ?* : Le CamelCaseEnMajuscules est la convention pour identifier les objets qui peuvent être instanciés avec un controleur.
 
     ```javascript
     /**
-     * recommended
+     * recommandé
      */
 
     // avengers.controller.js
@@ -1821,18 +1821,18 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     function HeroAvengers(){ }
     ```
 
-### Controller Name Suffix
+### Suffixe des Noms de Controlleurs
 ###### [Style [Y124](#style-y124)]
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - Ajoutez au nom du controlleur le suffixe ˋControllerˋ ou pas de suffixe du tout. Choississez une des deux conventions, pas les deux à la fois.
 
-    *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+    *Pourquoi ?* : Le suffixe ˋControllerˋ est utilisé souvent et il est plus explicitement descriptif.
 
-    *Why?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
+    *Pourquoi ?* : Omettre le suffixe est plus succint et le controlleur est souvent facilement identifiable même sans le suffixe.
 
     ```javascript
     /**
-     * recommended: Option 1
+     * recommandé: Option 1
      */
 
     // avengers.controller.js
@@ -1845,7 +1845,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     ```javascript
     /**
-     * recommended: Option 2
+     * recommandé: Option 2
      */
 
     // avengers.controller.js
@@ -1856,16 +1856,16 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     function AvengersController(){ }
     ```
 
-### Factory Names
+### Nommage des Factory
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Utilisez des noms cohérents pour toutes les foactories nommées d'après la fonctionnalitée. Utilisez le camel-case pour les services et les factories.
 
-    *Why?*: Provides a consistent way to quickly identify and reference factories.
+    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les factories.
 
     ```javascript
     /**
-     * recommended
+     * recommandé
      */
 
     // logger.service.js
@@ -1876,16 +1876,16 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     function logger(){ }
     ```
 
-### Directive Component Names
+### Nommage des Directives de Composants
 ###### [Style [Y126](#style-y126)]
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Utilisez des noms cohérents pour toutes les directives en utilisant le camel-case. Utilisez un préfixe court pour décrire le domaine à laquelle les directives appartiennent (exemples : préfixe de la société ou préfixe du projet).
 
-    *Why?*: Provides a consistent way to quickly identify and reference components.
+    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les composants.
 
     ```javascript
     /**
-     * recommended
+     * recommandés
      */
 
     // avenger-profile.directive.js
@@ -1893,7 +1893,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         .module
         .directive('xxAvengerProfile', xxAvengerProfile);
 
-    // usage is <xx-avenger-profile> </xx-avenger-profile>
+    // l'usage est <xx-avenger-profile> </xx-avenger-profile>
 
     function xxAvengerProfile(){ }
     ```
@@ -1901,27 +1901,27 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Modules
 ###### [Style [Y127](#style-y127)]
 
-  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+  - Lorqu'il y a de multiples modules, le fichier du module principal est nommé ˋapp.module.jsˋ tandis que les autres modules dépendants sont nommés d'après ce qu'ils représentent. Par exemple, un module d'admin est nommé ˋadmin.module.jsˋ. Les noms des modules déclarés seraient respectivement ˋappˋ et ˋadminˋ.
 
-    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *Pourquoi ?* : Fournit de la cohérence pour les applications multi-modules, et pour les applications qui grossissent.
 
-    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *Pourquoi ?* : Fournit une façon aisée d'utiliser l'automatisation des tâches afin de charger toutes les définitions de modules en premier, puis ensuite tous les autres fichiers angular (pour l'assemblage).
 
 ### Configuration
 ###### [Style [Y128](#style-y128)]
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - Séparer la configuration d'un module dans son propre fichier nommé d'après le module. Un fichier de configuration du module principal ˋappˋ est nommé ˋapp.config.jsˋ (ou simplement ˋconfig.jsˋ). Une configuration pour un module nommé ˋadmin.module.jsˋ est nommé ˋadmin.config.jsˋ.
 
-    *Why?*: Separates configuration from module definition, components, and active code.
+    *Pourquoi ?* : Sépare la configuration de la définition du module, du composant et du code actif.
 
-    *Why?*: Provides a identifiable place to set configuration for a module.
+    *Pourquoi ?* : Fournit un endroit bien identifié pour mettre la configuration d'un module.
 
 ### Routes
 ###### [Style [Y129](#style-y129)]
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
+  - Séparez la configuration de la route dans son propre fichier. Un exemple pourrait être ˋapp.route.jsˋ pour le module principal et ˋadmin.route.jsˋ pour le module d'ˋadminˋ. Même pour de petites applications, il est préférable de privilégier cette séparation du reste de la configuration.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Application Structure LIFT Principle
 ### LIFT
