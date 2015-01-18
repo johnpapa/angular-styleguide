@@ -2326,7 +2326,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Librerie per i test
 ###### [Stile [Y191](#stile-y191)]
 
-  - Usa [Jasmine](http://jasmine.github.io/) oppure [Mocha](http://visionmedia.github.io/mocha/) per lo unit testing.
+  - Usa [Jasmine](http://jasmine.github.io/) oppure [Mocha](http://mochajs.org) per lo unit testing.
 
     *Perché?*: Sia Jasmine che Mocha sono largamente utilizzati nella comunità di AngularJS. Entrambi son stabili, ben manutenuti e forniscono funzionalità solide per i test.
 
