@@ -1206,15 +1206,17 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller: ExampleController,
-          controllerAs: 'vm'
-      };
-      
+            controllerAs: 'vm',
+            bindToController: true // because the scope is isolated
+        };
+
       return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
-          console.log('LINK: scope.vm.min = %i', scope.vm.min);
-          console.log('LINK: scope.vm.max = %i', scope.vm.max);
+          console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+          console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+          console.log('LINK: scope.vm.min = %s', scope.vm.min);
+          console.log('LINK: scope.vm.max = %s', scope.vm.max);
       }
   }
 
@@ -1224,16 +1226,17 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       // Injecting $scope just for comparison
       var vm = this;
 
-      vm.min = 3; 
-      vm.max = $scope.max; 
-      console.log('CTRL: $scope.max = %i', $scope.max);
-      console.log('CTRL: vm.min = %i', vm.min);
-      console.log('CTRL: vm.max = %i', vm.max);
+      vm.min = 3;
+
+      console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
+      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
   }
   ```
 
   ```html
-  /* example.directive.html */
+  <!-- example.directive.html -->
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
@@ -2382,6 +2385,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Placing them side-by-side makes it easy to find them and easy to move them with the source code if you move the source.
 
+    *Why?*: Having the spec nearby makes it easier for the source code reader to learn how the component is supposed to be used and to discover its known limitations.
 
     *Why?*: Separating specs so they are not in a distributed build is easy with grunt or gulp.
 
