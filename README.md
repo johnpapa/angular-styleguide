@@ -1206,13 +1206,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller: ExampleController,
-          controllerAs: 'vm',
-          bindToController: true // because the scope is isolated
+          controllerAs: 'vm'
       };
-
+      
       return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
+          console.log('LINK: scope.max = %i', scope.max);
           console.log('LINK: scope.vm.min = %i', scope.vm.min);
           console.log('LINK: scope.vm.max = %i', scope.vm.max);
       }
@@ -1224,8 +1224,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       // Injecting $scope just for comparison
       var vm = this;
 
-      vm.min = 3;
-      console.log('CTRL: $scope.vm.max = %i', $scope.vm.max);
+      vm.min = 3; 
+      vm.max = $scope.max; 
+      console.log('CTRL: $scope.max = %i', $scope.max);
       console.log('CTRL: vm.min = %i', vm.min);
       console.log('CTRL: vm.max = %i', vm.max);
   }
