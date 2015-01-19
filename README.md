@@ -47,6 +47,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
+  1. [Yeoman Generator](#yeoman-generator)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2707,6 +2708,28 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ```
 
 **[Back to top](#table-of-contents)**
+
+## Yeoman Generator
+You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to create an app that serves as a starting point for Angular that follows this style guide.
+
+1. Install generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. Create a new folder and change directory to it
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. Run the generator
+
+  ```
+  yo hottowel helloWorld
+  ```
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
