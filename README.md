@@ -47,6 +47,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
+  1. [Yeoman Generator](#yeoman-generator)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2708,6 +2709,28 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 **[Back to top](#table-of-contents)**
 
+## Yeoman Generator
+You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to create an app that serves as a starting point for Angular that follows this style guide.
+
+1. Install generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. Create a new folder and change directory to it
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. Run the generator
+
+  ```
+  yo hottowel helloWorld
+  ```
+
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
@@ -2718,8 +2741,8 @@ Open an issue first to discuss potential changes/additions. If you have question
 *By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
 
 ### Process
-    1. Discuss the changes in an Issue. 
-    2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
+    1. Discuss the changes in a GitHub issue. 
+    2. Open a Pull Request against the develop branch, reference the issue, and explain the change and why it adds value.
     3. The Pull Request will be evaluated and either merged or declined.
 
 ## License
