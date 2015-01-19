@@ -48,6 +48,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Yeoman Generator](#yeoman-generator)
+  1. [Routing](#routing)
   1. [Task Automation](#task-automation)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
