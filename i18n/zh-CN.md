@@ -8,9 +8,11 @@
 
 如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个repo正适合你。这里所包含的风格是基于我在团队中使用[AngularJS](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
 
+这个风格指南的目的是为构建AngularJS应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
+
 >如果你喜欢这个指南，请在Pluralsight上检出我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
 
-这个风格指南的目的是为构建AngularJS应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
+  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
 我发现AngularJS社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是AngularJS专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
@@ -1253,7 +1255,9 @@
      
     *为什么？*：把启动逻辑放在一个controller中固定的位置可以更方便定位、有更加一致性的测试，并能够避免在controller中到处都是激活逻辑。
 
-    注意：如果你需要在开始使用controller之前有条件地取消路由，那么就用route resolve来代替。
+    *为什么？*：`activate`这个controller使得重用刷新视图的逻辑变得很方便，把所有的逻辑都放到了一起，可以让用户更快地看到视图，可以很轻松地对`ng-view` 或 `ui-view`使用动画，用户体验更好。
+
+    注意：如果你需要在开始使用controller之前有条件地取消路由，那么就用[route resolve](#style-y081)来代替。
     
   ```javascript
   /* avoid */
@@ -1292,9 +1296,16 @@
 ###Route Resolve Promises
 ###### [Style [Y081](#style-y081)]
 
-  - 当一个controller依赖于一个promise来解决，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
+  - 当一个controller依赖于一个需要在controller被激活之前的就resoved的promise，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
+
+    - 当你决定在过渡到视图之前取消路由时，使用route resolve。
 
     *为什么？*：controller在加载前可能需要一些数据，这些数据可能是从一个通过自定义factory或是[$http](https://docs.angularjs.org/api/ng/service/$http)的promise而来的。[route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider)允许promise在controller的逻辑执行之前解决，因此它可能对从promise中来的数据做一些处理。 
+
+    *为什么？*：这段代码将在路由后的controller的激活函数中执行，视图立即加载，数据绑定将在promise resolve之后，可以（通过ng-view或ui-view）在视图的过渡之间可以加个loading状态的动画。
+
+    注意：这段代码将在路由之前通过一个promise来执行，拒绝了承诺就会取消路由，接受了就会等待路由跳转到新视图。如果你想更快地进入视图，并且无需验证是否可以进入视图，你可以考虑用[控制器 `activate` 技术](#style-y080)代替。
+
 
   ```javascript
   /* avoid */
@@ -1345,8 +1356,45 @@
       vm.movies = moviesPrepService.movies;
   }
   ```
-    
-    注意：示例代码中的`movieService`不是安全压缩的做法，可以到[手动依赖注入](#手动依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
+      注意：下面这个例子展示了命名函数的路由解决，这种方式对于调试和处理依赖注入更加方便。
+
+  ```javascript
+  /* even better */
+
+  // route-config.js
+  angular
+      .module('app')
+      .config(config);
+
+  function config($routeProvider) {
+      $routeProvider
+          .when('/avengers', {
+              templateUrl: 'avengers.html',
+              controller: 'Avengers',
+              controllerAs: 'vm',
+              resolve: {
+                  moviesPrepService: moviesPrepService
+              }
+          });
+  }
+
+  function moviePrepService(movieService) {
+      return movieService.getMovies();
+  }
+
+  // avengers.js
+  angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+  Avengers.$inject = ['moviesPrepService'];
+  function Avengers(moviesPrepService) {
+        var vm = this;
+        vm.movies = moviesPrepService.movies;
+  }
+  ```
+
+  注意：示例代码中的`movieService`不是安全压缩的做法，可以到[手动依赖注入](#手动依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
 
 
 **[返回顶部](#目录)**
@@ -2250,7 +2298,7 @@
 ###测试库
 ###### [Style [Y191](#style-y191)]
 
-  - 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://visionmedia.github.io/mocha/)进行单元测试。
+  - 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://mochajs.org)进行单元测试。
 
     *为什么？*：AngularJS社区中Jasmine和Mocha都用的很广，两者都很稳定，可维护性好，提供强大的测试功能。
 
@@ -2306,6 +2354,31 @@
   ```
 
   ![测试工具](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+
+### 组织测试
+###### [Style [Y197](#style-y197)]
+
+  - 把单元测试的文件放到一个独立的`tests`文件夹中，它和你的客户端代码并列。
+
+    *为什么？*：单元测试和源代码中的每一个组件和文件都有直接的相关性。
+
+    *为什么？*：这样它就会一直在你的视野中，很容易让它们保持在最新状态。编码的时候无论你做TDD还是在开发过程中测试，或者开发完成后测试，这些单测都不会脱离你的视线和脑海，这样就更容易维护，也有助于保持代码的覆盖率。
+
+    *为什么？*：更新源代码的时候可以更简单地在同一时间更新测试代码。
+
+    *为什么？*：方便找。
+
+    *为什么？*：方便使用grunt或者gulp。
+
+    ```
+    /src/client/app/customers/customer-detail.controller.js
+                             /customer-detail.controller.spec.js
+                             /customers.controller.spec.js
+                             /customers.controller-detail.spec.js
+                             /customers.module.js
+                             /customers.route.js
+                             /customers.route.spec.js
+    ```
 
 
 **[返回顶部](#目录)**
@@ -2496,6 +2569,31 @@
           .constant('moment', moment);
   })();
   ```
+
+###### [Style [Y241](#style-y241)]
+
+  - 对于一些不需要变动，也不需要从其它service中获取的值，使用常量定义，当一些常量只是在一个模块中使用但是有可能会在其它应用中使用的话，把它们写到一个以当前的模块命名的文件中。把常量集合到一起是非常有必要的，你可以把它们写到`constants.js`的文件中。
+
+    *为什么？*：一个可能变化的值，即使变动的很少，也会从service中重新被检索，因此你不需要修改源代码。例如，一个数据服务的url可以被放到一个常量中，但是更好的的做法是把它放到一个web service中。
+
+    *为什么？*：常量可以被注入到任何angular组件中，包括providers。
+
+    *为什么？*：当一个应用程序被分割成很多可以在其它应用程序中复用的小模块时，每个独立的模块都应该可以操作它自己包含的相关常量。
+
+    ```javascript
+    // Constants used by the entire app
+    angular
+        .module('app.core')
+        .constant('moment', moment);
+
+    // Constants used only by the sales module
+    angular
+        .module('app.sales')
+        .constant('events', {
+            ORDER_CREATED: 'event_order_created',
+            INVENTORY_DEPLETED: 'event_inventory_depleted'
+        });
+    ```
 
 **[返回顶部](#目录)**
 
