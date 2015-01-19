@@ -48,6 +48,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Yeoman Generator](#yeoman-generator)
+  1. [Task Automation](#task-automation)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2730,6 +2731,31 @@ You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to creat
   ```
   yo hottowel helloWorld
   ```
+
+**[Back to top](#table-of-contents)**
+
+## Task Automation
+Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks. Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+
+###### [Style [Y400](#style-y400)]
+
+  - Use task automation to list module definition files `*.module.js` before all other application JavaScript files.
+
+    *Why?*: Angular needs the module definitions to be registered before they are used.
+
+    *Why?*: Naming modules with a specific pattern such as `*.module.js` makes it easy to grab them with a glob and list them first.
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Always grab module files first
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
+
+**[Back to top](#table-of-contents)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
