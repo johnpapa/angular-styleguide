@@ -1214,12 +1214,12 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
           },
           link: linkFunc,
           controller : ExampleController,
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
       };
       return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
           console.log('LINK: scope.vm.min = %i', scope.vm.min);
           console.log('LINK: scope.vm.max = %i', scope.vm.max);
       }
@@ -1232,8 +1232,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
        var vm = this;
 
        vm.min = 3; 
-       vm.max = $scope.max; 
-       console.log('CTRL: $scope.max = %i', $scope.max);
+       console.log('CTRL: $scope.vm.max = %i', $scope.vm.max);
        console.log('CTRL: vm.min = %i', vm.min);
        console.log('CTRL: vm.max = %i', vm.max);
   }
