@@ -1214,14 +1214,16 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
           },
           link: linkFunc,
           controller : ExampleController,
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
       };
       return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
-          console.log('LINK: scope.vm.min = %i', scope.vm.min);
-          console.log('LINK: scope.vm.max = %i', scope.vm.max);
+      	  console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+      	  console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+          console.log('LINK: scope.vm.min = %s', scope.vm.min);
+          console.log('LINK: scope.vm.max = %s', scope.vm.max);
       }
   }
   
@@ -1231,16 +1233,64 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
      // Iniettare $scope solo per confronto
        var vm = this;
 
-       vm.min = 3; 
-       vm.max = $scope.max; 
-       console.log('CTRL: $scope.max = %i', $scope.max);
-       console.log('CTRL: vm.min = %i', vm.min);
-       console.log('CTRL: vm.max = %i', vm.max);
+       vm.min = 3;
+       
+       console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
+       console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
+       console.log('CTRL: vm.min = %s', vm.min);
+       console.log('CTRL: vm.max = %s', vm.max);
   }
   ```
 
   ```html
-  /* example.directive.html */
+  <!-- example.directive.html -->
+  <div>hello world</div>
+  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
+  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
+  ```
+
+###### [Stile [Y076](#stile-y076)]
+
+  - Usa `bindToController = true` quando usi la sintassi `controller as` con una directive al fine di fare il bind tra lo scope esterno e lo scope del controller della directive.
+
+    *Perché?*: Rende semplice il bind tra lo scope esterno e lo scope del controller delle directive.
+
+    Nota: `bindToController` è stato introdotto con Angular 1.3.0. 
+
+  ```html
+  <div my-example max="77"></div>
+  ```
+
+  ```javascript
+  angular
+      .module('app')
+      .directive('myExample', myExample);
+
+  function myExample() {
+      var directive = {
+          restrict: 'EA',
+          templateUrl: 'app/feature/example.directive.html',
+          scope: {
+              max: '='
+          },
+          controller: ExampleController,
+            controllerAs: 'vm',
+            bindToController: true
+        };
+
+      return directive;
+  }
+
+  function ExampleController() {
+      var vm = this;
+      vm.min = 3;
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
+  }
+  ```
+
+  ```html
+  <!-- example.directive.html -->
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
