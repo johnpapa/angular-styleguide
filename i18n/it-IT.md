@@ -51,6 +51,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [JSHint](#jshint)
   1. [Costanti](#costanti)
   1. [File Template e Snippet](#file-template-e-snippet)
+  1. [Generatore Yeoman](#generatore-yeoman)
   1. [Documentazione di AngularJS](#documentazione-di-angularjs)
   1. [Contribuire](#contribuire)
   1. [Licenza](#licenza)
@@ -2722,8 +2723,30 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
+## Generatore Yeoman
+Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per creare un'app che funga da punto di partenza per Angular che segua questa guida stilistica.
+
+1. Installa generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. Crea un nuova cartella e cambia la directory verso di essa
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. Lancia il generatore
+
+  ```
+  yo hottowel helloWorld
+  ```
+
 ## Documentazione di AngularJS
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+Per qualsiasi altro, riferimento alle API, controlla la [documentazione di Angular](//docs.angularjs.org/api).
 
 ## Contribuire
 
@@ -2733,8 +2756,8 @@ Apri prima una "issue" per discutere potenziali cambiamenti/aggiunte. Se hai del
 
 ### Processo
 
-    1. Discuti i cambiamenti in un Issue. 
-    2. Apri una Pull Request, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
+    1. Discuti i cambiamenti in un Issue di Github. 
+    2. Apri una Pull Request verso la brach develop, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
     3. La Pull Request sarà vagliata e quindi fatto un merge o declinata.
 
 ## Licenza
