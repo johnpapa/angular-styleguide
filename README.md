@@ -1069,11 +1069,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc customer info directive that is specific to sales module at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
-      .module('sales.widgets')
+      .module('sales.customerInfo')
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
