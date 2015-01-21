@@ -52,6 +52,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [Costanti](#costanti)
   1. [File Template e Snippet](#file-template-e-snippet)
   1. [Generatore Yeoman](#generatore-yeoman)
+  1. [Routing](#routing)
+  1. [Automazione dei Processi](#automazione-dei-processi)
   1. [Documentazione di AngularJS](#documentazione-di-angularjs)
   1. [Contribuire](#contribuire)
   1. [Licenza](#licenza)
@@ -2724,6 +2726,8 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Generatore Yeoman
+###### [Stile [Y260](#stile-y260)]
+
 Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per creare un'app che funga da punto di partenza per Angular che segua questa guida stilistica.
 
 1. Installa generator-hottowel
@@ -2744,6 +2748,54 @@ Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per cr
   ```
   yo hottowel helloWorld
   ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## Routing
+Il routing dal lato client è importante al fine di creare un flusso di navigazione tra le viste e le viste composte che sono fatte da diversi template più piccoli e directive.
+
+###### [Stile [Y270](#stile-y270)]
+
+  - Usa [AngularUI Router](http://angular-ui.github.io/ui-router/) per il routing dal lato client.
+
+    *Perché?*: UI Router offre tutte le funzionalità del router di Angular più altre che includono route nidificate e stati.
+
+    *Perché?*: La sintassi è piuttosto simile al router di Angular ed è semplice migrare ad UI Router.
+
+###### [Stile [Y271](#stile-y271)]
+
+  - Definisci le route per le viste nel modulo nel quale esistono. Ogni modulo dovrebbe contenere le route per le viste che si trovano nel modulo.
+
+    *Perché?*: Ogni modulo dovrebbe essere a se stante.
+
+    *Perché?*: Quando rimuovi o aggiungi un modulo, l'app conterrà le route che puntano a viste esistenti.
+
+    *Perché?*: Questo rende semplice abilitare o disabilitare porzioni di una applicazione senza preoccuparsi di route orfane.
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## Automazione dei Processi
+Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks. Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+
+###### [Stile [Y400](#stile-y400)]
+
+  - Usa l'automazione dei processi per listare i file che deinifscono i moduli `*.module.js` prima di ogni altro file dell'applicazione di JavaScript.
+
+    *Perché?*: Angular necessita delle definizioni del moduli che devono essere registrati prima del loro utilizzo.
+
+    *Perché?*: Dai i nomi ai moduli usando un pattern specifico quale `*.module.js` rende semplice prenderli con un glob e listarli prima.
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Prendi sempre i file dei moduli prima
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Documentazione di AngularJS
 Per qualsiasi altro, riferimento alle API, controlla la [documentazione di Angular](//docs.angularjs.org/api).
