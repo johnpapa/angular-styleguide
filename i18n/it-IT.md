@@ -2775,7 +2775,7 @@ Il routing dal lato client è importante al fine di creare un flusso di navigazi
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Automazione dei Processi
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks. Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp tende a codice sopra configurazione mentre Grunt tende a configurazione sopra codice. Personalmente preferisco Gulp perché lo percepisco più semplice da leggere e scrivere ma entrambi sono eccellenti.
 
 ###### [Stile [Y400](#stile-y400)]
 
