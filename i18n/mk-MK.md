@@ -53,6 +53,9 @@
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
+  1. [Yeoman Generator](#yeoman-generator)
+  1. [Routing](#routing)
+  1. [Task Automation](#task-automation)
   1. [AngularJS Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -1184,9 +1187,10 @@
       return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
-          console.log('LINK: scope.vm.min = %i', scope.vm.min);
-          console.log('LINK: scope.vm.max = %i', scope.vm.max);
+          console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+          console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+          console.log('LINK: scope.vm.min = %s', scope.vm.min);
+          console.log('LINK: scope.vm.max = %s', scope.vm.max);
       }
   }
 
@@ -1197,15 +1201,63 @@
           var vm = this;
 
           vm.min = 3; 
-          vm.max = $scope.max; 
-          console.log('CTRL: $scope.max = %i', $scope.max);
-          console.log('CTRL: vm.min = %i', vm.min);
-          console.log('CTRL: vm.max = %i', vm.max);
+          
+          console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
+          console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
+          console.log('CTRL: vm.min = %s', vm.min);
+          console.log('CTRL: vm.max = %s', vm.max);
 	}
   ```
 
   ```html
-  /* example.directive.html */
+  <!-- example.directive.html -->
+  <div>hello world</div>
+  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
+  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
+  ```
+
+###### [Style [Y076](#style-y076)]
+
+  - Употребете `bindToController = true` кога употребувате `controller as` синтакса со директива чиј scope на контролерот ќе биде поврзан со надворешниот scope.
+
+    *Зошто?*: Полесно е да се поврзе надворешниот scope со тој на контролерот во директивата.
+
+   Забелешка: `bindToController` беше воведен во Angular 1.3.0. 
+
+  ```html
+  <div my-example max="77"></div>
+  ```
+
+  ```javascript
+  angular
+      .module('app')
+      .directive('myExample', myExample);
+
+  function myExample() {
+      var directive = {
+          restrict: 'EA',
+          templateUrl: 'app/feature/example.directive.html',
+          scope: {
+              max: '='
+          },
+          controller: ExampleController,
+            controllerAs: 'vm',
+            bindToController: true
+        };
+
+      return directive;
+  }
+
+  function ExampleController() {
+      var vm = this;
+      vm.min = 3;
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
+  }
+  ```
+
+  ```html
+  <!-- example.directive.html -->
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
@@ -2245,7 +2297,7 @@
 
 ### Библиотеки за тестирање
 ###### [Style [Y191](#style-Y191)]
-  - Употребете [Jasmine](http://jasmine.github.io/) или [Mocha](http://visionmedia.github.io/mocha/) за тестирање на единки.
+  - Употребете [Jasmine](http://jasmine.github.io/) или [Mocha](http://mochajs.org) за тестирање на единки.
 
     *Зошто?*: И Jasmine и Mocha се широко употребувани во AngularJS заедницата. И двете се стабилни, добро одржувани и овозможуваат робустни функции за тестирање.
 
@@ -2574,6 +2626,78 @@ angular
 
 **[Назад кон содржината](#table-of-contents)**
 
+## Yeoman Generator
+###### [Style [Y260](#style-y260)]
+
+Можете да го употребите [HotTowel yeoman генераторот](http://jpapa.me/yohottowel) да создадете апликација која ќе биде почетна за Angular следејќи го овој водич.
+
+1. Инсталирајте generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. Создадете нова папка и сменете ја моменталната папка до неа
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. Започнете го генераторот
+
+  ```
+  yo hottowel helloWorld
+  ```
+
+**[Назад кон содржината](#table-of-contents)**
+
+## Routing
+Рутирање од клиентска страна е значајно за создавање на тек во навигација помеѓу прегледи и прегледи составени од помали шаблони и директиви.
+
+###### [Style [Y270](#style-y270)]
+
+  - Употребете го [AngularUI Router](http://angular-ui.github.io/ui-router/) за рутирање од клиентска страна.
+
+    *Зошто?*: UI Router ги овозможува сите функционалности на Angular рутерот плус некои додатни функционалности како вклучување вгнездени рути и состојби.
+
+    *Зошто?*: Синтаксата е прилично слична со Angular рутерот и лесна за миграција на UI Router.
+
+###### [Style [Y271](#style-y271)]
+
+  - Дефинирајте рути за прегледи во модулот каде постојат. Секој модул треба да содржи рути за прегледите во модулот.
+
+    *Зошто?*: Секој модул треба да си биде независен.
+
+    *Зошто?*: Кога бришеме или додаваме модул, апликација ќе ги содржи рутите кои посочуваат кон постоечките прегледи.
+
+    *Зошто?*: Ова го олеснува вклучување или исклучување на делови од апликацијата без грижи околу рути сирачиња.
+
+**[Назад кон содржината](#table-of-contents)**
+
+## Task Automation
+Употребете [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) за создавање автоматизирани задачи. Gulp се приклонува кон код наместо подесување додека Grunt се приклонува кон конфигурација наместо код. Јас лично преферирам Gulp бидејќи сметам е полесно за читање и пишување, но и двата се одлични.
+
+###### [Style [Y400](#style-y400)]
+
+  - Употребете автоматизирање на тестови за вклучување на сите `*.module.js` датотеки пред останатите JavaScript датотеки од апликацијата.
+
+    *Зошто?*: На Angular му требаат дефинициите на модулите да бидат регистрирани пред да бидат употребени. 
+
+    *Зошто?*: Именување на модули со слична шема како `*.module.js` е полесно за нивно превземање со glob и да ги постави први.
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Секогаш превземете ги датотеките со модули први
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
+
+**[Назад кон содржината](#table-of-contents)**
+
 ## AngularJS Docs
 За се останато, референцирајте се до неговото API во [Angular документацијата](//docs.angularjs.org/api).
 
@@ -2584,8 +2708,8 @@ angular
 *Со придонесување до ова складиште, се придржувате вашата содржина да подлежи на лиценцата на ова складиште.*
 
 ### Процес
-    1. Дискусирајте за промените во Issue. 
-    2. Отворете Pull Request, поставете референца до Issue и објаснете ја промената и како додава на вредност.
+    1. Дискусирајте за промените во Github Issue. 
+    2. Отворете Pull Request врз develop гранката, поставете референца до Issue и објаснете ја промената и како додава на вредност.
     3. Pull Request ќе биде оценето и биде или споено или одбиено.
 
 ## License
