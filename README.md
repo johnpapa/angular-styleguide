@@ -2302,11 +2302,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```javascript
   angular
       .module('app')
-      .run(runBlock);
+      .run(block);
 
-    runBlock.$inject = ['authenticator', 'translator'];
+    block.$inject = ['authenticator', 'translator'];
 
-    function runBlock(authenticator, translator) {
+    function block(authenticator, translator) {
         authenticator.initialize();
         translator.initialize();
     }
