@@ -1642,15 +1642,14 @@ ou *Coletores de exceção*
     ```
 
 ### Route Errors
+	- Gerencie e log todos os erros de routing utilizando o [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
-
-    *Why?*: Provides a consistent way handle all routing errors.
-
-    *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.
+    *Por que?*: Fornece uma maneira consistente de gerenciar erros relacionados a routing.
+    
+    *Por que?*: Potencialmente fornece uma melhor experiência de usuário se um erro de routing ocorrer e você redirecionar o usuário para uma tela amigável com mais detalhes ou opções de recuperação.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     function handleRoutingErrors() {
         /**
          * Route cancellation:
@@ -1674,18 +1673,18 @@ ou *Coletores de exceção*
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
-## Naming
+## Nomenclatura
 
-### Naming Guidelines
+### Diretrizes de Nomenclatura
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    *   the file name (`avengers.controller.js`)
-    *   the registered component name with Angular (`AvengersController`)
- 
-    *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+  - Use nomes consistentes para todos os componentes seguindo um padrão que descreve a funcionalidade do componente e (opcionalmente) seu tipo. Meu padrão recomendado é `característica.tipo.js`. Existem dois nomes para a maioria dos componentes:
+  * o nome do arquivo (`avengers.controllers.js`)
+  * o nome de componente registrado pelo Angular (`AvengersController`)
 
-    *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand. 
+	*Por que?*: As convenções de nomenclatura ajudam a fornecer uma maneira consistente de encontrar algo à primeira vista. Consistência dentro do projeto e vital. Consistência dentro de um time é importante. Consistência em toda a empresa proporciona uma enorme eficiência.
 
+    *Por que?*: As convenções de nomenclatura deveriam simplesmente te ajudar a encontrar trechos do seu código mais rápido e torná-lo mais fácil de se entender.
+    
 ### Feature File Names
 
   - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
