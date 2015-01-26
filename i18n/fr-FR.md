@@ -1923,27 +1923,27 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Application Structure LIFT Principle
+## Le Principe LIFT de Structuration de l'Application
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
-  - Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines.
+  - Structurez votre application afin de pouvoir `L`ocaliser le code plus rapidement, `I`dentifier le code d'un seul coup, garder la structure la plus platte possible (`F`lattest), et essayez (`T`ry) de rester DRY (Don't Repeat Yourself). La structure doit suivre ces 4 règles de bases.
 
-    *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
+    *Pourquoi LIFT ?* : Fournit une structure cohérente qui passe bien à l'échelle, qui est modulaire, et facilite l'augmentation de l'efficacité du développeur. Une autre façon de valider la structure de votre application est de vous demander : à quelle vitesse vous pouvez ouvrir et travailler dans tous les fichiés liés à une fonctionnalité ?
 
-    When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines
+    Lorsque je trouve que ma structure n'est pas confortable, je reviens en arrière et je revisite les règles LIFT.
 
-    1. `L`ocating our code is easy
-    2. `I`dentify code at a glance
-    3. `F`lat structure as long as we can
-    4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
+    1. `L`ocaliser le code est facile
+    2. `I`dentifier le code d'un coup
+    3. `F`lat (platte) structure autant que possible
+    4. `T`ry (essayer) de rester DRY (Don’t Repeat Yourself, Ne Pas Se Répéter) ou T-DRY
 
-### Locate
+### Localisation
 ###### [Style [Y141](#style-y141)]
 
-  - Make locating your code intuitive, simple and fast.
+  - Rendez la localisation du code intuitive, simple et rapide.
 
-    *Why?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly,  they will not be able to work as efficiently as possible, and the structure needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
+    *Pourquoi ?* : Je trouve que c'est super important pour un projet. Si l'équipe ne peut pas trouver rapidement les fichiers sur lesquels elle doit travailler, ils ne vont pas être en mesure de travailler aussi efficacement que possible, et la structure devra changer. Vous ne connaissez peut-être pas le nom du fichier où la position des fichiers liés, alors les placer dans les endroits les plus intuitifs et proches les uns les autres permet de gagner un paquet de temps. Une structure de répertoire descriptive peut aider à ça.
 
     ```
     /bower_components
@@ -1963,28 +1963,28 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     .bower.json
     ```
 
-### Identify
+### Identification
 ###### [Style [Y142](#style-y142)]
 
-  - When you look at a file you should instantly know what it contains and represents.
+  - Lorsque vous regardez un fichier vous devriez instantanément savoir ce qu'il contient ce qu'il représente.
 
-    *Why?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
+    *Pourquoi ?* : Vous passez moins de temps à fouiller et vous perdre pour cherche le code, et devenez de plus en plus efficient. Si ça implique des noms de fichier plus long, alors d'accord. Soyez descriptif avec les noms de fichier et leur contenu ne doit contenir exactement qu'un seul composant. Éviter les fichier avec plusieurs controlleurs, plusieurs services, ou un mélange. On pourrait admettre une exception à cette règle si j'ai un ensemble de fonctionnalités très petites qui sont toutes reliées entre elles, elles sont toujours facilement identifiables.
 
-### Flat
+### Plat
 ###### [Style [Y143](#style-y143)]
 
-  - Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
+  - Gardez une structure de répertoire à plat le plus longtemps possible. Lorsque vous avez 7 fichiers ou plus, commencez à penser à séparer.
 
-    *Why?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
+    *Pourquoi ?* : Personne ne souhaite rechercher dans 7 niveaux de répertoires pour trouver un fichier. Pensez aux menus des sites web… rien de plus profond que 2 niveaux ne devrait être sérieursement pris en considération. Dans une structure de répertoire, il n'y a pas de nombre d'or, mais lorsqu'un répertoire à entre 7 et 10 fichiers, il serait temps de créer des sous-répertoires. Basez cela sur votre niveau de confort. Utilisez une structure plus plate jusqu'à ce qu'il y ait un évident intérêt (pour respecter les autres principes LIFT) à créer un sous-répertoire.
 
-### T-DRY (Try to Stick to DRY)
+### T-DRY (Essayer de respecter DRY)
 ###### [Style [Y144](#style-y144)]
 
-  - Be DRY, but don't go nuts and sacrifice readability.
+  - Ne vous répétez pas (DRY), mais pas bêtement à tout prix ni en sacrifiant la lisibilité.
 
-    *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it.
+    *Pourquoi ?* : Ne pas se répéter (DRY) est important, mais pas cricial si vous en êtesréduit à sacrifier les autres principes LIFT, c'est que qu'on peut appeller T-DRY (Essayer de ne pas se répéter). Je ne voudrai pas écrire session-view.html pour une vue, parce que, c'est évidemment une vue. Si ce n'est pas évident ou par convention, alors nommez-le.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Application Structure
 
