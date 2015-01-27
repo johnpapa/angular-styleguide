@@ -2098,30 +2098,30 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Modularity
+## Modularité
 
-### Many Small, Self Contained Modules
+### De Nombreux Petits Modules Auto-Suffisants
 ###### [Style [Y160](#style-y160)]
 
-  - Create small modules that encapsulate one responsibility.
+  - Créez de petits modules qui encapsulent une responsabilité.
 
-    *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
+    *Pourquoi ?* : Les Applications modulaires rendent faciles le branchement rapide puisqu'elles permettent aux équipes de développement de construire des sections verticales de l'application et de livrer incrémentalement. Cela signifie que nous pouvons brancher de nouvelles fonctionnalités à mesure que nous les développons.
 
-### Create an App Module
+### Création d'un Module Applicatif
 ###### [Style [Y161](#style-y161)]
 
-  - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+  - Créez un module racine pour l'application dont le rôle est d'assembler tous les modules et fonctionnalités de votre application. Nommez-le comme votre application.
 
-    *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *Pourquoi ?* : AngularJS encourage la modularité et la séparation des responsabilités. La création d'un module racine pour l'application dont le rôle est de lier ensemble les autres modules fournit un moyen très direct d'ajouter et de retirer des modules à votre application.
 
-### Keep the App Module Thin
+### Garder le Module Applicatif Léger
 ###### [Style [Y162](#style-y162)]
 
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
+  - Ne placez dans le module applicatif que la logique d'assemblage de l'application. Laissez les fonctionnalités dans leurs propres modules.
 
-    *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+    *Pourquoi ?* : Ajouter des responsabilités supplémentaires à l'application racine pour récupérer des données, afficher des vues, ou toute autre logique non reliée à l'assemblage de l'application trouble le module applicatif rend plus difficile à réutiliser ou éteindre les ensembles de fonctionnalités.
 
-    *Why?*: The app module becomes a manifest that describes which modules help define the application.
+    *Pourquoi ?* : Le module applicatif devient une déclaration qui montre quels modules aident à constituer l'application.
 
 ### Feature Areas are Modules
 ###### [Style [Y163](#style-y163)]
