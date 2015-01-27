@@ -1986,38 +1986,38 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Application Structure
+## Structure de l'Application
 
-### Overall Guidelines
+### Règles Générales
 ###### [Style [Y150](#style-y150)]
 
-  -  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  -  Vous devez avoir une vue court terme et une vision à long terme. En d'autres mots, commencez petit et garder en tête là où en est votre application. Tout le code de l'appli va dans un répertoire racine nommé `app`. Tout contenu fonctionnel doit être rangé dans son propre fichier. Chaque controlleur, service, module, vue doit avoir son propre fichier. Tous les scripts provenant de fournisseurs extérieurs doivent être rangés dans un autre répertoire racine et non dans le répertoire `app`. Le code que l'on écrit pas soi-même ne doit pas se mélanger avec son appli (`bower_components`, `script`, `lib`).
 
-    Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Note : Vous trouverez plus de détails et les justifications derrière la structure sur [ce post original sur la structure des applications](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions.
+  - Placez les composants qui définissent le layout principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une vue noyau et le controlleur devrait agir comme conteneur pour l'appli, la nivigation, les menus, les zones de contenu, et les autres régions.
 
-    *Why?*: Organizes all layout in a single place re-used throughout the application.
+    *Pourquoi ?* : Organise tout le layout à un seul endroit réutilisé dans l'application.
 
-### Folders-by-Feature Structure
+### Structure en Répertoires-par-Fonctionnalités
 ###### [Style [Y152](#style-y152)]
 
-  - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed.
+  - Créez des répertoires nommés d'après les fonctionnalités qu'elles représentent. Lorsqu'un répertoire grossit jusqu'à atteindre plus de 7 fichiers, commencez à penser la création d'un répertoire pour ceux-ci. Si votre seuil est différent, ajustez-le au besoin.
 
-    *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names.
+    *Pourquoi ?* : Un développeur peut localiser, identifier ce que représente chaque fichier en sune seule fois, la structure est aussi plate que possible, et il n'y a ni répétitions ni noms redondants.
 
-    *Why?*: The LIFT guidelines are all covered.
+    *Pourquoi ?* : Les règles LIFT sont toutes couvertes.
 
-    *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    *Pourquoi ?* : Aide à diminuer l'entropie de l'appli en organizant le contenu et en le maintenant aligné avec les principes LIFT.
 
-    *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    *Pourquoi ?* : Lorsqu'il y a de nombreux fichiers (+ de 10) les repérer est plus facile avec une structure de répertoires cohérente et plus difficile dans une structure à plat.
 
     ```javascript
     /**
-     * recommended
+     * recommandé
      */
 
     app/
@@ -2053,15 +2053,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Structure d'une Appli Exemple](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      Note: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Note : N'utilisez pas une structuration de répertoires-par-type. Cela requiert de se déplacer entre de multiples répertoires lorsqu'on travaille sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application grossit à 5, 10 ou plus de 25 vues et controlleurs (et autres), ce qui complique la localisation par rapport à des répertoires-par-fonctionnalité.
 
     ```javascript
     /*
-    * avoid
-    * Alternative folders-by-type.
-    * I recommend "folders-by-feature", instead.
+    * à éviter
+    * Trouver une alternative aux répertoires-par-type.
+    * Je vous conseille les "répertoires-par-fonctionnalité", à la place.
     */
 
     app/
@@ -2096,7 +2096,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
             topnav.html
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Modularity
 
