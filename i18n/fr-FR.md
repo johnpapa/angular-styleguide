@@ -1,12 +1,12 @@
-# Le Guide Stylistique AngularJS
+# Le Guide de Style AngularJS
 
-*Le guide d'un certain point de vue stylistique sur AngularJS par [@john_papa](//twitter.com/john_papa)*
+*Le guide d'un point de vue personnel sur le style AngularJS par [@john_papa](//twitter.com/john_papa)*
 
-Si vous cherchez un guide d'un certain point de vue stylistique pour la syntaxe, les conventions, et la structuration d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
+Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
 
 >Si vous appréciez ce guide, visitez mon cours [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight.
 
-Le but de ce guide stylistique est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
+Le but de ce guide de style est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
 
 ## Supprématie de la Communauté et Remerciements
 Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
@@ -2123,42 +2123,42 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     *Pourquoi ?* : Le module applicatif devient une déclaration qui montre quels modules aident à constituer l'application.
 
-### Feature Areas are Modules
+### Les Macro Fonctionnalités en tant que Modules
 ###### [Style [Y163](#style-y163)]
 
-  - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+  - Créez des modules qui représentent des macro fonctionnalités, comme le layout, les services ré-utilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
 
-    *Why?*: Self contained modules can be added to the application with little or no friction.
+    *Pourquoi ?* : Les modules auto-suffisants peuvent être ajoutés à l'application avec peu ou pas de friction.
 
-    *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    *Pourquoi ?* : Les sprints ou itérations peuvent se focaliser sur les macro-fonctionnalités et les activer à la fin de l'itération.
 
-    *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code.
+    *Pourquoi ?* : Séparer les macros-fonctionnalités rend plus facile les tests des modules en isolation et la réutilisation du code.
 
-### Reusable Blocks are Modules
+### Les Blocks Ré-Utilisables en tant que Modules
 ###### [Style [Y164](#style-y164)]
 
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+  - Créez des modules qui représentent des blocs d'application ré-utilisables pour les services en commun tels que la gestion d'exceptions, les logs, les diagnostics, la sécurité et la gestion des données en locale.
 
-    *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    *Pourquoi ?* : Ces types de fonctinnalités sont requises dans de nombreuses application, donc en les gardant séparées dans leur propres modules elles peuvent être génériques par rapport aux applications et peuvent être ré-utilisées pour d'autres applications.
 
-### Module Dependencies
+### Dependences Entre Modules
 ###### [Style [Y165](#style-y165)]
 
-  - The application root module depends on the app specific feature modules and any shared or reusable modules.
+  - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et ré-utilisables.
 
     ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
-    *Why?*: The main app module contains a quickly identifiable manifest of the application's features.
+    *Pourquoi?* : Le module principal de l'appli continent une déclaration rapidement identifible des fonctionnalités de l'application.
 
-    *Why?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency in other applications and still work.
+    *Pourquoi ?* : Chaque groupe de fonctionnalité contient une déclaration de ce dont il dépend, de ce fait il peut être tiré comme dépendance dans d'autres applications et continuer à fonctionner.
 
-    *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *Pourquoi ?* : Les fonctionalités propres à l'appli tels que les services de données partagées deviennent faciles à repérer et partager au sein d'un `app.core` (choisissez un nom de votre choix pour ce module.
 
-    Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisisez-en une qui soit cohérente, suivez les règles des dépendances d'AngularJS, et la maintenance et la montée en charge sera facilitée.
 
-    > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind.
+    > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais soumettez votre structure aux critères de cohérence, maintenance, et efficacité.
 
-    > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
+    > Dans de petites applic, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de cette petite application plus facile, mais rendez difficile la ré-utilisation de ces modules en dehors de cette application.
 
 **[Back to top](#table-of-contents)**
 
