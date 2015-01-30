@@ -295,7 +295,7 @@ ou *Controladores*
 
   - Utilize a sintaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) ao invés da sintaxe `clássica controller com $scope`. 
 
-	**Por que?**: Controllers são construídos, "iniciados", e fornecem um nova instância única, e a sintaxe `controlerAs` é mais próxima de um construtor JavaScriptar do que a `sintaxe clássica do $scope`.
+	**Por que?**: Controllers são construídos, "iniciados", e fornecem um nova instância única, e a sintaxe `controlerAs` é mais próxima de um construtor JavaScript do que a `sintaxe clássica do $scope`.
 
 	**Por que?**: Isso promove o uso do binding de um objeto "pontuado", ou seja, com propriedades na View (ex. `customer.name` ao invés de `name`), que é mais contextual, legível, e evita qualquer problema com referências que podem ocorrer sem a "pontuação"
 
