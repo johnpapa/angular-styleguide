@@ -2218,23 +2218,23 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Angular $ Wrapper Services
+## Les Services de Wrapper $ de Angular
 
-### $document and $window
+### $document et $window
 ###### [Style [Y180](#style-y180)]
 
-  - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
+  - Utilisez [`$document`](https://docs.angularjs.org/api/ng/service/$document) et [`$window`](https://docs.angularjs.org/api/ng/service/$window) au lieu de `document` et `window`.
 
-    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *Pourquoi ?* : Ces services sont wrappés par Angular et plus facilement testables qu'en utilisant document et window dans les tests. Ils vous aident à éviter d'avoir à mocker document et window vous-même.
 
-### $timeout and $interval
+### $timeout et $interval
 ###### [Style [Y181](#style-y181)]
 
-  - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
+  - Utilisez [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) et [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) au lieu de `setTimeout` et `setInterval`.
 
-    *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
+    *Pourquoi ?* : Ces services sont wrappés par Angular et plus facilement testables et gèrent le cycle de digest d'AngularJS conservant un data binding à jour.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
