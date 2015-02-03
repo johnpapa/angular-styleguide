@@ -2162,14 +2162,14 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Back to top](#table-of-contents)**
 
-## Startup Logic
+## Logique de Démarrage
 
 ### Configuration
 ###### [Style [Y170](#style-y170)]
 
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidaes include providers and constants.
+  - Injectez le code à l'intérieur d'une [configuration de module](https://docs.angularjs.org/guide/module#module-loading-dependencies) qui doit être configuré avant l'éxécution de l'appli angular. Parmis les candidats idéaux, on trouve les providers et les constantes.
 
-    *Why?*: This makes it easier to have a less places for configuration.
+    *Pourquoi ?* : Ça rend les choses plus faciles d'avoir le moins d'endroits possible pour placer la configuration.
 
   ```javascript
   angular
@@ -2196,12 +2196,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Run Blocks
+### Blocs Run
 ###### [Style [Y171](#style-y171)]
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Tout code qui nécessite de s'éxécuter lorsque l'application démarre devrait être déclaré dans une factory, exposé via une fonction, et injecté dans un [bloc run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+    *Pourquoi ?* : Le code écrit directement dans un bloc run peut être difficile à tester. Le placer dans une factory le rend plus facile à abstraire et mocker.
 
   ```javascript
   angular
@@ -2216,7 +2216,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Angular $ Wrapper Services
 
