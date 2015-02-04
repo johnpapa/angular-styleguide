@@ -2236,15 +2236,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Testing
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+## Le Test
+Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelques unes de mes recommandations sur les fondamentaux du test unitaire avec des liens pour plus déinformation.
 
-### Write Tests with Stories
+### Écriture des Tests avec les Stories
 ###### [Style [Y190](#style-y190)]
 
-  - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
+  - Écrivez un ensemble de tests pour chaque story. Commencer avec un test vide et complétez-les à mesure que vous écrivez le code pour la story.
 
-    *Why?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+    *Pourquoi ?* : Écrire les descriptions de tests aident à définir clairement ce que votre story devra faire, ne devra pas faire et comment mesurer l'avancement.
 
     ```javascript
     it('should have Avengers controller', function() {
@@ -2263,48 +2263,48 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         //TODO ($httpBackend?)
     });
 
-    // and so on
+    // et ainsi de suite
     ```
 
-### Testing Library
+### Librairie de Test
 ###### [Style [Y191](#style-y191)]
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
+  - Utilisez [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) pour les tests unitaires.
 
-    *Why?*: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
+    *Pourquoi ?* : Jasmine et Mocha sont toutes deux largement utilisées dans la communauté AngularJS. Toutes les deux stables, bien maintenues, et fournissant des fonctionnalités robustes de test.
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+    Note : Lorsque vous utilisez Mocha, utilisez aussi une librairie d'assertion telle que [Chai](http://chaijs.com).
 
-### Test Runner
+### Lanceur de Test
 ###### [Style [Y192](#style-y192)]
 
-  - Use [Karma](http://karma-runner.github.io) as a test runner.
+  - Utilisez [Karma](http://karma-runner.github.io) comme lanceur de test.
 
-    *Why?*: Karma is easy to configure to run once or automatically when you change your code.
+    *Pourquoi ?* : Karma est facile à configurer pour lancer les tests une fois ou automatiquement lorsqu'un changement est fait dans le code.
 
-    *Why?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *Pourquoi ?* : Karma s'intègre facilement dans votre processus d'Intégration Continue soit tout seul ou par Grunt ou Gulp.
 
-    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Pourquoi ?* : Quelques EDI commencent à s'intégrer avec Karma, c'est le cas de [WebStorm](http://www.jetbrains.com/webstorm/) et [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Pourquoi ?* : Karma fonctionne bien avec les leaders de l'automatisation de tâches tel que [Grunt](http://www.gruntjs.com) (avec [grunt-karma](https://github.com/karma-runner/grunt-karma)) ou [Gulp](http://www.gulpjs.com) (avec [gulp-karma](https://github.com/lazd/gulp-karma)).
 
-### Stubbing and Spying
+### Les Stubs et les Spy
 ###### [Style [Y193](#style-y193)]
 
-  - Use Sinon for stubbing and spying.
+  - Utilisez Sinon pour les stubs et les spy.
 
-    *Why?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *Pourquoi ?* : Sinon fonctionne bien avec Jasmine et Mocha et étend les fonctionnalités de stub et de spy qu'ils offrent.
 
-    *Why?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *Pourquoi ?* : Sinon rend plus facile l'alternance entre Jasmine et Mocha, si vous voulez essayer les deux.
 
-### Headless Browser
+### Navigateur sans Interface Graphique
 ###### [Style [Y194](#style-y194)]
 
-  - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - Utilisez [PhantomJS](http://phantomjs.org/) pour éxécuter les tests sur un serveur.
 
-    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server.
+    *Pourquoi?* : PhantomJS est un navigateur sans interface graphique qui peut vous aider à éxécuter les tests sans avoir besoin d'un navigateur "visuel". Ainsi vous n'avez pas besoin d'installer Chrome, Safari, IE, ou d'autres navigateurs sur votre serveur.
 
-    Note: You should still test on all browsers in your environment, as appropriate for your target audience.
+    Note : Que cela ne vous dispense pas de tester sur tous les navigateurs dans votre environnement, d'après les clients que vous ciblez.
 
 ### Code Analysis
 ###### [Style [Y195](#style-y195)]
