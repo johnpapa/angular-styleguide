@@ -2306,27 +2306,27 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
     Note : Que cela ne vous dispense pas de tester sur tous les navigateurs dans votre environnement, d'après les clients que vous ciblez.
 
-### Code Analysis
+### Analyse de Code
 ###### [Style [Y195](#style-y195)]
 
-  - Run JSHint on your tests.
+  - Exécutez JSHint sur vos tests.
 
-    *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Pourquoi ?* : Les tests sont du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Atténuation des Règles JSHint avec les Golbales sur les Tests
 ###### [Style [Y196](#style-y196)]
 
-  - Relax the rules on your test code to allow for common globals such as `describe` and `expect`.
+  - Relaxez les règles sur votre code de test afin de permettre l'usage des globales telles que `describe` et `expect`.
 
-    *Why?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
+    *Pourquoi ?* : Vos tests sont du code et requièrent à ce titre la même attention avec les mêmes règles de qualité de code que votre code de production. Cependant, les variables globales utilisées par les frameworks de test, par exemple, peuvent être relaxées en les incluants dans les spécifications de test.
 
     ```javascript
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Outils de Test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Animations
 
