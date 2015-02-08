@@ -1,0 +1,10 @@
+Change:
+Top level folder structure (changed names have comment afterward)
+  /app
+  /assets (instead of content)
+  /bower_component (instead of scripts)
+  /components (new, a place to keep local, non third party components)
+  /test
+Reason:
+  more specific folder names
+
