@@ -729,7 +729,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expose the callable members of the service (its interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked).
 
@@ -1119,7 +1119,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
 
-  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its stand-alone and as an attribute when it enhances its existing DOM element.
+  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
 
     *Why?*: It makes sense.
 
