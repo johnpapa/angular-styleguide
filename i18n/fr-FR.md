@@ -2415,14 +2415,14 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
 ## JS Hint
 
-### Use an Options File
+### Utilisation d'un Fichier d'Options
 ###### [Style [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
+  - Utilisez JS Hint pour éplucher votre JavaScript et assurez-vous d'avoir personnalisé le fichier d'options JS Hint et incluez le dans le système de gestion de versions. Voir la [doc de JS Hint](http://www.jshint.com/docs/) pour les détails de chaque option.
 
-    *Why?*: Provides a first alert prior to committing any code to source control.
+    *Pourquoi ?* : Fournit une première alerte avant de committer son code dans le système de gestion de version.
 
-    *Why?*: Provides consistency across your team.
+    *Pourquoi ?* : Fournit de la cohérence dans votre équipe.
 
     ```javascript
     {
@@ -2488,7 +2488,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Constants
 
