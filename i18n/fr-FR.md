@@ -2492,12 +2492,12 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
 ## Constants
 
-### Vendor Globals
+### Globales des Librairies Externes
 ###### [Style [Y240](#style-y240)]
 
-  - Create an AngularJS Constant for vendor libraries' global variables.
+  - Créez une Constante AngularJS pour les variables gobales des librairies externes.
 
-    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+    *Pourquoi ?* : Fournit un moyen d'injecter des librairies tierces qui seraient sinon des globales. Cela améliore la testabilité du code en vous permettant de savoir plus facilement quelles sont les dépendances de vos composants évite les abstractions qui fuient). Ça vous permet aussi de mocker ces dépendances, là où cela fait sens.
 
     ```javascript
     // constants.js
@@ -2513,7 +2513,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
