@@ -30,12 +30,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Services de données](#services-de-données)
   1. [Directives](#directives)
   1. [Résolution des Promesses pour un controlleur](#résolution-des-promesses-pour-un-controlleur)
-  1. [Annoter Manuellement pour l'Injection de Dépendances](#annoter-manuellement-pour-l-injection-de-dépendances)
+  1. [Annoter Manuellement pour l'Injection de Dépendances](#annoter-manuellement-pour-linjection-de-dépendances)
   1. [Minification et Annotation](#minification-et-annotation)
   1. [Gestion des Exceptions](#gestion-des-exceptions)
   1. [Nommage](#nommage)
-  1. [Le Principe LIFT de Structuration de l'Application](#le-principe-lift-de-structuration-de-l-application)
-  1. [Structure de l'Application](#structure-de-l-application)
+  1. [Le Principe LIFT de Structuration de l'Application](#le-principe-lift-de-structuration-de-lapplication)
+  1. [Structure de l'Application](#structure-de-lapplication)
   1. [Modularité](#modularité)
   1. [Logique de Démarrage](#logique-de-démarrage)
   1. [Les Services de Wrapper $ de Angular](#les-services-de-wrapper--de-angular)
@@ -1241,7 +1241,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Retour en haut de page](#table-des-matieres)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Résolution des Promesses pour un Controlleur
 
@@ -2490,7 +2490,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Constants
+## Constantes
 
 ### Globales des Librairies Externes
 ###### [Style [Y240](#style-y240)]
