@@ -2361,20 +2361,20 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Comments
+## Commentaires
 
 ### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns. Use `@namespace` and `@memberOf` to match your app structure.
+  - Si vous prévoyez de produire de la documentation de code, utilisez la syntaxe [`jsDoc`](http://usejsdoc.org/) pour documenter les noms de fonction, leur description, paramètres et valeurs de renvoi. Utilisez `@namespace` et `memberOf` pour s'adapter à la structure de votre appli.
 
-    *Why?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *Pourquoi ?* : Vous pouvez générer (et re-générer) la documentation à partir de votre code, au lieu de l'écrire de zéro.
 
-    *Why?*: Provides consistency using a common industry tool.
+    *Pourquoi ?* : Fournit de la cohérence en utilisant un outil industriel commun.
 
     ```javascript
     /**
-     * Logger Factory
+     * Factory de Logger
      * @namespace Factories
      */
     (function() {
@@ -2384,7 +2384,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
       /**
        * @namespace Logger
-       * @desc Application wide logger
+       * @desc Logger de niveau applicatif
        * @memberOf Factories
        */
       function logger($log) {
@@ -2397,8 +2397,8 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
           /**
            * @name logError
-           * @desc Logs errors
-           * @param {String} msg Message to log
+           * @desc Loggue les errors
+           * @param {String} msg Le message à logguer
            * @returns {String}
            * @memberOf Factories.Logger
            */
@@ -2411,7 +2411,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## JS Hint
 
