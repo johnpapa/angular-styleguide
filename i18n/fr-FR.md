@@ -2515,53 +2515,53 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
 **[Retour en haut de page](#table-des-matières)**
 
-## File Templates and Snippets
-Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
+## Templates de Fichiers et Fragments
+Utilisez des templates de fichier ou des fragments pour vous aider à suivre des styles et des patterns cohérents. Voici des templates et/ou fragments pour quelques uns des éditeurs de texte pour le développement web et EDIs.
 
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - AngularJS snippets that follow these styles and guidelines.
+  - Fragments AngularJS qui suivent ces styles et règles.
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true)
-    - Place it in your Packages folder
-    - Restart Sublime
-    - In a JavaScript file type these commands followed by a `TAB`
+    - Téléchargez les [Fragments Angular pour Sublime](assets/sublime-angular-snippets.zip?raw=true)
+    - Placez-les dans votre répertoire Package
+    - Redémarrez Sublime
+    - Dans un fichier de type JavaScript, tapez ces commandes suivies par la touche `TAB`
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
+    ngcontroller // crée un controlleur Angular
+    ngdirective // crée une directive Angular
+    ngfactory // crée une factory Angular
+    ngmodule // crée un module Angular
     ```
 
 ### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+  - Les templates de fichier qui suivent ces styles et règles peuvent être trouvées sur [SideWaffle](http://www.sidewaffle.com)
 
-    - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
-    - Run the vsix file
-    - Restart Visual Studio
+    - Téléchargez l'extension [SideWaffle](http://www.sidewaffle.com) pour Visual Studio (fichier vsix)
+    - Éxécutez le fichier vsix
+    - Re-démarrez Visual Studio
 
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  - Les fragments AngularJS et templates de fichiers qui suivent le style et les règles. Vous pouvez les importer dans les paramètres de WebStorm :
 
-    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true)
-    - Open WebStorm and go to the `File` menu
-    - Choose the `Import Settings` menu option
-    - Select the file and click `OK`
-    - In a JavaScript file type these commands followed by a `TAB`:
+    - Téléchargez les [templates de fichier et fragments WebStorm pour AngularJS](assets/webstorm-angular-file-template.settings.jar?raw=true)
+    - Ouvrez WebStorm et allez dans le menu `File`
+    - Choisissez le menu `Import Settings`
+    - Sélectionnez le fichier et clickez sur `OK`
+    - Dans un fichier de type JavaScript, tapez ces commandes suivies de la touche `TAB` :
 
     ```javascript
-    ng-c // creates an Angular controller
-    ng-f // creates an Angular factory
-    ng-m // creates an Angular module
+    ng-c // crée un controlleur Angular
+    ng-f // crée une factory Angular
+    ng-m // crée un module Angular
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
