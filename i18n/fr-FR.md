@@ -27,26 +27,26 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Controlleurs](#controlleurs)
   1. [Services](#services)
   1. [Factories](#factories)
-  1. [Data Services](#data-services)
+  1. [Services de données](#services-de-données)
   1. [Directives](#directives)
-  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
-  1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
-  1. [Minification and Annotation](#minification-and-annotation)
+  1. [Résolution des Promesses pour un controlleur](#résolution-des-promesses-pour-un-controlleur)
+  1. [Annoter Manuellement pour l'Injection de Dépendances](#annoter-manuellement-pour-l-injection-de-dépendances)
+  1. [Minification et Annotation](#minification-et-annotation)
   1. [Gestion des Exceptions](#gestion-des-exceptions)
-  1. [Naming](#naming)
-  1. [Application Structure LIFT Principle](#application-structure-lift-principle)
-  1. [Application Structure](#application-structure)
-  1. [Modularity](#modularity)
-  1. [Startup Logic](#startup-logic)
-  1. [Angular $ Wrapper Services](#angular--wrapper-services)
-  1. [Testing](#testing)
+  1. [Nommage](#nommage)
+  1. [Le Principe LIFT de Structuration de l'Application](#le-principe-lift-de-structuration-de-l-application)
+  1. [Structure de l'Application](#structure-de-l-application)
+  1. [Modularité](#modularité)
+  1. [Logique de Démarrage](#logique-de-démarrage)
+  1. [Les Services de Wrapper $ de Angular](#les-services-de-wrapper--de-angular)
+  1. [Le Test](#le-test)
   1. [Animations](#animations)
-  1. [Comments](#comments)
+  1. [Commentaires](#commentaires)
   1. [JSHint](#js-hint)
-  1. [Constants](#constants)
-  1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [AngularJS Docs](#angularjs-docs)
-  1. [Contributing](#contributing)
+  1. [Constantes](#constantes)
+  1. [Templates de Fichiers et Fragments](#templates-de-fichiers-et-fragments)
+  1. [Documentation AngularJS](#documentation-angularjs)
+  1. [Contribuer](#contribuer)
   1. [License](#license)
 
 ## Responsabilité Unique
@@ -669,7 +669,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   </div>
   ```
 
-**[Retour en haut de page](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Services
 
@@ -708,7 +708,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-**[Retour en faut de page](#table-of-contents)**
+**[Retour en faut de page](#table-des-matières)**
 
 ## Factories
 
@@ -1004,7 +1004,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-    **[Retour en haut de page](#table-des-matières)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Directives
 ### Limite de 1 Par Fichier
@@ -1241,9 +1241,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Retour en haut de la page](#table-des-matieres)**
+**[Retour en haut de page](#table-des-matieres)**
 
-## Resolving Promises for a Controller
+## Résolution des Promesses pour un Controlleur
 
 ### Promesses d'Activation du Controller
 ###### [Style [Y080](#style-y080)]
@@ -1348,7 +1348,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     Note : Les dépendances dans l'exemple de code sur `movieService` ne sont pas directement compatibles avec la minification. Pour les détails sur la façon de rendre ce code compatible avec la minification, voir la section sur l'[injection de dépendance](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
 
-**[Retour en haut de page](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Annoter Manuellement pour l'Injection de Dépendances
 
@@ -1479,7 +1479,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-**[Retour en haut de page](#table-des-matieres)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Minification et Annotation
 
@@ -1698,7 +1698,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-**[Retour en haut de page](#table-des-matieres)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Nommage
 
@@ -2160,7 +2160,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     > Dans de petites applic, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de cette petite application plus facile, mais rendez difficile la ré-utilisation de ces modules en dehors de cette application.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Logique de Démarrage
 
@@ -2604,4 +2604,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Retour en haut de page](#table-des-latières)**
+**[Retour en haut de page](#table-des-matières)**
