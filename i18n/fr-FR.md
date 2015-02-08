@@ -2563,23 +2563,23 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
 
 **[Retour en haut de page](#table-des-matières)**
 
-## AngularJS docs
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+## Documentation AngularJS
+Pour tout le reste, la référence des API, allez voir la [documentation Angular](//docs.angularjs.org/api).
 
-## Contributing
+## Contribuer
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+Créez d'abord un problème pour discuter de potentiels changements ou ajouts. Si vous avez des questions sur le guide, je vous encourage à les rapporter comme problèmes dans le référentiel. Si vous trouvez une erreur de frappe, créez une pull request. L'idée est de garder le contenu à jour et d'utiliser les fonctionnalités natives de github pour aider à raporter les problèmes et les pull requests, lesquels sont recherchables via google. Pourquoi ? Parce que d'autres pourraient avoir la même question ! Vous en apprendrez plus ci-dessous pour savoir comment contribuer.
 
-*By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
+*En contribuant à ce référentiel, vous acceptez de rendre votre contenu accessible le sujet de la licence de ce référentiel.*
 
-### Process
-    1. Discuss the changes in an Issue.
-    2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
-    3. The Pull Request will be evaluated and either merged or declined.
+### Processus
+    1. Discuter des changements dans une Issue.
+    2. Ouvrir une Pull Request, référencer l'Issue, et expliquer le changement et la raison pour laquelle i lajoute de la valeur.
+    3. La Pull Request sera évaluée et soit mergée ou abandonnée.
 
 ## License
 
-_tldr; Use this guide. Attributions are appreciated._
+_tldr; Utilisez ce guide. Les attributions sont appréciées._
 
 ### (The MIT License)
 
@@ -2604,4 +2604,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-latières)**
