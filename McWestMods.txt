@@ -5,6 +5,17 @@ Top level folder structure (changed names have comment afterward)
   /bower_component (instead of scripts)
   /components (new, a place to keep local, non third party components)
   /test
-Reason:
+Why:
   more specific folder names
+
+Change:
+Omit the type from controller file names (e.g. do not use formulation.controller.js, use formulation.js)
+Why:
+Controllers are still easily identifiable.
+
+Change:
+Omit the 'Controller' suffix from controller names (e.g. do not use FormulationController, use Formulation)
+Why:
+Controllers are still easily identifiable.
+
 
