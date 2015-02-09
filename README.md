@@ -683,6 +683,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
 
   ```javascript
+  /* avoid */
   // service
   angular
       .module('app')
@@ -696,6 +697,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
   ```javascript
+  /* recommended */
   // factory
   angular
       .module('app')
@@ -1098,7 +1100,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -1110,7 +1112,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Provide a Unique Directive Prefix
 ###### [Style [Y073](#style-y073)]
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Provide a short, unique and descriptive directive prefix such as `acme-` which for a directive such as `acmeSalesCustomerInfo` would be declared in HTML as `acme-sales-customer-info`.
 
     *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company.
 
