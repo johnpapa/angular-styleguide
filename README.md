@@ -729,7 +729,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expose the callable members of the service (its interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked).
 
@@ -1098,7 +1098,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -1110,7 +1110,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Provide a Unique Directive Prefix
 ###### [Style [Y073](#style-y073)]
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which would be declared in HTML as `acme-sales-customer-info`.
 
     *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company.
 
@@ -1119,7 +1119,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
 
-  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its stand-alone and as an attribute when it enhances its existing DOM element.
+  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
 
     *Why?*: It makes sense.
 
