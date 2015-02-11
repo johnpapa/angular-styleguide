@@ -2200,7 +2200,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
   - Faça com que as regras de teste permitam globais comuns, tais como `describe` e `expect`.
 
-    *Por que?*: Seus testes são codigos e como tal necessitam da mesma atenção e regras de qualidade que todo o seu código de produção. No entanto, as variáveis globais usadas pelo framework de teste, por exemplo, podem ser ignoradas para você utilizá-las em seus testes.
+    *Por que?*: Seus testes são codigos e como tal necessitam da mesma atenção e regras de qualidade que todo o seu código de produção. No entanto, as variáveis globais usadas pelo framework de teste, por exemplo, podem ser ignoradas para que você as utilize em seus testes.
 
     ```javascript
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
