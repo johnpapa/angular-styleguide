@@ -2125,14 +2125,14 @@ ou *Coletores de exceção*
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
-## Testing
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+## Testando
+Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas recomendações de fundamentos para testes unitários com links para mais informações.
 
-### Write Tests with Stories
+### Escreva testes com Histórias(Stories)
 
-  - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
+  - Escreva um grupo de testes para cada história. Comece com um teste em branco e preencha-o conforme você vai escrevendo o código para a história.
 
-    *Why?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+    *Por que?*: Escrevendo uma descrição de teste ajuda a definir claramente o que a sua história vai fazer, não vai fazer, e como você pode mensurar o sucesso.
 
     ```javascript
     it('should have Avengers controller', function() {
@@ -2154,53 +2154,53 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     // and so on
     ```
 
-### Testing Library
+### Library para Testes
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) for unit testing.
+  - Para teste unitários use [Jasmine](http://jasmine.github.io/) ou [Mocha](http://visionmedia.github.io/mocha/).
 
-    *Why?*: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
+    *Por que?*: Ambos, Jasmine e Mocha são amplamente utilizados na comunidade AngularJS. Ambos são estáveis, são mantidos e provém features de teste robustas.
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+    Nota: Se escolher Mocha, também considere a escolha de uma Assert Library como [Chai](http://chaijs.com).
 
 ### Test Runner
 
-  - Use [Karma](http://karma-runner.github.io) as a test runner.
+  - Use [Karma](http://karma-runner.github.io) como seu test runner.
 
-    *Why?*: Karma is easy to configure to run once or automatically when you change your code.
+    *Por que?*: Karma é fácil de configurar para executar apenas uma vez ou automaticamente enquanto você altera seu código.
 
-    *Why?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *Por que?*: Karma se integra facilmente com seu processo de Integração Contínua ou através do Grunt ou Gulp.
 
-    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Por que?*: Algumas IDE's estão começando a se integrar com o Karma, como [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Por que?*: Karma funciona muito bem com os líderes de automação de tarefas, como [Grunt](http://www.gruntjs.com) (com [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com) (com [gulp-karma](https://github.com/lazd/gulp-karma)).
 
 ### Stubbing and Spying
 
-  - Use Sinon for stubbing and spying.
+  - Utilize Sinon para stubbing e spying.
 
-    *Why?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *Por que?*: Sinon funciona bem tanto com Jasmine quanto com Mocha e amplia as features de stubbing e spying que eles oferecem.
 
-    *Why?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *Por que?*: Sinon faz ficar mais fácil alternar entre Jasmine e Mocha, se você quiser tentar ambos.
 
 ### Headless Browser
 
-  - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - Use [PhantomJS](http://phantomjs.org/) para executar seus testes no servidor.
 
-    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. 
+    *Por que?*: PhantomJS é um headless browser que executa os testes sem um navegador "visual". Ou seja, você não precisa instalar Chrome, Safari, IE ou outros navegadores no seu servidor.
 
-    Note: You should still test on all browsers in your environment, as appropriate for your target audience.
+    Nota: Você deve continuar testando em todos os navegadores em seu ambiente, conforme apropriado para seu público alvo.
 
-### Code Analysis
+### Análise de Código
 
-  - Run JSHint on your tests. 
+  - Execute JSHint no seus testes. 
 
-    *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Por que?*: Testes são códigos. JSHint ajuda a identificar problemas de qualidade de código que podem fazer com que o teste execute de maneira errada.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Ignore algumas regras globais do JSHint no seus testes
 
-  - Relax the rules on your test code to allow for common globals such as `describe` and `expect`.
+  - Faça com que as regras de teste permitam globais comuns, tais como `describe` e `expect`.
 
-    *Why?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
+    *Por que?*: Seus testes são codigos e necessitam da mesma atenção e regras de qualidade que todo o seu código de produção. No entando, as variáveis globais usadas pelo framework de teste, por exemplo, podem ser ignoradas para inclui-las em seus testes.
 
     ```javascript
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
