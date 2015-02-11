@@ -2125,7 +2125,7 @@ ou *Coletores de exceção*
 
 **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
 
-## Testando
+## Testing
 Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas recomendações de fundamentos para testes unitários com links para mais informações.
 
 ### Escreva testes com Histórias(Stories)
