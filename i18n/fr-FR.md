@@ -4,9 +4,11 @@
 
 Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
 
+Le but de ce guide de style est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
+
 >Si vous appréciez ce guide, visitez mon cours [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight.
 
-Le but de ce guide de style est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
+  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Supprématie de la Communauté et Remerciements
 Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
@@ -45,6 +47,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [JSHint](#js-hint)
   1. [Constantes](#constantes)
   1. [Templates de Fichiers et Fragments](#templates-de-fichiers-et-fragments)
+  1. [Générateur Yeoman](#générateur-yeoman)
+  1. [Routage](#routage)
+  1. [Automatisation des Tâches](#automatisation-des-taches)
   1. [Documentation AngularJS](#documentation-angularjs)
   1. [Contribuer](#contribuer)
   1. [License](#license)
@@ -591,7 +596,6 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-
   /* recommandé */
   function Order(creditService) {
       var vm = this;
@@ -1032,7 +1036,6 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       /* directive spinner pouvant être utilisée n'importe où dans l'application */
       .directive('sharedSpinner', sharedSpinner);
 
-
   function orderCalendarRange() {
       /* détails de l'implémentation */
   }
@@ -1208,15 +1211,17 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
           },
           link: linkFunc,
           controller : ExampleController,
-          controllerAs: 'vm'
+            controllerAs: 'vm',
+            bindToController: true // parce que le scope est isolé
       };
 
       return directive;
 
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
-          console.log('LINK: scope.vm.min = %i', scope.vm.min);
-          console.log('LINK: scope.vm.max = %i', scope.vm.max);
+          console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+          console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+          console.log('LINK: scope.vm.min = %s', scope.vm.min);
+          console.log('LINK: scope.vm.max = %s', scope.vm.max);
       }
   }
 
@@ -1227,15 +1232,63 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       var vm = this;
 
       vm.min = 3;
-      vm.max = $scope.max;
-      console.log('CTRL: $scope.max = %i', $scope.max);
-      console.log('CTRL: vm.min = %i', vm.min);
-      console.log('CTRL: vm.max = %i', vm.max);
+
+      console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
+      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
   }
   ```
 
   ```html
-  /* example.directive.html */
+  <!-- example.directive.html -->
+  <div>hello world</div>
+  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
+  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
+  ```
+
+###### [Style [Y076](#style-y076)]
+
+  - Utilisez `bindToController = true` lorsque vous utilisez la syntaxe `controller as` avec une directive quand vous voulez binder le scope externe au scope du controlleur de la directive.
+
+    *Pourquoi ?* : Cela rend plus facile de binder le scope externe au scope du controlleur de la directive.
+
+    Note : `bindToController` a été introduit à partir de Angular 1.3.0.
+
+  ```html
+  <div my-example max="77"></div>
+  ```
+
+  ```javascript
+  angular
+      .module('app')
+      .directive('myExample', myExample);
+
+  function myExample() {
+      var directive = {
+          restrict: 'EA',
+          templateUrl: 'app/feature/example.directive.html',
+          scope: {
+              max: '='
+          },
+          controller: ExampleController,
+          controllerAs: 'vm',
+          bindToController: true
+      };
+
+      return directive;
+  }
+
+  function ExampleController() {
+      var vm = this;
+      vm.min = 3;
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
+  }
+  ```
+
+  ```html
+  <!-- example.directive.html -->
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
@@ -1251,8 +1304,11 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   - Résolvez la logique de démarrage d'un controlleur dans une fonction `activate`.
 
     *Pourquoi ?* : Placer la logique de démarrage toujours au même endroit permet de le rendre plus facile à localiser, plus cohérent à tester, et permet d'éviter la dispersion de la logique d'activation à travers le controlleur.
+    
+    *Pourquoi ?* : La fonction `activate` d'un controlleur rend pratique la ré-utilisation de la logique pour un refraichissement du controlleur ou de la vue, garde cette logique à un seul endroit, envoie l'utilisateur plus rapidement à la Vue, rend les animations faciles sur la `ng-view` ou l'`ui-view`, et c'est rendu plus vif à l'utilisateur.
+    *Why?*: The controller `activate` makes it convenient to re-use the logic for a refresh for the controller/View, keeps the logic together, gets the user to the View faster, makes animations easy on the `ng-view` or `ui-view`, and feels snappier to the user.
 
-    Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le controlleur, utilisez une résolution de route à la place.
+    Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le controlleur, utilisez une [résolution de route](#style-y081) à la place.
 
   ```javascript
   /* à éviter */
@@ -1291,9 +1347,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Promesses de Résolution de Route
 ###### [Style [Y081](#style-y081)]
 
-  - Lorsqu'un controlleur dépend d'une promesse qui doit être résolue, résolvez ces dépendances dans le `$routeProvider` avant que la logique du controlleur soit éxécutée. Si vous avez besoin d'annuler une route sous certaines conditions avant que le controlleur soit activé, utilisez un resolver de route.
+  - Lorsqu'un controlleur dépend d'une promesse qui doit être résolue avant qu'un controlleur soit activé, résolvez ces dépendances dans le `$routeProvider`. Si vous avez besoin d'annuler une route sous certaines conditions avant que le controlleur soit activé, utilisez un resolver de route.
+
+  - Utilisez un resolver de route dès lors que vous voulez décider d'annuler la route avant même de commencer à naviguer vers la Vue.
 
     *Pourquoi ?* : Un controlleur pourrait avoir besoin de données avant qu'il se charge. Cette donnée pourrait venir d'une promesse via une factory personnalisée ou de  [$http](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [resolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du controlleur s'éxécute, ainsi on peut prendre des actions basées sur cette donnée à partir de la promesse.
+
+    *Pourquoi ?* : Le code s'éxécute après la route et dans la fonction activate du controlleur. La Vue commence à se charger tout de suite. Le data binding démarre quand la promesse d'activation se résoud. Une animation de "chargement" peut être affichée pendant que la vue opère la transition (via ng-view ou ui-view).
+
+    Note : Le code s'éxécute avant la route via une promesse. Le rejet de la promesse annule le routage. Sa résolution met la nouvelle vue en attente de la résolution du routage. Une animation de "chargement" peut être affichée avant la résolution et lorsque la vue entre en transition. Si vous voulez aller à la Vue plus vite et que vous n'avez pas besoin d'un point pour décider si vous voulez atteindre la Vue, il est conseillé d'utiliser la [technique de l'activation de controlleur](#style-y080) à la place.
 
   ```javascript
   /* à éviter */
@@ -1344,8 +1406,45 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
-  ```
+   ```
+ 
+    Note : L'exemple ci-dessous montre que la résolution de routage pointe vers une fonction nommée, laquelle est plus facile à débugguer et dont l'injection de dépendance est plus facile à gérer.
 
+  ```javascript
+  /* encore mieux */
+
+  // route-config.js
+  angular
+      .module('app')
+      .config(config);
+
+  function config($routeProvider) {
+      $routeProvider
+          .when('/avengers', {
+              templateUrl: 'avengers.html',
+              controller: 'Avengers',
+              controllerAs: 'vm',
+              resolve: {
+                  moviesPrepService: moviesPrepService
+              }
+          });
+  }
+
+  function moviePrepService(movieService) {
+      return movieService.getMovies();
+  }
+
+  // avengers.js
+  angular
+      .module('app')
+      .controller('Avengers', Avengers);
+
+  Avengers.$inject = ['moviesPrepService'];
+  function Avengers(moviesPrepService) {
+        var vm = this;
+        vm.movies = moviesPrepService.movies;
+  }
+  ```
     Note : Les dépendances dans l'exemple de code sur `movieService` ne sont pas directement compatibles avec la minification. Pour les détails sur la façon de rendre ce code compatible avec la minification, voir la section sur l'[injection de dépendance](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
 
 **[Retour en haut de page](#table-des-matières)**
@@ -2269,7 +2368,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 ### Librairie de Test
 ###### [Style [Y191](#style-y191)]
 
-  - Utilisez [Jasmine](http://jasmine.github.io/) or [Mocha](http://visionmedia.github.io/mocha/) pour les tests unitaires.
+  - Utilisez [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) pour les tests unitaires.
 
     *Pourquoi ?* : Jasmine et Mocha sont toutes deux largement utilisées dans la communauté AngularJS. Toutes les deux stables, bien maintenues, et fournissant des fonctionnalités robustes de test.
 
@@ -2291,7 +2390,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 ### Les Stubs et les Spy
 ###### [Style [Y193](#style-y193)]
 
-  - Utilisez Sinon pour les stubs et les spy.
+  - Utilisez [Sinon](http://sinonjs.org/) pour les stubs et les spy.
 
     *Pourquoi ?* : Sinon fonctionne bien avec Jasmine et Mocha et étend les fonctionnalités de stub et de spy qu'ils offrent.
 
@@ -2325,6 +2424,33 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
     ```
 
   ![Outils de Test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+
+### Organizing Tests
+###### [Style [Y197](#style-y197)]
+
+  - Placez les fichiers des tests unitaires (specs) côte-à-côte du code client. Placez les specs qui couvrent l'intégration avec le serveur ou les celles qui testent plusieurs composants dans un répertoire `tests` séparé.
+
+    *Pourquoi ?* : Les tests unitaires sont en corrélation directe avec un composant spécifique et un fichier dans le code source.
+
+    *Pourquoi ?* : Il est plus facile de les mettre à jour pluisqu'ils sont toujours les uns en face des autres. Quand vous développez, que vous fassiez du TDD, des tests en meme temps que l'implémentation ou des tests après l'implémentation, les specs sont côte-à-côte et jamais loin ni des yeux ni de l'esprit, et ainsi ils ont plus de chance d'etre maintenus ce qui permet aussi de tenir une bonne couverture de code.
+
+    *Pourquoi ?* : Quand vous mettez à jour le code source, il est plus facile de mettre à jour les tests en même temps.
+
+    *Pourquoi ?* : Les placer côte-à-côte les rend plus facile à trouver et facile à déplacer si vous déplacez les sources.
+    
+    *Pourquoi ?* : Avoir les specs proches permet au lecteur du code source d'apprendre comment le composant est supposé être utilisé et découvrir les limitations connues.
+
+    *Pourquoi ?* : La séparation des specs afin qu'ils ne soient pas inclus dans le build est facile avec grunt ou gulp.
+
+    ```
+    /src/client/app/customers/customer-detail.controller.js
+                             /customer-detail.controller.spec.js
+                             /customers.controller.spec.js
+                             /customers.controller-detail.spec.js
+                             /customers.module.js
+                             /customers.route.js
+                             /customers.route.spec.js
+    ```
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -2511,6 +2637,31 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
             .constant('toastr', toastr)
             .constant('moment', moment);
     })();
+     ```
+ 
+###### [Style [Y241](#style-y241)]
+
+  - Utilisez les constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des contantes ne sont utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
+
+    *Pourquoi ?* : Une valeur qui peut changer, même rarement, devrait être récupérée d'un service afin de ne pas avoir à changer le code source. Par exemple, une URL pour un service de données pourrait être définit comme constante mais il serait mieux de lire cette valeur par appel à un web service.
+
+    *Pourquoi ?* : Les constantes peuvent être injectées dans un composant angular, y compris les providers.
+
+    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être ré-utilisés dans d'autres applications, chacun de ces modules individiuel devrait pouvoir fonctioner tout seul, y compris avec les constantes dépendantes.
+
+    ```javascript
+    // Constantes utilisées par toute l'appli
+    angular
+        .module('app.core')
+        .constant('moment', moment);
+
+    // Constantes utilisées seulement par le module de vente
+    angular
+        .module('app.sales')
+        .constant('events', {
+            ORDER_CREATED: 'event_order_created',
+            INVENTORY_DEPLETED: 'event_inventory_depleted'
+        });
     ```
 
 **[Retour en haut de page](#table-des-matières)**
@@ -2560,6 +2711,78 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
     ng-f // crée une factory Angular
     ng-m // crée un module Angular
     ```
+ 
+ **[Retour en haut de page](#table-des-matières)**
+ 
+## Generateur Yeoman
+###### [Style [Y260](#style-y260)]
+
+Vous pouvez utiliser le [générateur yeoman HotTowel](http://jpapa.me/yohottowel) pour créer une appli pour démarrer avec Angular en suivant ce guide de style.
+
+1. Installer generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. Créer un nouveau répertoire et aller dans ce répertoire
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. Éxécuter le générateur
+
+  ```
+  yo hottowel helloWorld
+  ```
+
+**[Retour en haut de page](#table-des-matières)**
+
+## Routage
+Le routage côté client est important pour créer un flux de navigation entre les vues et la composition des vues constituées de nombreux plus petits templates et directives.
+
+###### [Style [Y270](#style-y270)]
+
+  - Utilisez [Routeur AngularUI](http://angular-ui.github.io/ui-router/) pour faire le routage côté client.
+
+    *Pourquoi ?* : UI Router offre toutes les fonctionnalités du routeur Angular plus quelques autres parmis lesquels les routes imbriquées et les états.
+
+    *Pourquoi ?* : La syntaxe est quasiement similaire au routeur Angular et il est facile de migrer à UI Router.
+
+###### [Style [Y271](#style-y271)]
+
+  - Définissez les routes pour les vues d'un module à l'endroit où elles existent. Chaque module devrait contenir le routage de ses vues.
+
+    *Pourquoi ?* : Chaque module devrait avoir la cohérence de définir ses propres routes.
+
+    *Pourquoi ?* : Si on ajoute ou enlève un module, on souhaite que l'appli ne contienne que les routes vers des vues existantes.
+
+    *Pourquoi ?* : Cela rend facile l'activation ou la désactivation de portions de l'application sans se préoccuper des routes orphelines.
+
+**[Retour en haut de page](#table-des-matières)**
+
+## Automatisation des Tâches
+Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer des tâches automatisées. Gulp favorise le code plutôt que la configuration tandis que Grunt tend vers la configuration plutôt que le code. Je préfère personnellement Gulp car il me semble plus facile à lire et écrire, mais les deux sont excellents.
+
+###### [Style [Y400](#style-y400)]
+
+  - Utilisez l'automatisation des tâches pour lister les fichiers de définition de module `*.module.js` avant tout autre fichier JavaScript de l'application.
+
+    *Pourquoi ?* : Angular a besoin que la définition des modules soit déclarée avant qu'ils puissent être utilisés.
+
+    *Pourquoi ?* : Nommer les modules avec un pattern spécifique tel que `*.module.js` les rends faciles à aller chercher avec une expression englobante et à les lister en premier.
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Toujours aller chercher les fichiers de module en premier
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -2573,8 +2796,8 @@ Créez d'abord un problème pour discuter de potentiels changements ou ajouts. S
 *En contribuant à ce référentiel, vous acceptez de rendre votre contenu accessible le sujet de la licence de ce référentiel.*
 
 ### Processus
-    1. Discuter des changements dans une Issue.
-    2. Ouvrir une Pull Request, référencer l'Issue, et expliquer le changement et la raison pour laquelle i lajoute de la valeur.
+    1. Discuter des changements dans une Issue GitHub.
+    2. Ouvrir une Pull Request sur la branche develop, référencer l'Issue, et expliquer le changement et la raison pour laquelle ce changement est pertinent.
     3. La Pull Request sera évaluée et soit mergée ou abandonnée.
 
 ## License
