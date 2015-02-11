@@ -2130,9 +2130,9 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
 ### Escreva testes com Histórias(Stories)
 
-  - Escreva um grupo de testes para cada história. Comece com um teste em branco e preencha-o conforme você vai escrevendo o código para a história.
+  - Escreva um grupo de testes para cada história. Comece com um teste em branco e preencha-o conforme você for escrevendo o código para a história.
 
-    *Por que?*: Escrevendo uma descrição de teste ajuda a definir claramente o que a sua história vai fazer, não vai fazer, e como você pode mensurar o sucesso.
+    *Por que?*: Escrevendo uma descrição de teste te ajudará a definir claramente o que a sua história vai fazer ou não vai fazer e como você pode mensurar o sucesso.
 
     ```javascript
     it('should have Avengers controller', function() {
