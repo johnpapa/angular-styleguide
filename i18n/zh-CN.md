@@ -4,7 +4,7 @@
 
 *由[kerncink](https://github.com/natee)翻译*
 
->[原始英文版本](http://jpapa.me/ngstyles)将会在第一时间维护和更新，翻译版本的更新将会在这之后。
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
 如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个repo正适合你。这里所包含的风格是基于我在团队中使用[AngularJS](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
 

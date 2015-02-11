@@ -2,6 +2,10 @@
 
 *Le guide d'un point de vue personnel sur le style AngularJS par [@john_papa](//twitter.com/john_papa)*
 
+*Translated by [Eric Lemerdy](https://github.com/ericlemerdy)*
+
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+
 Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
 
 Le but de ce guide de style est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.

@@ -4,7 +4,7 @@
 
 *Преведено од [Александар Богатинов](https://github.com/Bogatinov)*
 
->[Оригиналната англиска верзија](http://jpapa.me/ngstyles) е изворот на вистината, бидејќи е одржуванa и ажуриранa.
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
 Доколку барате своеволен стил на кодирање за синтакса, конвенции и структурирање на AngularJS апликации, тогаш сте на правилното место.
 Овие стилови се базирани на моето искуство во развој на [AngularJS](//angularjs.org), презентации, [Pluralsight тренинг курсеви](http://pluralsight.com/training/Authors/Details/john-papa) и работа во тимови.
