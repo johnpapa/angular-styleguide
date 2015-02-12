@@ -1115,7 +1115,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Utilizza un prefisso unico per la Directive
 ###### [Stile [Y073](#stile-y073)]
 
-  - Utilizza un corto, unico e descrittivo prefisso alla directive come `acmeSalesCustomerInfo` che è dichiarato in HTML come `acme-sales-customer-info`.
+  - Utilizza un corto, unico e descrittivo prefisso alla directive come `acmeSalesCustomerInfo` che potrebbe essere dichiarato in HTML come `acme-sales-customer-info`.
 
 	*Perché?*: L'unico breve prefisso identifica il contesto delle directive e l'origine. Per esempio un prefisso `cc-` potrebbe indicare che la directive è parte di una app CodeCamper mentre `acme-` potrebbe indicare una direttiva per l'azienda Acme. 
  
