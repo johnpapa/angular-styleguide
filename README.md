@@ -2023,7 +2023,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: Separates configuration from module definition, components, and active code.
 
-    *Why?*: Provides a identifiable place to set configuration for a module.
+    *Why?*: Provides an identifiable place to set configuration for a module.
 
 ### Routes
 ###### [Style [Y129](#style-y129)]
