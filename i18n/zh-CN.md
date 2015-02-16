@@ -51,6 +51,9 @@
   1. [JSHint](#js-hint)
   1. [常量](#常量)
   1. [文件模板和片段](#文件模板和片段)
+  1. [Yeoman Generator](#yeoman-generator)
+  1. [路由](#路由)
+  1. [任务自动化](#任务自动化)
   1. [AngularJS文档](#angularjs文档)
   1. [贡献](#贡献)
   1. [许可](#许可)
@@ -730,7 +733,7 @@
 ###可访问的成员放到顶部###
 ###### [Style [Y052](#style-y052)]
 
-  - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service中可调用的成员暴露到顶部， 
+  - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service（它的接口）中可调用的成员暴露到顶部，
 
     *为什么？*：把可调用的成员放到顶部使代码更加易读，并且让你可以立即识别service中的哪些成员可以被调用，哪些成员必须进行单元测试（或者被别人嘲笑）。 
 
@@ -1097,7 +1100,7 @@
   }
   ```
 
-    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时，选择一个让directive和文件都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
+    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
 
 ###在directive中操作DOM
 ###### [Style [Y072](#style-y072)]
@@ -1209,15 +1212,17 @@
           },
           link: linkFunc,
           controller : ExampleController,
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
       };
       
       return directive;
       
       function linkFunc(scope, el, attr, ctrl) {
-          console.log('LINK: scope.max = %i', scope.max);
-          console.log('LINK: scope.vm.min = %i', scope.vm.min);
-          console.log('LINK: scope.vm.max = %i', scope.vm.max);
+          console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+          console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+          console.log('LINK: scope.vm.min = %s', scope.vm.min);
+          console.log('LINK: scope.vm.max = %s', scope.vm.max);
       }
   }
   
@@ -1227,21 +1232,69 @@
       // Injecting $scope just for comparison
       var vm = this;
 
-      vm.min = 3; 
-      vm.max = $scope.max; 
-      console.log('CTRL: $scope.max = %i', $scope.max);
-      console.log('CTRL: vm.min = %i', vm.min);
-      console.log('CTRL: vm.max = %i', vm.max);
+      vm.min = 3;
+
+      console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
+      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
   }
 
 
   ```
 
   ```html
-  /* example.directive.html */
+  <!-- example.directive.html -->
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model={vm.max"/></div>
   <div>min={{vm.min}}<input ng-model={vm.min"/></div>
+  ```
+
+###### [Style [Y076](#style-y076)]
+
+  - 当directive中使用了`controller as`语法时，如果你想把父级作用域绑定到directive的controller作用域时，使用`bindToController = true`。
+
+    *为什么？*：这使得绑定作用域到controller变得更加简单。
+
+    注意：Angular 1.3.0才介绍了`bindToController`。
+
+  ```html
+  <div my-example max="77"></div>
+  ```
+
+  ```javascript
+  angular
+      .module('app')
+      .directive('myExample', myExample);
+
+  function myExample() {
+      var directive = {
+          restrict: 'EA',
+          templateUrl: 'app/feature/example.directive.html',
+          scope: {
+              max: '='
+          },
+          controller: ExampleController,
+            controllerAs: 'vm',
+            bindToController: true
+        };
+
+      return directive;
+  }
+
+  function ExampleController() {
+      var vm = this;
+      vm.min = 3;
+      console.log('CTRL: vm.min = %s', vm.min);
+      console.log('CTRL: vm.max = %s', vm.max);
+  }
+  ```
+
+  ```html
+  <!-- example.directive.html -->
+  <div>hello world</div>
+  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
+  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
 **[返回顶部](#目录)**
@@ -2366,6 +2419,8 @@
 
     *为什么？*：更新源代码的时候可以更简单地在同一时间更新测试代码。
 
+    *为什么？*：方便源码阅读者了解组件如何使用，也便于发现其中的局限性。
+
     *为什么？*：方便找。
 
     *为什么？*：方便使用grunt或者gulp。
@@ -2597,6 +2652,77 @@
 
 **[返回顶部](#目录)**
 
+## Yeoman Generator
+###### [Style [Y260](#style-y260)]
+
+你可以使用[HotTowel yeoman generator](http://jpapa.me/yohottowel)来创建一个遵循本指南的Angular起步应用。
+
+1. 安装generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. 创建一个新的文件夹并定位到它
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. 运行生成器
+
+  ```
+  yo hottowel helloWorld
+  ```
+**[返回顶部](#目录)**
+
+## 路由
+客户端路由对于在视图和很多小模板和指令组成的构成视图中创建导航是非常重要的。
+###### [Style [Y270](#style-y270)]
+
+  - 用[AngularUI Router](http://angular-ui.github.io/ui-router/)来做路由控制。
+
+    *为什么？*：它包含了Angular路由的所有特性，并且增加了一些额外的特性，如嵌套路由和状态。
+
+    *为什么？*：语法和Angular路由很想，很容易迁移到UI Router。
+
+###### [Style [Y271](#style-y271)]
+
+  - Define routes for views in the module where they exist.
+  Each module should contain the routes for the views in the module.
+
+    *为什么？*：每个模块应该是独立的。
+
+    *为什么？*：当删除或增加一个模块时，应用程序只包含指向现存视图的路由。（也就是说删除模块和增加模块都需更新路由）
+
+    *为什么？*：这使得可以在不关心孤立的路由时很方便地启用或禁用应用程序的某些部分。
+
+**[返回顶部](#目录)**
+
+## 任务自动化
+用[Gulp](http://gulpjs.com)或者[Grunt](http://gruntjs.com)来创建自动化任务。Gulp偏向于代码在配置之上，Grunt更倾向于配置高于代码。我更倾向于使用gulp，因为gulp写起来比较简单。
+
+###### [Style [Y400](#style-y400)]
+
+  - 用任务自动化在其它JavaScript文件之前列出所有模块的定义文件`*.module.js`。
+
+    *为什么？*：Angular中，模块使用之前必须先注册。
+
+    *为什么？*：带有特殊规则的模块命名，例如`*.module.js`，会让你很轻松地识别它们。
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Always grab module files first
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
+
+**[返回顶部](#目录)**
+
 ## AngularJS文档
 [Angular文档](//docs.angularjs.org/api)。
 
@@ -2653,8 +2779,8 @@
 
 
 ###过程
-    1. 在一个Issue中讨论这个问题。 
-    2. 打开一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
+    1. 在Github Issue中讨论这个问题。
+    2. 在develop分支中开一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
     3. pull request将会被进行评估，结果就是合并或是拒绝。
 
 ## 许可证
