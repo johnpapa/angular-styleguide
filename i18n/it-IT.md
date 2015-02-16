@@ -1779,6 +1779,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     ```javascript
     /* consigliato */
+    var handlingRouteChangeError = false;
+    
     function handleRoutingErrors() {
         /**
          * Annullamento del route:
@@ -1787,18 +1789,24 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
-                var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
+                if (handlingRouteChangeError) { return; }
+                handlingRouteChangeError = true;
+                var destination = (current && (current.title ||
+                    current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
-                var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
-                /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
-                 */
+                var msg = 'Error routing to ' + destination + '. ' +
+                    (rejection.msg || '');
+
                 /**
                  * A scelta fai il log usando un servizio ad hoc o $log.
                  * (Non dimenticare di iniettare il servizio ad hoc)
                  */
                 logger.warning(msg, [current]);
+                
+                /**
+                 * Su un errore di routing, vai ad un'altra route/stato.
+                 */
+                $location.path('/');
             }
         );
     }
