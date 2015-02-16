@@ -2721,6 +2721,27 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
+    
+### Atom
+###### [Style [Y253](#style-y253)]
+
+  - AngularJS snippets that follow these styles and guidelines.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    or
+    - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Search for the package 'angularjs-styleguide-snippets'
+    - Click 'Install' to install the package
+    
+  - In a JavaScript file type these commands followed by a `TAB`
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective // creates an Angular directive
+    ngfactory // creates an Angular factory
+    ngmodule // creates an Angular module
+    ```
 
 **[Back to top](#table-of-contents)**
 
