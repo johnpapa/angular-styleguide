@@ -1118,7 +1118,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Utilizza un prefisso unico per la Directive
 ###### [Stile [Y073](#stile-y073)]
 
-  - Utilizza un corto, unico e descrittivo prefisso alla directive come `acmeSalesCustomerInfo` che è dichiarato in HTML come `acme-sales-customer-info`.
+  - Utilizza un corto, unico e descrittivo prefisso alla directive come `acmeSalesCustomerInfo` che potrebbe essere dichiarato in HTML come `acme-sales-customer-info`.
 
 	*Perché?*: L'unico breve prefisso identifica il contesto delle directive e l'origine. Per esempio un prefisso `cc-` potrebbe indicare che la directive è parte di una app CodeCamper mentre `acme-` potrebbe indicare una direttiva per l'azienda Acme. 
  
@@ -1782,6 +1782,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     ```javascript
     /* consigliato */
+    var handlingRouteChangeError = false;
+    
     function handleRoutingErrors() {
         /**
          * Annullamento del route:
@@ -1790,18 +1792,24 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
-                var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
+                if (handlingRouteChangeError) { return; }
+                handlingRouteChangeError = true;
+                var destination = (current && (current.title ||
+                    current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
-                var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
-                /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
-                 */
+                var msg = 'Error routing to ' + destination + '. ' +
+                    (rejection.msg || '');
+
                 /**
                  * A scelta fai il log usando un servizio ad hoc o $log.
                  * (Non dimenticare di iniettare il servizio ad hoc)
                  */
                 logger.warning(msg, [current]);
+                
+                /**
+                 * Su un errore di routing, vai ad un'altra route/stato.
+                 */
+                $location.path('/');
             }
         );
     }
@@ -2721,6 +2729,27 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ng-c // crea un controller Angular
     ng-f // crea una factory Angular
     ng-m // crea un modulo Angular
+    ```
+    
+### Atom
+###### [Stile [Y253](#stile-y253)]
+
+  - Snippet di Angular JS e file di template che seguono queste linee guida.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    oppure
+    - Apri Atom, poi apri il Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Cerca il pacchetto 'angularjs-styleguide-snippets'
+    - Clicca 'Install' per installare il pacchetto
+    
+  - In un file di JavaScript digita i seguenti comandi seguiti da un `TAB`
+
+    ```javascript
+    ngcontroller // crea un controller Angular
+    ngdirective // crea una directive Angular
+    ngfactory // crea una factory Angular
+    ngmodule // crea un module Angular
     ```
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
