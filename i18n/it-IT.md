@@ -2727,6 +2727,27 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ng-f // crea una factory Angular
     ng-m // crea un modulo Angular
     ```
+    
+### Atom
+###### [Stile [Y253](#stile-y253)]
+
+  - Snippet di Angular JS e file di template che seguono queste linee guida.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    oppure
+    - Apri Atom, poi apri il Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Cerca il pacchetto 'angularjs-styleguide-snippets'
+    - Clicca 'Install' per installare il pacchetto
+    
+  - In un file di JavaScript digita i seguenti comandi seguiti da un `TAB`
+
+    ```javascript
+    ngcontroller // crea un controller Angular
+    ngdirective // crea una directive Angular
+    ngfactory // crea una factory Angular
+    ngmodule // crea un module Angular
+    ```
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
