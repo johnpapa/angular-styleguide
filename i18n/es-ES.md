@@ -59,9 +59,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### La regla del 1
 ###### [Style [Y001](#style-y001)]
 
-  - Define 1 componente por fichero.
+  - Define 1 componente por archivo.
 
-  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controller, y defines una factory todo en el mismo fichero.
+  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controller, y defines una factory todo en el mismo archivo.
 
   ```javascript
   /* evitar */
@@ -75,7 +75,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   function someFactory() { }
   ```
 
-  Los mismos componentes están separados en su propio fichero.
+  Los mismos componentes están separados en su propio archivo.
 
   ```javascript
   /* recomendado */
@@ -117,7 +117,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así colisión de variables.
 
-  *¿Por qué?*: Cuando tu código se minimiza y se empaqueta en un fichero único para desplegar al servidor de producción, podrías tener colisión de variables y muchas variables globales. Una IIFE te protege contra ambos, creando una scope por cada fichero.
+  *¿Por qué?*: Cuando tu código se minimiza y se empaqueta en un archivo único para desplegar al servidor de producción, podrías tener colisión de variables y muchas variables globales. Una IIFE te protege contra ambos, creando una scope por cada archivo.
 
   ```javascript
   /* evitar */
@@ -188,7 +188,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Declara los módulos sin usar la variable, usando la sintaxis de los setters. 
 
-  *¿Por qué?*: Con un componente por fichero, es raro que necesitemos introducir una variable para el módulo.
+  *¿Por qué?*: Con un componente por archivo, es raro que necesitemos introducir una variable para el módulo.
   
   ```javascript
   /* evitar */
@@ -392,7 +392,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Coloca las asociaciones en la parte superior del controller, por orden alfabético y no separados a lo largo del código del controller.
 
-    *¿Por qué?*: Colocarlas en la parte superior lo hace más fácil de leer y te ayuda a identificar instantáneamente qué variable del controller pueden ser asociadas y usadas en la View. 
+    *¿Por qué?*: Colocar las variables asignables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la View.
 
     *¿Por qué?*: Setear funciones anónimas puede ser fácil, pero cuando esas funciones tienen más de una línea de código se hace menos legible. Definiendo las funciones bajo a las variables, hace que los detalles de implementación estén abajo, deja las variables arriba y las funciones abajo.
 
@@ -479,21 +479,21 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para ocultar detalles de implementación. Mantén las variables asignables arriba. Cuando necesites asignar una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Bindable Members Up Top. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *¿Por qué?*: Colocar las variables asignables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la View.
 
-    *¿Por qué?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *¿Por qué?*: Colocar los detalles de implementación de una función al final del deja la complejidad fuera de la vista, con las cosas importantes arriba.
 
-    *¿Por qué?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *¿Por qué?*: Evitamos problemas usando funciones antes de ser definidas.
 
-    *¿Por qué?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *¿Por qué?*: No tendrás que propcuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
-    *¿Por qué?*: Order is critical with function expressions 
+    *¿Por qué?*: El orden es crítico para las funciones
 
   ```javascript
   /** 
-   * avoid 
+   * evitar 
    * Using function expressions.
    */
   function Avengers(dataservice, logger) {
@@ -520,13 +520,13 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Nótese que lo importante está disperso en el ejemplo anterior. En el siguiente ejemplo, lo importante está arriba. Por ejemplo, las variables asociadas al controller como `vm.avengers` y `vm.title`. Los detalles de implementación están debajo. Así es más fácil de leer.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * recomendado
+   * Usando declaraciones de funciones y 
+   * asignandola a las variables arriba.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -554,17 +554,17 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Defer Controller Logic
 ###### [Style [Y035](#style-y035)]
 
-  - Defer logic in a controller by delegating to services and factories.
+  - Difiera la lógica dentro de un controller delegándola en services y factories.
 
-    *¿Por qué?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    *¿Por qué?*: La lógica podría ser reutilizada por varios controllers cuando la colocas en un service y la expones como una función.
 
-    *¿Por qué?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    *¿Por qué?*: La lógica en un servicio puede ser aislada en un test unitario, mientras que la lógica de llamadas en un controller se puede mockear fácilmente.
 
-    *¿Por qué?*: Removes dependencies and hides implementation details from the controller.
+    *¿Por qué?*: Elimina dependencias y esconde detalles de implementación del controller.
 
   ```javascript
 
-  /* avoid */
+  /* evitar */
   function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -594,7 +594,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -612,21 +612,21 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Keep Controllers Focused
 ###### [Style [Y037](#style-y037)]
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view. 
+  - Define un controller para una vista, no intentes reutilizar el controller para otras views. En lugar de eso, mueve la lógica que se pueda reutilizar en factories y deja el controller simple, enfocándose en su view. 
 
-    *¿Por qué?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    *¿Por qué?*: Reutilizar controllers con varias views es arriesgado y necesitarías un buen end to end (e2e) test para asegurar que todo funciona bien en la aplicación.
 
 ### Assigning Controllers
 ###### [Style [Y038](#style-y038)]
 
-  - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes. 
+  - Cuando un controller debe ser asociado a una view y cada componente puede ser reutilizado por otros controllers o views, define controllers con sus rutas. 
 
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax. 
+    Nota: Si una View es cargada por otra además de por la ruta, entonces usa la sintaxis `ng-controller="Avengers as vm"`. 
 
-    *¿Por qué?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    *¿Por qué?*: Emparejar el controller en la ruta permite a diferentes rutas invocar diferentes pares de controllers y views. Cuando los controllers son asignados en la view usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esa view siempre estará asociada al mismo controller.
 
  ```javascript
-  /* avoid - when using with a route and dynamic pairing is desired */
+  /* evitar - cuando se use con una ruta y queramos asociarlo dinámicamente */
 
   // route-config.js
   angular
@@ -648,7 +648,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // route-config.js
   angular
@@ -678,9 +678,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency. 
+  - Los Services son instanciados con un `new`, usan `this` para los métodos públicos y las variables. Ya que son muy similares a las factories, usa una factory en su lugar por consistencia.
 
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services). Esto significa que sólo hay una instancia de un servicio por inyector.
 
   ```javascript
   // service
@@ -717,28 +717,28 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Single Responsibility
 ###### [Style [Y050](#style-y050)]
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Las factories deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factory empiece a exceder el principio de responsabilidad única, una nueva factory debe ser creada.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Las Factories son singletos y devuelven un objeto que contiene las variables del servicio.
 
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services).
 
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
 
-  - Expose the callable members of the service (it's interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
-    *¿Por qué?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked). 
+    *¿Por qué?*: Colocar los elementos que se llamand arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear). 
 
-    *¿Por qué?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    *¿Por qué?*: Es especialmente útil cuando el archivo se hace más largo, ya que ayuda a evitar el scroll para ver qué se expone.
 
-    *¿Por qué?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *¿Por qué?*: Setear las funciones puede ser fácil, pero cuando tienen más de una línea ser reduce la legibilidad. Definiendo la interfaz mueve los detalles de implementación abajo, mantiene la interfaz que se llama arriba y lo hace más fácil de leer.
 
   ```javascript
-  /* avoid */
+  /* evitar */
   function dataService() {
     var someValue = '';
     function save() { 
@@ -757,7 +757,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function dataService() {
       var someValue = '';
       var service = {
@@ -779,29 +779,29 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  De esta forma se asocian los enlaces desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Usando "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
 
-  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factory. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte instantáneamente a identificar qué funciones de la factory te pueden ayudar externamente.
 
-    *¿Por qué?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complegidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
 
-    *¿Por qué?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *¿Por qué?*: Las declaraciones de las funciones son "hoisted" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fuera una expresión).
 
-    *¿Por qué?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *¿Por qué?*: No tendrás que propcuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
-    *¿Por qué?*: Order is critical with function expressions 
+    *¿Por qué?*: El orden es crítico para las expresiones 
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
+   * evitar
+   * Usar function expressions
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -840,7 +840,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   ```javascript
   /**
-   * recommended
+   * recomendado
    * Using function declarations
    * and accessible members up top.
    */
@@ -888,16 +888,16 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Separate Data Calls
 ###### [Style [Y060](#style-y060)]
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - Refactoriza la lógica para hacer operaciones e interaciones con datos en una factory, que los servicios responsables de las peticiones XHR, local storage, memoria o cualquier otra operación con datos.
 
-    *¿Por qué?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    *¿Por qué?*: La responsabilidad del controller es la presentación y recoger la información para la view. No debe importarle cómo se consiguen los datos, sólo saber cómo conseguirlos. Separando los servicios de datos movemos la lógica de cómo conseguirlos al servicio de datos, y deja el controller simple, enfocandose en la vista.
 
-    *¿Por qué?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    *¿Por qué?*: Lo hace más fácil de testear (mock o real) las llamadas de datos cuando testeamos un controller que usa un servicio de datos.
 
-    *¿Por qué?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *¿Por qué?*: La implementación del servicio de datos puede tener código muy específico para usar el repositorio de datos. Podría incluir cabeceras, cómo hablar a los datos, u otros servicios como $http. Separando la lógica en servicios de datos encapsulamos la lógica en un único lugar, escondiendo la implementación de sus consumidores externos (quizá un controller), de esta forma es más fácil cambiar la implementación.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // dataservice factory
   angular
@@ -927,12 +927,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
     
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+    Nota: El servicio de datos es llamado desde los consumidores, como el controller, escondiendo la implementación del consumidor como se muestra a continuación.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // controller calling the dataservice factory
+  // controller llamando a la factory del servicio de datos
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -964,25 +964,25 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Return a Promise from Data Calls
 ###### [Style [Y061](#style-y061)]
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - Cuando llamamos a servicios de datos que devuelven una promesa como $http, devuelve una promesa en la llamada de tu función también.
 
-    *¿Por qué?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    *¿Por qué?*: Puedes encadenar promesas y hacer algo cuando la llamada se complete y resuelva o rechaze la promesa.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   activate();
 
   function activate() {
       /**
        * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Pide a la función getAvengers por los datos
+       * de los vengadores y espera la promesa
        */
       return getAvengers().then(function() {
           /**
            * Step 4
-           * Perform an action on resolve of final promise
+           * Ejecuta una acción cuando se resuelva la promesa final
            */
           logger.info('Activated Avengers View');
       });
@@ -991,14 +991,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   function getAvengers() {
         /**
          * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Pide al servicio de datos los datos y espera
+         * por la promesa
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
                  * Step 3
-                 * set the data and resolve the promise
+                 * setea los datos y resuelva la promesa
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -1012,14 +1012,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Limit 1 Per File
 ###### [Style [Y070](#style-y070)]
 
-  - Create one directive per file. Name the file for the directive. 
+  - Crea una directiva por archivo. Llama al archivo como la directiva. 
 
-    *¿Por qué?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module. 
+    *¿Por qué?*: Es muy fácil colocar todas las directivas en un archivo, pero será más difícil de partir para ser compartida entre aplicaciones, modulos o para un simple módulo.
 
-    *¿Por qué?*: One directive per file is easy to maintain.
+    *¿Por qué?*: Una directiva por archivo es fácil de mantener.
 
   ```javascript
-  /* avoid */
+  /* evitar */
   /* directives.js */
 
   angular
@@ -1048,7 +1048,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* calendarRange.directive.js */
 
   /**
@@ -1065,7 +1065,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* customerInfo.directive.js */
 
   /**
@@ -1082,7 +1082,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* spinner.directive.js */
 
   /**
@@ -1098,42 +1098,42 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Nota: Hay muchas formas de llamar a las directivas, especialmente cuando pueden ser usadas en scopes específicas. Elige un nombre que tenga sentido para la directiva y que su archivo sea distintivo y claro. Hemos visto algunos ejemplos antes, pero veremos más en la sección de cómo nombrar.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow. 
+  - Cuando manipules DOM directamente, usa una directiva. Si hay alguna alternativa como usando un CSS para cambiar el estilo o el [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) o [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), Entonces úsalos en su lugar. Por ejemplo, si la directiva sólo muestra o esconde elementos, usa ngHide/ngShow. 
 
-    *¿Por qué?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    *¿Por qué?*: Manipular el DOM puede ser dificil de testear, debugear y normalmente hay mejores maneras (e.g. CSS, animations, templates)
 
 ### Provide a Unique Directive Prefix
 ###### [Style [Y073](#style-y073)]
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - Proporciona prefijo corto, único y descriptiovo como `acmeSalesCustomerInfo` que se declara en el HTML como `acme-sales-customer-info`.
 
-    *¿Por qué?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company. 
+    *¿Por qué?*: El prefijo corto y único identifica el contexto de la directiva y el origen. Por ejemplo el prefijo `cc-` puede indicar que la directiva en particular es parte de la aplicación CodeCamper, mientras que `acme-` pudiera indicar que la directiva es de la compañía Acme. 
 
-    Note: Avoid `ng-` as these are reserved for AngularJS directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/). 
+    Nota: Evita `ng-` ya que está reservado para las directivas AngularJS. Estudia sabiamente las directivas usadas para evitar conflictos de nombres, como `ion-` de [Ionic Framework](http://ionicframework.com/). 
 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
 
-  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its stand-alone and as an attribute when it enhances its existing DOM element.
+  - Cuando crees directivas que tengan sentido como elemento, restringe `E` (elemento personalizado) y opcionalmente restringe `A` (atributo personalizado). Generalmente, si puede ser su control propio, `E` es apropiado, La guía genera es permitir `EA` pero intenta implementarlo como un elemento cuando sea un elemento único y como un atributo cuando añada elementos a su propio DOM.
 
-    *¿Por qué?*: It makes sense.
+    *¿Por qué?*: Tiene sentido.
 
-    *¿Por qué?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    *¿Por qué?*: Mientras permitamos que una directiva sea usada como una clase, si esa directiva realmente estáa actuando como un elemento, tiene sentido que sea un elemento, o al menos un atributo.
 
-    Note: EA is the default for AngularJS 1.3 +
+    Nota: En AngularJS 1.3 + EA es el valor por defecto
 
   ```html
-  <!-- avoid -->
+  <!-- evitar -->
   <div class="my-calendar-range"></div>
   ```
 
   ```javascript
-  /* avoid */
+  /* evitar */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1153,13 +1153,13 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
   
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app.widgets')
       .directive('myCalendarRange', myCalendarRange);
@@ -1308,7 +1308,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     Note: If you need to conditionally cancel the route before you start use the controller, use a [route resolve](#style-y081) instead.
     
   ```javascript
-  /* avoid */
+  /* evitar */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1322,7 +1322,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function Avengers(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1355,7 +1355,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     Note: The code executes before the route via a promise. Rejecting the promise cancels the route. Resolve makes the new view wait for the route to resolve. A “busy” animation can be shown before the resolve and through the view transition. If you want to get to the View faster and do not require a checkpoint to decide if you can get to the View, consider the [controller `activate` technique](#style-y080) instead.
 
   ```javascript
-  /* avoid */
+  /* evitar */
   angular
       .module('app')
       .controller('Avengers', Avengers);
@@ -1484,7 +1484,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     *¿Por qué?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
 
     ```javascript
-    /* avoid */
+    /* evitar */
     angular
         .module('app')
         .controller('Dashboard', 
@@ -1494,7 +1494,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     ```
 
     ```javascript
-    /* avoid */
+    /* evitar */
     angular
       .module('app')
       .controller('Dashboard', 
@@ -1505,7 +1505,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     ```
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1556,7 +1556,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     *¿Por qué?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1700,7 +1700,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('blocks.exception')
         .config(exceptionConfig);
@@ -1741,7 +1741,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('blocks.exception')
         .factory('exception', exception);
@@ -1772,7 +1772,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     *¿Por qué?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or recovery options.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     function handleRoutingErrors() {
         /**
          * Route cancellation:
