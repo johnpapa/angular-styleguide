@@ -1125,7 +1125,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Mientras permitamos que una directiva sea usada como una clase, si esa directiva realmente estáa actuando como un elemento, tiene sentido que sea un elemento, o al menos un atributo.
 
-    Nota: En AngularJS 1.3 + EA es el valor por defecto
+    Nota: En AngularJS 1.3+ EA es el valor por defecto
 
   ```html
   <!-- evitar -->
@@ -1181,15 +1181,15 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Directives and ControllerAs
 ###### [Style [Y075](#style-y075)]
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - Usa la sintaxis `controller as` con una directiva para ser consistente con el uso de `controller as` con los pares de view y controller.
 
-    *¿Por qué?*: It makes sense and it's not difficult.
+    *¿Por qué?*: Tiene sentido y no es dificil.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place. 
+    Nota: La siguiente directiva demuestra algunas de las formas en las que puedes usar el scope dentro de un link y controllers de una directiva, usando controllerAs. He puesto la template para dejarlo todo en un lugar.
 
-    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
+    Nota: En cuanto a la inyección de dependencias, mira [Identificar Dependencias Manualmente](#manual-annotating-for-dependency-injection).
 
-    Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
+    Nota: Nótese que la directiva controller está fuera del closure de la directiva. Este estilo elimina los problemas que genera la inyección de dependencias donde la inyección es creada en un código no alcanzable después del `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1247,11 +1247,11 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 ###### [Style [Y076](#style-y076)]
 
-  - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
+  - Usa `bindToController = true` cuando uses `controller as` con una directiva cuando quieras asociar el scope exterior al scope del controller de la directiva.
 
-    *¿Por qué?*: It makes it easy to bind outer scope to the directive's controller scope.
+    *¿Por qué?*: Lo hace más fácil a la hora de asociar el scope exterior al scope del controller de la directiva.
 
-    Note: `bindToController` was introduced in Angular 1.3.0. 
+    Nota: `bindToController` fue introducido en Angular 1.3.0. 
 
   ```html
   <div my-example max="77"></div>
@@ -1299,13 +1299,13 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Controller Activation Promises
 ###### [Style [Y080](#style-y080)]
 
-  - Resolve start-up logic for a controller in an `activate` function.
+  - Resuelve la lógica de inicialización de un controller en una función `activate`.
      
-    *¿Por qué?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    *¿Por qué?*: Colocar la lógica de inicialización en un lugar consistente del controller lo hace más fácil de localizar, más consistente de testear, y ayuda a evitar que la lógica de activación se propage a lo largo del controller.
 
-    *¿Por qué?*: The controller `activate` makes it convenient to re-use the logic for a refresh for the controller/View, keeps the logic together, gets the user to the View faster, makes animations easy on the `ng-view` or `ui-view`, and feels snappier to the user.
+    *¿Por qué?*: El controller `activate` hace que la lógica para refrescar el controller/View sea reutilizable, mantiene la lógica junta, proporciona al usuario la View más rápido, hace las animacines más fáciles en `ng-view` o `ui-view` y lo hace más rápido a la vista del usuario.
 
-    Note: If you need to conditionally cancel the route before you start use the controller, use a [route resolve](#style-y081) instead.
+    Nota: Si necesitas condicionalmente cancelar la ruta antes de empezar el controller, usa en su lugar [route resolve](#style-y081).
     
   ```javascript
   /* evitar */
@@ -1344,15 +1344,15 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Route Resolve Promises
 ###### [Style [Y081](#style-y081)]
 
-  - When a controller depends on a promise to be resolved before the controller is activated, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - Cuando un controller depende en una promesa a ser resuelta antes de que el controller se active, resuelve esas dependencias en el `$routeProvider` antes de que la lógica del controller sea ejecutada. Si necesitas condicionalmente cancelar una ruta antes de que el controller sea activado, usa un route resolver.
 
-  - Use a route resolve when you want to decide to cancel the route before ever transitioning to the View.
+  - Usa un route resolver cuando decidas cancelar la ruta antes de transicionar la View.
 
-    *¿Por qué?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *¿Por qué?*: Un controller puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una factory o de [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permitiendo que la promesa se resuelva antes de que la lógica del controller se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
 
-    *¿Por qué?*: The code executes after the route and in the controller’s activate function. The View starts to load right away. Data binding kicks in when the activate promise resolves. A “busy” animation can be shown during the view transition (via ng-view or ui-view)
+    *¿Por qué?*: El código se ejecuta después de la ruta y la función activate del controller. La View empieza a cargar al instante. Los Data binding se ejecutan cuando la promesa del activate se resuelva. Una animación de "Cargando" se puede mostrar mientras la transición de la view (via ng-view o ui-view)
 
-    Note: The code executes before the route via a promise. Rejecting the promise cancels the route. Resolve makes the new view wait for the route to resolve. A “busy” animation can be shown before the resolve and through the view transition. If you want to get to the View faster and do not require a checkpoint to decide if you can get to the View, consider the [controller `activate` technique](#style-y080) instead.
+    Nota: El código se ejecuta antes que la ruta mediante una promesa. Rechazar la promesa cancela la ruta. Resolverla hace que la nueva view espere a que la ruta sea resuelta. Una animación de "Cargando" puede ser mostrada antes de que se resuelva. Si quieres que la View aparezca más rápido y no necesitas un checkpoint para decidir si puedes mostrar o no la view, considera la técnica [controller `activate`](#style-y080).
 
   ```javascript
   /* evitar */
@@ -1405,7 +1405,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-    Note: The example below shows the route resolve points to a named function, which is easier to debug and easier to handle dependency injection.
+    Nota: El siguiente ejemplo muestra una ruta que cuando se resuelve apunta a una función, haciéndolo más fácil de debugear y más fácil de manejar inyección de dependencias.
 
   ```javascript
   /* even better */
@@ -1442,7 +1442,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    Nota: El código del ejemplo de dependencia en `movieService` no se puede minimizar tal cual. Para detalles en cómo hacer este código sea minimizable, mira la sección de [inyección de dependencias](#manual-annotating-for-dependency-injection) y en [minimización y anotación](#minification-and-annotation).
 
 **[Volver arriba](#table-of-contents)**
 
@@ -1451,12 +1451,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### UnSafe from Minification
 ###### [Style [Y090](#style-y090)]
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - Evita usar la sintaxis acortada para declarar dependencias sin usar algún método que permita minimifación.
   
-    *¿Por qué?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *¿Por qué?*: Los parámetros al componente (e.g. controller, factory, etc) se convertirán en variables acortadas. Por ejemplo, `common` y `dataservice` se convertirán `a` o `b` y no serán encontradas por AngularJS.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evitar - not minification-safe*/
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1465,23 +1465,23 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Este código acortará las variables cuando se minimice y causará errores en tiempo de ejecución.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evitar - not minification-safe*/
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
 ### Manually Identify Dependencies
 ###### [Style [Y091](#style-y091)]
 
-  - Use `$inject` to manually identify your dependencies for AngularJS components.
+  - Usa `$inject` Para identificar manualmente las dependencias de tus componentes AngularJS.
   
-    *¿Por qué?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *¿Por qué?*: Esta técnica es la misma que se usa con [`ng-annotate`](https://github.com/olov/ng-annotate), la cuál recomiendo para automatizar la creación de dependencias minificadas de forma segura. Si `ng-annotate` detecta que la inyección ha sido hecha, no la duplicará.
 
-    *¿Por qué?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *¿Por qué?*: Esto salvaguarda tus dependencias de ser vulnerables de problemas a la hora de minimizar cuando los parámetros se acorten. Por ejemplo, `common` y `dataservice` se convertirán `a` o `b` y no serán encontradas por AngularJS.
 
-    *¿Por qué?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function. 
+    *¿Por qué?*: Evita crear dependencias en la línea, ya que las listas largas pueden ser dificil de leer en el array. También puede ser confuso que el array es una serie de cadenas mientras que el último componente e suna función.
 
     ```javascript
     /* evitar */
@@ -1516,27 +1516,27 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax. 
+    Nota: Cuando tu función está debajo de un return, $inject puede ser inalcanzable (esto puede pasar en una directiva). Puedes solucionarlo moviendo el $inject encima del return o usando la sintaxis de array para inyectar.by either moving the $inject above the return statement or by using the alternate array injection syntax. 
 
-    Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
+    Nota: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduce una funcionalidad donde mueve `$inject` donde es alcanzable.
 
     ```javascript
-    // inside a directive definition
+    // dentro de la definición de una directiva
     function outer() {
         return {
             controller: DashboardPanel,
         };
 
-        DashboardPanel.$inject = ['logger']; // Unreachable
+        DashboardPanel.$inject = ['logger']; // Inalcanzable
         function DashboardPanel(logger) {
         }
     }
     ```
 
     ```javascript
-    // inside a directive definition
+    // dentro de la definición de una directiva
     function outer() {
-        DashboardPanel.$inject = ['logger']; // reachable
+        DashboardPanel.$inject = ['logger']; // alcanzable
         return {
             controller: DashboardPanel,
         };
@@ -1632,9 +1632,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Nota: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
 
-    Note: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Nota: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
 
     ```javascript
     // Using @ngInject annotations
@@ -1653,7 +1653,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    > Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    > Nota: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
@@ -1697,7 +1697,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   
     *¿Por qué?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
 
-    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    Nota: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
 
     ```javascript
     /* recomendado */
@@ -1738,7 +1738,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
 
-    Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Nota: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
 
     ```javascript
     /* recomendado */
@@ -1865,7 +1865,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Nota: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
 
     ```javascript
     /**
@@ -2089,7 +2089,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
-    Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Nota: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2151,7 +2151,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
       ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      Note: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Nota: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
 
     ```javascript
     /* 
@@ -2250,7 +2250,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
 
-    Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+    Nota: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
@@ -2369,7 +2369,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *¿Por qué?*: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+    Nota: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
@@ -2400,7 +2400,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *¿Por qué?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. 
 
-    Note: You should still test on all browsers in your environment, as appropriate for your target audience.
+    Nota: You should still test on all browsers in your environment, as appropriate for your target audience.
 
 ### Code Analysis
 ###### [Style [Y195](#style-y195)]
@@ -2480,7 +2480,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *¿Por qué?*: animate.css is widely used and tested.
 
-    Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Nota: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Volver arriba](#table-of-contents)**
 
