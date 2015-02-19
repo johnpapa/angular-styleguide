@@ -1767,7 +1767,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *Why?*: Provides a consistent way handle all routing errors.
+    *Why?*: Provides a consistent way to handle all routing errors.
 
     *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or recovery options.
 
