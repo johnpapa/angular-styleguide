@@ -2647,7 +2647,7 @@
 
   - AngularJS сниппеты и шаблоны файлов, которые соблюдают приведенные здесь стили и руководства. Вы можете импортировать их в свои настройки WebStorm:
 
-    - Скачайте [WebStorm AngularJS шаблоны файлов и сниппетов](assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - Скачайте [WebStorm AngularJS шаблоны файлов и сниппетов](../assets/webstorm-angular-file-template.settings.jar?raw=true)
     - Откройте WebStorm и перейдите в меню `File`
     - Выберите пункт меню `Import Settings`
     - Выберите файл и нажмите `OK`
