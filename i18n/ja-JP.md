@@ -1770,6 +1770,8 @@
 
     ```javascript
     /* recommended */
+    var handlingRouteChangeError = false;
+
     function handleRoutingErrors() {
         /**
          * Route cancellation:
@@ -1778,14 +1780,26 @@
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
-                var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
+                if (handlingRouteChangeError) { return; }
+                handlingRouteChangeError = true;
+                var destination = (current && (current.title ||
+                    current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
                 var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
+                var msg = 'Error routing to ' + destination + '. ' +
+                    (rejection.msg || '');
+
                 /**
                  * Optionally log using a custom service or $log.
                  * (Don't forget to inject custom service)
                  */
                 logger.warning(msg, [current]);
+
+                /**
+                 * On routing error, go to another route/state.
+                 */
+                $location.path('/');
+
             }
         );
     }
@@ -2707,6 +2721,27 @@
     ng-m // creates an Angular module
     ```
 
+### Atom
+###### [Style [Y253](#style-y253)]
+
+  - 本スタイルとガイドラインに沿ったAngularJSスニペット that follow these styles and guidelines.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    or
+    - Atomを開き、Package Managerを開く (Packages -> Settings View -> Install Packages/Themes)
+    - 'angularjs-styleguide-snippets'のパッケージを検索
+    - パッケージをインストールするために'Install'をクリック
+
+  - JavaScriptのファイルタイプで、`TAB`に続いて下記のコマンドを打ちます。
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective // creates an Angular directive
+    ngfactory // creates an Angular factory
+    ngmodule // creates an Angular module
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
@@ -2793,7 +2828,7 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 ### Process
     1. Discuss the changes in a GitHub issue.
-    2. Open a Pull Request against the develop branch, reference the issue, and explain the change and why it adds value.
+    2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
     3. The Pull Request will be evaluated and either merged or declined.
 
 ## License
