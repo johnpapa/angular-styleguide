@@ -1763,6 +1763,8 @@
 
   ```javascript
   /* recommended */
+  var handlingRouteChangeError = false;
+
   function handleRoutingErrors() {
       /**
        * Route cancellation:
@@ -1771,14 +1773,25 @@
        */
       $rootScope.$on('$routeChangeError',
           function(event, current, previous, rejection) {
-              var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
-                  'unknown target';
-              var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
+              if (handlingRouteChangeError) { return; }
+                handlingRouteChangeError = true;
+                var destination = (current && (current.title ||
+                    current.name || current.loadedTemplateUrl)) ||
+                    'unknown target';
+              var msg = 'Error routing to ' + destination + '. ' +
+                    (rejection.msg || '');
+
               /**
                * Optionally log using a custom service or $log.
                * (Don't forget to inject custom service)
                */
               logger.warning(msg, [current]);
+
+              /**
+               * On routing error, go to another route/state.
+               */
+              $location.path('/');
+
           }
       );
   }
@@ -2652,6 +2665,72 @@
 
 **[返回顶部](#目录)**
 
+## 文件模板和片段
+使用文件模板和片段帮助保持一致性的风格，这里有针对一些web开发的编辑器和IDE的模板和（或）片段。
+
+###Sublime Text
+###### [Style [Y250](#style-y250)]
+
+  - AngularJS片段遵循这些风格指南。 
+
+    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
+    - 把它放到Packages文件夹中
+    - 重启Sublime 
+    - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
+
+  ```javascript
+  ngcontroller // creates an Angular controller
+  ngdirective // creates an Angular directive
+  ngfactory // creates an Angular factory
+  ngmodule // creates an Angular module
+  ```
+
+###Visual Studio
+###### [Style [Y251](#style-y251)]
+
+    - 下载Visual Studio扩展文件[SideWaffle](http://www.sidewaffle.com)
+    - 运行下载的vsix文件
+    - 重启Visual Studio
+
+###WebStorm
+###### [Style [Y252](#style-y252)]
+
+  - 你可以把它们导入到WebStorm设置中:
+
+    - 下载[WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - 打开WebStorm点击`File`菜单
+    - 选择`Import Settings`菜单选项
+    - 选择文件点击`OK`
+    - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
+    
+    ```javascript
+    ng-c // creates an Angular controller
+    ng-f // creates an Angular factory
+    ng-m // creates an Angular module
+    ```
+        
+### Atom
+###### [Style [Y253](#style-y253)]
+
+  - AngularJS snippets that follow these styles and guidelines.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    or
+    - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Search for the package 'angularjs-styleguide-snippets'
+    - Click 'Install' to install the package
+    
+  - In a JavaScript file type these commands followed by a `TAB`
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective // creates an Angular directive
+    ngfactory // creates an Angular factory
+    ngmodule // creates an Angular module
+    ```
+**[返回顶部](#目录)**
+
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
 
@@ -2726,51 +2805,6 @@
 ## AngularJS文档
 [Angular文档](//docs.angularjs.org/api)。
 
-## 文件模板和片段
-使用文件模板和片段帮助保持一致性的风格，这里有针对一些web开发的编辑器和IDE的模板和（或）片段。
-
-###Sublime Text
-###### [Style [Y250](#style-y250)]
-
-  - AngularJS片段遵循这些风格指南。 
-
-    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
-    - 把它放到Packages文件夹中
-    - 重启Sublime 
-    - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
-
-  ```javascript
-  ngcontroller // creates an Angular controller
-  ngdirective // creates an Angular directive
-  ngfactory // creates an Angular factory
-  ngmodule // creates an Angular module
-  ```
-
-###Visual Studio
-###### [Style [Y251](#style-y251)]
-
-    - 下载Visual Studio扩展文件[SideWaffle](http://www.sidewaffle.com)
-    - 运行下载的vsix文件
-    - 重启Visual Studio
-
-###WebStorm
-###### [Style [Y252](#style-y252)]
-
-  - 你可以把它们导入到WebStorm设置中:
-
-    - 下载[WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
-    - 打开WebStorm点击`File`菜单
-    - 选择`Import Settings`菜单选项
-    - 选择文件点击`OK`
-    - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
-    
-    ```javascript
-    ng-c // creates an Angular controller
-    ng-f // creates an Angular factory
-    ng-m // creates an Angular module
-    ```
-**[返回顶部](#目录)**
-
 ## 贡献
 
 先打开一个问题讨论潜在的变化和增加。如果你对这篇指南有问题，随时在仓库中提出问题。如果你发现了一个错字，创建一个pull request。这样做是为了保持内容的更新，使用github的原生功能通过问题和PR来帮助讲述这个故事，具体做法可以google一下。为什么？因为如果你有问题，其他人可能有同样的问题，你在这里可以学到如何贡献。
@@ -2780,7 +2814,7 @@
 
 ###过程
     1. 在Github Issue中讨论这个问题。
-    2. 在develop分支中开一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
+    2. 拉取一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
     3. pull request将会被进行评估，结果就是合并或是拒绝。
 
 ## 许可证
