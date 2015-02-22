@@ -2,6 +2,8 @@
 
 *[@john_papa](//twitter.com/john_papa)によるチームのための頑固なAngularJSスタイルガイド*
 
+*Translation by [@noritamago](https://github.com/noritamago)*
+
 もしあなたがAngularJSのシンタックス、規約、そしてアプリケーション構成のための頑固なスタイルガイドを探しているなら、どうぞいらっしゃい！本スタイルは、[AngularJS](//angularjs.org)を用いた私の開発経験やプレゼンテーション、[Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) 、そしてチームでの作業に基づいたものです。
 
 このスタイルガイドの目的は、私が実践している規約だけでなく、私がそれを行う理由を示すことによって、AngularJSアプリケーションを構築する手引きとなることです。
