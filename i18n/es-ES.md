@@ -2,57 +2,58 @@
 
 *Guía de estilos colaborativa de AngularJS para equipos por [@john_papa](//twitter.com/john_papa)*
 
-Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngulRJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipo. 
+Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngulRJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
 
-El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con AngularJS enseñando convenciones que uso y, lo más importante, el porqué. 
+El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con AngularJS enseñando convenciones que uso y, lo más importante, el porqué.
 
->Si te gusta esta guía, écha un vistazo al curso de Pluralsight [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean).
+>Si te gusta esta guía, echa un vistazo al curso de Pluralsight [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean).
 
   [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
-  
-## Asombrosa comunidad y créditos
-Nunca trabajes solo. Personalmente, la comunidad de AngularJS es un increíble grupo que apasionado por compartir experiencias. Como por ejemplo, mi amigo y experto AngularJS Todd Motto, con el que he colaborado en muchas de los estilos y convenciones. Estamos de acuerdo en la mayoría, y en otras no. Te recomiendo que le eches un vistazo a [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) para que le des sentido a ésta guía y la compares.
 
-Muchos de los estilos han salido de las muchas sesiones de pair programming que [Ward Bell](http://twitter.com/wardbell) y yo hemos tenido. Aunque no siempre coincidimos, mi amigo Ward me ha ayudado con la última evolución de ésta guía.
+## Asombrosa comunidad y créditos
+Nunca trabajes solo. Personalmente, la comunidad de AngularJS es un increíble grupo apasionado por compartir experiencias. Como por ejemplo, mi amigo y experto en AngularJS Todd Motto, con el que he colaborado en muchos de los estilos y convenciones. Estamos de acuerdo en la mayoría, y en otras no. Te recomiendo que le eches un vistazo a [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) para que le des sentido a esta guía y la compares.
+
+Muchos de los estilos han salido de las muchas sesiones de pair programming que [Ward Bell](http://twitter.com/wardbell) y yo hemos tenido. Aunque no siempre coincidimos, mi amigo Ward me ha ayudado con la última evolución de esta guía.
 
 ## Mira los estilos en la aplicación de ejemplo
-Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta útil verlos en práctica. Ésta guía viene acompañada de una aplicación de ejemplo que sigue los estilos y patrones. La puedes encontrar en [aplicación de ejemplo (llamada modular) aquí](https://github.com/johnpapa/ng-demos) dentro del directorio `modular`. Siéntete libre de cogerla, hacerle clone o un fork. [Instrucciones de cómo arrancarla en su readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta útil verlos en práctica. Esta guía viene acompañada de una aplicación de ejemplo que sigue los estilos y patrones. La puedes encontrar en [aplicación de ejemplo (llamada modular) aquí](https://github.com/johnpapa/ng-demos) dentro del directorio `modular`. Siéntete libre de cogerla, hacerle clone o un fork. [Instrucciones de cómo arrancarla en su readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traducciones
-[Traducciones de ésta guía de estilos Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) son mantenidas por la comunidad y las puedes encontrar aquí.
+[Traducciones de esta guía de estilos Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) son mantenidas por la comunidad y las puedes encontrar aquí.
 
 ## Tabla de contenidos
 
-  1. [Single Responsibility](#single-responsibility)
+  1. [Responsabilidad
+     Única](#single-responsibility-o-responsabilidad-única)
   1. [IIFE](#iife)
-  1. [Modules](#modules)
-  1. [Controllers](#controllers)
-  1. [Services](#services)
+  1. [Módulos](#módulos)
+  1. [Controladores](#controladores)
+  1. [Servicios](#servicios)
   1. [Factories](#factories)
   1. [Data Services](#data-services)
-  1. [Directives](#directives)
-  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
-  1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
-  1. [Minification and Annotation](#minification-and-annotation)
-  1. [Exception Handling](#exception-handling)
-  1. [Naming](#naming)
-  1. [Application Structure LIFT Principle](#application-structure-lift-principle)
-  1. [Application Structure](#application-structure)
-  1. [Modularity](#modularity)
-  1. [Startup Logic](#startup-logic)
-  1. [Angular $ Wrapper Services](#angular--wrapper-services)
-  1. [Testing](#testing)
-  1. [Animations](#animations) 
-  1. [Comments](#comments)
+  1. [Directivas](#directivas)
+  1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
+  1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
+  1. [Minificación y Anotación](#minificación-y-anotación)
+  1. [Manejo de Excepciones](#manejo-de-excepciones)
+  1. [Cómo Nombrar](#cómo-nombrar)
+  1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
+  1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
+  1. [Modularidad](#modularidad)
+  1. [Lógica de Arranque](#lógica-de-arranque)
+  1. [Servicios Envoltorios $ de Angular](#servicios-envoltorios--de-angular)
+  1. [Pruebas](#pruebas)
+  1. [Animaciones](#animaciones)
+  1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
-  1. [Constants](#constants)
-  1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [Yeoman Generator](#yeoman-generator)
-  1. [Routing](#routing)
-  1. [Task Automation](#task-automation)
+  1. [Constantes](#constantes)
+  1. [Plantillas y Snippets](#plantillas-y-snippets)
+  1. [Generador de Yeoman](#generador-de-yeoman)
+  1. [Ruteo](#ruteo)
+  1. [Automatización de Tareas](#automatización-de-tareas)
   1. [AngularJS Docs](#angularjs-docs)
-  1. [Contributing](#contributing)
-  1. [License](#license)
+  1. [Contribuyendo](#contribuyendo)
+  1. [Licencia](#licencia)
 
 ## Single Responsibility o Responsabilidad Única
 
@@ -61,7 +62,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Define 1 componente por archivo.
 
-  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controller, y defines una factory todo en el mismo archivo.
+  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una factory todo en el mismo archivo.
 
   ```javascript
   /* evitar */
@@ -69,7 +70,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       .module('app', ['ngRoute'])
       .controller('SomeController', SomeController)
       .factory('someFactory', someFactory);
-    
+
   function SomeController() { }
 
   function someFactory() { }
@@ -103,17 +104,17 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   angular
       .module('app')
       .factory('someFactory', someFactory);
-    
+
   function someFactory() { }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## IIFE
-### JavaScript Closures
+### Closures de JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Envuelve los componentes AngularJS en una expersiónb de función que se invoca inmediatamente Immediately Invoked Function Expression (IIFE). 
+  - Envuelve los componentes AngularJS en una expresión de función que se invoca inmediatamente Immediately Invoked Function Expression (IIFE).
 
   *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así colisión de variables.
 
@@ -140,7 +141,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   ```javascript
   /**
-   * recomendado 
+   * recomendado
    *
    * así no dejamos ninguna variable global
    */
@@ -168,28 +169,28 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   })();
   ```
 
-  - Nota: Para acortar únicamente, el resto de ejemplo de esta guía podrían omitir la sintaxis IIFE. 
+  - Nota: Para acortar únicamente, el resto de los ejemplos de esta guía podrían omitir la sintaxis IIFE.
 
   - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia factory.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Modules
+## Módulos
 
 ### Evitando la colisión de nombres
 ###### [Style [Y020](#style-y020)]
 
-  - Use una convención de nombres única con separadores para los sub-módulos. 
+  - Use una convención de nombres única con separadores para los sub-módulos.
 
-  *¿Por qué?*: Nombres únicos ayudan a evitar colisiones en los nombres de módulos. Los separadores ayudan a definir los módulos y la jerarquía de sus sub-módulos. Por ejemplo `app` puede ser tu módulo raiz y `app.dashboard` y `app.users` pueden ser módulos que dependen de `app`. 
+  *¿Por qué?*: Nombres únicos ayudan a evitar colisiones en los nombres de módulos. Los separadores ayudan a definir los módulos y la jerarquía de sus sub-módulos. Por ejemplo `app` puede ser tu módulo raíz y `app.dashboard` y `app.users` pueden ser módulos que dependen de `app`.
 
-### Definitions (aka Setters)
+### Definiciones (aka Setters)
 ###### [Style [Y021](#style-y021)]
 
-  - Declara los módulos sin usar la variable, usando la sintaxis de los setters. 
+  - Declara los módulos sin usar una variable, usando la sintaxis de los setters.
 
   *¿Por qué?*: Con un componente por archivo, es raro que necesitemos introducir una variable para el módulo.
-  
+
   ```javascript
   /* evitar */
   var app = angular.module('app', [
@@ -216,9 +217,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Getters
 ###### [Style [Y022](#style-y022)]
 
-  - Cuando usemos un módulo, evita usar la variable y usando su getter en su lugar.
+  - Al usar un módulo, evita usar una variable y en su lugar usa encadenamiento con la sintaxis de los getter.
 
-  *¿Por quñe?*: Esto hace más legible el código y evita que las variables colisionen.
+  *¿Por qué?*: Esto hace más legible el código y evita que las variables colisionen.
 
   ```javascript
   /* evitar */
@@ -245,12 +246,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   *¿Por qué?*: Un módulo debe ser creado sólo una vez y recuperado desde ese punto.
 
     - Usa `angular.module('app', []);` para setear un módulo.
-    - Usa `angular.module('app');` para recuperar un módulo. 
+    - Usa `angular.module('app');` para recuperar un módulo.
 
 ### Funciones anónimas vs funciones con nombre
 ###### [Style [Y024](#style-y024)]
 
-  - Usa funciones con nombre en lugar de pasar una función anónima en el callback. 
+  - Usa funciones con nombre en lugar de pasar una función anónima en el callback.
 
   *¿Por qué?*: Así el código es más legible, es más fácil de debugear, y reduce la cantidad de código anidado en los callbacks.
 
@@ -282,20 +283,20 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   function logger() { }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Controllers
+## Controladores
 
-### controllerAs View Syntax
+### controllerAs Sintaxis en la Vista
 ###### [Style [Y030](#style-y030)]
 
-  - Usa la sintaxis [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controller con $scope`. 
+  - Usa la sintaxis [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controlador con $scope`.
 
-  *¿Por qué?*: Los Controllers se construyen, renuevan y proporcionan una nueva única instancia, y la sintaxis `controllerAs` se acerca más a eso que con la `sintaxis clásico de $scope`. 
+  *¿Por qué?*: Los Controladores se construyen, renuevan y proporcionan una nueva instancia única, y la sintaxis `controllerAs` se acerca más a eso que la `sintaxis clásica de $scope`.
 
-  *¿Por qué?*: Enlazas el uso del objeto con el "punto" a la View (ej. `customer.name` en lugar de `name`), así es más contextual, fácil de leer y evitas problemas de referencia que pueden aparecer con el "punto".
+  *¿Por qué?*: Promueves el uso de binding usando el "." en el objeto dentro de la Vista (ej. `customer.name` en lugar de `name`), así es más contextual, fácil de leer y evitas problemas de referencia que pueden aparecer con el "punto".
 
-  *¿Por qué?*: Ayuda a evitar usar `$parent` en las Views con controllers anidados.
+  *¿Por qué?*: Ayuda a evitar usar `$parent` en las Vistas con controladores anidados.
 
   ```html
   <!-- evitar -->
@@ -311,16 +312,16 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   </div>
   ```
 
-### controllerAs Controller Syntax
+### controllerAs Sintaxis en el Controlador
 ###### [Style [Y031](#style-y031)]
 
-  - Usa la sintaxis `controllerAs` en lugar del `cláxico controller con $scope`. 
+  - Usa la sintaxis `controllerAs` en lugar del `clásico controlador con $scope`.
 
-  - La sintaxis `controllerAs` usa `this` dentro de los controllers que se asocian al `$scope`
+  - La sintaxis `controllerAs` usa `this` dentro de los controladores que se asocian al `$scope`
 
-  *¿Por qué?*: `controllerAs` es azucar sintáctico sobre el `$scope`. Puedes enlazar a la vista y acceder a los métodos del `$scope`.
+  *¿Por qué?*: `controllerAs` es azúcar sintáctico sobre el `$scope`. Puedes enlazar a la vista y acceder a los métodos del `$scope`.
 
-  *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una factory. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una factory e invocarlos desde el controller. 
+  *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una factory. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una factory e invocarlos desde el controller.
 
   ```javascript
   /* evitar */
@@ -338,12 +339,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### controllerAs with vm
+### controllerAs con vm
 ###### [Style [Y032](#style-y032)]
 
   - Usa una variable para capturar `this` cuando uses la sintaxis `controllerAs`. Elige un nombre de variable consistente como `vm`, de ViewModel.
-  
-  *¿Por qué?*: La palabra `this` es contextual y cuando es usada dentro de una función en un controller puede cambiar su contexto. Capturando el contexto de `this` te evita encontrarte este problema.
+
+  *¿Por qué?*: La palabra `this` es contextual y cuando es usada dentro de una función en un controlador puede cambiar su contexto. Capturando el contexto de `this` te evita encontrarte este problema.
 
   ```javascript
   /* evitar */
@@ -362,14 +363,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-  Nota: Puedes evitar los warnings de [jshint](http://www.jshint.com/) escribiendo un comentario encima de la línea de c´pdigo. Sin embargo no hace falta si el nombre de la función empieza por mayúsculas, ya que esa es la convención para las funciones de los constructores, que es lo que un controller en Angular es.
+  Nota: Puedes evitar los warnings de [jshint](http://www.jshint.com/) escribiendo un comentario encima de la línea de código. Sin embargo no hace falta si el nombre de la función empieza con mayúsculas, ya que esa es la convención para las funciones de los constructores, que es lo que un controller en Angular es.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Nota: Cuando crees watches en un controller usando `controller as`, puedes observar la variable `vm.*` usando la siguiente sintaxis.(Crea los watchers con precación ya que añaden mucha carca al ciclo de digest)
+  Nota: Cuando crees watchers en un controlador usando `controller as`, puedes observar la variable `vm.*` usando la siguiente sintaxis.(Crea los watchers con precaución ya que añaden mucha carga al ciclo de digest)
 
   ```html
   <input ng-model="vm.title"/>
@@ -387,14 +388,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### Bindable Members Up Top
+### Miembros Bindeables Arriba
 ###### [Style [Y033](#style-y033)]
 
-  - Coloca las asociaciones en la parte superior del controller, por orden alfabético y no separados a lo largo del código del controller.
+  - Coloca las asociaciones en la parte superior del controlador, ordenalas alfabéticamente y no las distribuyas a lo largo del código del controlador.
 
-    *¿Por qué?*: Colocar las variables asignables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la View.
+    *¿Por qué?*: Colocar las variables asignables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la Vista.
 
-    *¿Por qué?*: Setear funciones anónimas puede ser fácil, pero cuando esas funciones tienen más de una línea de código se hace menos legible. Definiendo las funciones bajo a las variables, hace que los detalles de implementación estén abajo, deja las variables arriba y las funciones abajo.
+    *¿Por qué?*: Setear funciones anónimas puede ser fácil, pero cuando esas funciones tienen más de una línea de código se hace menos legible. Definir las funciones bajo las variables bindeables (las declaraciones de las funciones serán movidas hacia arriba en el proceso de hoisting), hace que los detalles de implementación estén abajo, deja las variables arriba y más sencilla la lectura.
 
   ```javascript
   /* evitar */
@@ -451,8 +452,8 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
-          /** 
-           * líneas 
+          /**
+           * líneas
            * de
            * código
            * que afectan a
@@ -476,24 +477,26 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       vm.title = 'Sessions';
   ```
 
-### Function Declarations to Hide Implementation Details
+### Declaraciones de Funciones para Esconder los Detalles de Implementación
 ###### [Style [Y034](#style-y034)]
 
-  - Declara funciones para ocultar detalles de implementación. Mantén las variables asignables arriba. Cuando necesites asignar una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Bindable Members Up Top. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Miembros Bindeables Arriba. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Colocar las variables asignables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la View.
+    *¿Por qué?*: Colocar las variables bindeables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la Vista.
 
-    *¿Por qué?*: Colocar los detalles de implementación de una función al final del deja la complejidad fuera de la vista, con las cosas importantes arriba.
+    *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo deja la complejidad fuera de vista así puedes ver las cosas importantes arriba.
 
-    *¿Por qué?*: Evitamos problemas usando funciones antes de ser definidas.
+    *¿Por qué?*: La declaración de las funciones son movidas arriba por el
+    proceso de hoisting así que no tenemos que preocuparnos por usar una
+    función antes de que sea definida (como la habría si fueran funciones en forma de expresión)
 
     *¿Por qué?*: No tendrás que propcuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
-    *¿Por qué?*: El orden es crítico para las funciones
+    *¿Por qué?*: El orden es crítico para las funciones en forma de expresión
 
   ```javascript
-  /** 
-   * evitar 
+  /**
+   * evitar
    * Using function expressions.
    */
   function Avengers(dataservice, logger) {
@@ -520,13 +523,13 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-  Nótese que lo importante está disperso en el ejemplo anterior. En el siguiente ejemplo, lo importante está arriba. Por ejemplo, las variables asociadas al controller como `vm.avengers` y `vm.title`. Los detalles de implementación están debajo. Así es más fácil de leer.
+  Nótese que las cosas importantes están dispersas en el ejemplo anterior. En el siguiente ejemplo, lo importante está arriba. Por ejemplo, las variables asociadas al controller como `vm.avengers` y `vm.title`. Los detalles de implementación están debajo. Así es más fácil de leer.
 
   ```javascript
   /*
    * recomendado
-   * Usando declaraciones de funciones y 
-   * asignandola a las variables arriba.
+   * Usando declaraciones de funciones y
+   * miembros bindeables arriba.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -551,16 +554,16 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### Defer Controller Logic
+### Diferir la Lógica del Controlador
 ###### [Style [Y035](#style-y035)]
 
-  - Difiera la lógica dentro de un controller delegándola en services y factories.
+  - Difiera la lógica dentro de un controlador delegándola a servicios y factories.
 
-    *¿Por qué?*: La lógica podría ser reutilizada por varios controllers cuando la colocas en un service y la expones como una función.
+    *¿Por qué?*: La lógica podría ser reutilizada por varios controladores cuando la colocas en un servicio y la expones como una función.
 
     *¿Por qué?*: La lógica en un servicio puede ser aislada en un test unitario, mientras que la lógica de llamadas en un controller se puede mockear fácilmente.
 
-    *¿Por qué?*: Elimina dependencias y esconde detalles de implementación del controller.
+    *¿Por qué?*: Elimina dependencias y esconde detalles de implementación del controlador.
 
   ```javascript
 
@@ -601,7 +604,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       vm.isCreditOk;
       vm.total = 0;
 
-      function checkCredit() { 
+      function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
       .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
@@ -609,21 +612,21 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### Keep Controllers Focused
+### Mantén tus Controladores Enfocados
 ###### [Style [Y037](#style-y037)]
 
-  - Define un controller para una vista, no intentes reutilizar el controller para otras views. En lugar de eso, mueve la lógica que se pueda reutilizar en factories y deja el controller simple, enfocándose en su view. 
+  - Define un controller para una vista, no intentes reutilizar el controller para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a factories y deja el controlador simple y enfocado en su vista.
 
-    *¿Por qué?*: Reutilizar controllers con varias views es arriesgado y necesitarías un buen end to end (e2e) test para asegurar que todo funciona bien en la aplicación.
+    *¿Por qué?*: Reutilizar controladores con varias vistas es arriesgado y necesitarías buena cobertura de tests end to end (e2e) para asegurar que todo funciona bien en la aplicación.
 
-### Assigning Controllers
+### Asignando Controladores
 ###### [Style [Y038](#style-y038)]
 
-  - Cuando un controller debe ser asociado a una view y cada componente puede ser reutilizado por otros controllers o views, define controllers con sus rutas. 
+  - Cuando un controlador debe ser asociado a una vista y cada componente puede ser reutilizado por otros controladores o vistas, define controladores con sus rutas.
 
-    Nota: Si una View es cargada por otra además de por la ruta, entonces usa la sintaxis `ng-controller="Avengers as vm"`. 
+    Nota: Si una Vista es cargada por otra además de por la ruta, entonces usa la sintaxis `ng-controller="Avengers as vm"`.
 
-    *¿Por qué?*: Emparejar el controller en la ruta permite a diferentes rutas invocar diferentes pares de controllers y views. Cuando los controllers son asignados en la view usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esa view siempre estará asociada al mismo controller.
+    *¿Por qué?*: Emparejar el controlador en la ruta permite a diferentes rutas invocar diferentes pares de controladores y vistas. Cuando los controladores son asignados en la vista usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esa vista siempre estará asociada al mismo controlador.
 
  ```javascript
   /* evitar - cuando se use con una ruta y queramos asociarlo dinámicamente */
@@ -671,14 +674,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   </div>
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Services
+## Servicios
 
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Los Services son instanciados con un `new`, usan `this` para los métodos públicos y las variables. Ya que son muy similares a las factories, usa una factory en su lugar por consistencia.
+  - Los Servicios son instanciados con un `new`, usan `this` para los métodos públicos y las variables. Ya que son muy similares a las factories, usa una factory en su lugar por consistencia.
 
     Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services). Esto significa que sólo hay una instancia de un servicio por inyector.
 
@@ -710,11 +713,11 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Factories
 
-### Single Responsibility
+### Responsabilidad Única
 ###### [Style [Y050](#style-y050)]
 
   - Las factories deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factory empiece a exceder el principio de responsabilidad única, una nueva factory debe ser creada.
@@ -726,25 +729,25 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services).
 
-### Accessible Members Up Top
+### Miembros accesibles Arriba
 ###### [Style [Y052](#style-y052)]
 
-  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
-    *¿Por qué?*: Colocar los elementos que se llamand arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear). 
+    *¿Por qué?*: Colocar los elementos que se llaman arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear).
 
     *¿Por qué?*: Es especialmente útil cuando el archivo se hace más largo, ya que ayuda a evitar el scroll para ver qué se expone.
 
-    *¿Por qué?*: Setear las funciones puede ser fácil, pero cuando tienen más de una línea ser reduce la legibilidad. Definiendo la interfaz mueve los detalles de implementación abajo, mantiene la interfaz que se llama arriba y lo hace más fácil de leer.
+    *¿Por qué?*: Setear las funciones puede ser fácil, pero cuando tienen más de una línea ser reduce la legibilidad. Definiendo la interfaz mueve los detalles de implementación abajo, mantiene la interfaz que va a ser llamada arriba y lo hace más fácil de leer.
 
   ```javascript
   /* evitar */
   function dataService() {
     var someValue = '';
-    function save() { 
+    function save() {
       /* */
     };
-    function validate() { 
+    function validate() {
       /* */
     };
 
@@ -769,62 +772,62 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
       ////////////
 
-      function save() { 
+      function save() {
           /* */
       };
 
-      function validate() { 
+      function validate() {
           /* */
       };
   }
   ```
 
-  De esta forma se asocian los enlaces desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
+  De esta forma se asocian los bindeos desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
 
     ![Factories Usando "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
 
-### Function Declarations to Hide Implementation Details
+### Declaración de Funciones para Esconder los Detalles de Implementación
 ###### [Style [Y053](#style-y053)]
 
   - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factory. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte instantáneamente a identificar qué funciones de la factory te pueden ayudar externamente.
+    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la factory se pueden accesar externamente.
 
     *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complegidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
 
-    *¿Por qué?*: Las declaraciones de las funciones son "hoisted" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fuera una expresión).
+    *¿Por qué?*: Las declaraciones de las funciones son "hoisted" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fueran funciones en forma de expresión).
 
     *¿Por qué?*: No tendrás que propcuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
-    *¿Por qué?*: El orden es crítico para las expresiones 
+    *¿Por qué?*: El orden es crítico para las funciones en forma de expresión
 
   ```javascript
   /**
    * evitar
-   * Usar function expressions
+   * Usar función como expresión
    */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
 
       var getAvengers = function() {
-          // implementation details go here
+          // detalles de implementación van aquí
       };
 
       var getAvengerCount = function() {
-          // implementation details go here
+          // detalles de implementación van aquí
       };
 
       var getAvengersCast = function() {
-         // implementation details go here
+          // detalles de implementación van aquí
       };
 
       var prime = function() {
-         // implementation details go here
+          // detalles de implementación van aquí
       };
 
       var ready = function(nextPromises) {
-          // implementation details go here
+          // detalles de implementación van aquí
       };
 
       var service = {
@@ -841,8 +844,8 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```javascript
   /**
    * recomendado
-   * Using function declarations
-   * and accessible members up top.
+   * Usar declaración de funciones
+   * y miembros accesibles arriba
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -860,41 +863,41 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       ////////////
 
       function getAvengers() {
-          // implementation details go here
+          // detalles de implementación van aquí
       }
 
       function getAvengerCount() {
-          // implementation details go here
+          // detalles de implementación van aquí
       }
 
       function getAvengersCast() {
-          // implementation details go here
+          // detalles de implementación van aquí
       }
 
       function prime() {
-          // implementation details go here
+          // detalles de implementación van aquí
       }
 
       function ready(nextPromises) {
-          // implementation details go here
+          // detalles de implementación van aquí
       }
   }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Data Services
 
 ### Separate Data Calls
 ###### [Style [Y060](#style-y060)]
 
-  - Refactoriza la lógica para hacer operaciones e interaciones con datos en una factory, que los servicios responsables de las peticiones XHR, local storage, memoria o cualquier otra operación con datos.
+  - Refactoriza la lógica para hacer operaciones e interaciones con datos en una factory. Crear data services responsables de las peticiones XHR, local storage, memoria o cualquier otra operación con datos.
 
-    *¿Por qué?*: La responsabilidad del controller es la presentación y recoger la información para la view. No debe importarle cómo se consiguen los datos, sólo saber cómo conseguirlos. Separando los servicios de datos movemos la lógica de cómo conseguirlos al servicio de datos, y deja el controller simple, enfocandose en la vista.
+    *¿Por qué?*: La responsabilidad del controlador es la de presentar y recoger información para la vista. No debe importarle cómo se consiguen los datos, sólo saber cómo conseguirlos. Separando los data services movemos la lógica de cómo conseguirlos al data service, y deja el controlador simple, enfocándose en la vista.
 
-    *¿Por qué?*: Lo hace más fácil de testear (mock o real) las llamadas de datos cuando testeamos un controller que usa un servicio de datos.
+    *¿Por qué?*: Hace más fácil testear (mock o real) las llamadas de datos cuando testeamos un controlador que usa un data service.
 
-    *¿Por qué?*: La implementación del servicio de datos puede tener código muy específico para usar el repositorio de datos. Podría incluir cabeceras, cómo hablar a los datos, u otros servicios como $http. Separando la lógica en servicios de datos encapsulamos la lógica en un único lugar, escondiendo la implementación de sus consumidores externos (quizá un controller), de esta forma es más fácil cambiar la implementación.
+    *¿Por qué?*: La implementación del data service puede tener código muy específico para usar el repositorio de datos. Podría incluir cabeceras, cómo hablar a los datos, u otros servicios como $http. Separando la lógica en data services encapsulamos la lógica en un único lugar, escondiendo la implementación de sus consumidores externos (quizá un controlador), de esta forma es más fácil cambiar la implementación.
 
   ```javascript
   /* recomendado */
@@ -926,13 +929,13 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       }
   }
   ```
-    
-    Nota: El servicio de datos es llamado desde los consumidores, como el controller, escondiendo la implementación del consumidor como se muestra a continuación.
+
+    Nota: El data service es llamado desde los consumidores, como el controlador, escondiendo la implementación del consumidor como se muestra a continuación.
 
   ```javascript
   /* recomendado */
 
-  // controller llamando a la factory del servicio de datos
+  // controller llamando a la factory del data service
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -958,15 +961,15 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
                   return vm.avengers;
               });
       }
-  }      
+  }
   ```
 
-### Return a Promise from Data Calls
+### Regresa una Promesa desde las Llamadas a Datos
 ###### [Style [Y061](#style-y061)]
 
-  - Cuando llamamos a servicios de datos que devuelven una promesa como $http, devuelve una promesa en la llamada de tu función también.
+  - Cuando llamamos a data services que devuelven una promesa como $http, devuelve una promesa en la llamada de tu función también.
 
-    *¿Por qué?*: Puedes encadenar promesas y hacer algo cuando la llamada se complete y resuelva o rechaze la promesa.
+    *¿Por qué?*: Puedes encadenar promesas y hacer algo cuando la llamada se complete y resuelva o rechace la promesa.
 
   ```javascript
   /* recomendado */
@@ -991,14 +994,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   function getAvengers() {
         /**
          * Step 2
-         * Pide al servicio de datos los datos y espera
+         * Pide al data service los datos y espera
          * por la promesa
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
                  * Step 3
-                 * setea los datos y resuelva la promesa
+                 * setea los datos y resuelve la promesa
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -1006,15 +1009,15 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-    **[Volver arriba](#table-of-contents)**
+    **[Volver arriba](#tabla-de-contenidos)**
 
-## Directives
-### Limit 1 Per File
+## Directivas
+### Limitadas a 1 Por Archivo
 ###### [Style [Y070](#style-y070)]
 
-  - Crea una directiva por archivo. Llama al archivo como la directiva. 
+  - Crea una directiva por archivo. Llama al archivo como la directiva.
 
-    *¿Por qué?*: Es muy fácil colocar todas las directivas en un archivo, pero será más difícil de partir para ser compartida entre aplicaciones, modulos o para un simple módulo.
+    *¿Por qué?*: Es muy fácil colocar todas las directivas en un archivo, pero será más difícil de partir para ser compartida entre aplicaciones, módulos o para un simple módulo.
 
     *¿Por qué?*: Una directiva por archivo es fácil de mantener.
 
@@ -1025,25 +1028,27 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* directiva de órdenes que es específica del módulo de órdenes*/
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* directiva de ventas que puede ser usada en algún otro lado a lo
+      largo de la aplicación de ventas */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* directiva de spinner que puede ser usada a lo largo de las
+      aplicaciones */
       .directive('sharedSpinner', sharedSpinner);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalles de implementación */
   }
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalles de implementación */
   }
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
@@ -1052,7 +1057,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   /* calendarRange.directive.js */
 
   /**
-   * @desc order directive that is specific to the order module at a company named Acme
+   * @desc directiva de órdenes que es específica al módulo de órdenes en la compañía Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1060,7 +1065,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
@@ -1069,15 +1074,15 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc directiva de ventas que puede ser usada a lo largo de la aplicación de ventas en la compañía Acme
    * @example <div acme-sales-customer-info></div>
-   */    
+   */
   angular
       .module('sales.widgets')
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
@@ -1086,7 +1091,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   /* spinner.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across apps at a company named Acme
+   * @desc directiva de spinner que puede ser usada a lo largo de las applicaciones en la compañía Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1094,36 +1099,36 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       .directive('acmeSharedSpinner', sharedSpinner);
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalles de implementación */
   }
   ```
 
-    Nota: Hay muchas formas de llamar a las directivas, especialmente cuando pueden ser usadas en scopes específicas. Elige un nombre que tenga sentido para la directiva y que su archivo sea distintivo y claro. Hemos visto algunos ejemplos antes, pero veremos más en la sección de cómo nombrar.
+    Nota: Hay muchas formas de llamar a las directivas, especialmente cuando pueden ser usadas en scopes específicos. Elige un nombre que tenga sentido para la directiva y que su archivo sea distintivo y claro. Hemos visto algunos ejemplos antes, pero veremos más en la sección de cómo nombrar.
 
-### Manipulate DOM in a Directive
+### Manipula el DOM en una Directiva
 ###### [Style [Y072](#style-y072)]
 
-  - Cuando manipules DOM directamente, usa una directiva. Si hay alguna alternativa como usando un CSS para cambiar el estilo o el [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) o [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), Entonces úsalos en su lugar. Por ejemplo, si la directiva sólo muestra o esconde elementos, usa ngHide/ngShow. 
+  - Cuando manipules DOM directamente, usa una directiva. Si hay alguna alternativa como usando CSS para cambiar los estilos o los [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) o [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), entonces úsalos en su lugar. Por ejemplo, si la directiva sólo muestra o esconde elementos, usa ngHide/ngShow.
 
-    *¿Por qué?*: Manipular el DOM puede ser dificil de testear, debugear y normalmente hay mejores maneras (e.g. CSS, animations, templates)
+    *¿Por qué?*: Manipular el DOM puede ser difícil de testear, debugear y normalmente hay mejores maneras (e.g. CSS, animations, templates)
 
-### Provide a Unique Directive Prefix
+### Provee un Prefijo Único de Directiva
 ###### [Style [Y073](#style-y073)]
 
-  - Proporciona prefijo corto, único y descriptiovo como `acmeSalesCustomerInfo` que se declara en el HTML como `acme-sales-customer-info`.
+  - Proporciona un prefijo corto, único y descriptivo como `acmeSalesCustomerInfo` que se declare en el HTML como `acme-sales-customer-info`.
 
-    *¿Por qué?*: El prefijo corto y único identifica el contexto de la directiva y el origen. Por ejemplo el prefijo `cc-` puede indicar que la directiva en particular es parte de la aplicación CodeCamper, mientras que `acme-` pudiera indicar que la directiva es de la compañía Acme. 
+    *¿Por qué?*: El prefijo corto y único identifica el contexto de la directiva y el origen. Por ejemplo el prefijo `cc-` puede indicar que la directiva en particular es parte de la aplicación CodeCamper, mientras que `acme-` pudiera indicar que la directiva es de la compañía Acme.
 
-    Nota: Evita `ng-` ya que está reservado para las directivas AngularJS. Estudia sabiamente las directivas usadas para evitar conflictos de nombres, como `ion-` de [Ionic Framework](http://ionicframework.com/). 
+    Nota: Evita `ng-` ya que está reservado para las directivas AngularJS. Estudia sabiamente las directivas usadas para evitar conflictos de nombres, como `ion-` de [Ionic Framework](http://ionicframework.com/).
 
-### Restrict to Elements and Attributes
+### Limitate a Elementos y Atributos
 ###### [Style [Y074](#style-y074)]
 
-  - Cuando crees directivas que tengan sentido como elemento, restringe `E` (elemento personalizado) y opcionalmente restringe `A` (atributo personalizado). Generalmente, si puede ser su control propio, `E` es apropiado, La guía genera es permitir `EA` pero intenta implementarlo como un elemento cuando sea un elemento único y como un atributo cuando añada elementos a su propio DOM.
+  - Cuando crees directivas que tengan sentido como elemento, restringe `E` (elemento personalizado) y opcionalmente restringe `A` (atributo personalizado). Generalmente, si puede ser su control propio, `E` es apropiado, La pauta general es permitir `EA` pero intenta implementarlo como un elemento cuando sea un elemento único y como un atributo cuando añada mejoras a su propio elemento existente en el DOM.
 
     *¿Por qué?*: Tiene sentido.
 
-    *¿Por qué?*: Mientras permitamos que una directiva sea usada como una clase, si esa directiva realmente estáa actuando como un elemento, tiene sentido que sea un elemento, o al menos un atributo.
+    *¿Por qué?*: Mientras permitamos que una directiva sea usada como una clase, si esa directiva realmente está actuando como un elemento, tiene sentido que sea un elemento, o al menos un atributo.
 
     Nota: En AngularJS 1.3+ EA es el valor por defecto
 
@@ -1157,7 +1162,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
-  
+
   ```javascript
   /* recomendado */
   angular
@@ -1178,18 +1183,18 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### Directives and ControllerAs
+### Directivas y ControllerAs
 ###### [Style [Y075](#style-y075)]
 
-  - Usa la sintaxis `controller as` con una directiva para ser consistente con el uso de `controller as` con los pares de view y controller.
+  - Usa la sintaxis `controller as` con una directiva para ser consistente con el uso de `controller as` con los pares de vista y controlador.
 
-    *¿Por qué?*: Tiene sentido y no es dificil.
+    *¿Por qué?*: Tiene sentido y no es difícil.
 
-    Nota: La siguiente directiva demuestra algunas de las formas en las que puedes usar el scope dentro de un link y controllers de una directiva, usando controllerAs. He puesto la template para dejarlo todo en un lugar.
+    Nota: La siguiente directiva demuestra algunas de las formas en las que puedes usar el scope dentro del link y el controlador de una directiva, usando controllerAs. He puesto la template para dejarlo todo en un lugar.
 
     Nota: En cuanto a la inyección de dependencias, mira [Identificar Dependencias Manualmente](#manual-annotating-for-dependency-injection).
 
-    Nota: Nótese que la directiva controller está fuera del closure de la directiva. Este estilo elimina los problemas que genera la inyección de dependencias donde la inyección es creada en un código no alcanzable después del `return`.
+    Nota: Nótese que el controlador de la directiva está fuera del closure de la directiva. Este estilo elimina los problemas que genera la inyección de dependencias donde la inyección es creada en un código no alcanzable después del `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1210,7 +1215,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
           link: linkFunc,
           controller: ExampleController,
             controllerAs: 'vm',
-            bindToController: true // because the scope is isolated
+            bindToController: true // porque el scope is aislado
         };
 
       return directive;
@@ -1226,7 +1231,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ExampleController.$inject = ['$scope'];
 
   function ExampleController($scope) {
-      // Injecting $scope just for comparison
+      // Inyectando el $scope solo para comparación
       var vm = this;
 
       vm.min = 3;
@@ -1249,9 +1254,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Usa `bindToController = true` cuando uses `controller as` con una directiva cuando quieras asociar el scope exterior al scope del controller de la directiva.
 
-    *¿Por qué?*: Lo hace más fácil a la hora de asociar el scope exterior al scope del controller de la directiva.
+    *¿Por qué?*: Lo hace más fácil a la hora de asociar el scope exterior al scope del controlador de la directiva.
 
-    Nota: `bindToController` fue introducido en Angular 1.3.0. 
+    Nota: `bindToController` fue introducido en Angular 1.3.0.
 
   ```html
   <div my-example max="77"></div>
@@ -1292,21 +1297,21 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Resolving Promises for a Controller
+## Resolviendo Promesas en un Controlador
 
-### Controller Activation Promises
+### Promesas de Activación de un Controlador
 ###### [Style [Y080](#style-y080)]
 
-  - Resuelve la lógica de inicialización de un controller en una función `activate`.
-     
-    *¿Por qué?*: Colocar la lógica de inicialización en un lugar consistente del controller lo hace más fácil de localizar, más consistente de testear, y ayuda a evitar que la lógica de activación se propage a lo largo del controller.
+  - Resuelve la lógica de inicialización de un controlador en una función `activate`.
 
-    *¿Por qué?*: El controller `activate` hace que la lógica para refrescar el controller/View sea reutilizable, mantiene la lógica junta, proporciona al usuario la View más rápido, hace las animacines más fáciles en `ng-view` o `ui-view` y lo hace más rápido a la vista del usuario.
+    *¿Por qué?*: Colocar la lógica de inicialización en un lugar consistente del controlador lo hace más fácil de localizar, más consistente de testear, y ayuda a evitar que la lógica de activación se propage a lo largo del controlador.
+
+    *¿Por qué?*: El `activate` del controlador hace que la lógica para refrescar el controlador/Vista sea reutilizable, mantiene la lógica junta, lleva el usuario a la Vista más rápido, hace las animaciones más fáciles en `ng-view` o `ui-view` y lo hace más rápido a la vista del usuario.
 
     Nota: Si necesitas condicionalmente cancelar la ruta antes de empezar el controller, usa en su lugar [route resolve](#style-y081).
-    
+
   ```javascript
   /* evitar */
   function Avengers(dataservice) {
@@ -1341,18 +1346,18 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### Route Resolve Promises
+### Resolución de Promesas en la Ruta
 ###### [Style [Y081](#style-y081)]
 
-  - Cuando un controller depende en una promesa a ser resuelta antes de que el controller se active, resuelve esas dependencias en el `$routeProvider` antes de que la lógica del controller sea ejecutada. Si necesitas condicionalmente cancelar una ruta antes de que el controller sea activado, usa un route resolver.
+  - Cuando un controlador depende en una promesa a ser resuelta antes de que el controlador se active, resuelve esas dependencias en el `$routeProvider` antes de que la lógica del controlador sea ejecutada. Si necesitas condicionalmente cancelar una ruta antes de que el controlador sea activado, usa un route resolver.
 
-  - Usa un route resolver cuando decidas cancelar la ruta antes de transicionar la View.
+  - Usa un route resolver cuando decidas cancelar la ruta antes de transicionar a la Vista.
 
-    *¿Por qué?*: Un controller puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una factory o de [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permitiendo que la promesa se resuelva antes de que la lógica del controller se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
+    *¿Por qué?*: Un controlador puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una factory o de [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite que la promesa se resuelva antes de que la lógica del controlador se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
 
-    *¿Por qué?*: El código se ejecuta después de la ruta y la función activate del controller. La View empieza a cargar al instante. Los Data binding se ejecutan cuando la promesa del activate se resuelva. Una animación de "Cargando" se puede mostrar mientras la transición de la view (via ng-view o ui-view)
+    *¿Por qué?*: El código se ejecuta después de la ruta y la función activate del controlador. La Vista empieza a cargar al instante. El bindeo de los datos se jecutan cuando la promesa del activate se resuelva. Una animación de "Cargando" se puede mostrar durante la transición de la vista (via ng-view o ui-view)
 
-    Nota: El código se ejecuta antes que la ruta mediante una promesa. Rechazar la promesa cancela la ruta. Resolverla hace que la nueva view espere a que la ruta sea resuelta. Una animación de "Cargando" puede ser mostrada antes de que se resuelva. Si quieres que la View aparezca más rápido y no necesitas un checkpoint para decidir si puedes mostrar o no la view, considera la técnica [controller `activate`](#style-y080).
+    Nota: El código se ejecuta antes que la ruta mediante una promesa. Rechazar la promesa cancela la ruta. Resolverla hace que la nueva vista espere a que la ruta sea resuelta. Una animación de "Cargando" puede ser mostrada antes de que se resuelva. Si quieres que la Vista aparezca más rápido y no necesitas un checkpoint para decidir si puedes mostrar o no la view, considera la técnica [controller `activate`](#style-y080).
 
   ```javascript
   /* evitar */
@@ -1362,9 +1367,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   function Avengers(movieService) {
       var vm = this;
-      // unresolved
+      // sin resolver
       vm.movies;
-      // resolved asynchronously
+      // resulta asincronamente
       movieService.getMovies().then(function(response) {
           vm.movies = response.movies;
       });
@@ -1405,7 +1410,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-    Nota: El siguiente ejemplo muestra una ruta que cuando se resuelve apunta a una función, haciéndolo más fácil de debugear y más fácil de manejar inyección de dependencias.
+    Nota: El siguiente ejemplo muestra una ruta que cuando se resuelve apunta a una función, haciéndolo más fácil de debugear y más fácil de manejar la inyección de dependencias.
 
   ```javascript
   /* even better */
@@ -1442,17 +1447,17 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Nota: El código del ejemplo de dependencia en `movieService` no se puede minimizar tal cual. Para detalles en cómo hacer este código sea minimizable, mira la sección de [inyección de dependencias](#manual-annotating-for-dependency-injection) y en [minimización y anotación](#minification-and-annotation).
+    Nota: El código del ejemplo de dependencia en `movieService` no se puede minimizar tal cual. Para detalles en cómo hacer este código sea minimizable, mira la sección en [inyección de dependencias](#anotación-manual-para-la-inyección-de-dependencias) y en [minimización y anotación](#minificación-y-anotación).
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Manual Annotating for Dependency Injection
+## Anotación Manual para la Inyección de Dependencias
 
-### UnSafe from Minification
+### Insegura después de la Minificación
 ###### [Style [Y090](#style-y090)]
 
   - Evita usar la sintaxis acortada para declarar dependencias sin usar algún método que permita minimifación.
-  
+
     *¿Por qué?*: Los parámetros al componente (e.g. controller, factory, etc) se convertirán en variables acortadas. Por ejemplo, `common` y `dataservice` se convertirán `a` o `b` y no serán encontradas por AngularJS.
 
     ```javascript
@@ -1472,23 +1477,23 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Manually Identify Dependencies
+### Identifica Dependencias Manualmente
 ###### [Style [Y091](#style-y091)]
 
   - Usa `$inject` Para identificar manualmente las dependencias de tus componentes AngularJS.
-  
+
     *¿Por qué?*: Esta técnica es la misma que se usa con [`ng-annotate`](https://github.com/olov/ng-annotate), la cuál recomiendo para automatizar la creación de dependencias minificadas de forma segura. Si `ng-annotate` detecta que la inyección ha sido hecha, no la duplicará.
 
     *¿Por qué?*: Esto salvaguarda tus dependencias de ser vulnerables de problemas a la hora de minimizar cuando los parámetros se acorten. Por ejemplo, `common` y `dataservice` se convertirán `a` o `b` y no serán encontradas por AngularJS.
 
-    *¿Por qué?*: Evita crear dependencias en la línea, ya que las listas largas pueden ser dificil de leer en el array. También puede ser confuso que el array es una serie de cadenas mientras que el último componente e suna función.
+    *¿Por qué?*: Evita crear dependencias en línea, ya que las listas largas pueden ser difícil de leer en el array. También puede ser confuso que el array sea una serie de cadenas mientras que el último componente es una función.
 
     ```javascript
     /* evitar */
     angular
         .module('app')
-        .controller('Dashboard', 
-            ['$location', '$routeParams', 'common', 'dataservice', 
+        .controller('Dashboard',
+            ['$location', '$routeParams', 'common', 'dataservice',
                 function Dashboard($location, $routeParams, common, dataservice) {}
             ]);
     ```
@@ -1497,9 +1502,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     /* evitar */
     angular
       .module('app')
-      .controller('Dashboard', 
+      .controller('Dashboard',
           ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
-      
+
     function Dashboard($location, $routeParams, common, dataservice) {
     }
     ```
@@ -1516,7 +1521,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    Nota: Cuando tu función está debajo de un return, $inject puede ser inalcanzable (esto puede pasar en una directiva). Puedes solucionarlo moviendo el $inject encima del return o usando la sintaxis de array para inyectar.by either moving the $inject above the return statement or by using the alternate array injection syntax. 
+    Nota: Cuando tu función está debajo de un return, $inject puede ser inalcanzable (esto puede pasar en una directiva). Puedes solucionarlo moviendo el $inject encima del return o usando la sintaxis de array para inyectar.
 
     Nota: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduce una funcionalidad donde mueve `$inject` donde es alcanzable.
 
@@ -1546,14 +1551,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-### Manually Identify Route Resolver Dependencies
+### Identifica Manualmente Dependencias del Route Resolver
 ###### [Style [Y092](#style-y092)]
 
-  - Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  - Usa $inject para identificar manualmente las dependencias de tu route resolver para componentes de AngularJS.
 
-    *¿Por qué?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *¿Por qué?*: Esta técnica separa la función anónima para el route resolver, haciendola más fácil de leer.
 
-    *¿Por qué?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *¿Por qué?*: Una declaración `$inject` puede ser fácilmente preceder al route resolver para hacer cualquier minificación de dependencias segura.
 
     ```javascript
     /* recomendado */
@@ -1575,22 +1580,22 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Minification and Annotation
+## Minificación y Anotación
 
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
-  
-    *¿Por qué?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) para [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) y comenta funciones que necesiten inyección de dependencias automatizadas usando `/** @ngInject */`
 
-    *¿Por qué?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated 
+    *¿Por qué?*: Salvaguarda tu código de cualquier dependencia que pueda no estar usando prácticas de minificación segura.
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    *¿Por qué?*: [`ng-min`](https://github.com/btford/ngmin) está obsoleto
 
-    The following code is not using minification safe dependencies.
+    >Yo prefiero Gulp porque siento que es más fácil de escribir, leer, y debugear.
+
+    El siguiente código no está usando minificación de dependencias segura.
 
     ```javascript
     angular
@@ -1610,7 +1615,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Cuando el código de arriba es ejecutado a través de ng-annotate producirá la siguiente salida con la anotación `$inject` y será seguro para ser minificado.
 
     ```javascript
     angular
@@ -1632,9 +1637,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Nota: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Nota: Si `ng-annotate` detecta que la inyección ya ha sido hecha (e.g. `@ngInject` fué detectado), no duplicará el código de `$inject`.
 
-    Nota: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Nota: Al usar un route resolver puedes prefijar a la función del resolver con `/* @ngInject */` y producirá código propiamente anotado, manteniendo cualquier inyección de dependencias segura para ser minificada.
 
     ```javascript
     // Using @ngInject annotations
@@ -1653,17 +1658,18 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    > Nota: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    > Nota: A partir de AngularJS 1.3 usa el párametro `ngStrictDi` de la directiva [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Al presentarse el injector será creado en modo "strict-di" causando que la aplicación falle al invocar funciones que no usan explícitamente anotación de funciones (éstas podrían no estar minificadas en forma segura). Información para debugear será mostrada en la consola para ayudar a rastrear el código infractor.
     `<body ng-app="APP" ng-strict-di>`
 
-### Use Gulp or Grunt for ng-annotate
+### Usa Gulp o Grunt para ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
-  
-    *¿Por qué?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) en una tarea de construcción automática. Inyecta `/* @ngInject */` antes de cualquier función que tenga dependecias.
 
-    The following code is an example of a gulp task using ngAnnotate
+    *¿Por qué?*: ng-annotate atrapará la mayoría de las dependecias, pero algunas veces requiere indicios usando la sintaxis `/* @ngInject */`.
+
+    El código siguiente es un ejemplo de una tarea de Gulp que usa
+    ngAnnotate
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
@@ -1671,10 +1677,10 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
-            // Annotate before uglify so the code get's min'd properly.
+            // Agrega la notación antes de ofuscar para que el código sea minificicado apropiadamente.
             .pipe(ngAnnotate({
-                // true helps add where @ngInject is not used. It infers.
-                // Doesn't work with resolve, so we must be explicit there
+                // true ayuda a añadir @ngInject donde no es usado. Infiere.
+                // No funciona con resolve, así que tenemos que ser explícitos en ese caso
                 add: true
             }))
             .pipe(bytediff.start())
@@ -1686,18 +1692,18 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Exception Handling
+## Manejo de Excepciones
 
 ### decorators
 ###### [Style [Y110](#style-y110)]
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
-  
-    *¿Por qué?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
+  - Usa un [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), en tiempo de configuración usando el servicio [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), en el servicio [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar acciones personalizadas cuando una excepción ocurra.
 
-    Nota: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    *¿Por qué?*: Provee una manera consistente de manejar excepciones de AngularJS que no están siendo capturadas en tiempo de desarrollo o en tiempo de ejecución.
+
+    Nota: Otra opción es sobreescribir el servicio en lugar de usar un decorator. Esto está bien, pero si quiere mantener el comportamiento por default y extenderlo se recomienda usar un decorator.
 
     ```javascript
     /* recomendado */
@@ -1716,29 +1722,30 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     function extendExceptionHandler($delegate, toastr) {
         return function(exception, cause) {
             $delegate(exception, cause);
-            var errorData = { 
-                exception: exception, 
-                cause: cause 
+            var errorData = {
+                exception: exception,
+                cause: cause
             };
             /**
-             * Could add the error to a service's collection,
-             * add errors to $rootScope, log errors to remote web server,
-             * or log locally. Or throw hard. It is entirely up to you.
-             * throw exception;
+             * Pudieramos agregar el error a la colección de un servicio,
+             * agregar los errores en el $rootScope,
+             * logear los errores a un servidor remoto,
+             * o logear localmente. O arrojarlos llanamente. Dependende totalmente de tí.
+             * arrojar excepción;
              */
             toastr.error(exception.msg, errorData);
         };
     }
     ```
 
-### Exception Catchers
+### Cachadores de Excepciones
 ###### [Style [Y111](#style-y111)]
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - Crea una factory que exponga una interfaz para cachar y manejar excepciones elegantemente.
 
-    *¿Por qué?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *¿Por qué?*: Provee de una manera consistente de cachar excepciones que puedan ser arrojadas en tu código (e.g. durante llamadas XHR o promesas que fallaron).
 
-    Nota: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Nota: El cachador de excepciones es bueno para cachar y reaccionar a excepciones específicas de llamadas que tu sabes van a arrojar una. Por ejemplo, al hacer una llamada XHR para obtener datos desde un servicio web remoto y quieres cachar cualquier excepción de ese servicio y reaccionar únicamente.
 
     ```javascript
     /* recomendado */
@@ -1762,22 +1769,24 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-### Route Errors
+### Errores de Ruta
 ###### [Style [Y112](#style-y112)]
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Maneja y logea todos los errors de ruteo usando [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *¿Por qué?*: Provides a consistent way handle all routing errors.
+    *¿Por qué?*: Provee una manera consistente de manejar todos los
+    errores de ruteo.
 
-    *¿Por qué?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or recovery options.
+    *¿Por qué?*: Potencialmente provee una mejor experiencia de usuario si un error de ruteo ocurre y tu los redirijes a una pantalla amigable con más detalles u opciones de recuperación.
 
     ```javascript
     /* recomendado */
     function handleRoutingErrors() {
         /**
          * Route cancellation:
-         * On routing error, go to the dashboard.
-         * Provide an exit clause if it tries to do it twice.
+         * Cancelación de la Ruta:
+         * En un error de ruteo, ir al dashboard.
+         * Proveer una cláusula de salida si trata de hacerlo dos veces.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
@@ -1786,6 +1795,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
                 var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
                 /**
                  * Optionally log using a custom service or $log.
+                 * Opcionalmente logear usando un servicio personalizado o $log.
                  * (Don't forget to inject custom service)
                  */
                 logger.warning(msg, [current]);
@@ -1794,41 +1804,41 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Naming
+## Cómo Nombrar
 
-### Naming Guidelines
+### Pautas para nombrar
 ###### [Style [Y120](#style-y120)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    * the file name (`avengers.controller.js`)
-    * the registered component name with Angular (`AvengersController`)
- 
-    *¿Por qué?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa las características del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`. Hay dos nombres para la mayoría de los assets:
+    * el nombre del archivo (`avengers.controller.js`)
+    * el nombre del componente registrado en Angular (`AvengersController`)
 
-    *¿Por qué?*: The naming conventions should simply help you find your code faster and make it easier to understand. 
+    *¿Por qué?*: Las pautas de como nombrar nos ayudan a proveer una manera consistente para encontrar contenido en un vistazo. La Consistencia es vital dentro del proyecto. La Consistencia es importante dentro de un equipo. La Consistencia a lo largo de una compañía provee de una tremenda eficacia.
 
-### Feature File Names
+    *¿Por qué?*: Las pautas para nombrar deberían simplemente ayudarte a encontrar tu código rápidamente y hacerlo más fácil de entender.
+
+### Nombres de Archivo para Feature
 ###### [Style [Y121](#style-y121)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa el feature del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`.
 
-    *¿Por qué?*: Provides a consistent way to quickly identify components.
+    *¿Por qué?*: Provee de una manera consistente para identificar componentes rápidamente.
 
-    *¿Por qué?*: Provides pattern matching for any automated tasks.
+    *¿Por qué?*: Provee un patrón de coincidencia para tareas automatizadas.
 
     ```javascript
     /**
-     * common options 
+     * opciones comunes
      */
 
-    // Controllers
+    // Controladores
     avengers.js
     avengers.controller.js
     avengersController.js
 
-    // Services/Factories
+    // Servicios/Factories
     logger.js
     logger.service.js
     loggerService.js
@@ -1836,58 +1846,58 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // controllers
     avengers.controller.js
     avengers.controller.spec.js
 
-    // services/factories
+    // servicios/factories
     logger.service.js
     logger.service.spec.js
 
-    // constants
+    // constantes
     constants.js
-    
-    // module definition
+
+    // definición de módulos
     avengers.module.js
 
-    // routes
+    // rutas
     avengers.routes.js
     avengers.routes.spec.js
 
-    // configuration
+    // configuración
     avengers.config.js
-    
-    // directives
+
+    // directivas
     avenger-profile.directive.js
     avenger-profile.directive.spec.js
     ```
 
-  Nota: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Nota: Otra convención común es nombrar archivos de controladores sin la palabra `controller` en el archivo tal como `avengers.js` en lugar de `avengers.controller.js`. Todas las demás convenciones todavía usan un sufijo del tipo. Los Controladores son el tipo más común de componente así que esto nos ahorra escribir y aún es fácilmente identificable. Yo recomiendo que elijas 1 convención y seas consistente  dentro de tu equipo.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
-    // Controllers
+    // Controladores
     avengers.js
     avengers.spec.js
     ```
 
-### Test File Names
+### Nombres de Archivos de Prueba
 ###### [Style [Y122](#style-y122)]
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.
+  - Nombra especificaciones de pruebas de manera similar a la del componente que estan probando con un sufijo de `spec`.
 
-    *¿Por qué?*: Provides a consistent way to quickly identify components.
+    *¿Por qué?*: Provee de una manera consistente de idenficar componentes rápidamente.
 
-    *¿Por qué?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *¿Por qué?*: Provee de un patrón de coincidencia para [karma](http://karma-runner.github.io/) u otros test runners.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
     avengers.controller.spec.js
     logger.service.spec.js
@@ -1895,18 +1905,18 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     avenger-profile.directive.spec.js
     ```
 
-### Controller Names
+### Nombres de Controladores
 ###### [Style [Y123](#style-y123)]
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Usa nombres consistentes para todos los controladores nombrados a partir de lo que hacen. Usa UpperCamelCase para controladores, ya que son constructores.
 
-    *¿Por qué?*: Provides a consistent way to quickly identify and reference controllers.
+    *¿Por qué?*: Provee de una manera consistente de identificar y referenciar controladores rápidamente.
 
-    *¿Por qué?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *¿Por qué?*: UpperCamelCase es convencional para identificar objetos que pueden ser instanciados usando un constructor.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // avengers.controller.js
@@ -1917,18 +1927,19 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     function HeroAvengers() { }
     ```
 
-### Controller Name Suffix
+### Sufijo para el Nombre del Controlador
 ###### [Style [Y124](#style-y124)]
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - Agrega el sufijo `Controller` al nombre del controlador o déjalo sin
+    sufijo. Escoje 1, no uses ambos.
 
-    *¿Por qué?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+    *¿Por qué?*: El sufijo `Controller` es usado más comúnmente y es más descriptivo explícitamente.
 
-    *¿Por qué?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
+    *¿Por qué?*: Omitir el sufijo es más sucinto y el controlador es fácilmente identificable más seguido incluso sin el sufijo.
 
     ```javascript
     /**
-     * recommended: Option 1
+     * recomendado: Opción 1
      */
 
     // avengers.controller.js
@@ -1941,7 +1952,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     ```javascript
     /**
-     * recommended: Option 2
+     * recomendado: Opción 2
      */
 
     // avengers.controller.js
@@ -1952,16 +1963,16 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     function AvengersController() { }
     ```
 
-### Factory Names
+### Nombres de Factories
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Usa nombres consistentes para todas las factories nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las factories.
 
-    *¿Por qué?*: Provides a consistent way to quickly identify and reference factories.
+    *¿Por qué?*: Provee una manera consistente de identificar y referenciar factories rápidamente.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // logger.service.js
@@ -1972,16 +1983,16 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     function logger() { }
     ```
 
-### Directive Component Names
+### Nombres para Directivas
 ###### [Style [Y126](#style-y126)]
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Usa nombres consistentes para todas las directivas usando camel-case. Usa un prefijo corto para describir el área a la que la directiva pertenece (algunos ejemplos son un prefijo según la compañía o un prefijo según el proyecto).
 
-    *¿Por qué?*: Provides a consistent way to quickly identify and reference components.
+    *¿Por qué?*: Provee una manera consistente de identificar y referenciar componentes rápidamente.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // avenger-profile.directive.js
@@ -1989,57 +2000,57 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
         .module
         .directive('xxAvengerProfile', xxAvengerProfile);
 
-    // usage is <xx-avenger-profile> </xx-avenger-profile>
+    // el uso es <xx-avenger-profile> </xx-avenger-profile>
 
     function xxAvengerProfile() { }
     ```
 
-### Modules
+### Módulos
 ###### [Style [Y127](#style-y127)]
 
-  - When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. 
+  - Cuando haya múltiples módulos, el archivo del módulo principal es nombrado `app.module.js` mientras que otros módulos que dependan de él son nombrados a partir de lo que ellos representan. Por ejemplo, un módulo de admin es nombrado `admin.module.js`. Los nombres de los módulos registrados serán respectivamente `app` y `admin`.
 
-    *¿Por qué?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *¿Por qué?*: Provee consistencia para múltiples módulos de aplicación, y para poder expandirse a aplicaciones más grandes.
 
-    *¿Por qué?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *¿Por qué?*: Provee una manera fácil de usar tareas automatizadas para cargar todas las definiciones de módulos primero, y luego todos los otros archivos de angular (agrupación).
 
-### Configuration
+### Configuración
 ###### [Style [Y128](#style-y128)]
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - Separa la configuración de un módulo en un archivo propio nombrado a partir del nombre del módulo. Un archivo de configuración para el módulo principal de `app` es nombrado `app.config.js` (o simplemente `config.js`). La configuración para un módulo llamado `admin.module.js` es nombrada `admin.config.js`.
 
-    *¿Por qué?*: Separates configuration from module definition, components, and active code.
+    *¿Por qué?*: Separa la configuración de la definición del módulo, componentes y código activo.
 
-    *¿Por qué?*: Provides a identifiable place to set configuration for a module.
+    *¿Por qué?*: Provee un lugar identificable para establecer configuración para un módulo.
 
-### Routes
+### Rutas
 ###### [Style [Y129](#style-y129)]
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. 
+  - Separa la configuración de la ruta en un arhivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas prefiero esta separación del resto de la configuración.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Application Structure LIFT Principle
+## Estructura de la Aplicación El Principio LIFT
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
-  - Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines. 
+  - Estructura tu aplicación de tal manera que puedas Localizar (`L`ocate) tu código rápidamente, Identificar (`I`dentify) el código de un vistazo, mantener la estructura más plana (`F`lattest) que puedas, y Trata (`T`ry) de mantenerte DRY. La estructura debe de seguir estas 4 pautas básicas.
 
-    *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
+    *¿Por qué LIFT?*: Provee una estructura consistente que escala bien, es modular, y hace más fácil incrementar la eficiencia de los desarrolladores al encontrar código rápidamente. Otra manera de checar la estructura de tu aplicación es preguntarte a ti mismo: ¿Qué tan rápido puede abrir y trabajar en todos los arhivos relacionados a una feature?
 
-    When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines
-  
-    1. `L`ocating our code is easy
-    2. `I`dentify code at a glance
-    3. `F`lat structure as long as we can
-    4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
+    Cuando encuentro que mi estructura no se siente cómoda, regreso y revisito estas pautas LIFT
 
-### Locate
+    1. `L`ocating - Localizar nuestro código es fácil
+    2. `I`dentify - Identificar código de un vistazo
+    3. `F`lat - Estructura plana tanto como sea posible
+    4. `T`ry - Tratar de mantenerse DRY (Don't Repeat Yourself) or T-DRY
+
+### Localizar
 ###### [Style [Y141](#style-y141)]
 
-  - Make locating your code intuitive, simple and fast.
+  - Has que la localizar tu código sea intuitivo, simple y rápido.
 
-    *¿Por qué?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly, they will not be able to work as efficiently as possible, and the structure needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
+    *¿Por qué?*: Encuentro que esto es super importante para un proyecto. Si el equipo no puede encontrar los archivos en los que necesita trabajar rápidamente, no podran trabajar tan eficientemente como sea posible, y la estructura necesita cambiar. Puede que no conozcas el nombre del archivo o donde están sus archivos relacionados, así que poniéndolos en las locaciones más intuitivas y cerca de los otros ahorra mucho tiempo. Una estructura de directorios descriptiva puede ayudar con esto.
 
     ```
     /bower_components
@@ -2059,61 +2070,61 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     .bower.json
     ```
 
-### Identify
+### Identificar
 ###### [Style [Y142](#style-y142)]
 
-  - When you look at a file you should instantly know what it contains and represents.
+  - Cuando miras en un arhivo deberías saber instantáneamente qué contiene y qué representa.
 
-    *¿Por qué?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
+    *¿Por qué?*: Gastas menos tiempo buscando y urgando por código, y es más eficiente. Si esto significa que quieres nombres de archivos más largos, entonces que así sea. Se descriptivo con los nombres de los archivos y mantén el contenido del arhivo a exactamente 1 componente. Evita archivos con múltiples controladores, o una mezcla. Hay excepciones a la regla de 1 por archivo cuando tengo un conjunto de pequeñas features que están relacionadas unas con otras, aún así son fácilmente identificables.
 
-### Flat
+### Estructura Plana
 ###### [Style [Y143](#style-y143)]
 
-  - Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
+  - Mantén una estructura de directorios plana tanto como sea posible. Cuando llegues a un total de 7+ archivos, comienza a considerar separación.
 
-    *¿Por qué?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
+    *¿Por qué?*: Nadie quiere buscar en 7 niveles de directorios por un arhivo. Piensa en los menús de los sitios web … cualquiera más profundo que 2 debería ser seriamente considerado. En una estructura de directorios no hay una regla dura o rápida en cuanto a un número, pero cuando un directorio tiene de 7 a 10 archivos, tal vez ese sea el momento para empezar a crear subdirectorios. Básate en tu nivel de confort. Usa una estructura más plana hasta que haya un valor obvio (para ayudar al resto de LIFT) en crear un nuevo directorio.
 
-### T-DRY (Try to Stick to DRY)
+### T-DRY (Try to Stick to DRY - Trata de Apegarte a DRY)
 ###### [Style [Y144](#style-y144)]
 
-  - Be DRY, but don't go nuts and sacrifice readability.
+  - Se DRY, pero no te vuelvas loco y sacrifiques legibilidad.
 
-    *¿Por qué?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
+    *¿Por qué?*: Ser DRY es importante, pero no crucial si sacrifica otras partes de LIFT, es por eso que lo llamo T-DRY. No quiero escribir session-view.html por una vista porque, obviamente es una vista. Si no es obvio o por convención, entonces la nombro así.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Application Structure
+## Estructura de la Aplicación
 
-### Overall Guidelines
+### Pautas Universales
 ###### [Style [Y150](#style-y150)]
 
-  - Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  - Ten una visión de implementación de corto y largo plazo. En otras palabras, empieza con poco pero ten en mente hacia donde se dirige la aplicación. Todo el código de la aplicación va en el directorio raíz llamado `app`. Todo el contenido es separado en 1 feature por archivo. Cada controlador, servicio, módulo, vista tiene su propio archivo. Todos los vendor scripts de terceros son almacenados en otro directorio raíz y no en el directorio `app`. Si yo no lo escribí no los quiero saturando mi aplicación (`bower_components`, `scripts`, `lib`).
 
-    Nota: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Nota: Encuentra más detalles y el razonamiento detrás de esta estructura en [este post original sobre la estructura de una aplicación](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
+  - Coloca los componentes que definen el layout universal de la aplicación en un directorio llamado `layout`. Estos pueden incluir una vista caparazón y un controlador que actuen como un contenedor para la aplicación, navegación, menús, áreas de contenido, y otras regiones.
 
-    *¿Por qué?*: Organizes all layout in a single place re-used throughout the application.
+    *¿Por qué?*: Organiza todo el layout en un lugar único reusado a lo largo de la aplicación.
 
-### Folders-by-Feature Structure
+### Estructura de Carpetas-por-Feature
 ###### [Style [Y152](#style-y152)]
 
-  - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
+  - Crea carpetas llamadas de acuerdo al feature que representan. Cuando un folder crezca para contener más de 7 archivos, comienza a considerar la creación de una carpeta para ellos. Tu límite puede ser diferente, así que ajusta de acuerdo a tus necesidades.
 
-    *¿Por qué?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+    *¿Por qué?*: Un desarrollador puede localizar el código, identificar cada qué representa cada archivo de un vistazo, la estructura es tan plana como puede ser, y no hay nombres repetidos o redundantes.
 
-    *¿Por qué?*: The LIFT guidelines are all covered.
+    *¿Por qué?*: Las pautas LIFT estarán cubiertas.
 
-    *¿Por qué?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    *¿Por qué?*: Ayuda a evitar que la aplicación se sature a través de organizar el contenido y conservarlo alineado con las pautas LIFT.
 
-    *¿Por qué?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    *¿Por qué?*: Cuando hay demasiados archivos (10+) localizarlos es más fácil con una estructura de directorios consistente y más díficiles en una estructura plana.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     app/
@@ -2151,15 +2162,15 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
       ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      Nota: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Nota: No estructures tu aplicación usando directorios-por-tipo. Esto require mover múltiples directorios cuando se está trabajando en una feature y se vuelve díficil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras features), lo que lo hace más díficil que localizar archivos en una aplicación estructura en directorios-por-feature.
 
     ```javascript
-    /* 
-    * avoid
-    * Alternative folders-by-type.
-    * I recommend "folders-by-feature", instead.
+    /*
+    * evita
+    * Alternativa directorios-por-tipo
+    * Yo recomiendo "directorios-por-feature", en su lugar.
     */
-    
+
     app/
         app.module.js
         app.config.js
@@ -2190,89 +2201,89 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
             speakers.html
             speaker-detail.html
             topnav.html
-    ``` 
+    ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Modularity
+## Modularidad
 
-### Many Small, Self Contained Modules
+### Muy Pequeños, Módulos Autocontenidos
 ###### [Style [Y160](#style-y160)]
 
-  - Create small modules that encapsulate one responsibility.
+  - Crea módulos pequeños que encapsulen una responsabilidad.
 
-    *¿Por qué?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally. This means we can plug in new features as we develop them.
+    *¿Por qué?*: Aplicaciones modulares hace más fácil el plug and go ya que permiten a los equipos de desarrollo construir porciones verticales de la aplicación y lanzarlas incrementalmente. Esto significa que podemos conectar nuevas features conforme las desarrollamos.
 
-### Create an App Module
+### Crea un Módulo App
 ###### [Style [Y161](#style-y161)]
 
-  - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+  - Crea una módulo raíz de aplicación cuyo rol sea unir todos los módulos y features de tu aplicación. Nombra éste de acuerdo a tu aplicación.
 
-    *¿Por qué?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *¿Por qué?*: AngularJS incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
 
-### Keep the App Module Thin
+### Mantén el Módulo App Delgado
 ###### [Style [Y162](#style-y162)]
 
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
+  - Solo coloca lógica para unir la aplicación en el módulo app. Deja las features en sus propios módulos.
 
-    *¿Por qué?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+    *¿Por qué?*: Agregar roles adicionales a la aplicación raíz para obtener datos remotos, mostrar vistas, u otra lógica no relaciona a la unión de la aplicación enturbia el módulo app y hace ambos conjuntos de features díficles de reusar y apagar.
 
-    *¿Por qué?*: The app module becomes a manifest that describes which modules help define the application. 
+    *¿Por qué?*: El módulo app se convierte en el manifiesto que describe qué módulos definen la aplicación.
 
-### Feature Areas are Modules
+### Áreas de Features son Módulos
 ###### [Style [Y163](#style-y163)]
 
-  - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+  - Crea módulos que representen áreas de features, como el layout, servicios reusables y compartidos, dashboards, y features específicos de la aplicación (e.g. customers, admin, sales).
 
-    *¿Por qué?*: Self contained modules can be added to the application with little or no friction.
+    *¿Por qué?*: Módulos autocontenidos pueden ser agregados a la aplicación con poca o sin ninguna fricción.
 
-    *¿Por qué?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    *¿Por qué?*: Sprints o iteraciones pueden enfocarse en áreas de features y encendarlas al final del sprint o iteración.
 
-    *¿Por qué?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
+    *¿Por qué?*: Separar áreas de features en módulos hace más fácil testear módulos en aislamiento y reusar código.
 
-### Reusable Blocks are Modules
+### Bloques Reusables son Módulos
 ###### [Style [Y164](#style-y164)]
 
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+  - Crea módulos que representen bloques de la aplicación reusables para servicios cómunes como manejo de excepciones, logeo, diagnóstico, seguridad, y almacenamiento local de datos.
 
-    *¿Por qué?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    *¿Por qué?*: Este tipo de features son necesarias en muchas aplicaciones, así que mantenerlas separadas en sus propios módulos pueden ser genéricas de aplicación y pueden ser reusadas a lo largo de varias aplicaciones.
 
-### Module Dependencies
+### Dependencias de Módulos
 ###### [Style [Y165](#style-y165)]
 
-  - The application root module depends on the app specific feature modules and any shared or reusable modules.
+  - El módulo raíz de la aplicación depende de módulos de features específicos y cualquier módulo compartido o reusable.
 
     ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
 
-    *¿Por qué?*: The main app module contains a quickly identifiable manifest of the application's features. 
+    *¿Por qué?*: El módulo principal de la aplicación contiene un manifiesto rápidamente identificable de las features de la aplicación.
 
-    *¿Por qué?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency in other applications and still work. 
+    *¿Por qué?*: Cada área de feature contiene un manifiesto de lo que depende, así que puede ser extraído como dependecia en otras aplicaciones y seguir funcionando.
 
-    *¿Por qué?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *¿Por qué?*: Features internas de la aplicación como servicios de datos compartidos se hacen fácil de localizar y compartir desde `app.core` (elije tu nombre favorito para este módulo).
 
-    Nota: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+    Nota: Esta es una estrategia para consistencia. Hay muy buenas opciones aquí. Escoje una que sea consistente, que siga las reglas de dependencias de AngularJS, y que sea fácil de mantener y escalar.
 
-    > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
+    > Mis estructuras varian ligeramente entre proyetos pero todas ellas siguen estas pautas para estructuras y modularidad. La implementación puede variar dependiendo de las features y el equipo. En otras palabras, no te quedes colgado en una estructura igual pero justifica tu estructura usando consistencia, mantenibilidad, y eficacia en mente.
 
-    > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
+    > En una aplicación pequeña, también puedes considerar poner todas las dependencias compartidas en el módulo principal dónde los módulos de features no tienen dependencias directas. Esto hace más fácil mantener aplicaciones pequeñas, pero hace más díficil el reusar módulos fuera de esta aplicación.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Startup Logic
+## Lógica de Arranque
 
-### Configuration
+### Configuración
 ###### [Style [Y170](#style-y170)]
 
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidates include providers and constants.
+  - Inyecta código dentro de [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) que necesite ser configurado antes de correr la aplicación angular. Candidatos ideales incluyen providers y constantes.
 
-    *¿Por qué?*: This makes it easier to have a less places for configuration.
+    *¿Por qué?*: Esto hace más fácil tener menos lugares para la configuración.
 
   ```javascript
   angular
       .module('app')
       .config(configure);
 
-  configure.$inject = 
+  configure.$inject =
       ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
 
   function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
@@ -2292,12 +2303,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-### Run Blocks
+### Bloques Run
 ###### [Style [Y171](#style-y171)]
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Cualquier código que necesite ser ejecutado cuando una aplicación arranca debe ser declarado en una factory, ser expuesto a través de una función, o inyectado en el [bloque run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *¿Por qué?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+    *¿Por qué?*: Código que está directamente en un bloque run puede ser díficil de testear. Colocarlo en una factory lo hace fácil de abstraer y mockear.
 
   ```javascript
   angular
@@ -2312,35 +2323,35 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Angular $ Wrapper Services
+## Servicios Envoltorios $ de Angular
 
-### $document and $window
+### $document y $window
 ###### [Style [Y180](#style-y180)]
 
-  - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
+  - Usa [`$document`](https://docs.angularjs.org/api/ng/service/$document) y [`$window`](https://docs.angularjs.org/api/ng/service/$window) en lugar de `document` y `window`.
 
-    *¿Por qué?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *¿Por qué?*: Estos servicios son envueltos por Angular y son más fáciles de testear en lugar de usar document y window en las pruebas. Esto te ayuda a evitar que tener que mockear document y window tu mismo.
 
-### $timeout and $interval
+### $timeout y $interval
 ###### [Style [Y181](#style-y181)]
 
-  - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
+  - Usa [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) y [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) en lugar de `setTimeout` y `setInterval` .
 
-    *¿Por qué?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
+    *¿Por qué?*: Estos servicios están envueltos por Angular y son más fáciles de testear y manejar el ciclo digest de AngularJS así que mantienen el bindeo de los datos en sincronización.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Testing
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+## Pruebas
+Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algunas de mis recomendaciones en los fundamentos del testeo unitario con links para mayor información.
 
-### Write Tests with Stories
+### Escribe Pruebas con Historias
 ###### [Style [Y190](#style-y190)]
 
-  - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
+  - Escribe un conjunto de pruebas para cada historia. Comienza con un test vacío y llénalo conforme escribas el código para la historia.
 
-    *¿Por qué?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+    *¿Por qué?*: Escribir descripciones para la prueba ayuda a definir claramente qué es lo que tu historia hará, qué no hará, y cómo puedes medir el éxito.
 
     ```javascript
     it('should have Avengers controller', function() {
@@ -2359,62 +2370,62 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         // TODO ($httpBackend?)
     });
 
-    // and so on
+    // y así
     ```
 
-### Testing Library
+### Librería para las Pruebas
 ###### [Style [Y191](#style-y191)]
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) for unit testing.
+  - Usa [Jasmine](http://jasmine.github.io/) o [Mocha](http://mochajs.org) para las pruebas unitarias.
 
-    *¿Por qué?*: Both Jasmine and Mocha are widely used in the AngularJS community. Both are stable, well maintained, and provide robust testing features.
+    *¿Por qué?*: Ambas Jasmine y Mocha son usadas ampliamente por la comunidad de AngularJS. Ambas son estables, bien mantenidas, y proveen de features de pruebas robustas.
 
     Nota: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
 
-  - Use [Karma](http://karma-runner.github.io) as a test runner.
+  - Usa [Karma](http://karma-runner.github.io) como test runner.
 
-    *¿Por qué?*: Karma is easy to configure to run once or automatically when you change your code.
+    *¿Por qué?*: Karma es fácil de configurar para correr una vez o automáticamente cuando cambias tu código.
 
-    *¿Por qué?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *¿Por qué?*: Karma encaja en tu proceso de Integración Continua fácilmente por sí sola o a través de Grunt o Gulp.
 
-    *¿Por qué?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *¿Por qué?*: Algunos IDE's están comenzando a integrarse con Karma, tal como [WebStorm](http://www.jetbrains.com/webstorm/) y [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *¿Por qué?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *¿Por qué?*: Karma funciona bien con líderes de automatización de tareas tales como [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) y [Gulp](http://www.gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
 
-### Stubbing and Spying
+### Stubear y Espíar
 ###### [Style [Y193](#style-y193)]
 
-  - Use [Sinon](http://sinonjs.org/) for stubbing and spying.
+  - Usa [Sinon](http://sinonjs.org/) para el stubeo y espíar.
 
-    *¿Por qué?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *¿Por qué?*: Sinon funciona bien con ambos Jasmine y Mocha y extiende las features de stubeo y espío que ellos ofrecen.
 
-    *¿Por qué?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *¿Por qué?*: Sinon hace más fácil cambiar entre Jasmine y Mocha, si quieres probar ambos.
 
 ### Headless Browser
 ###### [Style [Y194](#style-y194)]
 
-  - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - Usa [PhantomJS](http://phantomjs.org/) para correr tus pruebas en un servidor.
 
-    *¿Por qué?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server. 
+    *¿Por qué?*: PhantomJS es un navegador headless que ayuda a correr las pruebas necesitar una navegador "visual". Así que no necistas instalar Chrom, Safari u otros navegadores en tu servidor.
 
-    Nota: You should still test on all browsers in your environment, as appropriate for your target audience.
+    Nota: Aún debes testear en todos los navegadores de tu entorno, así como sea apropiado para tu audiencia meta.
 
-### Code Analysis
+### Ánalisis de Código
 ###### [Style [Y195](#style-y195)]
 
-  - Run JSHint on your tests. 
+  - Corre JSHint en tus pruebas.
 
-    *¿Por qué?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *¿Por qué?*: Las pruebas son código. JSHint puede ayudar a identificar problemas en la calidad del código que pueden causar que tus pruebas funcionen inapropiadamente.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Mitiga Palabras Globales dentro de las Reglas de JSHint en las Pruebas
 ###### [Style [Y196](#style-y196)]
 
-  - Relax the rules on your test code to allow for common globals such as `describe` and `expect`.
+  - Relaja las reglas en tu código de prueba para permitir palabras globales comúnes como `describe` y `expect`.
 
-    *¿Por qué?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
+    *¿Por qué?*: Tus pruebas son código y requieren la misma atención y reglas de calidad de código que todo tu código de producción. Sin embargo, variables globales usadas por el framework para pruebas, por ejemplo, puede ser relajado al incluir esto en tus specs de prueba.
 
     ```javascript
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
@@ -2422,22 +2433,22 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-### Organizing Tests
+### Organizando las Pruebas
 ###### [Style [Y197](#style-y197)]
 
-  - Place unit test files (specs) side-by-side with your client code. Place specs that cover server integration or test multiple components in a separate `tests` folder.
+  - Coloca archivos de pruebas unitarias (specs) lado a lado con tu código del cliente. Coloca tus specs que cubren la integración con el servidor o que prueban múltiples componentes en un directorio `tests` separado.
 
-    *¿Por qué?*: Unit tests have a direct correlation to a specific component and file in source code. 
+    *¿Por qué?*: Las Pruebas Unitarias tiene una correlación directa con un componente y archivo específico en tu código fuente.
 
-    *¿Por qué?*: It is easier to keep them up to date since they are always in sight. When coding whether you do TDD or test during development or test after development, the specs are side-by-side and never out of sight nor mind, and thus more likely to be maintained which also helps maintain code coverage.
+    *¿Por qué?*: Es más fácil mantenerlas actualizadas ya que siempre están a la vista. Al escribir código ya sea que realices TDD o pruebes durante el desarrollo o después del desarrollo, los specs están lado a lado y nunca fuera de la vista o de la mente, así es más probable que sean mantenidas lo cual ayuda a mantener la cobertura de pruebas.
 
-    *¿Por qué?*: When you update source code it is easier to go update the tests at the same time.
+    *¿Por qué?*: Cuando actualices código fuente es más fácil ir y actualizar las pruebas al mismo tiempo.
 
-    *¿Por qué?*: Placing them side-by-side makes it easy to find them and easy to move them with the source code if you move the source.
+    *¿Por qué?*: Colocarlas lado a lado hace más fácil encontrarlas y fácil de moverlas con el código fuente si mueves la fuente.
 
-    *¿Por qué?*: Having the spec nearby makes it easier for the source code reader to learn how the component is supposed to be used and to discover its known limitations.
+    *¿Por qué?*: Tener el spec cerca hace más fácil al lector del código fuente aprender cómo se supone que el componente es usado y descubrir sus propias limitaciones.
 
-    *¿Por qué?*: Separating specs so they are not in a distributed build is easy with grunt or gulp.
+    *¿Por qué?*: Separar specs para que no estén un build de distribución es fácil con grunt o gulp.
 
     ```
     /src/client/app/customers/customer-detail.controller.js
@@ -2449,51 +2460,51 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
                              /customers.route.spec.js
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Animations
+## Animaciones
 
-### Usage
+### Uso
 ###### [Style [Y210](#style-y210)]
 
-  - Use subtle [animations with AngularJS](https://docs.angularjs.org/guide/animations) to transition between states for views and primary visual elements. Include the [ngAnimate module](https://docs.angularjs.org/api/ngAnimate). The 3 keys are subtle, smooth, seamless.
+  - Usa sutiles [animaciones con AngularJS](https://docs.angularjs.org/guide/animations) para transicionar entre estados en vistas y elementos visuales primarios. Incluye el [módulo ngAnimate](https://docs.angularjs.org/api/ngAnimate). Las 3 claves son sutil, fluido, transparente.
 
-    *¿Por qué?*: Subtle animations can improve User Experience when used appropriately.
+    *¿Por qué?*: Animaciones sutiles pueden mejorar la Experiencia de Usuario cuando son usadas apropiadamente.
 
-    *¿Por qué?*: Subtle animations can improve perceived performance as views transition.
+    *¿Por qué?*: Animaciones sutiles pueden mejorar el performance percibido como una transición de vista.
 
-### Sub Second
+### Sub Segundos
 ###### [Style [Y211](#style-y211)]
 
-  - Use short durations for animations. I generally start with 300ms and adjust until appropriate. 
+  - Usa duraciones cortas para las animaciones. Yo generalmente empiezo con 300ms y ajusto hasta que es apropiado.
 
-    *¿Por qué?*: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
+    *¿Por qué?*: Animaciones largas pueden tener el efecto contrario en la Experiencia de Usuario y el performance percibido al dar la apariencia de una aplicación lenta.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
+  - Usa [animate.css](http://daneden.github.io/animate.css/) para animaciones convencionales.
 
-    *¿Por qué?*: The animations that animate.css provides are fast, smooth, and easy to add to your application.
+    *¿Por qué?*: Las animaciones que animate.css provee son rápidas, fluidas, y fáciles de agregar en tu aplicación.
 
-    *¿Por qué?*: Provides consistency in your animations.
+    *¿Por qué?*: Provee consistencia en tus animaciones.
 
-    *¿Por qué?*: animate.css is widely used and tested.
+    *¿Por qué?*: animate.css está ampliamente usado y testeado.
 
-    Nota: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Nota: Ve este [ excelente post de Matias Niemelä sobre animaciones AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Comments
+## Comentarios
 
 ### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns. Use `@namespace` and `@memberOf` to match your app structure.
+  - Si planeas producir documentación, usa la sintaxis [`jsDoc`](http://usejsdoc.org/) para documentar nombres de funciones, descripción, parámetros y devoluciones. Usa `@namespace` y `@memberOf` para igualar la estructura de tu aplicación.
 
-    *¿Por qué?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *¿Por qué?*: Puedes generar (y regenerar) documentación desde tu código, en lugar de escribirla desde cero.
 
-    *¿Por qué?*: Provides consistency using a common industry tool.
+    *¿Por qué?*: Provee consistencia al usar una herramienta industrial cómun.
 
     ```javascript
     /**
@@ -2521,7 +2532,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
           /**
            * @name logError
            * @desc Logs errors
-           * @param {String} msg Message to log 
+           * @param {String} msg Message to log
            * @returns {String}
            * @memberOf Factories.Logger
            */
@@ -2534,18 +2545,18 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## JS Hint
 
-### Use an Options File
+### Usa un Archivo de Opciones
 ###### [Style [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
+  - Usa JS Hint para resaltar problemas en tu JavaScript y asegurate de personalizar el arhivo de opciones de JS Hint e incluirlo en el control de versiones. Ve los [JS Hint docs](http://www.jshint.com/docs/) para detalles sobre estas opciones.
 
-    *¿Por qué?*: Provides a first alert prior to committing any code to source control.
+    *¿Por qué?*: Provee una primera alerta antes de commitear cualquire código al control de versiones.
 
-    *¿Por qué?*: Provides consistency across your team.
+    *¿Por qué?*: Provee consistencia a lo largo de tu equipo.
 
     ```javascript
     {
@@ -2611,16 +2622,16 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Constants
+## Constantes
 
-### Vendor Globals
+### Globales de Vendor
 ###### [Style [Y240](#style-y240)]
 
-  - Create an AngularJS Constant for vendor libraries' global variables.
+  - Crea una Constante de Angular para variables globales en librerías vendor.
 
-    *¿Por qué?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+    *¿Por qué?*: Provee una manera de inyectar librerías vendor que de otra manera son globales. Esto mejora la testeabilidad al permitirte saber más fácilmente cuáles son las dependencias de tus componentes (evita abstraciones malformadas). También te permite mockear estas dependencias, cuando tiene sentido.
 
     ```javascript
     // constants.js
@@ -2635,24 +2646,24 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
             .constant('moment', moment);
     })();
     ```
-    
+
 ###### [Style [Y241](#style-y241)]
 
-  - Use constants for values that do not change and do not come from another service. When constants are used only for a module that may be reused in multiple applications, place constants in a file per module named after the module. Until this is required, keep constants in the main module in a `constants.js` file.
+  - Usa constantes para valores que no cambian y no vienen de otro servicio. Cuando las constantes son usadas solo por para un módulo que pueda ser reutilizado en múltiples aplicaciones, coloca las constantes en un archivo por módulo nombrado a partir del módulo. Hasta que esto sea requerido, mantén las constantes en el módulo principal en un archivo `constants.js`.
 
-    *¿Por qué?*: A value that may change, even infrequently, should be retrieved from a service so you do not have to change the source code. For example, a url for a data service could be placed in a constants but a better place would be to load it from a web service.
+    *¿Por qué?*: Un valor que puede cambiar, incluso infrecuentemente, debería ser obtenido desde un servicio así no tendrás que cambiar el código fuente. Por ejemplo, una url para un data service puede ser colocada en una constante pero un mejor lugar sería cargarla desde un servicio web.
 
-    *¿Por qué?*: Constants can be injected into any angular component, including providers.
+    *¿Por qué?*: Las Constantes pueden ser inyectadas en cualquire componente de angular, incluyendo providers.
 
-    *¿Por qué?*: When an application is separated into modules that may be reused in other applications, each stand-alone module should be able to operate on its own including any dependent constants. 
+    *¿Por qué?*: Cuando una aplicación es separada en módulos que pueden ser reutilizados en otras aplicaciones, cada módulo autónomo debería ser capaz de operar por sí mismo incluyendo cualquer constante de la cual dependa.
 
     ```javascript
-    // Constants used by the entire app
+    // Constantes usadas por la aplicación entera
     angular
         .module('app.core')
         .constant('moment', moment);
 
-    // Constants used only by the sales module
+    // Constantes usadas solo por el módulo de ventas
     angular
         .module('app.sales')
         .constant('events', {
@@ -2661,145 +2672,145 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         });
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## File Templates and Snippets
-Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
+## Plantillas y Snippets
+Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones. Aquí hay plantillas y/o snippets para algunos de los editores de desarrollo web e IDEs.
 
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - AngularJS snippets that follow these styles and guidelines. 
+  - Snippets de AngularJS que siguen estos estilos y directrices.
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
-    - Place it in your Packages folder
-    - Restart Sublime 
-    - In a JavaScript file type these commands followed by a `TAB`
- 
+    - Descarga los [snippets de Angular para Sublime](assets/sublime-angular-snippets.zip?raw=true)
+    - Colócalos en tu directorio de Packages
+    - Reinicia Sublime
+    - En un archivo de JavaScript escibe estos comandos seguidos de un `TAB`
+
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
+    ngcontroller // crea un controlador de Angular
+    ngdirective // crea una directiva de Angular
+    ngfactory // crea una factory de Angular
+    ngmodule // crea un módulo de Angular
     ```
 
 ### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+  - Plantillas de AngularJS que siguen estos estilos y directrices pueden ser encontrados en [SideWaffle](http://www.sidewaffle.com)
 
-    - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
-    - Run the vsix file
-    - Restart Visual Studio
+    - Descarga la extensión [SideWaffle](http://www.sidewaffle.com) de Visual Studio (archivo vsix)
+    - Corre el archivo vsix
+    - Reinicia Visual Studio
 
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  - Snippets y arhicos de AngularJS que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
 
-    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
-    - Open WebStorm and go to the `File` menu
-    - Choose the `Import Settings` menu option
-    - Select the file and click `OK`
-    - In a JavaScript file type these commands followed by a `TAB`:
+    - Descarga los [snippets y plantillas de AngularJS para WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
+    - Abre WebStorm y ve al menú `File`
+    - Elije la opción `Import Settings`
+    - Selecciona el archivo y da click en `OK`
+    - En un archivo de JavaScript escribe estos comandos seguidos de un `TAB`:
 
     ```javascript
-    ng-c // creates an Angular controller
-    ng-f // creates an Angular factory
-    ng-m // creates an Angular module
+    ng-c // crea un controlador de Angular
+    ng-f // crea una factory de Angular
+    ng-m // crea un módulo de Angular
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Yeoman Generator
+## Generador de Yeoman
 ###### [Style [Y260](#style-y260)]
 
-You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to create an app that serves as a starting point for Angular that follows this style guide.
+Puedes usar el [generador de yeoman HotTowel](http://jpapa.me/yohottowel) para crear una aplicación que te sirve como punto de inicio en Angular que sigue esta guía de estilos.
 
-1. Install generator-hottowel
+1. Instala generator-hottowel
 
   ```
   npm install -g generator-hottowel
   ```
 
-2. Create a new folder and change directory to it
+2. Crea un nuevo directorio y entra en el
 
   ```
   mkdir myapp
   cd myapp
   ```
 
-3. Run the generator
+3. Corre el generador
 
   ```
   yo hottowel helloWorld
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Routing
-Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
+## Ruteo
+Ruteo del lado del Cliente es importante para crear un flujo de navegación entre vistas y vistas de composición que están hechas de muchas pequeñas plantillas y directivas.
 
 ###### [Style [Y270](#style-y270)]
 
-  - Use the [AngularUI Router](http://angular-ui.github.io/ui-router/) for client-side routing.
+  - Usa el [AngularUI Router](http://angular-ui.github.io/ui-router/) para ruteo del lado del cliente.
 
-    *¿Por qué?*: UI Router offers all the features of the Angular router plus a few additional ones including nested routes and states.
+    *¿Por qué?*: UI Router ofrece todas las features del router de Angular mas algunas adicionales  allincluyendo rutas anidadas the f y estados.
 
-    *¿Por qué?*: The syntax is quite similar to the Angular router and is easy to migrate to UI Router.
+    *¿Por qué?*: La sintaxis es bastante similar al router de Angular y es fácil de migrar al UI Router.
 
 ###### [Style [Y271](#style-y271)]
 
-  - Define routes for views in the module where they exist. Each module should contain the routes for the views in the module.
+  - Define rutas para vistas en el módulo dónde éstas existen. Cada módulo debería contener las rutas para las vistas en ese módulo.
 
-    *¿Por qué?*: Each module should be able to stand on its own.
+    *¿Por qué?*: Cada módulo debe ser capaz de funcionar por sí mismo.
 
-    *¿Por qué?*: When removing a module or adding a module, the app will only contain routes that point to existing views.
+    *¿Por qué?*: Al remover un módulo o al agregar un módulo, la aplicación solo contendrá rutas que apunten a las vistas existentes.
 
-    *¿Por qué?*: This makes it easy to enable or disable portions of an application without concern over orphaned routes.
+    *¿Por qué?*: Esto hace más fácil habilitar o deshabilitar porciones de una aplicación sin preocuparse de rutas huérfanas.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
-## Task Automation
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks. Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+## Automatización de Tareas
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código. Personalmente yo prefiero Gulp ya que se siente más fácil de leer y escribir, pero ambos son excelentes.
 
 ###### [Style [Y400](#style-y400)]
 
-  - Use task automation to list module definition files `*.module.js` before all other application JavaScript files.
+  - Usa automatización de tareas para listar archivos que definan módulos `*.module.js` antes que otros archivos de JavaScript en la aplicación.
 
-    *¿Por qué?*: Angular needs the module definitions to be registered before they are used.
+    *¿Por qué?*: Angular necesita la definición de módulos para ser registrados antes de que sean usados.
 
-    *¿Por qué?*: Naming modules with a specific pattern such as `*.module.js` makes it easy to grab them with a glob and list them first.
+    *¿Por qué?*: Nombra módulos con un patrón específico como `*.module.js` hace más fácil tomarlos con un glob y listarlos primero.
 
     ```javascript
     var clientApp = './src/client/app/';
 
-    // Always grab module files first
+    // Siempre toma archivos de módulos primero
     var files = [
       clientApp + '**/*.module.js',
       clientApp + '**/*.js'
     ];
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## AngularJS docs
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+Para cualquier otra cosa, refiérete a la API, mira la [documentación de Angular](//docs.angularjs.org/api).
 
-## Contributing
+## Contribuyendo
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+Primero abre un issue para discutir cambios/agregados potenciales. Si tienes preguntas acerca de esta guía, siéntete libre de dejarlas como issues en el repositorio. Si encuentras un typo, crea un pull request. La idea es mantener el contenido actualizado y usar las features de github para ayudar a contar la historia con issues y PR’s, los cuales pueden ser encontrados a través de google. ¿Por qué? Porque las probabilidades son que si tu tienes una pregunta, !alguien más también! Puedes aprender más aquí de cómo contribuir.
 
-*By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
+*Al contribuir a este repositorio estás acordando hacer tu contenido disponible a ser parte de la licencia de este repositorio.*
 
-### Process
-    1. Discuss the changes in a GitHub issue. 
-    2. Open a Pull Request against the develop branch, reference the issue, and explain the change and why it adds value.
-    3. The Pull Request will be evaluated and either merged or declined.
+### Proceso
+    1. Discute los cambios en un issue de Github.
+    2. Abre un Pull Request sobre la rama de develop, referencia el issue, y explica el cambio y por qué agrega valor.
+    3. El Pull Request será evaluado y ya sea mergeado o declinado.
 
-## License
+## Licencia
 
-_tldr; Use this guide. Attributions are appreciated._
+_tldr; Usa esta guía. Reconocimientos son apreciados._
 
 ### (The MIT License)
 
@@ -2824,4 +2835,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
