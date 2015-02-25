@@ -23,36 +23,37 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 ## Tabla de contenidos
 
-  1. [Responsabilidad Única](#single-responsibility)
+  1. [Responsabilidad
+     Única](#single-responsibility-o-responsabilidad-única)
   1. [IIFE](#iife)
-  1. [Módulos](#modules)
-  1. [Controladores](#controllers)
-  1. [Servicios](#services)
+  1. [Módulos](#módulos)
+  1. [Controladores](#controladores)
+  1. [Servicios](#servicios)
   1. [Factories](#factories)
   1. [Data Services](#data-services)
-  1. [Directivas](#directives)
-  1. [Resolviendo Promesas en un Controlador](#resolving-promises-for-a-controller)
-  1. [Anotación Manual para Inyección de Dependencias](#manual-annotating-for-dependency-injection)
-  1. [Minification and Annotation](#minification-and-annotation)
-  1. [Manejo de Excepciones](#exception-handling)
-  1. [Cómo Nombrar](#naming)
-  1. [Estructura de la Aplicación El Principio LIFT](#application-structure-lift-principle)
-  1. [Estructura de la Aplicación](#application-structure)
-  1. [Modularidad](#modularity)
-  1. [Lógica de Arranque](#startup-logic)
-  1. [Servicios Envoltorios $ de Angular](#angular--wrapper-services)
-  1. [Pruebas](#testing)
-  1. [Animaciones](#animations)
-  1. [Comentarios](#comments)
+  1. [Directivas](#directivas)
+  1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
+  1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
+  1. [Minificación y Anotación](#minificación-y-anotación)
+  1. [Manejo de Excepciones](#manejo-de-excepciones)
+  1. [Cómo Nombrar](#cómo-nombrar)
+  1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
+  1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
+  1. [Modularidad](#modularidad)
+  1. [Lógica de Arranque](#lógica-de-arranque)
+  1. [Servicios Envoltorios $ de Angular](#servicios-envoltorios--de-angular)
+  1. [Pruebas](#pruebas)
+  1. [Animaciones](#animaciones)
+  1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
-  1. [Constantes](#constants)
-  1. [Plantillas y Snippets](#file-templates-and-snippets)
-  1. [Generador de Yeoman](#yeoman-generator)
-  1. [Ruteo](#routing)
-  1. [Automatización de Tareas](#task-automation)
+  1. [Constantes](#constantes)
+  1. [Plantillas y Snippets](#plantillas-y-snippets)
+  1. [Generador de Yeoman](#generador-de-yeoman)
+  1. [Ruteo](#ruteo)
+  1. [Automatización de Tareas](#automatización-de-tareas)
   1. [AngularJS Docs](#angularjs-docs)
-  1. [Contribuyendo](#contributing)
-  1. [Licencia](#license)
+  1. [Contribuyendo](#contribuyendo)
+  1. [Licencia](#licencia)
 
 ## Single Responsibility o Responsabilidad Única
 
@@ -107,7 +108,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   function someFactory() { }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## IIFE
 ### Closures de JavaScript
@@ -172,7 +173,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia factory.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Módulos
 
@@ -282,7 +283,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   function logger() { }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Controladores
 
@@ -673,7 +674,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   </div>
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Servicios
 
@@ -712,7 +713,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Factories
 
@@ -883,7 +884,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Data Services
 
@@ -1008,7 +1009,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-    **[Volver arriba](#table-of-contents)**
+    **[Volver arriba](#tabla-de-contenidos)**
 
 ## Directivas
 ### Limitadas a 1 Por Archivo
@@ -1296,7 +1297,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Resolviendo Promesas en un Controlador
 
@@ -1446,9 +1447,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Nota: El código del ejemplo de dependencia en `movieService` no se puede minimizar tal cual. Para detalles en cómo hacer este código sea minimizable, mira la sección en [inyección de dependencias](#manual-annotating-for-dependency-injection) y en [minimización y anotación](#minification-and-annotation).
+    Nota: El código del ejemplo de dependencia en `movieService` no se puede minimizar tal cual. Para detalles en cómo hacer este código sea minimizable, mira la sección en [inyección de dependencias](#anotación-manual-para-la-inyección-de-dependencias) y en [minimización y anotación](#minificación-y-anotación).
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Anotación Manual para la Inyección de Dependencias
 
@@ -1579,7 +1580,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Minificación y Anotación
 
@@ -1691,7 +1692,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Manejo de Excepciones
 
@@ -1803,7 +1804,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Cómo Nombrar
 
@@ -2027,7 +2028,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Separa la configuración de la ruta en un arhivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas prefiero esta separación del resto de la configuración.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Estructura de la Aplicación El Principio LIFT
 ### LIFT
@@ -2090,7 +2091,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Ser DRY es importante, pero no crucial si sacrifica otras partes de LIFT, es por eso que lo llamo T-DRY. No quiero escribir session-view.html por una vista porque, obviamente es una vista. Si no es obvio o por convención, entonces la nombro así.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Estructura de la Aplicación
 
@@ -2202,7 +2203,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
             topnav.html
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Modularidad
 
@@ -2266,7 +2267,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     > En una aplicación pequeña, también puedes considerar poner todas las dependencias compartidas en el módulo principal dónde los módulos de features no tienen dependencias directas. Esto hace más fácil mantener aplicaciones pequeñas, pero hace más díficil el reusar módulos fuera de esta aplicación.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Lógica de Arranque
 
@@ -2322,7 +2323,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Servicios Envoltorios $ de Angular
 
@@ -2340,7 +2341,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Estos servicios están envueltos por Angular y son más fáciles de testear y manejar el ciclo digest de AngularJS así que mantienen el bindeo de los datos en sincronización.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Pruebas
 Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algunas de mis recomendaciones en los fundamentos del testeo unitario con links para mayor información.
@@ -2459,7 +2460,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
                              /customers.route.spec.js
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Animaciones
 
@@ -2492,7 +2493,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
     Nota: Ve este [ excelente post de Matias Niemelä sobre animaciones AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Comentarios
 
@@ -2544,7 +2545,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
     })();
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## JS Hint
 
@@ -2621,7 +2622,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
     }
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Constantes
 
@@ -2671,7 +2672,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
         });
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Plantillas y Snippets
 Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones. Aquí hay plantillas y/o snippets para algunos de los editores de desarrollo web e IDEs.
@@ -2719,7 +2720,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
     ng-m // crea un módulo de Angular
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Generador de Yeoman
 ###### [Style [Y260](#style-y260)]
@@ -2745,7 +2746,7 @@ Puedes usar el [generador de yeoman HotTowel](http://jpapa.me/yohottowel) para c
   yo hottowel helloWorld
   ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Ruteo
 Ruteo del lado del Cliente es importante para crear un flujo de navegación entre vistas y vistas de composición que están hechas de muchas pequeñas plantillas y directivas.
@@ -2768,7 +2769,7 @@ Ruteo del lado del Cliente es importante para crear un flujo de navegación entr
 
     *¿Por qué?*: Esto hace más fácil habilitar o deshabilitar porciones de una aplicación sin preocuparse de rutas huérfanas.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Automatización de Tareas
 Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código. Personalmente yo prefiero Gulp ya que se siente más fácil de leer y escribir, pero ambos son excelentes.
@@ -2791,7 +2792,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     ];
     ```
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## AngularJS docs
 Para cualquier otra cosa, refiérete a la API, mira la [documentación de Angular](//docs.angularjs.org/api).
@@ -2834,4 +2835,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Volver arriba](#table-of-contents)**
+**[Volver arriba](#tabla-de-contenidos)**
