@@ -1735,6 +1735,8 @@
 
     ```javascript
     /* препорачано */
+    var handlingRouteChangeError = false;
+
     function handleRoutingErrors() {
         /**
          * Прекин на патека:
@@ -1743,14 +1745,23 @@
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
-                var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
-                    'unknown target';
-                var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
+                if (handlingRouteChangeError) { return; }
+                handlingRouteChangeError = true;
+                var destination = (current && (current.title ||
+                	current.name || current.loadedTemplateUrl)) ||
+                	'unknown target';
+                var msg = 'Error routing to ' + destination + '. ' +
+                	(rejection.msg || '');
                 /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
+                 * Опционално логирајте со рачно изработен сервис или $log.
+                 * (Не заборавајте да го вклучите рачно изработениот сервис)
                  */
                 logger.warning(msg, [current]);
+
+                /**
+                * При грешка во рутирање, одете на друга рута/состојба.
+                */
+                $location.path('/');
             }
         );
     }
@@ -2612,7 +2623,7 @@ angular
 ###### [Style [Y252](#style-Y252)]
   - AngularJS кратки кодови и датотечни шаблони кои ги следат овие стилови и водичи на код. Можете да ги внесете во вашите WebStorm подесувања:
 
-    - Симнете ги [WebStorm AngularJS датотечни шаблони и кратки кодови](assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - Симнете ги [WebStorm AngularJS датотечни шаблони и кратки кодови](../assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Отворете го WebStorm и одберете го `File` менито
     - Одберете го `Import Settings`
     - Одберете ја датотеката и кликнете `OK`
@@ -2622,6 +2633,29 @@ angular
     ng-c // создава Angular контролер
     ng-f // создава Angular фабрика
     ng-m // создава Angular модул
+    ```
+
+**[Назад кон содржината](#table-of-contents)**
+
++### Atom
+###### [Style [Y253](#style-y253)]
+
+  - AngularJS кратки кодови кои ги следат овие стилови и водичи на код.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    или
+    - Отворете го Atom, потоа отворете го Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Побарајте го пакетот 'angularjs-styleguide-snippets'
+    - Кликнете на 'Install' за да го инсталирате пакетот
+    
+  - Во JavaScript датотека напишете ги следните команди и потоа кликнете `TAB`
+
+    ```javascript
+    ngcontroller // создава Angular контролер
+    ngdirective // создава Angular директива
+    ngfactory // создава Angular фабрика
+    ngmodule // создава Angular модул
     ```
 
 **[Назад кон содржината](#table-of-contents)**
@@ -2709,7 +2743,7 @@ angular
 
 ### Процес
     1. Дискусирајте за промените во Github Issue. 
-    2. Отворете Pull Request врз develop гранката, поставете референца до Issue и објаснете ја промената и како додава на вредност.
+    2. Отворете Pull Request, поставете референца до Issue и објаснете ја промената и како додава на вредност.
     3. Pull Request ќе биде оценето и биде или споено или одбиено.
 
 ## License
