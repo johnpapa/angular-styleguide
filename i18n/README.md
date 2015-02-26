@@ -11,6 +11,7 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
 5. [Portuguese-Brazil](PT-BR.md)
 6. [Russian](ru-RU.md)
 7. [Simplified Chinese](zh-CN.md)
+8. [Spanish](es-ES.md)
 
 ## Contributing
 Language translations are welcomed and encouraged. The succcess of these translations depends on the community. I highly encourage new translation contributions and help to keep them up to date. 
