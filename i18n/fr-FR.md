@@ -14,7 +14,7 @@ Le but de ce guide de style est de proposer des conseils sur le développement d
 
   [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Supprématie de la Communauté et Remerciements
+## Suprématie de la Communauté et Remerciements
 Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
 
 De nombreux de mes styles proviennent des maintes scéances de pair programming que [Ward Bell](http://twitter.com/wardbell) et moi avons eu. Même si nous n'étions pas toujours d'accord, mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
@@ -295,9 +295,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Utilisez la syntaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) au lieu de la syntaxe de `controlleur classique avec $scope`.
 
-	*Pourquoi ?* : Les controlleurs sont constuits, "new-és", and fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
+	*Pourquoi ?* : Les controlleurs sont construits, recréés, et fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
 
-	*Pourquoi ?* : Il promeut l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
+	*Pourquoi ?* : Il encourage l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
 
 	*Pourquoi ?* : Permet d'éviter l'usage des appels à `$parent` dans les Vues avec des controlleurs imbriqués.
 
@@ -559,8 +559,8 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Déplacer la Logique des Controlleurs
 ###### [Style [Y035](#style-y035)]
 
-  - Déplacer la logique d'un controlleur en la déléguant à des services et des factories. 
-  
+  - Déplacer la logique d'un controlleur en la déléguant à des services et des factories.
+
     *Pourquoi ?* : La logique peut être ré-utilisée par plusieurs controlleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
 
     *Pourquoi ?* : La logique d'un service peut plus facilement être isolée dans un test unitaire, tandis que la logique d'appel dans le controlleur peut facilement être mockée.
@@ -1127,9 +1127,9 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Lors de la création d'une directive qui fait du sens comme élément indépendant, permettez la restriction `E` (élément personnalisé) et éventuellement la restriction `A` (attribut personnalisé). En général, s'il devrait avoir son propre contrôle, `E` est le plus indiqué. Le conseil le plus général est de permettre `EA` mais se dirige vers une implémentation en tant qu'élément lorsqu'il est indépendant et en tant qu'attribut lorsqu'il améliore un élément DOM existant.
 
-    *Why?* : Ça fait sens.
+    *Pourquoi ?* : Çela a du sens.
 
-    *Why?* : Même s'il est autorisé d'utiliser une directive en tant que classe, si la directive agit vraiement comme un élément, elle fait plus de sens en tant qu'élément ou au moins en tant qu'attribut.
+    *Pourquoi ?* : Même s'il est autorisé d'utiliser une directive en tant que classe, si la directive agit vraiement comme un élément, elle fait plus de sens en tant qu'élément ou au moins en tant qu'attribut.
 
     Note : EA est la valeur par défaut avec AngularJS 1.3 +
 
@@ -1308,9 +1308,8 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   - Résolvez la logique de démarrage d'un controlleur dans une fonction `activate`.
 
     *Pourquoi ?* : Placer la logique de démarrage toujours au même endroit permet de le rendre plus facile à localiser, plus cohérent à tester, et permet d'éviter la dispersion de la logique d'activation à travers le controlleur.
-    
+
     *Pourquoi ?* : La fonction `activate` d'un controlleur rend pratique la ré-utilisation de la logique pour un refraichissement du controlleur ou de la vue, garde cette logique à un seul endroit, envoie l'utilisateur plus rapidement à la Vue, rend les animations faciles sur la `ng-view` ou l'`ui-view`, et c'est rendu plus vif à l'utilisateur.
-    *Why?*: The controller `activate` makes it convenient to re-use the logic for a refresh for the controller/View, keeps the logic together, gets the user to the View faster, makes animations easy on the `ng-view` or `ui-view`, and feels snappier to the user.
 
     Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le controlleur, utilisez une [résolution de route](#style-y081) à la place.
 
@@ -1411,7 +1410,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         vm.movies = moviesPrepService.movies;
   }
    ```
- 
+
     Note : L'exemple ci-dessous montre que la résolution de routage pointe vers une fonction nommée, laquelle est plus facile à débugguer et dont l'injection de dépendance est plus facile à gérer.
 
   ```javascript
@@ -2441,7 +2440,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
     *Pourquoi ?* : Quand vous mettez à jour le code source, il est plus facile de mettre à jour les tests en même temps.
 
     *Pourquoi ?* : Les placer côte-à-côte les rend plus facile à trouver et facile à déplacer si vous déplacez les sources.
-    
+
     *Pourquoi ?* : Avoir les specs proches permet au lecteur du code source d'apprendre comment le composant est supposé être utilisé et découvrir les limitations connues.
 
     *Pourquoi ?* : La séparation des specs afin qu'ils ne soient pas inclus dans le build est facile avec grunt ou gulp.
@@ -2642,7 +2641,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
             .constant('moment', moment);
     })();
      ```
- 
+
 ###### [Style [Y241](#style-y241)]
 
   - Utilisez les constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des contantes ne sont utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
@@ -2715,9 +2714,9 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
     ng-f // crée une factory Angular
     ng-m // crée un module Angular
     ```
- 
+
  **[Retour en haut de page](#table-des-matières)**
- 
+
 ## Generateur Yeoman
 ###### [Style [Y260](#style-y260)]
 
