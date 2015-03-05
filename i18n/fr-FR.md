@@ -54,6 +54,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Générateur Yeoman](#générateur-yeoman)
   1. [Routage](#routage)
   1. [Automatisation des Tâches](#automatisation-des-taches)
+  1. [Filtres](#filtres)
   1. [Documentation AngularJS](#documentation-angularjs)
   1. [Contribuer](#contribuer)
   1. [License](#license)
@@ -2788,6 +2789,16 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
     ```
 
 **[Retour en haut de page](#table-des-matières)**
+
+## Filtres
+
+###### [Style [Y420](#style-y420)]
+
+  - Évitez d'utiliser les filtres pour scanner toutes les propriété de l'arborescence d'un objet complexe. Utilisez les filtres pour sélectionner des propriétés.
+
+    *Pourquoi ?*: les filtres peuvent être surutilisés et peuvent avoir des effets négatifs sur les performances s'ils ne sont pas utilisés de façon appropriée. Par exemple, quand un filtre touche un gros objet dont l'arborescence est profonde.
+
+**[Back to top](#table-of-contents)**
 
 ## Documentation AngularJS
 Pour tout le reste, la référence des API, allez voir la [documentation Angular](//docs.angularjs.org/api).
