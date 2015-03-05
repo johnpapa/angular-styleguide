@@ -50,6 +50,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Yeoman Generator](#yeoman-generator)
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
+  1. [Filters](#filters)
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2814,6 +2815,16 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
       clientApp + '**/*.js'
     ];
     ```
+
+**[Back to top](#table-of-contents)**
+
+## Filters
+
+###### [Style [Y420](#style-y420)]
+
+  - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
+
+    *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph. 
 
 **[Back to top](#table-of-contents)**
 
