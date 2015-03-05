@@ -1933,36 +1933,21 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     // avengers.controller.js
     angular
         .module
-        .controller('HeroAvengers', HeroAvengers);
+        .controller('HeroAvengersController', HeroAvengersController);
 
-    function HeroAvengers() { }
+    function HeroAvengersController() { }
     ```
 
 ### Controller Name Suffix
 ###### [Style [Y124](#style-y124)]
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - Append the controller name with the suffix `Controller`.
 
     *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
 
-    *Why?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
-
     ```javascript
     /**
-     * recommended: Option 1
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('Avengers', Avengers);
-
-    function Avengers() { }
-    ```
-
-    ```javascript
-    /**
-     * recommended: Option 2
+     * recommended
      */
 
     // avengers.controller.js
