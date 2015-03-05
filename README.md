@@ -1353,7 +1353,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
 
-    *Why?*: The code executes after the route and in the controller’s activate function. The View starts to load right away. Data binding kicks in when the activate promise resolves. A “busy” animation can be shown during the view transition (via ng-view or ui-view)
+    *Why?*: The code executes after the route and in the controller’s activate function. The View starts to load right away. Data binding kicks in when the activate promise resolves. A “busy” animation can be shown during the view transition (via `ng-view` or `ui-view`)
 
     Note: The code executes before the route via a promise. Rejecting the promise cancels the route. Resolve makes the new view wait for the route to resolve. A “busy” animation can be shown before the resolve and through the view transition. If you want to get to the View faster and do not require a checkpoint to decide if you can get to the View, consider the [controller `activate` technique](#style-y080) instead.
 
@@ -1519,33 +1519,37 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
-
-    Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
+    Note: When your function is below a return statement the `$inject` may be unreachable (this may happen in a directive). You can solve this by moving the Controller outside of the directive.
 
     ```javascript
+    /* avoid */
     // inside a directive definition
     function outer() {
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo;
 
-        DashboardPanel.$inject = ['logger']; // Unreachable
-        function DashboardPanel(logger) {
+        DashboardPanelController.$inject = ['logger']; // Unreachable
+        function DashboardPanelController(logger) {
         }
     }
     ```
 
     ```javascript
-    // inside a directive definition
+    /* recommended */
+    // outside a directive definition
     function outer() {
-        DashboardPanel.$inject = ['logger']; // reachable
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo;
+    }
 
-        function DashboardPanel(logger) {
-        }
+    DashboardPanelController.$inject = ['logger'];
+    function DashboardPanelController(logger) {
     }
     ```
 
