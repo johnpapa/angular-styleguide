@@ -2880,9 +2880,9 @@ Client-side routing is important for creating a navigation flow between views an
 **[Back to top](#table-of-contents)**
 
 ## Task Automation
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks. 
+Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
 
-> Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+> Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course(http://jpapa.me/gulpps)
 
 ###### [Style [Y400](#style-y400)]
 
