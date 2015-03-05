@@ -1022,6 +1022,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: One directive per file is easy to maintain.
 
+    > Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation
+
   ```javascript
   /* avoid */
   /* directives.js */
