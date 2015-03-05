@@ -885,6 +885,52 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
+### Providers
+
+Providers follow the same principles as Factories.
+
+```
+  (function() {
+  
+      'use strict';
+  
+      angular.module('app')
+      .provider('Data', Data);
+  
+      /**
+       * @ngInject
+       */
+      function Data() {
+  
+          var baseUrl;
+  
+          var serviceProvider = {
+              setBaseUrl: setBaseUrl,
+              $get: Service
+          };
+  
+          return serviceProvider;
+  
+          function setBaseUrl(url) {
+              baseUrl = url;
+          }
+  
+          /**
+           * @ngInject
+           */
+          function Service($http) {
+              return {
+                  meetings: meetings
+              };
+  
+              function getData() {
+                  return '$http';
+              }
+          }
+      }
+  }());
+```
+
 **[Back to top](#table-of-contents)**
 
 ## Data Services
