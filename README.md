@@ -2932,10 +2932,11 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 _tldr; Use this guide. Attributions are appreciated._
 
+### Copyright
+
+Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+
 ### (The MIT License)
-
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
-
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 'Software'), to deal in the Software without restriction, including
