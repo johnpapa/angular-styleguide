@@ -6,14 +6,14 @@ If you are looking for an opinionated style guide for syntax, conventions, and s
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
->If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight.
+>If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
 
   [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
 Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, a friend and Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. While we don't always agree, my friend Ward has certainly helped influence the ultimate evolution of this guide.
+Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
 
 ## See the Styles in a Sample App
 While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
@@ -552,7 +552,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-### Defer Controller Logic
+### Defer Controller Logic to Services
 ###### [Style [Y035](#style-y035)]
 
   - Defer logic in a controller by delegating to services and factories.
@@ -562,6 +562,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
 
     *Why?*: Removes dependencies and hides implementation details from the controller.
+
+    *Why?*: Keeps the controller slim, trim, and focused.
 
   ```javascript
 
@@ -965,7 +967,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Return a Promise from Data Calls
 ###### [Style [Y061](#style-y061)]
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - When calling a data service that returns a promise such as `$http`, return a promise in your calling function too.
 
     *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
 
