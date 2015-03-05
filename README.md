@@ -2400,6 +2400,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
 
+    *Why?*: Sinon has descriptive messages when tests fail the assertions.
+
 ### Headless Browser
 ###### [Style [Y194](#style-y194)]
 
