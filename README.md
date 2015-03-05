@@ -45,6 +45,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Animations](#animations)
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
+  1. [JSCS](#jscs)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Yeoman Generator](#yeoman-generator)
@@ -2617,6 +2618,94 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
             "angular": false,
             "$": false
         }
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
+## JSCS
+
+### Use an Options File
+###### [Style [Y235](#style-y235)]
+
+  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://www.jscs.info) for details on the options.
+
+    *Why?*: Provides a first alert prior to committing any code to source control.
+
+    *Why?*: Provides consistency across your team.
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
     }
     ```
 
