@@ -2376,7 +2376,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Both Jasmine and Mocha are widely used in the Angular community. Both are stable, well maintained, and provide robust testing features.
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com).
+    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com). I prefer Mocha.
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
