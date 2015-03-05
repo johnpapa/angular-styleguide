@@ -2125,7 +2125,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     app/
         app.module.js
         app.config.js
-        app.routes.js
         components/
             calendar.directive.js
             calendar.directive.html
@@ -2139,6 +2138,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         people/
             attendees.html
             attendees.controller.js
+            people.routes.js
             speakers.html
             speakers.controller.js
             speaker-detail.html
@@ -2151,6 +2151,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         sessions/
             sessions.html
             sessions.controller.js
+            sessions.routes.js
             session-detail.html
             session-detail.controller.js
     ```
