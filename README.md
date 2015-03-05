@@ -1675,6 +1675,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
+        
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
@@ -1885,7 +1886,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team. My preference is `avengers.controller.js`.
 
     ```javascript
     /**
