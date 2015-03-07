@@ -2431,6 +2431,12 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     ```javascript
     /* jshint -W117, -W030 */
     ```
+    Or you can add the following to your JSHint Options file.
+
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
+    ```
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
