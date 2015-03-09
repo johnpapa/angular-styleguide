@@ -2188,7 +2188,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
             user-profile.directive.js
             user-profile.directive.html
         services/
-            dataservice.j
+            dataservice.js
             localstorage.js
             logger.js
             spinner.js
