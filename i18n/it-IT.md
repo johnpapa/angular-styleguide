@@ -1074,7 +1074,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   /* customerInfo.directive.js */
 
   /**
-   * @desc directive dello spinner che può essere usato dovunque nella applicazione di vendita di una azienda di nome Acme
+   * @desc directive delle vendite che può essere usato dovunque nella applicazione di vendita di una azienda di nome Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
