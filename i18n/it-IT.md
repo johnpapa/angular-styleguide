@@ -2439,9 +2439,15 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     *Perché?*: I tuoi test sono codice e richiedono al medesima attenzione e regole per la qualità del codice come tutto il resto del codice di produzione. Comunque, variabili globali usate dai framework di test, per esempio, possono essere rilassate includendole nelle specifiche dei test.
 
     ```javascript
-    /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
+    /* jshint -W117, -W030 */
     ```
-
+    Oppure puoi aggiungere le righe che seguono al tuo file JSHint Options.
+    
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
+    ```
+    
   ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
 ### Organizzazione dei test
