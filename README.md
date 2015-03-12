@@ -2771,7 +2771,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - Angular snippets that follow these styles and guidelines.
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true)
+    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)
     - Place it in your Packages folder
     - Restart Sublime
     - In a JavaScript file type these commands followed by a `TAB`
