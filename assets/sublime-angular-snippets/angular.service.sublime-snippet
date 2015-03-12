@@ -1,0 +1,22 @@
+<snippet>
+    <content><![CDATA[(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .service('${2:Service}', ${2:Service});
+
+    /* @ngInject */
+    function ${2:Service}(${3:dependencies}) {
+        this.${4:func} = ${4:func};
+
+        ////////////////
+
+        function ${4:function}() {
+        }
+    }
+})();
+]]></content>
+    <tabTrigger>ngservice</tabTrigger>
+    <scope>source.js</scope>
+</snippet>
