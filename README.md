@@ -2778,9 +2778,10 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
     ```javascript
     ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
     ```
 
 ### Visual Studio
