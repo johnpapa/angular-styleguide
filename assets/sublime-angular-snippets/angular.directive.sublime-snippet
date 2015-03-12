@@ -13,31 +13,24 @@
         // Creates:
         //
         var directive = {
-<<<<<<< HEAD
+            bindToController: true,
             controller: ${4:Controller},
             controllerAs: '${5:vm}',
             link: link,
             restrict: 'A',
             scope: {
             }
-=======
-            link: link,
-            restrict: 'A'
->>>>>>> 93eb74f33dd1304fdc4ab48fd47166055650a1ff
         };
         return directive;
 
         function link(scope, element, attrs) {
         }
     }
-<<<<<<< HEAD
 
     /* @ngInject */
     function ${4:Controller} () {
 
     }
-=======
->>>>>>> 93eb74f33dd1304fdc4ab48fd47166055650a1ff
 })();
 ]]></content>
     <tabTrigger>ngdirective</tabTrigger>
