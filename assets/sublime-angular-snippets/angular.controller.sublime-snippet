@@ -15,16 +15,7 @@
 
         ////////////////
 
-        /* @ngInject */
-        function ${2:Ctrl}(${3:dependencies}) {
-            /*jshint validthis: true */
-            var vm = this;
-            vm.title = '${2:Ctrl}';
-
-            activate();
-
-            function activate() {
-            }
+        function activate() {
         }
     }
 })();
