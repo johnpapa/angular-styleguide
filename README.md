@@ -1075,7 +1075,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1104,7 +1104,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -2188,7 +2188,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
             user-profile.directive.js
             user-profile.directive.html
         services/
-            dataservice.j
+            dataservice.js
             localstorage.js
             logger.js
             spinner.js
@@ -2430,6 +2430,12 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     ```javascript
     /* jshint -W117, -W030 */
+    ```
+    Or you can add the following to your JSHint Options file.
+
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
     ```
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)

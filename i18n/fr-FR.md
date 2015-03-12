@@ -1,21 +1,21 @@
-# Le Guide de Style AngularJS
+# Le Guide de Style Angular
 
-*Le guide d'un point de vue personnel sur le style AngularJS par [@john_papa](//twitter.com/john_papa)*
+*Le guide d'un point de vue personnel sur le style Angular par [@john_papa](//twitter.com/john_papa)*
 
 *Translated by [Eric Lemerdy](https://github.com/ericlemerdy)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application AngularJS, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [AngularJS](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
+Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application Angular, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [Angular](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
 
-Le but de ce guide de style est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
+Le but de ce guide de style est de proposer des conseils sur le développement d'applications Angular en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
 
 >Si vous appréciez ce guide, visitez mon cours [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight.
 
-  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Suprématie de la Communauté et Remerciements
-Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
+Ne jamais travailler dans le vide. J'ai trouvé que la communauté Angular est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert Angular Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
 
 De nombreux de mes styles proviennent des maintes scéances de pair programming que [Ward Bell](http://twitter.com/wardbell) et moi avons eu. Même si nous n'étions pas toujours d'accord, mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
 
@@ -23,7 +23,7 @@ De nombreux de mes styles proviennent des maintes scéances de pair programming 
 Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a été utile de les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces motifs. Vous pouvez trouver l'[application d'exemple (appellée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le dupliquer pour le modifier. [Les instructions pour l'éxécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
-[Des traductions de ce guide stylistique Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
+[Des traductions de ce guide stylistique Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
 
 ## Table des matières
 
@@ -49,13 +49,14 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Animations](#animations)
   1. [Commentaires](#commentaires)
   1. [JSHint](#js-hint)
+  1. [JSCS](#jscs)
   1. [Constantes](#constantes)
   1. [Templates de Fichiers et Fragments](#templates-de-fichiers-et-fragments)
   1. [Générateur Yeoman](#générateur-yeoman)
   1. [Routage](#routage)
   1. [Automatisation des Tâches](#automatisation-des-taches)
   1. [Filtres](#filtres)
-  1. [Documentation AngularJS](#documentation-angularjs)
+  1. [Documentation Angular](#documentation-angular)
   1. [Contribuer](#contribuer)
   1. [License](#license)
 
@@ -118,7 +119,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Les Closures JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Encapsuler les composants AngularJS dans une Immediately Invoked Function Expression (IIFE) ou Expression de Fonction Immédiatement Invoquée.
+  - Encapsuler les composants Angular dans une Immediately Invoked Function Expression (IIFE) ou Expression de Fonction Immédiatement Invoquée.
 
   *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables et de fonctions ne vivent plus longtemps qu'attendu dans le scope global, ce qui aide aussi à éviter les collisions de variables.
 
@@ -446,7 +447,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       }
   ```
 
-    ![Les Controlleur Utilisant "Au dessus de la Réduction"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Les Controlleur Utilisant "Au dessus de la Réduction"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
   Note : Si la fonction est un one-liner, considérez de la garder bien en haut, tant que la lisibilité n'est pas affectée.
 
@@ -687,7 +688,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Les Services sont instanciés avec le mot clé `new`, utilisez `this` pour les méthodes publiques et les variables. Puisque ces derniers sont tellement similaires aux factories, utilisez à la place une factory pour la cohérence.
 
-    Note : [Tous les serices AngularJS services sont des singletons](https://docs.angularjs.org/guide/services). Celà signifie qu'il n'y a qu'une seule instance d'un service donné par injecteur.
+    Note : [Tous les serices Angular services sont des singletons](https://docs.angularjs.org/guide/services). Celà signifie qu'il n'y a qu'une seule instance d'un service donné par injecteur.
 
   ```javascript
   // service
@@ -731,7 +732,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Les factories sont des singletons et renvoient un objet qui contient les membres du service.
 
-    Note : [Tous les services AngularJS sont des singletons](https://docs.angularjs.org/guide/services).
+    Note : [Tous les services Angular sont des singletons](https://docs.angularjs.org/guide/services).
 
 ### Membres Accessibles Tout en Haut
 ###### [Style [Y052](#style-y052)]
@@ -788,7 +789,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   De cette façon, les bindings sont dupliqués à travers l'objet hôte, les valeurs primitives ne peuvant se mettre à jour toutes seules grâce au principe du module révélateur.
 
-    ![Factories Utilisants "Au dessus du Pliage"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Utilisants "Au dessus du Pliage"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
 
 ### Déclaration de Fonctions pour Cacher les Détails d'Implémentation
 ###### [Style [Y053](#style-y053)]
@@ -1025,6 +1026,8 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     *Pourquoi ?* : Une directive par fichier est plus facilement maintenable.
 
+    > Note : "**Bonne pratique** : Les directives devraient pouvoir s'auto-nettoyer. Vous pouvez utiliser `element.on('$destroy', ...)` ou `scope.$on('$destroy', ...)` pour lancer une fonction de nettoyage quand une directive est enlevée" ... - Documentation d'Angular
+
   ```javascript
   /* à éviter */
   /* directives.js */
@@ -1121,7 +1124,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     *Pourquoi ?* : Le préfixe court et unique identifie le contexte et l'origine de la directive. Par exemple, un préfixe `cc-` peut indiquer que la directive fait partie de l'application CodeCamper alors que `acme-` peut indiquer une directive de la companie Acme.
 
-    Note : Evitez `ng-` car il est réservé pour les directives AngularJS. Cherchez les directives largement utilisées pour éviter les conflits de nom, tel que `ion-` pour le [Framework Ionic](http://ionicframework.com/).
+    Note : Evitez `ng-` car il est réservé pour les directives Angular. Cherchez les directives largement utilisées pour éviter les conflits de nom, tel que `ion-` pour le [Framework Ionic](http://ionicframework.com/).
 
 ### Restreindre aux Éléments et aux Attributs
 ###### [Style [Y074](#style-y074)]
@@ -1132,7 +1135,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     *Pourquoi ?* : Même s'il est autorisé d'utiliser une directive en tant que classe, si la directive agit vraiement comme un élément, elle fait plus de sens en tant qu'élément ou au moins en tant qu'attribut.
 
-    Note : EA est la valeur par défaut avec AngularJS 1.3 +
+    Note : EA est la valeur par défaut avec Angular 1.3 +
 
   ```html
   <!-- à éviter -->
@@ -1357,7 +1360,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     *Pourquoi ?* : Un controlleur pourrait avoir besoin de données avant qu'il se charge. Cette donnée pourrait venir d'une promesse via une factory personnalisée ou de  [$http](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [resolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du controlleur s'éxécute, ainsi on peut prendre des actions basées sur cette donnée à partir de la promesse.
 
-    *Pourquoi ?* : Le code s'éxécute après la route et dans la fonction activate du controlleur. La Vue commence à se charger tout de suite. Le data binding démarre quand la promesse d'activation se résoud. Une animation de "chargement" peut être affichée pendant que la vue opère la transition (via ng-view ou ui-view).
+    *Pourquoi ?* : Le code s'éxécute après la route et dans la fonction activate du controlleur. La Vue commence à se charger tout de suite. Le data binding démarre quand la promesse d'activation se résoud. Une animation de "chargement" peut être affichée pendant que la vue opère la transition (via `ng-view` ou `ui-view`).
 
     Note : Le code s'éxécute avant la route via une promesse. Le rejet de la promesse annule le routage. Sa résolution met la nouvelle vue en attente de la résolution du routage. Une animation de "chargement" peut être affichée avant la résolution et lorsque la vue entre en transition. Si vous voulez aller à la Vue plus vite et que vous n'avez pas besoin d'un point pour décider si vous voulez atteindre la Vue, il est conseillé d'utiliser la [technique de l'activation de controlleur](#style-y080) à la place.
 
@@ -1460,7 +1463,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Eviter l'utilisation de la syntaxe raccourcie de déclaration des dépendances sans utiliser une approche sûre pour la minification.
 
-    *Pourquoi ?* : Les paramètres du composant (ex: controlleur, factory, etc.) seront converties en variables mutilées. Par exemple, ˋcommonˋet ˋdataserviceˋ deviendraient ˋaˋet ˋbˋ et ne seraient pas trouvées par AngularJS.
+    *Pourquoi ?* : Les paramètres du composant (ex: controlleur, factory, etc.) seront converties en variables mutilées. Par exemple, ˋcommonˋet ˋdataserviceˋ deviendraient ˋaˋet ˋbˋ et ne seraient pas trouvées par Angular.
 
     ```javascript
     /* à éviter - non sûr pour la minification */
@@ -1482,11 +1485,11 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Identifier Manuellement les Dépendances
 ###### [Style [Y091](#style-y091)]
 
-  - Utilisez ˋ$injectˋpour identifier manuellement vos dépendances de composants AngularJS.
+  - Utilisez ˋ$injectˋpour identifier manuellement vos dépendances de composants Angular.
 
     *Pourquoi ? * : Cette technique est la même que celle utilisée par [`ng-annotate`](https://github.com/olov/ng-annotate), que je recommande pour automatiser la création de dépendances sûres pour la minification. Si ˋng-annotateˋ détecte que l'injection a déjà été faite, celà ne la dupliquera pas.
 
-    *Pourquoi ?* : Ca préserve vos dépendances d'être vulnérable aux problèmes de minification lorsque les paramètres sont mutilés. Par exemple, ˋcommonˋet ˋdataserviceˋpourraient devenir ˋaˋ et ˋbˋ et ne pas être trouvés par AngularJS.
+    *Pourquoi ?* : Ca préserve vos dépendances d'être vulnérable aux problèmes de minification lorsque les paramètres sont mutilés. Par exemple, ˋcommonˋet ˋdataserviceˋpourraient devenir ˋaˋ et ˋbˋ et ne pas être trouvés par Angular.
 
     *Pourquoi ?* : Eviter de créer en ligne une longue liste de dépendances peut rendre le tableau difficile à lire. De même, il peut entraîner une confusion dans la mesure où le tableau est une série de chaînes de caratères alors que le dernier élément est le nom de la fonction du composant.
 
@@ -1523,40 +1526,43 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-    Note : Lorsque votre fonction est sous une instruction de return, le $inject peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez résoudre ça soit en déplaçant le $inject au dessus de l'instruction de return soit en utilisant la syntaxe d'injection avec le tableau.
-
-    Note : [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) a introduit une fonctionnalité où il déplace le ˋ$injectˋ là où il devient accessible.
+    Note : Lorsque votre fonction est sous une instruction de return, le $inject peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez vous en sortir en bougeant le controlleur en dehors de la directive.
 
     ```javascript
+    /* À éviter */
     // à l'intérieur d'une définition de directive
     function outer() {
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo
 
-        DashboardPanel.$inject = ['logger']; // Unreachable
-        function DashboardPanel(logger) {
+        DashboardPanelController.$inject = ['logger']; // Inatteignable
+        function DashboardPanelController(logger) {
         }
     }
     ```
 
     ```javascript
-    // à l'intérieur d'une définition de directive.
+    /* recommandé */
+    // A l'exterieur d'une définition de directive
     function outer() {
-        DashboardPanel.$inject = ['logger']; // reachable
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
-
-        function DashboardPanel(logger) {
-        }
+         return ddo;
+    }
+    DashboardPanelController.$inject = ['logger'];
+    function DashboardPanelController(logger) {
     }
     ```
 
 ### Identifier Manuellement les Dépendances du Route Resolver
 ###### [Style [Y092](#style-y092)]
 
-  - Utilisez $inject pour identifier manuellement vos dépendances du route resolver pour les composants AngularJS.
+  - Utilisez `$inject pour identifier manuellement vos dépendances du route resolver pour les composants Angular.
 
     *Pourquoi ?* : Cette technique divise la fonction anonyme pour le route resolver, la rendant plsu facile à lire.
 
@@ -1568,7 +1574,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         $routeProvider
             .when('/avengers', {
                 templateUrl: 'avengers.html',
-                controller: 'Avengers',
+                controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: {
                     moviesPrepService: moviePrepService
@@ -1660,7 +1666,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     }
     ```
 
-    > Note : A partir d'AngularJS 1.3, utilisez le paramètre ˋngStrictDiˋ de la directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Avec ce paramètre, l'injecteur sera créé en mode "strict-di" qui rendra fera échouer les invocations de fonctions de l'application qui n'utilisent pas explicitement les annotation de fonction (ceci peut ne pas être sûr à la minification). Débugger les informations qui seront logguées dans la console peut aider à débusquer le code à l'origine.
+    > Note : A partir d'Angular 1.3, utilisez le paramètre ˋngStrictDiˋ de la directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Avec ce paramètre, l'injecteur sera créé en mode "strict-di" qui rendra fera échouer les invocations de fonctions de l'application qui n'utilisent pas explicitement les annotation de fonction (ceci peut ne pas être sûr à la minification). Débugger les informations qui seront logguées dans la console peut aider à débusquer le code à l'origine.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Utilisation de Gulp ou Grunt pour ng-annotate
@@ -1675,6 +1681,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     ```javascript
     gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
+
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
@@ -1702,7 +1709,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Utilisez un [decorateur](https://docs.angularjs.org/api/auto/service/$provide#decorator), au moment de la configuration en utilisant le service [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sur le service [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) pour effecture des actions personnalisées lorsque des exceptions se produisent.
 
-    *Pourquoi ?* : Fournir un moyen cohérent pour gérer les exceptions non interceptées d'AngularJS pendant le développement ou à l'éxécution.
+    *Pourquoi ?* : Fournir un moyen cohérent pour gérer les exceptions non interceptées d'Angular pendant le développement ou à l'éxécution.
 
     Note : Une autre possibilité serait de surcharger le service au lieu d'utiliser un décorateur. C'est une bonne possibilité, mais si vou voulez garder le comportement par défaut et l'étendre, un décorateur est plus approprié.
 
@@ -1872,7 +1879,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     avenger-profile.directive.spec.js
     ```
 
-  Note : Une autre convention courante consiste à nommer les fichiers de controlleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions étant maintenues avec un suffixe par type. Les controlleurs étant les les types de composant les plus courants, ça permet d'économiser la frappe au clavier tout en étant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe.
+  Note : Une autre convention courante consiste à nommer les fichiers de controlleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions étant maintenues avec un suffixe par type. Les controlleurs étant les les types de composant les plus courants, ça permet d'économiser la frappe au clavier tout en étant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe. Ma préference est `avengers.controller.js`.
 
     ```javascript
     /**
@@ -1919,36 +1926,21 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     // avengers.controller.js
     angular
         .module
-        .controller('HeroAvengers', HeroAvengers);
+        .controller('HeroAvengersController', HeroAvengersController);
 
-    function HeroAvengers(){ }
+    function HeroAvengersController() { }
     ```
 
 ### Suffixe des Noms de Controlleurs
 ###### [Style [Y124](#style-y124)]
 
-  - Ajoutez au nom du controlleur le suffixe ˋControllerˋ ou pas de suffixe du tout. Choississez une des deux conventions, pas les deux à la fois.
+  - Ajoutez au nom du controlleur le suffixe ˋControllerˋ.
 
     *Pourquoi ?* : Le suffixe ˋControllerˋ est utilisé souvent et il est plus explicitement descriptif.
 
-    *Pourquoi ?* : Omettre le suffixe est plus succint et le controlleur est souvent facilement identifiable même sans le suffixe.
-
     ```javascript
     /**
-     * recommandé: Option 1
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('Avengers', Avengers);
-
-    function Avengers(){ }
-    ```
-
-    ```javascript
-    /**
-     * recommandé: Option 2
+     * recommandé
      */
 
     // avengers.controller.js
@@ -2126,7 +2118,6 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
     app/
         app.module.js
         app.config.js
-        app.routes.js
         components/
             calendar.directive.js
             calendar.directive.html
@@ -2140,6 +2131,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         people/
             attendees.html
             attendees.controller.js
+            people.routes.js
             speakers.html
             speakers.controller.js
             speaker-detail.html
@@ -2152,11 +2144,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
         sessions/
             sessions.html
             sessions.controller.js
+            sessions.routes.js
             session-detail.html
             session-detail.controller.js
     ```
 
-      ![Structure d'une Appli Exemple](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Structure d'une Appli Exemple](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
       Note : N'utilisez pas une structuration de répertoires-par-type. Cela requiert de se déplacer entre de multiples répertoires lorsqu'on travaille sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application grossit à 5, 10 ou plus de 25 vues et controlleurs (et autres), ce qui complique la localisation par rapport à des répertoires-par-fonctionnalité.
 
@@ -2215,7 +2208,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Créez un module racine pour l'application dont le rôle est d'assembler tous les modules et fonctionnalités de votre application. Nommez-le comme votre application.
 
-    *Pourquoi ?* : AngularJS encourage la modularité et la séparation des responsabilités. La création d'un module racine pour l'application dont le rôle est de lier ensemble les autres modules fournit un moyen très direct d'ajouter et de retirer des modules à votre application.
+    *Pourquoi ?* : Angular encourage la modularité et la séparation des responsabilités. La création d'un module racine pour l'application dont le rôle est de lier ensemble les autres modules fournit un moyen très direct d'ajouter et de retirer des modules à votre application.
 
 ### Garder le Module Applicatif Léger
 ###### [Style [Y162](#style-y162)]
@@ -2249,7 +2242,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et ré-utilisables.
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
     *Pourquoi?* : Le module principal de l'appli continent une déclaration rapidement identifible des fonctionnalités de l'application.
 
@@ -2257,7 +2250,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
     *Pourquoi ?* : Les fonctionalités propres à l'appli tels que les services de données partagées deviennent faciles à repérer et partager au sein d'un `app.core` (choisissez un nom de votre choix pour ce module.
 
-    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisisez-en une qui soit cohérente, suivez les règles des dépendances d'AngularJS, et la maintenance et la montée en charge sera facilitée.
+    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisisez-en une qui soit cohérente, suivez les règles des dépendances d'Angular, et la maintenance et la montée en charge sera facilitée.
 
     > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais soumettez votre structure aux critères de cohérence, maintenance, et efficacité.
 
@@ -2335,7 +2328,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Utilisez [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) et [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) au lieu de `setTimeout` et `setInterval`.
 
-    *Pourquoi ?* : Ces services sont wrappés par Angular et plus facilement testables et gèrent le cycle de digest d'AngularJS conservant un data binding à jour.
+    *Pourquoi ?* : Ces services sont wrappés par Angular et plus facilement testables et gèrent le cycle de digest d'Angular conservant un data binding à jour.
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -2374,9 +2367,9 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
   - Utilisez [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) pour les tests unitaires.
 
-    *Pourquoi ?* : Jasmine et Mocha sont toutes deux largement utilisées dans la communauté AngularJS. Toutes les deux stables, bien maintenues, et fournissant des fonctionnalités robustes de test.
+    *Pourquoi ?* : Jasmine et Mocha sont toutes deux largement utilisées dans la communauté Angular. Toutes les deux stables, bien maintenues, et fournissant des fonctionnalités robustes de test.
 
-    Note : Lorsque vous utilisez Mocha, utilisez aussi une librairie d'assertion telle que [Chai](http://chaijs.com).
+    Note : Lorsque vous utilisez Mocha, utilisez aussi une librairie d'assertion telle que [Chai](http://chaijs.com). Je prefère Mocha.
 
 ### Lanceur de Test
 ###### [Style [Y192](#style-y192)]
@@ -2400,6 +2393,9 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
     *Pourquoi ?* : Sinon rend plus facile l'alternance entre Jasmine et Mocha, si vous voulez essayer les deux.
 
+    *Pourquoi ?* : Sinon a des messages descriptifs quand les tests ne valident pas les assertions.
+
+
 ### Navigateur sans Interface Graphique
 ###### [Style [Y194](#style-y194)]
 
@@ -2419,15 +2415,22 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 ### Atténuation des Règles JSHint avec les Golbales sur les Tests
 ###### [Style [Y196](#style-y196)]
 
-  - Relaxez les règles sur votre code de test afin de permettre l'usage des globales telles que `describe` et `expect`.
+  - Relaxez les règles sur votre code de test afin de permettre l'usage des globales telles que `describe` et `expect`. Relaxez les règles pour les expressions, de la même façon qu'avec Mocha.
 
     *Pourquoi ?* : Vos tests sont du code et requièrent à ce titre la même attention avec les mêmes règles de qualité de code que votre code de production. Cependant, les variables globales utilisées par les frameworks de test, par exemple, peuvent être relaxées en les incluants dans les spécifications de test.
 
     ```javascript
-    /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
+    /* jshint -W117, -W030 */
+    ```
+    Ou laors vous pouvez rajouter ça à votre fichier d'option JSHint.
+
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
     ```
 
-  ![Outils de Test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+
+  ![Outils de Test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
 ### Organizing Tests
 ###### [Style [Y197](#style-y197)]
@@ -2463,7 +2466,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 ### Utilisation
 ###### [Style [Y210](#style-y210)]
 
-  - Utilisez de subtiles [animations avec AngularJS](https://docs.angularjs.org/guide/animations) pour la transition entre les états pour les vues et les éléments visuels premiers. Incluez le [module ngAnimate](https://docs.angularjs.org/api/ngAnimate). Les trois clés sont la subtilité, la fluidité, l'homogénéïté.
+  - Utilisez de subtiles [animations avec Angular](https://docs.angularjs.org/guide/animations) pour la transition entre les états pour les vues et les éléments visuels premiers. Incluez le [module ngAnimate](https://docs.angularjs.org/api/ngAnimate). Les trois clés sont la subtilité, la fluidité, l'homogénéïté.
 
     *Pourquoi ?* : Des animations subtiles peuvent améliorer l'Expérience Utilisateur lorsqu'elles sont utilisées de façon appropriéés.
 
@@ -2487,7 +2490,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
     *Pourquoi ?* : animate.css est largement utilisée et testée.
 
-    Note : Voir ce [super post par Matias Niemelä sur les animations d'AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Note : Voir ce [super post par Matias Niemelä sur les animations d'Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -2620,12 +2623,99 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
 **[Retour en haut de page](#table-des-matières)**
 
+## JSCS
+
+### Use an Options File
+###### [Style [Y235](#style-y235)]
+  - Utilisez JSCS pour valider votre style de code pour votre JavaScript et pensez à personnaliser vos options pour JSCS et de l'inclure dans votre gestionnaire de versionning. Vous pouvez consulter la [documentation de JSCS](http://www.jscs.info) pour voir les détails et les options.
+
+    *Pourquoi ?* : Fournit une premiere alerte avant de commiter sur votre gestionnaire de versionning.
+
+    *Pourquoi ?* : Permet d'assurer une cohérence au sein de votre équipe.
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
 ## Constantes
 
 ### Globales des Librairies Externes
 ###### [Style [Y240](#style-y240)]
 
-  - Créez une Constante AngularJS pour les variables gobales des librairies externes.
+  - Créez une Constante Angular pour les variables gobales des librairies externes.
 
     *Pourquoi ?* : Fournit un moyen d'injecter des librairies tierces qui seraient sinon des globales. Cela améliore la testabilité du code en vous permettant de savoir plus facilement quelles sont les dépendances de vos composants évite les abstractions qui fuient). Ça vous permet aussi de mocker ces dépendances, là où cela fait sens.
 
@@ -2676,7 +2766,7 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - Fragments AngularJS qui suivent ces styles et règles.
+  - Fragments Angular qui suivent ces styles et règles.
 
     - Téléchargez les [Fragments Angular pour Sublime](assets/sublime-angular-snippets.zip?raw=true)
     - Placez-les dans votre répertoire Package
@@ -2702,9 +2792,9 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Les fragments AngularJS et templates de fichiers qui suivent le style et les règles. Vous pouvez les importer dans les paramètres de WebStorm :
+  - Les fragments Angular et templates de fichiers qui suivent le style et les règles. Vous pouvez les importer dans les paramètres de WebStorm :
 
-    - Téléchargez les [templates de fichier et fragments WebStorm pour AngularJS](assets/webstorm-angular-file-template.settings.jar?raw=true)
+    - Téléchargez les [templates de fichier et fragments WebStorm pour Angular](assets/webstorm-angular-file-template.settings.jar?raw=true)
     - Ouvrez WebStorm et allez dans le menu `File`
     - Choisissez le menu `Import Settings`
     - Sélectionnez le fichier et clickez sur `OK`
@@ -2770,6 +2860,9 @@ Le routage côté client est important pour créer un flux de navigation entre l
 ## Automatisation des Tâches
 Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer des tâches automatisées. Gulp favorise le code plutôt que la configuration tandis que Grunt tend vers la configuration plutôt que le code. Je préfère personnellement Gulp car il me semble plus facile à lire et écrire, mais les deux sont excellents.
 
+> Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course(http://jpapa.me/gulpps)
+> Vous pouvez en lire plus sur Gulp et ses patterns pour l'automatisation des taches dans mon cours sur [Pluralsight](http://jpapa.me/gulpps).
+
 ###### [Style [Y400](#style-y400)]
 
   - Utilisez l'automatisation des tâches pour lister les fichiers de définition de module `*.module.js` avant tout autre fichier JavaScript de l'application.
@@ -2800,7 +2893,7 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
 
 **[Back to top](#table-of-contents)**
 
-## Documentation AngularJS
+## Documentation Angular
 Pour tout le reste, la référence des API, allez voir la [documentation Angular](//docs.angularjs.org/api).
 
 ## Contribuer
@@ -2818,10 +2911,11 @@ Créez d'abord un problème pour discuter de potentiels changements ou ajouts. S
 
 _tldr; Utilisez ce guide. Les attributions sont appréciées._
 
+### Copyright
+
+Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+
 ### (The MIT License)
-
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
-
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 'Software'), to deal in the Software without restriction, including

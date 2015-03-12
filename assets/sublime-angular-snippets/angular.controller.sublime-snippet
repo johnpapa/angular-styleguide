@@ -4,6 +4,7 @@
 
     angular
         .module('${1:module}')
+<<<<<<< HEAD
         .controller('${2:Controller}', ${2:Controller});
 
     /* @ngInject */
@@ -15,6 +16,18 @@
 
         ////////////////
 
+=======
+        .controller('${2:Ctrl}', ${2:Ctrl});
+
+    /* @ngInject */
+    function ${2:Ctrl}(${3:dependencies}) {
+        /*jshint validthis: true */
+        var vm = this;
+        vm.title = '${2:Ctrl}';
+
+        activate();
+
+>>>>>>> 93eb74f33dd1304fdc4ab48fd47166055650a1ff
         function activate() {
         }
     }

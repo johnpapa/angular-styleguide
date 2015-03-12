@@ -6,7 +6,7 @@
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipes.
+Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipe.
 
 > Se você gostar deste estilo, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Pluralsight.
 
@@ -14,9 +14,9 @@ A proposta deste guia de estilo é fornecer uma direção na construção de apl
 
 ## A Importância da Comunidade e Créditos
 
-Nunca trabalhe sozinho. Acho que a comunidade AngularJS é um grupo incrível que é apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe sozinho. Acho que a comunidade AngularJS é um grupo incrível, apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
-Vários de meus estilos vieram de várias sessões de pair-programming que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não corcordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
+Vários de meus estilos vieram de várias sessões de pair-programming (programação em pares) que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não concordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
 ## Veja os estilos em um aplicativo de exemplo
 

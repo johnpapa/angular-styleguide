@@ -1,31 +1,31 @@
-# AngularJS водич на кодирање
+# Angular водич на кодирање
 
-*Своеволен AngularJS водич на кодирање за тимови од [@john_papa](//twitter.com/john_papa)*
+*Своеволен Angular водич на кодирање за тимови од [@john_papa](//twitter.com/john_papa)*
 
 *Преведено од [Александар Богатинов](https://github.com/Bogatinov)*
 
->The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+>[Оригиналната Англиска верзија](http://jpapa.me/ngstyles) е изворот на вистината, одржувана и ажурирана прва.
 
-Доколку барате своеволен стил на кодирање за синтакса, конвенции и структурирање на AngularJS апликации, тогаш сте на правилното место.
-Овие стилови се базирани на моето искуство во развој на [AngularJS](//angularjs.org), презентации, [Pluralsight тренинг курсеви](http://pluralsight.com/training/Authors/Details/john-papa) и работа во тимови.
+Доколку барате своеволен стил на кодирање за синтакса, конвенции и структурирање на Angular апликации, тогаш сте на правилното место.
+Овие стилови се базирани на моето искуство во развој на [Angular](//angular.org), презентации, [Pluralsight тренинг курсеви](http://pluralsight.com/training/Authors/Details/john-papa) и работа во тимови.
 
-Целта на овој водич на кодирање е да овозможи насока во развој на AngularJS апликации преку конвенциите што јас ги користам, и уште поважно, зошто ги користам.
+Целта на овој водич на кодирање е да овозможи насока во развој на Angular апликации преку конвенциите што јас ги користам, и уште поважно, зошто ги користам.
 
->Ако ви се допаѓа овој водич, тогаш проверете ми го курсот [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) на Pluralsight.
+>Ако ви се допаѓа овој водич, тогаш проверете ми го курсот [Angular Patterns: Clean Code](http://jpapa.me/ngclean) на Pluralsight кој е придружник на овој водич.
 
-[![AngularJs Шаблон: Чист Код](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+[![AngularJs Шаблон: Чист Код](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Величествена заедница и заслуга
-Никогаш не работи во вакуум. Јас сметам дека AngularJS заедницата е неверојатна група кои се страсни за споделување искуство. Како резултат, јас и мојот пријател кој е AngularJS експерт, Todd Motto соработувавме со многу стилови и конвенции. Се согласуваме на повеќето, додека на останатите се разликуваме. Ве охрабрувам да ги погледнете на [Todd's  guidelines](https://github.com/toddmotto/angularjs-styleguide) со цел да добиете осет за неговиот пристап и како се споредува.
+Никогаш не работи во вакуум. Јас сметам дека Angular заедницата е неверојатна група кои се страсни за споделување искуство. Како резултат, јас и мојот пријател кој е Angular експерт, Todd Motto соработувавме со многу стилови и конвенции. Се согласуваме на повеќето, додека на останатите се разликуваме. Ве охрабрувам да ги погледнете на [Todd's  guidelines](https://github.com/toddmotto/angular-styleguide) со цел да добиете осет за неговиот пристап и како се споредува.
 
-Многу од моите водичи произлегоа од многу сесии во програмираење во пар со [Ward Bell](http://twitter.com/wardbell). Иако не се сложуваме секогаш, мојот пријател Ward секако влијаеше во последната еволуција на овој водич.
+Многу од моите водичи произлегоа од многу сесии во програмирање во пар со [Ward Bell](http://twitter.com/wardbell). Mојот пријател Ward секако влијаеше во последната еволуција на овој водич.
 
 ## Погледнете ги водичите во пробната апликација
 Иако овој водич ги објаснува "што", "зошто" и "како", јас сметам дека е полезно да ги запазиме во практика. Овој водич е придружен од пробна апликација која ги следи овие стилови и модели. Можете да ја најдете [пробната апликација (наречена modular) тука](https://github.com/johnpapa/ng-demos) во папката 'modular'. Не се колебајте да ја земете, да ја клонирате и форкувате. [Инструкции за да ја започнете се во своете readme](https://github.com/johnpapa/ng-demos/tree/master/modular)
 
 
 ##Преводи 
-[Преводи од овој AngularJS водич на кодирање](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) се одржувани од заедницата и можете да ги најдете тука.
+[Преводи од овој Angular водич на кодирање](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) се одржувани од заедницата и можете да ги најдете тука.
 
 ## Table of contents
 
@@ -51,12 +51,14 @@
   1. [Animations](#animations) 
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
+  1. [JSCS](#jscs)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Yeoman Generator](#yeoman-generator)
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
-  1. [AngularJS Docs](#angularjs-docs)
+  1. [Filters](#filters)
+  1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
 
@@ -118,7 +120,7 @@
 ## IIFE
 ### JavaScript Closures
 ###### [Style [Y010](#style-y010)]
-  - Вгнездете ги AngularJS компоненти во Immediately Invoked Function Expression (IIFE). 
+  - Вгнездете ги Angular компоненти во Immediately Invoked Function Expression (IIFE). 
   
   *Зошто?*: IIFE не ги покажува променливите на глобално ниво. Ова помага при спречување да променливите и декларациите на функциите да живеат подолго од очекуваното на глобалното ниво, што исто така помага во избегнување на судири на променливи со исто име.
 
@@ -319,7 +321,7 @@
 
   *Зошто?*: `controllerAs` е синтаксички поубав од `$scope`. Вие сеуште може да се поврзете со Прегледот и да ги пристапите `$scope` методите.  
 
-  *Зошто?*: Ви помага да избегнете употреба на `$scope` методи во контролерот кога е подобро да ги избегнете или преместите во фабрика. `$scope` може да употребите во фабрика или во контролер само кога ви е потребен. На пример, кога објавувате/пријавувате настани со употреба на [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), или [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) подобро е да ги преместите во фабрика и да ја повикате неа во контролерот.
+  *Зошто?*: Ви помага да избегнете употреба на `$scope` методи во контролерот кога е подобро да ги избегнете или преместите во фабрика. `$scope` може да употребите во фабрика или во контролер само кога ви е потребен. На пример, кога објавувате/пријавувате настани со употреба на [`$emit`](https://docs.angular.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angular.org/api/ng/type/$rootScope.Scope#$broadcast), или [`$on`](https://docs.angular.org/api/ng/type/$rootScope.Scope#$on) подобро е да ги преместите во фабрика и да ја повикате неа во контролерот.
 
   ```javascript
   /* избегнувајте */
@@ -427,7 +429,7 @@
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
   Забелешка: Ако функцијата е 1 линија код, можете да ја поставите горе се додека читливоста не се наруши.
 
@@ -537,7 +539,7 @@
   }
   ```
 
-### Одлагање Логика во Контролерот
+### Одлагање Логика во Контролерот до Сервисите
 ###### [Style [Y035](#style-Y035)]
   - Одлагајте логика на во контролерот со делегирање до сервиси и фабрики.
 
@@ -606,7 +608,7 @@
     
     Забелешка: Доколку Прегледот е вчитан преку други начини наместо рути, тогаш искористете ја `ng-controller="Avengers as vm"` синтаксата. 
 
-    *Зошто?*: Преку поставување на контролерот во пар во рутата се овозможува други рути да започнат други парови од контролери и прегледи. Кога контролерите се назначени со прегледот со [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), тогаш тој преглед е секогаш поврзан со истиот контролер.
+    *Зошто?*: Преку поставување на контролерот во пар во рутата се овозможува други рути да започнат други парови од контролери и прегледи. Кога контролерите се назначени со прегледот со [`ng-controller`](https://docs.angular.org/api/ng/directive/ngController), тогаш тој преглед е секогаш поврзан со истиот контролер.
 
  ```javascript
   /* избегнувајте - кога потребна е употреба на рути и динамички пар*/
@@ -662,7 +664,7 @@
 ###### [Style [Y040](#style-Y040)]
   - Сервиси се инстанцирани со `new` зборот, и се употребуваат со `this` за јавни методи и променливи. Бидејќи се слични со фабрики, користете фабрика за конзистентност. 
   
-    Забелешка: [Сите AngularJS сервиси се singletons](https://docs.angularjs.org/guide/services). Тоа значи дека има само една инстанца од сервис за injector.
+    Забелешка: [Сите Angular сервиси се singletons](https://docs.angular.org/guide/services). Тоа значи дека има само една инстанца од сервис за injector.
 
   ```javascript
   // сервис
@@ -704,7 +706,7 @@
 ###### [Style [Y051](#style-Y051)]
   - Фабрики се singletons и враќаат објект што ги содржини членовите од тој сервис.
   
-    Забелешка: [Сите AngularJS сервиси се singletons](https://docs.angularjs.org/guide/services).
+    Забелешка: [Сите Angular сервиси се singletons](https://docs.angular.org/guide/services).
 
 ### Членовите за пристап на почеток
 ###### [Style [Y052](#style-Y052)]
@@ -760,7 +762,7 @@
  
  На овој начин поврзувањата се пресликуваат низ објектот, примитивните вредности не можат да се ажурираат самостојно со употреба на Revealing шаблонот на модули.
 
-    ![Фабрики искористуваат "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Фабрики искористуваат "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
 
 ### Декларации на функции ја кријат имплементацијата
 ###### [Style [Y053](#style-Y053)]
@@ -940,7 +942,7 @@
 
 ### Вратете Promise од податочни повици
 ###### [Style [Y061](#style-Y061)]
-  - Кога повикувате податочен сервис кој враќа promise како што е $http, вратете promise во вашата повикувачка функција.
+  - Кога повикувате податочен сервис кој враќа promise како што е `$http`, вратете promise во вашата повикувачка функција.
 
     *Зошто?*: Можете да врзете повеќе promise заедно со повеќе акции над податоците откако податочниот повик заврши и го прифати или одбие promise-от.
 
@@ -1078,7 +1080,7 @@
 
 ### Манипулирајте DOM во директивата
 ###### [Style [Y072](#style-Y072)]
-  - Кога манипулирате директно со DOM, употребете директива. Ако можат да се употребат други начини, како CSS за стилови или [анимациски сервиси](https://docs.angularjs.org/api/ngAnimate), Angular темплејти, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) или [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), тогаш употребете ги тие. На пример, ако директивата само се појавува/исчезнува, тогаш употребете ngHide/ngShow. 
+  - Кога манипулирате директно со DOM, употребете директива. Ако можат да се употребат други начини, како CSS за стилови или [анимациски сервиси](https://docs.angular.org/api/ngAnimate), Angular темплејти, [`ngShow`](https://docs.angular.org/api/ng/directive/ngShow) или [`ngHide`](https://docs.angular.org/api/ng/directive/ngHide), тогаш употребете ги тие. На пример, ако директивата само се појавува/исчезнува, тогаш употребете ngHide/ngShow. 
 
     *Зошто?*: Манипулација на DOM е тешка да се тестира, дебагира и притоа постојат подобри начини. (на пример CSS, анимации, темплејти)
 
@@ -1088,7 +1090,7 @@
 
     *Зошто?*: Уникатниот краток префикс ја идентификува смислата на директивата и нејзиното потекло. На пример, префиксот `cc-` може да укажува дека директивата дел од CodeCamper апликацијата додека `acme-` може да укажува дека директивата е за компанијата Acme. 
 
-    Забелешка: Избегнувајте `ng-` бидејќи тие се резервирани за директивите на AngularJS. Проучете најчесто употребувани директиви со цел да избегнувате судири со имињата, како `ion-` за [Ionic Framework](http://ionicframework.com/). 
+    Забелешка: Избегнувајте `ng-` бидејќи тие се резервирани за директивите на Angular. Проучете најчесто употребувани директиви со цел да избегнувате судири со имињата, како `ion-` за [Ionic Framework](http://ionicframework.com/). 
 
 ### Ограничете се на Елементи и Атрибути
 ###### [Style [Y074](#style-Y074)]
@@ -1098,7 +1100,7 @@
 
     *Зошто?*: Иако овозможуваме директивите да се користат како класи, доколку навистина директивата се употребува како елемент тогаш има повеќе смисла да се користи како елемент или во најмал случај, како атрибут.
 
-    Забелешка: EA е стандардно за AngularJS 1.3 +
+    Забелешка: EA е стандардно за Angular 1.3 +
 
   ```html
   <!-- избегнувајте -->
@@ -1317,9 +1319,9 @@
 
   - Употребете решавање на патеката кога сакате да ја прекинете патеката пред да преминете на Прегледот.
 
-    *Зошто?*: Контролерот може да зависи од податоци пред да се изврши. Овој податок може да дојде преку promise од сопствена фабрика или [$http](https://docs.angularjs.org/api/ng/service/$http). Со употреба на [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) ќе овозможиме promise да се реши пред логиката на контролерот да биде извршена, така што може да зависи од акција во податокот.
+    *Зошто?*: Контролерот може да зависи од податоци пред да се изврши. Овој податок може да дојде преку promise од сопствена фабрика или [$http](https://docs.angular.org/api/ng/service/$http). Со употреба на [route resolve](https://docs.angular.org/api/ngRoute/provider/$routeProvider) ќе овозможиме promise да се реши пред логиката на контролерот да биде извршена, така што може да зависи од акција во податокот.
 
-    *Зошто?*: Кодот се извршува после патеката и во activate функцијата во контролерот. Прегледот започнува одма да се вчитува. Поврзување со податоците се вклучува кога ќе се реши promise-от во activate функцијата. "Зафатена" анимација ќе се појави додека преминувате на Прегледот. (со ng-view или ui-view)
+    *Зошто?*: Кодот се извршува после патеката и во activate функцијата во контролерот. Прегледот започнува одма да се вчитува. Поврзување со податоците се вклучува кога ќе се реши promise-от во activate функцијата. "Зафатена" анимација ќе се појави додека преминувате на Прегледот. (со `ng-view` или `ui-view`)
 
     Забелешка: Кодот се извршува пред патеката со promise. Со одбивање на promise се спречува патеката. Со решавање, се чека на новиот преглед да заврши. "Зафатена" анимација може да се прикаже пред да се реши патеката и во преминот на Прегледот. Доколку сакате побрзо да стигнете до Прегледот, а не ви е потребен checkpoint доколку сакате да стигнете до Прегледот, тогаш разгледајте го [controller `activate` technique](#style-y080).
 
@@ -1422,7 +1424,7 @@
 ###### [Style [Y090](#style-Y090)]
   - Избегнувајте употреба на кратенки за декларација на зависности без употреба на безбеден пристап за минификација.
   
-    *Зошто?*: Параметрите на компонентата (e.g. контролер, фабрика, итн) ќе бидат претворени во исчезнати променливи. На пример, `common` и `dataservice` може да постанат `a` или `b` и да не бидат најдени од AngularJS.
+    *Зошто?*: Параметрите на компонентата (e.g. контролер, фабрика, итн) ќе бидат претворени во исчезнати променливи. На пример, `common` и `dataservice` може да постанат `a` или `b` и да не бидат најдени од Angular.
 
     ```javascript
     /* избегнувајте - опасно за минифкација*/
@@ -1443,11 +1445,11 @@
 
 ### Рачна идентификација на зависности
 ###### [Style [Y091](#style-Y091)]
-  - Употребете `$inject` за рачна идентификација на вашиоте зависности во AngularJS компонентите.
+  - Употребете `$inject` за рачна идентификација на вашиоте зависности во Angular компонентите.
   
     *Зошто?*: Оваа техника се користи во [`ng-annotate`](https://github.com/olov/ng-annotate), што ја препорачувам за автоматизација на создавање на безбедни зависности при минификација. Доколку `ng-annotate` забележи зависност доколку постои, нема да ја повтори.
 
-    *Зошто?*: Ова ги заштитува вашите зависности од можноста да бидат изгубени при минификација. На пример, `common` и `dataservice` можат да постанат `a` or `b` и да не можат да бидат најдени од AngularJS.
+    *Зошто?*: Ова ги заштитува вашите зависности од можноста да бидат изгубени при минификација. На пример, `common` и `dataservice` можат да постанат `a` or `b` и да не можат да бидат најдени од Angular.
 
     *Зошто?*: Избегнувајте вметнување зависности во иста линија се додека тешко се читаат во листата. Исто така може да биде збунувачко дека низата се повеќе зборови во иста линија додека крајниот член е функција.
 
@@ -1484,39 +1486,43 @@
     }
     ```
 
-    Забелешка: Кога вашата фунјција е под return линијата, тогаш $inject функцијата може да биде недостижна (ова е возможно да се случи во директива). Можете да го решите со преместување на $inject над return линијата или со употребување на алтернативна низа од зависности. 
-
-    Забелешка: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) воведе својство каде кое го поставува `$inject` каде може да се достигне.
+    Забелешка: Кога вашата функција е под return линијата, тогаш `$inject` може да биде недостижна (ова е возможно да се случи во директива). Можете да го решите ова со преместување на Контролерот надвор од директивата.
 
     ```javascript
+    // избегнувајте
     // во дефиницијата на директивата
     function outer() {
-        return {
-            controller: DashboardPanel,
-        };
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
+         };
+        return ddo;
 
-        DashboardPanel.$inject = ['logger']; // Недостижно
-        function DashboardPanel(logger) {
+        DashboardPanelController.$inject = ['logger']; // Недостижно
+          function DashboardPanelController(logger) {
         }
     }
     ```
 
     ```javascript
-    // inside a directive definition
+    /* препорачано */
+    // надвор од дефиницијата на директивата
     function outer() {
-        DashboardPanel.$inject = ['logger']; // достижно
-        return {
-            controller: DashboardPanel,
-        };
+      var ddo = {
+          controller: DashboardPanelController,
+          controllerAs: 'vm'
+      };
+      return ddo;
+    }
 
-        function DashboardPanel(logger) {
-        }
+    DashboardPanelController.$inject = ['logger'];
+      function DashboardPanelController(logger) {
     }
     ```
 
 ### Рачна идентификација на зависностите преку решавање на патеки
 ###### [Style [Y092](#style-Y092)]
-  - Употребете $inject за рачна идентификација на зависностите преку решавање на патеки во AngularJS компоненти.
+  - Употребете `$inject` за рачна идентификација на зависностите преку решавање на патеки во Angular компоненти.
   
     *Зошто?*: Оваа техника ги разделува анонимните функции за решавање на патеката, кое е полесно за читање.
 
@@ -1528,7 +1534,7 @@
         $routeProvider
             .when('/avengers', {
                 templateUrl: 'avengers.html',
-                controller: 'Avengers',
+                controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: {
                     moviesPrepService: moviePrepService
@@ -1619,7 +1625,7 @@
     }
     ```
 
-    > Забелешка: Со почеток на AngularJS 1.3 употребете го параметарот `ngStrictDi` на [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) директивата. Доколку е застапен, injector-от ќе биде создаден во "strict-di" мод оневозможувајќи ја апликацијата да започне и да ги повика функциите кои не користат експлицитна анотација. (овие не се безбедни од минификација). Со логирање на информациите во конзола од дебагирање ќе ви помогне да ги најдете тие функции.
+    > Забелешка: Со почеток на Angular 1.3 можете да го употребете параметарот `ngStrictDi` на [`ngApp`](https://docs.angular.org/api/ng/directive/ngApp) директивата да детектирате потенцијални недостатоци при минификација на зависностите. Доколку е достапен, injector-от ќе биде создаден во "strict-di" мод оневозможувајќи ја апликацијата да започне и да ги повика функциите кои не користат експлицитна анотација. (овие не се безбедни од минификација). Со логирање на информациите во конзола од дебагирање ќе ви помогне да ги најдете тие функции. Преферирам да го употребуваме `ng-strict-di` само за дебагирање.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Употребете Gulp или Grunt за ng-annotate
@@ -1657,9 +1663,9 @@
 
 ### Декоратори
 ###### [Style [Y110](#style-Y110)]
-  - Употребете [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), при конфигурација со употреба на [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) сервис, на [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) сервисот за да извршите лични акции кога ќе се случи исклучок.
+  - Употребете [decorator](https://docs.angular.org/api/auto/service/$provide#decorator), при конфигурација со употреба на [`$provide`](https://docs.angular.org/api/auto/service/$provide) сервис, на [`$exceptionHandler`](https://docs.angular.org/api/ng/service/$exceptionHandler) сервисот за да извршите лични акции кога ќе се случи исклучок.
   
-    *Зошто?*: Овозможува постојан начин да се справи со исклучоци кои AngularJS не може да ги фати во development-time или run-time.
+    *Зошто?*: Овозможува постојан начин да се справи со исклучоци кои Angular не може да ги фати во development-time или run-time.
 
     Забелешка: Друга опција е да се прескокне сервисот наместо да се користи декоратор. Ова е добра опција, но доколку сакате да го задржите стандардното однесување и проширите, тогаш препорачливо е да користите декоратор.
 
@@ -1727,7 +1733,7 @@
 
 ### Грешки при рутирање
 ###### [Style [Y112](#style-Y112)]
-  - Справете се и логирајте сите рутирачки грешки со употреба на [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Справете се и логирајте сите рутирачки грешки со употреба на [`$routeChangeError`](https://docs.angular.org/api/ngRoute/service/$route#$routeChangeError).
 
     *Зошто?*: Обезбедува постојан начин да се справи со сите рутирачки грешки.
 
@@ -1836,7 +1842,7 @@
     avenger-profile.directive.spec.js
     ```
 
-  Забелешка: Други чести конвенции е именување на контролерот датотеките без зборот `controller` во датотеката како `avengers.js` наместо `avengers.controller.js`. Сите други конвенции покажуваат употреба на суфикс на типот. Контролерите се најчестиот тип компонента така што заштедува на пишување и сеуште лесно препознатливо. Препорачувам да се одлучите со 1 конвенција и бидете конзистентен со тимот.
+  Забелешка: Други чести конвенции е именување на контролерот датотеките без зборот `controller` во датотеката како `avengers.js` наместо `avengers.controller.js`. Сите други конвенции покажуваат употреба на суфикс на типот. Контролерите се најчестиот тип компонента така што заштедува на пишување и сеуште лесно препознатливо. Препорачувам да се одлучите со 1 конвенција и бидете конзистентен со тимот. Моја преференца е `avengers.controller.js`.
 
     ```javascript
     /**
@@ -1881,35 +1887,20 @@
     // avengers.controller.js
     angular
         .module
-        .controller('HeroAvengers', HeroAvengers);
+        .controller('HeroAvengersController', HeroAvengersController);
 
-    function HeroAvengers(){ }
+    function HeroAvengersController(){ }
     ```
     
 ### Суфикс на името на контролерот
 ###### [Style [Y124](#style-Y124)]
-  - Додадете суфикс `Controller` на името или без него. Одберете едно, не двете.
+  - Додадете суфикс `Controller` на името на Контролерот.
 
     *Зошто?*: `Controller` суфиксот е почесто користен и експлицитно описен.
 
-    *Зошто?*: Без суфиксот е концизен и контролерот често може лесно да се пронајде без суфиксот.
-
     ```javascript
     /**
-     * препорачано: Опција 1
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('Avengers', Avengers);
-
-    function Avengers(){ }
-    ```
-
-    ```javascript
-    /**
-     * препорачано: Опција 2
+     * препорачано
      */
 
     // avengers.controller.js
@@ -2074,7 +2065,6 @@
     app/
         app.module.js
         app.config.js
-        app.routes.js
         components/       
             calendar.directive.js  
             calendar.directive.html  
@@ -2088,6 +2078,7 @@
         people/
             attendees.html
             attendees.controller.js  
+            people.routes.js
             speakers.html
             speakers.controller.js
             speaker-detail.html
@@ -2100,11 +2091,12 @@
         sessions/
             sessions.html      
             sessions.controller.js
+            sessions.routes.js
             session-detail.html
             session-detail.controller.js  
     ```
 
-      ![Пробна апликација пример](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Пробна апликација пример](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
       Забелешка: Не употребувајте структура со папка-по-тип. Со ова ќе се движите низ повеќе папки кога работите на функционалност што станува потешко како што апликацијата има повеќе од 5, 10 или 25 прегледи и контролери (за други функционалности), а со тоа и потешко за лоцирање на датотеките на таа функционалност.
 
@@ -2161,7 +2153,7 @@
 ###### [Style [Y161](#style-Y161)]
   - Создадете корен модул за апликацијата која улога е да ги содржи сите модули и функционалности на вашата апликација. Именувајте го според вашето име на апликација.
 
-    *Зошто?*: AngularJS охрабруба модуларност и поделба на грижи. Со создавање на корен модул на вашата апликација чија улога е да се поврзе со другите модули овозможува јасен начин за вклучување и исклучување модули од вашата апликација.
+    *Зошто?*: Angular охрабруба модуларност и поделба на грижи. Со создавање на корен модул на вашата апликација чија улога е да се поврзе со другите модули овозможува јасен начин за вклучување и исклучување модули од вашата апликација.
 
 ### Нека апликацискиот модул остане лесен
 ###### [Style [Y162](#style-Y162)]
@@ -2191,7 +2183,7 @@
 ###### [Style [Y165](#style-Y165)]
   - Корен модулот на апликацијата зависи од функционалните модули на апликацијата како и било кои заеднички или реискористливи модули.
 
-    ![Модуларност и Зависности](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Модуларност и Зависности](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
     *Зошто?*: Главниот модул на апликацијата содржи манифест од брзо идентифицирани функционалности на апликацијата.
 
@@ -2199,7 +2191,7 @@
 
     *Зошто?*: Интра-Апликациски функционалности како податочни сервиси кои се споделени се лесни за лоцирање и споделување во `app.core` (изберете го вашето омилено име за овој модул).
 
-    Забелешка: Ова е стратегија за конзистентност. Постојат многу добри опции. Одберете една што е конзистентна, што ги следи AngularJS правилата за зависности, а лесно за одржување и скалабилност.
+    Забелешка: Ова е стратегија за конзистентност. Постојат многу добри опции. Одберете една што е конзистентна, што ги следи Angular правилата за зависности, а лесно за одржување и скалабилност.
 
     > Моите структури се разликуваат малку низ проекти, но сите ги запазуваат правилата за структура и модуларност. Имплементацијата може да се разликува во зависност од функционалностите и тимот. Со други зборови, не се засегајте на буквалната структура се додека ја оправдува вашата структура за конзистентност, одржливост и ефикасност. 
 
@@ -2211,7 +2203,7 @@
 
 ### Конфигурација
 ###### [Style [Y170](#style-Y170)]
-  - Внесете го кодот во [конфигурацијата на модулот](https://docs.angularjs.org/guide/module#module-loading-dependencies) што мора да биде извршен пред почетокот на апликацијата. Идеални кандидати се провајдери и константи.
+  - Внесете го кодот во [конфигурацијата на модулот](https://docs.angular.org/guide/module#module-loading-dependencies) што мора да биде извршен пред почетокот на апликацијата. Идеални кандидати се провајдери и константи.
 
     *Зошто?*: Имаме помалку места за конфигурација на апликацијата.
 
@@ -2242,7 +2234,7 @@
 
 ### Извршувачки блокови
 ###### [Style [Y171](#style-Y171)]
-  - Било каков код што треба да се изврши кога ќе започне апликацијата треба да биде поставен во фабрика, изложен преку функција или вгнезден во [извршувачки блок](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Било каков код што треба да се изврши кога ќе започне апликацијата треба да биде поставен во фабрика, изложен преку функција или вгнезден во [извршувачки блок](https://docs.angular.org/guide/module#module-loading-dependencies).
 
     *Зошто?*: Код во извршувачки блок е тежок за тестирање. Поставување на истиот во фабрика е полесен за абстракција и лажење во тестирање.
 
@@ -2265,15 +2257,15 @@
 
 ### $document и $window
 ###### [Style [Y180](#style-Y180)]
-  - Употребете [`$document`](https://docs.angularjs.org/api/ng/service/$document) и [`$window`](https://docs.angularjs.org/api/ng/service/$window) наместо `document` и `window`.
+  - Употребете [`$document`](https://docs.angular.org/api/ng/service/$document) и [`$window`](https://docs.angular.org/api/ng/service/$window) наместо `document` и `window`.
 
     *Зошто?*: Овие сервиси се завиткани од Angular и полесни за тестирање него со употреба на document и window во тестовите. Ова помага да се излажат document и window во самите тестови.
 
 ### $timeout и $interval
 ###### [Style [Y181](#style-Y181)]
-  - Употребете [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) и [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) наместо `setTimeout` и `setInterval` .
+  - Употребете [`$timeout`](https://docs.angular.org/api/ng/service/$timeout) и [`$interval`](https://docs.angular.org/api/ng/service/$interval) наместо `setTimeout` и `setInterval` .
 
-    *Зошто?*: Овие сервиси се завиткани од Angular и полесни се за тестирање. Исто така се ракува со AngularJS digest циклусот што овозможува полесно ажурирање на поврзаните податоци.
+    *Зошто?*: Овие сервиси се завиткани од Angular и полесни се за тестирање. Исто така се ракува со Angular digest циклусот што овозможува полесно ажурирање на поврзаните податоци.
 
 **[Назад кон содржината](#table-of-contents)**
 
@@ -2310,9 +2302,9 @@
 ###### [Style [Y191](#style-Y191)]
   - Употребете [Jasmine](http://jasmine.github.io/) или [Mocha](http://mochajs.org) за тестирање на единки.
 
-    *Зошто?*: И Jasmine и Mocha се широко употребувани во AngularJS заедницата. И двете се стабилни, добро одржувани и овозможуваат робустни функции за тестирање.
+    *Зошто?*: И Jasmine и Mocha се широко употребувани во Angular заедницата. И двете се стабилни, добро одржувани и овозможуваат робустни функции за тестирање.
 
-    Забелешка: Кога користите Mocha, исто така не заборавајте да употребите assert библиотека како што е [Chai](http://chaijs.com).
+    Забелешка: Кога користите Mocha, исто така не заборавајте да употребите assert библиотека како што е [Chai](http://chaijs.com). Јас преферирам Mocha.
 
 ### Извршувач на тестови
 ###### [Style [Y192](#style-Y192)]
@@ -2334,6 +2326,8 @@
 
     *Зошто?*: Sinon овозможува полесно менување меѓу Jasmine и Mocha, доколку сакате да ги пробате двете.
 
+    *Зошто?*: Sinon има описни пораки кога тестовите ќе паднат на проверка.
+
 ### Без Пребарувач
 ###### [Style [Y194](#style-Y194)]
   - Употребете [PhantomJS](http://phantomjs.org/) за да ги извршувате тестовите на вашиот сервер.
@@ -2350,15 +2344,21 @@
 
 ### Изменете ги променливите на JSHint за правила на тестови
 ###### [Style [Y196](#style-Y196)]
-  - Олабавете ги правилата за вашиот тест код со цел да ви дозволи да користите глобални променливи како `describe` и `expect`.
+  - Олабавете ги правилата за вашиот тест код со цел да ви дозволи да користите глобални променливи како `describe` и `expect`. Релаксирајте ги правилата за expressions. бидејќи Mocha ги користи овие.
 
     *Зошто?*: Вашите тестови се код и им е потребно истото внимание како вашиот продукциски код. Сепак, глобални променливи, како тие подоле, кои се користат од фрејмворкот за тестирање можат да бидат исклучени да не се проверуваат во вашите тестови.
 
     ```javascript
-    /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
+    /* jshint -W117, -W030 */
+    ```
+    Или можете да го додадете следното во вашата JSHint датотека за опции
+
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
     ```
 
-  ![Алатки за тестирање](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Алатки за тестирање](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
   ### Организирање на тестови
 ###### [Style [Y197](#style-y197)]
@@ -2391,7 +2391,7 @@
 
 ### Употреба
 ###### [Style [Y210](#style-Y210)]
-  - Употребете суптилни [анимации со AngularJS](https://docs.angularjs.org/guide/animations) да преминете низ состојбите на прегледите и главните визуелни елементи. Вклучете го [ngAnimate модулот](https://docs.angularjs.org/api/ngAnimate). Трите главни точки се суптилност, глаткост и беспрекорност.
+  - Употребете суптилни [анимации со Angular](https://docs.angular.org/guide/animations) да преминете низ состојбите на прегледите и главните визуелни елементи. Вклучете го [ngAnimate модулот](https://docs.angular.org/api/ngAnimate). Трите главни точки се суптилност, глаткост и беспрекорност.
 
     *Зошто?*: Суптилни анимации го подобруваат искуството на корисникот кога се употребуваат правилно.
 
@@ -2413,7 +2413,7 @@
 
     *Зошто?*: animate.css се широко употребувани и тестирани.
 
-    Забелешка: Проверете те го [овој одличчен пост од Matias Niemelä за AngularJS анимации](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Забелешка: Проверете те го [овој одличчен пост од Matias Niemelä за Angular анимации](http://www.yearofmoo.com/2013/08/remastered-animation-in-angular-1-2.html)
 
 **[Назад кон содржината](#table-of-contents)**
 
@@ -2544,11 +2544,99 @@
 
 **[Назад кон содржината](#table-of-contents)**
 
+## JSCS
+
+### Употребете датотека за опциите
+###### [Style [Y235](#style-y235)]
+
+  - Употребете JSCS за проверка на вашиот кодерски стил во JavaScript и бидете сигурни да ја прилагодите JSCS датотеката за опции и да ја вклучите во контролата на изворниот код. Погледнете ја [JSCS документација](http://www.jscs.info) за детали околу опциите.
+
+    *Зошто?*: Обезбедува прво предупредување пред да го пратите кодот до управувачот на изворниот код.
+
+    *Зошто?*: Обезбедува конзистентност во вашиот тим.
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
+    }
+    ```
+
+*[Назад кон содржината](#table-of-contents)**
+
 ## Constants
 
 ### Глобални од продавачот
 ###### [Style [Y240](#style-Y240)]
-  - Создадете AngularJS константа за глобалните променливи од библиотеки кои не се ваши.
+  - Создадете Angular константа за глобалните променливи од библиотеки кои не се ваши.
 
     *Зошто?*: Обезбедува начин да ги внесете библиотеките кои се глобални. Ова го подобрува тестирањето на кодот што овозможува лесно да забележите кои зависности се во вашите компоненти (се справува со протекување на абстракции). Исто така овозможува да ги излажирате овие зависности, каде има смисла да направите.
 
@@ -2597,7 +2685,7 @@ angular
 
 ### Sublime Text
 ###### [Style [Y250](#style-Y250)]
-  - AngularJS кратки кодови кои ги следат овие водичи и стилови на код. 
+  - Angular кратки кодови кои ги следат овие водичи и стилови на код. 
 
     - Симнете ги [Sublime Angular кратки кодови](assets/sublime-angular-snippets.zip?raw=true) 
     - Поставете ги во вашата Packages папка
@@ -2613,7 +2701,7 @@ angular
 
 ### Visual Studio
 ###### [Style [Y251](#style-Y251)]
-  - AngularJS датотечни шаблони што ги следат овие стилови и водичи на код можат да бидат најдени на [SideWaffle](http://www.sidewaffle.com)
+  - Angular датотечни шаблони што ги следат овие стилови и водичи на код можат да бидат најдени на [SideWaffle](http://www.sidewaffle.com)
 
     - Симнете ја [SideWaffle](http://www.sidewaffle.com) Visual Studio екстензија (vsix file)
     - Извршете ја vsix датотека
@@ -2621,9 +2709,9 @@ angular
 
 ### WebStorm
 ###### [Style [Y252](#style-Y252)]
-  - AngularJS кратки кодови и датотечни шаблони кои ги следат овие стилови и водичи на код. Можете да ги внесете во вашите WebStorm подесувања:
+  - Angular кратки кодови и датотечни шаблони кои ги следат овие стилови и водичи на код. Можете да ги внесете во вашите WebStorm подесувања:
 
-    - Симнете ги [WebStorm AngularJS датотечни шаблони и кратки кодови](../assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - Симнете ги [WebStorm Angular датотечни шаблони и кратки кодови](../assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Отворете го WebStorm и одберете го `File` менито
     - Одберете го `Import Settings`
     - Одберете ја датотеката и кликнете `OK`
@@ -2640,13 +2728,13 @@ angular
 +### Atom
 ###### [Style [Y253](#style-y253)]
 
-  - AngularJS кратки кодови кои ги следат овие стилови и водичи на код.
+  - Angular кратки кодови кои ги следат овие стилови и водичи на код.
     ```
-    apm install angularjs-styleguide-snippets
+    apm install angular-styleguide-snippets
     ```
     или
     - Отворете го Atom, потоа отворете го Package Manager (Packages -> Settings View -> Install Packages/Themes)
-    - Побарајте го пакетот 'angularjs-styleguide-snippets'
+    - Побарајте го пакетот 'angular-styleguide-snippets'
     - Кликнете на 'Install' за да го инсталирате пакетот
     
   - Во JavaScript датотека напишете ги следните команди и потоа кликнете `TAB`
@@ -2710,7 +2798,11 @@ angular
 **[Назад кон содржината](#table-of-contents)**
 
 ## Task Automation
-Употребете [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) за создавање автоматизирани задачи. Gulp се приклонува кон код наместо подесување додека Grunt се приклонува кон конфигурација наместо код. Јас лично преферирам Gulp бидејќи сметам е полесно за читање и пишување, но и двата се одлични.
+Употребете [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) за создавање автоматизирани задачи.
+
+> Gulp се потпира на код наместо конфигурација додека Grunt се потпира на конфигурација наместо код. Јас лично преферирам Gulp бидејќи чувствувам е полесно да се пишува и чита, но и двата се одлични.
+
+> Научете повеќе за gulp и шаблони при task automation во мојот [Gulp Pluralsight курс](http://jpapa.me/gulpps)
 
 ###### [Style [Y400](#style-y400)]
 
@@ -2732,8 +2824,18 @@ angular
 
 **[Назад кон содржината](#table-of-contents)**
 
-## AngularJS Docs
-За се останато, референцирајте се до неговото API во [Angular документацијата](//docs.angularjs.org/api).
+## Filters
+
+###### [Style [Y420](#style-y420)]
+
+  - Избегнувајте употреба на филтери за скенирање на сите својства на комплексен објект граф. Употребувајте филтери за селекција на својства.
+
+    *Зошто?*: Филтерите можат лесно да бидат злоупотребени и да имаат негативен ефект на перформанси ако не се употребени мудро, на пример кога филтер удира на голем и длабок објект граф.
+
+**[Назад кон содржината](#table-of-contents)**
+
+## Angular Docs
+За се останато, референцирајте се до неговото API во [Angular документацијата](//docs.angular.org/api).
 
 ## Contributing
 
@@ -2750,9 +2852,9 @@ angular
 
 _tldr; Use this guide. Attributions are appreciated._
 
-### (The MIT License)
+### Copyright
 
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

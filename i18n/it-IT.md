@@ -1077,7 +1077,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   /* customerInfo.directive.js */
 
   /**
-   * @desc directive dello spinner che può essere usato dovunque nella applicazione di vendita di una azienda di nome Acme
+   * @desc directive delle vendite che può essere usato dovunque nella applicazione di vendita di una azienda di nome Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1106,7 +1106,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla nomenclatura per maggiori raccomandazioni.
+    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla [Nomenclatura](#nomenclatura) per maggiori raccomandazioni.
 
 ### Manipolare il DOM in una Directive
 ###### [Stile [Y072](#stile-y072)]
@@ -2439,9 +2439,15 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     *Perché?*: I tuoi test sono codice e richiedono al medesima attenzione e regole per la qualità del codice come tutto il resto del codice di produzione. Comunque, variabili globali usate dai framework di test, per esempio, possono essere rilassate includendole nelle specifiche dei test.
 
     ```javascript
-    /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
+    /* jshint -W117, -W030 */
     ```
-
+    Oppure puoi aggiungere le righe che seguono al tuo file JSHint Options.
+    
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
+    ```
+    
   ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
 ### Organizzazione dei test
