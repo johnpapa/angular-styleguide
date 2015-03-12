@@ -1106,7 +1106,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla nomenclatura per maggiori raccomandazioni.
+    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla [Nomenclatura](#nomenclatura) per maggiori raccomandazioni.
 
 ### Manipolare il DOM in una Directive
 ###### [Stile [Y072](#stile-y072)]
