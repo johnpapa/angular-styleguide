@@ -607,7 +607,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
-      .then(function(isOk) { vm.isCreditOk = isOk; })
+            .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
   }
