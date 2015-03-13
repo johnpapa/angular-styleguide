@@ -1,29 +1,29 @@
-# AngularJS风格指南
+# Angular风格指南
 
-*AngularJS风格指南[@john_papa](//twitter.com/john_papa)*
+*Angular风格指南[@john_papa](//twitter.com/john_papa)*
 
 *由[kerncink](https://github.com/natee)翻译*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-如果你正在寻找一些关于语法、约定和结构化的AngularJS应用的一个有建设性的风格指南，这个repo正适合你。这里所包含的风格是基于我在团队中使用[AngularJS](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
+如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的风格指南，这个repo正适合你。这里所包含的风格是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
 
-这个风格指南的目的是为构建AngularJS应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
+这个风格指南的目的是为构建Angular应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
 
->如果你喜欢这个指南，请在Pluralsight上检出我的[AngularJS Patterns: Clean Code](http://jpapa.me/ngclean)。
+>如果你喜欢这个指南，请在Pluralsight上检出我的[Angular Patterns: Clean Code](http://jpapa.me/ngclean)。
 
-  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
-我发现AngularJS社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是AngularJS专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
+我发现Angular社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是Angular专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
 
-我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，虽然我们并不总是能达成一致，但是Ward确实影响了本指南的最终演变。
+我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，我的好友Ward也影响了本指南的最终演变。
 
 ## 在示例App中了解这些风格
 看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
 
 ##翻译 
-[AngularJS风格指南翻译版本](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n)。
+[Angular风格指南翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/i18n)。
 
 ##目录
 
@@ -49,12 +49,14 @@
   1. [动画](#动画) 
   1. [注释](#注释)
   1. [JSHint](#js-hint)
+  1. [JSCS](#jscs)
   1. [常量](#常量)
   1. [文件模板和片段](#文件模板和片段)
   1. [Yeoman Generator](#yeoman-generator)
   1. [路由](#路由)
   1. [任务自动化](#任务自动化)
-  1. [AngularJS文档](#angularjs文档)
+  1. [Filters](#filters)
+  1. [Angular文档](#angularjs文档)
   1. [贡献](#贡献)
   1. [许可](#许可)
 
@@ -117,7 +119,7 @@
 ### JavaScript闭包
 ###### [Style [Y010](#style-y010)]
 
-  - 把AngularJS组件包装到一个立即调用函数表达式中（IIFE）。 
+  - 把Angular组件包装到一个立即调用函数表达式中（IIFE）。 
   
   *为什么？*：把变量从全局作用域中删除了，这有助于防止变量和函数声明比预期在全局作用域中有更长的生命周期，也有助于避免变量冲突。
 
@@ -443,7 +445,7 @@
       }
   ```
 
-  ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+  ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
   注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
 
@@ -555,14 +557,16 @@
   }
   ```
 
-###推迟Controller中的逻辑
+###把Controller中的逻辑延迟到Service中
 ###### [Style [Y035](#style-y035)]
 
-  - 通过委派到service和factory中来推迟controller中的逻辑。
+  - 通过委派到service和factory中来延迟controller中的逻辑。
 
   *为什么？*：把逻辑放到service中，并通过一个function暴露，就可以被多个controller重用。
 
   *为什么？*：把逻辑放到service中将会使单元测试的时候更加容易地把它们分离，相反，如果在controller中调用逻辑就显得很二了。
+
+  *为什么？*：保持controller的简洁。
 
   *为什么？*：从controller中删除依赖关系并且隐藏实现细节。
 
@@ -684,7 +688,7 @@
 
   - 用`new`实例化service，用`this`实例化公共方法和变量，由于这和facotry是类似的，所以推荐用facotry来代替。
   
-  注意：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
+  注意：[所有的Angular services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
   ```javascript
   // service
@@ -728,7 +732,7 @@
 
   - facotry是一个单例，它返回一个包含service成员的对象。
   
-    注：[所有的AngularJS services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
+    注：[所有的Angular services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
 ###可访问的成员放到顶部###
 ###### [Style [Y052](#style-y052)]
@@ -784,7 +788,7 @@
 
   这种绑定方式复制了宿主对象，原始值不会随着暴露模块模式的使用而更新。
 
-  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
 
 ###函数声明隐藏实现细节
 ###### [Style [Y053](#style-y053)]
@@ -966,7 +970,7 @@
 ###从Data调用那里返回一个Promise
 ###### [Style [Y061](#style-y061)]
 
-  - 就像$http一样，当调用data service时返回一个promise，在你的调用函数中也返回一个promise。
+  - 就像`$http`一样，当调用data service时返回一个promise，在你的调用函数中也返回一个promise。
 
     *为什么？*：你可以把promise链接到一起，在数据调用完成并且resolve或是reject这个promise后采取进一步的行为。
 
@@ -1071,7 +1075,7 @@
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1100,7 +1104,7 @@
   }
   ```
 
-    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
+    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看[命名](#命名)章节。
 
 ###在directive中操作DOM
 ###### [Style [Y072](#style-y072)]
@@ -1127,7 +1131,7 @@
 
     *为什么？*：虽然我们允许directive被当作一个class来使用，但如果这个directive的行为确实像一个元素的话，那么把directive当作元素或者属性是更有意义的。
 
-    注：AngularJS 1.3 +默认使用EA。
+    注：Angular 1.3 +默认使用EA。
 
   ```html
   <!-- avoid -->
@@ -1355,7 +1359,7 @@
 
     *为什么？*：controller在加载前可能需要一些数据，这些数据可能是从一个通过自定义factory或是[$http](https://docs.angularjs.org/api/ng/service/$http)的promise而来的。[route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider)允许promise在controller的逻辑执行之前解决，因此它可能对从promise中来的数据做一些处理。 
 
-    *为什么？*：这段代码将在路由后的controller的激活函数中执行，视图立即加载，数据绑定将在promise resolve之后，可以（通过ng-view或ui-view）在视图的过渡之间可以加个loading状态的动画。
+    *为什么？*：这段代码将在路由后的controller的激活函数中执行，视图立即加载，数据绑定将在promise resolve之后，可以（通过`ng-view`或`ui-view`）在视图的过渡之间可以加个loading状态的动画。
 
     注意：这段代码将在路由之前通过一个promise来执行，拒绝了承诺就会取消路由，接受了就会等待路由跳转到新视图。如果你想更快地进入视图，并且无需验证是否可以进入视图，你可以考虑用[控制器 `activate` 技术](#style-y080)代替。
 
@@ -1459,7 +1463,7 @@
 
   - 声明依赖时避免使用不安全缩写方法的缩写语法。
   
-    *为什么？*：组件的参数（例如controller、factory等等）将会被转换成各种乱七八糟错误的变量。例如，`common`和`dataservice`可能会变成`a`或者`b`，但是这些转换后的变量在AngularJS中是找不到的。
+    *为什么？*：组件的参数（例如controller、factory等等）将会被转换成各种乱七八糟错误的变量。例如，`common`和`dataservice`可能会变成`a`或者`b`，但是这些转换后的变量在Angular中是找不到的。
 
   ```javascript
   /* avoid - not minification-safe*/
@@ -1481,11 +1485,11 @@
 ###手动添加依赖
 ###### [Style [Y091](#style-y091)]
 
-  - 用`$inject`手动添加AngularJS组件所需的依赖。
+  - 用`$inject`手动添加Angular组件所需的依赖。
   
     *为什么？*：这种技术反映了使用[`ng-annotate`](https://github.com/olov/ng-annotate)的技术，这就是我推荐的对依赖关系进行自动化创建安全压缩的方式，如果`ng-annotate`检测到已经有了注入，那么它就不会再次重复执行。
 
-    *为什么？*：可以避免依赖变成其它AngularJS找不到的变量，例如，`common`和`dataservice`可能会变成`a`或者`b`。
+    *为什么？*：可以避免依赖变成其它Angular找不到的变量，例如，`common`和`dataservice`可能会变成`a`或者`b`。
 
     *为什么？*：避免创建内嵌的依赖，因为一个数组中很长的列表是很难阅读的，此外，内嵌的方式也会让人感到困惑，比如数组是一系列的字符串，但是最后一个却是组件的function。 
 
@@ -1523,40 +1527,44 @@
   }
   ```
 
-    注意：当你的函数处于一个return语句下，那么$inject可能无法访问（这回在directive中发生），你可以通过把$inject移到return语句上面或是用数组语法来解决这个问题。
-
-    注意： [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate)介绍了一个特点，就是把`$inject`放到它可以被访问到的地方。
+    注意：当你的函数处于一个return语句下，那么`$inject`可能无法访问（这会在directive中发生），你可以通过把Controller移到directive外面来解决这个问题。
 
   ```javascript
+  /* avoid */
   // inside a directive definition
   function outer() {
-      return {
-          controller: DashboardPanel,
+      var ddo = {
+          controller: DashboardPanelController,
+          controllerAs: 'vm'
       };
+      return ddo;
 
-      DashboardPanel.$inject = ['logger']; // Unreachable
-      function DashboardPanel(logger) {
+      DashboardPanelController.$inject = ['logger']; // Unreachable
+      function DashboardPanelController(logger) {
       }
   }
   ```
 
   ```javascript
-  // inside a directive definition
+  /* recommended */
+  // outside a directive definition
   function outer() {
-      DashboardPanel.$inject = ['logger']; // reachable
-      return {
-          controller: DashboardPanel,
+      var ddo = {
+          controller: DashboardPanelController,
+          controllerAs: 'vm'
       };
+      return ddo;
+  }
 
-      function DashboardPanel(logger) {
-      }
+  DashboardPanelController.$inject = ['logger'];
+  function DashboardPanelController(logger) {
   }
   ```
 
 ###手动确定路由解析器依赖
 ###### [Style [Y092](#style-y092)]
 
-  - 用$inject手动给AngularJS组件添加路由解析器依赖。
+  - 用`$inject`手动给Angular组件添加路由解析器依赖。
   
     *为什么？*：这种技术打破了路由解析的匿名函数的形式，易读。
 
@@ -1568,7 +1576,7 @@
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: moviePrepService
@@ -1643,7 +1651,8 @@
 
     注意：如果`ng-annotate`检测到已经有注入了（例如发现了`@ngInject`），就不会重复生成`$inject`代码了。
 
-    > 注意：从AngularJS 1.3 开始用[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)指令的 `ngStrictDi`参数，当以“strict-di”模式创建injector时，会导致应用程序无法调用不使用显示函数注释的函数（这也许无法安全压缩）。记录在控制台的调试信息可以帮助追踪出问题的代码。
+    > 注意：从Angular 1.3开始，你就可以用[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)指令的 `ngStrictDi`参数来检测任何可能失去依赖的地方，当以“strict-di”模式创建injector时，会导致应用程序无法调用不使用显示函数注释的函数（这也许无法安全压缩）。记录在控制台的调试信息可以帮助追踪出问题的代码。我只在需要调试的时候才会用到`ng-strict-di`。
+
     `<body ng-app="APP" ng-strict-di>`
 
 ###使用Gulp或Grunt结合ng-annotate
@@ -1658,6 +1667,7 @@
   ```javascript
   gulp.task('js', ['jshint'], function() {
       var source = pkg.paths.js;
+
       return gulp.src(source)
           .pipe(sourcemaps.init())
           .pipe(concat('all.min.js', {newLine: ';'}))
@@ -1685,7 +1695,7 @@
 
   - 使用一个[decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator)，在配置的时候用[`$provide`](https://docs.angularjs.org/api/auto/service/$provide)服务，当发生异常时，在[`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler)服务中执行自定义的处理方法。
   
-    *为什么？*：在开发时和运行时提供了一种统一的方式来处理未被捕获的AngularJS异常。
+    *为什么？*：在开发时和运行时提供了一种统一的方式来处理未被捕获的Angular异常。
 
     注：另一个选项是用来覆盖service的，这个可以代替decorator，这是一个非常nice的选项，但是如果你想保持默认行为，那么推荐你拓展一个decorator。
 
@@ -1868,7 +1878,7 @@
   avenger-profile.directive.spec.js
   ```
 
-    注意：另外一种常见的约定就是不要用`controller`这个词来给controller文件命名，例如不要用`avengers.controller.js`，而是用`avengers.js`。所有其它的约定都坚持使用类型作为后缀，但是controller是组件中最为常用的类型，因此这种做法的好处貌似仅仅是节省了打字，但是仍然很容易识别。我建议你为你的团队选择一种约定，并且要保持统一性。
+    注意：另外一种常见的约定就是不要用`controller`这个词来给controller文件命名，例如不要用`avengers.controller.js`，而是用`avengers.js`。所有其它的约定都坚持使用类型作为后缀，但是controller是组件中最为常用的类型，因此这种做法的好处貌似仅仅是节省了打字，但是仍然很容易识别。我建议你为你的团队选择一种约定，并且要保持统一性。我喜欢的命名方式是`avengers.controller.js`。
   
   ```javascript
   /**
@@ -1915,7 +1925,7 @@
   // avengers.controller.js
   angular
       .module
-      .controller('HeroAvengers', HeroAvengers);
+      .controller('HeroAvengersController', HeroAvengersController);
 
   function HeroAvengers(){ }    
   ```
@@ -1923,28 +1933,13 @@
 ###Controller命名后缀
 ###### [Style [Y124](#style-y124)]
 
-  - 使用`Controller`后缀或者不加后缀。
+  - 使用`Controller`。
 
     *为什么？*：`Controller`使用更广泛、更明确、更具有描述性。
 
-    *为什么？*：省略后缀则更简洁，但这样就不太好识别了。
-
   ```javascript
   /**
-   * recommended: Option 1
-   */
-
-  // avengers.controller.js
-  angular
-      .module
-      .controller('Avengers', Avengers);
-
-  function Avengers(){ }
-  ```
-
-  ```javascript
-  /**
-   * recommended: Option 2
+   * recommended
    */
 
   // avengers.controller.js
@@ -2123,7 +2118,6 @@
   app/
       app.module.js
       app.config.js
-      app.routes.js
       directives/       
           calendar.directive.js  
           calendar.directive.html  
@@ -2141,7 +2135,8 @@
           topnav.controller.js       
       people/
           attendees.html
-          attendees.controller.js  
+          attendees.controller.js
+          people.routes.js
           speakers.html
           speakers.controller.js
           speaker-detail.html
@@ -2149,6 +2144,7 @@
       sessions/
           sessions.html      
           sessions.controller.js
+          sessions.routes.js
           session-detail.html
           session-detail.controller.js   
   ```
@@ -2207,7 +2203,7 @@
 
   - 创建一个应用程序的根模块，它的职责是把应用程序中所有的模块和功能都放到一起。
 
-    *为什么？*：AngularJS鼓励模块化和分离模式。创建根模块的作用是把其它模块都绑定到一起，这为增加或是删除一个模块提供了非常简单的方法。
+    *为什么？*：Angular鼓励模块化和分离模式。创建根模块的作用是把其它模块都绑定到一起，这为增加或是删除一个模块提供了非常简单的方法。
 
     *为什么？*：应用程序模块变成了一个描述哪些模块有助于定义应用程序的清单。
 
@@ -2241,7 +2237,7 @@
 
   - 应用程序根模块依赖于应用程序特定的功能模块、共享的和可复用的模块。
 
-    ![模块化和依赖](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![模块化和依赖](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
     *为什么？*：主程序模块包含一个能快速识别应用程序功能的清单。
 
@@ -2249,7 +2245,7 @@
 
     *为什么？*：程序内部的功能，如共享数据的服务变得容易定位，并且从`app.core`中共享。
 
-    注意：这是保持一致性的一种策略，这里有很多不错的选择，选择一种统一的，遵循AngularJS依赖规则，这将易于维护和扩展。
+    注意：这是保持一致性的一种策略，这里有很多不错的选择，选择一种统一的，遵循Angular依赖规则，这将易于维护和扩展。
 
     > 我的不同项目间的结构略有不同，但是它们都遵循了这些结构和模块化的准则,具体的实施方案会根据功能和团队发生变化。也就是说，不要在一棵树上吊死，但是心中一定要记得保持一致性、可维护性和效率。
 
@@ -2326,7 +2322,7 @@
 
   - 用[`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout)和[`$interval`](https://docs.angularjs.org/api/ng/service/$interval)代替`setTimeout`和`setInterval` 。
 
-    *为什么？*：易于测试，处理AngularJS消化周期从而保证数据的同步绑定。
+    *为什么？*：易于测试，处理Angular消化周期从而保证数据的同步绑定。
 
 **[返回顶部](#目录)**
 
@@ -2366,7 +2362,7 @@
 
   - 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://mochajs.org)进行单元测试。
 
-    *为什么？*：AngularJS社区中Jasmine和Mocha都用的很广，两者都很稳定，可维护性好，提供强大的测试功能。
+    *为什么？*：Angular社区中Jasmine和Mocha都用的很广，两者都很稳定，可维护性好，提供强大的测试功能。
 
     注意：使用Mocha时你可以考虑选择一个类似[Chai](http://chaijs.com)的提示库。
 
@@ -2390,7 +2386,9 @@
 
     *为什么？*：Sinon可以和Jasmine和Mocha合作良好，并且可以扩展它们提供的stubbing和spying。
 
-    *为什么？*：如果你想试试Jasmine和Mocha，用Sinon在它们中间来回切换是很方便的。
+    *为什么？*：如果你想试试Jasmine和Mocha，用Sinon在它们中间来回切换是很方便的。我更喜欢Mocha。
+
+    *为什么？*：测试失败Sinon有一个具有描述性的信息。
 
 ###Headless Browser
 ###### [Style [Y194](#style-y194)]
@@ -2411,15 +2409,21 @@
 ###对测试降低全局JSHint规则
 ###### [Style [Y196](#style-y196)
 
-  - 对你的测试代码放松规则，这样可以允许使用`describe`和`expect`等类似通用的全局方法。
+  - 对你的测试代码放宽规则，这样可以允许使用`describe`和`expect`等类似通用的全局方法。对表达式放宽规则，就行Mocha一样。
 
     *为什么？*：测试也是代码，因此要和对待其它生产代码一样重视测试代码的质量。然而，测试框架中允许使用全局变量，例如，在你的测试单例中允许使用this。
 
   ```javascript
-  /*global sinon, describe, it, afterEach, beforeEach, expect, inject */
+  /* jshint -W117, -W030 */
+  ```
+  或者你也可以把下面的这几行加入到你的JSHint Options文件中。
+
+  ```javascript
+  "jasmine": true,
+  "mocha": true,
   ```
 
-  ![测试工具](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![测试工具](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
 ### 组织测试
 ###### [Style [Y197](#style-y197)]
@@ -2456,7 +2460,7 @@
 ###用法
 ###### [Style [Y210](#style-y210)]
 
-  - 在view和主要的视觉元素上使用细微的[AngularJS动画](https://docs.angularjs.org/guide/animations)进行过渡，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
+  - 在view和主要的视觉元素上使用细微的[Angular动画](https://docs.angularjs.org/guide/animations)进行过渡，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
 
     *为什么？*：使用得当的话能够提高用户体验。
 
@@ -2480,7 +2484,7 @@
 
     *为什么？*：animate.css被广泛使用和测试。
 
-    注意：参阅[Matias Niemelä的关于AngularJS动画的文章](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    注意：参阅[Matias Niemelä的关于Angular动画的文章](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[返回顶部](#目录)**
 
@@ -2615,12 +2619,100 @@
 
 **[返回顶部](#目录)**
 
+## JSCS
+
+### 用一个Options文件
+###### [Style [Y235](#style-y235)]
+
+  - 使用JSCS检查代码风格，确保你的代码控制中有定制的JSCS options文件，在这里[JSCS docs](http://www.jscs.info)查看更多信息。
+
+    *为什么？*：提交代码前第一时间提供一个预警。
+
+    *为什么？*：保持团队的一致性。
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
+    }
+    ```
+
+**[返回顶部](#目录)**
+
 ## 常量
 
 ###供应全局变量
 ###### [Style [Y240](#style-y240)]
 
-  - 为供应库中的全局变量创建一个AngularJS常量。
+  - 为供应库中的全局变量创建一个Angular常量。
 
     *为什么？*：提供一种注入到供应库的方法，否则就是全局变量。通过让你更容易地了解你的组件之间的依赖关系来提高代码的可测试性。这还允许你模拟这些依赖关系，这是很有意义的。
 
@@ -2671,18 +2763,18 @@
 ###Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - AngularJS片段遵循这些风格指南。 
+  - Angular片段遵循这些风格指南。 
 
-    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
+    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets?raw=true) 
     - 把它放到Packages文件夹中
     - 重启Sublime 
     - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
 
   ```javascript
   ngcontroller // creates an Angular controller
-  ngdirective // creates an Angular directive
-  ngfactory // creates an Angular factory
-  ngmodule // creates an Angular module
+  ngdirective  // creates an Angular directive
+  ngfactory    // creates an Angular factory
+  ngmodule     // creates an Angular module
   ```
 
 ###Visual Studio
@@ -2697,7 +2789,7 @@
 
   - 你可以把它们导入到WebStorm设置中:
 
-    - 下载[WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - 下载[WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - 打开WebStorm点击`File`菜单
     - 选择`Import Settings`菜单选项
     - 选择文件点击`OK`
@@ -2708,11 +2800,11 @@
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
-        
+
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
-  - AngularJS snippets that follow these styles and guidelines.
+  - Angular snippets that follow these styles and guidelines.
     ```
     apm install angularjs-styleguide-snippets
     ```
@@ -2720,7 +2812,7 @@
     - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
     - Search for the package 'angularjs-styleguide-snippets'
     - Click 'Install' to install the package
-    
+
   - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
@@ -2782,6 +2874,8 @@
 ## 任务自动化
 用[Gulp](http://gulpjs.com)或者[Grunt](http://gruntjs.com)来创建自动化任务。Gulp偏向于代码在配置之上，Grunt更倾向于配置高于代码。我更倾向于使用gulp，因为gulp写起来比较简单。
 
+> 可以在我的[Gulp Pluralsight course](http://jpapa.me/gulpps)了解更多gulp和自动化任务的信息
+
 ###### [Style [Y400](#style-y400)]
 
   - 用任务自动化在其它JavaScript文件之前列出所有模块的定义文件`*.module.js`。
@@ -2802,7 +2896,17 @@
 
 **[返回顶部](#目录)**
 
-## AngularJS文档
+## Filters
+
+###### [Style [Y420](#style-y420)]
+
+  - 避免使用filters扫描一个复杂对象的所有属性，应该用filters来筛选选择的属性。
+
+    *为什么？*：不恰当的使用会造成滥用并且会带来糟糕的性能问题，例如对一个复杂的对象使用过滤器。
+
+**[返回顶部](#目录)**
+
+## Angular文档
 [Angular文档](//docs.angularjs.org/api)。
 
 ## 贡献
@@ -2821,9 +2925,9 @@
 
   - **tldr;** 如果可以的话，使用本指南的时候还是指明归属吧。 
 
-### (MIT许可证)
+### Copyright
 
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
 
 
 **[返回顶部](#目录)**
