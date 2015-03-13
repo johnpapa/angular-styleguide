@@ -1215,9 +1215,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller: ExampleController,
-            controllerAs: 'vm',
-            bindToController: true // because the scope is isolated
-        };
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
+      };
 
       return directive;
 
