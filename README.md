@@ -783,7 +783,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern.
 
     ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
 
@@ -1075,7 +1075,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1104,7 +1104,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -1678,7 +1678,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
-        
+
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
@@ -2777,16 +2777,17 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - Angular snippets that follow these styles and guidelines.
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true)
+    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)
     - Place it in your Packages folder
     - Restart Sublime
     - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
     ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
     ```
 
 ### Visual Studio
@@ -2814,7 +2815,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
-    
+
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
@@ -2826,7 +2827,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
     - Search for the package 'angularjs-styleguide-snippets'
     - Click 'Install' to install the package
-    
+
   - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
@@ -2918,7 +2919,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
   - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
 
-    *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph. 
+    *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
 **[Back to top](#table-of-contents)**
 
