@@ -557,10 +557,10 @@
   }
   ```
 
-###把Controller中的逻辑推迟到Service中
+###把Controller中的逻辑延迟到Service中
 ###### [Style [Y035](#style-y035)]
 
-  - 通过委派到service和factory中来推迟controller中的逻辑。
+  - 通过委派到service和factory中来延迟controller中的逻辑。
 
   *为什么？*：把逻辑放到service中，并通过一个function暴露，就可以被多个controller重用。
 
@@ -1075,7 +1075,7 @@
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */    
   angular
@@ -1104,7 +1104,7 @@
   }
   ```
 
-    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看命名章节。
+    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看[命名](#命名)章节。
 
 ###在directive中操作DOM
 ###### [Style [Y072](#style-y072)]
@@ -1667,6 +1667,7 @@
   ```javascript
   gulp.task('js', ['jshint'], function() {
       var source = pkg.paths.js;
+
       return gulp.src(source)
           .pipe(sourcemaps.init())
           .pipe(concat('all.min.js', {newLine: ';'}))
@@ -2764,16 +2765,16 @@
 
   - Angular片段遵循这些风格指南。 
 
-    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true) 
+    - 下载[Sublime Angular snippets](assets/sublime-angular-snippets?raw=true) 
     - 把它放到Packages文件夹中
     - 重启Sublime 
     - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
 
   ```javascript
   ngcontroller // creates an Angular controller
-  ngdirective // creates an Angular directive
-  ngfactory // creates an Angular factory
-  ngmodule // creates an Angular module
+  ngdirective  // creates an Angular directive
+  ngfactory    // creates an Angular factory
+  ngmodule     // creates an Angular module
   ```
 
 ###Visual Studio
@@ -2799,7 +2800,7 @@
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
-        
+
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
@@ -2811,7 +2812,7 @@
     - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
     - Search for the package 'angularjs-styleguide-snippets'
     - Click 'Install' to install the package
-    
+
   - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
