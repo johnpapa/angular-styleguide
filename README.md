@@ -2788,6 +2788,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngfactory    // creates an Angular factory
     ngmodule     // creates an Angular module
     ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 ### Visual Studio
