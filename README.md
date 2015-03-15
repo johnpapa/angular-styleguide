@@ -607,7 +607,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
-      .then(function(isOk) { vm.isCreditOk = isOk; })
+            .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
   }
@@ -1215,9 +1215,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller: ExampleController,
-            controllerAs: 'vm',
-            bindToController: true // because the scope is isolated
-        };
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
+      };
 
       return directive;
 
@@ -2788,6 +2788,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngfactory    // creates an Angular factory
     ngmodule     // creates an Angular module
     ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 ### Visual Studio
