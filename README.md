@@ -1964,9 +1964,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Factory Names
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`.
 
     *Why?*: Provides a consistent way to quickly identify and reference factories.
+    
+    *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
 
     ```javascript
     /**
