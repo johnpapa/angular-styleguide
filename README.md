@@ -2838,6 +2838,36 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngmodule // creates an Angular module
     ```
 
+### Brackets
+###### [Style [Y254](#style-y254)]
+
+  - Angular snippets that follow these styles and guidelines.
+
+    - Brackets Extension manager ( File > Extension manager )
+    - Install 'Brackets Snippets (by edc)'
+    - Click the light bulb in brackets' right gutter
+    - Click `Settings` and then `Import`
+    - Choose the file and select to skip or override
+    - Click `Start Import`
+
+  - In a JavaScript file type these commands followed by a `TAB`
+
+    ```javascript
+    // These are full file snippets containing an IIFE
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngapp        // creates an Angular module setter
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+
+    // These are partial snippets intended to chained
+    ngmodule     // creates an Angular module getter
+    ngstate      // creates an Angular UI Router state defintion
+    ngconfig     // defines a configuration phase function
+    ngrun        // defines a run phase function
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
