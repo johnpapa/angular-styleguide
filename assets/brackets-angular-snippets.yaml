@@ -1,0 +1,199 @@
+- trigger: ngfilter
+  description: Angular filter using John Papa's Angular style guide
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+            angular
+                .module('${1:module}')
+                .filter('${2:filter}', ${2:filter});
+            
+            
+            function ${2:filter}() {
+                return ${2:filter}Filter;
+                ////////////////
+                
+                function ${2:filter}Filter(${3:parameters}) {
+                    return ${3:parameters};
+                };
+            }
+        })();
+
+- trigger: ngservice
+  description: Angular service using John Papa's Angular style guide
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+            angular
+                .module('${1:module}')
+                .service('${2:Service}', ${2:Service});
+            
+            ${2:Service}.$inject = ['${3:dependencies}'];    
+            
+            /* @ngInject */
+            function ${2:Service}(${3:dependencies}) {
+                this.${4:func} = ${4:func};
+
+                ////////////////
+
+                function ${4:func}() {
+
+                }
+            }
+        })();
+
+- trigger: ngapp
+  description: Angular module app definition using John Papa's Angular style guide
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+            
+            angular
+                .module('${1:module}', [
+                    '${2:dependencies}'
+                ]);
+            
+        })();
+
+- trigger: ngfactory
+  description: Angular factory using John Papa's Angular style guide
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+            angular
+                .module('${1:module}')
+                .factory('${2:factory}', ${2:factory});
+            
+            ${2:factory}.$inject = ['${3:dependencies}'];
+            
+            /* @ngInject */
+            function ${2: Factory}(${3:dependencies}){
+                var exports = {
+                    ${4:func}: ${4:func}
+                };
+            
+                return exports;
+            
+                ////////////////
+                function ${4:func}() {
+                    
+                }
+            }
+        })();
+
+- trigger: ngdirective
+  description: Angular directive using John Papa's Angular style guide
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+            
+            
+            angular
+                .module('${1:module}')
+                .directive('${2:directive}', ${2:directive});
+            
+            ${2:directive}.$inject = ['${3:dependencies}'];
+            
+            /* @ngInject */
+            function ${2: directive}(${3:dependencies}) {
+                // Usage:
+                //
+                // Creates:
+                //
+                var directive = {
+                    bindToController: true,
+                    controller: ${4:Controller},
+                    controllerAs: '${5:vm}',
+                    link: link,
+                    restrict: 'A',
+                    scope: {}
+                };
+                return directive;
+        
+                function link(scope, element, attrs, controller) {}
+            }
+        
+            ${4:Controller}.$inject = ['${6:dependencies}'];    
+        
+            /* @ngInject */
+            function ${4:Controller}(${6:dependencies}) {
+            
+            }
+        
+        })();
+
+- trigger: ngcontroller
+  description: Angular controller using John Papa's Angular style guide
+  scope: javascript
+  text: |
+        (function() {
+            'use strict';
+        
+            angular
+                .module('${1:module}')
+                .controller('${2:Controller}', ${2:Controller});
+        
+            ${2:Controller}.$inject = ['${3:dependencies}'];
+        
+            /* @ngInject */
+            function ${2:Controller}(${3:dependencies}){
+                var vm = this;
+                vm.${4:property} = '${2:Controller}';
+        
+                activate();
+        
+                ////////////////
+        
+                function activate() {
+                }
+            }
+        })();
+
+- trigger: ngstate
+  description: Angular UI-Router state using John Papa's Angular style guide
+  scope: javascript
+  text: |
+    state('${1:state}', {
+        url: '${2:/url}'
+        templateUrl: '${3:template}.html',
+        controller: '${4:Controller}'
+        controllerAs: '${5:vm}'
+    })
+
+
+- trigger: ngmodule
+  description: Angular module getter using John Papa's Angular style guide
+  scope: javascript
+  text: |
+            angular
+                .module('${1:module}')
+
+- trigger: ngconfig
+  description: Angular config phase function using John Papa's Angular style guide
+  scope: javascript
+  text: |
+    .config(${1:configuration})
+
+    ${1:configuration}.$inject = ['${2:dependencies}'];
+
+    /* @ngInject */
+    function ${1:configuration} (${2:dependencies}) {
+
+    }
+
+- trigger: ngrun
+  description: Angular run phase function using John Papa's Angular style guide
+  scope: javascript
+  text: |
+    .run(${1:runFn})
+
+    ${1:runFn}.$inject = ['${2:dependencies}'];
+
+    /* @ngInject */
+    function ${1:runFn} (${2:dependencies}) {
+
+    }
