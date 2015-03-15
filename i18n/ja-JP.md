@@ -1,19 +1,19 @@
-# AngularJS スタイルガイド
+# Angular スタイルガイド
 
-*[@john_papa](//twitter.com/john_papa)によるチームのための頑固なAngularJSスタイルガイド*
+*[@john_papa](//twitter.com/john_papa)によるチームのための頑固なAngularスタイルガイド*
 
 *Translation by [@noritamago](https://github.com/noritamago)*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-もしあなたがAngularJSのシンタックス、規約、そしてアプリケーション構成のための頑固なスタイルガイドを探しているなら、どうぞいらっしゃい！本スタイルは、[AngularJS](//angularjs.org)を用いた私の開発経験やプレゼンテーション、[Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) 、そしてチームでの作業に基づいたものです。
+もしあなたがAngularのシンタックス、規約、そしてアプリケーション構成のための頑固なスタイルガイドを探しているなら、どうぞいらっしゃい！本スタイルは、[Angular](//angularjs.org)を用いた私の開発経験やプレゼンテーション、[Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) 、そしてチームでの作業に基づいたものです。
 
-このスタイルガイドの目的は、私が実践している規約だけでなく、私がそれを行う理由を示すことによって、AngularJSアプリケーションを構築する手引きとなることです。
+このスタイルガイドの目的は、私が実践している規約だけでなく、私がそれを行う理由を示すことによって、Angularアプリケーションを構築する手引きとなることです。
 
->もしあなたがこのガイドを気に入ったのなら、Pluralsightにある [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) の私のコースもチェックして下さい。
+>もしあなたがこのガイドを気に入ったのなら、Pluralsightにある [Angular Patterns: Clean Code](http://jpapa.me/ngclean) の私のコースもチェックして下さい。
 
 ## Community Awesomeness and Credit
-あなたは決して1人でありません！AngularJSのコミュニティは、自身の経験を共有することに情熱的な素晴らしい集団です。実際、友人でありAngularJSのエキスパートでもある Todd Motto と私は、共同で多くのスタイルや規約をまとめました。一部意見が分かれましたが、概ね合意できるものでした。彼のアプローチと本スタイルとの比較のため、是非 [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) をチェックすることをお勧めします。
+あなたは決して1人でありません！Angularのコミュニティは、自身の経験を共有することに情熱的な素晴らしい集団です。実際、友人でありAngularのエキスパートでもある Todd Motto と私は、共同で多くのスタイルや規約をまとめました。一部意見が分かれましたが、概ね合意できるものでした。彼のアプローチと本スタイルとの比較のため、是非 [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) をチェックすることをお勧めします。
 
 ここで紹介する多くのスタイルは、数多くのペアプログラミングのセッション [Ward Bell](http://twitter.com/wardbell) および私自身が既に持っていたアイデアによるものです。いつも意見が一致した訳ではないですが、友人のWardはこのガイドの最終的な発展に大きく貢献してくれました。
 
@@ -21,7 +21,7 @@
 このガイドは"何を"、"なぜ"、"どのように"行えば良いかという説明をしますが、合わせて実践的に見ていくことが理解に役立つはずです。本ガイドは、スタイルやパターンに沿ったサンプルアプリケーションを [`modular`のディレクトリ](https://github.com/johnpapa/ng-demos) に用意しています。ここから自由に取得しcloneやforkをしてもらって構いません。また [readmeに実行のためのインストラクション](https://github.com/johnpapa/ng-demos/tree/master/modular) もあります。
 
 ## Translations
-[Translations of this Angular style guide](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) がコミュニティによってメンテナンスされており、そこで翻訳を参照することができます。
+[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) がコミュニティによってメンテナンスされており、そこで翻訳を参照することができます。
 
 ## Table of Contents
 
@@ -47,12 +47,14 @@
   1. [Animations](#animations)
   1. [Comments](#comments)
   1. [JSHint](#js-hint)
+  1. [JSCS](#jscs)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Yeoman Generator](#yeoman-generator)
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
-  1. [AngularJS Docs](#angularjs-docs)
+  1. [Filters](#filters)
+  1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
 
@@ -115,7 +117,7 @@
 ### JavaScript Closures
 ###### [Style [Y010](#style-y010)]
 
-  - AngularJSのコンポーネントを即時関数式(Immediately Invoked Function Expression:IIFE)で包んで下さい。
+  - Angularのコンポーネントを即時関数式(Immediately Invoked Function Expression:IIFE)で包んで下さい。
 
   *なぜ ?*: IIFEを用いると変数はグローバルスコープになりません。それにより、変数がグローバルスコープの中で期待以上に長く生存してしまうことを防ぐことがでます。また変数同士の衝突も避けることができます。
 
@@ -172,7 +174,7 @@
 
   - Note: 簡潔にするため, 以下に続くコードの例ではIIFEのシンタックスを省略させて下さい。
 
-  - Note: テストコードは正規表現や単体テスト向けに有効なヘルバー関数のようになプライベートなメンバにしばしばアクセスしますが、IIFEはそのアクセスへの妨げとなります。しかしながら、アクセス可能なメンバを通してテストをすることや独立したコンポーネント経由でこれらを公開してしまうことでテストが可能になります。例えば、ヘルバー関数、正規表現、もしくは定数をAngularJSのファクトリや定数として用意してしまう方法があります。
+  - Note: テストコードは正規表現や単体テスト向けに有効なヘルバー関数のようになプライベートなメンバにしばしばアクセスしますが、IIFEはそのアクセスへの妨げとなります。しかしながら、アクセス可能なメンバを通してテストをすることや独立したコンポーネント経由でこれらを公開してしまうことでテストが可能になります。例えば、ヘルバー関数、正規表現、もしくは定数をAngularのファクトリや定数として用意してしまう方法があります。
 
 **[Back to top](#table-of-contents)**
 
@@ -442,7 +444,7 @@
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
   Note: もし関数がワンライナーであれば、可読性に影響が無い限り上に置いたままにすることを検討して下さい。
 
@@ -553,7 +555,7 @@
   }
   ```
 
-### Defer Controller Logic
+### Defer Controller Logic to Services
 ###### [Style [Y035](#style-y035)]
 
   - サービスやファクトリに委譲することで、コントローラの中のロジックを遅延させて下さい。
@@ -563,6 +565,8 @@
     *なぜ ?*: 単体テスト上でサービス内のロジックは簡単に分離できます。そのためコントローラの呼び出しロジックを容易にモック化がすることができます。
 
     *なぜ ?*: 依存性を取り除きコントローラから実装の詳細を隠すことができます。
+
+    *なぜ ?*: コントローラをスリムに整えて、そしてフォーカスさせて下さい。
 
   ```javascript
 
@@ -605,7 +609,7 @@
 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
-      .then(function(isOk) { vm.isCreditOk = isOk; })
+            .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
   }
@@ -682,7 +686,7 @@
 
   - サービスは`new`キーワードでインスタンス化されます。パブリックメソッドや変数には`this`を使って下さい。これらはファクトリも同様ですが、一貫性のためにはサービスの代わりにファクトリを用いて下さい。
 
-    Note: [全てのAngularJSのサービスはシングルトンです](https://docs.angularjs.org/guide/services)。 これはつまり、作成されたサービスはインジェクター毎に単一インスタンスしか存在しないことを意味しています。
+    Note: [全てのAngularのサービスはシングルトンです](https://docs.angularjs.org/guide/services)。 これはつまり、作成されたサービスはインジェクター毎に単一インスタンスしか存在しないことを意味しています。
 
   ```javascript
   // service
@@ -726,7 +730,7 @@
 
   - ファクトリはシングルトンであり、そのサービスのメンバを含むオブジェクトを返して下さい。
 
-    Note: [全てのAngularJSのサービスはシングルトンです](https://docs.angularjs.org/guide/services)。
+    Note: [全てのAngularのサービスはシングルトンです](https://docs.angularjs.org/guide/services)。
 
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
@@ -964,7 +968,7 @@
 ### Return a Promise from Data Calls
 ###### [Style [Y061](#style-y061)]
 
-  - $httpのようなpromiseを返すデータサービスを呼び出すときは、それを呼び出す関数も同様にpromiseを返して下さい。
+  - `$http`のようなpromiseを返すデータサービスを呼び出すときは、それを呼び出す関数も同様にpromiseを返して下さい。
 
     *なぜ ?*: promiseを一緒にチェーンすることで、データの呼び出しが完了した後にさらなるアクションを行い、そのpromiseをresolveもしくはrejectすることができます。
 
@@ -1018,6 +1022,10 @@
 
     *なぜ ?*: ファイル毎に一つのディレクティブにすることで、メンテナンスが容易になります。
 
+    Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation
+    Note: "**Best Practice**: ディレクティブは自身でクリーンナップされるべきです。ディレクティブが削除されたときにクリーンナップの関数を実行するために、`element.on('$destroy', ...)` や `scope.$on('$destroy', ...)`" ... Angularのドキュメンテーションより
+
+
   ```javascript
   /* avoid */
   /* directives.js */
@@ -1069,7 +1077,7 @@
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1098,7 +1106,7 @@
   }
   ```
 
-    Note: スコープが狭いか広いかに応じて、ディレクティブには多くの命名オプションがあります。ディレクティブだと理解され、そのファイル名の区別がつきやすく内容が明解であるような名前を一つ選んで下さい。いくつかの例が下記に登場しますが、より推奨される名前に関しては命名のセクションを参照して下さい。
+    Note: スコープが狭いか広いかに応じて、ディレクティブには多くの命名オプションがあります。ディレクティブだと理解され、そのファイル名の区別がつきやすく内容が明解であるような名前を一つ選んで下さい。いくつかの例が下記に登場しますが、より推奨される名前に関しては[Naming](#naming)のセクションを参照して下さい。
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -1114,7 +1122,7 @@
 
     *なぜ ?*: ユニークで簡潔なプリフィックスは、ディレクティブのコンテキストと由来を特定します。例えば、`cc-` というプリフィックスは、CodeCamperアプリを示し、`acme-` は Acme companyのためのディレクティブであることを示します。
 
-    Note: `ng-` のようなAngularJSのdirectivesのためにリザーブされているものは避けて下さい。 名前の衝突を避けるため、[Ionic Framework](http://ionicframework.com/)の`ion-`のように、幅広く利用されているディレクティブを調査して下さい。
+    Note: `ng-` のようなAngularのdirectivesのためにリザーブされているものは避けて下さい。 名前の衝突を避けるため、[Ionic Framework](http://ionicframework.com/)の`ion-`のように、幅広く利用されているディレクティブを調査して下さい。
 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
@@ -1125,7 +1133,7 @@
 
     *なぜ ?*: 私たちはディレクティブをクラスとして使うことを許していますが、もしディレクティブが要素として働いているのであれば、要素の方がより理にかなっていますし、また少なくとも属性としても理にかなうはずです。
 
-    Note: AngularJS 1.3 +では、EAがデフォルトです。
+    Note: Angular 1.3 +では、EAがデフォルトです。
 
   ```html
   <!-- avoid -->
@@ -1209,8 +1217,8 @@
           },
           link: linkFunc,
           controller: ExampleController,
-            controllerAs: 'vm',
-            bindToController: true // because the scope is isolated
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
         };
 
       return directive;
@@ -1350,7 +1358,7 @@
 
     *なぜ ?*: コントローラが読み込まれる前にデータが必要となるかもしれません。そのデータはカスタムのファクトリや[$http](https://docs.angularjs.org/api/ng/service/$http)から返るpromiseから取得するかもしれません。[route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) を使うと、コントローラがロジックを実行する前にpromiseを解決することができるため、 promiseから取得したデータに基づいてアクションを取ることができます。
 
-    *なぜ ?*: ルーティングとコントローラのactivate関数の後にコードが実行されて、ビューが直ちにロードされます。アクティベイトされたpromiseがresolveされるとデータバインディングがキックされます。ビューが遷移している間(ng-viewやui-viewで)"busy"なアニメーションが表示されます。
+    *なぜ ?*: ルーティングとコントローラのactivate関数の後にコードが実行されて、ビューが直ちにロードされます。アクティベイトされたpromiseがresolveされるとデータバインディングがキックされます。ビューが遷移している間(`ng-view`や`ui-view`で)"busy"なアニメーションが表示されます。
 
     Note: promiseの後に、ルーティングが行われる前にコードが実行されます。もしそのpromiseがrejectされるとルーティングはキャンセルされます。resolveによって新しいビューはルーティングが解決されるのを待ちます。resolve及びビューの遷移が終わるまで"busy" なアニメーションが表示されます。より早くビューを表示したい場合で、かつビューを表示するかどうかのチェックポイントが不要な場合は、代わりに [controller `activate` technique](#style-y080) を用いることを検討して下さい。
 
@@ -1454,7 +1462,7 @@
 
   - minificationセーフなアプローチを用いずにショートカットで依存を宣言するシンタックスは避けて下さい。
 
-    *なぜ ?*: コンポーネント(つまり、コントローラやファクトリなど)に対するパラメータはマングル化された変数に変換されます。例えば、`common` や `dataservice`は、`a` もしくは `b` になるかもしれず、AngularJSが見つけられないかもしれません。
+    *なぜ ?*: コンポーネント(つまり、コントローラやファクトリなど)に対するパラメータはマングル化された変数に変換されます。例えば、`common` や `dataservice`は、`a` もしくは `b` になるかもしれず、Angularが見つけられないかもしれません。
 
     ```javascript
     /* avoid - not minification-safe*/
@@ -1476,11 +1484,11 @@
 ### Manually Identify Dependencies
 ###### [Style [Y091](#style-y091)]
 
-  - AngularJSコンポーネントの依存を手動で特定するために`$inject`を使って下さい。
+  - Angularコンポーネントの依存を手動で特定するために`$inject`を使って下さい。
 
     *なぜ ?*: このテクニックは[`ng-annotate`](https://github.com/olov/ng-annotate)で用いられており、そしてそれは自動でminificationセーフな依存を生成することを勧めています。もし`ng-annotate` が注入がすでに行われたことを検出すると再生成をスキップします。
 
-    *なぜ ?*: このテクニックは、パラメータがマングルされたときにminificationの問題に対して脆弱であることから依存性を守ります。例えば、`common` や　`dataservice` が `a` や `b` になるかもしれず、AngularJSが見つけられないかもしれません。
+    *なぜ ?*: このテクニックは、パラメータがマングルされたときにminificationの問題に対して脆弱であることから依存性を守ります。例えば、`common` や　`dataservice` が `a` や `b` になるかもしれず、Angularが見つけられないかもしれません。
 
     *なぜ ?*: 配列で読むのが難しいほと長いリストになる場合には、インラインで依存性を生成することを避けて下さい。さらに依存のリストは配列が文字列の連続からなる一方で、最後の要素がコンポーネントの関数となり紛らわしいです。
 
@@ -1517,40 +1525,43 @@
     }
     ```
 
-    Note: 関数がreturn文の下にあるとき、$injectが到達可能になるかもしれません(これはディレクティブで起こるかもしれません)。$injectをreturn文の上に移動するか、もしくは交互の配列によって注入するシンタックスを使うことで回避することができます。
-
-    Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) は'$inject'を到達可能なところに移動する機能を導入しました。
+    Note: 関数がreturn文の下にあるとき、`$inject`が到達可能になるかもしれません(これはディレクティブで起こるかもしれません)。これはコントローラをディレクティブの外側へ移動することによって解決できます。
 
     ```javascript
     // inside a directive definition
     function outer() {
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo;
 
-        DashboardPanel.$inject = ['logger']; // Unreachable
-        function DashboardPanel(logger) {
+        DashboardPanelController.$inject = ['logger']; // Unreachable
+        function DashboardPanelController(logger) {
         }
     }
     ```
 
     ```javascript
-    // inside a directive definition
+    /* recommended */
+    // outside a directive definition
     function outer() {
-        DashboardPanel.$inject = ['logger']; // reachable
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo;
+    }
 
-        function DashboardPanel(logger) {
-        }
+    DashboardPanelController.$inject = ['logger'];
+    function DashboardPanelController(logger) {
     }
     ```
 
 ### Manually Identify Route Resolver Dependencies
 ###### [Style [Y092](#style-y092)]
 
-  - AngularJSのコンポーネントのroute resolverの依存性を手動で特定するために$injectを使って下さい。
+  - Angularのコンポーネントのroute resolverの依存性を手動で特定するために`$inject`を使って下さい。
 
     *なぜ ?*: このテクニックは、route resolverを無名関数として外に出すことで可読性を上げることができます。
 
@@ -1562,7 +1573,7 @@
         $routeProvider
             .when('/avengers', {
                 templateUrl: 'avengers.html',
-                controller: 'Avengers',
+                controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: {
                     moviesPrepService: moviePrepService
@@ -1654,7 +1665,8 @@
     }
     ```
 
-    > Note: AngularJS 1.3から導入された、[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)のディレクティブの`ngStrictDi`パラメータを使って下さい。 現在のinjectorが"strict-di"モードで生成されたとき、アプリケーションが明示的にアノテーションの付いていない関数(これらはminificationセーフではありません)の呼び出しは失敗します。デバッグ情報がログとしてconsoleに出力されるので、問題のあるコードを見つけ出すのに役立ちます。
+    > Note: 潜在的にminificationセーフでない依存性を検出するためにAngular 1.3から導入された、[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)のディレクティブの`ngStrictDi`パラメータを用いることができます。現在のinjectorが"strict-di"モードで生成されたとき、アプリケーションが明示的にアノテーションの付いていない関数(これらはminificationセーフではありません)の呼び出しは失敗します。デバッグ情報がログとしてconsoleに出力されるので、問題のあるコードを見つけ出すのに役立ちます。私は、`ng-strict-di`をデバッグ用途でのみ利用することを好みます。
+
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
@@ -1669,6 +1681,7 @@
     ```javascript
     gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
+
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
@@ -1696,7 +1709,7 @@
 
   - 例外が発生したときに[`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler)サービスを上書きし、カスタムのアクションを実行するために、configの呼び出し時に[`$provide`](https://docs.angularjs.org/api/auto/service/$provide) サービスの[decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator)を使って下さい。
 
-    *なぜ ?*: 開発時や実行時に捕捉されていないAngularJSの例外をハンドルする一貫した方法を与えます。
+    *なぜ ?*: 開発時や実行時に捕捉されていないAngularの例外をハンドルする一貫した方法を与えます。
 
     Note: もう一つのオプションは、decoratorを使う代わりにサービスをオーバーライドすることです。これも有効なオプションですが、もしデフォルトの動作をキープしたい場合または拡張したい場合はdecoratorがお勧めです。
 
@@ -1789,7 +1802,6 @@
                 var destination = (current && (current.title ||
                     current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
-                var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
                 var msg = 'Error routing to ' + destination + '. ' +
                     (rejection.msg || '');
 
@@ -1880,7 +1892,7 @@
     avenger-profile.directive.spec.js
     ```
 
-  Note: 別の命名規則は `avengers.controller.js` というファイル名から`controller`を取り除いて命名することです。 その他の全ての規則はサフィックスを使い続けるものです。コントローラは最も共通なコンポーネントであり、タイピングの量を減らしながらも依然として特定しやすいままになります。どれか一つを選びチーム内で一つの命名規則に統一することを勧めます。
+  Note: 別の命名規則は `avengers.controller.js` というファイル名から`controller`を取り除いて命名することです。 その他の全ての規則はサフィックスを使い続けるものです。コントローラは最も共通なコンポーネントであり、タイピングの量を減らしながらも依然として特定しやすいままになります。どれか一つを選びチーム内で一つの命名規則に統一することを勧めます。私の好みは`avengers.controller.js`です。
 
     ```javascript
     /**
@@ -1927,36 +1939,21 @@
     // avengers.controller.js
     angular
         .module
-        .controller('HeroAvengers', HeroAvengers);
+        .controller('HeroAvengersController', HeroAvengersController);
 
-    function HeroAvengers() { }
+    function HeroAvengersController() { }
     ```
 
 ### Controller Name Suffix
 ###### [Style [Y124](#style-y124)]
 
-  - コントローラに`Controller`という名前を挿入するか、もしくはしないかどちらか一つを選択せよ。 両方を混ぜてはいけません。
+  - コントローラに`Controller`という名前を挿入して下さい。
 
     *なぜ ?*: `Controller`のサフィックスは、広く使われており明らかに直接内容を説明している。
 
-    *なぜ ?*: サフィックスを省略することは効率的であり、コントローラはサフィックスが無くても簡単に特定が可能です。
-
     ```javascript
     /**
-     * recommended: Option 1
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('Avengers', Avengers);
-
-    function Avengers() { }
-    ```
-
-    ```javascript
-    /**
-     * recommended: Option 2
+     * recommended
      */
 
     // avengers.controller.js
@@ -2134,7 +2131,6 @@
     app/
         app.module.js
         app.config.js
-        app.routes.js
         components/
             calendar.directive.js
             calendar.directive.html
@@ -2148,6 +2144,7 @@
         people/
             attendees.html
             attendees.controller.js
+            people.routes.js
             speakers.html
             speakers.controller.js
             speaker-detail.html
@@ -2160,11 +2157,12 @@
         sessions/
             sessions.html
             sessions.controller.js
+            sessions.routes.js
             session-detail.html
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
       Note: folders-by-typeを使って構造化をしてはいけません。一つの機能が、5、10、25以上のビューやコントローラ(また他の機能)からなるときにアプリが肥大化してきます。そのとき複数のフォルダに移動する必要がありますが、ファイルを配置するのはfolder-by-featureよりも難しいでしょう。
 
@@ -2193,7 +2191,7 @@
             user-profile.directive.js
             user-profile.directive.html
         services/
-            dataservice.j
+            dataservice.js
             localstorage.js
             logger.js
             spinner.js
@@ -2223,7 +2221,7 @@
 
   - 全てのモジュールと機能を統合することを担うアプリケーションのルートなるモジュールを作って下さい。これにアプリケーション名をつけて下さい。
 
-    *なぜ ?*: AngularJSはモジュール化と分割のパターンを推奨しています。他のモジュールを結びつけるアプリケーションのルートモジュールを作ることは、 モジュールの追加や削除を行う簡単な方法を与えます。
+    *なぜ ?*: Angularはモジュール化と分割のパターンを推奨しています。他のモジュールを結びつけるアプリケーションのルートモジュールを作ることは、 モジュールの追加や削除を行う簡単な方法を与えます。
 
 ### Keep the App Module Thin
 ###### [Style [Y162](#style-y162)]
@@ -2257,7 +2255,7 @@
 
   - ルートのモジュールは、アプリケーションスペシフィックなモジュールや共有または再利用されるモジュールに依存します。
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
     *なぜ ?*: メインのアプリケーションのモジュールは、アプリケーションの機能を素早く特定可能なマニュフェストを含みます。
 
@@ -2265,7 +2263,7 @@
 
     *なぜ ?*: データを共有するサービスのようなアプリ内の機能は、`app.core`(このモジュールは好きな名前を選んで下さい)のようにまとめることで、簡単に位置を特定または共有することが可能です。
 
-    Note: これは一貫性のためのストラテジーです。ここには多くの良いオプションがあります。AngularJSの依存のルールに沿って一貫性をとるためにその一つを選ぶことで メンテナンスしスケールさせることが容易になります。
+    Note: これは一貫性のためのストラテジーです。ここには多くの良いオプションがあります。Angularの依存のルールに沿って一貫性をとるためにその一つを選ぶことで メンテナンスしスケールさせることが容易になります。
 
     > 　私のストラクチャはプロジェクト間で少しだけ変わっていますが、ストラクチャやモジュール化に関してはこのガイドラインに沿っています。実装は、機能やチームに依存して変わるかもしれません。言い換えれば、同等のストラクチャにこだわってるのではなく、一貫性やメンテナンス性、効率性を念頭に置いて正しいことを行うということです。
 
@@ -2343,7 +2341,7 @@
 
   - `setTimeout` と `setInterval`の代わりに[`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout)と[`$interval`](https://docs.angularjs.org/api/ng/service/$interval)を使って下さい。
 
-    *なぜ ?*: これらのサービスはAngularによってラップされているのでよりテスタブルになります。またAngularJSのdigestのサイクルでハンドルされるので、データバインディングが同期され続けます。
+    *なぜ ?*: これらのサービスはAngularによってラップされているのでよりテスタブルになります。またAngularのdigestのサイクルでハンドルされるので、データバインディングが同期され続けます。
 
 **[Back to top](#table-of-contents)**
 
@@ -2382,9 +2380,9 @@
 
   - 単体テストには [Jasmine](http://jasmine.github.io/) もしくは [Mocha](http://mochajs.org) を使って下さい。
 
-    *なぜ ?*: Jasmine と Mocha はAngularJSのコミュニティで幅広く使われています。双方とも安定しており、十分メンテされており、ロバストなテスト機能が与えられます。
+    *なぜ ?*: Jasmine と Mocha はAngularのコミュニティで幅広く使われています。双方とも安定しており、十分メンテされており、ロバストなテスト機能が与えられます。
 
-    Note: Mochaを用いるときは、合わせて[Chai](http://chaijs.com)といったアサートのライブラリを選ぶことを検討して下さい。
+    Note: Mochaを用いるときは、合わせて[Chai](http://chaijs.com)といったアサートのライブラリを選ぶことを検討して下さい。私はMochaを好みます。
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
@@ -2406,7 +2404,9 @@
 
     *なぜ ?*: SinonはJasminとMochaと一緒に正しく動作し、スタブやスパイの機能を拡張します。
 
-    *Why?*: もしJasmineとMochaの両方を試したければ、Sinonはそれらを簡単に切り替えることができます。
+    *なぜ ?*: もしJasmineとMochaの両方を試したければ、Sinonはそれらを簡単に切り替えることができます。
+
+    *なぜ ?*: テストがアサーションに失敗したときにSinonは叙述的なメッセージとなります。
 
 ### Headless Browser
 ###### [Style [Y194](#style-y194)]
@@ -2429,13 +2429,19 @@
 
   - 　テストコードでは、`describe`や`expect`といった共通のグローバルな変数を許すようにルールを緩めて下さい。
 
-    *なぜ ?*: テストもコードであり、プロダクションのコードと同様に注意が払われ、コードの品質のルールが必要となります。しかしながら、テストのフレームワークで用いられるグローバル変数は、例えば、テストのスペックに以下を含むことによって緩められます。
+    *なぜ ?*: テストもコードであり、プロダクションのコードと同様に注意が払われ、コードの品質のルールが必要となります。しかしながら、テストのフレームワークで用いられるグローバル変数は、例えば、テストのスペックに以下を含むことによって緩められます。 Mochaが行っているように式にもルールを緩めて下さい。
 
     ```javascript
-    /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
+    /* jshint -W117, -W030 */
+    ```
+    Or you can add the following to your JSHint Options file.
+
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
 ### Organizing Tests
 ###### [Style [Y197](#style-y197)]
@@ -2471,7 +2477,7 @@
 ### Usage
 ###### [Style [Y210](#style-y210)]
 
-  - ビューや主要なビュジアルの要素で、ステート間を遷移するために、さりげない[animations with AngularJS](https://docs.angularjs.org/guide/animations)を使って下さい。[ngAnimate module](https://docs.angularjs.org/api/ngAnimate)を含めて下さい。三つの鍵はさりげなさ、スムーズさ、そしてシームレスです。
+  - ビューや主要なビュジアルの要素で、ステート間を遷移するために、さりげない[animations with Angular](https://docs.angularjs.org/guide/animations)を使って下さい。[ngAnimate module](https://docs.angularjs.org/api/ngAnimate)を含めて下さい。三つの鍵はさりげなさ、スムーズさ、そしてシームレスです。
 
     *なぜ ?*: さりげないアニメーションは、適切に使われることでユーザエクスペリエンスを改善します。
 
@@ -2495,7 +2501,7 @@
 
     *なぜ ?*: animate.cssは広く利用されておりテストされています。
 
-    Note: この[Matias NiemeläによるAngularJSのアニメーションの素晴らしいポスト](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)を見て下さい。
+    Note: この[Matias NiemeläによるAngularのアニメーションの素晴らしいポスト](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)を見て下さい。
 
 **[Back to top](#table-of-contents)**
 
@@ -2628,12 +2634,100 @@
 
 **[Back to top](#table-of-contents)**
 
+## JSCS
+
+### Use an Options File
+###### [Style [Y235](#style-y235)]
+
+  - コーディングスタイルをチェックするためにJSCSを使って下さい。 JSCSのオプションファイルを必ずカスタマイズし、ソースファイル管理に含めるようにして下さい。詳細なオプションは、[JSCS docs](http://www.jscs.info)を参照して下さい。
+
+    *なぜ ?*: ソースコード管理にファイルを込みとする前に最初のアラートが上がるようになります
+
+    *なぜ ?*: あなたのチームに一貫性が生まれます。
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
+    }
+    ```
+
+**[Back to top](#table-of-contents)**
+
 ## Constants
 
 ### Vendor Globals
 ###### [Style [Y240](#style-y240)]
 
-  - vendorのライブラリのグローバル変数のためにAngularJSの定数を作って下さい。
+  - vendorのライブラリのグローバル変数のためにAngularの定数を作って下さい。
 
     *なぜ ?*: グローバルになってしまうvendorのライブラリを注入するための方法を与えます。 これによりコンポーネントが持っている依存性をより簡単に把握することで(抽象性の破綻を避け)、コードのテスタビリティが改善されます。さらに理にかなうように、これらのコンポーネントをモックでテストできるようになります。
 
@@ -2685,24 +2779,26 @@
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - 本スタイルやガイドラインに沿ったAngularJSのスニペット
+  - 本スタイルやガイドラインに沿ったAngularのスニペット
 
-    - [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true)をダウンロード
+    - [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)をダウンロード
     - Packagesフォルダに置く
     - Sublimeを再起動
     - JavaScriptのファイルのタイプで`TAB`に続いて下記のコマンドを打ちます。
 
     ```javascript
     ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 ### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - 本スタイルやガイドラインに沿ったAngularJSのファイルのテンプレートが[SideWaffle](http://www.sidewaffle.com)で公開されています。
+  - 本スタイルやガイドラインに沿ったAngularのファイルのテンプレートが[SideWaffle](http://www.sidewaffle.com)で公開されています。
 
     -  [SideWaffle](http://www.sidewaffle.com) で Visual Studio extension (vsixファイル) をダウンロード
     - vsixファイルを実行
@@ -2711,9 +2807,9 @@
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - 本スタイルやガイドラインに沿ったAngularJSスニペットとファイルテンプレート。WebStormのsettingsへインポートできます。
+  - 本スタイルやガイドラインに沿ったAngularスニペットとファイルテンプレート。WebStormのsettingsへインポートできます。
 
-    - [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true)をダウンロード
+    - [WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true)をダウンロード
     - WebStormを開き、 `File`メニューを開く
     - メニューオプションから`Import Settings`を選ぶ
     - ファイルを選択し、`OK`をクリック
@@ -2728,7 +2824,7 @@
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
-  - 本スタイルとガイドラインに沿ったAngularJSスニペット that follow these styles and guidelines.
+  - 本スタイルとガイドラインに沿ったAngularスニペット
     ```
     apm install angularjs-styleguide-snippets
     ```
@@ -2744,6 +2840,36 @@
     ngdirective // creates an Angular directive
     ngfactory // creates an Angular factory
     ngmodule // creates an Angular module
+    ```
+
+### Brackets
+###### [Style [Y254](#style-y254)]
+
+  - 本スタイルとガイドラインに沿ったAngularのスニペット
+
+    - Brackets Extension マネージャー ( File > Extension manager )
+    - ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)をインストール
+    - bracketsの右側にある電球をクリック
+    - `Settings`をクリックして`Import`
+    - ファイルを選択してChoose the file and select to skip or override
+    - `Start Import`をクリック
+
+  - JavaScriptのファイルタイプで`TAB`に続いて下記のコマンドを打ちます。
+
+    ```javascript
+    // These are full file snippets containing an IIFE
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngapp        // creates an Angular module setter
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+
+    // These are partial snippets intended to chained
+    ngmodule     // creates an Angular module getter
+    ngstate      // creates an Angular UI Router state defintion
+    ngconfig     // defines a configuration phase function
+    ngrun        // defines a run phase function
     ```
 
 **[Back to top](#table-of-contents)**
@@ -2801,6 +2927,8 @@
 
 自動タスクの生成に[Gulp](http://gulpjs.com)または[Grunt](http://gruntjs.com)を使って下さい。Gulpはコンフィグレーションをコーディングでリーンに行えます。一方で、Gruntはコードをコンフィグレーションでリーンに行うことができます。個人的には読みやすくまた書きやすいGulpを好みますが両者とも素晴らしいです。
 
+> 私の[Gulp Pluralsight course](http://jpapa.me/gulpps)でGulpについてやタスクの自動化についてより学ぶことができます。
+
 ###### [Style [Y400](#style-y400)]
 
   - その他全てのアプリケーションのJavaScriptファイルに先立って、モジュール定義ファイルの`*.module.js`をリスト化する自動化タスクを使って下さい。
@@ -2821,7 +2949,17 @@
 
 **[Back to top](#table-of-contents)**
 
-## AngularJS docs
+## Filters
+
+###### [Style [Y420](#style-y420)]
+
+  - 複雑なオブジェクトグラフの全てプロパティをスキャンするようなフィルタの使用を避けて下さい。選ばれたプロパティに対してフィルタを用いて下さい。
+
+    *なぜ ?*: フィルタは簡単に誤用されます。適切に用いられない場合、例えばフィルタが大きくて深いオブジェクトのグラフを読みだす時などパフォーマンス上にネガティブな効果があります。
+
+**[Back to top](#table-of-contents)**
+
+## Angular docs
 その他の情報、APIリファレンス、については、[Angular documentation](//docs.angularjs.org/api)をチェックして下さい。
 
 ## Contributing
@@ -2839,10 +2977,11 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 _tldr; Use this guide. Attributions are appreciated._
 
+### Copyright
+
+Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+ 
 ### (The MIT License)
-
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
-
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 'Software'), to deal in the Software without restriction, including
