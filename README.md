@@ -2844,7 +2844,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
   - Angular snippets that follow these styles and guidelines.
 
     - Brackets Extension manager ( File > Extension manager )
-    - Install 'Brackets Snippets (by edc)'
+    - Install ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
     - Click the light bulb in brackets' right gutter
     - Click `Settings` and then `Import`
     - Choose the file and select to skip or override
