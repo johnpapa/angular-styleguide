@@ -2860,12 +2860,14 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngapp        // creates an Angular module setter
     ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
+    ngroute      // creates an Angular routeProvider
 
     // These are partial snippets intended to chained
     ngmodule     // creates an Angular module getter
     ngstate      // creates an Angular UI Router state defintion
     ngconfig     // defines a configuration phase function
     ngrun        // defines a run phase function
+    ngwhen       // defines a route for the routeProvider
     ```
 
 **[Back to top](#table-of-contents)**
