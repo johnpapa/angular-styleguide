@@ -1252,7 +1252,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
     Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
-    
+
   ```javascript
   // Alternative to above example
   function linkFunc(scope, el, attr, vm) {
@@ -1262,7 +1262,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       console.log('LINK: vm.max = %s', vm.max);
   }
   ```
-  
+
 ###### [Style [Y076](#style-y076)]
 
   - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
@@ -1979,7 +1979,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - Use consistent names for all factories named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`.
 
     *Why?*: Provides a consistent way to quickly identify and reference factories.
-    
+
     *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
 
     ```javascript
@@ -2881,6 +2881,26 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngconfig     // defines a configuration phase function
     ngrun        // defines a run phase function
     ngroute      // defines an Angular ngRoute 'when' definition
+    ```
+
+### Emacs
+###### [Style [Y255](#style-y255)]
+
+  - Angular snippets that follow these styles and guidelines.
+
+    - Install [YASnippet](https://github.com/capitaomorte/yasnippet)
+    - Download the [Emacs Angular snippets](assets/emacs-angular-snippets?raw=true)
+    - Place files in the snippets/js-mode of YASnippet
+    - Restart Emacs
+    - In a JavaScript file type these commands followed by a `TAB`
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 **[Back to top](#table-of-contents)**

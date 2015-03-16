@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+#name : ngcontroller
+# --
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .controller('${2:Controller}', $2);
+
+    /* @ngInject */
+    function $2(${3:dependencies}) {
+        var vm = this;
+        vm.title = '$2';
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+        }
+    }
+})();
