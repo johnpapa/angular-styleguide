@@ -49,6 +49,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [Animazioni](#animazioni) 
   1. [Commenti](#commenti)
   1. [JSHint](#jshint)
+  1. [JSCS](#jscs)
   1. [Costanti](#costanti)
   1. [File Template e Snippet](#file-template-e-snippet)
   1. [Documentazione di AngularJS](#documentazione-di-angularjs)
@@ -2646,6 +2647,94 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
             "angular": false,
             "$": false
         }
+    }
+    ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## JSCS
+
+### Usa un file di opzioni
+###### [Stile [Y235](#stile-y235)]
+
+  - Usa JSCS per il controllo dello stile del tuo codice JavaScript ed assicurati di personalizzare il file di opzioni JSCS ed includerlo nel source control. Vedi [JSCS docs](http://www.jscs.info) per i dettagli sulle opzioni.
+
+    *Perché?*: Fornisce un iniziale avvertimento prima di fare il commit di qualunque codice al source control.
+
+    *Perché?*: Fornisce consistenza per l'intero team.
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
     }
     ```
 
