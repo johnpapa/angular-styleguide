@@ -1,5 +1,5 @@
 - trigger: ngfilter
-  description: "Angular filter using John Papa's Angular style guide"
+  description: "Filter using Angular style guide"
   scope: javascript
   text: |
         (function () {
@@ -22,7 +22,7 @@
         })();
 
 - trigger: ngservice
-  description: "Angular service using John Papa's Angular style guide"
+  description: "Service using Angular style guide"
   scope: javascript
   text: |
         (function () {
@@ -47,7 +47,7 @@
         })();
 
 - trigger: ngapp
-  description: "Angular module app definition using John Papa's Angular style guide"
+  description: "Module definition using Angular style guide"
   scope: javascript
   text: |
         (function () {
@@ -60,7 +60,7 @@
         })();
 
 - trigger: ngfactory
-  description: "Angular factory using John Papa's Angular style guide"
+  description: "Factory using Angular style guide"
   scope: javascript
   text: |
         (function () {
@@ -88,7 +88,7 @@
         })();
 
 - trigger: ngdirective
-  description: "Angular directive using John Papa's Angular style guide"
+  description: "Directive using Angular style guide"
   scope: javascript
   text: |
         (function () {
@@ -129,7 +129,7 @@
         })();
 
 - trigger: ngcontroller
-  description: "Angular controller using John Papa's Angular style guide"
+  description: "Controller using Angular style guide"
   scope: javascript
   text: |
         (function() {
@@ -157,7 +157,7 @@
         })();
 
 - trigger: ngwhen
-  description: "Angular ngRouter 'when' route using John Papa's Angular style guide"
+  description: "ngRoute 'when' using Angular style guide"
   scope: javascript
   text: |
         .when('/${1:url}', {
@@ -167,7 +167,7 @@
         })${5:}
 
 - trigger: ngstate
-  description: "Angular UI-Router state using John Papa's Angular style guide"
+  description: "UI-Router state using Angular style guide"
   scope: javascript
   text: |
         state('${1:state}', {
@@ -178,14 +178,26 @@
         })${6:}
 
 - trigger: ngmodule
-  description: "Angular module getter using John Papa's Angular style guide"
+  description: "Module getter using Angular style guide"
   scope: javascript
   text: |
         angular
             .module('${1:module}')${2:}
 
+- trigger: ngconst
+  description: "Constant using Angular style guide"
+  scope: javascript
+  text: |
+        .constant('${1:name}', ${2:value});
+
+- trigger: ngvalue
+  description: "Value using Angular style guide"
+  scope: javascript
+  text: |
+        .value('${1:name}', ${2:value});
+
 - trigger: ngconfig
-  description: "Angular config phase function using John Papa's Angular style guide"
+  description: "Config function using Angular style guide"
   scope: javascript
   text: |
         .config(${1:configuration})
@@ -198,7 +210,7 @@
         }
 
 - trigger: ngrun
-  description: "Angular run phase function using John Papa's Angular style guide"
+  description: "Run function from Angular style guide"
   scope: javascript
   text: |
         .run(${1:runFn})
