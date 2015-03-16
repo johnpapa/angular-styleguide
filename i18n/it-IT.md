@@ -1973,9 +1973,11 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Nomi delle factory
 ###### [Stile [Y125](#stile-y125)]
 
-  - Usa una nomenclatura consistente per tutte le factory dando i nomi date le loro funzionalità. Usa il camel-case per service e factory.
+  - Usa una nomenclatura consistente per tutte le factory dando i nomi date le loro funzionalità. Usa il camel-case per service e factory. Evita di pre-nominare factory e service con `$`
 
     *Perché?*: Fornisce un modo consistente per identificare facilmente e referenziare le factory.
+    
+    *Perché?*: Evita collisione di nomi con factory e servizi di Angular esistenti che usano il prefisso `$`.
 
     ```javascript
     /**
