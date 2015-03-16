@@ -1,5 +1,5 @@
 - trigger: ngfilter
-  description: "Filter using Angular style guide"
+  description: "Filter"
   scope: javascript
   text: |
         (function () {
@@ -22,7 +22,7 @@
         })();
 
 - trigger: ngservice
-  description: "Service using Angular style guide"
+  description: "Service"
   scope: javascript
   text: |
         (function () {
@@ -47,7 +47,7 @@
         })();
 
 - trigger: ngapp
-  description: "Module definition using Angular style guide"
+  description: "Module definition"
   scope: javascript
   text: |
         (function () {
@@ -60,7 +60,7 @@
         })();
 
 - trigger: ngfactory
-  description: "Factory using Angular style guide"
+  description: "Factory"
   scope: javascript
   text: |
         (function () {
@@ -88,7 +88,7 @@
         })();
 
 - trigger: ngdirective
-  description: "Directive using Angular style guide"
+  description: "Directive"
   scope: javascript
   text: |
         (function () {
@@ -129,7 +129,7 @@
         })();
 
 - trigger: ngcontroller
-  description: "Controller using Angular style guide"
+  description: "Controller"
   scope: javascript
   text: |
         (function() {
@@ -157,7 +157,7 @@
         })();
 
 - trigger: ngwhen
-  description: "ngRoute 'when' using Angular style guide"
+  description: "ngRoute 'when'"
   scope: javascript
   text: |
         .when('/${1:url}', {
@@ -167,10 +167,10 @@
         })${5:}
 
 - trigger: ngstate
-  description: "UI-Router state using Angular style guide"
+  description: "UI-Router state"
   scope: javascript
   text: |
-        state('${1:state}', {
+        .state('${1:state}', {
             url: '${2:/url}'
             templateUrl: '${3:template}.html',
             controller: '${4:Controller}'
@@ -178,26 +178,25 @@
         })${6:}
 
 - trigger: ngmodule
-  description: "Module getter using Angular style guide"
+  description: "Module getter"
   scope: javascript
   text: |
         angular
             .module('${1:module}')${2:}
-
 - trigger: ngconst
-  description: "Constant using Angular style guide"
+  description: "Constant"
   scope: javascript
   text: |
         .constant('${1:name}', ${2:value});
 
 - trigger: ngvalue
-  description: "Value using Angular style guide"
+  description: "Value"
   scope: javascript
   text: |
         .value('${1:name}', ${2:value});
 
 - trigger: ngconfig
-  description: "Config function using Angular style guide"
+  description: "Config phase function"
   scope: javascript
   text: |
         .config(${1:configuration})
@@ -210,7 +209,7 @@
         }
 
 - trigger: ngrun
-  description: "Run function from Angular style guide"
+  description: "Run phase function"
   scope: javascript
   text: |
         .run(${1:runFn})
