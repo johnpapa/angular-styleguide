@@ -2844,7 +2844,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ###### [Style [Y254](#style-y254)]
 
   - Angular snippets that follow these styles and guidelines.
-
+    - Download the [Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
     - Brackets Extension manager ( File > Extension manager )
     - Install ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
     - Click the light bulb in brackets' right gutter
