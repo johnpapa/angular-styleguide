@@ -1251,6 +1251,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
+    Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
+    
+  ```javascript
+  // Alternative to above example
+  function linkFunc(scope, el, attr, vm) {
+      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+      console.log('LINK: vm.min = %s', vm.min);
+      console.log('LINK: vm.max = %s', vm.max);
+  }
+  ```
+  
 ###### [Style [Y076](#style-y076)]
 
   - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
