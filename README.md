@@ -1252,7 +1252,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
     Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
-    
+
   ```javascript
   // Alternative to above example
   function linkFunc(scope, el, attr, vm) {
@@ -1262,7 +1262,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       console.log('LINK: vm.max = %s', vm.max);
   }
   ```
-  
+
 ###### [Style [Y076](#style-y076)]
 
   - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
@@ -1979,7 +1979,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - Use consistent names for all factories named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`.
 
     *Why?*: Provides a consistent way to quickly identify and reference factories.
-    
+
     *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
 
     ```javascript
@@ -2881,6 +2881,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngconfig     // defines a configuration phase function
     ngrun        // defines a run phase function
     ngroute      // defines an Angular ngRoute 'when' definition
+    ngtranslate  // uses $translate service with its promise
     ```
 
 **[Back to top](#table-of-contents)**
