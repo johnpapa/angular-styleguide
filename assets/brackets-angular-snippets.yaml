@@ -220,3 +220,11 @@
         function ${1:runFn} (${2:dependencies}) {
             ${3:}
         }
+
+- trigger: ngtranslate
+  description: "$translate service"
+  scope: javascript
+  text: |
+        $translate(['${1:key1}']).then(function(translations){
+            ${2:value} = translations['${3:key1}'];
+        });
