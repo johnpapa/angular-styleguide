@@ -2983,6 +2983,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
   
     *Why?*: Similar to `activate()` functions, `$watch` is an immediate action the controller is taking. Placing it at the top of the controller makes it instantly identifiable.
 
+**[Back to top](#table-of-contents)**
 
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
