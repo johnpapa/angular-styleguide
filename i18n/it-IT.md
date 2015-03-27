@@ -49,11 +49,13 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [Animazioni](#animazioni) 
   1. [Commenti](#commenti)
   1. [JSHint](#jshint)
+  1. [JSCS](#jscs)
   1. [Costanti](#costanti)
   1. [File Template e Snippet](#file-template-e-snippet)
   1. [Generatore Yeoman](#generatore-yeoman)
   1. [Routing](#routing)
-  1. [Automazione dei Processi](#automazione-dei-processi)
+  1. [Automazione dei processi](#automazione-dei-processi)
+  1. [Filtri](#filtri)
   1. [Documentazione di AngularJS](#documentazione-di-angularjs)
   1. [Contribuire](#contribuire)
   1. [Licenza](#licenza)
@@ -1252,6 +1254,17 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
+    Nota: Puoi inoltre nominare il controller quando lo inietti nella link function e accedi agli attributi della directive come proprietà del controller.
+    
+  ```javascript
+  // Alternativa all'esempio sopra riportato
+  function linkFunc(scope, el, attr, vm) {
+      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+      console.log('LINK: vm.min = %s', vm.min);
+      console.log('LINK: vm.max = %s', vm.max);
+  }
+  ```
 ###### [Stile [Y076](#stile-y076)]
 
   - Usa `bindToController = true` quando usi la sintassi `controller as` con una directive al fine di fare il bind tra lo scope esterno e lo scope del controller della directive.
@@ -1976,9 +1989,11 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Nomi delle factory
 ###### [Stile [Y125](#stile-y125)]
 
-  - Usa una nomenclatura consistente per tutte le factory dando i nomi date le loro funzionalità. Usa il camel-case per service e factory.
+  - Usa una nomenclatura consistente per tutte le factory dando i nomi date le loro funzionalità. Usa il camel-case per service e factory. Evita di pre-nominare factory e service con `$`
 
     *Perché?*: Fornisce un modo consistente per identificare facilmente e referenziare le factory.
+    
+    *Perché?*: Evita collisione di nomi con factory e servizi di Angular esistenti che usano il prefisso `$`.
 
     ```javascript
     /**
@@ -2641,6 +2656,94 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
+## JSCS
+
+### Usa un file di opzioni
+###### [Stile [Y235](#stile-y235)]
+
+  - Usa JSCS per il controllo dello stile del tuo codice JavaScript ed assicurati di personalizzare il file di opzioni JSCS ed includerlo nel source control. Vedi [JSCS docs](http://www.jscs.info) per i dettagli sulle opzioni.
+
+    *Perché?*: Fornisce un iniziale avvertimento prima di fare il commit di qualunque codice al source control.
+
+    *Perché?*: Fornisce consistenza per l'intero team.
+
+    ```javascript
+    {
+        "excludeFiles": ["node_modules/**", "bower_components/**"],
+
+        "requireCurlyBraces": [
+            "if",
+            "else",
+            "for",
+            "while",
+            "do",
+            "try",
+            "catch"
+        ],
+        "requireOperatorBeforeLineBreak": true,
+        "requireCamelCaseOrUpperCaseIdentifiers": true,
+        "maximumLineLength": {
+          "value": 100,
+          "allowComments": true,
+          "allowRegex": true
+        },
+        "validateIndentation": 4,
+        "validateQuoteMarks": "'",
+
+        "disallowMultipleLineStrings": true,
+        "disallowMixedSpacesAndTabs": true,
+        "disallowTrailingWhitespace": true,
+        "disallowSpaceAfterPrefixUnaryOperators": true,
+        "disallowMultipleVarDecl": null,
+
+        "requireSpaceAfterKeywords": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "do",
+          "switch",
+          "return",
+          "try",
+          "catch"
+        ],
+        "requireSpaceBeforeBinaryOperators": [
+            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+            "&=", "|=", "^=", "+=",
+
+            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+            "|", "^", "&&", "||", "===", "==", ">=",
+            "<=", "<", ">", "!=", "!=="
+        ],
+        "requireSpaceAfterBinaryOperators": true,
+        "requireSpacesInConditionalExpression": true,
+        "requireSpaceBeforeBlockStatements": true,
+        "requireLineFeedAtFileEnd": true,
+        "disallowSpacesInsideObjectBrackets": "all",
+        "disallowSpacesInsideArrayBrackets": "all",
+        "disallowSpacesInsideParentheses": true,
+
+        "validateJSDoc": {
+            "checkParamNames": true,
+            "requireParamTypes": true
+        },
+
+        "disallowMultipleLineBreaks": true,
+
+        "disallowCommaBeforeLineBreak": null,
+        "disallowDanglingUnderscores": null,
+        "disallowEmptyBlocks": null,
+        "disallowMultipleLineStrings": null,
+        "disallowTrailingComma": null,
+        "requireCommaBeforeLineBreak": null,
+        "requireDotNotation": null,
+        "requireMultipleVarDecl": null,
+        "requireParenthesesAroundIIFE": true
+    }
+    ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
 ## Costanti
 
 ### Variabili globali delle terze parti
@@ -2756,6 +2859,40 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngdirective // crea una directive Angular
     ngfactory // crea una factory Angular
     ngmodule // crea un module Angular
+    ngservice // crea un servizio Angular
+    ngfilter // crea un filtro Angular
+    ```
+
+### Brackets
+###### [Stile [Y254](#stile-y254)]
+
+  - Snippet di Angular che seguono questi stili e linee guida.
+
+    - Brackets Extension manager ( File > Extension manager )
+    - Installa ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
+    - Clicca sulla lampadina nel gutter destro in bracket
+    - Clicca su `Settings` e quindi `Import`
+    - Scegli il file e seleziona per saltare o fare l'override
+    - Clicca `Start Import`
+
+  - In un file di tipo JavaScript digita questi comandi seguiti da un `TAB`
+
+    ```javascript
+    // Questi sono snippet interi che contengono una IIFE
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngapp        // crea una impostazione di modulo Angular
+    ngservice    // crea un service Angular
+    ngfilter     // crea un filtro Angular
+    ngroute      // crea un routeProvider Angular
+
+    // Questi sono snippet parziali intesi per essere concatenati
+    ngmodule     // crea un getter di modulo Angular
+    ngstate      // crea una definizione di stato di UI Router Angular
+    ngconfig     // definisce un funzione per la fase di cofigurazione
+    ngrun        // definisce una funzione per la fase di esecuzione
+    ngwhen       // definisce una route per il routeProvider
     ```
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
@@ -2763,7 +2900,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ## Generatore Yeoman
 ###### [Stile [Y260](#stile-y260)]
 
-Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per creare un'app che funga da punto di partenza per Angular che segua questa guida stilistica.
+Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per creare un'app che funga da punto di partenza per Angular che segue gli stili di questa guida.
 
 1. Installa generator-hottowel
 
@@ -2771,14 +2908,14 @@ Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per cr
   npm install -g generator-hottowel
   ```
 
-2. Crea un nuova cartella e cambia la directory verso di essa
+2. Crea una nuova cartella e cambia la directory su di essa
 
   ```
   mkdir myapp
   cd myapp
   ```
 
-3. Lancia il generatore
+3. Esegui il generatore
 
   ```
   yo hottowel helloWorld
@@ -2787,43 +2924,45 @@ Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per cr
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Routing
-Il routing dal lato client è importante al fine di creare un flusso di navigazione tra le viste e le viste composte che sono fatte da diversi template più piccoli e directive.
+Il routing del lato client è importante al fine di creare in flusso di navigazione tra view e composizione di view che sono costituite da template più piccoli e directive.
 
 ###### [Stile [Y270](#stile-y270)]
 
-  - Usa [AngularUI Router](http://angular-ui.github.io/ui-router/) per il routing dal lato client.
+  - Usa il [Router AngularUI](http://angular-ui.github.io/ui-router/) per il routing del lato client.
 
-    *Perché?*: UI Router offre tutte le funzionalità del router di Angular più altre che includono route nidificate e stati.
+    *Perché?*: UI Router offre tutte le funzionalità del router di Angular più alcune funzionalità aggiuntive che includono orute nidificate e stati.
 
-    *Perché?*: La sintassi è piuttosto simile al router di Angular ed è semplice migrare ad UI Router.
+    *Perché?*: la sintassi è piuttosto simile a quella del router di Angular ed è facile migrare a UI Router.
 
 ###### [Stile [Y271](#stile-y271)]
 
-  - Definisci le route per le viste nel modulo nel quale esistono. Ogni modulo dovrebbe contenere le route per le viste che si trovano nel modulo.
+  - Definisci le route per le view nel modulo dove queste esisteono. Ogni modulo dovrebbe contenere le route per le view del modulo.
 
     *Perché?*: Ogni modulo dovrebbe essere a se stante.
 
-    *Perché?*: Quando rimuovi o aggiungi un modulo, l'app conterrà le route che puntano a viste esistenti.
+    *Perché?*: Quando rimuovi o aggiungi un modulo, l'app conterrà soltanto route che puntano a view esistenti.
 
-    *Perché?*: Questo rende semplice abilitare o disabilitare porzioni di una applicazione senza preoccuparsi di route orfane.
+    *Perché?*: Ciò rende semplice abilitare o disabilitare porzioni di una applicazione senza preoccupazioni inerenti route orfane.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
-## Automazione dei Processi
-Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp tende a codice sopra configurazione mentre Grunt tende a configurazione sopra codice. Personalmente preferisco Gulp perché lo percepisco più semplice da leggere e scrivere ma entrambi sono eccellenti.
+## Automazione dei processi
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp si basa su codive sopra configurazione mentre Grunt si basa su configurazione sopre codice. Personalmente preferisco Gulp poiché lo percepisco come più facile da leggere e scrivere ma entrambi sono eccellenti.
+
+> Impara di più su Gulp per l'automazione dei processi e pattern in mio [corso Pluralsight su Gulp](http://jpapa.me/gulpps) (in inglese)
 
 ###### [Stile [Y400](#stile-y400)]
 
-  - Usa l'automazione dei processi per listare i file che deinifscono i moduli `*.module.js` prima di ogni altro file dell'applicazione di JavaScript.
+  - Usa l'automazione dei processi per elencare i file delle definizioni dei modili `*.module.js` prima di qualunque altro file JavaScript dell'applicazione.
 
-    *Perché?*: Angular necessita delle definizioni del moduli che devono essere registrati prima del loro utilizzo.
+    *Perché?*: Angular necessita delle definizione del modulo da essere registrate prima di essere usati.
 
-    *Perché?*: Dai i nomi ai moduli usando un pattern specifico quale `*.module.js` rende semplice prenderli con un glob e listarli prima.
+    *Perché?*: Nominare i moduli con un pattern specifico come `*.module.js` semplifica prenderli con un glob ed elencarli per primi.
 
     ```javascript
     var clientApp = './src/client/app/';
 
-    // Prendi sempre i file dei moduli prima
+    // Prendi sempre i file dei moduli per primi
     var files = [
       clientApp + '**/*.module.js',
       clientApp + '**/*.js'
@@ -2832,8 +2971,18 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di 
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
+## Filtri
+
+###### [Stile [Y420](#stile-y420)]
+
+  - Evita l'utilizzo di filtri per la scansione di tutte le proprietà di un grafico di un oggetto complesso. Usa i filtri per selezionare le proprietà.
+
+    *Perché?*:I filtri possono facilmente essere abusati ed avere un impatto negativo sulle prestazioni se non usati con saggezza, per esempio quando i filtri hanno come soggetto un grafico di un ogetto largo e profondo.
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
 ## Documentazione di AngularJS
-Per qualsiasi altro, riferimento alle API, controlla la [documentazione di Angular](//docs.angularjs.org/api).
+For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
 ## Contribuire
 
@@ -2843,8 +2992,8 @@ Apri prima una "issue" per discutere potenziali cambiamenti/aggiunte. Se hai del
 
 ### Processo
 
-    1. Discuti i cambiamenti in un Issue di Github. 
-    2. Apri una Pull Request verso la brach develop, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
+    1. Discuti i cambiamenti in un Issue. 
+    2. Apri una Pull Request, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
     3. La Pull Request sarà vagliata e quindi fatto un merge o declinata.
 
 ## Licenza
