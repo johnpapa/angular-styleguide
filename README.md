@@ -2970,6 +2970,19 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
 **[Back to top](#table-of-contents)**
 
+## Uptake
+
+  - Use [Angular Commit Conventions](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines) when contributing to the project.
+  
+    *Why?*: Consistent commit conventions make the project history readable and easily digestible.
+
+    *Why?*: Using these commit conventions allows us the option of implementing auto doc generation in the future.
+    
+  - Only use `$watch` with caution (as noted above), but, when necessary, place it above function definitions and below the bindable members at the top of the controller.
+  
+    *Why?*: Similar to `activate()` functions, `$watch` is an immediate action the controller is taking. Placing it at the top of the controller makes it instantly identifiable.
+
+
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
