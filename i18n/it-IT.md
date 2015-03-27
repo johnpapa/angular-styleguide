@@ -2859,6 +2859,8 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngdirective // crea una directive Angular
     ngfactory // crea una factory Angular
     ngmodule // crea un module Angular
+    ngservice // crea un servizio Angular
+    ngfilter // crea un filtro Angular
     ```
 
 ### Brackets
