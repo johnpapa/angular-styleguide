@@ -2969,6 +2969,122 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di 
     ];
     ```
 
+### Brackets
+###### [Stile [Y254](#stile-y254)]
+
+  - Snippet di Angular che seguono questi stili e linee guida.
+
+    - Brackets Extension manager ( File > Extension manager )
+    - Installa ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
+    - Clicca sulla lampadina nel gutter destro in bracket
+    - Clicca su `Settings` e quindi `Import`
+    - Scegli il file e seleziona per saltare o fare l'override
+    - Clicca `Start Import`
+
+  - In un file di tipo JavaScript digita questi comandi seguiti da un `TAB`
+
+    ```javascript
+    // Questi sono snippet interi che contengono una IIFE
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngapp        // crea una impostazione di modulo Angular
+    ngservice    // crea un service Angular
+    ngfilter     // crea un filtro Angular
+    ngroute      // crea un routeProvider Angular
+
+    // Questi sono snippet parziali intesi per essere concatenati
+    ngmodule     // crea un getter di modulo Angular
+    ngstate      // crea una definizione di stato di UI Router Angular
+    ngconfig     // definisce un funzione per la fase di cofigurazione
+    ngrun        // definisce una funzione per la fase di esecuzione
+    ngwhen       // definisce una route per il routeProvider
+    ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## Generatore Yeoman
+###### [Stile [Y260](#stile-y260)]
+
+Puoi usare il [generatore yeoman di HotTowel](http://jpapa.me/yohottowel) per creare un'app che funga da punto di partenza per Angular che segue gli stili di questa guida.
+
+1. Installa generator-hottowel
+
+  ```
+  npm install -g generator-hottowel
+  ```
+
+2. Crea una nuova cartella e cambia la directory su di essa
+
+  ```
+  mkdir myapp
+  cd myapp
+  ```
+
+3. Esegui il generatore
+
+  ```
+  yo hottowel helloWorld
+  ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## Routing
+Il routing del lato client è importante al fine di creare in flusso di navigazione tra view e composizione di view che sono costituite da template più piccoli e directive.
+
+###### [Stile [Y270](#stile-y270)]
+
+  - Usa il [Router AngularUI](http://angular-ui.github.io/ui-router/) per il routing del lato client.
+
+    *Perché?*: UI Router offre tutte le funzionalità del router di Angular più alcune funzionalità aggiuntive che includono orute nidificate e stati.
+
+    *Perché?*: la sintassi è piuttosto simile a quella del router di Angular ed è facile migrare a UI Router.
+
+###### [Stile [Y271](#stile-y271)]
+
+  - Definisci le route per le view nel modulo dove queste esisteono. Ogni modulo dovrebbe contenere le route per le view del modulo.
+
+    *Perché?*: Ogni modulo dovrebbe essere a se stante.
+
+    *Perché?*: Quando rimuovi o aggiungi un modulo, l'app conterrà soltanto route che puntano a view esistenti.
+
+    *Perché?*: Ciò rende semplice abilitare o disabilitare porzioni di una applicazione senza preoccupazioni inerenti route orfane.
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## Automazione dei processi
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp si basa su codive sopra configurazione mentre Grunt si basa su configurazione sopre codice. Personalmente preferisco Gulp poiché lo percepisco come più facile da leggere e scrivere ma entrambi sono eccellenti.
+
+> Impara di più su Gulp per l'automazione dei processi e pattern in mio [corso Pluralsight su Gulp](http://jpapa.me/gulpps) (in inglese)
+
+###### [Stile [Y400](#stile-y400)]
+
+  - Usa l'automazione dei processi per elencare i file delle definizioni dei modili `*.module.js` prima di qualunque altro file JavaScript dell'applicazione.
+
+    *Perché?*: Angular necessita delle definizione del modulo da essere registrate prima di essere usati.
+
+    *Perché?*: Nominare i moduli con un pattern specifico come `*.module.js` semplifica prenderli con un glob ed elencarli per primi.
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Prendi sempre i file dei moduli per primi
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
+
+**[Torna all'inizio](#tavola-dei-contenuti)**
+
+## Filtri
+
+###### [Stile [Y420](#stile-y420)]
+
+  - Evita l'utilizzo di filtri per la scansione di tutte le proprietà di un grafico di un oggetto complesso. Usa i filtri per selezionare le proprietà.
+
+    *Perché?*:I filtri possono facilmente essere abusati ed avere un impatto negativo sulle prestazioni se non usati con saggezza, per esempio quando i filtri hanno come soggetto un grafico di un ogetto largo e profondo.
+
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Filtri
