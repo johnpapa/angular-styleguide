@@ -52,6 +52,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
   1. [Filters](#filters)
+  1. [Uptake](#uptake)
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -2969,6 +2970,31 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
   - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
 
     *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph.
+
+**[Back to top](#table-of-contents)**
+
+## Uptake
+
+  - Use [Angular Commit Conventions](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines) when contributing to the project.
+  
+    *Why?*: Consistent commit conventions make the project history readable and easily digestible.
+
+    *Why?*: Using these commit conventions allows us the option of implementing auto doc generation in the future.
+    
+  - Use [Jira Commit Conventions](https://confluence.atlassian.com/display/Cloud/Processing+JIRA+issues+with+commit+messages) as well. This should be the last line in the commit comment.
+
+    *Why?*: Linking commits with Jira tickets will provide increased tracibility.
+
+    Example:
+
+    Log 2 days and 5 hours of work against issues JRA-123, JRA-234 and JRA-345, add the comment 'Task completed ahead of schedule' to all three issues, and resolve all three issues.
+    ```
+      JRA-123 JRA-234 JRA-345 #resolve #time 2d 5h #comment Task completed ahead of schedule
+    ```
+
+  - Only use `$watch` with caution (as noted above), but, when necessary, place it above function definitions and below the bindable members at the top of the controller.
+  
+    *Why?*: Similar to `activate()` functions, `$watch` is an immediate action the controller is taking. Placing it at the top of the controller makes it instantly identifiable.
 
 **[Back to top](#table-of-contents)**
 
