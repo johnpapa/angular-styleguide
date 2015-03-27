@@ -2979,6 +2979,17 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
     *Why?*: Using these commit conventions allows us the option of implementing auto doc generation in the future.
     
+  - Use [Jira Commit Conventions](https://confluence.atlassian.com/display/Cloud/Processing+JIRA+issues+with+commit+messages) as well. This should be the last line in the commit comment.
+
+    *Why?*: Linking commits with Jira tickets will provide increased tracibility.
+
+    Example:
+
+    Log 2 days and 5 hours of work against issues JRA-123, JRA-234 and JRA-345, add the comment 'Task completed ahead of schedule' to all three issues, and resolve all three issues.
+    ```
+      JRA-123 JRA-234 JRA-345 #resolve #time 2d 5h #comment Task completed ahead of schedule
+    ```
+
   - Only use `$watch` with caution (as noted above), but, when necessary, place it above function definitions and below the bindable members at the top of the controller.
   
     *Why?*: Similar to `activate()` functions, `$watch` is an immediate action the controller is taking. Placing it at the top of the controller makes it instantly identifiable.
