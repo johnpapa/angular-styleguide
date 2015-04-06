@@ -368,7 +368,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-  Nota: Puoi evitare ogni warning di [jshint](http://www.jshint.com/) ponendo il commento sotto riportato al di sopra della linea di codice.
+  Nota: Puoi evitare ogni warning di [jshint](http://www.jshint.com/) ponendo il commento sotto riportato al di sopra della linea di codice. Comunque ciò non è richiesto quando la funzione è nominata usando le Maiuscole, la convenzione è intesa come la funzione costruttore che è ciò che un controller è in Angular.
 
   ```javascript
   /* jshint validthis: true */
