@@ -69,28 +69,28 @@
 
   - Дефинирај 1 компонента во датотека.  
 
- 	Следниот пример го дефинира `app` модулот и неговите зависности, дефинира контролер, и дефинира фабрика, сé во една датотека  
+  Следниот пример го дефинира `app` модулот и неговите зависности, дефинира контролер, и дефинира фабрика, сé во една датотека  
 
   ```javascript
   /* избегнувајте */
   angular
-    	.module('app', ['ngRoute'])
-    	.controller('someController', someController)
-    	.factory('someFactory', someFactory);
-  	
+      .module('app', ['ngRoute'])
+      .controller('someController', someController)
+      .factory('someFactory', someFactory);
+    
   function SomeController() { }
 
   function someFactory() { }
   ```
     
-	Истите компоненти сега се разделени во свои датотеки.
+  Истите компоненти сега се разделени во свои датотеки.
 
   ```javascript
   /* препорачано */
   
   // app.module.js
   angular
-    	.module('app', ['ngRoute']);
+      .module('app', ['ngRoute']);
   ```
 
   ```javascript
@@ -98,8 +98,8 @@
   
   // someController.js
   angular
-    	.module('app')
-    	.controller('SomeController', SomeController);
+      .module('app')
+      .controller('SomeController', SomeController);
 
   function SomeController() { }
   ```
@@ -109,9 +109,9 @@
   
   // someFactory.js
   angular
-    	.module('app')
-    	.factory('someFactory', someFactory);
-  	
+      .module('app')
+      .factory('someFactory', someFactory);
+    
   function someFactory() { }
   ```
 
@@ -194,7 +194,7 @@
 ###### [Style [Y021](#style-Y021)]
   - Декларирај модули без променлива користејќи ја setter синтаксата. 
 
-	*Зошто?*: Со 1 компонента во датотека, реткост е да поставиш нова променлива во модулот.
+  *Зошто?*: Со 1 компонента во датотека, реткост е да поставиш нова променлива во модулот.
   
   ```javascript
   /* избегнувајте*/
@@ -206,12 +206,12 @@
   ]);
   ```
 
-	Наместо тоа, употреби ја едноставната setter синтакса.
+  Наместо тоа, употреби ја едноставната setter синтакса.
 
   ```javascript
   /* препорачано */
   angular
-    	.module('app', [
+      .module('app', [
           'ngAnimate',
           'ngRoute',
           'app.shared',
@@ -223,7 +223,7 @@
 ###### [Style [Y022](#style-Y022)]
   - Кога употребувате модул, избегнувајте користење на променливa. Наместо тоа употребете врзување со getter синтакса.
 
-	*Зошто?* : Ова создава читлив код и избегнува судири на променливи или протекувања.
+  *Зошто?* : Ова создава читлив код и избегнува судири на променливи или протекувања.
 
   ```javascript
   /* избегнувајте */
@@ -245,17 +245,17 @@
 ### Setting vs Getting
 ###### [Style [Y023](#style-Y023)]
   - Само еднаш создади и земај го за сите други инстанци.
-	
-	*Зошто?*: Модул треба еднаш да биде создаден, и од тој момент да биде само превземен.
-  	  
-	  - Употреби `angular.module('app', []);` за да создадеш модул.
-	  - Употреби  `angular.module('app');` за да го превземеш тој модул. 
+  
+  *Зошто?*: Модул треба еднаш да биде создаден, и од тој момент да биде само превземен.
+      
+    - Употреби `angular.module('app', []);` за да создадеш модул.
+    - Употреби  `angular.module('app');` за да го превземеш тој модул. 
 
 ### Именувани vs Анонимни функции
 ###### [Style [Y024](#style-Y024)]
   - Употреби именувани функции наместо да проследиш анонимни функции како повратни повици (callback). 
 
-	*Зошто?*: Ова создава читлив код, кој е полесен за дебагирање и го намалува бројот на вгнездени повратни повици.
+  *Зошто?*: Ова создава читлив код, кој е полесен за дебагирање и го намалува бројот на вгнездени повратни повици.
 
   ```javascript
   /* избегнувајте */
@@ -293,11 +293,11 @@
 ###### [Style [Y030](#style-Y030)]
   - Употреби ја [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) синтаксата наместо `класичниот контролер со $scope` синтакса.
 
-	*Зошто?*: Контролерите се создаваат, се ажурираат и потоа се пристапуваат преку единствена нова инстанца. `controllerAs` синтаксата е поблиску до JavaScript конструктор наспроти `класичната $scope синтакса`.
+  *Зошто?*: Контролерите се создаваат, се ажурираат и потоа се пристапуваат преку единствена нова инстанца. `controllerAs` синтаксата е поблиску до JavaScript конструктор наспроти `класичната $scope синтакса`.
 
   *Зошто?*: Го промовира користењето на "dotted" објект во Прегледот (на пример `customer.name` наместо `name`), што е поконтекстуално, полесно за читање и избегнува проблеми со референцирање кои може да се појават без "dotting".
 
-	*Зошто?*: Помага при избегнување на `$parent` повици во Прегледи со вгнездени контролери.
+  *Зошто?*: Помага при избегнување на `$parent` повици во Прегледи со вгнездени контролери.
 
   ```html
   <!-- избегнувајте -->
@@ -589,8 +589,8 @@
 
       function checkCredit() { 
          return creditService.isOrderTotalOk(vm.total)
-          .then(function(isOk) { vm.isCreditOk = isOk; })
-          .catch(showServiceError);
+            .then(function(isOk) { vm.isCreditOk = isOk; })
+            .catch(showServiceError);
     };
       };
   }
@@ -1047,7 +1047,7 @@
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner директива која може да се користи низ апликацијата во компанијата Acme
+   * @desc sales директива која може да се користи низ апликацијата во компанијата Acme
    * @пример <div acme-sales-customer-info></div>
    */    
   angular
@@ -1076,7 +1076,7 @@
   }
   ```
 
-    Забелешка: Постојат повеќе начини на именување на директиви, посебно што можат да се искористат во широк или краток обем. Одлучете се за еден кој ја прави директивата и нејзиното име јасно и различно. Има неколку примери подоле, но посоветувајте се до секцијата за именување.
+    Забелешка: Постојат повеќе начини на именување на директиви, посебно што можат да се искористат во широк или краток обем. Одлучете се за еден кој ја прави директивата и нејзиното име јасно и различно. Има неколку примери подоле, но посоветувајте се до секцијата за [именување](#naming).
 
 ### Манипулирајте DOM во директивата
 ###### [Style [Y072](#style-Y072)]
@@ -1208,7 +1208,7 @@
           console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
           console.log('CTRL: vm.min = %s', vm.min);
           console.log('CTRL: vm.max = %s', vm.max);
-	}
+  }
   ```
 
   ```html
@@ -1217,6 +1217,19 @@
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
+
+    Забелешка: Можете исто така да го именувате Контролерот кога ќе го вметнете во link функција и пристапите до атрибутите на директивата како својства на контролерот.
+    
+  ```javascript
+  // Алтернатива за примерот горе
+  function linkFunc(scope, el, attr, vm) {
+      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+      console.log('LINK: vm.min = %s', vm.min);
+      console.log('LINK: vm.max = %s', vm.max);
+  }
+  ```
+  
 
 ###### [Style [Y076](#style-y076)]
 
@@ -1243,8 +1256,8 @@
               max: '='
           },
           controller: ExampleController,
-            controllerAs: 'vm',
-            bindToController: true
+          controllerAs: 'vm',
+          bindToController: true
         };
 
       return directive;
@@ -1376,43 +1389,43 @@
   }
   ```
 
-  	Забелешка: Примерот подоле покажува како решавање на патеката покажува кон именувана функција, која е полесна за дебагирање и полесно справување со вклучување на зависностите.
+    Забелешка: Примерот подоле покажува како решавање на патеката покажува кон именувана функција, која е полесна за дебагирање и полесно справување со вклучување на зависностите.
 
-  	```javascript
-	/* уште подобро */
+    ```javascript
+  /* уште подобро */
 
-	// route-config.js
-	angular
-	    .module('app')
-	    .config(config);
+  // route-config.js
+  angular
+      .module('app')
+      .config(config);
 
-	function config($routeProvider) {
-	    $routeProvider
-	        .when('/avengers', {
-	            templateUrl: 'avengers.html',
-	            controller: 'Avengers',
-	            controllerAs: 'vm',
-	            resolve: {
-	                moviesPrepService: moviesPrepService
-	            }
-	        });
-	}
+  function config($routeProvider) {
+      $routeProvider
+          .when('/avengers', {
+              templateUrl: 'avengers.html',
+              controller: 'Avengers',
+              controllerAs: 'vm',
+              resolve: {
+                  moviesPrepService: moviesPrepService
+              }
+          });
+  }
 
-	function moviePrepService(movieService) {
-	    return movieService.getMovies();
-	}
+  function moviePrepService(movieService) {
+      return movieService.getMovies();
+  }
 
-	// avengers.js
-	angular
-	    .module('app')
-	    .controller('Avengers', Avengers);
+  // avengers.js
+  angular
+      .module('app')
+      .controller('Avengers', Avengers);
 
-	Avengers.$inject = ['moviesPrepService'];
-	function Avengers(moviesPrepService) {
-	      var vm = this;
-	      vm.movies = moviesPrepService.movies;
-	}
-  	```
+  Avengers.$inject = ['moviesPrepService'];
+  function Avengers(moviesPrepService) {
+        var vm = this;
+        vm.movies = moviesPrepService.movies;
+  }
+    ```
 
     Забелешка: Примерот на `movieService` не е безбеден за минификација. За детали како да го направите безбеден за минификација, прегледајте ги секциите за [dependency injection](#manual-annotating-for-dependency-injection) и [minification and annotation](#minification-and-annotation).
 
@@ -1669,7 +1682,7 @@
 
     Забелешка: Друга опција е да се прескокне сервисот наместо да се користи декоратор. Ова е добра опција, но доколку сакате да го задржите стандардното однесување и проширите, тогаш препорачливо е да користите декоратор.
 
-  	```javascript
+    ```javascript
     /* препорачано */
     angular
         .module('blocks.exception')
@@ -1699,7 +1712,7 @@
             toastr.error(exception.msg, errorData);
         };
     }
-  	```
+    ```
 
 ### Ловци на исклучоци
 ###### [Style [Y111](#style-Y111)]
@@ -1754,10 +1767,10 @@
                 if (handlingRouteChangeError) { return; }
                 handlingRouteChangeError = true;
                 var destination = (current && (current.title ||
-                	current.name || current.loadedTemplateUrl)) ||
-                	'unknown target';
+                  current.name || current.loadedTemplateUrl)) ||
+                  'unknown target';
                 var msg = 'Error routing to ' + destination + '. ' +
-                	(rejection.msg || '');
+                  (rejection.msg || '');
                 /**
                  * Опционално логирајте со рачно изработен сервис или $log.
                  * (Не заборавајте да го вклучите рачно изработениот сервис)
@@ -1913,9 +1926,11 @@
 
 ### Имиња на фабрики
 ###### [Style [Y125](#style-Y125)]
-  - Употребете конзистентни имиња за сите фабрики според нивната функција. Употребете camel-casing за сервиси и фабрики.
+  - Употребете конзистентни имиња за сите фабрики според нивната функција. Употребете camel-casing за сервиси и фабрики. Избегнувајте префикси на фабрики и сервиси со `$`.
 
     *Зошто?*: Обезбедува конзистентен начин за брзо препознавање и референцирање фабрики.
+
+    *Зошто?*: Избегнува судири со имиња на вградени фабрики и сервиси кои го користат `$` префиксот.
 
     ```javascript
     /**
@@ -2687,16 +2702,21 @@ angular
 ###### [Style [Y250](#style-Y250)]
   - Angular кратки кодови кои ги следат овие водичи и стилови на код. 
 
-    - Симнете ги [Sublime Angular кратки кодови](assets/sublime-angular-snippets.zip?raw=true) 
+    - Симнете ги [Sublime Angular кратки кодови](assets/sublime-angular-snippets?raw=true) 
     - Поставете ги во вашата Packages папка
     - Рестартирајте го Sublime 
     - Во JavaScript датотека напишете ја следната команда и потоа кликнете на `TAB`
  
     ```javascript
     ngcontroller // создава Angular контролер
-    ngdirective // создава Angular директива
-    ngfactory // создава Angular фабрика
-    ngmodule // создава Angular модул
+    ngdirective  // создава Angular директива
+    ngfactory    // создава Angular фабрика
+    ngmodule   // создава Angular модул
+    ngdirective  // создава Angular директива
+    ngfactory    // создава Angular фабрика
+    ngmodule     // создава Angular модул
+    ngservice    // создава Angular сервис
+    ngfilter   // создава Angular филтер
     ```
 
 ### Visual Studio
@@ -2744,9 +2764,46 @@ angular
     ngdirective // создава Angular директива
     ngfactory // создава Angular фабрика
     ngmodule // создава Angular модул
+    ngservice // создава Angular сервис
+    ngfilter // создава Angular филтер
     ```
 
 **[Назад кон содржината](#table-of-contents)**
+
+### Brackets
+###### [Style [Y254](#style-y254)]
+
+  - Angular програмки кои ги следат овие стилови и водичи.
+
+    - Симнете [Brackets Angular програмки](assets/brackets-angular-snippets.yaml?raw=true)
+    - Brackets менаџер за екстензии ( File > Extension manager )
+    - Инсталирајте ['Brackets Snippets (од edc)'](https://github.com/chuyik/brackets-snippets)
+    - Кликнете на сијалицата во десниот дел од brackets
+    - Кликнете на `Settings` и потоа `Import`
+    - Одберете датотека и одберете skip или override
+    - Кликнете `Start Import`
+
+  - Во JavaScript датотека напишете ги овие команди следејќи го `TAB`
+
+    ```javascript
+    // Овие се целосни програмки кои содржат IIFE
+    ngcontroller // создава Angular контролер
+    ngdirective  // создава Angular директива
+    ngfactory    // создава Angular фабрика
+    ngapp        // создава Angular поставувач за модул
+    ngservice    // создава Angular сервис
+    ngfilter     // создава Angular филтер
+
+    // Овие се парцијални програмки наменети за врзување
+    ngmodule     // создава Angular земач на модули
+    ngstate      // создава Angular UI Router дефиниција на состојба
+    ngconfig     // дефинира configuration phase функција
+    ngrun        // дефинира run phase функција
+    ngroute    // дефинира Angular ngRoute 'when' дефиниција
+    ngtranslate  // употребува $translate сервисот заедно со неговиот promise
+    ```
+
+ **[Назад кон содржината](#table-of-contents)**
 
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
