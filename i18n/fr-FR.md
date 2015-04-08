@@ -2382,7 +2382,7 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
     *Pourquoi ?* : Quelques EDI commencent à s'intégrer avec Karma, c'est le cas de [WebStorm](http://www.jetbrains.com/webstorm/) et [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Pourquoi ?* : Karma fonctionne bien avec les leaders de l'automatisation de tâches tel que [Grunt](http://www.gruntjs.com) (avec [grunt-karma](https://github.com/karma-runner/grunt-karma)) ou [Gulp](http://www.gulpjs.com) (avec [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Pourquoi ?* : Karma fonctionne bien avec les leaders de l'automatisation de tâches tel que [Grunt](http://www.gruntjs.com) (avec [grunt-karma](https://github.com/karma-runner/grunt-karma)) ou [Gulp](http://www.gulpjs.com) (avec [l'API public de Karma](https://github.com/karma-runner/gulp-karma)).
 
 ### Les Stubs et les Spy
 ###### [Style [Y193](#style-y193)]
