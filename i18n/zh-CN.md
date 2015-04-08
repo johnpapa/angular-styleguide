@@ -6,16 +6,16 @@
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的风格指南，这个repo正适合你。这里所包含的风格是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
+如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的风格指南，那么你来对地方了。这里所包含的风格是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
 
 这个风格指南的目的是为构建Angular应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
 
->如果你喜欢这个指南，请在Pluralsight上检出我的[Angular Patterns: Clean Code](http://jpapa.me/ngclean)。
+>如果你喜欢这个指南，请在Pluralsight看看[Angular Patterns: Clean Code](http://jpapa.me/ngclean)。
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
-我发现Angular社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是Angular专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，从其中了解他的做法和它们是如何比较的。
+Angular社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是Angular专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，在那里你能看到我们之间的区别。
 
 我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，我的好友Ward也影响了本指南的最终演变。
 
@@ -26,7 +26,6 @@
 [Angular风格指南翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/i18n)。
 
 ##目录
-
   1. [单一职责](#单一职责)
   1. [IIFE](#iife)
   1. [Modules](#modules)
@@ -61,15 +60,14 @@
   1. [许可](#许可)
 
 ## 单一职责
-
 ###规则一
 ###### [Style [Y001](#style-y001)]
 
-  - 一个文件只定义一个组件。  
+  - 一个文件只定义一个组件。
 
- 	下面的一个例子在同一个文件中定义了一个`app`的module和它的一些依赖、一个controller和一个factory。   
+ 	下面的例子在同一个文件中定义了一个`app`的module和它的一些依赖、一个controller和一个factory。   
 
-  ```javascript    
+  ```javascript
   /* avoid */    
   angular
   	.module('app', ['ngRoute'])
@@ -81,8 +79,7 @@
   function someFactory() { }
   ```
       
-  现在把相同的组件分割成单独的文件。
-
+  推荐以下面的方式来做，把上面相同的组件分割成单独的文件。
   ```javascript
   /* recommended */
 
@@ -104,7 +101,6 @@
 
   ```javascript
   /* recommended */
-
   // someFactory.js
   angular
     	.module('app')
@@ -123,7 +119,7 @@
   
   *为什么？*：把变量从全局作用域中删除了，这有助于防止变量和函数声明比预期在全局作用域中有更长的生命周期，也有助于避免变量冲突。
 
-  *为什么？*：当你的代码为了发布而压缩了并且被合并到同一个文件中时，可能会有变量和很多全局变量的冲突，IIFE通过给每一个文件提供一个单独的作用域来保护你免受这些困扰。
+  *为什么？*：当你的代码为了发布而压缩了并且被合并到同一个文件中时，可能会有很多变量发生冲突，使用了IIFE（给每个文件提供了一个独立的作用域），你就不用担心这个了。
   
   ```javascript
   /* avoid */
@@ -132,7 +128,7 @@
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable  
+  // logger function会被当作一个全局变量  
   function logger() { }
 
   // storage.js
@@ -140,7 +136,7 @@
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable  
+  // storage function会被当作一个全局变量    
   function storage() { }
   ```
 
@@ -148,7 +144,7 @@
   /**
    * recommended 
    *
-   * no globals are left behind 
+   * 再也不存在全局变量了 
    */
 
   // logger.js
@@ -174,7 +170,7 @@
   })();
   ```
 
-  - 注：为了简便起见，本指南余下的示例中将会省略IIFE语法。 
+  - 注：为了简洁起见，本指南余下的示例中将会省略IIFE语法。 
 
   - 注：IIFE阻止了测试代码访问私有成员（正则表达式、helper函数等），这对于自身测试是非常友好的。然而你可以把这些私有成员暴露到可访问成员中进行测试，例如把私有成员（正则表达式、helper函数等）放到factory或是constant中。
 
@@ -185,7 +181,7 @@
 ###避免命名冲突
 ###### [Style [Y020](#style-y020)]
 
-  - 给独立子模块使用唯一的命名约定。
+  - 每一个独立子模块使用唯一的命名约定。
 
   *为什么*：避免冲突，每个模块也可以方便定义子模块。
 
@@ -194,7 +190,7 @@
 
   - 不使用任何一个使用了setter语法的变量来定义modules。 
 
-	*为什么?*：在一个文件只有一个组件的条件下，很少有需要为一个模块引入一个变量。
+	*为什么?*：在一个文件只有一个组件的条件下，完全不需要为一个模块引入一个变量。
 	
   ```javascript
   /* avoid */
@@ -206,7 +202,7 @@
   ]);
   ```
 
-	用简单的setter语法来代替。
+	你只需要用简单的setter语法来代替。
 
   ```javascript
   /* recommended */
@@ -222,7 +218,7 @@
 ###Getters
 ###### [Style [Y022](#style-y022)]
 
-  - 当使用一个module的时候，避免使用一个变量，而是使用getter语法链接。
+  - 使用module的时候，避免直接用一个变量，而是使用getter的链式语法。
 
 	*为什么？*：这将产生更加易读的代码，并且可以避免变量冲突和泄漏。
 
@@ -246,19 +242,19 @@
 ###Setting vs Getting
 ###### [Style [Y023](#style-y023)]
 
-  - 设置一次，获取其它所有的实例。
+  - 只能设置一次。
 	
-    *为什么？*：一个module只能被创建一次，然后从该点恢复。
+  *为什么？*：一个module只能被创建一次，创建之后才能被检索到。
   	  
-  	  - 用 `angular.module('app', []);` 设置一个module。
-  	  - 用 `angular.module('app');` 获取一个module。 
+    - 设置module，`angular.module('app', []);`。
+    - 获取module，`angular.module('app');`。 
 
 ###命名函数 vs 匿名函数
 ###### [Style [Y024](#style-y024)]
 
-  - 用一个命名函数而不是通过一个匿名函数作为回调函数。 
+  - 回调函数使用命名函数，不要用匿名函数。 
 
-	*为什么？*：这将产生更加易读的代码，更加方便调试，减少嵌套回调函数的数量。
+	*为什么？*：易读，方便调试，减少嵌套回调函数的数量。
 
   ```javascript
   /* avoid */
@@ -297,9 +293,9 @@
 
   - 使用[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。 
 
-	*为什么？*：congtroller被构建的时候，就会有一个新的实例，`controllerAs` 的语法比`经典的$scope语法`更接近JavaScript构造函数
+	*为什么？*：congtroller被构建的时候，就会有一个新的实例，`controllerAs` 的语法比`经典的$scope语法`更接近JavaScript构造函数。
 
-	*为什么？*：这促进在View中对绑定到’dotted‘的对象的使用（例如用`customer.name` 代替`name`），这将更有语境、更容易阅读，也避免了任何没有“dotting”而产生的引用问题。
+	*为什么？*：这促进在View中对绑定到“有修饰”的对象的使用（例如用`customer.name` 代替`name`），这将更有语境、更容易阅读，也避免了任何没有“修饰”而产生的引用问题。
 
 	*为什么？*：有助于避免在有嵌套的controllers的Views中调用 `$parent`。
 
@@ -322,11 +318,11 @@
 
   - 使用 `controllerAs` 语法代替 `经典的$scope语法` 语法。 
 
-  - `controllerAs` 语法在controllers里面使用被绑定到`$scope`中的`this`。
+  - 使用`controllerAs` 时，controller中的`$scope`被绑定到了`this`上。
 
 	*为什么？*：`controllerAs` 是`$scope`的语法修饰，你仍然可以绑定到View上并且访问 `$scope`的方法。 
 
-	*为什么？*：有助于避免在controller内部使用 `$scope`中的方法的诱惑，这能够更好地避免它们或把它们移到一个factory中。考虑到在factory中使用`$scope`，或者没办法的时候必须在controller中使用`$scope`，例如当使用[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit)， [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast)，或者 [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on)来发布和订阅事件时，可以考虑把这些调用挪到factory当中，并从controller中调用。
+	*为什么？*：避免在controller中使用 `$scope`，最好不用它们或是把它们移到一个factory中。factory中可以考虑使用`$scope`，controller中只在需要时候才使用`$scope`，例如当使用[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit)， [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast)，或者 [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on)来发布和订阅事件时，可以考虑把这些调用挪到factory当中，并从controller中调用。
 
   ```javascript
   /* avoid */
@@ -345,10 +341,11 @@
   ```
 
 ###controllerAs with vm
+###### [Style [Y032](#style-y032)]
 
-  - 使用`controllerAs`语法时把`this` 赋值给一个捕获变量，选择一个相一致的名称，例如`vm`代表ViewModel。
+  - 使用`controllerAs`语法时把`this` 赋值给一个可捕获的变量，选择一个有代表性的名称，例如`vm`代表ViewModel。
     
-  *为什么？*：`this`在不同的地方有不同的语义（就是作用域不同），在一个controller中的一个函数内部使用`this`时可能会改变它的上下文。用一个变量来捕获`this`的上下文从而可以避免遇到这个问题。
+  *为什么？*：`this`在不同的地方有不同的语义（就是作用域不同），在controller中的一个函数内部使用`this`时可能会改变它的上下文。用一个变量来捕获`this`的上下文从而可以避免遇到这样的坑。
 
   ```javascript
   /* avoid */
@@ -367,7 +364,7 @@
   }
   ```
 
-  - 注：你可以按照下面的做法来避免 [jshint](http://www.jshint.com/)的警告。但是构造函数（函数名首字母大写）是不需要这个的.
+  - 注：你可以参照下面的做法来避免 [jshint](http://www.jshint.com/)的警告。但是构造函数（函数名首字母大写）是不需要这个的.
     
   ```javascript
   /* jshint validthis: true */
@@ -397,9 +394,9 @@
 
   - 把可绑定的成员放到controller的顶部，按字母排序，并且不要通过controller的代码传播。
   
-  *为什么？*：把可绑定的成员放到顶部使代码更易读，并且让你可以立即识别controller中的哪些成员可以在View中绑定和使用。 
+  *为什么？*：易读，可以让你立即识别controller中的哪些成员可以在View中绑定和使用。 
 
-  *为什么？*：设置一个单行的匿名函数是很容易的，但是当这些函数的代码超过一行时，这将极大降低代码的可读性。把函数定义到可绑定成员下面（这些函数被提出来），把具体的实现细节放到下面，可绑定成员放到顶部，这会提高代码的可读性。 
+  *为什么？*：虽然设置单行匿名函数很容易，但是当这些函数的代码超过一行时，这将极大降低代码的可读性。在可绑定成员下面定义函数（这些函数被提出来），把具体的实现细节放到下面，可绑定成员放到顶部，这会提高代码的可读性。 
 
   ```javascript
   /* avoid */
@@ -484,7 +481,7 @@
 ###函数声明隐藏实现细节
 ###### [Style [Y034](#style-y034)]
 
-  - 函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
+  - 使用函数声明来隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个在文件的后面会出现函数声明。更多详情请看[这里](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code)。
     
   *为什么？*：易读，易识别哪些成员可以在View中绑定和使用。
 
@@ -587,7 +584,7 @@
           // Use JSONP for this browser if it doesn't support CORS
           return $http.get(settings)
               .then(function(data) {
-               // Unpack JSON data in the response object
+                 // Unpack JSON data in the response object
                  // to find maxRemainingAmount
                  vm.isCreditOk = vm.total <= maxRemainingAmount
               })
@@ -601,7 +598,6 @@
   ```
 
   ```javascript
-
   /* recommended */
   function Order (creditService) {
       var vm = this;
@@ -610,7 +606,7 @@
       vm.total = 0;
 
       function checkCredit () { 
-         return creditService.isOrderTotalOk(vm.total)
+          return creditService.isOrderTotalOk(vm.total)
             .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
@@ -620,18 +616,18 @@
 ###保持Controller的专一性
 ###### [Style [Y037](#style-y037)]
 
-  - 一个view定义一个controller，尽量不要在其它view中使用这个controller。把可重用的逻辑放到factory中，保证controller的单一，只专注于当前视图。 
+  - 一个view定义一个controller，尽量不要在其它view中使用这个controller。把可重用的逻辑放到factory中，保证controller只服务于当前视图。 
   
-  *为什么？*：不同的view用同一个controller是非常不科学的，良好的端对端测试覆盖率对于保证大型应用稳定性是必需的。
+    *为什么？*：不同的view用同一个controller是非常不科学的，良好的端对端测试覆盖率对于保证大型应用稳定性是必需的。
 
 ###分配Controller
 ###### [Style [Y038](#style-y038)]
 
   - 当一个controller必须匹配一个view时或者任何一个组件可能被其它controller或是view重用时，连同controller的route一起定义。 
     
-  - 注：如果一个view是通过route外的其它形式加载的，那么就用`ng-controller="Avengers as vm"`语法。 
+    注：如果一个view是通过route外的其它形式加载的，那么就用`ng-controller="Avengers as vm"`语法。 
 
-  *为什么？*：在route中匹配controller允许不同的路由调用不同的相匹配的controller和view，当在view中通过[`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController)分配controller时，这个view总是和相同的controller相关联。
+    *为什么？*：在route中匹配controller允许不同的路由调用不同的相匹配的controller和view，当在view中通过[`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController)分配controller时，这个view总是和相同的controller相关联。
 
  ```javascript
   /* avoid - when using with a route and dynamic pairing is desired */
@@ -686,13 +682,12 @@
 ###单例
 ###### [Style [Y040](#style-y040)]
 
-  - 用`new`实例化service，用`this`实例化公共方法和变量，由于这和facotry是类似的，所以推荐用facotry来代替。
+  - 用`new`实例化service，用`this`实例化公共方法和变量，由于这和factory是类似的，所以为了保持统一，推荐用facotry来代替。
   
   注意：[所有的Angular services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
   ```javascript
   // service
-
   angular
       .module('app')
       .service('logger', logger);
@@ -729,6 +724,7 @@
   - factory应该是[单一职责](http://en.wikipedia.org/wiki/Single_responsibility_principle)，这是由其上下文进行封装的。一旦一个factory将要处理超过单一的目的时，就应该创建一个新的factory。
 
 ###单例
+###### [Style [Y051](#style-y051)]
 
   - facotry是一个单例，它返回一个包含service成员的对象。
   
@@ -739,17 +735,17 @@
 
   - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service（它的接口）中可调用的成员暴露到顶部，
 
-    *为什么？*：把可调用的成员放到顶部使代码更加易读，并且让你可以立即识别service中的哪些成员可以被调用，哪些成员必须进行单元测试（或者被别人嘲笑）。 
+    *为什么？*：易读，并且让你可以立即识别service中的哪些成员可以被调用，哪些成员必须进行单元测试（或者被别人嘲笑）。 
 
-    *为什么？*：当文件变长时，这将非常有用，因为这可以避免需要滚动才能看到暴露了哪些东西。
+    *为什么？*：当文件内容很长时，这可以避免需要滚动才能看到暴露了哪些东西。
 
-    *为什么？*：以你的方式设置函数是很容易的，但当函数代码超过一行时就会降低可读性并造成滚动。通过把实现细节放下面、可调用接口放到顶部的返回service的方式来定义可调用的接口，从而使代码更加易读。
+    *为什么？*：虽然你可以随意写一个函数，但当函数代码超过一行时就会降低可读性并造成滚动。通过把实现细节放下面、可调用接口放到顶部的返回service的方式来定义可调用的接口，从而使代码更加易读。
 
   ```javascript
   /* avoid */
   function dataService () {
       var someValue = '';
-      function save () { 
+      function save () {
         /* */
       };
       function validate () { 
@@ -776,6 +772,7 @@
       return service;
 
       ////////////
+
       function save () { 
         /* */
       };
@@ -897,11 +894,11 @@
 
   - 把进行数据操作和数据交互的逻辑放到factory中，数据服务负责XHR请求、本地存储、内存存储和其它任何数据操作。
 
-    *为什么？*：controller的作用是查看view和收集view的信息，它不应该关心如何取得数据，只需要知道哪里需要用到数据。把取数据的逻辑分离到data service中能够让controller更简单、更专注于对view的控制。
+    *为什么？*：controller的作用是查看视图和收集视图的信息，它不应该关心如何取得数据，只需要知道哪里需要用到数据。把取数据的逻辑放到数据服务中能够让controller更简单、更专注于对view的控制。
 
-    *为什么？*：使用这种方式使得测试数据调用这一块更加简单。
+    *为什么？*：方便测试。
 
-    *为什么？*：data service的实现可能有非常明确的代码来处理数据仓库，这可能包含headers、如何与数据交互或是其它service，例如$http。把逻辑分离到data service中，把逻辑封装到了一个单独的地方，这隐藏了外部消费者（可能是controller）对数据的直接操作，这使得改变执行更加容易。
+    *为什么？*：数据服务的实现可能有非常明确的代码来处理数据仓库，这可能包含headers、如何与数据交互或是其它service，例如`$http`。把逻辑封装到单独的数据服务中，这隐藏了外部调用者（例如controller）对数据的直接操作，这样更加容易执行变更。
 
   ```javascript
   /* recommended */
@@ -933,7 +930,8 @@
       }
   }
   ```
-    注意：data service是被消费者调用的（例如controller），隐藏了消费者的直接行为，如下所示。
+
+    注意：数据服务被调用时（例如controller），隐藏调用的直接行为，如下所示。
 
   ```javascript
   /* recommended */
@@ -967,10 +965,10 @@
   }      
   ```
 
-###从Data调用那里返回一个Promise
+###数据调用返回一个Promise
 ###### [Style [Y061](#style-y061)]
 
-  - 就像`$http`一样，当调用data service时返回一个promise，在你的调用函数中也返回一个promise。
+  - 就像`$http`一样，调用数据时返回一个promise，在你的调用函数中也返回一个promise。
 
     *为什么？*：你可以把promise链接到一起，在数据调用完成并且resolve或是reject这个promise后采取进一步的行为。
 
@@ -1014,30 +1012,32 @@
 
 **[返回顶部](#目录)**
 
-
 ## Directives
-
-###一个文件限制一个
+###一个dirctive一个文件
 ###### [Style [Y070](#style-y070)]
 
   - 一个文件中只创建一个directive，并依照directive来命名文件。 
 
-    *为什么？*：把所有directive放到一个文件中很容易，但是当一些directive是跨应用的，一些是跨模块的，一些仅仅在一个模块中使用时，想把它们独立出来是非常困难的。
+    *为什么？*：虽然把所有directive放到一个文件中很简单，但是当一些directive是跨应用的，一些是跨模块的，一些仅仅在一个模块中使用时，想把它们独立出来就非常困难了。
 
     *为什么？*：一个文件一个directive也更加容易维护。
 
+    > 注： "**最佳实践**：Angular文档中有提过，directive应该自动回收，当directive被移除后，你可以使用`element.on('$destroy', ...)`或者`scope.$on('$destroy', ...)`来执行一个clearn-up函数。"
+
   ```javascript
   /* avoid */
+  /* directives.js */
+
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* order directive仅仅会被order module用到 */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* sales directive可以在sales app的任意地方使用 */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* spinner directive可以在任意apps中使用 */
       .directive('sharedSpinner', sharedSpinner);
 
   function orderCalendarRange() {
@@ -1104,12 +1104,12 @@
   }
   ```
 
-    注：directive有很多命名选项，特别是从它们能够在一个狭隘的或者广泛的作用域中使用时。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看[命名](#命名)章节。
+    注：由于directive使用条件比较广，所以命名就存在很多的选项。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看[命名](#命名)章节。
 
 ###在directive中操作DOM
 ###### [Style [Y072](#style-y072)]
 
-  - 当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可。
+  - 当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow)或者[`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可。
 
     *为什么？*：DOM操作的测试和调试是很困难的，通常会有更好的方法（CSS、animations、templates）。
 
@@ -1125,7 +1125,7 @@
 ###限制元素和属性
 ###### [Style [Y074](#style-y074)]
 
-  - 当创建一个directive需要作为一个独立元素是有意义时，允许限制`E`（自定义元素），可选限制`A`（自定义属性）。一般来说，如果它可能是它自己的控制，用`E`是合适的做法。一般原则是允许`EA`，但是当它是独立的时候这更倾向于作为一个元素来实施，当它是为了增强已存在的DOM元素时则更倾向于作为一个属性来实施。
+  - 当创建一个directive需要作为一个独立元素时，restrict值设置为`E`（自定义元素），也可以设置可选值`A`（自定义属性）。一般来说，如果它就是为了独立存在，用`E`是合适的做法。一般原则是允许`EA`，但是当它是独立的时候这更倾向于作为一个元素来实施，当它是为了增强已存在的DOM元素时则更倾向于作为一个属性来实施。
 
     *为什么？*：这很有意义！
 
@@ -1191,12 +1191,11 @@
 
     *为什么？*：因为不难且有必要这样做。
 
-    注意：下面的directive演示了一些你可以在link和directivedirective控制器中使用scope的方法，用controllerAs。这里把template放在行内是为了在一个地方写出这些代码。
+    注意：下面的directive演示了一些你可以在link和directive控制器中使用scope的方法，用controllerAs。这里把template放在行内是为了在一个地方写出这些代码。
 
     注意：关于依赖注入的内容，请看[手动依赖注入](#手动依赖注入)。
 
     注意：directive的控制器是在directive外部的，这种风格避免了由于注入造成的`return`之后的代码无法访问的情况。
-
 
   ```html
   <div my-example max="77"></div>
@@ -1243,8 +1242,6 @@
       console.log('CTRL: vm.min = %s', vm.min);
       console.log('CTRL: vm.max = %s', vm.max);
   }
-
-
   ```
 
   ```html
@@ -1254,11 +1251,23 @@
   <div>min={{vm.min}}<input ng-model={vm.min"/></div>
   ```
 
+    注意：当你把controller注入到link的函数或可访问的directive的attributes时，你可以把它命名为控制器的属性。
+  
+  ```javascript
+  // Alternative to above example
+  function linkFunc(scope, el, attr, vm) { // 和上面例子的区别在于把vm直接传递进来
+    console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+    console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+    console.log('LINK: vm.min = %s', vm.min);
+    console.log('LINK: vm.max = %s', vm.max);
+  }
+  ```
+
 ###### [Style [Y076](#style-y076)]
 
   - 当directive中使用了`controller as`语法时，如果你想把父级作用域绑定到directive的controller作用域时，使用`bindToController = true`。
 
-    *为什么？*：这使得绑定作用域到controller变得更加简单。
+    *为什么？*：这使得把外部作用域绑定到directive controller中变得更加简单。
 
     注意：Angular 1.3.0才介绍了`bindToController`。
 
@@ -1279,8 +1288,8 @@
               max: '='
           },
           controller: ExampleController,
-            controllerAs: 'vm',
-            bindToController: true
+          controllerAs: 'vm',
+          bindToController: true
         };
 
       return directive;
@@ -1304,13 +1313,12 @@
 **[返回顶部](#目录)**
 
 ## 解决Controller的Promises
-
 ###Controller Activation Promises
 ###### [Style [Y080](#style-y080)]
 
   - 在`activate`函数中解决controller的启动逻辑。
      
-    *为什么？*：把启动逻辑放在一个controller中固定的位置可以更方便定位、有更加一致性的测试，并能够避免在controller中到处都是激活逻辑。
+    *为什么？*：把启动逻辑放在一个controller中固定的位置可以方便定位、有利于保持测试的一致性，并能够避免controller中到处都是激活逻辑。
 
     *为什么？*：`activate`这个controller使得重用刷新视图的逻辑变得很方便，把所有的逻辑都放到了一起，可以让用户更快地看到视图，可以很轻松地对`ng-view` 或 `ui-view`使用动画，用户体验更好。
 
@@ -1353,16 +1361,15 @@
 ###Route Resolve Promises
 ###### [Style [Y081](#style-y081)]
 
-  - 当一个controller依赖于一个需要在controller被激活之前的就resoved的promise，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
+  - 当一个controller在激活之前，需要依赖一个promise的完成时，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
 
-    - 当你决定在过渡到视图之前取消路由时，使用route resolve。
+  - 当你决定在过渡到视图之前取消路由时，使用route resolve。
 
     *为什么？*：controller在加载前可能需要一些数据，这些数据可能是从一个通过自定义factory或是[$http](https://docs.angularjs.org/api/ng/service/$http)的promise而来的。[route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider)允许promise在controller的逻辑执行之前解决，因此它可能对从promise中来的数据做一些处理。 
 
-    *为什么？*：这段代码将在路由后的controller的激活函数中执行，视图立即加载，数据绑定将在promise resolve之后，可以（通过`ng-view`或`ui-view`）在视图的过渡之间可以加个loading状态的动画。
+    *为什么？*：这段代码将在路由后的controller的激活函数中执行，视图立即加载，promise resolve的时候将会开始进行数据绑定，可以（通过`ng-view`或`ui-view`）在视图的过渡之间加个loading状态的动画。
 
-    注意：这段代码将在路由之前通过一个promise来执行，拒绝了承诺就会取消路由，接受了就会等待路由跳转到新视图。如果你想更快地进入视图，并且无需验证是否可以进入视图，你可以考虑用[控制器 `activate` 技术](#style-y080)代替。
-
+    注意：这段代码将在路由之前通过一个promise来执行，拒绝了承诺就会取消路由，接受了就会等待路由跳转到新视图。如果你想更快地进入视图，并且无需验证是否可以进入视图，你可以考虑用[控制器 `activate` 技术](#style-y080)。
 
   ```javascript
   /* avoid */
@@ -1376,7 +1383,7 @@
       vm.movies;
       // resolved asynchronously
       movieService.getMovies().then(function(response) {
-        vm.movies = response.movies;
+          vm.movies = response.movies;
       });
   }
   ```
@@ -1396,9 +1403,9 @@
               controller: 'Avengers',
               controllerAs: 'vm',
               resolve: {
-                moviesPrepService: function(movieService) {
-                    return movieService.getMovies();
-                }
+                  moviesPrepService: function(movieService) {
+                      return movieService.getMovies();
+                  }
               }
           });
   }
@@ -1408,12 +1415,14 @@
       .module('app')
       .controller('Avengers', Avengers);
 
+  Avengers.$inject = ['moviesPrepService'];
   function Avengers (moviesPrepService) {
       var vm = this;
       vm.movies = moviesPrepService.movies;
   }
   ```
-      注意：下面这个例子展示了命名函数的路由解决，这种方式对于调试和处理依赖注入更加方便。
+
+    注意：下面这个例子展示了命名函数的路由解决，这种方式对于调试和处理依赖注入更加方便。
 
   ```javascript
   /* even better */
@@ -1450,18 +1459,16 @@
         vm.movies = moviesPrepService.movies;
   }
   ```
-
-  注意：示例代码中的`movieService`不是安全压缩的做法，可以到[手动依赖注入](#手动依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
-
+  注意：示例代码中的`movieService`不符合安全压缩的做法，可以到[手动依赖注入](#手动依赖注入)和[压缩和注释](#压缩和注释)部分学习如何安全压缩。
 
 **[返回顶部](#目录)**
 
 ## 手动依赖注入
 
-###缩写的不安全性
+### 压缩的不安全性
 ###### [Style [Y090](#style-y090)]
 
-  - 声明依赖时避免使用不安全缩写方法的缩写语法。
+  - 声明依赖时避免使用缩写语法。
   
     *为什么？*：组件的参数（例如controller、factory等等）将会被转换成各种乱七八糟错误的变量。例如，`common`和`dataservice`可能会变成`a`或者`b`，但是这些转换后的变量在Angular中是找不到的。
 
@@ -1475,7 +1482,7 @@
   }
   ```
 
-  - 这一段代码在压缩时会产生错误的变量，因此在运行时就会报错。
+  这一段代码在压缩时会产生错误的变量，因此在运行时就会报错。
 
   ```javascript
   /* avoid - not minification-safe*/
@@ -1491,7 +1498,7 @@
 
     *为什么？*：可以避免依赖变成其它Angular找不到的变量，例如，`common`和`dataservice`可能会变成`a`或者`b`。
 
-    *为什么？*：避免创建内嵌的依赖，因为一个数组中很长的列表是很难阅读的，此外，内嵌的方式也会让人感到困惑，比如数组是一系列的字符串，但是最后一个却是组件的function。 
+    *为什么？*：避免创建内嵌的依赖，因为一个数组太长不利于阅读，此外，内嵌的方式也会让人感到困惑，比如数组是一系列的字符串，但是最后一个却是组件的function。 
 
   ```javascript
   /* avoid */
@@ -1504,7 +1511,6 @@
   ```
 
   ```javascript
-
   /* avoid */
   angular
       .module('app')
@@ -1527,7 +1533,7 @@
   }
   ```
 
-    注意：当你的函数处于一个return语句下，那么`$inject`可能无法访问（这会在directive中发生），你可以通过把Controller移到directive外面来解决这个问题。
+    注意：当你的函数处于return语句后面，那么`$inject`是无法访问的（这会在directive中发生），你可以通过把Controller移到directive外面来解决这个问题。
 
   ```javascript
   /* avoid */
@@ -1590,7 +1596,6 @@
   }
   ```
 
-
 **[返回顶部](#目录)**
 
 ## 压缩和注释
@@ -1600,59 +1605,76 @@
 
   - 在[Gulp](http://gulpjs.com)或[Grunt](http://gruntjs.com)中使用[ng-annotate](//github.com/olov/ng-annotate)，用`/** @ngInject */`对需要自动依赖注入的function进行注释。
   
-    *为什么？*：可以避免代码中的依赖使用到任何不安全缩写的写法。
+    *为什么？*：可以避免代码中的依赖使用到任何不安全的写法。
 
-    *为什么？*：[`ng-min`](https://github.com/btford/ngmin)是不推荐的用法。
+    *为什么？*：不推荐用[`ng-min`](https://github.com/btford/ngmin)。
 
     >我更喜欢Gulp，因为我觉得它是易写易读易调试的。
 
-    下面的代码没有使用压缩安全依赖。
+    下面的代码没有注入依赖，显然压缩是不安全的。
 
-  ```javascript
-  angular
-      .module('app')
-      .controller('Avengers', Avengers);
+    ```javascript
+    angular
+        .module('app')
+        .controller('Avengers', Avengers);
 
-  /* @ngInject */
-  function Avengers (storageService, avengerService) {
-      var vm = this;
-      vm.heroSearch = '';
-      vm.storeHero = storeHero;
+    /* @ngInject */
+    function Avengers (storageService, avengerService) {
+        var vm = this;
+        vm.heroSearch = '';
+        vm.storeHero = storeHero;
 
-      function storeHero(){
-        var hero = avengerService.find(vm.heroSearch);
-        storageService.save(hero.name, hero);
-      }
-  }
-  ```
+        function storeHero(){
+          var hero = avengerService.find(vm.heroSearch);
+          storageService.save(hero.name, hero);
+        }
+    }
+    ```
 
     当上面的代码通过ng-annotate运行时，就会产生如下的带有`$inject`注释的输出结果，这样的话压缩就会安全了。
 
-  ```javascript
-  angular
-      .module('app')
-      .controller('Avengers', Avengers);
+    ```javascript
+    angular
+        .module('app')
+        .controller('Avengers', Avengers);
 
-  /* @ngInject */
-  function Avengers (storageService, avengerService) {
-      var vm = this;
-      vm.heroSearch = '';
-      vm.storeHero = storeHero;
+    /* @ngInject */
+    function Avengers (storageService, avengerService) {
+        var vm = this;
+        vm.heroSearch = '';
+        vm.storeHero = storeHero;
 
-      function storeHero(){
-        var hero = avengerService.find(vm.heroSearch);
-        storageService.save(hero.name, hero);
-      }
-  }
+        function storeHero(){
+          var hero = avengerService.find(vm.heroSearch);
+          storageService.save(hero.name, hero);
+        }
+    }
 
-  Avengers.$inject = ['storageService', 'avengerService'];
-
-  ```
+    Avengers.$inject = ['storageService', 'avengerService'];
+    ```
 
     注意：如果`ng-annotate`检测到已经有注入了（例如发现了`@ngInject`），就不会重复生成`$inject`代码了。
 
-    > 注意：从Angular 1.3开始，你就可以用[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)指令的 `ngStrictDi`参数来检测任何可能失去依赖的地方，当以“strict-di”模式创建injector时，会导致应用程序无法调用不使用显示函数注释的函数（这也许无法安全压缩）。记录在控制台的调试信息可以帮助追踪出问题的代码。我只在需要调试的时候才会用到`ng-strict-di`。
+    注意：路由的函数前面也可以用`/* @ngInject */`
 
+    ```javascript
+    // Using @ngInject annotations
+    function config($routeProvider) {
+        $routeProvider
+            .when('/avengers', {
+                templateUrl: 'avengers.html',
+                controller: 'Avengers',
+                controllerAs: 'vm',
+                resolve: { /* @ngInject */
+                    moviesPrepService: function(movieService) {
+                        return movieService.getMovies();
+                    }
+                }
+            });
+    }
+    ```
+
+    > 注意：从Angular 1.3开始，你就可以用[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)指令的 `ngStrictDi`参数来检测任何可能失去依赖的地方，当以“strict-di”模式创建injector时，会导致应用程序无法调用不使用显示函数注释的函数（这也许无法安全压缩）。记录在控制台的调试信息可以帮助追踪出问题的代码。我只在需要调试的时候才会用到`ng-strict-di`。
     `<body ng-app="APP" ng-strict-di>`
 
 ###使用Gulp或Grunt结合ng-annotate
@@ -1664,25 +1686,25 @@
 
     下面的代码是gulp任务使用ngAnnotate的例子。
 
-  ```javascript
-  gulp.task('js', ['jshint'], function() {
-      var source = pkg.paths.js;
+    ```javascript
+    gulp.task('js', ['jshint'], function() {
+        var source = pkg.paths.js;
 
-      return gulp.src(source)
-          .pipe(sourcemaps.init())
-          .pipe(concat('all.min.js', {newLine: ';'}))
-          // Annotate before uglify so the code get's min'd properly.
-          .pipe(ngAnnotate({
-              // true helps add where @ngInject is not used. It infers.
-              // Doesn't work with resolve, so we must be explicit there
-              add: true
-          }))
-          .pipe(bytediff.start())
-          .pipe(uglify({mangle: true}))
-          .pipe(bytediff.stop())
-          .pipe(sourcemaps.write('./'))
-          .pipe(gulp.dest(pkg.paths.dev));
-  });
+        return gulp.src(source)
+            .pipe(sourcemaps.init())
+            .pipe(concat('all.min.js', {newLine: ';'}))
+            // Annotate before uglify so the code get's min'd properly.
+            .pipe(ngAnnotate({
+                // true helps add where @ngInject is not used. It infers.
+                // Doesn't work with resolve, so we must be explicit there
+                add: true
+            }))
+            .pipe(bytediff.start())
+            .pipe(uglify({mangle: true}))
+            .pipe(bytediff.stop())
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest(pkg.paths.dev));
+    });
 
   ```
 
@@ -1697,39 +1719,39 @@
   
     *为什么？*：在开发时和运行时提供了一种统一的方式来处理未被捕获的Angular异常。
 
-    注：另一个选项是用来覆盖service的，这个可以代替decorator，这是一个非常nice的选项，但是如果你想保持默认行为，那么推荐你拓展一个decorator。
+    注：另一个选项是用来覆盖service的，这个可以代替decorator，这是一个非常nice的选项，但是如果你想保持默认行为，那么推荐你扩展一个decorator。
 
-	```javascript
-  /* recommended */
-  angular
-      .module('blocks.exception')
-      .config(exceptionConfig);
+  	```javascript
+    /* recommended */
+    angular
+        .module('blocks.exception')
+        .config(exceptionConfig);
 
-  exceptionConfig.$inject = ['$provide'];
+    exceptionConfig.$inject = ['$provide'];
 
-  function exceptionConfig($provide) {
-      $provide.decorator('$exceptionHandler', extendExceptionHandler);
-  }
+    function exceptionConfig($provide) {
+        $provide.decorator('$exceptionHandler', extendExceptionHandler);
+    }
 
-  extendExceptionHandler.$inject = ['$delegate', 'toastr'];
+    extendExceptionHandler.$inject = ['$delegate', 'toastr'];
 
-  function extendExceptionHandler($delegate, toastr) {
-      return function(exception, cause) {
-          $delegate(exception, cause);
-          var errorData = { 
-            exception: exception, 
-            cause: cause 
-          };
-          /**
-           * Could add the error to a service's collection,
-           * add errors to $rootScope, log errors to remote web server,
-           * or log locally. Or throw hard. It is entirely up to you.
-           * throw exception;
-           */
-          toastr.error(exception.msg, errorData);
-      };
-  }
-	```
+    function extendExceptionHandler($delegate, toastr) {
+        return function(exception, cause) {
+            $delegate(exception, cause);
+            var errorData = { 
+              exception: exception, 
+              cause: cause 
+            };
+            /**
+             * Could add the error to a service's collection,
+             * add errors to $rootScope, log errors to remote web server,
+             * or log locally. Or throw hard. It is entirely up to you.
+             * throw exception;
+             */
+            toastr.error(exception.msg, errorData);
+        };
+    }
+  	```
 
 ###异常捕获器
 ###### [Style [Y111](#style-y111)]
@@ -1738,29 +1760,29 @@
 
     *为什么？*：提供了一个统一的方法来捕获代码中抛出的异常。
 
-    注：异常捕获器对特殊异常的捕获和反应是非常好的，例如，使用XHR从远程服务获取数据时，你想要捕获所有异常并做出不同的反应。
+    注：异常捕获器对特殊异常的捕获和反应是非常友好的，例如，使用XHR从远程服务获取数据时，你想要捕获所有异常并做出不同的反应。
 
-  ```javascript
-  /* recommended */
-  angular
-      .module('blocks.exception')
-      .factory('exception', exception);
+    ```javascript
+    /* recommended */
+    angular
+        .module('blocks.exception')
+        .factory('exception', exception);
 
-  exception.$inject = ['logger'];
+    exception.$inject = ['logger'];
 
-  function exception(logger) {
-      var service = {
-          catcher: catcher
-      };
-      return service;
+    function exception(logger) {
+        var service = {
+            catcher: catcher
+        };
+        return service;
 
-      function catcher(message) {
-          return function(reason) {
-              logger.error(message, reason);
-          };
-      }
-  }
-  ```
+        function catcher(message) {
+            return function(reason) {
+                logger.error(message, reason);
+            };
+        }
+    }
+    ```
 
 ###路由错误
 ###### [Style [Y112](#style-y112)]
@@ -1769,43 +1791,43 @@
 
     *为什么？*：提供一个统一的方式来处理所有的路由错误。
 
-    *为什么？*：当一个路由发生错误的时候，如果能把用户带到一个有更多细节或是恢复选项的友好界面的话将会带来更好的用户体验。
+    *为什么？*：当一个路由发生错误的时候，可以给展示一个提示信息，提高用户体验。
 
-  ```javascript
-  /* recommended */
-  var handlingRouteChangeError = false;
+    ```javascript
+    /* recommended */
+    var handlingRouteChangeError = false;
 
-  function handleRoutingErrors() {
-      /**
-       * Route cancellation:
-       * On routing error, go to the dashboard.
-       * Provide an exit clause if it tries to do it twice.
-       */
-      $rootScope.$on('$routeChangeError',
-          function(event, current, previous, rejection) {
-              if (handlingRouteChangeError) { return; }
+    function handleRoutingErrors() {
+        /**
+         * Route cancellation:
+         * On routing error, go to the dashboard.
+         * Provide an exit clause if it tries to do it twice.
+         */
+        $rootScope.$on('$routeChangeError',
+            function(event, current, previous, rejection) {
+                if (handlingRouteChangeError) { return; }
                 handlingRouteChangeError = true;
                 var destination = (current && (current.title ||
                     current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
-              var msg = 'Error routing to ' + destination + '. ' +
+                var msg = 'Error routing to ' + destination + '. ' +
                     (rejection.msg || '');
 
-              /**
-               * Optionally log using a custom service or $log.
-               * (Don't forget to inject custom service)
-               */
-              logger.warning(msg, [current]);
+                /**
+                 * Optionally log using a custom service or $log.
+                 * (Don't forget to inject custom service)
+                 */
+                logger.warning(msg, [current]);
 
-              /**
-               * On routing error, go to another route/state.
-               */
-              $location.path('/');
+                /**
+                 * On routing error, go to another route/state.
+                 */
+                $location.path('/');
 
-          }
-      );
-  }
-  ```
+            }
+        );
+    }
+    ```
 
 **[返回顶部](#目录)**
 
@@ -1825,69 +1847,69 @@
 ###功能文件命名
 ###### [Style [Y121](#style-y121)]
 
-  - 遵循以描述组件功能，然后是类型（可选）的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。
+  - 遵循以“描述组件功能.类型（可选）”的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。
 
     *为什么？*：为快速识别组件提供了统一的方式。
 
     *为什么？*：为任何自动化的任务提供模式匹配。
 
-  ```javascript
-  /**
-   * common options 
-   */
+    ```javascript
+    /**
+     * common options 
+     */
 
-  // Controllers
-  avengers.js
-  avengers.controller.js
-  avengersController.js
+    // Controllers
+    avengers.js
+    avengers.controller.js
+    avengersController.js
 
-  // Services/Factories
-  logger.js
-  logger.service.js
-  loggerService.js
-  ```
+    // Services/Factories
+    logger.js
+    logger.service.js
+    loggerService.js
+    ```
 
-  ```javascript
-  /**
-   * recommended
-   */
+    ```javascript
+    /**
+     * recommended
+     */
 
-  // controllers
-  avengers.controller.js
-  avengers.controller.spec.js
+    // controllers
+    avengers.controller.js
+    avengers.controller.spec.js
 
-  // services/factories
-  logger.service.js
-  logger.service.spec.js
+    // services/factories
+    logger.service.js
+    logger.service.spec.js
 
-  // constants
-  constants.js
+    // constants
+    constants.js
+    
+    // module definition
+    avengers.module.js
+
+    // routes
+    avengers.routes.js
+    avengers.routes.spec.js
+
+    // configuration
+    avengers.config.js
+    
+    // directives
+    avenger-profile.directive.js
+    avenger-profile.directive.spec.js
+    ```
+
+  注意：另外一种常见的约定就是不要用`controller`这个词来给controller文件命名，例如不要用`avengers.controller.js`，而是用`avengers.js`。所有其它的约定都坚持使用类型作为后缀，但是controller是组件中最为常用的类型，因此这种做法的好处貌似仅仅是节省了打字，但是仍然很容易识别。我建议你为你的团队选择一种约定，并且要保持统一性。我喜欢的命名方式是`avengers.controller.js`。
   
-  // module definition
-  avengers.module.js
-
-  // routes
-  avengers.routes.js
-  avengers.routes.spec.js
-
-  // configuration
-  avengers.config.js
-  
-  // directives
-  avenger-profile.directive.js
-  avenger-profile.directive.spec.js
-  ```
-
-    注意：另外一种常见的约定就是不要用`controller`这个词来给controller文件命名，例如不要用`avengers.controller.js`，而是用`avengers.js`。所有其它的约定都坚持使用类型作为后缀，但是controller是组件中最为常用的类型，因此这种做法的好处貌似仅仅是节省了打字，但是仍然很容易识别。我建议你为你的团队选择一种约定，并且要保持统一性。我喜欢的命名方式是`avengers.controller.js`。
-  
-  ```javascript
-  /**
-   * recommended
-   */
-  // Controllers
-  avengers.js
-  avengers.spec.js
-  ```
+    ```javascript
+    /**
+     * recommended
+     */
+    // Controllers
+    avengers.js
+    avengers.spec.js
+    ```
 
 ###测试文件命名
 ###### [Style [Y122](#style-y122)]
@@ -1898,37 +1920,37 @@
 
     *为什么？*：为[karma](http://karma-runner.github.io/)或是其它测试运行器提供模式匹配。
 
-  ```javascript
-  /**
-   * recommended
-   */
-  avengers.controller.spec.js
-  logger.service.spec.js
-  avengers.routes.spec.js
-  avenger-profile.directive.spec.js
-  ```
+    ```javascript
+    /**
+     * recommended
+     */
+    avengers.controller.spec.js
+    logger.service.spec.js
+    avengers.routes.spec.js
+    avenger-profile.directive.spec.js
+    ```
 
 ###Controller命名
 ###### [Style [Y123](#style-y123)]
 
-  - 为所有controller提供统一的名称，特征然后名字，鉴于controller是构造函数，所以要采用UpperCamelCase（每个单词首字母大写）的方式。
+  - 为所有controller提供统一的名称，先特征后名字，鉴于controller是构造函数，所以要采用UpperCamelCase（每个单词首字母大写）的方式。
 
     *为什么？*：为快速识别和引用controller提供统一的方式。
 
     *为什么？*：UpperCamelCase是常规的识别一个可以用构造函数来实例化的对象的方式。
 
-  ```javascript
-  /**
-   * recommended
-   */
+    ```javascript
+    /**
+     * recommended
+     */
 
-  // avengers.controller.js
-  angular
-      .module
-      .controller('HeroAvengersController', HeroAvengersController);
+    // avengers.controller.js
+    angular
+        .module
+        .controller('HeroAvengersController', HeroAvengersController);
 
-  function HeroAvengers(){ }    
-  ```
+    function HeroAvengers(){ }    
+    ```
 
 ###Controller命名后缀
 ###### [Style [Y124](#style-y124)]
@@ -1937,38 +1959,40 @@
 
     *为什么？*：`Controller`使用更广泛、更明确、更具有描述性。
 
-  ```javascript
-  /**
-   * recommended
-   */
+    ```javascript
+    /**
+     * recommended
+     */
 
-  // avengers.controller.js
-  angular
-      .module
-      .controller('AvengersController', AvengersController);
+    // avengers.controller.js
+    angular
+        .module
+        .controller('AvengersController', AvengersController);
 
-  function AvengersController(){ }
-  ```
+    function AvengersController(){ }
+    ```
     
 ###Factory命名
 ###### [Style [Y125](#style-y125)]
 
-  - 一样要统一，对service和factory使用camel-casing（驼峰式，第一个单词首字母小写，后面单词首字母大写）方式。
+  - 一样要统一，对service和factory使用camel-casing（驼峰式，第一个单词首字母小写，后面单词首字母大写）方式。避免使用`$`前缀。
 
     *为什么？*：可以快速识别和引用factory。
+
+    *为什么？*：避免与内部使用`$`前缀的服务发生冲突。
   
-  ```javascript
-  /**
-   * recommended
-   */
+    ```javascript
+    /**
+     * recommended
+     */
 
-  // logger.service.js
-  angular
-      .module
-      .factory('logger', logger);
+    // logger.service.js
+    angular
+        .module
+        .factory('logger', logger);
 
-  function logger(){ }
-  ```
+    function logger(){ }
+    ```
 
 ###Directive组件命名
 ###### [Style [Y126](#style-y126)]
@@ -1977,25 +2001,25 @@
 
     *为什么？*：可以快速识别和引用controller。
 
-  ```javascript
-  /**
-   * recommended
-   */
+    ```javascript
+    /**
+     * recommended
+     */
 
-  // avenger-profile.directive.js    
-  angular
-      .module
-      .directive('xxAvengerProfile', xxAvengerProfile);
+    // avenger-profile.directive.js    
+    angular
+        .module
+        .directive('xxAvengerProfile', xxAvengerProfile);
 
-  // usage is <xx-avenger-profile> </xx-avenger-profile>
+    // usage is <xx-avenger-profile> </xx-avenger-profile>
 
-  function xxAvengerProfile(){ }
-  ```
+    function xxAvengerProfile(){ }
+    ```
 
 ###模块
 ###### [Style [Y127](#style-y127)]
 
-  - 当有很多的模块时，主模块文件命名成`app.module.js`，其它依赖模块以它们代表的东西来命名。例如，一个管理员模块命名成`admin.module.js`，它们各自的注册模块名字就是`app`和`admin`。
+  - 当有很多的模块时，主模块文件命名成`app.module.js`，其它依赖模块以它们代表的内容来命名。例如，一个管理员模块命名成`admin.module.js`，它们各自的注册模块名字就是`app`和`admin`。
 
     *为什么？*：给多模块的应用提供统一的方式，这也是为了扩展大型应用。
 
@@ -2015,11 +2039,9 @@
 
   - 把路由的配置独立到单独的文件。主模块的路由可能是`app.route.js`，`admin`模块的路由可能是`admin.route.js`。即使是在很小的应用中，我也喜欢把路由的配置从其余的配置中分离出来。
 
-
 **[返回顶部](#目录)**
 
 ## 应用程序结构的LIFT准则
-
 ###LIFT
 ###### [Style [Y140](#style-y140)]
 
@@ -2039,7 +2061,7 @@
 
   - 更直观、更简单、更快捷地定位代码
 
-    *为什么？*：我发现这对于一个项目是非常重要的，如果一个团队不能快速找到他们需要工作的文件，这将不能使团队足够高效地工作，那么这个代码结构就得改变。你可能不知道文件名或是相关的文件放在了哪里，那么就把他们放在最直观的地方，放在一起会节省大量的时间。一个参考目录结构。
+    *为什么？*：我发现这对于一个项目是非常重要的，如果一个团队不能快速找到他们需要工作的文件，这将不能使团队足够高效地工作，那么这个代码结构就得改变。你可能不知道文件名或是相关的文件放在了哪里，那么就把他们放在最直观的地方，放在一起会节省大量的时间。下面是一个参考目录结构。
 
   ```
   /bower_components
@@ -2080,7 +2102,6 @@
 
     *为什么？*：保持DRY很重要，但是如果牺牲了其它LIFT，那么它就没那么重要了，这就是为什么说尽量坚持DRY。
 
-
 **[返回顶部](#目录)**
 
 ## 应用程序结构
@@ -2089,6 +2110,8 @@
 ###### [Style [Y150](#style-y150)]
 
   - 有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
+
+  注：了解实例结构的具体信息看[Angular应用结构](http://www.johnpapa.net/angular-app-structuring-guidelines/)。
 
 ###Layout
 ###### [Style [Y151](#style-y151)]
@@ -2110,82 +2133,88 @@
 
     *为什么？*：超过10个文件时，在一个一致性的文件夹中很容易定位，但是在一个平直的文件夹结构中确实很难定位。
 
-  ```javascript
-  /**
-   * recommended
-   */
+    ```javascript
+    /**
+     * recommended
+     */
 
-  app/
-      app.module.js
-      app.config.js
-      directives/       
-          calendar.directive.js  
-          calendar.directive.html  
-          user-profile.directive.js  
-          user-profile.directive.html  
-      services/       
-          dataservice.js  
-          localstorage.js
-          logger.js   
-          spinner.js
-      layout/
-          shell.html      
-          shell.controller.js
-          topnav.html      
-          topnav.controller.js       
-      people/
-          attendees.html
-          attendees.controller.js
-          people.routes.js
-          speakers.html
-          speakers.controller.js
-          speaker-detail.html
-          speaker-detail.controller.js
-      sessions/
-          sessions.html      
-          sessions.controller.js
-          sessions.routes.js
-          session-detail.html
-          session-detail.controller.js   
-  ```
+    app/
+        app.module.js
+        app.config.js
+        directives/       
+            calendar.directive.js  
+            calendar.directive.html  
+            user-profile.directive.js  
+            user-profile.directive.html  
+        services/       
+            dataservice.js  
+            localstorage.js
+            logger.js   
+            spinner.js
+        layout/
+            shell.html      
+            shell.controller.js
+            topnav.html      
+            topnav.controller.js       
+        people/
+            attendees.html
+            attendees.controller.js
+            people.routes.js
+            speakers.html
+            speakers.controller.js
+            speaker-detail.html
+            speaker-detail.controller.js
+        sessions/
+            sessions.html      
+            sessions.controller.js
+            sessions.routes.js
+            session-detail.html
+            session-detail.controller.js   
+    ```
+
+    ![实例App结构](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
     注意：不要使用按类型划分文件夹结构，因为如果这样的话，当做一个功能时，需要在多个文件夹中来回切换。当应用程序有5个、10个，甚至是25个以上的view、controller（或其他feature）时，这种方式将迅速变得不实用，这就使得它定位文件比按功能分文件夹的方式要困难的多。
 
-  ```javascript
-  /* 
-   * avoid
-   * Alternative folders-by-type.
-   * I recommend "folders-by-feature", instead.
-   */
-  
-  app/
-      app.module.js
-      app.config.js
-      app.routes.js
-      directives.js
-      controllers/
-          attendees.js            
-          session-detail.js       
-          sessions.js             
-          shell.js                
-          speakers.js             
-          speaker-detail.js       
-          topnav.js               
-      views/
-          attendees.html     
-          session-detail.html
-          sessions.html      
-          shell.html         
-          speakers.html      
-          speaker-detail.html
-          topnav.html         
-      services/       
-          dataservice.js  
-          localstorage.js
-          logger.js   
-          spinner.js
-  ``` 
+    ```javascript
+    /* 
+     * avoid
+     * Alternative folders-by-type.
+     * I recommend "folders-by-feature", instead.
+     */
     
+    app/
+        app.module.js
+        app.config.js
+        app.routes.js
+        directives.js
+        controllers/
+            attendees.js            
+            session-detail.js       
+            sessions.js             
+            shell.js                
+            speakers.js             
+            speaker-detail.js       
+            topnav.js
+        directives/
+            calendar.directive.js
+            calendar.directive.html
+            user-profile.directive.js
+            user-profile.directive.html
+        services/       
+            dataservice.js  
+            localstorage.js
+            logger.js   
+            spinner.js             
+        views/
+            attendees.html     
+            session-detail.html
+            sessions.html      
+            shell.html         
+            speakers.html      
+            speaker-detail.html
+            topnav.html         
+    ``` 
       
 **[返回顶部](#目录)**
 
@@ -2196,7 +2225,7 @@
 
   - 创建只封装一个职责的小模块。
 
-    *为什么？*：模块化的应用程序很容易插入新的功能。
+    *为什么？*：模块化的应用程序很容易添加新的功能。
 
 ###创建一个App Module
 ###### [Style [Y161](#style-y161)]
@@ -2219,11 +2248,11 @@
 
   - 创建代表功能区的模块，例如布局、可重用、共享服务、仪表盘和app的特殊功能（例如客户、管理、销售）。
 
-    *为什么？*：自包含的模块可以无摩擦地被添加到应用程序中。
+    *为什么？*：自包含的模块可以无缝地被添加到应用程序中。
 
-    *为什么？*：冲刺或迭代可以专注于功能，在结束阶段启用它们。
+    *为什么？*：项目进行功能迭代时，可以专注于功能，在开发完成启用它们即可。
 
-    *为什么？*：分离功能为模块可以更容易测试。
+    *为什么？*：把功能拆分成不同模块方便测试。
 
 ###可重用的块就是模块
 ###### [Style [Y164](#style-y164)]
@@ -2249,6 +2278,7 @@
 
     > 我的不同项目间的结构略有不同，但是它们都遵循了这些结构和模块化的准则,具体的实施方案会根据功能和团队发生变化。也就是说，不要在一棵树上吊死，但是心中一定要记得保持一致性、可维护性和效率。
 
+    > 小项目中，你可以直接把所有依赖都放到app module中，这对于小项目来说比较容易维护，但是想在此项目外重用模块就比较难了。
 
 **[返回顶部](#目录)**
 
@@ -2261,30 +2291,30 @@
 
     *为什么？*：这使得在更少的地方进行配置变得容易。
 
-  ```javascript
-  angular
-      .module('app')
-      .config(configure);
+    ```javascript
+    angular
+        .module('app')
+        .config(configure);
 
-  configure.$inject = 
-      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
-      
-  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
-      exceptionHandlerProvider.configure(config.appErrorPrefix);
-      configureStateHelper();
+    configure.$inject = 
+        ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
+        
+    function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
+        exceptionHandlerProvider.configure(config.appErrorPrefix);
+        configureStateHelper();
 
-      toastr.options.timeOut = 4000;
-      toastr.options.positionClass = 'toast-bottom-right';
+        toastr.options.timeOut = 4000;
+        toastr.options.positionClass = 'toast-bottom-right';
 
-      ////////////////
+        ////////////////
 
-      function configureStateHelper() {
-          routerHelperProvider.configure({
-              docTitle: 'NG-Modular: '
-          });
-      }
-  }
-  ```
+        function configureStateHelper() {
+            routerHelperProvider.configure({
+                docTitle: 'NG-Modular: '
+            });
+        }
+    }
+    ```
 
 ### 运行代码块
 ###### [Style [Y171](#style-y171)]
@@ -2298,12 +2328,12 @@
       .module('app')
       .run(runBlock);
 
-    runBlock.$inject = ['authenticator', 'translator'];
+  runBlock.$inject = ['authenticator', 'translator'];
 
-    function runBlock(authenticator, translator) {
-        authenticator.initialize();
-        translator.initialize();
-    }
+  function runBlock(authenticator, translator) {
+      authenticator.initialize();
+      translator.initialize();
+  }
   ```
 
 **[返回顶部](#目录)**
@@ -2327,7 +2357,6 @@
 **[返回顶部](#目录)**
 
 ## 测试
-
 单元测试有助于保持代码的清晰，因此我加入一些关于单元测试的基础和获取更多信息的链接。
 
 ###用故事来编写测试
@@ -2337,25 +2366,25 @@
 
     *为什么？*：编写测试有助于明确规定你的故事要做什么、不做什么以及你如何判断是否成功。
 
-  ```javascript
-  it('should have Avengers controller', function() {
-      //TODO
-  });
+    ```javascript
+    it('should have Avengers controller', function() {
+        //TODO
+    });
 
-  it('should find 1 Avenger when filtered by name', function() {
-      //TODO
-  });
+    it('should find 1 Avenger when filtered by name', function() {
+        //TODO
+    });
 
-  it('should have 10 Avengers', function() {
-      //TODO (mock data?)
-  });
+    it('should have 10 Avengers', function() {
+        //TODO (mock data?)
+    });
 
-  it('should return Avengers via XHR', function() {
-      //TODO ($httpBackend?)
-  });
+    it('should return Avengers via XHR', function() {
+        //TODO ($httpBackend?)
+    });
 
-  // and so on
-  ```
+    // and so on
+    ```
 
 ###测试库
 ###### [Style [Y191](#style-y191)]
@@ -2413,15 +2442,15 @@
 
     *为什么？*：测试也是代码，因此要和对待其它生产代码一样重视测试代码的质量。然而，测试框架中允许使用全局变量，例如，在你的测试单例中允许使用this。
 
-  ```javascript
-  /* jshint -W117, -W030 */
-  ```
-  或者你也可以把下面的这几行加入到你的JSHint Options文件中。
+    ```javascript
+    /* jshint -W117, -W030 */
+    ```
+    或者你也可以把下面的这几行加入到你的JSHint Options文件中。
 
-  ```javascript
-  "jasmine": true,
-  "mocha": true,
-  ```
+    ```javascript
+    "jasmine": true,
+    "mocha": true,
+    ```
 
   ![测试工具](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
@@ -2452,7 +2481,6 @@
                              /customers.route.spec.js
     ```
 
-
 **[返回顶部](#目录)**
 
 ## 动画
@@ -2460,7 +2488,7 @@
 ###用法
 ###### [Style [Y210](#style-y210)]
 
-  - 在view和主要的视觉元素上使用细微的[Angular动画](https://docs.angularjs.org/guide/animations)进行过渡，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
+  - 在页面过渡时使用[Angular动画](https://docs.angularjs.org/guide/animations)，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
 
     *为什么？*：使用得当的话能够提高用户体验。
 
@@ -2488,63 +2516,61 @@
 
 **[返回顶部](#目录)**
 
-
 ## 注释
 
-###jsDoc
+### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - 如果你计划产出一个文档，那么就使用[`jsDoc`](http://usejsdoc.org/)的语法来记录函数名、描述、参数和返回值。使用`@namespace`和`@memberOf`来匹配应用程序结构。
+  - 如果你准备做一个文档，那么就使用[`jsDoc`](http://usejsdoc.org/)的语法来记录函数名、描述、参数和返回值。使用`@namespace`和`@memberOf`来匹配应用程序结构。
 
     *为什么？*：你可以从代码中生成（重新生成）文档，而不必从头开始编写文档。
 
     *为什么？*：使用业内通用工具保持了统一性。
 
-  ```javascript
-  /**
-   * Logger Factory
-   * @namespace Factories
-   */
-  (function() {
-    angular
-        .module('app')
-        .factory('logger', logger);
-
+    ```javascript
     /**
-     * @name logger
-     * @namespace Logger
-     * @desc Application wide logger
-     * @memberOf Factories
+     * Logger Factory
+     * @namespace Factories
      */
-    function logger ($log) {
-        var service = {
-            logError: logError
-        };
-        return service;
+    (function() {
+      angular
+          .module('app')
+          .factory('logger', logger);
 
-        ////////////
+      /**
+       * @namespace Logger
+       * @desc Application wide logger
+       * @memberOf Factories
+       */
+      function logger ($log) {
+          var service = {
+              logError: logError
+          };
+          return service;
 
-        /**
-         * @name logError
-         * @desc Logs errors
-         * @param {String} msg Message to log 
-         * @returns {String}
-         * @memberOf Factories.Logger
-         */
-        function logError(msg) {
-            var loggedMsg = 'Error: ' + msg;
-            $log.error(loggedMsg);
-            return loggedMsg;
-        };
-    }
-  })();
-  ```
+          ////////////
+
+          /**
+           * @name logError
+           * @desc Logs errors
+           * @param {String} msg Message to log 
+           * @returns {String}
+           * @memberOf Factories.Logger
+           */
+          function logError(msg) {
+              var loggedMsg = 'Error: ' + msg;
+              $log.error(loggedMsg);
+              return loggedMsg;
+          };
+      }
+    })();
+    ```
 
 **[返回顶部](#目录)**
 
 ## JS Hint
 
-###使用一个选项文件
+###使用一个Options文件
 ###### [Style [Y230](#style-y230)]
 
   - 用JS Hint来分析你的JavaScript代码，确保你自定义了JS Hint选项文件并且包含在源控制里。详细信息：[JS Hint文档](http://www.jshint.com/docs/)。
@@ -2553,69 +2579,69 @@
 
     *为什么？*：统一性。
 
-  ```javascript
-  {
-      "bitwise": true,
-      "camelcase": true,
-      "curly": true,
-      "eqeqeq": true,
-      "es3": false,
-      "forin": true,
-      "freeze": true,
-      "immed": true,
-      "indent": 4,
-      "latedef": "nofunc",
-      "newcap": true,
-      "noarg": true,
-      "noempty": true,
-      "nonbsp": true,
-      "nonew": true,
-      "plusplus": false,
-      "quotmark": "single",
-      "undef": true,
-      "unused": false,
-      "strict": false,
-      "maxparams": 10,
-      "maxdepth": 5,
-      "maxstatements": 40,
-      "maxcomplexity": 8,
-      "maxlen": 120,
+    ```javascript
+    {
+        "bitwise": true,
+        "camelcase": true,
+        "curly": true,
+        "eqeqeq": true,
+        "es3": false,
+        "forin": true,
+        "freeze": true,
+        "immed": true,
+        "indent": 4,
+        "latedef": "nofunc",
+        "newcap": true,
+        "noarg": true,
+        "noempty": true,
+        "nonbsp": true,
+        "nonew": true,
+        "plusplus": false,
+        "quotmark": "single",
+        "undef": true,
+        "unused": false,
+        "strict": false,
+        "maxparams": 10,
+        "maxdepth": 5,
+        "maxstatements": 40,
+        "maxcomplexity": 8,
+        "maxlen": 120,
 
-      "asi": false,
-      "boss": false,
-      "debug": false,
-      "eqnull": true,
-      "esnext": false,
-      "evil": false,
-      "expr": false,
-      "funcscope": false,
-      "globalstrict": false,
-      "iterator": false,
-      "lastsemic": false,
-      "laxbreak": false,
-      "laxcomma": false,
-      "loopfunc": true,
-      "maxerr": false,
-      "moz": false,
-      "multistr": false,
-      "notypeof": false,
-      "proto": false,
-      "scripturl": false,
-      "shadow": false,
-      "sub": true,
-      "supernew": false,
-      "validthis": false,
-      "noyield": false,
+        "asi": false,
+        "boss": false,
+        "debug": false,
+        "eqnull": true,
+        "esnext": false,
+        "evil": false,
+        "expr": false,
+        "funcscope": false,
+        "globalstrict": false,
+        "iterator": false,
+        "lastsemic": false,
+        "laxbreak": false,
+        "laxcomma": false,
+        "loopfunc": true,
+        "maxerr": false,
+        "moz": false,
+        "multistr": false,
+        "notypeof": false,
+        "proto": false,
+        "scripturl": false,
+        "shadow": false,
+        "sub": true,
+        "supernew": false,
+        "validthis": false,
+        "noyield": false,
 
-      "browser": true,
-      "node": true,
+        "browser": true,
+        "node": true,
 
-      "globals": {
-          "angular": false,
-          "$": false
-      }
-  }
-  ```
+        "globals": {
+            "angular": false,
+            "$": false
+        }
+    }
+    ```
 
 **[返回顶部](#目录)**
 
@@ -2716,19 +2742,19 @@
 
     *为什么？*：提供一种注入到供应库的方法，否则就是全局变量。通过让你更容易地了解你的组件之间的依赖关系来提高代码的可测试性。这还允许你模拟这些依赖关系，这是很有意义的。
 
-  ```javascript
-  // constants.js
+    ```javascript
+    // constants.js
 
-  /* global toastr:false, moment:false */
-  (function() {
-      'use strict';
+    /* global toastr:false, moment:false */
+    (function() {
+        'use strict';
 
-      angular
-          .module('app.core')
-          .constant('toastr', toastr)
-          .constant('moment', moment);
-  })();
-  ```
+        angular
+            .module('app.core')
+            .constant('toastr', toastr)
+            .constant('moment', moment);
+    })();
+    ```
 
 ###### [Style [Y241](#style-y241)]
 
@@ -2770,15 +2796,19 @@
     - 重启Sublime 
     - 在JavaScript文件中输入下面的命令然后按下`TAB`键即可：
 
-  ```javascript
-  ngcontroller // creates an Angular controller
-  ngdirective  // creates an Angular directive
-  ngfactory    // creates an Angular factory
-  ngmodule     // creates an Angular module
-  ```
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
 
 ###Visual Studio
 ###### [Style [Y251](#style-y251)]
+
+  - Angular文件遵循[SideWaffle](http://www.sidewaffle.com)所介绍的风格指南。
 
     - 下载Visual Studio扩展文件[SideWaffle](http://www.sidewaffle.com)
     - 运行下载的vsix文件
@@ -2804,23 +2834,58 @@
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
-  - Angular snippets that follow these styles and guidelines.
+  - Angular片段遵循以下指南。
     ```
     apm install angularjs-styleguide-snippets
     ```
-    or
-    - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
-    - Search for the package 'angularjs-styleguide-snippets'
-    - Click 'Install' to install the package
+    或
+    - 打开Atom，打开包管理器(Packages -> Settings View -> Install Packages/Themes)
+    - 搜索'angularjs-styleguide-snippets'
+    - 点击'Install' 进行安装
 
-  - In a JavaScript file type these commands followed by a `TAB`
+  - JavaScript文件中输入以下命令后以`TAB`结束
 
     ```javascript
     ngcontroller // creates an Angular controller
     ngdirective // creates an Angular directive
     ngfactory // creates an Angular factory
     ngmodule // creates an Angular module
+    ngservice // creates an Angular service
+    ngfilter // creates an Angular filter
     ```
+
+### Brackets
+###### [Style [Y254](#style-y254)]
+
+  - Angular代码片段遵循以下风格指南。
+
+    - 下载[Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
+    - 拓展管理器( File > Extension manager )
+    - 安装['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
+    - Click the light bulb in brackets' right gutter
+    - Click `Settings` and then `Import`
+    - Choose the file and select to skip or override
+    - Click `Start Import`
+
+  - JavaScript文件中输入以下命令后以`TAB`结束
+
+    ```javascript
+    // These are full file snippets containing an IIFE
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngapp        // creates an Angular module setter
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+
+    // These are partial snippets intended to chained
+    ngmodule     // creates an Angular module getter
+    ngstate      // creates an Angular UI Router state defintion
+    ngconfig     // defines a configuration phase function
+    ngrun        // defines a run phase function
+    ngroute      // creates an Angular routeProvider
+    ```
+
 **[返回顶部](#目录)**
 
 ## Yeoman Generator
@@ -2846,22 +2911,23 @@
   ```
   yo hottowel helloWorld
   ```
+
 **[返回顶部](#目录)**
 
 ## 路由
 客户端路由对于在视图和很多小模板和指令组成的构成视图中创建导航是非常重要的。
+
 ###### [Style [Y270](#style-y270)]
 
   - 用[AngularUI Router](http://angular-ui.github.io/ui-router/)来做路由控制。
 
     *为什么？*：它包含了Angular路由的所有特性，并且增加了一些额外的特性，如嵌套路由和状态。
 
-    *为什么？*：语法和Angular路由很想，很容易迁移到UI Router。
+    *为什么？*：语法和Angular路由很像，很容易迁移到UI Router。
 
 ###### [Style [Y271](#style-y271)]
 
-  - Define routes for views in the module where they exist.
-  Each module should contain the routes for the views in the module.
+  - Define routes for views in the module where they exist，Each module should contain the routes for the views in the module.
 
     *为什么？*：每个模块应该是独立的。
 
@@ -2915,7 +2981,6 @@
 
 *贡献代码到这个仓库就意味着你同意了本仓库的许可证内容*
 
-
 ###过程
     1. 在Github Issue中讨论这个问题。
     2. 拉取一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
@@ -2929,5 +2994,24 @@
 
 Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
 
+### (The MIT License)
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[返回顶部](#目录)**

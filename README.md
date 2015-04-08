@@ -898,7 +898,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as `$http`. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
 
   ```javascript
   /* recommended */
@@ -1010,7 +1010,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    **[Back to top](#table-of-contents)**
+**[Back to top](#table-of-contents)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1022,7 +1022,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: One directive per file is easy to maintain.
 
-    > Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation
+    > Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation.
 
   ```javascript
   /* avoid */
@@ -1313,7 +1313,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 **[Back to top](#table-of-contents)**
 
 ## Resolving Promises for a Controller
-
 ### Controller Activation Promises
 ###### [Style [Y080](#style-y080)]
 
@@ -1418,8 +1417,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   Avengers.$inject = ['moviesPrepService'];
   function Avengers(moviesPrepService) {
-        var vm = this;
-        vm.movies = moviesPrepService.movies;
+      var vm = this;
+      vm.movies = moviesPrepService.movies;
   }
   ```
 
@@ -2188,6 +2187,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         app.module.js
         app.config.js
         app.routes.js
+        directives.js
         controllers/
             attendees.js
             session-detail.js
@@ -2328,12 +2328,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .run(runBlock);
 
-    runBlock.$inject = ['authenticator', 'translator'];
+  runBlock.$inject = ['authenticator', 'translator'];
 
-    function runBlock(authenticator, translator) {
-        authenticator.initialize();
-        translator.initialize();
-    }
+  function runBlock(authenticator, translator) {
+      authenticator.initialize();
+      translator.initialize();
+  }
   ```
 
 **[Back to top](#table-of-contents)**
