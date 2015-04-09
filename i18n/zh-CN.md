@@ -1,29 +1,29 @@
-# Angular风格指南
+# Angular规范
 
-*Angular风格指南[@john_papa](//twitter.com/john_papa)*
+*Angular规范[@john_papa](//twitter.com/john_papa)*
 
-*由[kerncink](https://github.com/natee)翻译*
+*由[ZhaoKe](https://github.com/natee)翻译*
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的风格指南，那么你来对地方了。这里所包含的风格是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
+如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的规范，那么你来对地方了。这里所包含的内容是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
 
-这个风格指南的目的是为构建Angular应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
+这个规范的目的是为构建Angular应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
 
->如果你喜欢这个指南，请在Pluralsight看看[Angular Patterns: Clean Code](http://jpapa.me/ngclean)。
+>如果你喜欢这个规范，请在Pluralsight看看[Angular Patterns: Clean Code](http://jpapa.me/ngclean)。
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
-Angular社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是Angular专家）和我合作了多种风格和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，在那里你能看到我们之间的区别。
+Angular社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是Angular专家）和我合作了多种规范和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，在那里你能看到我们之间的区别。
 
-我的许多风格都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，我的好友Ward也影响了本指南的最终演变。
+我的许多规范都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，我的好友Ward也影响了本规范的最终演变。
 
-## 在示例App中了解这些风格
+## 在示例App中了解这些规范
 看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
 
 ##翻译 
-[Angular风格指南翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/i18n)。
+[Angular规范翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/i18n)。
 
 ##目录
   1. [单一职责](#单一职责)
@@ -170,7 +170,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   })();
   ```
 
-  - 注：为了简洁起见，本指南余下的示例中将会省略IIFE语法。 
+  - 注：为了简洁起见，本规范余下的示例中将会省略IIFE语法。 
 
   - 注：IIFE阻止了测试代码访问私有成员（正则表达式、helper函数等），这对于自身测试是非常友好的。然而你可以把这些私有成员暴露到可访问成员中进行测试，例如把私有成员（正则表达式、helper函数等）放到factory或是constant中。
 
@@ -2106,7 +2106,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 应用程序结构
 
-###总指南
+###总规范
 ###### [Style [Y150](#style-y150)]
 
   - 有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
@@ -2127,7 +2127,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：开发者可以快速定位代码、快速识别文件代表的意思，结构尽可能平直，没有重复，没有多余名字。 
 
-    *为什么？*：LIFT指南都包括在内。
+    *为什么？*：LIFT规范都包括在内。
 
     *为什么？*：通过组织内容和让它们保持和LIFT指导准则一致，帮助降低应用程序变得混乱的可能性。
 
@@ -2650,7 +2650,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 用一个Options文件
 ###### [Style [Y235](#style-y235)]
 
-  - 使用JSCS检查代码风格，确保你的代码控制中有定制的JSCS options文件，在这里[JSCS docs](http://www.jscs.info)查看更多信息。
+  - 使用JSCS检查代码规范，确保你的代码控制中有定制的JSCS options文件，在这里[JSCS docs](http://www.jscs.info)查看更多信息。
 
     *为什么？*：提交代码前第一时间提供一个预警。
 
@@ -2784,12 +2784,12 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 **[返回顶部](#目录)**
 
 ## 文件模板和片段
-使用文件模板和片段帮助保持一致性的风格，这里有针对一些web开发的编辑器和IDE的模板和（或）片段。
+为了遵循一致的规范和模式，使用文件模板和片段，这里有针对一些web开发的编辑器和IDE的模板和（或）片段。
 
 ###Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - Angular片段遵循这些风格指南。 
+  - Angular片段遵循这些规范。 
 
     - 下载[Sublime Angular snippets](assets/sublime-angular-snippets?raw=true) 
     - 把它放到Packages文件夹中
@@ -2808,7 +2808,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ###Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - Angular文件遵循[SideWaffle](http://www.sidewaffle.com)所介绍的风格指南。
+  - Angular文件遵循[SideWaffle](http://www.sidewaffle.com)所介绍的规范。
 
     - 下载Visual Studio扩展文件[SideWaffle](http://www.sidewaffle.com)
     - 运行下载的vsix文件
@@ -2834,7 +2834,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
-  - Angular片段遵循以下指南。
+  - Angular片段遵循以下规范。
     ```
     apm install angularjs-styleguide-snippets
     ```
@@ -2857,7 +2857,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### Brackets
 ###### [Style [Y254](#style-y254)]
 
-  - Angular代码片段遵循以下风格指南。
+  - Angular代码片段遵循以下规范。
 
     - 下载[Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
     - 拓展管理器( File > Extension manager )
@@ -2891,7 +2891,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
 
-你可以使用[HotTowel yeoman generator](http://jpapa.me/yohottowel)来创建一个遵循本指南的Angular起步应用。
+你可以使用[HotTowel yeoman generator](http://jpapa.me/yohottowel)来创建一个遵循本规范的Angular入门应用。
 
 1. 安装generator-hottowel
 
@@ -2977,7 +2977,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 贡献
 
-先打开一个问题讨论潜在的变化和增加。如果你对这篇指南有问题，随时在仓库中提出问题。如果你发现了一个错字，创建一个pull request。这样做是为了保持内容的更新，使用github的原生功能通过问题和PR来帮助讲述这个故事，具体做法可以google一下。为什么？因为如果你有问题，其他人可能有同样的问题，你在这里可以学到如何贡献。
+先打开一个问题讨论潜在的变化和增加。如果你对这篇规范有任何疑惑，随时在仓库中提出问题。如果你发现了一个错字，创建一个pull request。这样做是为了保持内容的更新，使用github的原生功能通过问题和PR来帮助讲述这个故事，具体做法可以google一下。为什么？因为如果你有问题，其他人可能有同样的问题，你在这里可以学到如何贡献。
 
 *贡献代码到这个仓库就意味着你同意了本仓库的许可证内容*
 
@@ -2988,7 +2988,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 许可证
 
-  - **tldr;** 如果可以的话，使用本指南的时候还是指明归属吧。 
+  - **tldr;** 如果可以的话，使用本规范的时候还是指明归属吧。 
 
 ### Copyright
 
