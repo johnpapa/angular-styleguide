@@ -1444,7 +1444,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           });
   }
 
-  function moviePrepService(movieService) {
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
 
