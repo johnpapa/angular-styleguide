@@ -1585,13 +1585,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
                 controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: {
-                    moviesPrepService: moviePrepService
+                    moviesPrepService: moviesPrepService
                 }
             });
     }
 
-    moviePrepService.$inject = ['movieService'];
-    function moviePrepService(movieService) {
+    moviesPrepService.$inject = ['movieService'];
+    function moviesPrepService(movieService) {
         return movieService.getMovies();
     }
     ```
