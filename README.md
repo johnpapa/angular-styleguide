@@ -2886,6 +2886,26 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngtranslate  // uses $translate service with its promise
     ```
 
+### Emacs
+###### [Style [Y255](#style-y255)]
+
+  - Angular snippets that follow these styles and guidelines.
+
+    - Install [YASnippet](https://github.com/capitaomorte/yasnippet)
+    - Download the [Emacs Angular snippets](assets/emacs-angular-snippets?raw=true)
+    - Place files in the snippets/js-mode of YASnippet
+    - Restart Emacs
+    - In a JavaScript file type these commands followed by a `TAB`
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
+
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
