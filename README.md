@@ -2886,6 +2886,23 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngtranslate  // uses $translate service with its promise
     ```
 
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - vim snippets that follow these styles and guidelines.
+
+    - Download the [vim Angular snippets](https://github.com/kashiro/angular-styleguide/tree/master/assets/vim-angular-snippets)
+    - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - copy snippets to snippet directory
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
