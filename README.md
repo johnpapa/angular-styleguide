@@ -2902,7 +2902,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngmodule     // creates an Angular module
     ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
-
+    ```
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
