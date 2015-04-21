@@ -2931,6 +2931,54 @@ You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to creat
 
 **[Back to top](#table-of-contents)**
 
+## Slush Generator
+###### [Style [Y360](#style-y360)]
+
+You can use the [angular-gulp slush generator](http://reflexdemon.github.io/slush-angular-gulp/) to create an app that serves as a starting point for Angular that follows this style guide with subgenerators.
+
+
+1. Install slush-angular-gulp
+
+  ```
+  npm install -g slush-angular-gulp
+  ```
+
+2. Create a new folder and change directory to it
+
+  ```
+  mkdir my-angular-app
+  cd my-angular-app
+  ```
+
+3. Run the generator
+
+  ```
+  slush angular-gulp
+  ```
+  or
+  ```
+  slush angular-gulp:app
+  ```
+4. Additional generators,
+
+  Here is the list of sub-generators with slush
+  - angular-gulp (aka angular-gulp:app)
+  - angular-gulp:controller
+  - angular-gulp:module
+  - angular-gulp:directive
+  - angular-gulp:filter
+  - angular-gulp:route
+  - angular-gulp:service
+  - angular-gulp:provider
+  - angular-gulp:factory
+  - angular-gulp:value
+  - angular-gulp:constant
+  - angular-gulp:decorator
+  - angular-gulp:view
+
+
+**[Back to top](#table-of-contents)**
+
 ## Routing
 Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
 
