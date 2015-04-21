@@ -1,0 +1,35 @@
+snippet ngdirective
+options head
+  (function() {
+      'use strict';
+  
+      angular
+          .module('${1:module}')
+          .directive('${2:directive}', $2);
+  
+      /* @ngInject */
+      function $2(${3:dependencies}) {
+          // Usage:
+          //
+          // Creates:
+          //
+          var directive = {
+              bindToController: true,
+              controller: ${4:Controller},
+              controllerAs: '${5:vm}',
+              link: link,
+              restrict: 'A',
+              scope: {
+              }
+          };
+          return directive;
+  
+          function link(scope, element, attrs) {
+          }
+      }
+  
+      /* @ngInject */
+      function $4() {
+  
+      }
+  })();
