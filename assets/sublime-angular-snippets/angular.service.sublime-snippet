@@ -6,6 +6,8 @@
         .module('${1:module}')
         .service('${2:Service}', ${2:Service});
 
+    ${2:Service}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+
     /* @ngInject */
     function ${2:Service}(${3:dependencies}) {
         this.${4:func} = ${4:func};
