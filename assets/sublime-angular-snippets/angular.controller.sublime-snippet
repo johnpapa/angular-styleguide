@@ -6,7 +6,7 @@
         .module('${1:module}')
         .controller('${2:Controller}', ${2:Controller});
 
-    ${2:controller}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+    ${2:Controller}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
     /* @ngInject */
     function ${2:Controller}(${3:dependencies}) {
