@@ -2891,7 +2891,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - vim snippets that follow these styles and guidelines.
 
-    - Download the [vim Angular snippets](https://github.com/kashiro/angular-styleguide/tree/master/assets/vim-angular-snippets)
+    - Download the [vim Angular snippets](assets/vim-angular-snippets?raw=true)
     - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
     - copy snippets to snippet directory
 
