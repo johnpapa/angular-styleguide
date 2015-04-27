@@ -1444,7 +1444,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           });
   }
 
-  function moviePrepService(movieService) {
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
 
@@ -1585,13 +1585,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
                 controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: {
-                    moviesPrepService: moviePrepService
+                    moviesPrepService: moviesPrepService
                 }
             });
     }
 
-    moviePrepService.$inject = ['movieService'];
-    function moviePrepService(movieService) {
+    moviesPrepService.$inject = ['movieService'];
+    function moviesPrepService(movieService) {
         return movieService.getMovies();
     }
     ```
@@ -2109,7 +2109,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Overall Guidelines
 ###### [Style [Y150](#style-y150)]
 
-  - Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  - Have a near term view of implementation and a long term vision. In other words, start small but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
     Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
@@ -2886,6 +2886,23 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngtranslate  // uses $translate service with its promise
     ```
 
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - vim snippets that follow these styles and guidelines.
+
+    - Download the [vim Angular snippets](assets/vim-angular-snippets?raw=true)
+    - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - copy snippets to snippet directory
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
@@ -2924,6 +2941,76 @@ Client-side routing is important for creating a navigation flow between views an
     *Why?*: UI Router offers all the features of the Angular router plus a few additional ones including nested routes and states.
 
     *Why?*: The syntax is quite similar to the Angular router and is easy to migrate to UI Router.
+
+  - Note: You can use a provider such as the `routerHelperProvider` shown below to help configure states across files, during the run phase.
+
+    ```javascript
+    // customers.routes.js
+    angular
+        .module('app.customers')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(routerHelper) {
+        routerHelper.configureStates(getStates());
+    }
+
+    function getStates() {
+        return [
+            {
+                state: 'customer',
+                config: {
+                    abstract: true,
+                    template: '<ui-view class="shuffle-animation"/>',
+                    url: '/customer'
+                }
+            }
+        ];
+    }
+    ```
+
+    ```javascript
+    // routerHelperProvider.js
+    angular
+        .module('blocks.router')
+        .provider('routerHelper', routerHelperProvider);
+
+    routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
+    /* @ngInject */
+    function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
+        /* jshint validthis:true */
+        this.$get = RouterHelper;
+
+        $locationProvider.html5Mode(true);
+
+        RouterHelper.$inject = ['$state'];
+        /* @ngInject */
+        function RouterHelper($state) {
+            var hasOtherwise = false;
+
+            var service = {
+                configureStates: configureStates,
+                getStates: getStates
+            };
+
+            return service;
+
+            ///////////////
+
+            function configureStates(states, otherwisePath) {
+                states.forEach(function(state) {
+                    $stateProvider.state(state.state, state.config);
+                });
+                if (otherwisePath && !hasOtherwise) {
+                    hasOtherwise = true;
+                    $urlRouterProvider.otherwise(otherwisePath);
+                }
+            }
+
+            function getStates() { return $state.get(); }
+        }
+    }
+    ```
 
 ###### [Style [Y271](#style-y271)]
 

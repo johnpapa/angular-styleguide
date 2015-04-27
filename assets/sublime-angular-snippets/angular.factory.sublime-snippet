@@ -6,6 +6,8 @@
         .module('${1:module}')
         .factory('${2:factory}', ${2:factory});
 
+    ${2:factory}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+
     /* @ngInject */
     function ${2:Factory}(${3:dependencies}) {
         var service = {

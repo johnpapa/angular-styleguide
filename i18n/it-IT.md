@@ -903,7 +903,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     *Perché?*: Ciò rende più semplice da testare (vere o simulate) le chiamate ai dati quando si testa un controller che usa un servizio ai dati.
 
-    *Perché?*: L'implementazione di un servizio ai dati può avere del codice molto specifico su come trattare i repository dei dati. Questo può includere header, come comunicare con i dati o altri servizi quali $http. Separare la logica in un servizio ai dati incapsula questa logica in un posto unico nascondendo l'implementazione ai consumatori esterni (forse un controller), rendendo inoltre più semplice cambiarne l'implementazione.
+    *Perché?*: L'implementazione di un servizio ai dati può avere del codice molto specifico su come trattare i repository dei dati. Questo può includere header, come comunicare con i dati o altri servizi quali `$http`. Separare la logica in un servizio ai dati incapsula questa logica in un posto unico nascondendo l'implementazione ai consumatori esterni (forse un controller), rendendo inoltre più semplice cambiarne l'implementazione.
 
   ```javascript
   /* consigliato */
@@ -1015,7 +1015,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-    **[Torna all'inizio](#tavola-dei-contenuti)**
+**[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Directive
 ### Limite di 1 per file
@@ -1026,6 +1026,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
     *Perché?*: È facile mescolare tutte le directive in un unico file ma difficoltoso da separarle così che alcune siano condivise tra le applicazioni, alcune tra moduli, altre solo per un module. 
 
     *Perché?*: Una directive per file è semplice da manutenere.
+    
+    > Nota: "**Best Practice**: Le directive dovrebbero fare pulizia alla fine. Puoi usare `element.on('$destroy', ...)` oppure `scope.$on('$destroy', ...)` per lanciare una funzione di pulizia quando la directive è rimossa" ... dalla documentazione di Angular.
 
   ```javascript
   /* evitare */
@@ -1315,7 +1317,6 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Risoluzioni di promesse per un controller
-
 ### Promesse di attivazione di un Controller
 ###### [Stile [Y080](#stile-y080)]
 
@@ -1420,9 +1421,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
   Avengers.$inject = ['moviesPrepService'];
   function Avengers(moviesPrepService) {
-        /* jshint validthis:true */
-        var vm = this;
-        vm.movies = moviesPrepService.movies;
+      var vm = this;
+      vm.movies = moviesPrepService.movies;
   }
   ```
   
@@ -2201,6 +2201,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
         app.module.js
         app.config.js
         app.routes.js
+        directives.js
         controllers/
             attendees.js            
             session-detail.js       
@@ -2341,12 +2342,12 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
       .module('app')
       .run(runBlock);
 
-    runBlock.$inject = ['authenticator', 'translator'];
+  runBlock.$inject = ['authenticator', 'translator'];
 
-    function runBlock(authenticator, translator) {
-        authenticator.initialize();
-        translator.initialize();
-    }
+  function runBlock(authenticator, translator) {
+      authenticator.initialize();
+      translator.initialize();
+  }
   ```
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
