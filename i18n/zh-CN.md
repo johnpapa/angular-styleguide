@@ -1444,7 +1444,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
           });
   }
 
-  function moviePrepService(movieService) {
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
 
@@ -1585,13 +1585,13 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
               controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
-                  moviesPrepService: moviePrepService
+                  moviesPrepService: moviesPrepService
               }
           });
   }
 
-  moviePrepService.$inject =  ['movieService'];
-  function moviePrepService(movieService) {
+  moviesPrepService.$inject =  ['movieService'];
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
   ```
@@ -2886,6 +2886,23 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     ngroute      // creates an Angular routeProvider
     ```
 
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - vim代码片段遵循以下规范。
+
+    - 下载[vim Angular代码段](assets/vim-angular-snippets?raw=true)
+    - 设置[neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - 粘贴到snippet路径下
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
 **[返回顶部](#目录)**
 
 ## Yeoman Generator
@@ -2924,6 +2941,76 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     *为什么？*：它包含了Angular路由的所有特性，并且增加了一些额外的特性，如嵌套路由和状态。
 
     *为什么？*：语法和Angular路由很像，很容易迁移到UI Router。
+
+  - 注意：你可以在运行期间使用`routerHelperProvider`配置跨文件状态
+
+    ```javascript
+    // customers.routes.js
+    angular
+        .module('app.customers')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(routerHelper) {
+        routerHelper.configureStates(getStates());
+    }
+
+    function getStates() {
+        return [
+            {
+                state: 'customer',
+                config: {
+                    abstract: true,
+                    template: '<ui-view class="shuffle-animation"/>',
+                    url: '/customer'
+                }
+            }
+        ];
+    }
+    ```
+
+    ```javascript
+    // routerHelperProvider.js
+    angular
+        .module('blocks.router')
+        .provider('routerHelper', routerHelperProvider);
+
+    routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
+    /* @ngInject */
+    function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
+        /* jshint validthis:true */
+        this.$get = RouterHelper;
+
+        $locationProvider.html5Mode(true);
+
+        RouterHelper.$inject = ['$state'];
+        /* @ngInject */
+        function RouterHelper($state) {
+            var hasOtherwise = false;
+
+            var service = {
+                configureStates: configureStates,
+                getStates: getStates
+            };
+
+            return service;
+
+            ///////////////
+
+            function configureStates(states, otherwisePath) {
+                states.forEach(function(state) {
+                    $stateProvider.state(state.state, state.config);
+                });
+                if (otherwisePath && !hasOtherwise) {
+                    hasOtherwise = true;
+                    $urlRouterProvider.otherwise(otherwisePath);
+                }
+            }
+
+            function getStates() { return $state.get(); }
+        }
+    }
+    ```
 
 ###### [Style [Y271](#style-y271)]
 
