@@ -618,7 +618,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
 
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    *Why?*: Reusing controllers with several views is brittle and good end-to-end (e2e) test coverage is required to ensure stability across large applications.
 
 ### Assigning Controllers
 ###### [Style [Y038](#style-y038)]
