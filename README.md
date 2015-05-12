@@ -618,7 +618,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
 
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    *Why?*: Reusing controllers with several views is brittle and good end-to-end (e2e) test coverage is required to ensure stability across large applications.
 
 ### Assigning Controllers
 ###### [Style [Y038](#style-y038)]
@@ -1674,7 +1674,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing magnification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
+    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
@@ -2174,7 +2174,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
-      Note: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Note: Do not structure your app using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
 
     ```javascript
     /*
