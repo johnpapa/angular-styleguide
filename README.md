@@ -2722,7 +2722,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
         "disallowEmptyBlocks": null,
-        "disallowMultipleLineStrings": null,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
