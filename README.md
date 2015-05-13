@@ -625,7 +625,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes.
 
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax.
+    Note: If a View is loaded via another means besides a route, then use the `ng-controller="AvengersController as avengers"` syntax.
 
     *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
 
@@ -647,7 +647,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```html
   <!-- avengers.html -->
-  <div ng-controller="Avengers as vm">
+  <div ng-controller="AvengersController as avengers">
   </div>
   ```
 
