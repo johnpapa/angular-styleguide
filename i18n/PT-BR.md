@@ -1687,11 +1687,11 @@ ou *Coletores de exceção*
     
 ### Feature File Names
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - Use nomes consistentes para todos os componentes seguindo um padrão que descreve a funcionalidade do componente e, em seguida, (opcionalmente) o seu tipo. Meu padrão recomendado é  `feature.type.js`.
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *Por que?*: Fornece uma maneira consistente para identificar components mais rapidamente.
 
-    *Why?*: Provides pattern matching for any automated tasks.
+     *Por que?*: Fornece um padrão apropriado pra qualquer tarefa automatizada.
 
     ```javascript
     /**
@@ -1740,7 +1740,7 @@ ou *Coletores de exceção*
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Nota: Outra convenção comum é nomear arquivos dos controladores sem a palavra `controller` no nome do arquivo como` avengers.js` em vez de `avengers.controller.js`. Todas as outras convenções ainda detêm usando um sufixo do tipo. Controladores são o tipo mais comum de componente para isso só economiza digitação e ainda é facilmente identificável. Eu recomendo que você escolha uma convenção que seja mais coerente para sua equipe.
 
     ```javascript
     /**
