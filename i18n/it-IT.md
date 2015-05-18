@@ -2353,16 +2353,16 @@ Invece usa la più semplice sintassi setter.
 ### $timeout e $interval
 ###### [Stile [Y181](#stile-y181)]
 
-  - Usa [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) e [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) al posto di `setTimeout` e `setInterval` .
+  - Usa [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) e [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) al posto di `setTimeout` e `setInterval`.
 
-	*Perché?*: Questi servizi sono gestiti da Angular e più facilmente testabili e trattano il ciclo di digest di AngularJS quindi tengono il data binding sincronizzato.
+	*Perché?*: Questi servizi sono gestiti da Angular e più facilmente testabili e gestiscono il ciclo di digest di Angular così da tenere sincronizzato il data binding.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Test
-Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcune mie raccomandazioni fondamentali per lo unit testing con link e ulteriori informazioni.
+Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcune mie raccomandazioni per le fondamenta dello unit testing con link per ulteriori dettagli.
 
-### Scrivi i test con le Storie
+### Scrivi test che abbiano storie
 ###### [Stile [Y190](#stile-y190)]
 
   - Scrivi un set di test per ogni storia. Inizia con un test vuoto e riempilo fino a scrivere il codice per la storia.
@@ -2386,7 +2386,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
         //TODO ($httpBackend?)
     });
 
-    // continuare
+    // così via
     ```
 
 ### Librerie per i test
@@ -2394,9 +2394,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
   - Usa [Jasmine](http://jasmine.github.io/) oppure [Mocha](http://mochajs.org) per lo unit testing.
 
-    *Perché?*: Sia Jasmine che Mocha sono largamente utilizzati nella comunità di AngularJS. Entrambi son stabili, ben manutenuti e forniscono funzionalità solide per i test.
+    *Perché?*: Sia Jasmine che Mocha sono largamente utilizzati nella comunità di Angular. Entrambi son stabili, ben manutenuti e forniscono funzionalità solide per i test.
 
-    Nota: Usando Mocha, tieni in considerazione di usare anche una libreria di asserzione come [Chai](http://chaijs.com).
+    Nota: Usando Mocha, tieni in considerazione di usare anche una libreria di asserzione come [Chai](http://chaijs.com). Io preferisco Mocha.
 
 ### Esecutori di Test
 ###### [Stile [Y192](#stile-y192)]
@@ -2407,7 +2407,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: Karma si aggancia facilmente al tuo processo di Integrazione Continua da solo o attraverso Grunt o Gulp.
 
-    *Perché?*: Alcuni IDE cominciamo ad integrare Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Perché?*: Alcuni IDE cominciano ad integrarsi con Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
     *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
 
@@ -2425,9 +2425,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
   - Usa [PhantomJS](http://phantomjs.org/) per eseguire i test su un server.
 
-    *Perché?*: PhantomJS è un headless browser che aiuta l'esecuzione di test senza la necessità di un browser "visuale". Quindi non devi installare Chrome, Safari, IE o altri browser sul server. 
+    *Perché?*: PhantomJS è un headless browser (browser senza interfaccia grafica) che aiuta l'esecuzione di test senza la necessità di un browser "visuale". Quindi non devi installare Chrome, Safari, IE o altri browser sul server. 
 
-    Nota: Dovresti in ogni caso testare tutti i browser del tuo ambiente, come appropriato per il pubblico che è il target.
+    Nota: Dovresti in ogni caso testare tutti i browser nel tuo ambiente, come appropriato per il pubblico che ne è il target.
 
 ### Analisi del codice
 ###### [Stile [Y195](#stile-y195)]
@@ -2436,10 +2436,10 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: I test sono codice. JSHint può aiutare ad identificare problemi di qualità del codice che causano l’improprio funzionamento del test.
 
-### Alleviare le regole sulle variabili globali di JSHint per i Test 
+### Alleviare le regole sulle variabili globali di JSHint per i test 
 ###### [Stile [Y196](#stile-y196)]
 
-  - Rilassa le regole sul codice dei test per consentendoli per variabili globali comuni quali `describe` ed `expect`.
+  - Rilassa le regole sul codice dei test per consentire variabili globali comuni quali `describe` ed `expect`.
 
     *Perché?*: I tuoi test sono codice e richiedono al medesima attenzione e regole per la qualità del codice come tutto il resto del codice di produzione. Comunque, variabili globali usate dai framework di test, per esempio, possono essere rilassate includendole nelle specifiche dei test.
 
@@ -2458,9 +2458,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Organizzazione dei test
 ###### [Stile [Y197](#stile-y197)]
 
-  - Posiziona i file degli unit test vicino al codice del client. Posiziona le specifiche che coprono l'integrazione con il server o che testano più componenti in una cartella separata `tests`.
+  - Posiziona i file degli unit test (spec) vicino al codice del client. Posiziona le specifiche che coprono l'integrazione con il server o che testano più componenti in una cartella separata `tests`.
 
-    *Perché?*: Gli unit test hanno una correlazione diretta con un componente specifico e un file nei sogenti. 
+    *Perché?*: Gli unit test hanno una correlazione diretta con un componente specifico e file nei sogenti. 
 
     *Perché?*: È più semplice da tenere aggiornati dal momento che sono sempre a vista. Quando scrivi codice, sia che tu faccia TDD o fai i test durante o dopo lo sviluppo, le scpecifiche sono sempre di fianco e mai fuori dalla vista o dai pensieri, quindi è più probabile che siano aggiornati e ciò consente inoltre a mantenere una migliore copertura del codice.
 
@@ -2489,9 +2489,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Utilizzo
 ###### [Stile [Y210](#stile-y210)]
 
-  - Usa sfumate [animazioni con AngularJS](https://docs.angularjs.org/guide/animations) per fare transizioni tra stati per viste ed elementi visuali primari. Includi il [modulo ngAnimate](https://docs.angularjs.org/api/ngAnimate). Le 3 chiavi sono sfumate, dolci e continue.
+  - Usa sfumate [animazioni con Angular](https://docs.angularjs.org/guide/animations) per fare transizioni tra stati per viste ed elementi visuali primari. Includi il [modulo ngAnimate](https://docs.angularjs.org/api/ngAnimate). Le 3 chiavi sono sfumate, dolci e continue.
 
-    *Perché?*: Animazioni sfumate possono migliorare l'esperienza dell'utente (UX) quando usate in modo appropriato.
+    *Perché?*: Animazioni sfumate possono migliorare l'esperienza dell'utente quando usate in modo appropriato.
 
     *Perché?*: Animazioni sfumate possono migliorare la percezione di prestazioni nella transizione tra le viste.
 
@@ -2500,7 +2500,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
   - Usa animazioni che abbiano una durata breve. Generalmente parto con 300 ms e aggiusto finché non è appropriato.    
 
-    *Perché?*: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
+    *Perché?*: Animazioni lunghe possono avere l'effetto contrario sull'esperienza dell'utente e di percezzione delle prestazioni che danno il senso di una applicazione lenta.
 
 ### animate.css
 ###### [Stile [Y212](#stile-y212)]
@@ -2513,7 +2513,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: animate.css è ampiamente usato e testato.
 
-    Nota: Leggi questo [ottimo posto di Matias Niemelä sulle animazioni di AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Nota: Leggi questo [ottimo post di Matias Niemelä sulle animazioni di Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
@@ -2524,13 +2524,13 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
   - Se hai intenzione di produrre documentazione, usa la sintassi di [`jsDoc`](http://usejsdoc.org/) per documentare nomi di funzione, descrizione, parametri e ciò che ritorna. Usa `@namespace` e `@memberOf` per adattarlo alla stuttura della tua app.
 
-    *Perché?*: Puoi generare (e rigenerare) documentazione dal tuo codice, piuttosto che scriverlo partendo da zero.
+    *Perché?*: Puoi generare (e rigenerare) documentazione dal tuo codice, invece di scriverlo partendo da zero.
 
-    *Perché?*: Fornisce consistenza usando un tool industriale comune.
+    *Perché?*: Fornisce consistenza usando un tool comune nell'industria.
 
     ```javascript
     /**
-     * Factory di Logger 
+     * Factory di Log 
      * @namespace Factories
      */
     (function() {
@@ -2574,7 +2574,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Usa un file di opzioni
 ###### [Stile [Y230](#stile-y230)]
 
-  - Usa JS Hint per spazzolare il tuo JavaScript ed assicurati di ritagliare il file di opzioni di JS Hint e di includerlo nel source control . Vedi la [documentazione di JS Hint](http://www.jshint.com/docs/) per i dettagli sulle opzioni.
+  - Usa JS Hint per spazzolare il tuo JavaScript ed assicurati di ritagliare il file di opzioni di JS Hint e di includerlo nel source control. Vedi la [documentazione di JS Hint](http://www.jshint.com/docs/) per i dettagli sulle opzioni.
 
     *Perché?*: Da un allerta iniziale prima di fare il commit di qualunque codice al source control.
 
@@ -2739,9 +2739,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Variabili globali delle terze parti
 ###### [Stile [Y240](#stile-y240)]
 
-  - Crea una costante di AngularJS per le variabili globali delle librerie di terze parti.
+  - Crea una costante di Angular per le variabili globali delle librerie di terze parti.
 
-    *Perché?*: Fornisce in modo per iniettare librerie di terze parte che altrimenti sarebbero globali. Questo migliore la testabilità permettendoti più facilmente di sapere quali sono le dipendenze dei tuoi componenti. Ti consente inoltre di fare un mock di queste dipendenze, dove ciò ha senso.
+    *Perché?*: Fornisce in modo per iniettare librerie di terze parte che altrimenti sarebbero globali. Questo migliore la testabilità del codice permettendoti più facilmente di sapere quali sono le dipendenze dei tuoi componenti. Ti consente inoltre di fare un mock di queste dipendenze, dove ciò ha senso.
 
     ```javascript
     // constants.js
@@ -2761,11 +2761,11 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
   - Usa constanti per i valori che non cambiano e che non provengono da un altro servizio. Quando le costanti sono utilizzate solo per un modulo che potrebbe essere riutilizzato in più applicazioni, metti le costanti in un file per modulo e nominalo come il modulo. Fintanto che tale necesstià non si presenti, tieni le constanti nel modulo principale in un file `constants.js`.
 
-    *Perché*: Un valore che potrebbe variare, anche non di frequente, dovrebbe essere recuperato da un servizio così che non sia necessario cambiare il sorgente. Per esempio, una URL per un servizio di accesso ai dati può essere messo in una costante ma un miglior posizionamento sarebbe quello di caricarlo da un web service.
+    *Perché*: Un valore che potrebbe variare, anche non di frequente, dovrebbe essere recuperato da un servizio così che non sia necessario cambiare il codice sorgente. Per esempio, una URL per un servizio di accesso ai dati può essere messo in una costante ma un miglior posizionamento sarebbe quello di caricarlo da un web service.
 
     *Perché?*: Le costanti possono essere iniettate in un componente di angular, provider inclusi.
 
-    *Perché?*: Quando una applicazione è separata in modulo che potrebbero essere usati in altre applicazioni, ogni modulo a se stante dovrebbe essere in grado di funzionare da solo ivi incluse ogni costante da cui dipende.
+    *Perché?*: Quando una applicazione è separata in moduli che potrebbero essere usati in altre applicazioni, ogni modulo dovrebbe essere in grado di funzionare a se stante ivi incluse ogni costante da cui dipende.
 
     ```javascript
     // Costanti usate dall'intera applicazione
@@ -2785,12 +2785,12 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## File Template e Snippet
-Usa file template o snippet che ti aiutino a seguire stili e schemi consistentemente. Qui trovi alcuni template e/o snippet per alcuni degli editor per lo sviluppo wbe e IDE.
+Usa file template o snippet che ti aiutino a seguire stili e schemi consistentemente. Qui trovi alcuni template e/o snippet per alcuni degli editor per lo sviluppo web e IDE.
 
 ### Sublime Text
 ###### [Stile [Y250](#stile-y250)]
 
-  - Snippet di AngularJS che seguono questi stili e linee guida. 
+  - Snippet di Angular che seguono questi stili e linee guida. 
 
     - Scarica gli [snippet di Angular per Sublime](assets/sublime-angular-snippets.zip?raw=true) 
     - Mettili nella tua cartella Packages
@@ -2799,9 +2799,11 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
  
     ```javascript
     ngcontroller // crea un controller Angular
-    ngdirective // crea una directive Angular
-    ngfactory // crea una factory Angular
-    ngmodule // crea un modulo Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngmodule     // crea un modulo Angular
+    ngservice    // crea un servizio Angular
+    ngfilter     // crea un filtro Angular
     ```
 
 ### Visual Studio
@@ -2816,9 +2818,9 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### WebStorm
 ###### [Stile [Y252](#stile-y252)]
 
-  - Snippet di Angular JS e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
+  - Snippet di Angular e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
 
-    - Scarica i [file dei template e gli snippet diAngularJS per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - Scarica i [file dei template e gli snippet di Angular per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Apri WebStorm e vai al menù `File`
     - Scegli la voce di menù `Import Settings`
     - Seleziona il file e clicca `OK`
@@ -2833,7 +2835,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### Atom
 ###### [Stile [Y253](#stile-y253)]
 
-  - Snippet di Angular JS e file di template che seguono queste linee guida.
+  - Snippet di Angular e file di template che seguono queste linee guida.
     ```
     apm install angularjs-styleguide-snippets
     ```
@@ -2856,8 +2858,8 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### Brackets
 ###### [Stile [Y254](#stile-y254)]
 
-  - Snippet di Angular che seguono questi stili e linee guida.
-
+  - Snippet per Angular che seguono questi stili e linee guida.
+    - Scarica gli [snippet di Angulare per Brackets](assets/brackets-angular-snippets.yaml?raw=true)
     - Brackets Extension manager ( File > Extension manager )
     - Installa ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
     - Clicca sulla lampadina nel gutter destro in bracket
@@ -2875,16 +2877,33 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngapp        // crea una impostazione di modulo Angular
     ngservice    // crea un service Angular
     ngfilter     // crea un filtro Angular
-    ngroute      // crea un routeProvider Angular
 
     // Questi sono snippet parziali intesi per essere concatenati
     ngmodule     // crea un getter di modulo Angular
     ngstate      // crea una definizione di stato di UI Router Angular
     ngconfig     // definisce un funzione per la fase di cofigurazione
     ngrun        // definisce una funzione per la fase di esecuzione
-    ngwhen       // definisce una route per il routeProvider
+    ngroute      // definisce una ngRoute Angular con la definizione 'when'
+    ngtranslate  // usa il service $translate con le proprie promesse
     ```
 
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - Snippet di vim che seguono questi stili e linee guida.
+
+    - Scarica gli [snippet vim per Angular](assets/vim-angular-snippets?raw=true)
+    - setta [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - copia gli snippets nella directory snippet
+
+    ```javascript
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngmodule     // crea un modulo Angular
+    ngservice    // crea un service Angular
+    ngfilter     // crea un filter Angular
+    ```
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Generatore Yeoman
@@ -2920,13 +2939,83 @@ Il routing del lato client è importante al fine di creare in flusso di navigazi
 
   - Usa il [Router AngularUI](http://angular-ui.github.io/ui-router/) per il routing del lato client.
 
-    *Perché?*: UI Router offre tutte le funzionalità del router di Angular più alcune funzionalità aggiuntive che includono orute nidificate e stati.
+    *Perché?*: UI Router offre tutte le funzionalità del router di Angular più alcune funzionalità aggiuntive che includono route nidificate e stati.
 
     *Perché?*: la sintassi è piuttosto simile a quella del router di Angular ed è facile migrare a UI Router.
+    
+  - Nota: Puoi usare un provider quale `routerHelperProvider` mostrato sotto per aiutarti a configurare gli stati tra i file durante la fase di esecuzione.
+
+    ```javascript
+    // customers.routes.js
+    angular
+        .module('app.customers')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(routerHelper) {
+        routerHelper.configureStates(getStates());
+    }
+
+    function getStates() {
+        return [
+            {
+                state: 'customer',
+                config: {
+                    abstract: true,
+                    template: '<ui-view class="shuffle-animation"/>',
+                    url: '/customer'
+                }
+            }
+        ];
+    }
+    ```
+
+    ```javascript
+    // routerHelperProvider.js
+    angular
+        .module('blocks.router')
+        .provider('routerHelper', routerHelperProvider);
+
+    routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
+    /* @ngInject */
+    function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
+        /* jshint validthis:true */
+        this.$get = RouterHelper;
+
+        $locationProvider.html5Mode(true);
+
+        RouterHelper.$inject = ['$state'];
+        /* @ngInject */
+        function RouterHelper($state) {
+            var hasOtherwise = false;
+
+            var service = {
+                configureStates: configureStates,
+                getStates: getStates
+            };
+
+            return service;
+
+            ///////////////
+
+            function configureStates(states, otherwisePath) {
+                states.forEach(function(state) {
+                    $stateProvider.state(state.state, state.config);
+                });
+                if (otherwisePath && !hasOtherwise) {
+                    hasOtherwise = true;
+                    $urlRouterProvider.otherwise(otherwisePath);
+                }
+            }
+
+            function getStates() { return $state.get(); }
+        }
+    }
+    ```
 
 ###### [Stile [Y271](#stile-y271)]
 
-  - Definisci le route per le view nel modulo dove queste esisteono. Ogni modulo dovrebbe contenere le route per le view del modulo.
+  - Definisci le route per le view nel modulo dove queste esistono. Ogni modulo dovrebbe contenere le route per le view del modulo.
 
     *Perché?*: Ogni modulo dovrebbe essere a se stante.
 
@@ -2937,13 +3026,13 @@ Il routing del lato client è importante al fine di creare in flusso di navigazi
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Automazione dei processi
-Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp si basa su codive sopra configurazione mentre Grunt si basa su configurazione sopre codice. Personalmente preferisco Gulp poiché lo percepisco come più facile da leggere e scrivere ma entrambi sono eccellenti.
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp si basa su "codice sopra configurazione" mentre Grunt si basa su "configurazione sopra codice". Personalmente preferisco Gulp poiché lo percepisco come più facile da leggere e scrivere ma entrambi sono eccellenti.
 
 > Impara di più su Gulp per l'automazione dei processi e pattern in mio [corso Pluralsight su Gulp](http://jpapa.me/gulpps) (in inglese)
 
 ###### [Stile [Y400](#stile-y400)]
 
-  - Usa l'automazione dei processi per elencare i file delle definizioni dei modili `*.module.js` prima di qualunque altro file JavaScript dell'applicazione.
+  - Usa l'automazione dei processi per elencare i file delle definizioni dei moduli `*.module.js` prima di qualunque altro file JavaScript dell'applicazione.
 
     *Perché?*: Angular necessita delle definizione del modulo da essere registrate prima di essere usati.
 
@@ -2965,25 +3054,25 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di 
 
 ###### [Stile [Y420](#stile-y420)]
 
-  - Evita l'utilizzo di filtri per la scansione di tutte le proprietà di un grafico di un oggetto complesso. Usa i filtri per selezionare le proprietà.
+  - Evita l'utilizzo di filtri per la scansione di tutte le proprietà del grafo di un oggetto complesso. Usa i filtri per selezionare le proprietà.
 
-    *Perché?*:I filtri possono facilmente essere abusati ed avere un impatto negativo sulle prestazioni se non usati con saggezza, per esempio quando i filtri hanno come soggetto un grafico di un ogetto largo e profondo.
+    *Perché?*: I filtri possono facilmente essere abusati ed avere un impatto negativo sulle prestazioni se non usati con saggezza, per esempio quando i filtri hanno come soggetto il grafo di un oggetto largo e profondo.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
-## Documentazione di AngularJS
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+## Documentazione di Angular
+Per qualunque altra cosa, riferimenti alle API, controlla la [documentazione di Angular](//docs.angularjs.org/api).
 
 ## Contribuire
 
-Apri prima una "issue" per discutere potenziali cambiamenti/aggiunte. Se hai delle domande relative alla guida, sentiti libero di porle come "issue" nel repository. Se trovi un errore di scrittura, crea una pull request. L'idea è quella di tenere aggiornato il contenuto e usare le funzioni native di Github per aiutare nel racconto della storia con issue e pull request che sono tutte ricercabili via Google. Perché? Il caso vuole che se hai una domanda, qualcun altro l'abbia pure. Puoi trovare di più qui su come contribuire.
+Apri prima una "issue" per discutere potenziali cambiamenti/aggiunte. Se hai domande relative alla guida, sentiti libero di porle come "issue" nel repository. Se trovi un errore di scrittura, crea una pull request. L'idea è quella di tenere aggiornato il contenuto e usare le funzioni native di Github per aiutare nel racconto della storia con issue e pull request che sono tutte ricercabili via Google. Perché? Il caso vuole che se hai una domanda, qualcun altro l'abbia pure. Puoi trovare di più su come contribuire qui.
 
 *Contribuendo a questo repository sei d'accordo a rendere il tuo contenuto soggetto alla licenza di questo repository*
 
 ### Processo
 
-    1. Discuti i cambiamenti in un Issue. 
-    2. Apri una Pull Request, fai riferimento all issue e spiega i cambiamenti e perché questi aggiungono valore.
+    1. Discuti i cambiamenti in un issue di GitHub. 
+    2. Apri una Pull Request, fai riferimento all issue e specifica i cambiamenti e perché questi aggiungono valore.
     3. La Pull Request sarà vagliata e quindi fatto un merge o declinata.
 
 ## Licenza
