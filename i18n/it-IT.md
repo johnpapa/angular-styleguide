@@ -621,7 +621,7 @@ Invece usa la più semplice sintassi setter.
 
   - Definisci un controller per vista e prova a non riutilizzare il controller per altre view. Piuttosto, sposta la logica riutilizzabile alle factory e mantieni il controller semplice ed a fuoco sulla propria view. 
   
-    *Perché?*: Riutilizzare i controller con diverse view è precario e sono necessari dei buoni test end to end (e2e) per assicurarne la stabilità in applicazioni su larga scala.
+    *Perché?*: Riutilizzare i controller con diverse view è precario e sono necessari dei buoni test end-to-end (e2e) per assicurarne la stabilità in applicazioni su larga scala.
 
 ### Assegnazione dei Controller
 ###### [Stile [Y038](#stile-y038)]
