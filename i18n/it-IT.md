@@ -1322,7 +1322,7 @@ Invece usa la più semplice sintassi setter.
 
   - Risolvi la logica di start-up per un controller in una funzione `activate`.
      
-    *Perché?*: Porre la logica di start-up in una posizione consistente nel controller la rende semplice da localizzare, più consistente da testare e aiuta a prevenire la diffusione di logica su tutto il controller.
+    *Perché?*: Porre la logica di start-up in una posizione consistente nel controller la rende semplice da localizzare, più consistente da testare e aiuta a prevenire la diffusione della logica di attivazione su tutto il controller.
 
     *Perché?*: La funzione `activate` del controller rende il riuso della logica adatto in caso di un refresh del controller/view, tiene la logica assieme, porta l'utente alla view più rapidamente, rende le animazini più facili su `ng-view` o `ui-view`e da la sensazione all'utente di istantaneità.
     
@@ -1365,15 +1365,15 @@ Invece usa la più semplice sintassi setter.
 ### Promesse risolte nel route
 ###### [Stile [Y081](#stile-y081)]
 
-  - Quando un controller dipende dal fatto che una promessa sia risolta prima che il controller sia attivato, risolvi queste dipendenze nel `$routeProvider` prima che la logica del controller sia eseguita. Se hai bisogno di annullare condizionalmente una route prima che il controller sia attivato, usa un resolver della route.
+  - Quando un controller dipende dal fatto che una promessa sia risolta prima che il controller sia attivato, risolvi queste dipendenze nel `$routeProvider` prima che la logica del controller sia eseguita. Se hai bisogno di annullare condizionalmente una route prima che il controller sia attivato, usa una risoluzione della route.
 
   - Usa la risoluzione della route quando decidi di annullare la route prima ancora di iniziara la transizione alla view.
 
-    *Perché?*: Un controller può richiedere dei dati prima che si carichi. Quei dati potrebbero venire da una promessa di una factory su misura oppure [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [resolver della route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) acconsenti che la promessa sia risolta prima che la logica del controller sia eseguita, così da poter prendere decisioni basandosi sui dati provenienti dalla promessa.
+    *Perché?*: Un controller può richiedere dei dati prima che si carichi. Quei dati potrebbero venire da una promessa di una factory su misura oppure [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [resolver della route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) consenti che la promessa sia risolta prima che la logica del controller sia eseguita, così da poter prendere decisioni basandosi sui dati provenienti dalla promessa.
 
-    *Perché?*: Il codice è eseguito dopo la route e nella funzione di attivazione del controller. La view inizia il caricamento immediatamente. Il data binding è effettivo quando le promesse nella funzine di attivazione sono risolte. Una animazione di “attendere” può essere mostrata durante la transizione alla view (via ng-view o ui-view).
+    *Perché?*: Il codice è eseguito dopo la route e nella funzione di attivazione del controller. La view inizia il caricamento immediatamente. Il data binding è effettivo quando le promesse nella funzione di attivazione sono risolte. Una animazione di “attendere” può essere mostrata durante la transizione alla view (per mezzo di ng-view o ui-view).
 
-    Nota: Il codice è eseguito prima il route per mezo di una promessa. Il rifiuto della promessa annulla la route. "resolve" fa attendere la view mentre viene risolta. Una animazione “attendere” può essere mostrata prima della risoluzione e durante tutta la transizione alla vista. Se desideri di arrivare alla view più in fretta e non hai bisogno di un punto di controllo per decidere se vuoi navigare alla view, considera piuttosto [Promesse di attivazione di un Controller](#stile-y080).
+    Nota: Il codice è eseguito prima del route per mezzo di una promessa. Il rifiuto della promessa annulla la route. "Resolve" fa attendere la view mentre viene risolta. Una animazione “attendere” può essere mostrata prima della risoluzione e durante tutta la transizione alla vista. Se desideri arrivare alla view più in fretta e non hai bisogno di un punto di controllo per decidere se vuoi navigare alla view, considera piuttosto [Promesse di attivazione di un Controller](#stile-y080).
 
   ```javascript
   /* evitare */
@@ -1426,10 +1426,10 @@ Invece usa la più semplice sintassi setter.
   }
   ```
   
-    Note: L'esempio sotto mostra il punto di risoluzione della route in una funzione con il nome per cui è più semplice da fare il debug e più semplice da gestire nella iniezione delle dependenze.
+    Nota: L'esempio sotto mostra il punto di risoluzione della route in una funzione con il nome per cui è più semplice da fare il debug e più semplice da gestire nella iniezione delle dependenze.
 
   ```javascript
-  /* meglio */
+  /* ancora meglio */
 
   // route-config.js
   angular
@@ -1463,7 +1463,7 @@ Invece usa la più semplice sintassi setter.
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Nota: La dipendenza del codice di esempio da `movieService` non è a prova di minificazione in se stessa. Per i dettagli su come rendere questo codice a prova di minificazione, vedi la sezione sulla [dependency injection](#manual-annotating-for-dependency-injection) e sulla [minificazione e annotazione](#minification-and-annotation).
+    Nota: La dipendenza del codice di esempio da `movieService` non è a prova di minificazione in se stessa. Per i dettagli su come rendere questo codice a prova di minificazione, vedi la sezione sulla [dependency injection](#annotazioni-manuali-per-la-dependency-injection) e sulla [minificazione e annotazione](#minificazione-e-annotazioni).
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
@@ -1474,7 +1474,7 @@ Invece usa la più semplice sintassi setter.
 
   - Evita di usare abbreviazioni sintattiche per la dichiarazione di dipendenze senza usare un approccio a prova di minificazione.
   
-    *Perché?*: I parametri dei componenti (p.e. controller, factory, etc.) saranno convertiti in variabili dal nome ridotto. Per esempio, `common` e `dataservice` potrebbero diventare `a` o `b` e non essere piò ritrovate da AngularJS.
+    *Perché?*: I parametri dei componenti (p.e. controller, factory, etc.) saranno convertiti in variabili dal nome ridotto. Per esempio, `common` e `dataservice` potrebbero diventare `a` o `b` e non essere piò ritrovate da Angular.
 
     ```javascript
     /* evita - non a prova di minificazione*/
@@ -1496,13 +1496,13 @@ Invece usa la più semplice sintassi setter.
 ### Indentificazione manuale delle dipendenze
 ###### [Stile [Y091](#stile-y091)]
 
-  - Usa `$inject` per identificare manualmente le tue dipendenze per i componenti di AngularJS.
+  - Usa `$inject` per identificare manualmente le tue dipendenze per i componenti di Angular.
   
-    *Perché?*: Questa tecnica rispecchia la tecnica usata da [`ng-annotate`](https://github.com/olov/ng-annotate), che raccomando per l'automazione della creazione della minificazione che sia a sicura per le dipendenze. Se `ng-annotate` rileva che una iniezione è stata fatta, non la duplicherà.
+    *Perché?*: Questa tecnica rispecchia la tecnica usata da [`ng-annotate`](https://github.com/olov/ng-annotate), che raccomando per l'automazione della creazione della minificazione sicura delle dipendenze. Se `ng-annotate` rileva che una iniezione è stata fatta, non la duplicherà.
 
-    *Perché?*: Questo salvaguarda le tue dipendenze dal essere vulnerabili alla questione della minificazione quando i parametri possono essere passati con nomi ridotti. Per esempio, `common` e `dataservice` possono diventare `a` o `b` e non essere più trovati da AngularJS.
+    *Perché?*: Questo salvaguarda le tue dipendenze dall'essere vulnerabili alla questione della minificazione quando i parametri possono essere passati con nomi ridotti. Per esempio, `common` e `dataservice` possono diventare `a` o `b` e non essere più trovati da Angular.
 
-    *Perché?*: Evita la creazione di dipendenze sulla stessa linea dal momento che lunghe liste possono essere difficili da leggere nell'array. Inoltre può essere fuorviante che l'array è una serie di stringhe mentre l'ultimo elemento è una funzione. 
+    *Perché?*: Evita la creazione di dipendenze sulla stessa linea dal momento che lunghe liste possono essere difficili da leggere nell'array. Inoltre può essere fuorviante che l'array è una serie di stringhe mentre l'ultimo elemento è la funzione del componente. 
 
     ```javascript
     /* evitare */
@@ -1537,44 +1537,48 @@ Invece usa la più semplice sintassi setter.
     }
     ```
 
-    Nota: Quando la tua funzione si trova sotto una dichiarazione di return, $inject potrebbe essere non raggiungibile (ciò può accadere in una directive). Puoi risolvere ciò sia spostando l'$inject sopra la dichiarazione di return oppure usando la sintassi di array di iniezione alternativa.  
-
-    Nota: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduce una caratteristica che sposta l'`$inject`  dove è raggiungibile.
+    Nota: Quando la tua funzione si trova dopo una dichiarazione di return, `$inject` potrebbe essere non raggiungibile (ciò può accadere in una directive). Puoi risolvere ciò sia spostando il Controller fuori dalla directive.
 
     ```javascript
+    /* evitare */
     // dentro la definizione di una directive
     function outer() {
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo;
 
-        DashboardPanel.$inject = ['logger']; // Unreachable
-        function DashboardPanel(logger) {
+        DashboardPanelController.$inject = ['logger']; // Non raggiungibile
+        function DashboardPanelController(logger) {
         }
     }
     ```
 
     ```javascript
-    // dentro la definizione di una directive
+    /* consigliato */
+    // fuori la definizione di una directive
     function outer() {
-        DashboardPanel.$inject = ['logger']; // reachable
-        return {
-            controller: DashboardPanel,
+        var ddo = {
+            controller: DashboardPanelController,
+            controllerAs: 'vm'
         };
+        return ddo;
+    }
 
-        function DashboardPanel(logger) {
-        }
+    DashboardPanelController.$inject = ['logger'];
+    function DashboardPanelController(logger) {
     }
     ```
 
 ### Idetificazione manuale delle dipendenze di resolver della route
 ###### [Stile [Y092](#stile-y092)]
 
-  - Usa $inject per identificare manualmente le tue dipendenze di resolver della route per i componenti di AngularJS.
+  - Usa `$inject` per identificare manualmente le tue dipendenze di resolver della route per i componenti di Angular.
   
-    *Perché?*: Questa tecnica evade le funzioni anonime per il di resolver della route, rendendolo più semplice da leggere.
+    *Perché?*: Questa tecnica evade le funzioni anonime per il resolver della route, rendendolo più semplice da leggere.
 
-    *Perché?*: Una dichiarazione `$inject` può facilmente precedere il resolver della route per gestire la produzione di dipendenze che siano a prova di minificazione.
+    *Perché?*: Una dichiarazione `$inject` può facilmente precedere il resolver per gestire la produzione di dipendenze che siano a prova di minificazione.
 
     ```javascript
     /* consigliato */
@@ -1603,11 +1607,10 @@ Invece usa la più semplice sintassi setter.
 ### ng-annotate
 ###### [Stile [Y100](#stile-y100)]
 
-  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare il dependency injection usando `/** @ngInject */`
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/** @ngInject */`
   
     *Perché?*: Questo salvaguarda il tuo codice da ogni dipendenza che non segua le pratiche a prova di minificazione
 
-    *Perché?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
     *Perché?*: [`ng-min`](https://github.com/btford/ngmin) è deprecato.  
 
     >Preferisco Gulp poiché lo ritengo più semplice da scrivere, leggere e fare il debug.
@@ -1632,7 +1635,7 @@ Invece usa la più semplice sintassi setter.
     }
     ```
 
-    Quando il codice soprastante è eseguito da ng-annotate produce il seguente output con l'annotazione `$inject` e diventa a prova di minificazione.
+    Quando il codice soprastante passa da ng-annotate viene prodotto il seguente output con l'annotazione `$inject` e diventa a prova di minificazione.
 
     ```javascript
     angular
@@ -1675,13 +1678,13 @@ Invece usa la più semplice sintassi setter.
     }
     ```
 
-    > Nota: A partire da AngularJS 1.3 usa il parametro `ngStrictDi` della directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, l'iniettore sarà creato in modalità "strict-di" causando il fallimento dell'invocazione di funzioni che non fanno uso esplicito di annotazione delle funzioni da parte dell'applicazione (queste potrebbero non essere a prova di minificazione). Informazioni di debug saranno mostrate nella console per aiutare nel tracciare il codice non confacente.
+    > Nota: A partire da Angular 1.3 puoi usare il parametro `ngStrictDi` della directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) per rilevare ogni potenziale dipendenza che non sia a prova di minificazione. Quando presente, l'iniettore sarà creato in modalità "strict-di" causando il fallimento dell'invocazione di funzioni che non fanno uso esplicito di annotazione delle funzioni da parte dell'applicazione (queste potrebbero non essere a prova di minificazione). Informazioni di debug saranno mostrate nella console per aiutare nel tracciare il codice non confacente. Preferisco usare soltanto `ng-strict-di` per i soli scopi di debug.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Usa Gulp o Grunt per ng-annotate
 ###### [Stile [Y101](#stile-y101)]
 
-  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in un task di build automatizzato. Inietta `/* @ngInject */` prima di qualunque funzione che abbia delle dipendenze.
+  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in un task di automatizzazione delle build. Inietta `/* @ngInject */` prima di qualunque funzione che abbia delle dipendenze.
   
     *Perché?*: ng-annotate carpirà la maggior parte delle dipendenze ma talvolta necessita dell'uso del suggerimento sintattico `/* @ngInject */`.
 
@@ -1690,6 +1693,7 @@ Invece usa la più semplice sintassi setter.
     ```javascript
     gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
+        
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
@@ -1715,9 +1719,9 @@ Invece usa la più semplice sintassi setter.
 ### decoratori (decorator)
 ###### [Stile [Y110](#stile-y110)]
 
-  - Usa un [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), al momento del config una un servizio [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sul servizio [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) per eseguire azioni ad hoc quando l'eccezione occorre.
+  - Usa un [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), al momento del config usando il servizio [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sul servizio [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) per eseguire azioni ad hoc quando l'eccezione occorre.
   
-    *Perché?*: Fornisci un modo consistente per la gestione delle eccezioni che non trattate da AngularJS sia durante lo sviluppo che a runtime.
+    *Perché?*: Fornisce un modo consistente per la gestione delle eccezioni non trattate da Angular sia durante lo sviluppo che a runtime.
 
     Nota: Un'altra opzione è di fare l'override del servizio invece che usare un decorator. Questa è una buona opzione ma se vuoi tenere il comportamento di default ed estenderlo un decorator è consigliato.
 
@@ -1760,7 +1764,7 @@ Invece usa la più semplice sintassi setter.
 
     *Perché?*: Fornisce un modo consistente di ricevere le eccezioni che possono essere lanciate nel tuo codice (p.e. durante una chiamata XHR o il fallimento di promesse).
 
-    Nota: Il ricevitore di eccezioni è buono per ricevere e reagire a specifiche eccezioni da chiamate che sai ne possono generare una. Per esempio, quando fai una chiamata XHR per il recupero di dati da un servizio di un server web remoto e vuoi ricevere qualsiasi eccezione da ciò e reagire univocamente.
+    Nota: Il ricevitore di eccezioni è buono per ricevere e reagire a specifiche eccezioni da parte di chiamate che sai ne possono generare una. Per esempio, quando fai una chiamata XHR per il recupero di dati da un servizio di un server web remoto e vuoi ricevere qualsiasi eccezione da ciò e reagire univocamente.
 
     ```javascript
     /* consigliato */
@@ -1899,7 +1903,7 @@ Invece usa la più semplice sintassi setter.
     avenger-profile.directive.spec.js
     ```
 
-  Nota: Un'altra convenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team.
+  Nota: Un'altra convenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team. La mia preferenza va a `avengers.controller.js`.
 
     ```javascript
     /**
@@ -1917,7 +1921,7 @@ Invece usa la più semplice sintassi setter.
 
     *Perché?*: Fornisce un modo consistente per identificare facilmente i componenti.
 
-	*Perché?*: Fornisce uno schema di corrispondenza per [karma](http://karma-runner.github.io/) o altri esecutori di test.
+    *Perché?*: Fornisce uno schema di corrispondenza per [karma](http://karma-runner.github.io/) o altri esecutori di test.
 
     ```javascript
     /**
@@ -1954,28 +1958,13 @@ Invece usa la più semplice sintassi setter.
 ### Suffisso nel nome di un controller
 ###### [Stile [Y124](#stile-y124)]
 
-  - Aggiungi `Controller` alla fine del nome del controller o no. Segli 1 non entrambi.
+  - Aggiungi `Controller` alla fine del nome del controller.
 
     *Perché?*: Il suffisso `Controller` è quello più comunemente usato ed è più esplicitamente descrittivo.
 
-    *Perché?*: L'omissione del suffisso è più coinciso ed il controller è spesso facilmente identificabile anche senza suffisso.
-
     ```javascript
     /**
-     * consigliato: Opzione 1
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('Avengers', Avengers);
-
-    function Avengers(){ }
-    ```
-
-    ```javascript
-    /**
-     * consigliato: Opzione 2
+     * consigliato
      */
 
     // avengers.controller.js
@@ -1989,7 +1978,7 @@ Invece usa la più semplice sintassi setter.
 ### Nomi delle factory
 ###### [Stile [Y125](#stile-y125)]
 
-  - Usa una nomenclatura consistente per tutte le factory dando i nomi date le loro funzionalità. Usa il camel-case per service e factory. Evita di pre-nominare factory e service con `$`
+  - Usa una nomenclatura consistente per tutte le factory dando i nomi a seguito delle loro funzionalità. Usa il camel-case per service e factory. Evita di pre-nominare factory e service con `$`
 
     *Perché?*: Fornisce un modo consistente per identificare facilmente e referenziare le factory.
     
@@ -2011,7 +2000,7 @@ Invece usa la più semplice sintassi setter.
 ### Nomi dei componenti directive
 ###### [Stile [Y126](#stile-y126)]
 
-  - Usa nomi consistenti per putte le directive usando il camel-case. Usa un breve prefisso che descriva l'area alla quale la directive appartiene (alcuni esempi sono prefissi relativi all'azienda o al progetto).
+  - Usa nomi consistenti per tutte le directive usando il camel-case. Usa un breve prefisso che descriva l'area alla quale la directive appartiene (alcuni esempi sono prefissi relativi all'azienda o al progetto).
 
     *Perché?*: Fornisce un modo consistente per identificare e referenziare facilmente i componenti.
 
@@ -2025,7 +2014,7 @@ Invece usa la più semplice sintassi setter.
         .module
         .directive('xxAvengerProfile', xxAvengerProfile);
 
-    // usage is <xx-avenger-profile> </xx-avenger-profile>
+    // l'uso è <xx-avenger-profile> </xx-avenger-profile>
 
     function xxAvengerProfile(){ }
     ```
@@ -2033,11 +2022,11 @@ Invece usa la più semplice sintassi setter.
 ### Moduli
 ###### [Stile [Y127](#stile-y127)]
 
-  -  Quando i sono moduli multipli, il modulo principale è nominato come `app.module.js` mentre altri moduli dipendenti prendono i nomi da ciò che rappresentano. Per esempio, un modulo admin è nominato `admin.module.js`. I rispettivi nomi con i quali sono registrati saranno `app` e `admin`.
+  -  Quando ci sono moduli multipli, il modulo principale è nominato come `app.module.js` mentre altri moduli dipendenti prendono i nomi da ciò che rappresentano. Per esempio, un modulo admin è nominato `admin.module.js`. I rispettivi nomi con i quali sono registrati saranno `app` e `admin`.
 
     *Perché?*: Fornisce consistenza per app che hanno più di un modulo e per poter espandere verso applicazioni a larga scala.
 
-    *Perché?*: Fornisci un modo semplice al fine di usare processi automatici per caricare prima tutte le definizioni di moduli, successivamente tutti gli altri file di Angular (per il bundling).
+    *Perché?*: Fornisce un modo semplice al fine di usare processi automatici per caricare prima tutte le definizioni di moduli, successivamente tutti gli altri file di Angular (per il bundling).
 
 ### Configurazione
 ###### [Stile [Y128](#stile-y128)]
@@ -2046,7 +2035,7 @@ Invece usa la più semplice sintassi setter.
 
     *Perché?*: Separa la configurazione dalla definizione, componenti e codice di attivazione del modulo.
 
-    *Perché?*: Fornisci una posizione identificabile per settare la configurazione di un modulo.
+    *Perché?*: Fornisce una posizione identificabile per settare la configurazione di un modulo.
 
 ### Route
 ###### [Stile [Y129](#stile-y129)]
