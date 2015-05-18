@@ -393,10 +393,10 @@ Invece usa la più semplice sintassi setter.
   }
   ```
 
-### Membri che possono fare il bind posti in alto
+### Membri che possono fare il bind in alto
 ###### [Stile [Y033](#stile-y033)]
 
-  - Poni i membri che possono fare il bind in alto nll controller, in ordine alfabetico, piuttosto che dispersi in tutto il codice del controller.
+  - Poni i membri che possono fare il bind in alto nel controller, in ordine alfabetico, piuttosto che dispersi in tutto il codice del controller.
   
     *Perché?*: Porre i membri che posso fare il bind in alto rende semplice la lettura e aiuta l'istantanea identificazione di quali membri del controller possono essere collegati ed usati in una View.
 
@@ -687,7 +687,7 @@ Invece usa la più semplice sintassi setter.
 
   - I Service sono istanziati con la keyword  `new`, usa `this` per metodi e variabili pubbliche. Dal momento che sono molto simili alle factory, usa queste ultime per consistenza. 
   
-    Nota: [Tutti i servizi di AngularJS sono singleton](https://docs.angularjs.org/guide/services). Questo significa che c'è soltanto una istanza di un dato servizio per iniettore.
+    Nota: [Tutti i servizi di Angular sono singleton](https://docs.angularjs.org/guide/services). Questo significa che c'è soltanto una istanza di un dato servizio per iniettore.
 
   ```javascript
   // service
@@ -724,25 +724,25 @@ Invece usa la più semplice sintassi setter.
 ### Singola responsabilità 
 ###### [Stile [Y050](#stile-y050)]
 
-  - Le factory dovrebbero avere la [singola responsabilità](http://en.wikipedia.org/wiki/Single_responsibility_principle) che è incapsulata nel proprio contesto. Una volta che una factory eccede quello che è un singolo scopo, una nuova factory dovrebbe essere creata.
+  - Le factory dovrebbero avere la [singola responsabilità](http://en.wikipedia.org/wiki/Single_responsibility_principle) che è incapsulata nel proprio contesto. Una volta che una factory eccede quello che è un singolo scopo, dovrebbe essere creata una nuova factory.
 
 ### Singleton
 ###### [Stile [Y051](#stile-y051)]
 
   - Le factory sono singleton e ritornano un oggetto che contiene i membri del servizio.
   
-    Nota: [Tutti i servizi di AngularJS sono singleton](https://docs.angularjs.org/guide/services).
+    Nota: [Tutti i servizi di Angular sono singleton](https://docs.angularjs.org/guide/services).
 
-### Membri accessibili in cima
+### Membri accessibili in alto
 ###### [Stile [Y052](#stile-y052)]
 
-  - Esponi tutti i membri richiamabili del servizio (l'interfaccia) in cima, usando una tecnica derivata dal [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
+  - Esponi tutti i membri richiamabili del servizio (l'interfaccia) in alto, usando una tecnica derivata dal [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript). 
 
-    *Perché?*: Porre i membri richiamabili in cima lo rende semplice da leggere e aiuta ad identificare istantaneamente quali membri del servizio possono essere richiamati ed essere oggetto di unit test (e/o simulati). 
+    *Perché?*: Porre i membri richiamabili in alto lo rende semplice da leggere e aiuta ad identificare istantaneamente quali membri del servizio possono essere chiamati ed essere oggetto di unit test (e/o simulati). 
 
-    *Perché?*: Questo è particolarmente utile quando i file iniziano ad allungarsi così come aiuta la necessità di scorrere per leggere cosa è esposto.
+    *Perché?*: Questo è particolarmente utile quando i file iniziano ad allungarsi così da evitare la necessità di scorrere per leggere cosa è esposto.
 
-    *Perché?*: Settare funzioni mentre procedi può essere facile ma quando tali funzioni sono più lunghe di 1 linea di codice possono ridurre la leggibilità e causare maggiore scorrimento. Definire l'interfaccia richiamabile attraverso i servizi ritornati sposta i dettagli di implementazione in basso, tiene l'interfaccia richiamabile in cima e rende più facile al lettura.
+    *Perché?*: Settare funzioni mentre procedi può essere facile ma quando tali funzioni sono più lunghe di 1 linea di codice possono ridurre la leggibilità e causare maggiore scorrimento. Definire l'interfaccia richiamabile attraverso i servizi ritornati sposta i dettagli di implementazione in basso, tiene l'interfaccia richiamabile in alto e rende più facile la lettura.
 
   ```javascript
   /* evitare */
@@ -794,11 +794,11 @@ Invece usa la più semplice sintassi setter.
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
 ###### [Stile [Y053](#stile-y053)]
 
-  - Usa le dichiarazioni di funzioni per nascondere i dettagli di implementazione. Tieni i membri accessibili della factory in cima. Puntali alle dichiarazioni di funzioni che compaiono dopo nel file. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
+  - Usa le dichiarazioni di funzioni per nascondere i dettagli di implementazione. Tieni i membri accessibili della factory in alto. Puntali alle dichiarazioni di funzioni che compaiono dopo nel file. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
 
-    *Perché?*: Porre i membri richiamabili in cima lo rende semplice da leggere e aiuta ad identificare istantaneamente quali funzioni della factory possono accessibili esternamente. 
+    *Perché?*: Porre i membri richiamabili in alto la rende semplice da leggere e aiuta ad identificare istantaneamente quali funzioni della factory possono accessibili esternamente. 
 
-    *Perché?*: Porre i dettagli di implementazione di una funzione dopo nel file sposta la complessità fuori dalla vista così che puoi vedere le cose importanti in cima.
+    *Perché?*: Porre i dettagli di implementazione di una funzione dopo nel file sposta la complessità fuori dalla vista così che puoi vedere le cose importanti prima.
 
     *Perché?*: Le dichiarazioni di funzione sono richiamate così da non avere preoccupazioni circa l'uso di una funzione prima della sua definizione (come sarebbe nel caso di espressioni di funzione).
 
@@ -850,7 +850,7 @@ Invece usa la più semplice sintassi setter.
   /**
    * consigliato
    * Uso di dichiarazioni di funzioni
-   * e membri accessibili in cima.
+   * e membri accessibili in alto.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -896,14 +896,14 @@ Invece usa la più semplice sintassi setter.
 ### Separare le chiamate ai dati
 ###### [Stile [Y060](#stile-y060)]
 
-  - Rivedi la logica per gestire le operazioni con i dati e con la loro interazione delegandola ad una factory.
+  - Rivedi la logica per gestire le operazioni con i dati e con la loro interazione delegandola ad una factory. Rendi il servizio di accesso ai dati responsabile per le chiamate XHR, conservazione locale, lo stashing in memoria o qualunque altra operazione sui dati.
 
-    *Perché?*: La responsabilità del controller è per la presentazione e raccolta di informazioni dalla view. Non dovrebbe occuparsi di come recuperare i dati, soltanto sapere a chi chiederli. La separazione dei servizi per i dati sposta la logica su come reperirli al servizio dei dati, rendendo il controller più semplice e più focalizzato sulla view.
+    *Perché?*: La responsabilità del controller è la presentazione e raccolta di informazioni dalla view. Non dovrebbe occuparsi di come recuperare i dati, soltanto sapere a chi chiederli. La separazione dei servizi per i dati sposta la logica su come reperirli al servizio dei dati, rendendo il controller più semplice e più focalizzato sulla view.
 
 
     *Perché?*: Ciò rende più semplice da testare (vere o simulate) le chiamate ai dati quando si testa un controller che usa un servizio ai dati.
 
-    *Perché?*: L'implementazione di un servizio ai dati può avere del codice molto specifico su come trattare i repository dei dati. Questo può includere header, come comunicare con i dati o altri servizi quali `$http`. Separare la logica in un servizio ai dati incapsula questa logica in un posto unico nascondendo l'implementazione ai consumatori esterni (forse un controller), rendendo inoltre più semplice cambiarne l'implementazione.
+    *Perché?*: L'implementazione di un servizio ai dati può avere del codice molto specifico su come trattare i repository dei dati. Questo può includere header, come comunicare con i dati o altri servizi quali `$http`. Separare la logica in un servizio ai dati incapsula questa logica in un posto unico nascondendo l'implementazione a consumatori esterni (forse un controller), rendendo inoltre più semplice cambiarne l'implementazione.
 
   ```javascript
   /* consigliato */
@@ -930,7 +930,7 @@ Invece usa la più semplice sintassi setter.
           }
 
           function getAvengersFailed(error) {
-              logger.error('XHR Failed for getAvengers.' + error.data);
+              logger.error('XHR fallita per getAvengers.' + error.data);
           }
       }
   }
@@ -973,7 +973,7 @@ Invece usa la più semplice sintassi setter.
 ### Ritornare una promessa dalle chiamate ai dati
 ###### [Stile [Y061](#stile-y061)]
 
-  - Quando si chiama un servizio ai dati che ritorna una promessa come $http, ritorna a tua volta una promessa nella tua funzione di chiamata.
+  - Quando si chiama un servizio ai dati che ritorna una promessa come `$http`, ritorna a tua volta una promessa nella funzione di chiamata.
 
     *Perché?*: Puoi concatenare le promesse insieme e prendere ulteriori azioni dopo che la chiamata ai dati è completata e risolvere o rigettare la promessa.
 
@@ -1007,7 +1007,7 @@ Invece usa la più semplice sintassi setter.
             .then(function(data) {
                 /**
                  * Passo 3
-                 * set the data and resolve the promise setta i dati e risolvi la promessa
+                 * setta i dati e risolvi la promessa
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -1018,12 +1018,12 @@ Invece usa la più semplice sintassi setter.
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Directive
-### Limite di 1 per file
+### Limita 1 per file
 ###### [Stile [Y070](#stile-y070)]
 
   - Crea una directive per file. Nomina il file per la directive.  
 
-    *Perché?*: È facile mescolare tutte le directive in un unico file ma difficoltoso da separarle così che alcune siano condivise tra le applicazioni, alcune tra moduli, altre solo per un module. 
+    *Perché?*: È facile mescolare tutte le directive in un unico file ma difficoltoso da separare così che alcune siano condivise tra le applicazioni, alcune tra moduli, altre solo per un module. 
 
     *Perché?*: Una directive per file è semplice da manutenere.
     
@@ -1110,12 +1110,12 @@ Invece usa la più semplice sintassi setter.
   }
   ```
 
-    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino che dia senso alla directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla [Nomenclatura](#nomenclatura) per maggiori raccomandazioni.
+    Nota: Ci sono molte opzioni per i nomi delle directive, in particolare dal momento che possono essere usate in ambiti stretti o larghi. Scegline uno che sia chiaro e distino per la directive e il suo nome del file. Alcuni esempi sono sotto ma vedi la sezione sulla [Nomenclatura](#nomenclatura) per ulteriori suggerimenti.
 
 ### Manipolare il DOM in una Directive
 ###### [Stile [Y072](#stile-y072)]
 
-  - Quando devi manipolare direttamente il DOM, usa una directive. Se possono essere usate delle alternative come settare stili CSS o i [servizi di animazione](https://docs.angularjs.org/api/ngAnimate), templating di Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oppure [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), piuttosto usa questi. Per esempio, se la directive semplicemente nasconde e mostra, usa ngHide/ngShow. 
+  - Quando devi manipolare direttamente il DOM, usa una directive. Se possono essere usate delle alternative come usare CSS per settare stili o i [servizi di animazione](https://docs.angularjs.org/api/ngAnimate), templating di Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oppure [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), allora usa questi. Per esempio, se la directive deve semplicemente nascondere e mostrare, usa ngHide/ngShow. 
 
     *Perché?*: Manipolare il DOM può essere difficoltoso da testare, debuggare e spesso ci sono modi migliori (p.e. CSS, animazioni, template)
 
@@ -1126,7 +1126,7 @@ Invece usa la più semplice sintassi setter.
 
 	*Perché?*: L'unico breve prefisso identifica il contesto delle directive e l'origine. Per esempio un prefisso `cc-` potrebbe indicare che la directive è parte di una app CodeCamper mentre `acme-` potrebbe indicare una direttiva per l'azienda Acme. 
  
-	Nota: Evita `ng-` poiché queste sono riservate per le directive di AngularJS. Cerca directive che sono largamente utilizzate per evitare il conflitto di nomi, come `ion-` per il [Framework Ionic ](http://ionicframework.com/). 
+	Nota: Evita `ng-` poiché queste sono riservate per le directive di Angular. Cerca directive che sono largamente utilizzate per evitare il conflitto di nomi, come `ion-` per il [Framework Ionic ](http://ionicframework.com/). 
 
 ### Restringi a Elementi and Attributi
 ###### [Stile [Y074](#stile-y074)]
@@ -1135,9 +1135,9 @@ Invece usa la più semplice sintassi setter.
 
     *Perché?*: È sensato.
 
-    *Perché?*: Mentre è possibile consentire che la directive sia usata come una classe, se questa agisce davvero con un elemento è più sensato usarla un elemento o al meno come un attributo.
+    *Perché?*: È possibile consentire che sia usata come una classe ma se la directive agisce davvero come un elemento è più sensato che sia un elemento o al meno un attributo.
 
-    Nota: EA è il default per AngularJS 1.3 e successivi
+    Nota: EA è il default per Angular 1.3 e successivi
 
   ```html
   <!-- evitare -->
@@ -1193,14 +1193,14 @@ Invece usa la più semplice sintassi setter.
 ### Directive e ControllerAs
 ###### [Stile [Y075](#stile-y075)]
 
-  - Usa la sintassi `controller as` con una directive per essere consistente con l'utilizzo di `controller as` con una coppia di view e controller.
+  - Usa la sintassi `controller as` con una directive per essere consistente con l'utilizzo di `controller as` con un accoppiamento view/controller.
 
     *Perché?*: È sensato e non è difficile.
 
-    Nota: Le directive sotto dimostrano alcuni dei modi in cui puoi usare lo scope all'interno di link e controller di directive usando controllerAs. Ho usato sulla stessa linea il template solo per mettere tutto in un unico posto. 
+    Nota: La directive sotto dimostra alcuni dei modi in cui puoi usare lo scope all'interno di link e controller di directive usando controllerAs. Ho usato sulla stessa linea il template solo per mettere tutto in un unico posto. 
 
     Nota: In relazione alla dependency injection, guarda [Annotazioni manuali per la Dependency Injection](#annotazioni-manuali-per-la-dependency-injection). 
-    
+
     Nota: Notare che il controller della directive è al di fuori della closure della directive. Questo stile elimina problematiche dove l'iniezione viene creata come codice non raggiungibile dopo un `return`.
 
   ```html
@@ -1222,7 +1222,7 @@ Invece usa la più semplice sintassi setter.
           link: linkFunc,
           controller : ExampleController,
           controllerAs: 'vm',
-          bindToController: true // because the scope is isolated
+          bindToController: true // perché lo scope è isolato
       };
       return directive;
 
