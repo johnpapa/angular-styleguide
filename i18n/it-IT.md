@@ -2475,8 +2475,8 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     ```
     /src/client/app/customers/customer-detail.controller.js
                              /customer-detail.controller.spec.js
+                             /customers.controller.js
                              /customers.controller.spec.js
-                             /customers.controller-detail.spec.js
                              /customers.module.js
                              /customers.route.js
                              /customers.route.spec.js
