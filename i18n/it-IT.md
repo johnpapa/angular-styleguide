@@ -8,22 +8,22 @@
 
 Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team. 
 
-L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con AngularJS mostrando le convenzioni che uso e, più importante, perché le uso.
+L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con Angular mostrando le convenzioni che uso e, più importante, perché le uso.
 
->Se ti piace questa guida, dai un'occhiata al mio corso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight.
+>Se ti piace questa guida, dai un'occhiata al mio corso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight come complemento a questa guida.
 
   [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Eccezionalità della comunità e riconoscimenti
-Mai lavorare nel vuoto. Ritengo che la comunità intorno ad AngularJS sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di AngularJS, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
+Mai lavorare nel vuoto. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
 
-Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](http://twitter.com/wardbell) ed io abbiamo avuto. Seppur non sempre in sintonia, il mio amico Ward ha di certo una influenza sull'evoluzione finale di questa guida.
+Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](http://twitter.com/wardbell) ed io abbiamo avuto. Il mio amico Ward ha di certo una influenza sull'evoluzione finale di questa guida.
 
 ## Guarda gli stili in una App di Esempio
-Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di aiuto vederle in pratica. Questa guida è accompagnata da una applicazione di esempio che segue questi stili e schemi. Troverai l'[applicazione di esempio (chiamata modular) qui](https://github.com/johnpapa/ng-demos) nella cartella `modular`. Prendila, clonala o fanne un fork liberamente. [Le istruzioni su come eseguirla sono nel proprio readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di aiuto vederle in pratica. Questa guida è accompagnata da una applicazione di esempio che segue questi stili e schemi. Puoi trovare l'[applicazione di esempio (chiamata modular) qui](https://github.com/johnpapa/ng-demos) nella cartella `modular`. Prendila, clonala o fanne un fork liberamente. [Le istruzioni su come eseguirla sono nel proprio readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Traduzioni 
-[Traduzioni di questa guida stilistica ad AngularJS](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sono gestite dalla comunità e possono essere trovate qui.
+[Traduzioni di questa guida stilistica ad Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sono gestite dalla comunità e possono essere trovate qui.
 
 ## Tavola dei contenuti
 
@@ -56,7 +56,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   1. [Routing](#routing)
   1. [Automazione dei processi](#automazione-dei-processi)
   1. [Filtri](#filtri)
-  1. [Documentazione di AngularJS](#documentazione-di-angularjs)
+  1. [Documentazione di Angular](#documentazione-di-angularjs)
   1. [Contribuire](#contribuire)
   1. [Licenza](#licenza)
 
@@ -72,16 +72,16 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   ```javascript
   /* evitare */
   angular
-    	.module('app', ['ngRoute'])
-    	.controller('SomeController', SomeController)
-    	.factory('someFactory', someFactory);
+      .module('app', ['ngRoute'])
+      .controller('SomeController', SomeController)
+      .factory('someFactory', someFactory);
   	
   function SomeController() { }
 
   function someFactory() { }
   ```
 
-    Gli stessi componenti sono ora separati nei loro file.
+    Gli stessi componenti sono ora separati nei propri file.
 
   ```javascript
   /* consigliato */
@@ -116,12 +116,12 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## IIFE
-### JavaScript Closures
+### Closures di JavaScript
 ###### [Stile [Y010](#stile-y010)]
 
-  - Racchiudi i componenti di AngularJS in una Immediately Invoked Function Expression (IIFE) (Espressione di funzione immediatamente chiamata). 
+  - Racchiudi i componenti di Angular in una Immediately Invoked Function Expression (IIFE) (Espressione di funzione immediatamente chiamata). 
   
-  *Perché?*: Una IIFFE rimuove le variabili dallo scope globale. Questo aiuta a prevenire che variabili e funzioni vivano più del previsto nello scope globale, che inoltre aiuta ad evitare la collisione di variabili.
+  *Perché?*: Una IIFE rimuove le variabili dallo scope globale. Questo aiuta a prevenire che variabili e dichiarazioni di funzione vivano più del previsto nello scope globale, inoltre aiuta ad evitare la collisione di variabili.
   *Perché?*: Quando il tuo codice è minificato e raggruppato in un file singolo per il rilascio ad un server di produzione, potresti avere collisioni di variabili e parecchie variabili globali. Una IIFE ti protegge in entrambi i casi fornendo uno scope variabile per ogni file.
 
   ```javascript
@@ -176,7 +176,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
   - Nota: Per essere più coincisi, il resto degli esempi in questa guida potrebbe omettere l'uso della sintassi IIFE. 
   
-  - Nota: Le IIFE evitano che il codice di test possa raggiungere membri privati come regular expression o funzioni di supporto le quali sono spesso oggetto dei propri unit test. In ogni caso, queste possono essere testate per mezzo di membri accessibili o attraverso l'esposizione di propri componenti. Per esempio ponendo funzioni di supporto, regular expression o costanti nelle proprie factory o costanti.
+  - Nota: Le IIFE evitano che il codice di test possa raggiungere membri privati come regular expression o funzioni di supporto le quali sono spesso oggetto di propri unit test. In ogni caso, queste possono essere testate per mezzo di membri accessibili o attraverso l'esposizione di propri componenti. Per esempio ponendo funzioni di supporto, regular expression o costanti nelle proprie factory o costanti.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
@@ -206,7 +206,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   ]);
   ```
 
-	Invece usa la più semplice sintassi setter.
+Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
@@ -224,7 +224,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
   - Usando un modulo, evita l'uso di una variabile e piuttosto usa la concatenazione con la sintassi getter.
 
-	*Perché?* : Ciò produce un codice maggiormente leggibile ed evita la collisione di variabili o buchi.
+  *Perché?*: Ciò produce un codice maggiormente leggibile ed evita la collisione di variabili o buchi.
 
   ```javascript
   /* evitare */
@@ -248,17 +248,17 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
   - Setta solo una volta e prendi (get) per tutte le altre istanze.
 	
-	*Perché?*: Un modulo dovrebbe essere creato solamente una volta, quindi recuperato da lì in avanti.
-  	  
-	  - Usa `angular.module('app', []);` per settare un modulo.
-	  - Usa  `angular.module('app');` per prendere (get) un modulo. 
+  *Perché?*: Un modulo dovrebbe essere creato solamente una volta, quindi recuperato da lì in avanti.
+  	 
+    - Usa `angular.module('app', []);` per settare un modulo.
+    - Usa `angular.module('app');` per prendere (get) un modulo. 
 
 ### Funzioni con un nome vs funzioni anonime
 ###### [Stile [Y024](#stile-y024)]
 
   - Usa funzioni che hanno un nome piuttosto che passare una funzione anonima come in una callback.
 
-	*Perché?*: Ciò produce codice maggiormente leggibile, è più facile farne il debug, e riduce la quantità di codice posto dentro una callback.
+  *Perché?*: Ciò produce codice maggiormente leggibile, è più facile farne il debug, e riduce la quantità di codice posto dentro una callback.
 
   ```javascript
   /* evitare */
@@ -297,11 +297,11 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
   - Usa la sintassi [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) al posto della sintassi `classico controller con $scope`. 
 
-	*Perché?*: I controller sono costruiti, fatti nuovi e forniti con un nuova istanza singola, inoltre la sintassi `controllerAs` è più somigliante ad un costruttore JavaScript che la `sintassi classica con $scope`. 
+  *Perché?*: I controller sono costruiti, creati con "new" e forniti con un nuova istanza singola, inoltre la sintassi `controllerAs` è più somigliante ad un costruttore JavaScript rispetto alla `sintassi classica con $scope`. 
 
-	*Perché?*: Promuove l'uso del binding ad un oggetto che "usa il punto" nella View (p.e. `customer.name` invece di `name`), il quale è più contestuale, facile da leggere ed evita qualunque questione di riferimenti che potrebbe accadere senza "uso del punto".
+  *Perché?*: Promuove l'uso del binding ad un oggetto che "usa il punto" nella View (p.e. `customer.name` invece di `name`), il quale è più contestuale, più facile da leggere ed evita qualunque questione di riferimenti che potrebbe accadere senza "uso del punto".
 
-	*Perché?*: Aiuta ad evitare l'uso di chiamate a `$parent` nelle View che hanno controller nidificati.
+  *Perché?*: Aiuta ad evitare l'uso di chiamate a `$parent` nelle View che hanno controller nidificati.
 
   ```html
   <!-- evitare -->
@@ -368,14 +368,14 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-  Nota: Puoi evitare ogni warning di [jshint](http://www.jshint.com/) ponendo il commento sotto riportato al di sopra della linea di codice. Comunque ciò non è richiesto quando la funzione è nominata usando le Maiuscole, la convenzione è intesa come la funzione costruttore che è ciò che un controller è in Angular.
+  Nota: Puoi evitare ogni warning di [jshint](http://www.jshint.com/) ponendo il commento sotto riportato al di sopra della linea di codice. Comunque ciò non è richiesto quando la funzione è nominata ConUsoMaiuscole, dal momento che questa convenzione è intesa come funzione costruttore ovvero ciò che un controller è in Angular.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
    
-  Nota: Quando di creano watch in un controller usando `controller as`, puoi fare il watch del membro `vm.*` usando la seguente sintassi. (Crea watch con cautela poiché aggiungono carico al ciclo di digest.)
+  Nota: Quando di creano watch in un controller usando `controller as`, puoi fare il watch del membro `vm.*` usando la seguente sintassi. (Crea watch con cautela poiché aggiungono più carico al ciclo di digest.)
 
   ```html
    <input ng-model="vm.title"/>
@@ -393,14 +393,14 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-### Membri che possono fare il bind in cima
+### Membri che possono fare il bind posti in alto
 ###### [Stile [Y033](#stile-y033)]
 
-  - Poni i membri che possono fare il bind in cima al controller, in ordine alfabetico, piuttosto che dispersi in tutto il codice del controller.
+  - Poni i membri che possono fare il bind in alto nll controller, in ordine alfabetico, piuttosto che dispersi in tutto il codice del controller.
   
-    *Perché?*: Porre i membri che posso fare il bind in cima rende semplice la lettura e aiuta l'istantanea identificazione di quali membri del controller possono essere collegati ed usati in una View.
+    *Perché?*: Porre i membri che posso fare il bind in alto rende semplice la lettura e aiuta l'istantanea identificazione di quali membri del controller possono essere collegati ed usati in una View.
 
-    *Perché?*: Settare funzioni anonime nella medesima linea è semplice, tuttavia quando queste funzioni sono più lunghe di 1 linea di codice possono ridurre la leggibilità. Definire le funzione al di sotto i membri che possono fare il bind (funzioni che saranno chiamate) spostano l'implementazione in basso, tengono i membri che possono fare il bind in cima e rendono il codice più facile da leggere. 
+    *Perché?*: Settare funzioni anonime nella medesima linea è semplice, tuttavia quando queste funzioni sono più lunghe di 1 linea di codice possono ridurre la leggibilità. Definire le funzione al di sotto i membri che possono fare il bind (funzioni che saranno chiamate) spostano i dettagli di implementazione in basso, tengono i membri che possono fare il bind in alto e rendono il codice più facile da leggere. 
 
   ```javascript
   /* evitare */
@@ -448,7 +448,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 
     ![Controller che usa "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  Nota: Se la funzione è di 1 linea considera di poterla lasciare in cima fino a che la leggibilità non ne è compromessa.
+  Nota: Se la funzione è di 1 linea considera di poterla lasciare in alto fino a che la leggibilità non ne è compromessa.
 
   ```javascript
   /* evitare */
@@ -458,11 +458,11 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
           /** 
-           * lines 
-           * of
-           * code
-           * affects
-           * readability
+           * linee 
+           * di
+           * codice
+           * che peggiorano
+           * leggibilità
            */
       };
       vm.search = search;
@@ -476,7 +476,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = dataservice.refresh; // codice di 1 liena è OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
@@ -485,15 +485,15 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
 ###### [Stile [Y034](#stile-y034)]
 
-  - Usa le dichiarazioni di funzione per nascondere i dettagli di implementazione. Tieni i membri che possono fare il binding in cima. Quando necessiti di fare binding a una funzione nel controller, puntalo ad una dichiarazione di funzione che compaia dopo nel file. Questo è direttamente collegabile con la sezione Membri che possono fare il binding in cima. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
+  - Usa le dichiarazioni di funzione per nascondere i dettagli di implementazione. Tieni i membri che possono fare il binding in alto. Quando necessiti di fare binding a una funzione nel controller, puntalo ad una dichiarazione di funzione che compaia dopo nel file. Questo è direttamente collegabile con la sezione Membri che possono fare il bind posti in alto. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
     
-    *Perché?*: Porre i membri che possono fare il binding in cima rende semplice la lettura ed aiuta l'immediata identificazione dei membri del controller che possono fare il binding ed usati nella View. (Come sopra.)
+    *Perché?*: Porre i membri che possono fare il binding in alto rende semplice la lettura ed aiuta l'immediata identificazione dei membri del controller che possono fare il binding ed usati nella View. (Come sopra.)
 
-    *Perché?*: Porre i dettagli di implementazione di una funzione in seguito nel file sposta la complessità fuori dalla vista così che puoi vedere le cose importanti in cima.
+    *Perché?*: Porre i dettagli di implementazione di una funzione in seguito nel file sposta la complessità fuori dalla vista così che puoi vedere le cose importanti in alto.
 
     *Perché?*: Dichiarazioni di funzioni che sono chiamate così che non c'è rischio dell'uso di una funzione prima che sia definita (come sarebbe in caso di espressioni di funzione).
 
-    *Perché?*: Non ti devi preoccupare di dichiarazioni di funzione che sposta `var a` prima di `var b` che romperà il codice perché `a` dipende da  `b`.     
+    *Perché?*: Non ti devi preoccupare di dichiarazioni di funzione che sposta `var a` prima di `var b` romperà il codice perché `a` dipende da  `b`.     
 
     *Perché?*: Con le espressioni di funzione l'ordine è critico. 
 
@@ -526,13 +526,13 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-  Nota come le cose importanti, nell'esempio precedente, sono disseminate. Nell'esempio sotto, nota che le cose importanti sono in cima. Per esempio, i membri collegati al controller come `vm.avengers` e `vm.title`. I dettagli di implementazione sono in fondo. Questo è certamente più facile da leggere.
+  Nota come le cose importanti, nell'esempio precedente, sono disseminate. Nell'esempio sotto, nota che le cose importanti sono in alto. Per esempio, i membri collegati al controller come `vm.avengers` e `vm.title`. I dettagli di implementazione sono in fondo. Questo è certamente più facile da leggere.
 
   ```javascript
   /*
    * consigliato
    * Usare dichiarazione di funzione
-   * e mebri che fanno in binding in cima.
+   * e membri che fanno in binding in alto.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -557,16 +557,16 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   }
   ```
 
-### Rimandare la logica del Controller
+### Rimandare la logica del Controller ad un Service
 ###### [Stile [Y035](#stile-y035)]
 
   - Rimandare la logica in un controller delegandola ai service e factory.
 
     *Perché?*: La logica può essere riutilizzata da più controller quando posta in un service ed esposta tramite una funzione.
 
-    *Perché?*: La logica posta in un service può essere più facilmente isolata in una unit test, mentre la call della logica nel controller può essere più facile di farne un mock.
+    *Perché?*: La logica posta in un service può essere più facilmente isolata in una unit test inoltre la chiamata della logica nel controller può essere oggetto di un mock con più facilità.
 
-    *Perché?*: Rimuove dipendenze e nasconde dettagli di implementazione dal controller.
+    *Perché?*: Rimuove dipendenze e nasconde i dettagli di implementazione dal controller.
 
   ```javascript
 
@@ -586,8 +586,8 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
           // Usare JSONP per questo browser se CORS non è supportato
           return $http.get(settings)
               .then(function(data) {
-	             // Unpack JSON data in the response object
-                 // to find maxRemainingAmount
+	         // Spacchetta i dati JSON nell'ogetto di risposta
+                 // per trovare maxRemainingAmount
                  vm.isCreditOk = vm.total <= maxRemainingAmount
               })
               .catch(function(error) {
@@ -619,7 +619,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ### Tenere i controller "a fuoco"
 ###### [Stile [Y037](#stile-y037)]
 
-  - Definisci un controller per vista e prova a non utilizzare il controller per altre view. Piuttosto, sposta la logica riutilizzabile alle factory e mantieni il controller semplice ed a fuoco sulla propria view. 
+  - Definisci un controller per vista e prova a non riutilizzare il controller per altre view. Piuttosto, sposta la logica riutilizzabile alle factory e mantieni il controller semplice ed a fuoco sulla propria view. 
   
     *Perché?*: Riutilizzare i controller con diverse view è precario e sono necessari dei buoni test end to end (e2e) per assicurarne la stabilità in applicazioni su larga scala.
 
@@ -627,13 +627,13 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
 ###### [Stile [Y038](#stile-y038)]
 
   - Quando un controller deve essere accoppiato ad una view ed un componente può essere riutilizzato da altri controller o view, definisci i controller insieme alle loro route. 
-    
+
     Nota: Se una View è caricata attraverso altri mezzi che una route, allora usa la sintassi `ng-controller="Avengers as vm"`. 
 
-    *Perché?*: Accoppiare il controller in una route consente a route diverse di invocare diversi accoppiamenti di controller e view. Quando i controller sono assegnati in una view usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), quella view sarà sempre associata al medesimo controller.
+    *Perché?*: Accoppiare il controller in una route consente a route diverse di invocare diversi accoppiamenti di controller e view. Quando i controller sono assegnati in una view usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) quella view sarà sempre associata al medesimo controller.
 
  ```javascript
-  /* evitare - quando usato con una route ed è desiderata una dinamicità negli accoppiamenti */
+  /* evitare - quando usato con una route e si desidera una dinamicità negli accoppiamenti */
 
   // route-config.js
   angular
