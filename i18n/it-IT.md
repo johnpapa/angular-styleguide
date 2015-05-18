@@ -2177,7 +2177,7 @@ Invece usa la più semplice sintassi setter.
 
       ![Struttura dell'App di Esempio](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      Nota: Non utilizzare una strutturazione del tipo cartella-per-tipo. Questo richiede spostarsi tra molte cartelle quando si lavora su una funzionalità e diventa rapidamente scomodo quando l'app cresce di 5, 10 o più di 25 tra view e controller (ed altre funzionalità), per cui è più difficile rispetto alla localizzazione basata su cartella-per-funzionalità.
+      Nota: Non usare una strutturazione del tipo cartella-per-tipo per la tua app. Questo richiede spostarsi tra molte cartelle quando si lavora su una funzionalità e diventa rapidamente scomodo quando l'app cresce di 5, 10 o più di 25 tra view e controller (ed altre funzionalità), per cui è più difficile rispetto alla localizzazione basata su cartella-per-funzionalità.
 
     ```javascript
     /* 
