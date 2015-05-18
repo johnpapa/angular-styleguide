@@ -2235,12 +2235,12 @@ Invece usa la più semplice sintassi setter.
 
   - Crea un modulo principale per l'applicazione il cui ruolo sia di mettere insieme tutti gli altri moduli e funzionalità della tua applicazione. Chiamalo con il nome della tua applicazione.
 
-    *Perché?*: AngularJS incoraggia la modularità e schemi di separazione. La creazione di un modulo principale il cui ruolo sia quello di legante tra gli altri moduli consente un modo lineare di aggiungere o rimuovere moduli dall'applicazione.
+    *Perché?*: Angular incoraggia la modularità e schemi di separazione. La creazione di un modulo principale il cui ruolo sia quello di legante tra gli altri moduli consente un modo lineare di aggiungere o rimuovere moduli dall'applicazione.
 
 ### Tenere il modulo App snello
 ###### [Stile [Y162](#stile-y162)]
 
-  - Nel modulo principale metti solo la logica che serva da collante per l'app. Lascia le funzioni ognuno al proprio modulo.
+  - Nel modulo principale metti solo la logica che serva da collante per l'app. Lascia le funzionalità ognuna al proprio modulo.
 
     *Perché?*: L'aggiunta di ruoli addizionali al modulo principale per il recupero dei dati, il mostrare viste o altra logica non correlata al tenere insieme l'applicazione sporca il modulo principale e rende entrambi gli insiemi di funzionalità più complessi da riusare o rimuovere.
     
@@ -2262,7 +2262,7 @@ Invece usa la più semplice sintassi setter.
 
   - Crea moduli che rappresentino blocchi di applicazione riutilizzabili per servizi comuni quali la gestione delle eccezioni, il log, la diagnostica, sicurezza e il data stashing locale.
 
-    *Perché?*: Questi tipi di funzionalità sono richieste in molte applicazioni, perciò tenerle separate in moduli possono essere generiche  l'applicazione e riutilizzate in applicazioni diverse.
+    *Perché?*: Questi tipi di funzionalità sono richieste in molte applicazioni, perciò tenendole separate nel proprio modulo possono essere generiche e riutilizzate in applicazioni diverse.
 
 ### Dipendenze dei Moduli
 ###### [Stile [Y165](#stile-y165)]
@@ -2275,13 +2275,13 @@ Invece usa la più semplice sintassi setter.
 
     *Perché?*: Ogni area di funzionalità contiene un manifesto di ciò da cui dipende, in modo tale da poter essere usato come dipendenza in altre applicazioni e continuare a funzionare.
 
-    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (questi il nome che più di piaccia per questo modulo).
+    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (scegli il nome che più di piaccia per questo modulo).
 
-    Nota: Questa è una strategia per la consistenza. Ci sono diverse buone opzioni in questo caso. Scegline una che sia consistente, segua le regole delle dipendenze di AngularJS e sia facile da manutenere e scalabile.
+    Nota: Questa è una strategia per la consistenza. Ci sono diverse buone opzioni in questo caso. Scegline una che sia consistente, segua le regole delle dipendenze di Angular e sia facile da manutenere e scalare.
 
     > La mia struttura varia leggermente tra progetti ma tutti seguono queste linee guida per la strutturazione e modularità. L'implementazione può variare in relazione alle funzionalità ed al team. In altre parole, non ti bloccare su una struttura che sia esattamente uguale ma giustifica la tua struttura tenendo a mente l'uso di consistenza, manutenibilità ed efficienza. 
     
-    > In una applicazione piccola, si può considerare di mettere tutte le dipendenze condivise nel modulo dell'app dove i moduli delle funzionalità non hanno dipendenze dirette. Ciò rende più semplice mantenere l'applicazione più piccola ma rende più difficile riutilizzare i moduli fuori dell'applicazione stessa.
+    > In una applicazione piccola, si può considerare di mettere tutte le dipendenze condivise nel modulo dell'app dove i moduli delle funzionalità non hanno dipendenze dirette. Ciò rende semplice mantenere l'applicazione più piccola ma rende più difficile riutilizzare i moduli fuori dell'applicazione stessa.
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
