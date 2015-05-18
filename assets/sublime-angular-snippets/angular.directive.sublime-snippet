@@ -6,8 +6,6 @@
         .module('${1:module}')
         .directive('${2:directive}', ${2:directive});
 
-    ${2:directive}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
-
     /* @ngInject */
     function ${2:directive} (${3:dependencies}) {
         // Usage:
@@ -30,6 +28,7 @@
     }
 
     /* @ngInject */
+    ${4:Controller}.$inject = ['$scope'];
     function ${4:Controller} () {
 
     }
