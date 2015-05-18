@@ -628,7 +628,7 @@ Invece usa la più semplice sintassi setter.
 
   - Quando un controller deve essere accoppiato ad una view ed un componente può essere riutilizzato da altri controller o view, definisci i controller insieme alle loro route. 
 
-    Nota: Se una View è caricata attraverso altri mezzi che una route, allora usa la sintassi `ng-controller="Avengers as vm"`. 
+    Nota: Se una View è caricata attraverso altri mezzi che una route, allora usa la sintassi `ng-controller="AvengersController as avengers"`. 
 
     *Perché?*: Accoppiare il controller in una route consente a route diverse di invocare diversi accoppiamenti di controller e view. Quando i controller sono assegnati in una view usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) quella view sarà sempre associata al medesimo controller.
 
@@ -650,7 +650,7 @@ Invece usa la più semplice sintassi setter.
 
   ```html
   <!-- avengers.html -->
-  <div ng-controller="Avengers as vm">
+  <div ng-controller="AvengersController as avengers">
   </div>
   ```
 
