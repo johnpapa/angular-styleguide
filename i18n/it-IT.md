@@ -2789,7 +2789,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### Sublime Text
 ###### [Stile [Y250](#stile-y250)]
 
-  - Snippet di Angular che seguono questi stili e linee guida. 
+  - Snippet Angular che seguono questi stili e linee guida. 
 
     - Scarica gli [snippet di Angular per Sublime](assets/sublime-angular-snippets.zip?raw=true) 
     - Mettili nella tua cartella Packages
@@ -2817,7 +2817,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### WebStorm
 ###### [Stile [Y252](#stile-y252)]
 
-  - Snippet di Angular e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
+  - Snippet Angular e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
 
     - Scarica i [file dei template e gli snippet di Angular per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - Apri WebStorm e vai al menù `File`
@@ -2834,7 +2834,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### Atom
 ###### [Stile [Y253](#stile-y253)]
 
-  - Snippet di Angular e file di template che seguono queste linee guida.
+  - Snippet Angular e file di template che seguono queste linee guida.
     ```
     apm install angularjs-styleguide-snippets
     ```
@@ -2857,7 +2857,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### Brackets
 ###### [Stile [Y254](#stile-y254)]
 
-  - Snippet per Angular che seguono questi stili e linee guida.
+  - Snippet Angular che seguono questi stili e linee guida.
     - Scarica gli [snippet di Angulare per Brackets](assets/brackets-angular-snippets.yaml?raw=true)
     - Brackets Extension manager ( File > Extension manager )
     - Installa ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
