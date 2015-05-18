@@ -2048,14 +2048,14 @@ Invece usa la più semplice sintassi setter.
 ### LIFT
 ###### [Stile [Y140](#stile-y140)]
 
-  - Struttura la tua app tale da poter `L`ocate (localizzare) il codice facilmente, `I`dentify (identificare) il codice con uno sguardo, tenere la struttura più `F`lattest (piatta) che puoi, e `T`ry (provare) a rimanere DRY (Don't Repeat Yourself - Non ripetersi). La struttura dovrebbe seguire queste 4 linee guida basilari. 
+  - Struttura la tua app tale da poter `L`ocate (localizzare) il codice facilmente, `I`dentify (identificare) il codice a colpo d'occhio, tenere la struttura più `F`lattest (piatta) che puoi, e `T`ry (provare) a rimanere DRY (Don't Repeat Yourself - Non ripetersi). La struttura dovrebbe seguire queste 4 linee guida basilari. 
 
-    *Perché LIFT?*: Fornisce una struttura consistente che scala bene, è modulare e rende più semplice aumentare l'efficienza nel trovare facilmente il codice. Un altro modo per verificare la struttura della tua app è chiediti: Quanto rapidamente puoi aprire e lavorare ad una funzionalità in tutti i file che sono collegati?
+    *Perché LIFT?*: Fornisce una struttura consistente che scala bene, è modulare e rende più semplice aumentare l'efficienza dello sviluppatore nel trovare facilmente il codice. Un altro modo per verificare la struttura della tua app è chiederti: Quanto rapidamente puoi aprire e lavorare ad una funzionalità in tutti i file che sono collegati?
 
     Quando ritengo che la mia struttura non sia confortevole, torno indietro a rivedere le linee guida LIFT
   
     1. `L`ocalizzare il nostro codice con facilità
-    2. `I`dentificare il codice a vista
+    2. `I`dentificare il codice a colpo d'occhio
     3. `F`lat (pitta) struttura quanto più possibile
     4. `T`ry (prova) a restare DRY (Don’t Repeat Yourself) o T-DRY
 
@@ -2064,7 +2064,7 @@ Invece usa la più semplice sintassi setter.
 
   - Rendi intuitivo, semplice e facile localizzare il codice.
 
-    *Perché?*: Ritengo ciò essere estremamente importante per il progetto. Se il team non è in grado di trovare i file di cui necessita rapidamente, non sarà in grado di lavorare il più efficacemente possibile, per cui la struttura necessita un cambiamento. Potresti non sapere il nome del file o dove sono i file a questo correlati quindi posizionarli in nel posto più intuitivo e prossimi gli uni agli altri fa risparmiare un mucchio di tempo. Una descrittiva struttura delle cartelle può essere d'aiuto.
+    *Perché?*: Ritengo ciò essere estremamente importante per un progetto. Se il team non è in grado di trovare i file di cui necessita rapidamente, non sarà in grado di lavorare il più efficacemente possibile, per cui la struttura necessita un cambiamento. Potresti non sapere il nome del file o dove sono i file a questo correlati quindi posizionarli in nel posto più intuitivo e prossimi gli uni agli altri fa risparmiare un mucchio di tempo. Una descrittiva struttura delle cartelle può essere d'aiuto.
 
     ```
     /bower_components
@@ -2097,7 +2097,7 @@ Invece usa la più semplice sintassi setter.
 
   - Tieni la struttura delle cartelle piatta il più a lungo possibile. Quando arrivi ad avere 7 o più file, inizia a considerarne una separazione.
 
-    *Perché?*: Nessuno vuole cercare 7 livelli di cartelle per trovare un file. Pensa ai menù di un sito web.. qualunque cosa oltre i 2 livelli dovrebbe esser presa in considerazione. Nella struttura di cartella non c'è una regola con un numero esattamente definito ma quando una cartella contiene 7-10 file, è il momento di creare una sottocartella. Basalo su un livello a te comodo. Usa una struttura più piatta fino a che c'è l'ovvia necessità (praticando il resto dei principi LIFT) di creare una nuova cartella.
+    *Perché?*: Nessuno vuole cercare 7 livelli di cartelle per trovare un file. Pensa ai menù di un sito web.. qualunque cosa oltre i 2 livelli dovrebbe esser presa in seria considerazione. Nella struttura di cartella non c'è una regola con un numero esattamente definito ma quando una cartella contiene 7-10 file, potrebbe essere il momento di creare una sottocartella. Basalo su un livello a te comodo. Usa una struttura più piatta fino a che c'è l'ovvia necessità (praticando il resto dei principi LIFT) di creare una nuova cartella.
 
 ### T-DRY (Try to Stick to DRY) - Prova a non ripeterti
 ###### [Stile [Y144](#stile-y144)]
@@ -2113,7 +2113,7 @@ Invece usa la più semplice sintassi setter.
 ### Linee guida generali
 ###### [Stile [Y150](#stile-y150)]
 
-  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutti i contenuti rispettano 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze party sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
+  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutto il contenuto rispetta 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze party sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
 
     Nota: Trovi più dettagli e le motivazioni di questa struttura nel [post originale sulla struttura delle applicazioni](http://www.johnpapa.net/angular-app-structuring-guidelines/) (in inglese).
 
@@ -2139,7 +2139,7 @@ Invece usa la più semplice sintassi setter.
 
     ```javascript
     /**
-     * raccomanadato
+     * consigliato
      */
 
     app/
@@ -2175,7 +2175,7 @@ Invece usa la più semplice sintassi setter.
             session-detail.controller.js  
     ```
 
-	  ![Struttura dell'App di Esempio](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Struttura dell'App di Esempio](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
       Nota: Non utilizzare una strutturazione del tipo cartella-per-tipo. Questo richiede spostarsi tra molte cartelle quando si lavora su una funzionalità e diventa rapidamente scomodo quando l'app cresce di 5, 10 o più di 25 tra view e controller (ed altre funzionalità), per cui è più difficile rispetto alla localizzazione basata su cartella-per-funzionalità.
 
