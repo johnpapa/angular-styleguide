@@ -2723,7 +2723,6 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
         "disallowEmptyBlocks": null,
-        "disallowMultipleLineStrings": null,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
