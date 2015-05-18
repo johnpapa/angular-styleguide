@@ -1448,7 +1448,7 @@ Invece usa la più semplice sintassi setter.
           });
   }
 
-  function moviePrepService(movieService) {
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
 
@@ -1589,13 +1589,13 @@ Invece usa la più semplice sintassi setter.
                 controller: 'Avengers',
                 controllerAs: 'vm',
                 resolve: {
-                    moviesPrepService: moviePrepService
+                    moviesPrepService: moviesPrepService
                 }
             });
     }
 
-    moviePrepService.$inject =  ['movieService'];
-    function moviePrepService(movieService) {
+    moviesPrepService.$inject =  ['movieService'];
+    function moviesPrepService(movieService) {
         return movieService.getMovies();
     }
     ```
