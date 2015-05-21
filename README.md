@@ -184,6 +184,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - Use unique naming conventions with separators for sub-modules.
 
   *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  
+  - Note: For longer names, use camelCase conventions. For example, `app.userManagement` instead of spinal-case like `app.user-management`.
 
 ### Definitions (aka Setters)
 ###### [Style [Y021](#style-y021)]
