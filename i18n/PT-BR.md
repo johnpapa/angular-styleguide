@@ -110,7 +110,7 @@ ou *Responsabilidade Única*
   function someFactory() { }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## IIFE
 ### JavaScript Closures
@@ -175,7 +175,7 @@ ou *Responsabilidade Única*
 
   - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto, você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
 ou *Módulos*
@@ -286,7 +286,7 @@ ou *Funções Nomeadas vs Funções Anônimas*
   function logger() { }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Controllers
 ou *Controladores*
@@ -643,7 +643,7 @@ ou *Controladores*
   </div>
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Services
 ou *Serviços*
@@ -682,7 +682,7 @@ ou *Serviços*
   }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Factories
 ou *Fábricas*
@@ -853,7 +853,7 @@ ou *Declarações de função para esconder detalhes de implementação*
   }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Data Services
 ou *Serviços de dados*
@@ -979,7 +979,7 @@ ou *Retorne uma promessa de chamadas de dados*
   }
   ```
 
-    **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+    **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Directives
 ou *Diretivas*
@@ -1213,7 +1213,7 @@ ou *Diretivas e "ControladorComo"*
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Resolving Promises for a Controller
 ou *Resolvendo promessas para um controlador*
@@ -1322,7 +1322,7 @@ ou *Resolução de promessas na rota*
 
     Nota: As dependências no código de exemplos do `movieService` não estão seguras para minificação. Para mais detalhes de como fazer o código seguro para minificação, veja as seções [injeção de dependência (dependency injection)](#manual-annotating-for-dependency-injection) e [minificação e anotação (minification and annotation)](#minification-and-annotation).
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Manual Annotating for Dependency Injection
 ou *Anotação Manual para Injeção de Dependência*
@@ -1454,7 +1454,7 @@ ou *Identifique Dependências do Resolvedor de Rotas Manualmente*
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Minification and Annotation
 ou *Minificação e Anotação*
@@ -1564,7 +1564,7 @@ ou *Minificação e Anotação*
 
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Exception Handling
 ou *Tratamento de exceção*
@@ -1671,7 +1671,7 @@ ou *Coletores de exceção*
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Nomenclatura
 
@@ -1886,7 +1886,7 @@ ou *Coletores de exceção*
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1944,7 +1944,7 @@ ou *Coletores de exceção*
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure
 
@@ -2053,7 +2053,7 @@ ou *Coletores de exceção*
             topnav.html         
     ``` 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Modularity
   
@@ -2107,7 +2107,7 @@ ou *Coletores de exceção*
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Angular $ Wrapper Services
 
@@ -2123,7 +2123,7 @@ ou *Coletores de exceção*
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Testing
 Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas recomendações de fundamentos para testes unitários com links para mais informações.
@@ -2208,7 +2208,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Animations
 
@@ -2238,7 +2238,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
     Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Comments
 
@@ -2289,7 +2289,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
     })();
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## JS Hint
 
@@ -2365,7 +2365,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Constants
 
@@ -2391,7 +2391,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
     })();
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -2436,7 +2436,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## AngularJS docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -2479,4 +2479,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
