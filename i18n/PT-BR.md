@@ -1673,7 +1673,8 @@ ou *Coletores de exceção*
 
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
-## Nomenclatura
+## Naming
+ou *Nomenclatura*
 
 ### Diretrizes de Nomenclatura
 
