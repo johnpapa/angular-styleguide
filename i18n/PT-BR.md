@@ -1642,7 +1642,8 @@ ou *Coletores de exceção*
     ```
 
 ### Route Errors
-	- Gerencie e log todos os erros de routing utilizando o [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+	
+  - Gerencie e log todos os erros de routing utilizando o [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
     *Por que?*: Fornece uma maneira consistente de gerenciar erros relacionados a routing.
     
