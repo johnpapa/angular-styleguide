@@ -1688,6 +1688,7 @@ ou *Nomenclatura*
     *Por que?*: As convenções de nomenclatura deveriam simplesmente te ajudar a encontrar trechos do seu código mais rápido e torná-lo mais fácil de se entender.
     
 ### Feature File Names
+ou *Nome para funcionalidades*
 
   - Use nomes consistentes para todos os componentes seguindo um padrão que descreve a funcionalidade do componente e, em seguida, (opcionalmente) o seu tipo. Meu padrão recomendado é  `feature.type.js`.
 
@@ -1697,7 +1698,7 @@ ou *Nomenclatura*
 
     ```javascript
     /**
-     * common options 
+     * opções comuns 
      */
 
     // Controllers
@@ -1713,7 +1714,7 @@ ou *Nomenclatura*
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // controllers
@@ -1746,7 +1747,7 @@ ou *Nomenclatura*
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
     // Controllers
     avengers.js
@@ -1754,16 +1755,17 @@ ou *Nomenclatura*
     ```
 
 ### Test File Names
+ou *Nome para aquivos de testes*
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.  
+  - Nomeie as especificações de testes de forma similar aos componentes que elas testam, com o sufixo `spec`.
+  
+    *Por que?*: Fornece um modo consistente para identificar rapidamente os componentes.
 
-    *Why?*: Provides a consistent way to quickly identify components.
-
-    *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *Por que?*: Fornece padrões de correspondência para o [karma](http://karma-runner.github.io/) ou outros test runners.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
     avengers.controller.spec.js
     logger.service.spec.js
@@ -1772,16 +1774,17 @@ ou *Nomenclatura*
     ```
 
 ### Controller Names
+ou *Nome para controllers*
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Use nomes consistentes para todos os controlers nomeados após as sua funcionalidade. Use UpperCamelCase para os controllers, assim como para seus construtores.
+  
+    *Por que?*: Fornece um modo consistente para identificar e referenciar os controllers.
 
-    *Why?*: Provides a consistent way to quickly identify and reference controllers.
-
-    *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *Por que?*: O UpperCamelCase é o modo mais comum para identificar objetos que serão instanciados através de construtores.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // avengers.controller.js
@@ -1793,16 +1796,15 @@ ou *Nomenclatura*
     ```
     
 ### Controller Name Suffix
+ou *sufixo "Controllers"*
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - Complemente o nome do controller com ou sem o sufixo `Controller`. Escolha uma opção, não ambas. 
 
-    *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
-
-    *Why?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
-
+    *Por que?*: O sufixo `Controller` é mais usado e mais descritivo.
+    
     ```javascript
     /**
-     * recommended: Option 1
+     * recomendado: Opção 1
      */
 
     // avengers.controller.js
@@ -1815,7 +1817,7 @@ ou *Nomenclatura*
 
     ```javascript
     /**
-     * recommended: Option 2
+     * recomendado: Opção 2
      */
 
     // avengers.controller.js
@@ -1827,14 +1829,17 @@ ou *Nomenclatura*
     ```
 
 ### Factory Names
+ou *Nome para factory*
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Use nomes consistentes para todas as factories nomeadas após sua funcionalidade. Use a conveção camelCase para services e factories, e evite prefixos com `$`.  
+    
+    *Por que?*: Fornece um modo consistende de identificar e referenciar rapidamente as factories.
 
-    *Why?*: Provides a consistent way to quickly identify and reference factories.
+    *Por que?*: Evite colisão de nomes com factories e services pré-programadas que usam o prefixo `$`.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // logger.service.js
@@ -1846,14 +1851,15 @@ ou *Nomenclatura*
     ```
 
 ### Directive Component Names
+ou *Nome para directive*
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
-
-    *Why?*: Provides a consistent way to quickly identify and reference components.
-
+  - Use nomes consistentes para todas as directives usando a convenção camelCase. Use um prefixo curto para descrever a área a qual a directive pertence (como prefixo da compania ou do projeto).
+  
+    *Por que?*: Fornece um modo consistente de identificar e referenciar rapidamente os componentes.
+    
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // avenger.profile.directive.js    
@@ -1867,26 +1873,27 @@ ou *Nomenclatura*
     ```
 
 ### Modules
+ou *Módulos*
 
-  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. A single module app might be named `app.js`, omitting the module moniker.
+  - Quando há vários módulos, o arquivo principal deste módulo é nomeado `app.module.js`, enquanto os módulos dependentes são nomeados de acordo com o que eles representam. Por exemplo, um módulo admin é nomeado `admin.module.js`. Os nomes dos respectivos módulos registrados seriam `app` e `admin`.
 
-    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
- 
-    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *Por que?*: Fornece consistência para múltiplos módulos, e para expansão para grandes aplicações.
 
-    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *Por que?*: Fornece um modo fácil para automação de tarefas, a fim de carregar todos as definições dos módulos em primeiro lugar, então os demais arquivos (empacotamento).
 
 ### Configuration
+ou *Configuração*
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - Separe a configuração do módulo em seu próprio arquivo, nomeado após o módulo. Um arquivo de configuração para o módulo principal `app` é nomeado `app.config.js` (ou simplesmente `config.js`). Uma configuração para o módulo `admin.module.js` é nomeada `admin.config.js`. 
 
-    *Why?*: Separates configuration from module definition, components, and active code.
+    *Por que?*: Separe a configuração do módulo da definição, dos componentes e do código ativo.
 
-    *Why?*: Provides a identifiable place to set configuration for a module.
+    *Por que?*: Fornece um local identificável para definir as configurações de um módulo.
 
 ### Routes
+ou *Rotas*
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
+  - Separe as configurações das rotas em seus próprios arquivos. Os exemplos podem ser `app.route.js` para o módulo princial, e `admin.route.js` para o módulo `admin`. Mesmo nas menores aplicações, prefiro esta separação das demais configurações. Uma alternativa é um nome mais longo, como `admin.config.route.js`.
 
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
