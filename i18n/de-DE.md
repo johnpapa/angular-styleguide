@@ -1,6 +1,10 @@
-# Angular Styleguide
+# Angular Style Guide
 
 *Dogmatischer Angular Styleguide für Teams von John Papa [@john_papa](//twitter.com/john_papa)*
+
+*Translated by [miseeger](https://github.com/miseeger)*
+
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
 Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](http://pluralsight.com/training/Authors/Details/john-papa) und der Arbeit in Teams.
 

@@ -5,13 +5,14 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
 *All translations are created by and maintained by the community.*
 
 1. [French](fr-FR.md)
-2. [Italian](it-IT.md)
-3. [Japanese](ja-JP.md)
-4. [Macedonian](mk-MK.md)
-5. [Portuguese-Brazil](PT-BR.md)
-6. [Russian](ru-RU.md)
-7. [Simplified Chinese](zh-CN.md)
-8. [Spanish](es-ES.md)
+2. [German](de-DE.md)
+3. [Italian](it-IT.md)
+4. [Japanese](ja-JP.md)
+5. [Macedonian](mk-MK.md)
+6. [Portuguese-Brazil](PT-BR.md)
+7. [Russian](ru-RU.md)
+8. [Simplified Chinese](zh-CN.md)
+9. [Spanish](es-ES.md)
 
 ## Contributing
 Language translations are welcomed and encouraged. The succcess of these translations depends on the community. I highly encourage new translation contributions and help to keep them up to date. 
