@@ -1,6 +1,6 @@
 # Guia de Estilo AngularJS
 
-*Guia de Estilo opinativo de AngularJS para times. Por [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo opinativo de Angular para times. Por [@john_papa](//twitter.com/john_papa)*
 
 *Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes), [Jean Lucas de Carvalho](https://github.com/jlcarvalho) e [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)*
 
@@ -8,13 +8,13 @@
 
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipe.
 
-> Se você gostar deste guia, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Pluralsight.
+> Se você gostar deste guia, confira meu curso [Angular Patterns: Clean Code](http://jpapa.me/ngclean) na Pluralsight.
 
-A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
+A proposta deste guia de estilo é fornecer uma direção na construção de aplicações Angular mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
 
 ## A Importância da Comunidade e Créditos
 
-Nunca trabalhe sozinho. Acho que a comunidade AngularJS é um grupo incrível, apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe sozinho. Acho que a comunidade Angular é um grupo incrível, apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em Angular e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
 Vários de meus estilos vieram de várias sessões de pair-programming (programação pareada) que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não concordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
@@ -53,7 +53,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [AngularJS Docs](#angularjs-docs)
+  1. [Angular Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
 
@@ -115,7 +115,7 @@ ou *Responsabilidade Única*
 ## IIFE
 ### JavaScript Closures
 
-  - Envolva os componentes AngularJS em uma *Immediately Invoked Function Expression (IIFE - Expressão de função imediatamente invocada)*.
+  - Envolva os componentes Angular em uma *Immediately Invoked Function Expression (IIFE - Expressão de função imediatamente invocada)*.
 
   **Por que?** Uma IIFE remove as variáveis do escopo global. Isso ajuda a prevenir declarações de variáveis e funções de viverem por mais tempo que o esperado no escopo global, que também auxilia evitar colisões de variáveis.
 
@@ -652,7 +652,7 @@ ou *Serviços*
 
   - Services são instanciados com a palavra-chave `new`, use `this` para métodos públicos e variáveis. Services são bastante similares a factories, use um factory para consistência. 
   
-    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services). Isso significa que há apenas uma instância do serviço para cada injetor.
+    Nota: [Todos services em Angular são singletons](https://docs.angularjs.org/guide/services). Isso significa que há apenas uma instância do serviço para cada injetor.
 
   ```javascript
   // service
@@ -696,7 +696,7 @@ ou *Responsabilidade Única*
 
   - Factories são singletons e retornam um objeto que contém os membros do serviço.
   
-    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos services em Angular são singletons](https://docs.angularjs.org/guide/services).
 
 ### Accessible Members Up Top
 ou *Membros acessíveis no topo*
@@ -1101,7 +1101,7 @@ ou *Restringir para elementos e atributos*
 
     **Por que?**: Nós podemos utilizar uma diretiva como uma classe (class), mas se a diretiva está realmente agindo como um elemento, faz mais sentido utilizar como um elemento, ou pelo menos como um atributo.
 
-    Nota: EA é o padrão para o AngularJS 1.3 +
+    Nota: EA é o padrão para o Angular 1.3 +
 
   ```html
   <!-- evite -->
@@ -1532,7 +1532,7 @@ ou *Minificação e Anotação*
     }
     ```
 
-    > Nota: Apartir do AngularJS 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
+    > Nota: Apartir do Angular 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Utilize Gulp ou Grunt para o ng-annotate
@@ -1574,7 +1574,7 @@ ou *decoradores*
 
   - Utilize um [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), no seu config utilizando o serviço [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), no serviço [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar ações customizadas quando um erro ocorrer.
   
-    **Por que?**: Fornece um caminho consistente para manipular erros não tratados pelo AngularJS em tempo de desenvolvimento ou execução (run-time).
+    **Por que?**: Fornece um caminho consistente para manipular erros não tratados pelo Angular em tempo de desenvolvimento ou execução (run-time).
 
     Nota: Outra opção é sobrescrever o serviço ao invés de utilizar um decorator. Esta é uma boa opção, mas se você quer manter o comportamento padrão e estender, o decorator é recomendado.
 
@@ -2076,7 +2076,7 @@ ou *Rotas*
 
   - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
 
-    *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *Why?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
 
 ### Keep the App Module Thin
 
@@ -2245,7 +2245,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
     *Why?*: animate.css is widely used and tested.
 
-    Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
@@ -2382,7 +2382,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
 ### Globais de terceiros (*vendors*)
 
-  - Cria uma *Constant* no AngularJS para variáveis globais de bibliotecas de terceiros.
+  - Cria uma *Constant* no Angular para variáveis globais de bibliotecas de terceiros.
 
     *Por que?*: Fornece uma forma de injetar bibliotecas de terceiros que de outra forma seriam globais. Isso melhora a testabilidade do código permitindo a você conhecer mais facilmente quais dependências os seus componentes têm (evita vazamento de abstrações). Também permite que você simule estas dependências, o que faz sentido. 
 
@@ -2407,7 +2407,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ### Sublime Text
 
-  - AngularJS snippets that follow these styles and guidelines. 
+  - Angular snippets that follow these styles and guidelines. 
 
     - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
     - Place it in your Packages folder
@@ -2423,7 +2423,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ### Visual Studio
 
-  - AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+  - Angular file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
 
     - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
     - Run the vsix file
@@ -2431,9 +2431,9 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ### WebStorm
 
-  - AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  - Angular snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
 
-    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
+    - Download the [WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
     - Open WebStorm and go to the `File` menu
     - Choose the `Import Settings` menu option
     - Select the file and click `OK`
@@ -2447,7 +2447,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
-## AngularJS docs
+## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
 ## Contributing
