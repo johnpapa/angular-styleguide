@@ -1,6 +1,6 @@
 # Guida stilistica ad AngularJS
 
-*Guida stilistica dogmatica ad AngularJS per i team di [@john_papa](//twitter.com/john_papa)*
+*Guida stilistica dogmatica ad Angular per i team di [@john_papa](//twitter.com/john_papa)*
 
 *Traduzione di [Angelo Chiello](https://github.com/angelochiello)*
 
@@ -10,9 +10,9 @@ Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e s
 
 L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con Angular mostrando le convenzioni che uso e, più importante, perché le uso.
 
->Se ti piace questa guida, dai un'occhiata al mio corso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight come complemento a questa guida.
+>Se ti piace questa guida, dai un'occhiata al mio corso [Angular Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight come complemento a questa guida.
 
-  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Eccezionalità della comunità e riconoscimenti
 Mai lavorare nel vuoto. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
