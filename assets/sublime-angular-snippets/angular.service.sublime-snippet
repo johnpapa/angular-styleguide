@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('${1:module}')
+        .module('${1:module}', [])
         .service('${2:Service}', ${2:Service});
 
     ${2:Service}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
