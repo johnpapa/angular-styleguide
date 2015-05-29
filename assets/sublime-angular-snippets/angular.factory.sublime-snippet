@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('${1:module}')
+        .module('${1:module}', [])
         .factory('${2:factory}', ${2:factory});
 
     ${2:factory}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
