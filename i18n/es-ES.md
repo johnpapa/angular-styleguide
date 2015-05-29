@@ -1,6 +1,6 @@
 # Guía de estilo AngularJS
 
-*Guía de estilos colaborativa de AngularJS para equipos por [@john_papa](//twitter.com/john_papa)*
+*Guía de estilos colaborativa de Angular para equipos por [@john_papa](//twitter.com/john_papa)*
 
 *Translation by [Alberto Calleja](https://github.com/AlbertoImpl) and [Gilberto](https://github.com/ingilniero)*
 
@@ -8,14 +8,14 @@
 
 Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngulRJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
 
-El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con AngularJS enseñando convenciones que uso y, lo más importante, el porqué.
+El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
->Si te gusta esta guía, echa un vistazo al curso de Pluralsight [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean).
+>Si te gusta esta guía, echa un vistazo al curso de Pluralsight [Angular Patterns: Clean Code](http://jpapa.me/ngclean).
 
-  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Asombrosa comunidad y créditos
-Nunca trabajes solo. Personalmente, la comunidad de AngularJS es un increíble grupo apasionado por compartir experiencias. Como por ejemplo, mi amigo y experto en AngularJS Todd Motto, con el que he colaborado en muchos de los estilos y convenciones. Estamos de acuerdo en la mayoría, y en otras no. Te recomiendo que le eches un vistazo a [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) para que le des sentido a esta guía y la compares.
+Nunca trabajes solo. Personalmente, la comunidad de Angular es un increíble grupo apasionado por compartir experiencias. Como por ejemplo, mi amigo y experto en Angular Todd Motto, con el que he colaborado en muchos de los estilos y convenciones. Estamos de acuerdo en la mayoría, y en otras no. Te recomiendo que le eches un vistazo a [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) para que le des sentido a esta guía y la compares.
 
 Muchos de los estilos han salido de las muchas sesiones de pair programming que [Ward Bell](http://twitter.com/wardbell) y yo hemos tenido. Aunque no siempre coincidimos, mi amigo Ward me ha ayudado con la última evolución de esta guía.
 
@@ -55,7 +55,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   1. [Generador de Yeoman](#generador-de-yeoman)
   1. [Ruteo](#ruteo)
   1. [Automatización de Tareas](#automatización-de-tareas)
-  1. [AngularJS Docs](#angularjs-docs)
+  1. [Angular Docs](#angularjs-docs)
   1. [Contribuyendo](#contribuyendo)
   1. [Licencia](#licencia)
 
@@ -118,7 +118,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Closures de JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Envuelve los componentes AngularJS en una expresión de función que se invoca inmediatamente Immediately Invoked Function Expression (IIFE).
+  - Envuelve los componentes Angular en una expresión de función que se invoca inmediatamente Immediately Invoked Function Expression (IIFE).
 
   *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así colisión de variables.
 
@@ -687,7 +687,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Los Servicios son instanciados con un `new`, usan `this` para los métodos públicos y las variables. Ya que son muy similares a las factories, usa una factory en su lugar por consistencia.
 
-    Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services). Esto significa que sólo hay una instancia de un servicio por inyector.
+    Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services). Esto significa que sólo hay una instancia de un servicio por inyector.
 
   ```javascript
   // service
@@ -731,7 +731,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Las Fábricas son singleton y devuelven un objeto que contiene las variables del servicio.
 
-    Nota: [Todos los servicios AngularJS son singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services).
 
 ### Miembros accesibles Arriba
 ###### [Style [Y052](#style-y052)]
@@ -1134,7 +1134,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Mientras permitamos que una directiva sea usada como una clase, si esa directiva realmente está actuando como un elemento, tiene sentido que sea un elemento, o al menos un atributo.
 
-    Nota: En AngularJS 1.3+ EA es el valor por defecto
+    Nota: En Angular 1.3+ EA es el valor por defecto
 
   ```html
   <!-- evitar -->
@@ -1662,7 +1662,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     }
     ```
 
-    > Nota: A partir de AngularJS 1.3 usa el párametro `ngStrictDi` de la directiva [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Al presentarse el injector será creado en modo "strict-di" causando que la aplicación falle al invocar funciones que no usan explícitamente anotación de funciones (éstas podrían no estar minificadas en forma segura). Información para debugear será mostrada en la consola para ayudar a rastrear el código infractor.
+    > Nota: A partir de Angular 1.3 usa el párametro `ngStrictDi` de la directiva [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Al presentarse el injector será creado en modo "strict-di" causando que la aplicación falle al invocar funciones que no usan explícitamente anotación de funciones (éstas podrían no estar minificadas en forma segura). Información para debugear será mostrada en la consola para ayudar a rastrear el código infractor.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Usa Gulp o Grunt para ng-annotate
@@ -1705,7 +1705,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Usa un decorador o [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), en tiempo de configuración usando el servicio [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), en el servicio [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar acciones personalizadas cuando una excepción ocurra.
 
-    *¿Por qué?*: Provee una manera consistente de manejar excepciones de AngularJS que no están siendo capturadas en tiempo de desarrollo o en tiempo de ejecución.
+    *¿Por qué?*: Provee una manera consistente de manejar excepciones de Angular que no están siendo capturadas en tiempo de desarrollo o en tiempo de ejecución.
 
     Nota: Otra opción es sobreescribir el servicio en lugar de usar un decorador. Esto está bien, pero si quiere mantener el comportamiento por default y extenderlo se recomienda usar un decorador.
 
@@ -2223,7 +2223,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Crea una módulo raíz de aplicación cuyo rol sea unir todos los módulos y características de tu aplicación. Nombra éste de acuerdo a tu aplicación.
 
-    *¿Por qué?*: AngularJS incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
+    *¿Por qué?*: Angular incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
 
 ### Mantén el Módulo App Delgado
 ###### [Style [Y162](#style-y162)]
@@ -2343,7 +2343,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Usa [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) y [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) en lugar de `setTimeout` y `setInterval` .
 
-    *¿Por qué?*: Estos servicios están envueltos por Angular y son más fáciles de testear y manejar el ciclo digest de AngularJS así que mantienen el bindeo de los datos en sincronización.
+    *¿Por qué?*: Estos servicios están envueltos por Angular y son más fáciles de testear y manejar el ciclo digest de Angular así que mantienen el bindeo de los datos en sincronización.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -2684,7 +2684,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - Snippets de AngularJS que siguen estos estilos y directrices.
+  - Snippets de Angular que siguen estos estilos y directrices.
 
     - Descarga los [snippets de Angular para Sublime](assets/sublime-angular-snippets.zip?raw=true)
     - Colócalos en tu directorio de Packages
@@ -2701,7 +2701,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 ### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - Plantillas de AngularJS que siguen estos estilos y directrices pueden ser encontrados en [SideWaffle](http://www.sidewaffle.com)
+  - Plantillas de Angular que siguen estos estilos y directrices pueden ser encontrados en [SideWaffle](http://www.sidewaffle.com)
 
     - Descarga la extensión [SideWaffle](http://www.sidewaffle.com) de Visual Studio (archivo vsix)
     - Corre el archivo vsix
@@ -2710,9 +2710,9 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Snippets y arhicos de AngularJS que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
+  - Snippets y arhicos de Angular que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
 
-    - Descarga los [snippets y plantillas de AngularJS para WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
+    - Descarga los [snippets y plantillas de Angular para WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
     - Abre WebStorm y ve al menú `File`
     - Elije la opción `Import Settings`
     - Selecciona el archivo y da click en `OK`
@@ -2798,7 +2798,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## AngularJS docs
+## Angular docs
 Para cualquier otra cosa, refiérete a la API, mira la [documentación de Angular](//docs.angularjs.org/api).
 
 ## Contribuyendo

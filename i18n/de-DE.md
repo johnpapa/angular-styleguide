@@ -1,6 +1,10 @@
-# Angular Styleguide
+# Angular Style Guide
 
 *Dogmatischer Angular Styleguide für Teams von John Papa [@john_papa](//twitter.com/john_papa)*
+
+*Translated by [miseeger](https://github.com/miseeger)*
+
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
 Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](http://pluralsight.com/training/Authors/Details/john-papa) und der Arbeit in Teams.
 
@@ -8,7 +12,7 @@ Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angu
 
 >Wenn Sie diese Anleitung mögen, dann besuchen Sie meinen Kurs [Angular Patterns: Clean Code] (http://jpapa.me/ngclean) auf Pluralsight, der eine Begleitung zu dieser Anleitung dartellt.
 
-  [![AngularJs Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Außergewöhnliche Community and Anerkennung
 Arbeite niemals im leeren Raum. Ich finde, dass die Angular-Community eine unglaubliche Gruppe ist, die ihre Erfahrung mit Leidenschaft teilt. Also haben ein Freund und Angular-Experte, Todd Motto, und ich viele Vorlagen und Konventionen zusammengetragen. Bei den meisten sind wir uns einig, und bei ein paar sind wir verschiedener Meinung. Ich möchte Sie ermutigen, sich [Todd's Guidelines](https://github.com/toddmotto/angularjs-styleguide) anzusehen, um ein Gespühr für seinen Ansatz zu entwickeln und ihn vergleichen zu können.
