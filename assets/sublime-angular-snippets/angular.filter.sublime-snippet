@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('${1:module}', [])
+        .module('${1:module}')
         .filter('${2:filter}', ${2:filter});
 
     function ${2:filter}() {
