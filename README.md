@@ -52,6 +52,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
   1. [Filters](#filters)
+  1. [Deferred and Promises](#deferred-and-promises)
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
@@ -3057,6 +3058,51 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
     *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
 **[Back to top](#table-of-contents)**
+
+## Deferred and Promises
+
+Deferred objects and Promises are vital to the Angular framework.
+
+  - Always avoid using deferred objects. Instead of using a Deferred’s promise, the code should simply use a promise.
+
+    *Why?*: Any kind of errors and rejections are swallowed and not propagated to the caller of this function.
+
+    ```
+    /* avoid */
+
+    function somethingService($q, $http) {
+        var self = this;
+
+        self.doSomething = doSomething;
+
+        function doSomething() {
+            var d = $q.defer();
+
+            $http.get('/something.json')
+                .then(function (data) {
+                    d.resolve(data);
+                });
+
+            return d.promise;
+        }
+    }
+    ```
+
+    Use promises when they are available
+
+    ```
+    /* recommended */
+
+    function somethingService($http) {
+        var self = this;
+
+        self.doSomething = doSomething;
+
+        function doSomething() {
+            return $http.get('/something.json');
+        }
+    }
+    ```
 
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
