@@ -3110,6 +3110,47 @@ Deferred objects and Promises are vital to the Angular framework.
 
     `.catch` is specified for built-in Javascript promises and is "sugar" for `.then(null, function(){})`.
 
+    ```
+    /* avoid */
+    doSomething()
+        .then(function (result) {
+            return doSomethingWith(result);
+        }, function (e) {
+            $log.error(e);
+        });
+
+    // synchroneously equates to
+    
+    var result;
+    try {
+        result = doSomething();
+    } catch (e) {
+        $log.error(e);
+    }
+
+    var final = doSomethingWith(result);
+    ```
+
+    ```
+    /* recommended */
+    doSomething()
+        .then(function (result) {
+            return doSomethingWith(result);
+        })
+        .catch(function (e) {
+            $log.error(e);
+        });
+
+    // synchroneously equates to
+
+    var final;
+    try {
+        final = doSomethingWith(doSomething());
+    } catch (e) {
+        $log.error(e);
+    }
+    ```
+
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
