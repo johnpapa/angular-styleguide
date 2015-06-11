@@ -3104,6 +3104,12 @@ Deferred objects and Promises are vital to the Angular framework.
     }
     ```
 
+  - Avoid using the `.then(success, fail)` pattern.
+    
+    *Why?*: Errors will only be caught by the fail handler and not passed down the chain to later `.catch` functions.
+
+    `.catch` is specified for built-in Javascript promises and is "sugar" for `.then(null, function(){})`.
+
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
