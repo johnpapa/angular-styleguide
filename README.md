@@ -3067,7 +3067,7 @@ Deferred objects and Promises are vital to the Angular framework.
 
     *Why?*: Any kind of errors and rejections are swallowed and not propagated to the caller of this function.
 
-    ```
+    ```javascript
     /* avoid */
 
     function somethingService($q, $http) {
@@ -3090,7 +3090,7 @@ Deferred objects and Promises are vital to the Angular framework.
 
     Use promises when they are available
 
-    ```
+    ```javascript
     /* recommended */
 
     function somethingService($http) {
@@ -3110,7 +3110,7 @@ Deferred objects and Promises are vital to the Angular framework.
 
     `.catch` is specified for built-in Javascript promises and is "sugar" for `.then(null, function(){})`.
 
-    ```
+    ```javascript
     /* avoid */
     doSomething()
         .then(function (result) {
@@ -3131,7 +3131,7 @@ Deferred objects and Promises are vital to the Angular framework.
     var final = doSomethingWith(result);
     ```
 
-    ```
+    ```javascript
     /* recommended */
     doSomething()
         .then(function (result) {
