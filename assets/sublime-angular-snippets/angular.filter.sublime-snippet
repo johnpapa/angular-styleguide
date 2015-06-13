@@ -10,9 +10,10 @@
         return ${2:filter}Filter;
 
         ////////////////
+
         function ${2:filter}Filter(${3:params}) {
             return ${3:params};
-        };
+        }
     }
 
 })();
