@@ -1,4 +1,4 @@
-# Guida stilistica ad AngularJS
+# Guida stilistica ad Angular
 
 *Guida stilistica dogmatica ad Angular per i team di [@john_papa](//twitter.com/john_papa)*
 
