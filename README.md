@@ -36,6 +36,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Minification and Annotation](#minification-and-annotation)
   1. [Exception Handling](#exception-handling)
   1. [Naming](#naming)
+  1. [CommonJS Techniques](#commonjs)
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
@@ -364,7 +365,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
 
   ```javascript
   /* jshint validthis: true */
@@ -607,7 +608,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
-      .then(function(isOk) { vm.isCreditOk = isOk; })
+            .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
   }
@@ -618,7 +619,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
 
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    *Why?*: Reusing controllers with several views is brittle and good end-to-end (e2e) test coverage is required to ensure stability across large applications.
 
 ### Assigning Controllers
 ###### [Style [Y038](#style-y038)]
@@ -783,7 +784,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern
+  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern.
 
     ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
 
@@ -898,7 +899,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as `$http`. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
 
   ```javascript
   /* recommended */
@@ -1010,7 +1011,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    **[Back to top](#table-of-contents)**
+**[Back to top](#table-of-contents)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1022,7 +1023,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: One directive per file is easy to maintain.
 
-    > Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation
+    > Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation.
 
   ```javascript
   /* avoid */
@@ -1075,7 +1076,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* customerInfo.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across the sales app at a company named Acme
+   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1104,7 +1105,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -1215,9 +1216,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller: ExampleController,
-            controllerAs: 'vm',
-            bindToController: true // because the scope is isolated
-        };
+          controllerAs: 'vm',
+          bindToController: true // because the scope is isolated
+      };
 
       return directive;
 
@@ -1249,6 +1250,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
+  ```
+
+    Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
+
+  ```javascript
+  // Alternative to above example
+  function linkFunc(scope, el, attr, vm) {
+      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+      console.log('LINK: vm.min = %s', vm.min);
+      console.log('LINK: vm.max = %s', vm.max);
+  }
   ```
 
 ###### [Style [Y076](#style-y076)]
@@ -1301,7 +1314,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 **[Back to top](#table-of-contents)**
 
 ## Resolving Promises for a Controller
-
 ### Controller Activation Promises
 ###### [Style [Y080](#style-y080)]
 
@@ -1406,8 +1418,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   Avengers.$inject = ['moviesPrepService'];
   function Avengers(moviesPrepService) {
-        var vm = this;
-        vm.movies = moviesPrepService.movies;
+      var vm = this;
+      vm.movies = moviesPrepService.movies;
   }
   ```
 
@@ -1433,7 +1445,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           });
   }
 
-  function moviePrepService(movieService) {
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
 
@@ -1574,13 +1586,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
                 controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: {
-                    moviesPrepService: moviePrepService
+                    moviesPrepService: moviesPrepService
                 }
             });
     }
 
-    moviePrepService.$inject = ['movieService'];
-    function moviePrepService(movieService) {
+    moviesPrepService.$inject = ['movieService'];
+    function moviesPrepService(movieService) {
         return movieService.getMovies();
     }
     ```
@@ -1663,7 +1675,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
     ```
 
-    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing magnification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
+    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
@@ -1678,7 +1690,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     gulp.task('js', ['jshint'], function() {
         var source = pkg.paths.js;
-        
+
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
@@ -1964,9 +1976,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Factory Names
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`.
 
     *Why?*: Provides a consistent way to quickly identify and reference factories.
+
+    *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
 
     ```javascript
     /**
@@ -2025,6 +2039,54 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ###### [Style [Y129](#style-y129)]
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
+
+
+**[Back to top](#table-of-contents)**
+
+## CommonJS Techniques
+
+### Include an index.js file in each feature folder
+###### [Style [Y200](#style-y200)]
+
+  - Each feature should already be seperated in it's own folder. By adding an `index.js` file, we can just use `require(./path/to/feature/folder)` and the `index.js` file will be picked up.
+
+  *Why?*: Group all of the dependencies for each feature in a common place.
+
+
+### Include all Angular boilerplate in the index.js file
+##### [Style [Y201](#style-y201)]
+
+  - Angular boiler plate includes stuff like `angular.module('app').controller('SomeController', SomeController)` where `SomeController` is a function that defines a controller
+
+  *Why?*: Creates one place to do all angular specific work
+
+### Create angular objects in seperate files and export
+##### [Style [Y202](#style-y202)]
+
+  - Since the angular specific code is grouped in the `index.js` file, we can create succint controllers, services or directives in seperate files so `some.controller.js` would look like: 
+
+  ```javascript
+  /**
+   * recommended
+   */
+
+  // index.js
+  
+  var SomeController = require("./some.controller.js");
+  
+  angular
+      .module
+      .controller('SomeController', SomeController);
+
+  // some.controller.js
+  module.exports = SomeController;
+
+  function SomeController(){
+    var vm = this;
+
+    vm.another = "another"
+  }
+  ```
 
 **[Back to top](#table-of-contents)**
 
@@ -2096,7 +2158,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Overall Guidelines
 ###### [Style [Y150](#style-y150)]
 
-  - Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  - Have a near term view of implementation and a long term vision. In other words, start small but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
     Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
@@ -2161,7 +2223,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
       ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
-      Note: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Note: Do not structure your app using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
 
     ```javascript
     /*
@@ -2174,6 +2236,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         app.module.js
         app.config.js
         app.routes.js
+        directives.js
         controllers/
             attendees.js
             session-detail.js
@@ -2314,12 +2377,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .run(runBlock);
 
-    runBlock.$inject = ['authenticator', 'translator'];
+  runBlock.$inject = ['authenticator', 'translator'];
 
-    function runBlock(authenticator, translator) {
-        authenticator.initialize();
-        translator.initialize();
-    }
+  function runBlock(authenticator, translator) {
+      authenticator.initialize();
+      translator.initialize();
+  }
   ```
 
 **[Back to top](#table-of-contents)**
@@ -2460,8 +2523,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     ```
     /src/client/app/customers/customer-detail.controller.js
                              /customer-detail.controller.spec.js
+                             /customers.controller.js
                              /customers.controller.spec.js
-                             /customers.controller-detail.spec.js
                              /customers.module.js
                              /customers.route.js
                              /customers.route.spec.js
@@ -2708,7 +2771,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
         "disallowEmptyBlocks": null,
-        "disallowMultipleLineStrings": null,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
@@ -2777,16 +2839,18 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - Angular snippets that follow these styles and guidelines.
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip?raw=true)
+    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)
     - Place it in your Packages folder
     - Restart Sublime
     - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
     ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 ### Visual Studio
@@ -2814,7 +2878,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-f // creates an Angular factory
     ng-m // creates an Angular module
     ```
-    
+
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
@@ -2826,7 +2890,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
     - Search for the package 'angularjs-styleguide-snippets'
     - Click 'Install' to install the package
-    
+
   - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
@@ -2834,8 +2898,59 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngdirective // creates an Angular directive
     ngfactory // creates an Angular factory
     ngmodule // creates an Angular module
+    ngservice // creates an Angular service
+    ngfilter // creates an Angular filter
     ```
 
+### Brackets
+###### [Style [Y254](#style-y254)]
+
+  - Angular snippets that follow these styles and guidelines.
+    - Download the [Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
+    - Brackets Extension manager ( File > Extension manager )
+    - Install ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
+    - Click the light bulb in brackets' right gutter
+    - Click `Settings` and then `Import`
+    - Choose the file and select to skip or override
+    - Click `Start Import`
+
+  - In a JavaScript file type these commands followed by a `TAB`
+
+    ```javascript
+    // These are full file snippets containing an IIFE
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngapp        // creates an Angular module setter
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+
+    // These are partial snippets intended to chained
+    ngmodule     // creates an Angular module getter
+    ngstate      // creates an Angular UI Router state defintion
+    ngconfig     // defines a configuration phase function
+    ngrun        // defines a run phase function
+    ngroute      // defines an Angular ngRoute 'when' definition
+    ngtranslate  // uses $translate service with its promise
+    ```
+
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - vim snippets that follow these styles and guidelines.
+
+    - Download the [vim Angular snippets](assets/vim-angular-snippets?raw=true)
+    - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - copy snippets to snippet directory
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
@@ -2874,6 +2989,76 @@ Client-side routing is important for creating a navigation flow between views an
     *Why?*: UI Router offers all the features of the Angular router plus a few additional ones including nested routes and states.
 
     *Why?*: The syntax is quite similar to the Angular router and is easy to migrate to UI Router.
+
+  - Note: You can use a provider such as the `routerHelperProvider` shown below to help configure states across files, during the run phase.
+
+    ```javascript
+    // customers.routes.js
+    angular
+        .module('app.customers')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(routerHelper) {
+        routerHelper.configureStates(getStates());
+    }
+
+    function getStates() {
+        return [
+            {
+                state: 'customer',
+                config: {
+                    abstract: true,
+                    template: '<ui-view class="shuffle-animation"/>',
+                    url: '/customer'
+                }
+            }
+        ];
+    }
+    ```
+
+    ```javascript
+    // routerHelperProvider.js
+    angular
+        .module('blocks.router')
+        .provider('routerHelper', routerHelperProvider);
+
+    routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
+    /* @ngInject */
+    function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
+        /* jshint validthis:true */
+        this.$get = RouterHelper;
+
+        $locationProvider.html5Mode(true);
+
+        RouterHelper.$inject = ['$state'];
+        /* @ngInject */
+        function RouterHelper($state) {
+            var hasOtherwise = false;
+
+            var service = {
+                configureStates: configureStates,
+                getStates: getStates
+            };
+
+            return service;
+
+            ///////////////
+
+            function configureStates(states, otherwisePath) {
+                states.forEach(function(state) {
+                    $stateProvider.state(state.state, state.config);
+                });
+                if (otherwisePath && !hasOtherwise) {
+                    hasOtherwise = true;
+                    $urlRouterProvider.otherwise(otherwisePath);
+                }
+            }
+
+            function getStates() { return $state.get(); }
+        }
+    }
+    ```
 
 ###### [Style [Y271](#style-y271)]
 
@@ -2918,7 +3103,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
   - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
 
-    *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph. 
+    *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
 **[Back to top](#table-of-contents)**
 
