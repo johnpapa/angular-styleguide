@@ -366,7 +366,7 @@
   }
   ```
 
-  Note: 下記のコメントをコードの上部に入れることで [jshint](http://www.jshint.com/) のwarningsを避けることができます。 しかし関数がアッパーケースの場合には不要です。規約的にはそれはコンストラクタであり、Angularではコントローラに当たります。
+  Note: コメントをコードの上部に入れることで [jshint](http://www.jshint.com/) のwarningsを避けることができます。 しかし関数がアッパーケースの場合には不要です。規約的にはそれはコンストラクタであり、Angularではコントローラに当たります。
 
   ```javascript
   /* jshint validthis: true */
@@ -1263,7 +1263,7 @@
       console.log('LINK: vm.max = %s', vm.max);
   }
   ```
-z
+
 ###### [Style [Y076](#style-y076)]
 
   - `controller as`シンタックスをディレクティブで用い、外側のscopeをディレクティブのコントローラのscopeにバインドしたいときは `bindToController = true` を使って下さい。
@@ -2476,8 +2476,8 @@ z
     ```
     /src/client/app/customers/customer-detail.controller.js
                              /customer-detail.controller.spec.js
+                             /customers.controller.js
                              /customers.controller.spec.js
-                             /customers.controller-detail.spec.js
                              /customers.module.js
                              /customers.route.js
                              /customers.route.spec.js
@@ -2724,7 +2724,6 @@ z
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
         "disallowEmptyBlocks": null,
-        "disallowMultipleLineStrings": null,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
