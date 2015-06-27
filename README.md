@@ -2474,8 +2474,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     ```
     /src/client/app/customers/customer-detail.controller.js
                              /customer-detail.controller.spec.js
+                             /customers.controller.js
                              /customers.controller.spec.js
-                             /customers.controller-detail.spec.js
                              /customers.module.js
                              /customers.route.js
                              /customers.route.spec.js
@@ -3054,7 +3054,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
   - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
 
-    *Why?*: Filters can easily be abused and negatively effect performance if not used wisely, for example when a filter hits a large and deep object graph.
+    *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
 **[Back to top](#table-of-contents)**
 

@@ -1,6 +1,6 @@
 # Guia de Estilo AngularJS
 
-*Guia de Estilo opinativo de AngularJS para times. Por [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo opinativo de Angular para times. Por [@john_papa](//twitter.com/john_papa)*
 
 *Traduzido por [Eric Douglas](https://github.com/ericdouglas), [Ciro Nunes](https://github.com/cironunes), [Jean Lucas de Carvalho](https://github.com/jlcarvalho) e [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)*
 
@@ -8,13 +8,13 @@
 
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipe.
 
-> Se você gostar deste guia, confira meu curso [AngularJS Patterns: Clean Code](http://jpapa.me/ngclean) na Pluralsight.
+> Se você gostar deste guia, confira meu curso [Angular Patterns: Clean Code](http://jpapa.me/ngclean) na Pluralsight.
 
-A proposta deste guia de estilo é fornecer uma direção na construção de aplicações AngularJS mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
+A proposta deste guia de estilo é fornecer uma direção na construção de aplicações Angular mostrando convenções que eu uso, e o mais importante, porque eu as escolhi.
 
 ## A Importância da Comunidade e Créditos
 
-Nunca trabalhe sozinho. Acho que a comunidade AngularJS é um grupo incrível, apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em AngularJS e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
+Nunca trabalhe sozinho. Acho que a comunidade Angular é um grupo incrível, apaixonado em compartilhar experiências. Dessa forma, Todd Motto, um amigo e expert em Angular e eu temos colaborado com vários estilos e convenções. Nós concordamos na maioria deles, e discordamos em alguns. Eu encorajo você a conferir o [guia do Todd](https://github.com/toddmotto/angularjs-styleguide) para ter uma noção sobre sua abordagem e como ela se compara a esta.
 
 Vários de meus estilos vieram de várias sessões de pair-programming (programação pareada) que [Ward Bell](http://twitter.com/wardbell) e eu tivemos. Embora não concordemos sempre, meu amigo Ward certamente me ajudou influenciando na última evolução deste guia.
 
@@ -53,7 +53,7 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
   1. [JSHint](#js-hint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [AngularJS Docs](#angularjs-docs)
+  1. [Angular Docs](#angularjs-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
 
@@ -110,12 +110,12 @@ ou *Responsabilidade Única*
   function someFactory() { }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## IIFE
 ### JavaScript Closures
 
-  - Envolva os componentes AngularJS em uma *Immediately Invoked Function Expression (IIFE - Expressão de função imediatamente invocada)*.
+  - Envolva os componentes Angular em uma *Immediately Invoked Function Expression (IIFE - Expressão de função imediatamente invocada)*.
 
   **Por que?** Uma IIFE remove as variáveis do escopo global. Isso ajuda a prevenir declarações de variáveis e funções de viverem por mais tempo que o esperado no escopo global, que também auxilia evitar colisões de variáveis.
 
@@ -175,7 +175,7 @@ ou *Responsabilidade Única*
 
   - **Nota**: IIFE impede que códigos de teste alcancem membros privados como expressões regulares ou funções auxiliares que são frequentemente boas para testes unitários. Entretanto, você pode testá-las através de membros acessíveis ou expondo-os pelo próprio componente. Por exemplo, colocando funções auxiliares, expressões regulares ou constantes em sua própria *factory* ou constante. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Modules
 ou *Módulos*
@@ -286,7 +286,7 @@ ou *Funções Nomeadas vs Funções Anônimas*
   function logger() { }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Controllers
 ou *Controladores*
@@ -643,7 +643,7 @@ ou *Controladores*
   </div>
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Services
 ou *Serviços*
@@ -652,7 +652,7 @@ ou *Serviços*
 
   - Services são instanciados com a palavra-chave `new`, use `this` para métodos públicos e variáveis. Services são bastante similares a factories, use um factory para consistência. 
   
-    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services). Isso significa que há apenas uma instância do serviço para cada injetor.
+    Nota: [Todos services em Angular são singletons](https://docs.angularjs.org/guide/services). Isso significa que há apenas uma instância do serviço para cada injetor.
 
   ```javascript
   // service
@@ -682,7 +682,7 @@ ou *Serviços*
   }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Factories
 ou *Fábricas*
@@ -696,7 +696,7 @@ ou *Responsabilidade Única*
 
   - Factories são singletons e retornam um objeto que contém os membros do serviço.
   
-    Nota: [Todos services em AngularJS são singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos services em Angular são singletons](https://docs.angularjs.org/guide/services).
 
 ### Accessible Members Up Top
 ou *Membros acessíveis no topo*
@@ -853,7 +853,7 @@ ou *Declarações de função para esconder detalhes de implementação*
   }
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Data Services
 ou *Serviços de dados*
@@ -979,7 +979,7 @@ ou *Retorne uma promessa de chamadas de dados*
   }
   ```
 
-    **[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+    **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Directives
 ou *Diretivas*
@@ -1101,7 +1101,7 @@ ou *Restringir para elementos e atributos*
 
     **Por que?**: Nós podemos utilizar uma diretiva como uma classe (class), mas se a diretiva está realmente agindo como um elemento, faz mais sentido utilizar como um elemento, ou pelo menos como um atributo.
 
-    Nota: EA é o padrão para o AngularJS 1.3 +
+    Nota: EA é o padrão para o Angular 1.3 +
 
   ```html
   <!-- evite -->
@@ -1213,7 +1213,7 @@ ou *Diretivas e "ControladorComo"*
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Resolving Promises for a Controller
 ou *Resolvendo promessas para um controlador*
@@ -1322,7 +1322,7 @@ ou *Resolução de promessas na rota*
 
     Nota: As dependências no código de exemplos do `movieService` não estão seguras para minificação. Para mais detalhes de como fazer o código seguro para minificação, veja as seções [injeção de dependência (dependency injection)](#manual-annotating-for-dependency-injection) e [minificação e anotação (minification and annotation)](#minification-and-annotation).
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Manual Annotating for Dependency Injection
 ou *Anotação Manual para Injeção de Dependência*
@@ -1454,7 +1454,7 @@ ou *Identifique Dependências do Resolvedor de Rotas Manualmente*
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Minification and Annotation
 ou *Minificação e Anotação*
@@ -1532,7 +1532,7 @@ ou *Minificação e Anotação*
     }
     ```
 
-    > Nota: Apartir do AngularJS 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
+    > Nota: Apartir do Angular 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Utilize Gulp ou Grunt para o ng-annotate
@@ -1564,7 +1564,7 @@ ou *Minificação e Anotação*
 
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Exception Handling
 ou *Tratamento de exceção*
@@ -1574,7 +1574,7 @@ ou *decoradores*
 
   - Utilize um [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), no seu config utilizando o serviço [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), no serviço [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) para realizar ações customizadas quando um erro ocorrer.
   
-    **Por que?**: Fornece um caminho consistente para manipular erros não tratados pelo AngularJS em tempo de desenvolvimento ou execução (run-time).
+    **Por que?**: Fornece um caminho consistente para manipular erros não tratados pelo Angular em tempo de desenvolvimento ou execução (run-time).
 
     Nota: Outra opção é sobrescrever o serviço ao invés de utilizar um decorator. Esta é uma boa opção, mas se você quer manter o comportamento padrão e estender, o decorator é recomendado.
 
@@ -1642,7 +1642,8 @@ ou *Coletores de exceção*
     ```
 
 ### Route Errors
-	- Gerencie e log todos os erros de routing utilizando o [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+	
+  - Gerencie e log todos os erros de routing utilizando o [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
     *Por que?*: Fornece uma maneira consistente de gerenciar erros relacionados a routing.
     
@@ -1671,9 +1672,10 @@ ou *Coletores de exceção*
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
-## Nomenclatura
+## Naming
+ou *Nomenclatura*
 
 ### Diretrizes de Nomenclatura
 
@@ -1686,16 +1688,17 @@ ou *Coletores de exceção*
     *Por que?*: As convenções de nomenclatura deveriam simplesmente te ajudar a encontrar trechos do seu código mais rápido e torná-lo mais fácil de se entender.
     
 ### Feature File Names
+ou *Nome para funcionalidades*
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - Use nomes consistentes para todos os componentes seguindo um padrão que descreve a funcionalidade do componente e, em seguida, (opcionalmente) o seu tipo. Meu padrão recomendado é  `feature.type.js`.
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *Por que?*: Fornece uma maneira consistente para identificar componentes mais rapidamente.
 
-    *Why?*: Provides pattern matching for any automated tasks.
+     *Por que?*: Fornece um padrão apropriado pra qualquer tarefa automatizada.
 
     ```javascript
     /**
-     * common options 
+     * opções comuns 
      */
 
     // Controllers
@@ -1711,7 +1714,7 @@ ou *Coletores de exceção*
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // controllers
@@ -1740,11 +1743,11 @@ ou *Coletores de exceção*
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  Nota: Outra convenção comum é nomear arquivos dos controllers sem a palavra `controller` no nome do arquivo como` avengers.js` em vez de `avengers.controller.js`. Todas as outras convenções ainda mantem o uso de um sufixo do tipo. Controllers são o tipo mais comum de componente, portanto isso só economiza digitação e ainda é facilmente identificável. Eu recomendo que você escolha uma convenção que seja mais coerente para sua equipe.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
     // Controllers
     avengers.js
@@ -1752,16 +1755,17 @@ ou *Coletores de exceção*
     ```
 
 ### Test File Names
+ou *Nome para aquivos de testes*
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.  
+  - Nomeie as especificações de testes de forma similar aos componentes que elas testam, com o sufixo `spec`.
+  
+    *Por que?*: Fornece um modo consistente para identificar rapidamente os componentes.
 
-    *Why?*: Provides a consistent way to quickly identify components.
-
-    *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *Por que?*: Fornece padrões de correspondência para o [karma](http://karma-runner.github.io/) ou outros test runners.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
     avengers.controller.spec.js
     logger.service.spec.js
@@ -1770,16 +1774,17 @@ ou *Coletores de exceção*
     ```
 
 ### Controller Names
+ou *Nome para controllers*
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Use nomes consistentes para todos os controlers nomeados após as sua funcionalidade. Use UpperCamelCase para os controllers, assim como para seus construtores.
+  
+    *Por que?*: Fornece um modo consistente para identificar e referenciar os controllers.
 
-    *Why?*: Provides a consistent way to quickly identify and reference controllers.
-
-    *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *Por que?*: O UpperCamelCase é o modo mais comum para identificar objetos que serão instanciados através de construtores.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // avengers.controller.js
@@ -1791,16 +1796,15 @@ ou *Coletores de exceção*
     ```
     
 ### Controller Name Suffix
+ou *sufixo "Controllers"*
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - Complemente o nome do controller com ou sem o sufixo `Controller`. Escolha uma opção, não ambas. 
 
-    *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
-
-    *Why?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
-
+    *Por que?*: O sufixo `Controller` é mais usado e mais descritivo.
+    
     ```javascript
     /**
-     * recommended: Option 1
+     * recomendado: Opção 1
      */
 
     // avengers.controller.js
@@ -1813,7 +1817,7 @@ ou *Coletores de exceção*
 
     ```javascript
     /**
-     * recommended: Option 2
+     * recomendado: Opção 2
      */
 
     // avengers.controller.js
@@ -1825,14 +1829,17 @@ ou *Coletores de exceção*
     ```
 
 ### Factory Names
+ou *Nome para factory*
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - Use nomes consistentes para todas as factories nomeadas após sua funcionalidade. Use a conveção camelCase para services e factories, e evite prefixos com `$`.  
+    
+    *Por que?*: Fornece um modo consistende de identificar e referenciar rapidamente as factories.
 
-    *Why?*: Provides a consistent way to quickly identify and reference factories.
+    *Por que?*: Evite colisão de nomes com factories e services pré-programadas que usam o prefixo `$`.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // logger.service.js
@@ -1844,14 +1851,15 @@ ou *Coletores de exceção*
     ```
 
 ### Directive Component Names
+ou *Nome para directive*
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
-
-    *Why?*: Provides a consistent way to quickly identify and reference components.
-
+  - Use nomes consistentes para todas as directives usando a convenção camelCase. Use um prefixo curto para descrever a área a qual a directive pertence (como prefixo da compania ou do projeto).
+  
+    *Por que?*: Fornece um modo consistente de identificar e referenciar rapidamente os componentes.
+    
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     // avenger.profile.directive.js    
@@ -1865,28 +1873,29 @@ ou *Coletores de exceção*
     ```
 
 ### Modules
+ou *Módulos*
 
-  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`. A single module app might be named `app.js`, omitting the module moniker.
+  - Quando há vários módulos, o arquivo principal deste módulo é nomeado `app.module.js`, enquanto os módulos dependentes são nomeados de acordo com o que eles representam. Por exemplo, um módulo admin é nomeado `admin.module.js`. Os nomes dos respectivos módulos registrados seriam `app` e `admin`.
 
-    *Why?*: An app with 1 module is named `app.js`. It is the app, so why not be super simple.
- 
-    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *Por que?*: Fornece consistência para múltiplos módulos, e para expansão para grandes aplicações.
 
-    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *Por que?*: Fornece um modo fácil para automação de tarefas, a fim de carregar todos as definições dos módulos em primeiro lugar, então os demais arquivos (empacotamento).
 
 ### Configuration
+ou *Configuração*
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - Separe a configuração do módulo em seu próprio arquivo, nomeado após o módulo. Um arquivo de configuração para o módulo principal `app` é nomeado `app.config.js` (ou simplesmente `config.js`). Uma configuração para o módulo `admin.module.js` é nomeada `admin.config.js`. 
 
-    *Why?*: Separates configuration from module definition, components, and active code.
+    *Por que?*: Separe a configuração do módulo da definição, dos componentes e do código ativo.
 
-    *Why?*: Provides a identifiable place to set configuration for a module.
+    *Por que?*: Fornece um local identificável para definir as configurações de um módulo.
 
 ### Routes
+ou *Rotas*
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration. An alternative is a longer name such as `admin.config.route.js`.
+  - Separe as configurações das rotas em seus próprios arquivos. Os exemplos podem ser `app.route.js` para o módulo princial, e `admin.route.js` para o módulo `admin`. Mesmo nas menores aplicações, prefiro esta separação das demais configurações. Uma alternativa é um nome mais longo, como `admin.config.route.js`.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -1944,7 +1953,7 @@ ou *Coletores de exceção*
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure
 
@@ -2053,7 +2062,7 @@ ou *Coletores de exceção*
             topnav.html         
     ``` 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Modularity
   
@@ -2067,7 +2076,7 @@ ou *Coletores de exceção*
 
   - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
 
-    *Why?*: AngularJS encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *Why?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
 
 ### Keep the App Module Thin
 
@@ -2107,7 +2116,7 @@ ou *Coletores de exceção*
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Angular $ Wrapper Services
 
@@ -2123,7 +2132,7 @@ ou *Coletores de exceção*
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle AngularJS's digest cycle thus keeping data binding in sync.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Testing
 Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas recomendações de fundamentos para testes unitários com links para mais informações.
@@ -2208,7 +2217,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Animations
 
@@ -2236,9 +2245,9 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
     *Why?*: animate.css is widely used and tested.
 
-    Note: See this [great post by Matias Niemelä on AngularJS animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Comments
 
@@ -2289,7 +2298,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
     })();
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## JS Hint
 
@@ -2365,7 +2374,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
     }
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Constants
 
@@ -2373,7 +2382,7 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
 
 ### Globais de terceiros (*vendors*)
 
-  - Cria uma *Constant* no AngularJS para variáveis globais de bibliotecas de terceiros.
+  - Cria uma *Constant* no Angular para variáveis globais de bibliotecas de terceiros.
 
     *Por que?*: Fornece uma forma de injetar bibliotecas de terceiros que de outra forma seriam globais. Isso melhora a testabilidade do código permitindo a você conhecer mais facilmente quais dependências os seus componentes têm (evita vazamento de abstrações). Também permite que você simule estas dependências, o que faz sentido. 
 
@@ -2391,14 +2400,14 @@ Testes unitários ajudam a manter o código limpo, tal como, eu inclui algumas r
     })();
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
 
 ### Sublime Text
 
-  - AngularJS snippets that follow these styles and guidelines. 
+  - Angular snippets that follow these styles and guidelines. 
 
     - Download the [Sublime Angular snippets](assets/sublime-angular-snippets.zip) 
     - Place it in your Packages folder
@@ -2414,7 +2423,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ### Visual Studio
 
-  - AngularJS file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+  - Angular file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
 
     - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
     - Run the vsix file
@@ -2422,9 +2431,9 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ### WebStorm
 
-  - AngularJS snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  - Angular snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
 
-    - Download the [WebStorm AngularJS file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
+    - Download the [WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar) 
     - Open WebStorm and go to the `File` menu
     - Choose the `Import Settings` menu option
     - Select the file and click `OK`
@@ -2436,9 +2445,9 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ng-m // creates an Angular module
     ```
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
-## AngularJS docs
+## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
 ## Contributing
@@ -2479,4 +2488,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ De volta ao topo ⬆](#tabela-de-conte%C3%BAdo)**
+**[De volta ao topo](#tabela-de-conte%C3%BAdo)**
