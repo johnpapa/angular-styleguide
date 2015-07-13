@@ -15,7 +15,7 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
 9. [Spanish](es-ES.md)
 
 ## Contributing
-Language translations are welcomed and encouraged. The succcess of these translations depends on the community. I highly encourage new translation contributions and help to keep them up to date. 
+Language translations are welcomed and encouraged. The success of these translations depends on the community. I highly encourage new translation contributions and help to keep them up to date. 
 
 All translations must preserve the intention of the original document.
 
