@@ -115,11 +115,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### JavaScript Closures
 ###### [Style [Y010](#style-y010)]
 
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
+  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE). Or beter yet use a module loader like [Browserify](http://browserify.org/)/[Webpack](http://webpack.github.io/)/[JSPM](http://jspm.io/) and it will do it for you.
 
   *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file. A module loader protects you automatically as long as you load files with it.
 
   ```javascript
   /* avoid */
@@ -172,7 +172,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
 
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant. When using a module loader, it is even better, because you can place your testable entitites in separate modules and easily require them for testing.
 
 **[Back to top](#table-of-contents)**
 
