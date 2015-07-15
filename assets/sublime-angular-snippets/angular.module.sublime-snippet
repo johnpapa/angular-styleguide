@@ -9,5 +9,5 @@
 })();
 ]]></content>
     <tabTrigger>ngmodule</tabTrigger>
-    <scope>source.js</scope>
+    <scope>text.plain, source.js</scope>
 </snippet>
