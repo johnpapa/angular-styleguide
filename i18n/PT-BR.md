@@ -434,7 +434,7 @@ ou *Controladores*
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-   Nota: Se a função possuir apenas 1 linha considere matê-la no topo, desde que a legibilidade não seja afetada.
+   Nota: Se a função possuir apenas 1 linha considere mantê-la no topo, desde que a legibilidade não seja afetada.
 
   ```javascript
   /* evite */
