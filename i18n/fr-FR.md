@@ -2093,7 +2093,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
-  - Placez les composants qui définissent le layout principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une vue noyau et le controlleur devrait agir comme conteneur pour l'appli, la nivigation, les menus, les zones de contenu, et les autres régions.
+  - Placez les composants qui définissent le layout principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une vue noyau et le controlleur devrait agir comme conteneur pour l'appli, la navigation, les menus, les zones de contenu, et les autres régions.
 
     *Pourquoi ?* : Organise tout le layout à un seul endroit réutilisé dans l'application.
 
