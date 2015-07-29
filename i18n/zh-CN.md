@@ -293,7 +293,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   - 使用[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。 
 
-	*为什么？*：congtroller被构建的时候，就会有一个新的实例，`controllerAs` 的语法比`经典的$scope语法`更接近JavaScript构造函数。
+	*为什么？*：controller被构建的时候，就会有一个新的实例，`controllerAs` 的语法比`经典的$scope语法`更接近JavaScript构造函数。
 
 	*为什么？*：这促进在View中对绑定到“有修饰”的对象的使用（例如用`customer.name` 代替`name`），这将更有语境、更容易阅读，也避免了任何没有“修饰”而产生的引用问题。
 
