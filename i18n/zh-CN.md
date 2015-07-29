@@ -1247,8 +1247,8 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   ```html
   <!-- example.directive.html -->
   <div>hello world</div>
-  <div>max={{vm.max}}<input ng-model={vm.max"/></div>
-  <div>min={{vm.min}}<input ng-model={vm.min"/></div>
+  <div>max={{vm.max}}<input ng-model={{vm.max}}"/></div>
+  <div>min={{vm.min}}<input ng-model={{vm.min}}"/></div>
   ```
 
     注意：当你把controller注入到link的函数或可访问的directive的attributes时，你可以把它命名为控制器的属性。
