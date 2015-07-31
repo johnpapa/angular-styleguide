@@ -6,21 +6,21 @@
 
 >The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
 
-Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](http://pluralsight.com/training/Authors/Details/john-papa) und der Arbeit in Teams.
+Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten Sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](http://pluralsight.com/training/Authors/Details/john-papa) und der Arbeit in Teams.
 
 Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angular-Anwendungen bereitzustellen, indem ich die Konventionen, die ich nutze, zeige und - wichtiger als das - beschreibe, warum ich sie wähle.
 
->Wenn Sie diese Anleitung mögen, dann besuchen Sie meinen Kurs [Angular Patterns: Clean Code] (http://jpapa.me/ngclean) auf Pluralsight, der eine Begleitung zu dieser Anleitung dartellt.
+>Wenn Sie diese Anleitung mögen, dann besuchen Sie meinen Kurs [Angular Patterns: Clean Code] (http://jpapa.me/ngclean) auf Pluralsight, der eine Begleitung zu dieser Anleitung darstellt.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Außergewöhnliche Community and Anerkennung
-Arbeite niemals im leeren Raum. Ich finde, dass die Angular-Community eine unglaubliche Gruppe ist, die ihre Erfahrung mit Leidenschaft teilt. Also haben ein Freund und Angular-Experte, Todd Motto, und ich viele Vorlagen und Konventionen zusammengetragen. Bei den meisten sind wir uns einig, und bei ein paar sind wir verschiedener Meinung. Ich möchte Sie ermutigen, sich [Todd's Guidelines](https://github.com/toddmotto/angularjs-styleguide) anzusehen, um ein Gespühr für seinen Ansatz zu entwickeln und ihn vergleichen zu können.
+## Außergewöhnliche Community und Anerkennung
+Arbeite niemals im leeren Raum. Ich finde, dass die Angular-Community eine unglaubliche Gruppe ist, die ihre Erfahrung mit Leidenschaft teilt. Also haben ein Freund und Angular-Experte, Todd Motto, und ich viele Vorlagen und Konventionen zusammengetragen. Bei den meisten sind wir uns einig, und bei ein paar sind wir verschiedener Meinung. Ich möchte Sie ermutigen, sich [Todd's Guidelines](https://github.com/toddmotto/angularjs-styleguide) anzusehen, um ein Gespür für seinen Ansatz zu entwickeln und ihn vergleichen zu können.
 
 Viele meiner Vorlagen entstanden aus Pair-Programming-Sessions, die [Ward Bell](http://twitter.com/wardbell) und ich hatten. Mein Freund Ward hat sicherlich die endgültige Entwicklung dieser Anleitung beeinflusst.
 
 ## Schauen Sie sich die Vorlagen in einer Beispielanwendung an
-Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebenso hilfreich, sie auch in der Praxis zu sehen. Diese Anleitung wird von einer Beispielanwendung begleitet, die diesen Vorlagen und Mustern folgt. Sie finden die [Beispielanwendung (namens "modular") hier] (https://github.com/johnpapa/ng-demos) im `modular`-Ordner. Fühlen Sie sich frei, sich diese zu holen, indem Sie sie clonen oder einen Fork erstellen.[Anweisungen, sie zum Laufen zu bringen, finden Sie im Readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebenso hilfreich, sie auch in der Praxis zu sehen. Diese Anleitung wird von einer Beispielanwendung begleitet, die diesen Vorlagen und Mustern folgt. Sie finden die [Beispielanwendung (namens "modular") hier] (https://github.com/johnpapa/ng-demos) im `modular`-Ordner. Fühlen Sie sich frei, diese zu holen, indem Sie sie clonen oder einen Fork erstellen.[Anweisungen, sie zum Laufen zu bringen, finden Sie im Readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Übersetzungen
 [Übersetzungen dieses Styleguides](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) werden von der Community hier verwaltet.
@@ -67,7 +67,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Definiere eine Komponente pro Datei.
 
-  Das folgende Beispoiel definiert das `app`-Modul und seine Abhängigkeiten, einen Controller und eine Factory in ein und derselben Datei.
+  Das folgende Beispiel definiert das `app`-Modul und seine Abhängigkeiten, einen Controller und eine Factory in ein und derselben Datei.
 
   ```javascript
   /* zu vermeiden */
@@ -119,11 +119,11 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### JavaScript Closures
 ###### [Style [Y010](#style-y010)]
 
-  - Packen sie Angular-Komponenten in eine Funktion, die sich sofort selbst ausführt (Immediately Invoked Function Expression, kurz: IIFE).
+  - Packen Sie Angular-Komponenten in eine Funktion, die sich sofort selbst ausführt (Immediately Invoked Function Expression, kurz: IIFE).
 
-  *Warum?*: Eine IIFE entfernt Variablen aus dem Global Scope. Dies verhindert, dass Variablen- und Funktionsdeklarationen länger als erwartet im global scope bleiben. Und es verhindert zusätzlich, Kollisionen bei Variablen zu verhindern. 
+  *Warum?*: Eine IIFE entfernt Variablen aus dem global scope. Dies verhindert, dass Variablen- und Funktionsdeklarationen länger als erwartet im global scope bleiben. Und es verhindert zusätzlich, Kollisionen bei Variablen zu verhindern. 
   
-  *Warum?*: Wird Ihr Code für das Deployment auf einem Produktionsserver minifiziert und in einer einzigen Datei zusammengepackt, kann es zur Kollision von Variablen (auch Globalen) kommen. Eine IIFE schützt Sie hiervor, indem sie den Gültigkeitsbereich der Variablen auf die jeweilige Datei beschränkt. 
+  *Warum?*: Wird Ihr Code für das Deployment auf einem Produktionsserver minifiziert und in einer einzigen Datei zusammengepackt, kann es zur Kollision von Variablen (auch globalen) kommen. Eine IIFE schützt Sie hiervor, indem sie den Gültigkeitsbereich der Variablen auf die jeweilige Datei beschränkt. 
    
   ```javascript
   /* zu vermeiden */
@@ -185,16 +185,16 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Namenskollisionen vermeiden
 ###### [Style [Y020](#style-y020)]
 
-  - Benutzen sie eindeutige Namenskonventionen mit Trennzeichen für Untermodule.
+  - Benutzen Sie eindeutige Namenskonventionen mit Trennzeichen für Untermodule.
 
-  *Warum?*: Eindeutige Namen helfen, Kollisionen bei Modulnamen zu verhindern. Trennzeichen helfen, bei der Definition von Modulen und deren Untermodul-Hierarchie. Zum Beispiel kann `app` Ihr Root-Modul sein, während `app.dashboard` und `app.users` Module sein können, die von `app` als Abhängigkeiten genutzt werden. 
+  *Warum?*: Eindeutige Namen helfen Kollisionen bei Modulnamen zu verhindern. Trennzeichen helfen bei der Definition von Modulen und deren Untermodul-Hierarchie. Zum Beispiel kann `app` Ihr Root-Modul sein, während `app.dashboard` und `app.users` Module sein können, die von `app` als Abhängigkeiten genutzt werden. 
 
 ### Definitionen (auch: Setter)
 ###### [Style [Y021](#style-y021)]
 
   - Deklarieren Sie Module ohne eine Variable, indem Sie die Setter-Syntax verwenden.
 
-  *Warum?*: Bei einer Komponente pro Datei besteht kaum die Notwendigkeit, eine Variable für das Modul einzuführen.
+  *Warum?*: Bei einer Komponente pro Datei besteht kaum die Notwendigkeit eine Variable für das Modul einzuführen.
 
   ```javascript
   /* zu vermeiden */
@@ -224,7 +224,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Wenn Sie ein Modul nutzen, vermeiden Sie die Nutzung einer Variablen. Nutzen Sie stattdessen eine Verkettung mit der Getter-Syntax.
 
-  *Warum?*: Dies führt zu mehr lesbarem Code und verhindert Variablenkollistionen oder Leaks.
+  *Warum?*: Dies führt zu mehr lesbarem Code und verhindert Variablenkollisionen oder Leaks.
 
   ```javascript
   /* zu vermeiden */
@@ -248,7 +248,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Nur einmal setzen und für alle anderen Instanzen lesen (get).
 
-  *Warum?*: Ein Modul sollte nur einmal erstellt werden, ab diesem Punkt an nur noch gelesen werden.
+  *Warum?*: Ein Modul sollte nur einmal erstellt werden und ab diesem Punkt an nur noch gelesen werden.
 
     - Benutzen Sie `angular.module('app', []);` um das Modul zu erzeugen (set).
     - Benutzen Sie `angular.module('app');` um das Modul zu erhalten (get).
@@ -258,7 +258,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benutzen Sie für Callbacks benannte Funktionen, anstatt eine anonyme Funktion zu übergeben.
 
-  *Warum?*: Dies führt zu lesbarerem Code, ist einfach zu debuggen und veringert die Schachtelung des Callback-Codes.
+  *Warum?*: Dies führt zu lesbarerem Code, ist einfach zu debuggen und verringert die Schachtelung des Callback-Codes.
 
   ```javascript
   /* zu vermeiden */
@@ -297,11 +297,11 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Ziehen Sie die [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/)-Syntax der `klassischen Controller-Mit-$scope`-Syntax vor.
 
-  *Warum?*: Controller werden immer wieder neu erstellt. Man erhält jedes Mal eine neue Instanz und die `controllerAs`-Syntax ist näher an der eines JavaScript-Konstruktors, als die`klassische Controller-Mit-$scope-Syntax`.
+  *Warum?*: Controller werden immer wieder neu erstellt. Man erhält jedes Mal eine neue Instanz und die `controllerAs`-Syntax ist näher an der eines JavaScript-Konstruktors, als die `klassische Controller-Mit-$scope-Syntax`.
 
-  *Warum?*: Es begünstigt die Bindung von "Punkt-Notierten" Objekten in der View (z. B. `customer.name` statt `name`), was kontextbezogener und einfacher zu lesen ist und Referenzproblemen, die ohne diese "Punkt-Notation" auftreten können, vorbeugt.
+  *Warum?*: Es begünstigt die Bindung von "Punkt-Notierten" Objekten im View (z. B. `customer.name` statt `name`), was kontextbezogener und einfacher zu lesen ist und Referenzproblemen, die ohne diese "Punkt-Notation" auftreten können, vorbeugt.
 
-  *Warum?*: Hilft, die Nutzung von `$parent`-Aufrufen in Views und geschachtelten Controllern zu vermeiden.
+  *Warum?*: Hilft die Nutzung von `$parent`-Aufrufen in Views und geschachtelten Controllern zu vermeiden.
 
   ```html
   <!-- zu vermeiden -->
@@ -324,7 +324,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Die `controllerAs`-Syntax nutzt `this` innerhalb des Controllers, welches an `$scope` gebunden wird.
 
-  *Warum?*: `controllerAs` stellt eine syntaktische "Versüßung" `$scope` dar. Sie können immer noch Bindungen an die View vornehmen und auf die `$scope`-Methoden zugreifen.
+  *Warum?*: `controllerAs` stellt eine syntaktische "Versüßung" `$scope` dar. Sie können immer noch Bindungen an dem View vornehmen und auf die `$scope`-Methoden zugreifen.
 
   *Warum?*: Hilft, die verführerische Nutzung von `$scope`-Methoden innerhalb eines Controllers zu unterbinden, wenn es besser wäre, sie zu vermeiden oder in eine Factory auszulagern. Man sollte die Nutzung von `$scope` in einer Factory oder einem Controller nur dann in Erwägung ziehen, wenn es notwendig ist. Wenn zum Beispiel Events mit [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast) oder [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) abonniert oder publiziert werden, sollte man überlegen, diese nicht in eine Factory auszulagern und vom Controller aus auszulösen.
 
@@ -347,7 +347,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### controllerAs mit vm
 ###### [Style [Y032](#style-y032)]
 
-  - Benutzen Sie eine Variable, um `this` zu übernehmen, wenn sie die `controllerAs`-Syntax verwenden. Wählen Sie einen konsistenten Variablennanen, wie `vm`, welcher für ViewModel steht.
+  - Benutzen Sie eine Variable, um `this` zu übernehmen, wenn Sie die `controllerAs`-Syntax verwenden. Wählen Sie einen konsistenten Variablennamen, wie `vm`, welcher für ViewModel steht.
 
   *Warum?*: Das `this`-Schlüsselwort ist kontextbezogen und kann diesen Kontext ändern, wenn es innerhalb einer Funktion eines Controllers verwendet wird. Wird der Kontext von `this` übernommen, wird dieses Problem verhindert.
 
@@ -368,14 +368,14 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   }
   ```
 
-  Anmerkung: Sie können jegliche [jshint](http://www.jshint.com/)-Warnungen unterbinden, indem sie den Kommentar vor der Codezeile einfügen. Allerdingst ist dies nicht notwendig, wenn die Funktion großgeschrieben ist (UpperCasing). Diese Konvention besagt, dass es sich um eine Kontruktor-Funktion handelt, was einem Controller in Angular entspricht.
+  Anmerkung: Sie können jegliche [jshint](http://www.jshint.com/)-Warnungen unterbinden, indem Sie den Kommentar vor der Codezeile einfügen. Allerdingst ist dies nicht notwendig, wenn die Funktion großgeschrieben ist (UpperCasing). Diese Konvention besagt, dass es sich um eine Konstruktor-Funktion handelt, was einem Controller in Angular entspricht.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Anmerkung: Wenn Sie Watches in einem Controller einsetzen, der über `controller as` genutzt wrid, können Sie die `vm.*`-Member über die folgende Syntax überwachen. (Erstellen Sie Watches mit Vorsicht, denn sie belasten den "digest cycle".)
+  Anmerkung: Wenn Sie Watches in einem Controller einsetzen, der über `controller as` genutzt wird, können Sie die `vm.*`-Member über die folgende Syntax überwachen. (Erstellen Sie Watches mit Vorsicht, denn sie belasten den "digest cycle".)
 
   ```html
   <input ng-model="vm.title"/>
@@ -396,11 +396,11 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Zu bindende Bestandteile nach oben
 ###### [Style [Y033](#style-y033)]
 
-  - Platzieren sie zu bindende Elemente alphabeisch sortiert am Anfang des Controllers und nicht verteilt im Code des Controllers.
+  - Platzieren Sie zu bindende Elemente alphabetisch sortiert am Anfang des Controllers und nicht verteilt im Code des Controllers.
 
-    *Warum?*: Die Platzierung von zu bindenden Elementen am Anfang verbessert die Lesbarkeit und hilft Ihnen, die zur Bindung und Nutzung in einer View vorgesehenen Elemente des Controllers schnell zu identifizieren.
+    *Warum?*: Die Platzierung von zu bindenden Elementen am Anfang verbessert die Lesbarkeit und hilft Ihnen, die zur Bindung und Nutzung in einem View vorgesehenen Elemente des Controllers schnell zu identifizieren.
 
-    *Warum?*: Anonyme Funktionen einzusetzen kann einfach sein, aber wenn diese Funktionen die Länge von einer Zeile überschreiten, wird die Lesbarkeit des Codes verschlechtert. Die Definition der Funktionen unterhalb der Deklaration der zur Bindung vorgesehenen Elemente verschiebt die Details der Implementierung nach unten, hält die zu Bindenden Elemente ganz oben und macht es lesbarer (die Funktionen werden quasi "hochgezogen").
+    *Warum?*: Anonyme Funktionen einzusetzen kann einfach sein, aber wenn diese Funktionen die Länge von einer Zeile überschreiten, wird die Lesbarkeit des Codes verschlechtert. Die Definition der Funktionen unterhalb der Deklaration der zur Bindung vorgesehenen Elemente verschiebt die Details der Implementierung nach unten, hält die zu bindenden Elemente ganz oben und macht es lesbarer (die Funktionen werden quasi "hochgezogen").
 
   ```javascript
   /* zu vermeiden */
@@ -448,7 +448,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
-  Anmerkung: Falls eine Funktion aus nur einer Zeile bestehen sollte, können Sie sich überlegen, diese nach oben zu verlagen, so lange die Lesbarkeit nicht betroffen ist.
+  Anmerkung: Falls eine Funktion aus nur einer Zeile bestehen sollte, können Sie sich überlegen, diese nach oben zu verlagern, so lange die Lesbarkeit nicht betroffen ist.
 
   ```javascript
   /* zu vermeiden */
@@ -485,13 +485,13 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Funktionsdeklarationen, um Details der Implementierung zu verbergen
 ###### [Style [Y034](#style-y034)]
 
-  - Nutzen Sie Funktionsdeklarationen, um Implementierungsdetails zu verbergen. Halten Sie Ihre zur Bindung vorgesehenen Elemente oben. Wenn sie eine Controller-Funktion zur Bindung vorsehen müssen, dann lassen Sie diese auf die Funktionsdeklaration zeigen, die weiter unten erscheint. Diese wird direkt an den Abschnitt mit den zur Bindung vorgesehenen Element geknüpft. Mehr erfahren sie hier in [diesem Beitrag](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Nutzen Sie Funktionsdeklarationen, um Implementierungsdetails zu verbergen. Halten Sie Ihre zur Bindung vorgesehenen Elemente oben. Wenn Sie eine Controller-Funktion zur Bindung vorsehen müssen, dann lassen Sie diese auf die Funktionsdeklaration zeigen, die weiter unten erscheint. Diese wird direkt an den Abschnitt mit den zur Bindung vorgesehenen Element geknüpft. Mehr erfahren Sie hier in [diesem Beitrag](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Warum?*: Die zur Bindung vorgesehenen Elemente am Anfang zu platzieren, erhöht die Lesbarkeit und hilft Ihnen die Elemente zu identifizieren, die gebunden und in einer View genutzt werden können. (Das Gleiche, wie zuvor.)
+    *Warum?*: Die zur Bindung vorgesehenen Elemente am Anfang zu platzieren, erhöht die Lesbarkeit und hilft Ihnen die Elemente zu identifizieren, die gebunden und in einem View genutzt werden können. (Das Gleiche, wie zuvor.)
 
-    *Warum?*: Das Platzieren der Implementierungsdetails einer Funktion weiter unten in der Datei, hält diese Codemenge außer Sicht und Sie sehen die wichtigen Dinge am Anfang.
+    *Warum?*: Das Platzieren der Implementierungsdetails einer Funktion weiter unten in der Datei hält diese Codemenge außer Sicht und Sie sehen die wichtigen Dinge am Anfang.
 
-    *Warum?*: Funktionsdeklarationen werden "nach oben gezogen" (sog. Hoisting), so dass es keine Probleme damit gibt, ob eine Funktion vor ihrer Benutzung deklariert werden sollte (wie es bei Funktiosausdrücken der Fall wäre).
+    *Warum?*: Funktionsdeklarationen werden "nach oben gezogen" (sog. Hoisting), so dass es keine Probleme damit gibt, ob eine Funktion vor ihrer Benutzung deklariert werden sollte (wie es bei Funktionsausdrücken der Fall wäre).
 
     *Warum?*: Sie müssen sich niemals Sorgen darum machen, wenn Sie in Funktionsdeklarationen `var a` vor `var b` platzieren, weil `a` von `b` abhängig ist.
 
@@ -499,7 +499,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   ```javascript
   /**
-   * avoid
+   * zu vermeiden
    * Nutzung von Funktionsausdrücken.
    */
   function Avengers(dataservice, logger) {
@@ -557,7 +557,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   }
   ```
 
-### Verlagern Sie  Controller-Logik in Services
+### Verlagern Sie Controller-Logik in Services
 ###### [Style [Y035](#style-y035)]
 
   - Verlagern Sie die Logik eines Controllers, indem Sie diese in Services oder Factories übertragen.
@@ -620,7 +620,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Halten Sie die Controller auf ihre Aufgabe ausgerichtet
 ###### [Style [Y037](#style-y037)]
 
-  - Definieren Sie einen Controller für eine View und versuchen Sie nicht, diesen Controller für weitere Views zu verwenden. Verlagern Sie stattdessen wiederzuverwendende Logik in Factories und halten Sie den Controller einfach und ausgerichtet auf seine View.
+  - Definieren Sie einen Controller für einen View und versuchen Sie nicht, diesen Controller für weitere Views zu verwenden. Verlagern Sie stattdessen wiederzuverwendende Logik in Factories und halten Sie den Controller einfach und ausgerichtet auf seinen View.
 
     *Warum?*: Controller in mehreren Views wiederzuverwenden ist kritisch und bedingt eine gute End-Zu-End (e2e) Testabdeckung, um die Stabilität in großen Anwendungen zu garantieren. 
 
@@ -628,14 +628,14 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Controller zuweisen
 ###### [Style [Y038](#style-y038)]
 
-  - Wenn ein Controller mit einer View verbunden werden muss und eine der beiden Komponenten aber von anderen Controllern oder Views wiederverwendet werden muss, dann sollten die Controller bei ihren Routen definiert werden.
+  - Wenn ein Controller mit einem View verbunden werden muss und eine der beiden Komponenten aber von anderen Controllern oder Views wiederverwendet werden muss, dann sollten die Controller bei ihren Routen definiert werden.
 
     Anmerkung: Sollte eine View in einem anderen Kontext als einer Route geladen werden, dann benutzen Sie die `ng-controller="Avengers as vm"`-Syntax.
 
-    *Warum?*: Wird der Controller inerhalb einer Route verbunden, dann ist es möglich, dass unterschiedliche Routen auch unterschiedliche Controller-View-Bindungen verwenden können. Sind Controller in einer View mit [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) angebunden, dann ist diese View immer mit dem gleichen Controller verbunden.
+    *Warum?*: Wird der Controller innerhalb einer Route verbunden, dann ist es möglich, dass unterschiedliche Routen auch unterschiedliche Controller-View-Bindungen verwenden können. Sind Controller in einer View mit [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) angebunden, dann ist diese View immer mit dem gleichen Controller verbunden.
 
  ```javascript
-  /* zu vermeiden - bei Nutzung mit eiuner Route, wenn eine dynamische Verbindung gewünscht ist */
+  /* zu vermeiden - bei Nutzung mit einer Route, wenn eine dynamische Verbindung gewünscht ist */
 
   // route-config.js
   angular
@@ -687,7 +687,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Services werden mit dem `new`-Schlüsselwort Instantiiert, und benutzen `this` für öffentliche Methoden und Variablen. Auch wenn sie den Factories so ähnlich sind, setzen Sie stattdessen aus Konsistenzgründen eine Factory ein.
+  - Services werden mit dem `new`-Schlüsselwort instanziiert, und benutzen `this` für öffentliche Methoden und Variablen. Auch wenn sie den Factories so ähnlich sind, setzen Sie stattdessen aus Konsistenzgründen eine Factory ein.
 
     Anmerkung: [Alle Angular-Services sind Singletons](https://docs.angularjs.org/guide/services). Das bedeutet, dass es nur eine Instanz eines Services pro Injector gibt.
 
@@ -738,11 +738,11 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Zugreifbare Bestandteile an den Anfang
 ###### [Style [Y052](#style-y052)]
 
-  - Halten sie die zugreifbaren Bestandteile eines Service (sein Interface) oben, indem Sie eine Technik anwenden, die aus [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) entlehnt ist.
+  - Halten Sie die zugreifbaren Bestandteile eines Service (sein Interface) oben, indem Sie eine Technik anwenden, die aus [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) entlehnt ist.
 
     *Warum?*: Die zugreifbaren Bestandteile oben zu platzieren, erhöht die Lesbarkeit und hilft Ihnen, schnell zu identifizieren, welche Elemente des Service aufgerufen werden können und getestet (oder simuliert) werden müssen.
 
-    *Warum?*: Dies ist besondert hilfreich, wenn die Datei länger wird, weil ein Scrollen unnötig wird, um zu sehen, was verfügbar ist.
+    *Warum?*: Dies ist besonders hilfreich, wenn die Datei länger wird, weil ein Scrollen unnötig wird, um zu sehen, was verfügbar ist.
 
     *Warum?*: Einfach nur Funktionen einzusetzen kann leicht sein. Wenn diese aber den Umfang einer Zeile überschreiben, kann dies die Lesbarkeit verringern und es muss mehr gescrollt werden. Ein aufrufbares Interface im zurückgelieferten Service zu definieren, verlagert die Implementierungsdetails nach unten, hält das aufrufbare Interface ganz oben und  macht es lesbarer.
 
@@ -795,13 +795,13 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Funktionsdeklarationen, um die Details der Implementierung zu verbergen
 ###### [Style [Y053](#style-y053)]
 
-  - Benutzen Sie Funktionsdeklarationen, um die Details der Implementierung zu verbergen. Halten Sie Ihre zugreifbaren Bestandteile der Factory ganz oben. Lassen Sie diese auf Funktionsdeklarationen verweisen, die weiter unten in der Datei aufeführt werden. Mehr erfahren sie hier in [diesem Beitrag](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Benutzen Sie Funktionsdeklarationen, um die Details der Implementierung zu verbergen. Halten Sie Ihre zugreifbaren Bestandteile der Factory ganz oben. Lassen Sie diese auf Funktionsdeklarationen verweisen, die weiter unten in der Datei aufgeführt werden. Mehr erfahren Sie hier in [diesem Beitrag](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Warum?*: Zugreifbare Elemente am Anfang zu platzieren, erhöht die Lesbarkeit und hilft Ihnen, zu identifizieren, auf welche Funktionen der Factory von außen zugegriffen werden kann.
 
     *Warum?*: Das Platzieren der Implementierungsdetails einer Funktion weiter unten in der Datei, hält diese Codemenge außer Sicht und Sie sehen die wichtigen Dinge am Anfang.
 
-    *Warum?*: Funktionsdeklarationen werden "nach oben gezogen" (sog. Hoisting), so dass es keine Probleme damit gibt, ob eine Funktion vor ihrer Benutzung deklariert werden sollte (wie es bei Funktiosausdrücken der Fall wäre).
+    *Warum?*: Funktionsdeklarationen werden "nach oben gezogen" (sog. Hoisting), so dass es keine Probleme damit gibt, ob eine Funktion vor ihrer Benutzung deklariert werden sollte (wie es bei Funktionsausdrücken der Fall wäre).
  
     *Warum?*: Sie müssen sich niemals Sorgen darum machen, wenn Sie in Funktionsdeklarationen `var a` vor `var b` platzieren, weil `a` von `b` abhängig ist.
 
@@ -896,13 +896,13 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Separate Datenzugriffe
 ###### [Style [Y060](#style-y060)]
 
-  - Verlagern sie die Datenzugriffslogik und die Operationen mit Daten in eine Factory Machen Sie die Datenservices verantwortlich für die XHR-Aufrufe, die lokale Speicherung, die Ablage im Speicher oder jede andere Datenoperation.
+  - Verlagern Sie die Datenzugriffslogik und die Operationen mit Daten in eine Factory Machen Sie die Datenservices verantwortlich für die XHR-Aufrufe, die lokale Speicherung, die Ablage im Speicher oder jede andere Datenoperation.
 
-    *Warum?*: Die Verantwortung des Controllers liegt in der Zusammenstellung und Präsentation der Informationen für die und in der View. Er sollte sich nicht darum kümmern müssen, wie er die Daten bekommt, sondern wen er dazu ansprechen muss. Die Datenservices zu trennen verlagert die Logik der Datenermittlung in den Datenservice und belässt den Controller in seiner Einfachheit und seinem Fokus auf die View.
+    *Warum?*: Die Verantwortung des Controllers liegt in der Zusammenstellung und Präsentation der Informationen für die und in der View. Er sollte sich nicht darum kümmern müssen, wie er die Daten bekommt, sondern wen er dazu ansprechen muss. Die Datenservices zu trennen verlagert die Logik der Datenermittlung in den Datenservice und belässt den Controller in seiner Einfachheit und seinem Fokus auf den View.
 
     *Warum?*: Das macht das Testen der Datenabrufe (simuliert oder real) einfacher, wenn man einen Controller testet, der einen Datenservice nutzt.
 
-    *Warum?*: Datenserivce-Implementierungen enthalten spezifischen Code, um die Daten zu handhaben. Dies können bestimmte Header sein, die beschreiben, wie mit den Datenquellen oder anderen Services wie `$http` kommuniziert werden muss. Die Separierung dieser Logik in einem Datenservice kapselt sie an einem einzigen Platz und verbirgt die Implementierung vor den Konsumenten dieses Service (z. B. einem Controller). Das macht es auch einfacher, die Implementierung auszutauschen.
+    *Warum?*: Datenservice-Implementierungen enthalten spezifischen Code, um die Daten zu handhaben. Dies können bestimmte Header sein, die beschreiben, wie mit den Datenquellen oder anderen Services wie `$http` kommuniziert werden muss. Die Separierung dieser Logik in einem Datenservice kapselt sie an einem einzigen Platz und verbirgt die Implementierung vor den Konsumenten dieses Service (z. B. einem Controller). Das macht es auch einfacher, die Implementierung auszutauschen.
 
   ```javascript
   /* empfohlen */
@@ -1108,21 +1108,21 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   }
   ```
 
-    Anmerkung: Es gibt viele Bennennungsmöglichkeiten für Direktiven, weil sie in einem schmalen oder weiten Gültigkeitsbereich genutzt werden können. Wählen sie eine, die den Namen der Direktive und ihren Dateinamen eindeutig und klar verständlich macht. Einige Beispiele befinden sich weiter unten, aber schauen Sie sich den Abschnitt zur [Namensgebung](#naming) an, um weitere Empfehlungen zu sehen.
+    Anmerkung: Es gibt viele Benennungsmöglichkeiten für Direktiven, weil sie in einem schmalen oder weiten Gültigkeitsbereich genutzt werden können. Wählen Sie eine, die den Namen der Direktive und ihren Dateinamen eindeutig und klar verständlich macht. Einige Beispiele befinden sich weiter unten, aber schauen Sie sich den Abschnitt zur [Namensgebung](#naming) an, um weitere Empfehlungen zu sehen.
 
 ### DOM-Maniuplation in einer Directive
 ###### [Style [Y072](#style-y072)]
 
-  - Benutzen Sie zur direkten Manipulation des DOM eine Direktive. Wenn es alternative Wege gibt, wie zum Beispiel CSS, um Stile zu setzen oder [Animation Services](https://docs.angularjs.org/api/ngAnimate), Angular Templates, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oder [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), dann nutzen sie diese anstatt. Wenn die Direktive zum Beispiel einfach nur etwas versteckt oder zeigt, dann benutzen Sie ngHide/ngShow.
+  - Benutzen Sie zur direkten Manipulation des DOM eine Direktive. Wenn es alternative Wege gibt, wie zum Beispiel CSS, um Stile zu setzen oder [Animation Services](https://docs.angularjs.org/api/ngAnimate), Angular Templates, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) oder [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), dann nutzen Sie diese anstatt. Wenn die Direktive zum Beispiel einfach nur etwas versteckt oder zeigt, dann benutzen Sie ngHide/ngShow.
 
     *Warum?*: DOM-Manipulationen können schwer zu testen oder zu debuggen sein und es gibt oftmals bessere Wege (z. B. CSS, Animationen oder Templates)
 
-### Vergeben sie einen eindeutigen Prefix für eine Direktive
+### Vergeben Sie einen eindeutigen Präfix für eine Direktive
 ###### [Style [Y073](#style-y073)]
 
-  - Vergeben sie einen kurzen, eindeutigen und beschreibenden Prefix für die Direktive, wie `acmeSalesCustomerInfo`. Dieser würde in HTML als `acme-sales-customer-info` genutzt.
+  - Vergeben Sie einen kurzen, eindeutigen und beschreibenden Präfix für die Direktive, wie `acmeSalesCustomerInfo`. Dieser würde in HTML als `acme-sales-customer-info` genutzt.
 
-    *Warum?*: Der eindeutige kurze Prefix gibt den Kontext und den Ursprung der Direktive wieder. Ein Prefix wie `cc-` könnte ausweisen, dass die Direktive Teil einer "CodeCamper"-Anwendung ist, wohingegegen `acme-` auf eine Direktive der Firma Acme hinweisen könnte.
+    *Warum?*: Der eindeutige kurze Präfix gibt den Kontext und den Ursprung der Direktive wieder. Ein Prefix wie `cc-` könnte ausweisen, dass die Direktive Teil einer "CodeCamper"-Anwendung ist, wohingegegen `acme-` auf eine Direktive der Firma Acme hinweisen könnte.
 
     Anmerkung: Vermeiden Sie `ng-`, weil dieser Präfix für Angular-Direktiven reserviert ist. Recherchieren Sie viel genutzte Direktiven, um einem Namenskonflikt wie zum Beispiel mit `ion-` für das [Ionic Framework](http://ionicframework.com/) vorzubeugen.
 
@@ -1320,13 +1320,13 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Promises beim Aktivieren eines Controllers
 ###### [Style [Y080](#style-y080)]
 
-  - Verlagern sie die Start-Logik eines Controllers in eine `activate`-Funktion.
+  - Verlagern Sie die Start-Logik eines Controllers in eine `activate`-Funktion.
 
     *Warum?*: Ist die Start-Logik an einem einheitlichen Platz innerhalb des Controllers, wird ihr Auffinden vereinfacht, sie ist besser zu testen und diese Methode hilft dabei, zu verhindern, dass die Startlogik überall im Controller verteilt ist.
 
-    *Warum?*: Das `activate` ist eine komfortable Art und Weise, diese Logik für einen Refresh des Controllers / der View zu nutzen. Es hält die Logik zusammen, liefert die View schneller an den Benutzer, erleichtert Animationen mit `ng-view` oder `ui-view`, und macht auch einen flotteren Eindruck beim Benutzer.
+    *Warum?*: Das `activate` ist eine komfortable Art und Weise, diese Logik für einen Refresh des Controllers / der View zu nutzen. Es hält die Logik zusammen, liefert den View schneller an den Benutzer, erleichtert Animationen mit `ng-view` oder `ui-view`, und macht auch einen flotteren Eindruck beim Benutzer.
 
-    Anmerkung: Wenn Sie die Routennavigation bedingt abbrechen müssen, bevor der Controller gestartet wird, dann sollten sie stattdessen ein [route resolve](#style-y081) nutzen.
+    Anmerkung: Wenn Sie die Routennavigation bedingt abbrechen müssen, bevor der Controller gestartet wird, dann sollten Sie stattdessen ein [route resolve](#style-y081) nutzen.
 
   ```javascript
   /* zu vermeiden */
@@ -1367,13 +1367,13 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Ist ein Controller abhängig von der Auflösung eines Promise, der vor der Aktivierung des Controllers aufgelöst sein muss, dann muss diese Abhängigkeit im `$routeProvider` aufgelöst werden, und zwar bevor die Controller-Logik ausgeführt wird. Wenn Sie eine Routen-Navigation bedingt abbrechen müssen, bevor der Controller aktiviert ist, nutzen Sie einen Route-Resolver.
 
-  - Nutzen Sie ein "route resolve" wenn Sie bestimmen wollen, ob eine Routennavigation abgebrochen werden soll, bevor die View eingeblendet wird.
+  - Nutzen Sie ein "route resolve" wenn Sie bestimmen wollen, ob eine Routennavigation abgebrochen werden soll, bevor der View eingeblendet wird.
 
-    *Warum?*: Es kann sein, dass ein Controller Daten benötigt, noch bevor er geladen wird. Diese Daten können von einem Promise aus einer Factory oder über [$http](https://docs.angularjs.org/api/ng/service/$http) kommen. Ein ["route resolve"](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) zu benutzen, ermöglicht, dass der Promise aufgelöst wird, bevor die Controller-Logik ausgeüfhrt wird. Also kann es notwendig werden, eine Aktion aufgrund der Daten aus dem Promis auszuführen.
+    *Warum?*: Es kann sein, dass ein Controller Daten benötigt, noch bevor er geladen wird. Diese Daten können von einem Promise aus einer Factory oder über [$http](https://docs.angularjs.org/api/ng/service/$http) kommen. Ein ["route resolve"](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) zu benutzen, ermöglicht, dass der Promise aufgelöst wird, bevor die Controller-Logik ausgeführt wird. Also kann es notwendig werden, eine Aktion aufgrund der Daten aus dem Promis auszuführen.
 
     *Warum?*: Der Code wird nach den Routennavigation innerhalb der activate-Funktion des Controllers ausgeführt. Der View wird ebenso geladen. Die Datenbindung steht, wenn der aktive Promise aufgelöst ist. Eine "Busy-Animation" kann während der Einblendung des views (via `ng-view` oder `ui-view`) angezeigt werden.
 
-    Anmerkung: Der Code wird vor der Routennavigation über einen Promise ausgeführt. Wird der Promise zurückgewiesen, wird die Navigation abgebrochen. Resolve bewirkt, dass die neue View auf die Auflösung der Route wartet. Ein "Busy-Indikator" kann vor dem Auflösen und während der Einblendung des Views angezeigt werden. Wenn Sie die View schneller einblenden wollen und keinen Kontrollpunkt benötigen, an dem geprüft wird, ob die View überhaupt zur Verfügung steht, sollten Sie die [Controller `activate` Technik](#style-y080) in Betracht ziehen.
+    Anmerkung: Der Code wird vor der Routennavigation über einen Promise ausgeführt. Wird der Promise zurückgewiesen, wird die Navigation abgebrochen. Resolve bewirkt, dass die neue View auf die Auflösung der Route wartet. Ein "Busy-Indikator" kann vor dem Auflösen und während der Einblendung des Views angezeigt werden. Wenn Sie den View schneller einblenden wollen und keinen Kontrollpunkt benötigen, an dem geprüft wird, ob der View überhaupt zur Verfügung steht, sollten Sie die [Controller `activate` Technik](#style-y080) in Betracht ziehen.
 
   ```javascript
   /* zu vermeiden */
@@ -1472,7 +1472,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Unsichere Minifizierung
 ###### [Style [Y090](#style-y090)]
 
-  - Vermeiden Sie es, die kurze Deklarationssyntax für Ahängigkeiten ohne einen für die Minifizierung sicheren Ansatz zu verwenden. 
+  - Vermeiden Sie es, die kurze Deklarationssyntax für Abhängigkeiten ohne einen für die Minifizierung sicheren Ansatz zu verwenden. 
 
     *Warum?*: Die Parameter der Komponente (z. B. Controller, Factory, etc.) werden in abgekürzte Variablen gewandelt. So kann zum Beispiel aus `common` und `dataservice` ein `a` oder `b` werden, was von Angular nicht gefunden wird.
 
@@ -1498,7 +1498,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benutzen Sie `$inject` um Ihre Abhängigkeiten für Angular-Komponenten manuell zu identifizieren.
 
-    *Warum?*: Dieses Verfahren spiegelt die Technik wieder, die von [`ng-annotate`](https://github.com/olov/ng-annotate) genutzt wird, welche ich für die Automatisierung der Erstellung von minifikationssicheren Abhängigkeiten empfehleh. Wenn `ng-annotate` erkennt, dass eine solche Deklaration vorgenommen wurde, wird diese nicht dupliziert.
+    *Warum?*: Dieses Verfahren spiegelt die Technik wieder, die von [`ng-annotate`](https://github.com/olov/ng-annotate) genutzt wird, welche ich für die Automatisierung der Erstellung von minifikationssicheren Abhängigkeiten empfehlen. Wenn `ng-annotate` erkennt, dass eine solche Deklaration vorgenommen wurde, wird diese nicht dupliziert.
 
     *Warum?*: Dies bewahrt Ihre Abhängigkeiten vor Problemen bei einer Minifizierung, bei der die Parameter abgekürzt werden. Zum Beispiel wird aus `common` und `dataservice` ein `a` oder `b`, was von Angular nicht gefunden wird.
 
@@ -1537,7 +1537,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
     }
     ```
 
-    Anmerkung: Wenn sich Ihre Funktion unterhalb eines returns befindet, kann `$inject` unerreichbar werden (das kann in einer Direktive passieren). Sie können dies vermeiden, indem sie den Controller aus der Direktive herauslösen.
+    Anmerkung: Wenn sich Ihre Funktion unterhalb eines returns befindet, kann `$inject` unerreichbar werden (das kann in einer Direktive passieren). Sie können dies vermeiden, indem Sie den Controller aus der Direktive herauslösen.
 
     ```javascript
     /* zu vermeiden */
@@ -1659,7 +1659,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     Anmerkung: Entdeckt `ng-annotate` bereits vorhandene Kommentare (z. B. bei erkanntem `@ngInject`), werden die `$inject`-Befehle nicht dupliziert.
 
-    Anmerkung: Wenn Sie einen Route Resolver nutzen, können sie die Funktion des Resolvers mit `/* @ngInject */` markieren, und es wird eine korrekte Code-Anmerkung erstellt, die alle eingefügten Abhängigkeiten minifizierungssicher hält.
+    Anmerkung: Wenn Sie einen Route Resolver nutzen, können Sie die Funktion des Resolvers mit `/* @ngInject */` markieren, und es wird eine korrekte Code-Anmerkung erstellt, die alle eingefügten Abhängigkeiten minifizierungssicher hält.
 
     ```javascript
     // Using @ngInject annotations
@@ -1678,13 +1678,13 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
     }
     ```
 
-    > Anmerkung: Ab der 1.3er Version von Angular können Sie den `ngStrictDi` Parameter der [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)-Direktive nutzen, um potentiell minfizierungsunsichere Abhängigkeiten aufzuspühren. Wurde eine solche Abhängigkeit entdeckt, dann wird der Injector im "strict-di"-Modus erstellt und verursacht Fehler beim Ausfüren von Funktionen, die keine explizite Code-Anmerkung besitzen (was nicht minifizerungssicher ist). Debug-Informationen werden in der Konsole ausgegeben, um den betreffenden Code nachvollziehen zu können. Ich bevorzuge die Nutzung von `ng-strict-di` für das Debugging.
+    > Anmerkung: Ab der 1.3er Version von Angular können Sie den `ngStrictDi` Parameter der [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)-Direktive nutzen, um potentiell minfizierungsunsichere Abhängigkeiten aufzuspüren. Wurde eine solche Abhängigkeit entdeckt, dann wird der Injector im "strict-di"-Modus erstellt und verursacht Fehler beim Ausführen von Funktionen, die keine explizite Code-Anmerkung besitzen (was nicht minifizerungssicher ist). Debug-Informationen werden in der Konsole ausgegeben, um den betreffenden Code nachvollziehen zu können. Ich bevorzuge die Nutzung von `ng-strict-di` für das Debugging.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Gulp oder Grunt für ng-annotate nutzen
 ###### [Style [Y101](#style-y101)]
 
-  - Benutzen Sie [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) oder [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in einer autmatisierten Build-Task. Fügen sie `/* @ngInject */` vor jeder Funktion ein, die Abhängigkeiten hat.
+  - Benutzen Sie [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) oder [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in einer automatisierten Build-Task. Fügen Sie `/* @ngInject */` vor jeder Funktion ein, die Abhängigkeiten hat.
 
     *Warum?*: ng-annotate erkennt die meisten Abhängigkeiten automatisch, benötigt manchmal aber Hinweise durch die `/* @ngInject */`-Syntax.
 
@@ -1721,7 +1721,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benutzen Sie einen [Decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator) während der Konfiguration, indem Sie den [`$provide`](https://docs.angularjs.org/api/auto/service/$provide)-Service im [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler)-Service ansprechen, um eigene Aktionen bei einem auftauchenden Fehler (einer Ausnahme) auszuführen.
 
-    *Warum?*: Dies bietet einen einen stimmigen Weg, unbehandelte Angular-Fehler während der Entwicklung oder zur Laufzeit abzufangen.
+    *Warum?*: Dies bietet einen stimmigen Weg, unbehandelte Angular-Fehler während der Entwicklung oder zur Laufzeit abzufangen.
 
     Anmerkung: Eine weitere Option neben der Benutzung eines Decorators, stellt das Überschreiben des Service dar. Diese Möglichkeit ist gut, wenn Sie aber das Standardverhalten beibehalten wollen, dann ist die Erweiterung mit einem Decorator angebracht.
 
@@ -1767,7 +1767,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     *Warum?*: Dies bietet eine konsistente Methode, Fehler abzufangen, die in Ihrem Code geworfen werden (z. B. während eines XHR-Aufrufs oder bei Fehlern in einem Promise).
 
-    Anmerkung: Eine Komponente, die die Fehler abfängt stellt eine gute Möglichkeit dar, Fehler an den Stellen abzufangen, von denen Sie wissen, dass sie auftreten können. Zum Beispiel, wenn Sie Daten über einen XHR-Aufruf von einem Webservice anfragen und Sie jegliche Art von Fehler, die von diesem Service zurück kommen, speziell behandeln wollen.
+    Anmerkung: Eine Komponente, die die Fehler abfängt stellt eine gute Möglichkeit dar, Fehler an den Stellen abzufangen, von denen Sie wissen, dass sie auftreten können. Zum Beispiel, wenn Sie Daten über einen XHR-Aufruf von einem Webservice anfragen und Sie jegliche Art von Fehler, die von diesem Service zurückkommen, speziell behandeln wollen.
 
     ```javascript
     /* empfohlen */
@@ -1798,7 +1798,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     *Warum?*: Bietet einen stimmigen Weg, um alle Routingfehler zu behandeln.
 
-    *Warum?*: Bietet potentiell die Möglichkeit die Akzeptanz beim Benutzer zu steigern, wenn ein Routingfehler autftritt und dieser auf informative Weise mit Möglichkeiten zur Behebung am Bildschirm angezeigt wird.
+    *Warum?*: Bietet potentiell die Möglichkeit die Akzeptanz beim Benutzer zu steigern, wenn ein Routingfehler auftritt und dieser auf informative Weise mit Möglichkeiten zur Behebung am Bildschirm angezeigt wird.
 
     ```javascript
     /* empfohlen */
@@ -1844,7 +1844,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Richtlinien der Namensgebung
 ###### [Style [Y120](#style-y120)]
 
-  - Benutzen sie stimmige Namen für alle Komponenten, einem Muster folgend, welches die Hauptfunktionen (Features) einer Komponente und dann (optional) ihren Typ beschreibt. 
+  - Benutzen Sie stimmige Namen für alle Komponenten, einem Muster folgend, welches die Hauptfunktionen (Features) einer Komponente und dann (optional) ihren Typ beschreibt. 
   Meine empfohlenes Muster ist `feature.typ.js`. Es gibt zwei zu vergebene Namen für die meisten Komponenten:
     * der Dateiname (`avengers.controller.js`)
     * der Name der bei Angular zu registrierenden Komponente (`AvengersController`)
@@ -1858,7 +1858,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benutzen Sie stimmige Namen für alle Komponenten, die einem Muster folgen: Hauptfunktion einer Komponente, und dann (optional) gefolgt vom Typ. Mein empfohlenes Muster ist `feature.typ.js`.
 
-    *Warum?*: Bietet einen stimmigen Weg, Komponenten schnell zu identifizeren.
+    *Warum?*: Bietet einen stimmigen Weg, Komponenten schnell zu identifizieren.
 
     *Warum?*: Bietet ein Suchmuster für alle automatisierten Aufgaben.
 
@@ -1925,7 +1925,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benennen Sie Testspezifikationen gemäß der Komponente, die getestet werden soll, gefolgt vom Suffix `spec`.
 
-    *Warum?*: Bietet einen stimmigen Weg, Komponenten schnell zu indentifizieren.
+    *Warum?*: Bietet einen stimmigen Weg, Komponenten schnell zu identifizieren.
 
     *Warum?*: Bietet ein Suchmuster für [karma](http://karma-runner.github.io/) oder andere Testrunner.
 
@@ -1942,11 +1942,11 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Namen für Controller
 ###### [Style [Y123](#style-y123)]
 
-  - Nutzen Sie stimmige Namen für alle Controller und bennenen Sie diese nach ihrem Hauptmerkmal. Benutzen Sie UpperCamelCase für Controller, weil sie Konstruktoren sind.
+  - Nutzen Sie stimmige Namen für alle Controller und benennen Sie diese nach ihrem Hauptmerkmal. Benutzen Sie UpperCamelCase für Controller, weil sie Konstruktoren sind.
 
-    *Warum?*: Bietet einen stimmigen Weg, Controller schnell zu indentifizieren und zu referenzieren.
+    *Warum?*: Bietet einen stimmigen Weg, Controller schnell zu identifizieren und zu referenzieren.
 
-    *Warum?*: UpperCamelCase ist eine Konvention, ein Objekt zu identifizieren, welches über einen Konstruktor instantiiert werden kann.
+    *Warum?*: UpperCamelCase ist eine Konvention, ein Objekt zu identifizieren, welches über einen Konstruktor instanziiert werden kann.
 
     ```javascript
     /**
@@ -1984,9 +1984,9 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Namen für Factories
 ###### [Style [Y125](#style-y125)]
 
-  - Nutzen Sie stimmige Namen für alle Factories und vergeben sie diese nach deren Hauptfunktion. Benutzen Sie Camel-Casing für Services und Factroies. Vermeiden Sie es, einer Factory oder einem Service ein `$` voranzutellen.
+  - Nutzen Sie stimmige Namen für alle Factories und vergeben Sie diese nach deren Hauptfunktion. Benutzen Sie Camel-Casing für Services und Factories. Vermeiden Sie es, einer Factory oder einem Service ein `$` voranzustellen.
 
-    *Warum?*: Bietet einen stimmigen Weg, Factories schnell zu identifizeren und zu referenzieren.
+    *Warum?*: Bietet einen stimmigen Weg, Factories schnell zu identifizieren und zu referenzieren.
 
     *Warum?*: Verhindert Namenskollisionen mit eingebauten Factories und Serivces, die `$` als Präfix nutzen.
 
@@ -2008,7 +2008,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benutzen Sie stimmige Namen für alle Direktiven gemäß der Camel-Case-Regel. Nutzen Sie einen kurzen Präfix, um den Bereich zu beschreiben, zu dem die Direktive gehört (Firmen- oder Projekt-Präfix).
 
-    *Warum?*: Bietet einen stimmigen Weg, Direktiven schnell zu identifizeren und zu referenzieren.
+    *Warum?*: Bietet einen stimmigen Weg, Direktiven schnell zu identifizieren und zu referenzieren.
 
     ```javascript
     /**
@@ -2037,11 +2037,11 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Konfiguration
 ###### [Style [Y128](#style-y128)]
 
-  - Trennen Sie die Konfiguration vom Modul und lagern sie diese in eine eigene Datei aus, die nach dem Modul benannt wird. Eine Konfigurationsdatei für das Hauptmodul `app` wird `app.config.js` genannt (oder einfach `config.js`). Eine Konfigurationsdatei für ein Modul namens `admin.module.js` wird `admin.config.js` genannt.
+  - Trennen Sie die Konfiguration vom Modul und lagern Sie diese in eine eigene Datei aus, die nach dem Modul benannt wird. Eine Konfigurationsdatei für das Hauptmodul `app` wird `app.config.js` genannt (oder einfach `config.js`). Eine Konfigurationsdatei für ein Modul namens `admin.module.js` wird `admin.config.js` genannt.
 
     *Warum?*: Trennt Konfiguration von der Moduldefinition, den Komponenten und dem "aktiven" Code.
 
-    *Warum?*: Bietet einen leicht zu identifizierenden Platz, um die Kofiguration eines Moduls vorzunehmen.
+    *Warum?*: Bietet einen leicht zu identifizierenden Platz, um die Konfiguration eines Moduls vorzunehmen.
 
 ### Routen
 ###### [Style [Y129](#style-y129)]
@@ -2054,9 +2054,9 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
-  - LIFT steht für `L`ocate (auffinden), `I`dentify (identifizieren), `F`lat (flach), T`ry to stay DRY` (versuchen Sie, Ihren Code nicht zu wiederholen). Das bedeutet also, sie sollten Ihre Anwendung so strukturieren, dass sie Ihren Code schnell auffinden und auf einen Blick identifizieren können, für was der Code gut ist. Dabei sollten Sie die Struktur so flach wie möglich halten. Vermeiden Sie es unbedingt, Ihren Code zu wiederholen.   
+  - LIFT steht für `L`ocate (auffinden), `I`dentify (identifizieren), `F`lat (flach), T`ry to stay DRY` (versuchen Sie, Ihren Code nicht zu wiederholen). Das bedeutet also, Sie sollten Ihre Anwendung so strukturieren, dass Sie Ihren Code schnell auffinden und auf einen Blick identifizieren können, für was der Code gut ist. Dabei sollten Sie die Struktur so flach wie möglich halten. Vermeiden Sie es unbedingt, Ihren Code zu wiederholen.   
 
-    *Warum LIFT?*: Bietet eine konsistente und gut skalierbare Stuktur, ist modular und macht es einfacher die Effizienz eines Entwicklers zu steigern, weil er seinen Code schneller finden kann. Prüfen Sie Ihre Andwendungsstruktur, indem Sie sich fragen: Wie schnell kann ich all die Dateien, die zu einem Feature gehören öffnen und mit ihnen arbeiten?"
+    *Warum LIFT?*: Bietet eine konsistente und gut skalierbare Struktur, ist modular und macht es einfacher die Effizienz eines Entwicklers zu steigern, weil er seinen Code schneller finden kann. Prüfen Sie Ihre Anwendungsstruktur, indem Sie sich fragen: Wie schnell kann ich all die Dateien, die zu einem Feature gehören öffnen und mit ihnen arbeiten?"
 
     Falls ich mich mit meiner nicht mehr wohl fühle, dann schaue ich mir die LIFT-Anweisungen an:
 
@@ -2093,7 +2093,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Identify (Code identifizieren)
 ###### [Style [Y142](#style-y142)]
 
-  - Wenn Sie einen Dateinamen sehen, sollten sie sofort wissen, was die Datei beinhaltet und für was sie steht.
+  - Wenn Sie einen Dateinamen sehen, sollten Sie sofort wissen, was die Datei beinhaltet und für was sie steht.
 
     *Warum?*: Sie brauchen weniger Zeit, um nach Ihrem Code zu suchen und werden so effizienter. Wenn das bedeutet, dass Sie längere Dateinamen brauchen, dann sei es so. Seien Sie beschreibend bei der Namensvergabe und sorgen Sie dafür, dass eine Datei nur eine Komponente enthält. Vermeiden Sie Dateien mir mehreren Controllern, Services oder gar mit beidem. Ich weiche von dieser Regel ab, wenn ich sehr kleine Features habe, die alle miteinander verbunden und leicht identifizierbar sind. 
 
@@ -2102,14 +2102,14 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Halten Sie die Verzeichnisstruktur so lange es geht so flach wie möglich. Sollten mehr als sieben Dateien in einem Verzeichnis stehen, denken Sie über eine Neuaufteilung nach.
 
-    *Warum?*: Niemand will Dateien in einer Verzeichnisstruktur über sieben Ebenen suchen. Denken Sie an Menüs von Webseiten ... Alles, was über mehr als zwei Ebenen geht, sollte ernsthaft überdacht werden. Für eine Verzeichnisstruktur gibt es keine feste Regelung, aber sollte ein Verzeichnis sieben bis zehn Dateien enthalten, dann ist es vielleicht an der Zeit, Unterverzeichnisse einzurichten. Machen Sie es für sich selbst an Ihrem Wohlbefinden mit der Struktur fest. Benutzen sie eine flachere Struktur, bis Sie den Punkt erreichen, an dem es Sinn macht, ein neues Verzeichnis zu erstellen.
+    *Warum?*: Niemand will Dateien in einer Verzeichnisstruktur über sieben Ebenen suchen. Denken Sie an Menüs von Webseiten ... Alles, was über mehr als zwei Ebenen geht, sollte ernsthaft überdacht werden. Für eine Verzeichnisstruktur gibt es keine feste Regelung, aber sollte ein Verzeichnis sieben bis zehn Dateien enthalten, dann ist es vielleicht an der Zeit, Unterverzeichnisse einzurichten. Machen Sie es für sich selbst an Ihrem Wohlbefinden mit der Struktur fest. Benutzen Sie eine flachere Struktur, bis Sie den Punkt erreichen, an dem es Sinn macht, ein neues Verzeichnis zu erstellen.
 
 ### T-DRY (Versuchen Sie Ihren Code nicht zu wiederholen)
 ###### [Style [Y144](#style-y144)]
 
   - Seien Sie "DRY": Versuchen Sie Ihren Code nicht zu wiederholen. Aber übertreiben Sie es nicht, indem Sie die Lesbarkeit Ihres Codes dafür opfern.
 
-    *Warum?*: Sich nicht ständig zu wiederholen ist wichtig, aber nicht entscheident, wenn Sie dafür andere Punkte von LIFT opfern. Ich möchte für eine View nicht session-view.html tippen, da es ja offentlichtlich eine View ist. Wenn etwas nicht offensichtlich oder einer Konvention unterliegt, dann benenne ich es.
+    *Warum?*: Sich nicht ständig zu wiederholen ist wichtig, aber nicht entscheidend, wenn Sie dafür andere Punkte von LIFT opfern. Ich möchte für eine View nicht session-view.html tippen, da es ja öffentlich eine View ist. Wenn etwas nicht offensichtlich oder einer Konvention unterliegt, dann benenne ich es.
 
 **[Zurück zum Anfang](#table-of-contents)**
 
@@ -2118,21 +2118,21 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Allgemeine Richtlinien
 ###### [Style [Y150](#style-y150)]
 
-  - Sie sollten eine kurzfristige und langfristive Sicht auf Ihre Implemtierung haben. Das bedeutet: Fangen Sie klein an, behalten Sie dabei aber im Auge, wohin Sie mir Ihrer Anwendung wollen. Jeder Code der Anwendung wird in einem Stammverzeichnis namens `app` abgelegt. Für den Inhalt gilt: Ein Feature pro Datei. Jeder Controller, Service, jedes Modul, jede View befindet sich in ihrer/seiner eigenen Datei. Alle externen Scripts (3rd Party Bibliotheken) werden in einem anderen Stammverzeichnis, nicht aber im `app`-Verzeichnis abgelegt. Ich habe sie nicht geschrieben und ich möchte nicht, dass sie meine Anwendung durcheinander bringen.(`bower_components`, `scripts`, `lib`).
+  - Sie sollten eine kurzfristige und langfristige Sicht auf Ihre Implementierung haben. Das bedeutet: Fangen Sie klein an, behalten Sie dabei aber im Auge, wohin Sie mir Ihrer Anwendung wollen. Jeder Code der Anwendung wird in einem Stammverzeichnis namens `app` abgelegt. Für den Inhalt gilt: Ein Feature pro Datei. Jeder Controller, Service, jedes Modul, jede View befindet sich in ihrer/seiner eigenen Datei. Alle externen Scripts (3rd Party Bibliotheken) werden in einem anderen Stammverzeichnis, nicht aber im `app`-Verzeichnis abgelegt. Ich habe sie nicht geschrieben und ich möchte nicht, dass sie meine Anwendung durcheinander bringen.(`bower_components`, `scripts`, `lib`).
 
     Anmerkung: Sie finden mehr Details und Gründe für diese Struktur in [diesem Originalbeitrag zur Anwendungsstruktur](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
-  - Platzieren Sie Komponenten, die das allgemeingültige Layout der Anwendung ausmachen, in einem Verzeichnis namens `layout`. Dieses sollte eine Shell-View mit Controller enthalten. Die View agiert als Container für die Anwendung und enthält die Anwendung an sich: Navigation, Menüs, Bereiche für die Inhalte und andere Bereiche.
+  - Platzieren Sie Komponenten, die das allgemeingültige Layout der Anwendung ausmachen, in einem Verzeichnis namens `layout`. Dieses sollte eine Shell-View mit Controller enthalten. Der View agiert als Container für die Anwendung und enthält die Anwendung an sich: Navigation, Menüs, Bereiche für die Inhalte und andere Bereiche.
 
-    *Warum?*: Organzisieren Sie das Layout an einem einzigen Ort, damit es innerhalb der Anwendung von überall her genutzt werden kann.
+    *Warum?*: Organisieren Sie das Layout an einem einzigen Ort, damit es innerhalb der Anwendung von überall her genutzt werden kann.
 
-### Vezeichnisse nach Hauptmerkmalen
+### Verzeichnisse nach Hauptmerkmalen
 ###### [Style [Y152](#style-y152)]
 
-  - Erstellen Sie Verzeichnisse gemäß der Hauptmerkmale, die sie darstellen. Wenn der Inhalt eines Verzeichnisse wächst und mehr als sieben Dateien fasst, sollten Sie darüber nachdenken, ein neues Verzeichnis zu erstellen. Dabei ist der Grenzwert aber individuell.
+  - Erstellen Sie Verzeichnisse gemäß der Hauptmerkmale, die sie darstellen. Wenn der Inhalt eines Verzeichnisses wächst und mehr als sieben Dateien fasst, sollten Sie darüber nachdenken, ein neues Verzeichnis zu erstellen. Dabei ist der Grenzwert aber individuell.
 
     *Warum?*: En Entwickler kann den gesuchten Code schnell auffinden, auf einen Blick identifizieren für was jede Datei steht, die Struktur ist so flach wie möglich und es gibt keine redundanten Namen.
 
@@ -2229,26 +2229,26 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
 ## Modularität
 
-### Viele kleine, eigentsändige Module
+### Viele kleine, eigenständige Module
 ###### [Style [Y160](#style-y160)]
 
   - Erstellen Sie kleine Module, die für eine einzige Aufgabe zuständig sind und diese in sich kapseln.
 
-    *Warum?*: Modulare Anwendungen machen es möglich, dass Funktionsmerkmale (Features) einfach eingeklinkt werden können. Somit kann ein Entwicklungsteam vertikale Stücke einer Applikation sukzessive ausrollen. Das bedeutet, dass neue Funtionsmerkmale nach ihrer Entwicklung einfach eingeklink werden können.
+    *Warum?*: Modulare Anwendungen machen es möglich, dass Funktionsmerkmale (Features) einfach eingeklinkt werden können. Somit kann ein Entwicklungsteam vertikale Stücke einer Applikation sukzessive ausrollen. Das bedeutet, dass neue Funktionsmerkmale nach ihrer Entwicklung einfach eingeklinkt werden können.
 
 ### Erstellen Sie ein Modul für die Hauptanwendung (App-Modul)
 ###### [Style [Y161](#style-y161)]
 
   - Erstellen Sie ein Hauptmodul für die Anwendung, dessen Rolle es ist, alle Module und Funktionen der Anwendung zusammenzutragen. Nennen Sie das Modul nach Ihrer Anwendung.
 
-    *Warum?*: Angular begünstigt Modularität und Muster für die Aufteilung von Code. Ein Hauptmodul für eine Anwendung zu erstellen, die andere Module zusammenzieht, ist ein einfacher Weg, um Module in eine Anwendung einzuklinken oder aus ihr auskzuklinken.
+    *Warum?*: Angular begünstigt Modularität und Muster für die Aufteilung von Code. Ein Hauptmodul für eine Anwendung zu erstellen, die andere Module zusammenzieht, ist ein einfacher Weg, um Module in eine Anwendung einzuklinken oder aus ihr auszuklinken.
 
 ### Halten Sie das App-Modul klein
 ###### [Style [Y162](#style-y162)]
 
   - Stellen Sie nur Logik ins App-Modul, die dazu dient, die Anwendungsbestandteile zusammenzuziehen. Features bleiben in ihren eigenen Feature-Modulen.
 
-    *Warum?*: Weitere Logik außerhalb der ursprünglichen Aufgabe ins Hauptmodul einzubinden, wie zum Beispiel Datenabfragen, darstellen von Views, oder eine Logik, die nicht zum zusammenziehen der Module dient, bringt Verwirrung. Es wird schwierig, diese Features zu verwalten und auch zu testen.
+    *Warum?*: Weitere Logik außerhalb der ursprünglichen Aufgabe ins Hauptmodul einzubinden, wie zum Beispiel Datenabfragen, darstellen von Views, oder eine Logik, die nicht zum Zusammenziehen der Module dient, bringt Verwirrung. Es wird schwierig, diese Features zu verwalten und auch zu testen.
 
     *Warum?*: Das App-Modul wird zum Manifest, welches die Module aufführt, die die Applikation ausmachen.
 
@@ -2261,7 +2261,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     *Warum?*: Sprints oder Iterationen können sich auf Funktionsbereiche beziehen. Diese können am Ende eines Sprints oder einer Iteration eingebunden werden.
 
-    *Warum?*: Die Trennung von Funkstionsbereichen in Module erleichtert das isolierte Testen der Module und deren Wiederverwengung.
+    *Warum?*: Die Trennung von Funktionsbereichen in Module erleichtert das isolierte Testen der Module und deren Wiederverwendung.
 
 ### Wiederverwendbare Bausteine sind Module
 ###### [Style [Y164](#style-y164)]
@@ -2273,7 +2273,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Modulabhängigkeiten
 ###### [Style [Y165](#style-y165)]
 
-  - Das Hauptmodul einer Applikation ist abhängig von den applikationsspezifischen Funktionsmodulen und den allgemeingültigen oder wiedervendbaren Modulen.
+  - Das Hauptmodul einer Applikation ist abhängig von den applikationsspezifischen Funktionsmodulen und den allgemeingültigen oder wiederverwendbaren Modulen.
 
     ![Modularität und Abhängigkeiten](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
@@ -2283,7 +2283,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     *Warum?*: Interne Anwendungsfunktionen wie allgemeingültige Datenservices werden einfach aufgefunden und innerhalb von `app.core` (wählen Sie ihren Lieblingsnamen für diese Modul) genutzt.
 
-    Anmerkung: Dies ist eine Strategie, die die Konstistenz innerhalb einer Anwendung begünstigt. Es gibt hierzu viele gute Möglichkeiten. Wählen Sie eine für sich aus, die stimmig ist, den Regeln von Angular in Puncto Abhängigkeiten folgt und einfach zu verwalten und zu skalieren ist.
+    Anmerkung: Dies ist eine Strategie, die die Konsistenz innerhalb einer Anwendung begünstigt. Es gibt hierzu viele gute Möglichkeiten. Wählen Sie eine für sich aus, die stimmig ist, den Regeln von Angular in Puncto Abhängigkeiten folgt und einfach zu verwalten und zu skalieren ist.
 
     > Meine Strukturen unterscheiden sich von Projekt zu Projekt, aber sie folgen allesamt diesen Richtlinien zur Struktur und Modularität. Auch die Implementierung kann sich in Abhängigkeit der benötigten Funktionen und dem Team unterscheiden. Mit anderen Worten: Bestehen Sie nicht auf die exakte Nachbildung der hier vorgestellten Struktur, sondern passen Sie sie Ihren Gegebenheiten an. Behalten Sie dabei Konsistenz, Wartbarkeit und Effizienz im Hinterkopf.
 
@@ -2373,7 +2373,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
   - Schreiben Sie Ihre Tests für jede Anforderung. Beginnen Sie mit einem leeren Test und füllen Sie diesen, während Sie den Code für die Anforderung schreiben.
 
-    *Warum?*: Testbeschreibungen zu zu verfassen, hilft dabei festzulegen, was in der Anforderung passiert, was nicht passiert und wie ein Testerfolg gemessen werden kann.
+    *Warum?*: Testbeschreibungen zu verfassen, hilft dabei festzulegen, was in der Anforderung passiert, was nicht passiert und wie ein Testerfolg gemessen werden kann.
 
     ```javascript
     it('Soll einen Avengers-Controller enthalten', function() {
@@ -2402,7 +2402,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: Die Nutzung von Jasmin und Mocha ist sehr verbreitet in der Angular-Community. Beide sind stabil, gut gepflegt und liefern robuste Testfunktionen.
 
-    Anmerkung: Wenn Sie Moche nutzen, sollten Sie in Erwägung ziehen, eine sogenannte Assert-Library, wie [Chai](http://chaijs.com) zu nutzen. Ich ziehe dem Mocha vor.
+    Anmerkung: Wenn Sie Mocha nutzen, sollten Sie in Erwägung ziehen, eine sogenannte Assert-Library, wie [Chai](http://chaijs.com) zu nutzen. Ich ziehe dem Mocha vor.
 
 ### Testrunner
 ###### [Style [Y192](#style-y192)]
@@ -2413,7 +2413,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: Karma hängt sich leicht von allein in einen CI-Prozess (in Grunt oder Gulb) ein.
 
-    *Warum?*: Verschiedene IDE'n wie [WebStorm](http://www.jetbrains.com/webstorm/) und [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225) haben damit begonnen, Karma einzubinden.
+    *Warum?*: Verschiedene IDEs wie [WebStorm](http://www.jetbrains.com/webstorm/) und [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225) haben damit begonnen, Karma einzubinden.
 
     *Warum?*: Karma arbeitet wunderbar mit Task-Managern für Automatisierte Aufgaben wie [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) und [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)) zusammen.
 
@@ -2424,7 +2424,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: Sinon arbeitet wunderbar mit Jasmine und Mocha zusammen und erweitert deren Fähigkeiten der Simulation von Komponenten.
 
-    *Warum?*: Sinon erleichtert den Wechsel zwischen Jasmine and Mocha, wenn Sie beide ausprobieren möchten.
+    *Warum?*: Sinon erleichtert den Wechsel zwischen Jasmine und Mocha, wenn Sie beide ausprobieren möchten.
 
     *Warum?*: Sinon liefert gut verständliche, beschreibende Meldung, für den Fall, dass ein Test fehlschlägt.
 
@@ -2442,9 +2442,9 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
   - Lassen Sie JSHint über ihre Tests laufen.
 
-    *Warum?*: Tests sind Code. JSHint prüft die Codequalität und kann Qualitätsprobleme aufdecken, die dazu führen können, dass Tests nicht saber laufen.
+    *Warum?*: Tests sind Code. JSHint prüft die Codequalität und kann Qualitätsprobleme aufdecken, die dazu führen können, dass Tests nicht sauber laufen.
 
-### Erleichternde Rahmenbedingungen for JSHint und Regeln für Tests
+### Erleichternde Rahmenbedingungen fur JSHint und Regeln für Tests
 ###### [Style [Y196](#style-y196)]
 
   - Lockern sie die JSHint-Regeln für Ihren Testcode, damit `describe` und `expect` erlaubt werden. Lockern sie die Regeln auch für Ausdrücke, da Mocha diese benutzt.
@@ -2470,7 +2470,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: Unit-Tests stehen in direktem Bezug zu einer spezifischen Komponente und Datei im Quellcode.
 
-    *Warum?*: Es ist einfacher, sie auf dem neuesten Stand zu halten, weil Sie sie immer im Blick haben. Während Sie programmieren (ob Sie jetzt TDD betreiben oder während oder nach der Entwicklung testen), sind die Testspezifikationen weder aus der Sicht noch aus Ihren Gedanken. Deshalt ist es wahrscheinlicher, dass sie auch gepflegt werden, das dazu beiträgt, die Abdeckung des Codes durch Tests zu verbessern.
+    *Warum?*: Es ist einfacher, sie auf dem neuesten Stand zu halten, weil Sie sie immer im Blick haben. Während Sie programmieren (ob Sie jetzt TDD betreiben oder während oder nach der Entwicklung testen), sind die Testspezifikationen weder aus der Sicht noch aus Ihren Gedanken. Deshalb ist es wahrscheinlicher, dass sie auch gepflegt werden, das dazu beiträgt, die Abdeckung des Codes durch Tests zu verbessern.
 
     *Warum?*: Wenn Sie Code aktualisieren ist es einfacher, auch die Tests im gleichen Zuge zu aktualisieren.
 
@@ -2497,7 +2497,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 ### Anwendung
 ###### [Style [Y210](#style-y210)]
 
-  - Benutzen Sie die ["subtle" Animationen von Angular](https://docs.angularjs.org/guide/animations) um zwischen Stati, Views oder primären sichtbaren Elementen hin und her zu wechseln. Binden Sie das [ngAnimate-Modul](https://docs.angularjs.org/api/ngAnimate) ein. Die drei Schlüssel hierzu sind "subtle", "smooth", "seamless".
+  - Benutzen Sie die ["subtle" Animationen von Angular](https://docs.angularjs.org/guide/animations) um zwischen Status, Views oder primären sichtbaren Elementen hin und her zu wechseln. Binden Sie das [ngAnimate-Modul](https://docs.angularjs.org/api/ngAnimate) ein. Die drei Schlüssel hierzu sind "subtle", "smooth", "seamless".
 
     *Warum?*: Angulars "subtle" Animationen können die User-Experience erhöhen, wenn sie entsprechend eingesetzt werden.
 
@@ -2506,9 +2506,9 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 ### Sub Second
 ###### [Style [Y211](#style-y211)]
 
-  - Nutzen Sie eine Kurze Dauer für Animationen. Ich starte immer bei 300ms und passe diese dann entsprechend an.
+  - Nutzen Sie eine kurze Dauer für Animationen. Ich starte immer bei 300ms und passe diese dann entsprechend an.
 
-    *Warum?*: Lange Animationen können sich negativ auf die wahrgenomme Performance auswirken und einen gegentiligen Einfluss auf die User Experience haben und die Anwendung langsam aussehen lassen.
+    *Warum?*: Lange Animationen können sich negativ auf die wahrgenommene Performance auswirken und einen gegenteiligen Einfluss auf die User Experience haben und die Anwendung langsam aussehen lassen.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]
@@ -2519,7 +2519,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: Bietet Konsistenz Ihrer Animationen.
 
-    *Warum?*: animate.css ist weit verbeitet und gut getestet.
+    *Warum?*: animate.css ist weit verbreitet und gut getestet.
 
     Anmerkung: Schauen Sie sich diesen [tollen Beitrag von Matias Niemelä über Angular Animationen](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html) an.
 
@@ -2749,7 +2749,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
   - Erstellen Sie eine Angular-Konstante für die globalen Variablen aus Bibliotheken von Drittanbietern.
 
-    *Warum?*: Bietet einen Weg, Bibliotheken von Drittanbietern in einem sicheren Umfeld anzubieten, die andererseits "Globals" wären.  Dies verbessert die Testbarkeit, weil Sie so einfacher die Abhängigkeiten Ihres Codes erfahren (verindert lückenhafte Abstraktionen). Auch die Simulation dieser Abhängigkeiten wird zugelassen, wo sie Sinn macht.
+    *Warum?*: Bietet einen Weg, Bibliotheken von Drittanbietern in einem sicheren Umfeld anzubieten, die andererseits "Globals" wären.  Dies verbessert die Testbarkeit, weil Sie so einfacher die Abhängigkeiten Ihres Codes erfahren (verhindert lückenhafte Abstraktionen). Auch die Simulation dieser Abhängigkeiten wird zugelassen, wo sie Sinn macht.
 
     ```javascript
     // constants.js
@@ -2767,13 +2767,13 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
 ###### [Style [Y241](#style-y241)]
 
-  - Benutzen Sie Konstanten für Wete, die sich nicht ändern und nicht aus einem anderen Service kommen. Wenn Konstanten nur für ein bestimmtes Modul gebraucht werden, welches zudem wiederverwendbar sein soll, dann platzieren Sie die Konstanten in einer Datei (pro Modul) und benennen Sie die Datei nach dem Modul. Bis dahin halten Sie die Konstanten im Hauptmodul in einer `constants.js`-Datei.
+  - Benutzen Sie Konstanten für Werte, die sich nicht ändern und nicht aus einem anderen Service kommen. Wenn Konstanten nur für ein bestimmtes Modul gebraucht werden, welches zudem wiederverwendbar sein soll, dann platzieren Sie die Konstanten in einer Datei (pro Modul) und benennen Sie die Datei nach dem Modul. Bis dahin halten Sie die Konstanten im Hauptmodul in einer `constants.js`-Datei.
 
     *Warum?*: Ein Wert, der sich ändert - wenn auch nur unregelmäßig - sollte von einem Service ermittelt werden, so dass er nicht im Quellcode geändert werden muss. Zum Beispiel könnte eine URL für einen Datenservice in einer Konstanten abgelegt werden. Besser wäre es aber, diesen Wert über einen WebService zu ermitteln. 
     
     *Warum?*: Konstanten können in jede Angular-Komponente (auch in einen Provider) eingefügt werden.
 
-    *Warum?*: Ist eine Anwendung in Module unterteilt, die in anderen Anwendungen genutzt werden können, so solte jedes alleinstehende Modul für sich selbst funktionieren, eingeschlossen seiner Konstanten.
+    *Warum?*: Ist eine Anwendung in Module unterteilt, die in anderen Anwendungen genutzt werden können, so sollte jedes alleinstehende Modul für sich selbst funktionieren, eingeschlossen seiner Konstanten.
 
     ```javascript
     // Konstanten für die gesamte Anwendung
@@ -2793,7 +2793,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 **[Zurück zum Anfang](#table-of-contents)**
 
 ## Dateitemplates und Snippets
-Nutzen Sie Templates oder Snippets, um stimmigen Richtlinien und Mustern zu folgen. Hier sind Templates oder Snippets für einige Editoren und IDE'n zur Webentwicklung.
+Nutzen Sie Templates oder Snippets, um stimmigen Richtlinien und Mustern zu folgen. Hier sind Templates oder Snippets für einige Editoren und IDEs zur Webentwicklung.
 
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
@@ -2830,7 +2830,7 @@ Nutzen Sie Templates oder Snippets, um stimmigen Richtlinien und Mustern zu folg
   - Angular Dateitemplates, die diesen Mustern und Richtlinien folgen. Sie können sie in Ihre WebStorm-Einstellungen importieren:
 
     - Laden Sie die [WebStorm Angular Dateitemplates und Snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) herunter
-    - Öffnen Sie WebStorm and gehen Sie ins `File`-Menü
+    - Öffnen Sie WebStorm und gehen Sie ins `File`-Menü
     - Wählen Sie die `Import Settings` Menüoption
     - Wählen Sie die Datei aus und klicken Sie `OK`
 
@@ -2890,7 +2890,7 @@ Nutzen Sie Templates oder Snippets, um stimmigen Richtlinien und Mustern zu folg
 
     // Dies sind Teilsnippets, die zum Verketten gedacht sind:
     ngmodule     // erstellt einen Angular module getter
-    ngstate      // erstellt eine Angular UI Router State-Defintion
+    ngstate      // erstellt eine Angular UI Router State-Definition
     ngconfig     // definiert eine Funktion für die Konfigurationsphase
     ngrun        // definiert eine Funktion für die Run-Phase
     ngroute      // definiert eine Angular ngRoute 'when'-Definition
@@ -2949,7 +2949,7 @@ Das Routing auf der Client-Seite ist für die Erstellung eines Navigationsflusse
 
   - Benutzen Sie den [AngularUI Router](http://angular-ui.github.io/ui-router/) für das clientseitige Routing.
 
-    *Warum?*: Der UI Router bietet alle Funktionen des Angular Routers und zusätzlich Weitere, wie geschachtelte Routen und Stati.
+    *Warum?*: Der UI Router bietet alle Funktionen des Angular Routers und zusätzlich Weitere, wie geschachtelte Routen und Status.
 
     *Warum?*: Die Syntax ähnelt der des Angular Routers und ist einfach auf den UI Router umzustellen.
 
@@ -3025,24 +3025,24 @@ Das Routing auf der Client-Seite ist für die Erstellung eines Navigationsflusse
 
 ###### [Style [Y271](#style-y271)]
 
-  - Definieren sie die Routen für die Views in den Modulen, in denen sie enthalten sind. Jedes Modul sollte die Routen seiner Views enthalten.
+  - Definieren Sie die Routen für die Views in den Modulen, in denen sie enthalten sind. Jedes Modul sollte die Routen seiner Views enthalten.
 
     *Warum?*: Jedes Modul sollte für sich allein lauffähig sein.
 
     *Warum?*: Wird ein Modul zur Anwendung hinzugefügt oder aus ihr ausgeklinkt, enthält die Anwendung nur Routen, die zu vorhanden Views führen.
 
-    *Warum?*: Dies erleichtert es, Teile eine Anwendung zu aktivieren oder zu deaktiveren, ohne dass man sich um verwaiste Routen Sorgen machen muss.
+    *Warum?*: Dies erleichtert es, Teile eine Anwendung zu aktivieren oder zu deaktivieren, ohne dass man sich um verwaiste Routen Sorgen machen muss.
 
 **[Zurück zum Anfang](#table-of-contents)**
 
 ## Automatisierung von Aufgaben
 Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grund Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
 
-> Erfahren Sie mehr über Gulp und Muster für die Automatisierung von Aufgabenin meinem [Gulp Pluralsight Kurs](http://jpapa.me/gulpps)
+> Erfahren Sie mehr über Gulp und Muster für die Automatisierung von Aufgaben in meinem [Gulp Pluralsight Kurs](http://jpapa.me/gulpps)
 
 ###### [Style [Y400](#style-y400)]
 
-  - Nutzen sie die Automatisierung von Aufgaben, um die Moduldefinitionsdateien `*.module.js` vor allen anderen JavaScript-Dateien in der Anwendung aufzulisten.
+  - Nutzen Sie die Automatisierung von Aufgaben, um die Moduldefinitionsdateien `*.module.js` vor allen anderen JavaScript-Dateien in der Anwendung aufzulisten.
 
     *Warum?*: Angular muss die Moduldefinitionen registrieren, bevor die Module benutzt werden können.
 
@@ -3066,7 +3066,7 @@ Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgab
 
   - Vermeiden Sie es, Filter dazu zu nutzen, alle Eigenschaften in einem komplexen Objektgraphen zu prüfen. Nutzen Sie Filter um Eigenschaften auszuwählen.
 
-    *Warum?*: Filter können sehr leicht missbraucht werden und dann die Performance einer Anwendung negativ beeinflussen, wenn sie nicht überlegt eingesetzt werden. Zum Beispiel: Wenn ein Filter auf einen großen und tief geschachtelten Objektgraphen angewendet wird.
+    *Warum?*: Filter können sehr leicht missbraucht werden und dann die Performance einer Anwendung negativ beeinflussen, wenn Sie nicht überlegt eingesetzt werden. Zum Beispiel: Wenn ein Filter auf einen großen und tief geschachtelten Objektgraphen angewendet wird.
 
 **[Zurück zum Anfang](#table-of-contents)**
 

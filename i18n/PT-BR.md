@@ -317,7 +317,7 @@ ou *Controladores*
 
 ### controllerAs Controller Syntax
 
-  - Utilize a sintaxe `controllerAs` ao invés invés da sintaxe `clássica controller com $scope`. 
+  - Utilize a sintaxe `controllerAs` ao invés da sintaxe `clássica controller com $scope`. 
 
   - A sintaxe `controllerAs` usa o `this` dentro dos controllers que fica ligado ao `$scope`.
 
@@ -434,7 +434,7 @@ ou *Controladores*
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-   Nota: Se a função possuir apenas 1 linha considere matê-la no topo, desde que a legibilidade não seja afetada.
+   Nota: Se a função possuir apenas 1 linha considere mantê-la no topo, desde que a legibilidade não seja afetada.
 
   ```javascript
   /* evite */
@@ -1683,7 +1683,7 @@ ou *Nomenclatura*
   * o nome do arquivo (`avengers.controllers.js`)
   * o nome de componente registrado pelo Angular (`AvengersController`)
 
-	*Por que?*: As convenções de nomenclatura ajudam a fornecer uma maneira consistente de encontrar algo à primeira vista. Consistência dentro do projeto e vital. Consistência dentro de um time é importante. Consistência em toda a empresa proporciona uma enorme eficiência.
+	*Por que?*: As convenções de nomenclatura ajudam a fornecer uma maneira consistente de encontrar algo à primeira vista. Consistência dentro do projeto é vital. Consistência dentro de um time é importante. Consistência em toda a empresa proporciona uma enorme eficiência.
 
     *Por que?*: As convenções de nomenclatura deveriam simplesmente te ajudar a encontrar trechos do seu código mais rápido e torná-lo mais fácil de se entender.
     

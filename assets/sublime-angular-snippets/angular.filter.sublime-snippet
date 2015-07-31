@@ -19,5 +19,5 @@
 })();
 ]]></content>
     <tabTrigger>ngfilter</tabTrigger>
-    <scope>source.js</scope>
+    <scope>text.plain, source.js</scope>
 </snippet>
