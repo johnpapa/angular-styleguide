@@ -22,7 +22,7 @@ Vários de meus estilos vieram de várias sessões de pair-programming (programa
 
 Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tudo isso em prática. Este guia é acompanhado de uma aplicação de exemplo que segue estes estilos e padrões. Você pode encontrar a [aplicação de exemplo (chamada "modular") aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegá-la, cloná-la e *forká-la*. [Instruções de como rodar o aplicativo estão em seu README](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
-> **Nota de tradução**: Os títulos originais de cada seção será mantido, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
+> **Nota de tradução**: Os títulos originais de cada seção serão mantidos, pois caso você queira buscar mais sobre estes assuntos futuramente, fazendo tal busca em inglês será obtido um resultado **imensamente** melhor. 
 >
 > Após o título, estará a tradução auxiliar, quando necessária, visto que alguns termos são mais facilmente entendidos quando não traduzidos, por fazerem parte do núcleo do estudo em questão.
 >
