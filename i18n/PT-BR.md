@@ -1679,13 +1679,13 @@ ou *Nomenclatura*
 
 ### Diretrizes de Nomenclatura
 
-  - Use nomes consistentes para todos os componentes seguindo um padrão que descreve a funcionalidade do componente e (opcionalmente) seu tipo. Meu padrão recomendado é `característica.tipo.js`. Existem dois nomes para a maioria dos componentes:
-  * o nome do arquivo (`avengers.controllers.js`)
-  * o nome de componente registrado pelo Angular (`AvengersController`)
+  - Use nomes consistentes para todos os componentes seguindo um padrão que descreva a funcionalidade do componente e (opcionalmente) seu tipo. Meu padrão recomendado é `característica.tipo.js`. Existem dois nomes para a maioria dos componentes:
+  	* o nome do arquivo (`avengers.controllers.js`)
+  	* o nome de componente registrado pelo Angular (`AvengersController`)
 
-	*Por que?*: As convenções de nomenclatura ajudam a fornecer uma maneira consistente de encontrar algo à primeira vista. Consistência dentro do projeto é vital. Consistência dentro de um time é importante. Consistência em toda a empresa proporciona uma enorme eficiência.
+	**Por que?**: As convenções de nomenclatura ajudam a fornecer uma maneira consistente de encontrar algo à primeira vista. Consistência dentro do projeto é vital. Consistência dentro de um time é importante. Consistência em toda a empresa proporciona uma enorme eficiência.
 
-    *Por que?*: As convenções de nomenclatura deveriam simplesmente te ajudar a encontrar trechos do seu código mais rápido e torná-lo mais fácil de se entender.
+    **Por que?**: As convenções de nomenclatura deveriam simplesmente te ajudar a encontrar trechos do seu código mais rápido e torná-lo mais fácil de se entender.
     
 ### Feature File Names
 ou *Nome para funcionalidades*
@@ -1743,7 +1743,7 @@ ou *Nome para funcionalidades*
     avenger-profile.directive.spec.js
     ```
 
-  Nota: Outra convenção comum é nomear arquivos dos controllers sem a palavra `controller` no nome do arquivo como` avengers.js` em vez de `avengers.controller.js`. Todas as outras convenções ainda mantem o uso de um sufixo do tipo. Controllers são o tipo mais comum de componente, portanto isso só economiza digitação e ainda é facilmente identificável. Eu recomendo que você escolha uma convenção que seja mais coerente para sua equipe.
+  Nota: Outra convenção comum é nomear arquivos dos controllers sem a palavra `controller` no nome do arquivo como` avengers.js` em vez de `avengers.controller.js`. Todas as outras convenções ainda mantêm o uso de um sufixo do tipo. Controllers são o tipo mais comum de componente, portanto isso só economiza digitação e ainda é facilmente identificável. Eu recomendo que você escolha uma convenção que seja mais coerente para sua equipe.
 
     ```javascript
     /**
@@ -1759,9 +1759,9 @@ ou *Nome para aquivos de testes*
 
   - Nomeie as especificações de testes de forma similar aos componentes que elas testam, com o sufixo `spec`.
   
-    *Por que?*: Fornece um modo consistente para identificar rapidamente os componentes.
+    **Por que?**: Fornece um modo consistente para identificar rapidamente os componentes.
 
-    *Por que?*: Fornece padrões de correspondência para o [karma](http://karma-runner.github.io/) ou outros test runners.
+    **Por que?**: Fornece padrões de correspondência para o [karma](http://karma-runner.github.io/) ou outros test runners.
 
     ```javascript
     /**
@@ -1774,13 +1774,13 @@ ou *Nome para aquivos de testes*
     ```
 
 ### Controller Names
-ou *Nome para controllers*
+ou *Nomes para controller*
 
-  - Use nomes consistentes para todos os controlers nomeados após as sua funcionalidade. Use UpperCamelCase para os controllers, assim como para seus construtores.
+  - Use nomes consistentes para todos os controllers nomeados após as sua funcionalidade. Use UpperCamelCase para os controllers, assim como para seus construtores.
   
-    *Por que?*: Fornece um modo consistente para identificar e referenciar os controllers.
+    **Por que?**: Fornece um modo consistente para identificar e referenciar os controllers.
 
-    *Por que?*: O UpperCamelCase é o modo mais comum para identificar objetos que serão instanciados através de construtores.
+    **Por que?**: O UpperCamelCase é o modo mais comum para identificar objetos que serão instanciados através de construtores.
 
     ```javascript
     /**
@@ -1800,7 +1800,7 @@ ou *sufixo "Controllers"*
 
   - Complemente o nome do controller com ou sem o sufixo `Controller`. Escolha uma opção, não ambas. 
 
-    *Por que?*: O sufixo `Controller` é mais usado e mais descritivo.
+    **Por que?**: O sufixo `Controller` é mais usado e mais descritivo.
     
     ```javascript
     /**
@@ -1829,13 +1829,13 @@ ou *sufixo "Controllers"*
     ```
 
 ### Factory Names
-ou *Nome para factory*
+ou *Nomes para factory*
 
-  - Use nomes consistentes para todas as factories nomeadas após sua funcionalidade. Use a conveção camelCase para services e factories, e evite prefixos com `$`.  
+  - Use nomes consistentes para todas as factories nomeadas após sua funcionalidade. Use a conveção camelCase para services e factories. Evite prefixos com `$`.  
     
-    *Por que?*: Fornece um modo consistende de identificar e referenciar rapidamente as factories.
+    **Por que?**: Fornece um modo consistente de identificar e referenciar rapidamente as factories.
 
-    *Por que?*: Evite colisão de nomes com factories e services pré-programadas que usam o prefixo `$`.
+    **Por que?**: Evite colisão de nomes com factories e services pré-programados que usam o prefixo `$`.
 
     ```javascript
     /**
@@ -1851,11 +1851,11 @@ ou *Nome para factory*
     ```
 
 ### Directive Component Names
-ou *Nome para directive*
+ou *Nomes para directive*
 
   - Use nomes consistentes para todas as directives usando a convenção camelCase. Use um prefixo curto para descrever a área a qual a directive pertence (como prefixo da compania ou do projeto).
   
-    *Por que?*: Fornece um modo consistente de identificar e referenciar rapidamente os componentes.
+    **Por que?**: Fornece um modo consistente de identificar e referenciar rapidamente os componentes.
     
     ```javascript
     /**
@@ -1877,18 +1877,18 @@ ou *Módulos*
 
   - Quando há vários módulos, o arquivo principal deste módulo é nomeado `app.module.js`, enquanto os módulos dependentes são nomeados de acordo com o que eles representam. Por exemplo, um módulo admin é nomeado `admin.module.js`. Os nomes dos respectivos módulos registrados seriam `app` e `admin`.
 
-    *Por que?*: Fornece consistência para múltiplos módulos, e para expansão para grandes aplicações.
+    **Por que?**: Fornece consistência para múltiplos módulos, e para expansão para grandes aplicações.
 
-    *Por que?*: Fornece um modo fácil para automação de tarefas, a fim de carregar todos as definições dos módulos em primeiro lugar, então os demais arquivos (empacotamento).
+    **Por que?**: Fornece um modo fácil para automação de tarefas, a fim de carregar todos as definições dos módulos em primeiro lugar, então os demais arquivos (empacotamento).
 
 ### Configuration
 ou *Configuração*
 
   - Separe a configuração do módulo em seu próprio arquivo, nomeado após o módulo. Um arquivo de configuração para o módulo principal `app` é nomeado `app.config.js` (ou simplesmente `config.js`). Uma configuração para o módulo `admin.module.js` é nomeada `admin.config.js`. 
 
-    *Por que?*: Separe a configuração do módulo da definição, dos componentes e do código ativo.
+    **Por que?**: Separa a configuração do módulo da definição, dos componentes e do código ativo.
 
-    *Por que?*: Fornece um local identificável para definir as configurações de um módulo.
+    **Por que?**: Fornece um local identificável para definir as configurações de um módulo.
 
 ### Routes
 ou *Rotas*
