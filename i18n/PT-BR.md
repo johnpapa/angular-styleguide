@@ -1074,12 +1074,12 @@ ou *Limite 1 por arquivo*
   }
   ```
 
-    Nota: Há diferentes opções de nomear diretivas (directives), especialmente quando elas podem ser usadas em escopes (scopes) variados. Escolha uma que faça a diretiva e o nome do arquivo distinto e simples. Alguns exemplos são mostrados abaixo, mas veja a seção de nomeação para mais recomendações.
+    Nota: Há diferentes opções de nomear diretivas (directives), especialmente quando elas podem ser usadas em escopos (scopes) variados. Escolha uma que faça a diretiva e o nome do arquivo distinto e simples. Alguns exemplos são mostrados abaixo, mas veja a seção de nomeação para mais recomendações.
 
 ### Limit DOM Manipulation
 ou *Limite a manipulação do DOM*
 
-  - Quando estiver manipulando o DOM diretamente, utilize uma diretiva (directive). Se formas alternativas podem ser utilizadas, como utilizar CSS para setar estilos ou [serviços de animação (animation services)](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), então prefira utilizá-los. Por exemplo, se uma diretiva simplesmente esconde ou mostra um elemento, use ngHide/ngShow. 
+  - Quando estiver manipulando o DOM diretamente, utilize uma diretiva (directive). Se formas alternativas podem ser utilizadas, como: utilizar CSS para setar estilos ou [serviços de animação (animation services)](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), então prefira utilizá-los. Por exemplo, se uma diretiva simplesmente esconde ou mostra um elemento, use ngHide/ngShow. 
 
     **Por que?**: A manipulação do DOM pode ser difícil de testar, debugar, e há melhores maneiras (ex: CSS, animações (animations), templates).
 
@@ -1090,7 +1090,7 @@ ou *Forneça um prefixo único para as diretivas*
 
     **Por que?**: Um prefixo curto e único identifica o contexto e a origem da diretiva. Por exemplo, o prefixo `cc-` pode indicar que a diretiva é parte de um aplicativo da CodeCamper, enquanto a diretiva `acme-` pode indicar uma diretiva para a companhia Acme. 
 
-    Nota: Evite `ng-`, pois são reservadas para as diretivas do AngularJS. Pesquisa largamente as diretivas utilizadas para evitar conflitos de nomes, como `ion-` que são utilizadas para o [Ionic Framework](http://ionicframework.com/). 
+    Nota: Evite `ng-`, pois são reservadas para as diretivas do AngularJS. Pesquise largamente as diretivas utilizadas para evitar conflitos de nomes, como `ion-` que são utilizadas para o [Ionic Framework](http://ionicframework.com/). 
 
 ### Restrict to Elements and Attributes
 ou *Restringir para elementos e atributos*
@@ -1207,7 +1207,7 @@ ou *Diretivas e "ControladorComo"*
   ```
 
   ```html
-  /* example.directive.html */
+  <!-- example.directive.html -->
   <div>hello world</div>
   <div>max={{vm.max}}<input ng-model="vm.max"/></div>
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
@@ -1266,7 +1266,7 @@ ou *Resolução de promessas na rota*
 
   - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se vocẽ precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
 
-    **Por que?**: Um controlador (controller) pode precisar de dados antes de ser carregado. Esses dados podem vir de uma promessa (promise) através de uma factory personalizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Utilizando [resolução de rota (route resolve)](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite as promessas (promises) serem resolvidas antes da lógica do controlador (controller) ser executada, então ele pode executar ações através dos dados dessa promessa (promise).
+    **Por que?**: Um controlador (controller) pode precisar de dados antes de ser carregado. Esses dados podem vir de uma promessa (promise) através de uma factory personalizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Utilizar [resolução de rota (route resolve)](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite as promessas (promises) serem resolvidas antes da lógica do controlador (controller) ser executada, então ele pode executar ações através dos dados dessa promessa (promise).
 
   ```javascript
   /* evite */
@@ -1332,7 +1332,7 @@ ou *Não seguro para Minificação*
 
   - Evite usar o atalho de sintaxe de declarar dependências sem usar uma abordagem segura para minificação.
   
-    *Por que?*: Os parâmetros do componente (por ex. controller, factory, etc) serão convertidos em variáveis encurtadas. Por exemplo, `common` e `dataservice` podem virar `a` ou `b` e não serem encontrados pelo AngularJS.
+    **Por que?**: Os parâmetros do componente (por ex. controller, factory, etc) serão convertidos em variáveis encurtadas. Por exemplo, `common` e `dataservice` podem virar `a` ou `b` e não serem encontrados pelo AngularJS.
 
     ```javascript
     /* evite - não seguro para minificação*/
@@ -1356,11 +1356,11 @@ ou *Identifique Dependências Manualmente*
 
   - Use `$inject` para identificar manualmente suas dependências de componentes do AngularJS.
   
-    *Por que?*: Esta técnica espelha a técnica usada por [`ng-annotate`](https://github.com/olov/ng-annotate), a qual eu recomendo para automatizar a criação de dependências seguras para minificação. Se `ng-annotate` detectar que a injeção já foi feita, ela não será duplicada.
+    **Por que?**: Esta técnica espelha a técnica usada por [`ng-annotate`](https://github.com/olov/ng-annotate), a qual eu recomendo para automatizar a criação de dependências seguras para minificação. Se `ng-annotate` detectar que a injeção já foi feita, ela não será duplicada.
 
-    *Por que?*: Isto salvaguarda suas dependências de serem vulneráveis a problemas de minificação quando parâmetros podem ser encurtados. Por exemplo, `common` e `dataservice` podem se tornar `a` ou `b` e não serem encontrados pelo AngularJS.
+    **Por que?**: Isto salvaguarda suas dependências de serem vulneráveis a problemas de minificação quando parâmetros podem ser encurtados. Por exemplo, `common` e `dataservice` podem se tornar `a` ou `b` e não serem encontrados pelo AngularJS.
     
-    *Por que?*: Evite criar dependências in-line pois listas longas podem ser difíceis de ler no array. Além disso, pode ser confuso o array ser uma série de strings enquanto o último item é a função do componente.
+    **Por que?**: Evite criar dependências in-line pois listas longas podem ser difíceis de ler no array. Além disso, pode ser confuso o array ser uma série de strings enquanto o último item é a função do componente.
 
     ```javascript
     /* evite */
@@ -1430,9 +1430,9 @@ ou *Identifique Dependências do Resolvedor de Rotas Manualmente*
 
   - Use $inject para identificar manualmente as dependências do seu resolvedor de rotas para componentes do AngularJS.
   
-    *Por que?*: Esta técnica separa a função anônima do resolvedor de rota, tornando-a mais fácil de ler.
+    **Por que?**: Esta técnica separa a função anônima do resolvedor de rota, tornando-a mais fácil de ler.
 
-    *Por que?*: Uma chamada a `$inject` pode facilmente preceder o resolvedor para fazer qualquer dependência segura para minificação.
+    **Por que?**: Uma chamada a `$inject` pode facilmente preceder o resolvedor para fazer qualquer dependência segura para minificação.
 
     ```javascript
     /* recomendado */
@@ -1463,9 +1463,9 @@ ou *Minificação e Anotação*
 
   - Use [ng-annotate](//github.com/olov/ng-annotate) para [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) e comente as funções que precisam de injeção de dependência automatizada usando `/** @ngInject */`
   
-    *Por que?*: Isso protege seu código de qualquer dependência que pode não estar usando práticas seguras para minificação.
+    **Por que?**: Isso protege seu código de qualquer dependência que pode não estar usando práticas seguras para minificação.
 
-    *Por que?*: [`ng-min`](https://github.com/btford/ngmin) está deprecated. 
+    **Por que?**: [`ng-min`](https://github.com/btford/ngmin) está deprecated. 
 
     > Eu prefiro Gulp pois sinto que é mais fácil de escrever, de ler, e de debugar.
 
@@ -1532,14 +1532,14 @@ ou *Minificação e Anotação*
     }
     ```
 
-    > Nota: Apartir do Angular 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
+    > Nota: A partir do Angular 1.3 use o parâmetro `ngStrictDi` da diretiva  [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Quando presente, o injetor será criado no modo "strict-di" fazendo com que a aplicação falhe ao tentar invocar funções que não usem anotação explícita de função (elas podem não ser seguras para minificação). Informação de debug será logada no console para ajudar a rastrear o código ofensivo.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Utilize Gulp ou Grunt para o ng-annotate
 
   - Utilize [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ou [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) para tarefas de build automatizadas. Injete `/* @ngInject */` antes de qualquer função que tenha dependências.
   
-    *Por que?*: ng-annotate vai capturar todas as dependências, mas as vezes requer dicas utilizando a sintaxe `/* @ngInject */` .
+    **Por que?**: ng-annotate vai capturar todas as dependências, mas as vezes requer dicas utilizando a sintaxe `/* @ngInject */` .
 
     O código abaixo é um exemplo de uma task Gulp utilizando ngAnnotate
 
@@ -1615,7 +1615,7 @@ ou *Coletores de exceção*
 
   - Criar um factory que expôe uma interface para capturar e tratar adequadamente as exceções.
 
-    *Por que?*: Fornece uma forma consistente de coletar exceções que podem ser lançadas no seu código (ex. durante uma chamada XHR ou uma promessa (promise) que falhou).
+    **Por que?**: Fornece uma forma consistente de coletar exceções que podem ser lançadas no seu código (ex. durante uma chamada XHR ou uma promessa (promise) que falhou).
 
     Nota: O coletor de exceção é bom para coletar e reagir às exceções específicas das chamadas que você sabe que podem ser lançadas. Por exemplo, quando realizar uma chamada XHR que retorna dados de um serviço remoto e você quer coletar qualquer exceção desse serviço, reagindo de uma maneira única.
 
@@ -1645,17 +1645,17 @@ ou *Coletores de exceção*
 	
   - Gerencie e log todos os erros de routing utilizando o [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *Por que?*: Fornece uma maneira consistente de gerenciar erros relacionados a routing.
+    **Por que?**: Fornece uma maneira consistente de gerenciar erros relacionados a routing.
     
-    *Por que?*: Potencialmente fornece uma melhor experiência de usuário se um erro de routing ocorrer e você redirecionar o usuário para uma tela amigável com mais detalhes ou opções de recuperação.
+    **Por que?**: Potencialmente fornece uma melhor experiência de usuário se um erro de routing ocorrer e você redirecionar o usuário para uma tela amigável com mais detalhes ou opções de recuperação.
 
     ```javascript
     /* recomendado */
     function handleRoutingErrors() {
         /**
-         * Route cancellation:
-         * On routing error, go to the dashboard.
-         * Provide an exit clause if it tries to do it twice.
+         * Cancelamento de rota:
+         * Quando houver erro no roteamento, vá para o dashboard.
+         * Forneça uma cláusula de saída se ele tentar fazer isso 2 vezes.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
@@ -1663,8 +1663,8 @@ ou *Coletores de exceção*
                     'unknown target';
                 var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
                 /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
+                 * Opcionalmente log usando um serviço customizado ou $log.
+                 * (Não se esqueça de injetar o serviço customizado)
                  */
                 logger.warning(msg, [current]);
             }
