@@ -2712,9 +2712,12 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "disallowSpacesInsideArrayBrackets": "all",
         "disallowSpacesInsideParentheses": true,
 
-        "validateJSDoc": {
+        "jsDoc": {
+            "checkAnnotations": true,
             "checkParamNames": true,
-            "requireParamTypes": true
+            "requireParamTypes": true,
+            "checkReturnTypes": true,
+            "checkTypes": true
         },
 
         "disallowMultipleLineBreaks": true,
