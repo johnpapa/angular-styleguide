@@ -1406,7 +1406,7 @@ ou *Identifique Dependências Manualmente*
             controller: DashboardPanel,
         };
 
-        DashboardPanel.$inject = ['logger']; // Unreachable
+        DashboardPanel.$inject = ['logger']; // inacessível
         function DashboardPanel(logger) {
         }
     }
@@ -1415,7 +1415,7 @@ ou *Identifique Dependências Manualmente*
     ```javascript
     // dentro da definição de diretiva
     function outer() {
-        DashboardPanel.$inject = ['logger']; // reachable
+        DashboardPanel.$inject = ['logger']; // acessível
         return {
             controller: DashboardPanel,
         };
