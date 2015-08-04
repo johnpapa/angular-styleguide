@@ -64,7 +64,7 @@ ou *Responsabilidade Única*
 
   - Defina um componente por arquivo.
 
-  O exemplo seguinte define um módulo `app` e suas dependências, define um controller e define um factory, todos no mesmo arquivo.
+  O exemplo seguinte define um módulo `app` e suas dependências, define um controller e define uma factory, todos no mesmo arquivo.
 
   ```javascript
   /* evite */
@@ -145,7 +145,7 @@ ou *Responsabilidade Única*
   /**
    * recomendado 
    *
-   * nenhuma global é deixada para trás 
+   * nada global é deixado para trás 
    */
 
   // logger.js
@@ -220,7 +220,7 @@ ou *Evitando Colisão de Nomes*
 
 ### *Getters*
 
-  - Quando usando um módulo, evite usar as variáveis e então use o encadeamento com a sintaxe *getter*.
+  - Quando usando um módulo, evite usar uma variável. Em vez disso, use encadeamento com a sintaxe *getter*.
 
   **Por que?** Isso produz um código mais legível e evita colisão de variáveis ou vazamentos.
 
@@ -295,7 +295,7 @@ ou *Controladores*
 
   - Utilize a sintaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) ao invés da sintaxe `clássica controller com $scope`. 
 
-	**Por que?**: Controllers são construídos, "iniciados", e fornecem um nova instância única, e a sintaxe `controlerAs` é mais próxima de um construtor JavaScript do que a `sintaxe clássica do $scope`.
+	**Por que?**: Controllers são construídos, "iniciados", e fornecem um nova instância única, e a sintaxe `controllerAs` é mais próxima de um construtor JavaScript do que a `sintaxe clássica do $scope`.
 
 	**Por que?**: Isso promove o uso do binding de um objeto "pontuado", ou seja, com propriedades na View (ex. `customer.name` ao invés de `name`), que é mais contextual, legível, e evita qualquer problema com referências que podem ocorrer sem a "pontuação"
 
@@ -323,7 +323,7 @@ ou *Controladores*
 
   **Por que?**: O `controllerAs` é uma forma mais simples de lidar com o `$scope`. Você ainda poderá fazer o bind para a View e ainda poderá acessar os métodos do `$scope`.  
 
-  **Por que?**: Ajuda a evitar a tentação de usar o métodos do `$scope` dentro de um controller quando seria melhor evitá-los ou movê-los para um factory. Considere utilizar o  `$scope` em um factory, ou em um controller apenas quando necessário. Por exemplo, quando publicar e subscrever eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considere mover estes casos para um factory e invocá-los a partir do controller.
+  **Por que?**: Ajuda a evitar a tentação de usar os métodos do `$scope` dentro de um controller quando seria melhor evitá-los ou movê-los para um factory. Considere utilizar o  `$scope` em um factory, ou em um controller apenas quando necessário. Por exemplo, quando publicar e subscrever eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considere mover estes casos para um factory e invocá-los a partir do controller.
 
   ```javascript
   /* evite */
