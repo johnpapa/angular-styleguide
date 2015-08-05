@@ -246,8 +246,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   *Why?*: A module should only be created once, then retrieved from that point and after.
 
-    - Use `angular.module('app', []);` to set a module.
-    - Use `angular.module('app');` to get a module.
+  - Use `angular.module('app', []);` to set a module.
+  - Use `angular.module('app');` to get a module.
 
 ### Named vs Anonymous Functions
 ###### [Style [Y024](#style-y024)]
