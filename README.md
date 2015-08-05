@@ -2406,7 +2406,51 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
+
+    ```javascript
+    /// Gulp example with Karma directly
+    function startTests(singleRun, done) {
+        var child;
+        var excludeFiles = [];
+        var fork = require('child_process').fork;
+        var karma = require('karma').server;
+        var serverSpecs = config.serverIntegrationSpecs;
+
+        if (args.startServers) {
+            log('Starting servers');
+            var savedEnv = process.env;
+            savedEnv.NODE_ENV = 'dev';
+            savedEnv.PORT = 8888;
+            child = fork(config.nodeServer);
+        } else {
+            if (serverSpecs && serverSpecs.length) {
+                excludeFiles = serverSpecs;
+            }
+        }
+
+        karma.start({
+            configFile: __dirname + '/karma.conf.js',
+            exclude: excludeFiles,
+            singleRun: !!singleRun
+        }, karmaCompleted);
+
+        ////////////////
+
+        function karmaCompleted(karmaResult) {
+            log('Karma completed');
+            if (child) {
+                log('shutting down the child process');
+                child.kill();
+            }
+            if (karmaResult === 1) {
+                done('karma: tests failed with code ' + karmaResult);
+            } else {
+                done();
+            }
+        }
+    }
+    ```
 
 ### Stubbing and Spying
 ###### [Style [Y193](#style-y193)]
