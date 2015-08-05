@@ -246,8 +246,15 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   *Why?*: A module should only be created once, then retrieved from that point and after.
 
-    - Use `angular.module('app', []);` to set a module.
-    - Use `angular.module('app');` to get a module.
+  ```javascript
+  /* recommended */
+
+  // to set a module
+  angular.module('app', []);
+
+  // to get a module
+  angular.module('app');
+  ```
 
 ### Named vs Anonymous Functions
 ###### [Style [Y024](#style-y024)]
@@ -2409,7 +2416,9 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
 
     ```javascript
-    /// Gulp example with Karma directly
+    /* recommended */
+
+    // Gulp example with Karma directly
     function startTests(singleRun, done) {
         var child;
         var excludeFiles = [];
