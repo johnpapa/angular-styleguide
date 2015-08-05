@@ -249,9 +249,16 @@ Invece usa la più semplice sintassi setter.
   - Setta solo una volta e prendi (get) per tutte le altre istanze.
 	
   *Perché?*: Un modulo dovrebbe essere creato solamente una volta, quindi recuperato da lì in avanti.
-  	 
-    - Usa `angular.module('app', []);` per settare un modulo.
-    - Usa `angular.module('app');` per prendere (get) un modulo. 
+
+  ```javascript
+  /* consigliato */
+
+  // per creare un modulo
+  angular.module('app', []);
+
+  // per recuperare un modulo
+  angular.module('app');
+  ```
 
 ### Funzioni con un nome vs funzioni anonime
 ###### [Stile [Y024](#stile-y024)]
