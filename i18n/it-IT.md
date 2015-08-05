@@ -2409,7 +2409,53 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: Alcuni IDE cominciano ad integrarsi con Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com). Quando usi Gulp, usa [Karma](https://github.com/karma-runner/karma) direttamente e non con un plugin dal momento che le API possono essere richiamate direttamente.
+
+    ```javascript
+    /* consigliato */
+
+    // Esempio di Gulp che usa direttamente Karma
+    function startTests(singleRun, done) {
+        var child;
+        var excludeFiles = [];
+        var fork = require('child_process').fork;
+        var karma = require('karma').server;
+        var serverSpecs = config.serverIntegrationSpecs;
+
+        if (args.startServers) {
+            log('Starting servers');
+            var savedEnv = process.env;
+            savedEnv.NODE_ENV = 'dev';
+            savedEnv.PORT = 8888;
+            child = fork(config.nodeServer);
+        } else {
+            if (serverSpecs && serverSpecs.length) {
+                excludeFiles = serverSpecs;
+            }
+        }
+
+        karma.start({
+            configFile: __dirname + '/karma.conf.js',
+            exclude: excludeFiles,
+            singleRun: !!singleRun
+        }, karmaCompleted);
+
+        ////////////////
+
+        function karmaCompleted(karmaResult) {
+            log('Karma completed');
+            if (child) {
+                log('shutting down the child process');
+                child.kill();
+            }
+            if (karmaResult === 1) {
+                done('karma: tests failed with code ' + karmaResult);
+            } else {
+                done();
+            }
+        }
+    }
+    ```
 
 ### Stubbing e Spying
 ###### [Stile [Y193](#stile-y193)]
