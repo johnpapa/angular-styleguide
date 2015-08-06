@@ -475,11 +475,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Sessions(dataservice) {
+  function Sessions(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = sessionDataService.refresh; // 1 liner is OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
@@ -505,7 +505,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    * avoid
    * Using function expressions.
    */
-  function Avengers(dataservice, logger) {
+  function Avengers(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -517,7 +517,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       }
 
       var getAvengers = function() {
-          return dataservice.getAvengers().then(function(data) {
+          return avengersService.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
           });
@@ -537,7 +537,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    * Using function declarations
    * and bindable members up top.
    */
-  function Avengers(dataservice, logger) {
+  function Avengers(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
@@ -552,7 +552,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       }
 
       function getAvengers() {
-          return dataservice.getAvengers().then(function(data) {
+          return avengersService.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
           });
@@ -615,7 +615,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
             .then(function(isOk) { vm.isCreditOk = isOk; })
-            .catch(showServiceError);
+            .catch(showError);
       };
   }
   ```
@@ -1626,14 +1626,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers(storageService, avengerService) {
+    function Avengers(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
 
         function storeHero() {
             var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
+            storage.save(hero.name, hero);
         }
     }
     ```
@@ -1646,18 +1646,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers(storageService, avengerService) {
+    function Avengers(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
 
         function storeHero() {
             var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
+            storage.save(hero.name, hero);
         }
     }
 
-    Avengers.$inject = ['storageService', 'avengerService'];
+    Avengers.$inject = ['storage', 'avengerService'];
     ```
 
     Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
@@ -1979,14 +1979,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     function AvengersController() { }
     ```
 
-### Factory Names
+### Factory and Service Names
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`.
+  - Use consistent names for all factories and services named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`. Only suffix service and factories with `Service` when it is not clear what they are (i.e. when they are nouns).
 
     *Why?*: Provides a consistent way to quickly identify and reference factories.
 
     *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
+
+    *Why?*: Clear service names such as `logger` do not require a suffix.
+
+    *Why?*: Service names such as `avengers` are nouns and require a suffix and should be named `avengersService`.
 
     ```javascript
     /**
@@ -1999,6 +2003,26 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .factory('logger', logger);
 
     function logger() { }
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // credit.service.js
+    angular
+        .module
+        .factory('creditService', creditService);
+
+    function creditService() { }
+
+    // credit.service.js
+    angular
+        .module
+        .service('customersService', customersService);
+
+    function customersService() { }
     ```
 
 ### Directive Component Names
