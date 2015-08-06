@@ -475,11 +475,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Sessions(dataservice) {
+  function Sessions(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = sessionDataService.refresh; // 1 liner is OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
@@ -505,7 +505,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    * avoid
    * Using function expressions.
    */
-  function Avengers(dataservice, logger) {
+  function Avengers(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -517,7 +517,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       }
 
       var getAvengers = function() {
-          return dataservice.getAvengers().then(function(data) {
+          return avengersService.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
           });
@@ -537,7 +537,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    * Using function declarations
    * and bindable members up top.
    */
-  function Avengers(dataservice, logger) {
+  function Avengers(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
@@ -552,7 +552,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       }
 
       function getAvengers() {
-          return dataservice.getAvengers().then(function(data) {
+          return avengersService.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
           });
@@ -615,7 +615,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
             .then(function(isOk) { vm.isCreditOk = isOk; })
-            .catch(showServiceError);
+            .catch(showError);
       };
   }
   ```
@@ -1626,14 +1626,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers(storageService, avengerService) {
+    function Avengers(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
 
         function storeHero() {
             var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
+            storage.save(hero.name, hero);
         }
     }
     ```
@@ -1646,18 +1646,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers(storageService, avengerService) {
+    function Avengers(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
 
         function storeHero() {
             var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
+            storage.save(hero.name, hero);
         }
     }
 
-    Avengers.$inject = ['storageService', 'avengerService'];
+    Avengers.$inject = ['storage', 'avengerService'];
     ```
 
     Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
