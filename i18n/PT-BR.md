@@ -1916,7 +1916,6 @@ ou *Princípio da estrutura LIFT na aplicação*
 ### Locate
 ou *Localizar*
 
-  - Make locating your code intuitive, simple and fast.
   - Torne a localização do seu código: intuitiva, simples e rápida.
 
     **Por que?**: Acho que isso é super importante para um projeto. Se a equipe não pode encontrar rapidamente os arquivos que precisam para trabalhar, eles não serão capazes de trabalhar da forma mais eficiente possível, e a estrutura precisa mudar. Você pode não saber o nome do arquivo ou onde os arquivos relacionados estão, por isso, colocando-os nos locais mais intuitivos e próximos uns dos outros, economiza uma boa parcela de tempo. Uma pasta descrevendo a estrutura pode ajudá-lo.
@@ -1956,7 +1955,6 @@ ou *Plano*
 ### T-DRY (Try to Stick to DRY)
 ou *Tente manter-se em DRY - Não repita a si mesmo*
 
-  - Be DRY, but don't go nuts and sacrifice readability.
   - Mantenha-se DRY, mas não fique louco e sacrifique a legibilidade.
 
     **Por que?**: Não ficar se repetindo é importante, mas não é crucial se acabar sacrificando os outros itens do LIFT, por isso eu chamo de T-DRY (Tente não ficar se repetindo). Eu não quero escrever session-view.html para uma view, porque obviamente é uma view. Se não é óbvio ou uma convenção, então eu renomeio.
