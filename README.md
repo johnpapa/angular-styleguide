@@ -1979,14 +1979,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     function AvengersController() { }
     ```
 
-### Factory Names
+### Factory and Service Names
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`.
+  - Use consistent names for all factories and services named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`. Only suffix service and factories with `Service` when it is not clear what they are (i.e. when they are nouns).
 
     *Why?*: Provides a consistent way to quickly identify and reference factories.
 
     *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
+
+    *Why?*: Clear service names such as `logger` do not require a suffix.
+
+    *Why?*: Service names such as `avengers` are nouns and require a suffix and should be named `avengersService`.
 
     ```javascript
     /**
@@ -1999,6 +2003,26 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .factory('logger', logger);
 
     function logger() { }
+    ```
+
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // credit.service.js
+    angular
+        .module
+        .factory('creditService', creditService);
+
+    function creditService() { }
+
+    // credit.service.js
+    angular
+        .module
+        .service('customersService', customersService);
+
+    function customersService() { }
     ```
 
 ### Directive Component Names
