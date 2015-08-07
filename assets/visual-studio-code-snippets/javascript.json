@@ -1,0 +1,181 @@
+{
+/*
+     // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and
+     // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+     // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+     // Example:
+     "Print to console": {
+        "prefix": "log",
+        "body": [
+            "console.log('$1');",
+            "$2"
+        ],
+        "description": "Log output to console"
+    }
+*/
+    "ngcontroller": {
+        "prefix": "ngcontroller",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "",
+            "    angular",
+            "        .module('${1:module}')",
+            "        .controller('${2:Controller}', ${2:Controller});",
+            "",
+            "    ${2:Controller}.$inject = [${3:dependencies}];",
+            "",
+            "    /* @ngInject */",
+            "    function ${2:Controller}(${3:dependencies}) {",
+            "        var vm = this;",
+            "        vm.title = '${2:Controller}';",
+            "",
+            "        activate();",
+            "",
+            "        ////////////////",
+            "",
+            "        function activate() {",
+            "        }",
+            "    }",
+            "})();",
+            ""
+        ]
+    },
+
+    "ngmodule": {
+        "prefix": "ngmodule",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "",
+            "    angular",
+            "        .module('${1:module}', [",
+            "            '${2:dependencies}'",
+            "        ]);",
+            "})();",
+            ""
+        ]
+    },
+
+    "ngdirective": {
+        "prefix": "ngdirective",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "",
+            "    angular",
+            "        .module('${1:module}')",
+            "        .directive('${2:directive}', ${2:directive});",
+            "",
+            "    ${2:directive}.$inject = [${3:dependencies}];",
+            "",
+            "    /* @ngInject */",
+            "    function ${2:directive} (${3:dependencies}) {",
+            "        // Usage:",
+            "        //",
+            "        // Creates:",
+            "        //",
+            "        var directive = {",
+            "            bindToController: true,",
+            "            controller: ${4:Controller},",
+            "            controllerAs: '${5:vm}',",
+            "            link: link,",
+            "            restrict: 'A',",
+            "            scope: {",
+            "            }",
+            "        };",
+            "",
+            "        return directive;",
+            "",
+            "        function link(scope, element, attrs) {",
+            "        }",
+            "    }",
+            "",
+            "    /* @ngInject */",
+            "    function ${4:Controller} () {",
+            "    }",
+            "})();",
+            ""
+        ]
+    },
+
+    "ngfactory": {
+        "prefix": "ngfactory",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "",
+            "    angular",
+            "        .module('${1:module}')",
+            "        .factory('${2:factory}', ${2:factory});",
+            "",
+            "    ${2:factory}.$inject = [${3:dependencies}];",
+            "",
+            "    /* @ngInject */",
+            "    function ${2:Factory}(${3:dependencies}) {",
+            "        var service = {",
+            "            ${4:func}: ${4:func}",
+            "        };",
+            "",
+            "        return service;",
+            "",
+            "        ////////////////",
+            "",
+            "        function ${4:func}() {",
+            "        }",
+            "    }",
+            "})();",
+            ""
+        ]
+    },
+
+    "ngfilter": {
+        "prefix": "ngfilter",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "",
+            "    angular",
+            "        .module('${1:module}')",
+            "        .filter('${2:filter}', ${2:filter});",
+            "",
+            "    function ${2:filter}() {",
+            "        return ${2:filter}Filter;",
+            "",
+            "        ////////////////",
+            "",
+            "        function ${2:filter}Filter(${3:params}) {",
+            "            return ${3:params};",
+            "        }",
+            "    }",
+            "})();",
+            ""
+        ]
+    },
+
+    "ngservice": {
+        "prefix": "ngservice",
+        "body": [
+            "(function() {",
+            "    'use strict';",
+            "    angular",
+            "        .module('${1:module}')",
+            "        .service('${2:Service}', ${2:Service});",
+            "",
+            "    ${2:Service}.$inject = [${3:dependencies}];",
+            "",
+            "    /* @ngInject */",
+            "",
+            "    function ${2:Service}(${3:dependencies}) {",
+            "        this.${4:func} = ${4:func};",
+            "",
+            "        ////////////////",
+            "",
+            "        function ${4:function}() {",
+            "        }",
+            "    }",
+            "})();",
+            ""
+        ]
+    }
+}
