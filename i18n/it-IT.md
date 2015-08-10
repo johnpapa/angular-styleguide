@@ -249,9 +249,16 @@ Invece usa la più semplice sintassi setter.
   - Setta solo una volta e prendi (get) per tutte le altre istanze.
 	
   *Perché?*: Un modulo dovrebbe essere creato solamente una volta, quindi recuperato da lì in avanti.
-  	 
-    - Usa `angular.module('app', []);` per settare un modulo.
-    - Usa `angular.module('app');` per prendere (get) un modulo. 
+
+  ```javascript
+  /* consigliato */
+
+  // per creare un modulo
+  angular.module('app', []);
+
+  // per recuperare un modulo
+  angular.module('app');
+  ```
 
 ### Funzioni con un nome vs funzioni anonime
 ###### [Stile [Y024](#stile-y024)]
@@ -472,11 +479,11 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Sessions(dataservice) {
+  function Sessions(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // codice di 1 liena è OK
+      vm.refresh = sessionDataService.refresh; // codice di 1 liena è OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
@@ -502,7 +509,7 @@ Invece usa la più semplice sintassi setter.
    * evitare 
    * Uso di espressioni di funzione.
    */
-  function Avengers(dataservice, logger) {
+  function Avengers(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -514,7 +521,7 @@ Invece usa la più semplice sintassi setter.
       }
 
       var getAvengers = function() {
-          return dataservice.getAvengers().then(function(data) {
+          return avengersService.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
           });
@@ -534,7 +541,7 @@ Invece usa la più semplice sintassi setter.
    * Usare dichiarazione di funzione
    * e membri che fanno in binding in alto.
    */
-  function Avengers(dataservice, logger) {
+  function Avengers(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
@@ -549,7 +556,7 @@ Invece usa la più semplice sintassi setter.
       }
 
       function getAvengers() {
-          return dataservice.getAvengers().then(function(data) {
+          return avengersService.getAvengers().then(function(data) {
               vm.avengers = data;
               return vm.avengers;
           });
@@ -611,7 +618,7 @@ Invece usa la più semplice sintassi setter.
       function checkCredit() { 
          return creditService.isOrderTotalOk(vm.total)
             .then(function(isOk) { vm.isCreditOk = isOk; })
-            .catch(showServiceError);
+            .catch(showError);
       };
   }
   ```
@@ -1623,14 +1630,14 @@ Invece usa la più semplice sintassi setter.
         .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers(storageService, avengerService) {
+    function Avengers(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
 
         function storeHero(){
             var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
+            storage.save(hero.name, hero);
         }
     }
     ```
@@ -1643,18 +1650,18 @@ Invece usa la più semplice sintassi setter.
         .controller('Avengers', Avengers);
 
     /* @ngInject */
-    function Avengers(storageService, avengerService) {
+    function Avengers(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
 
         function storeHero(){
             var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
+            storage.save(hero.name, hero);
         }
     }
 
-    Avengers.$inject = ['storageService', 'avengerService'];
+    Avengers.$inject = ['storage', 'avengerService'];
     ```
 
     Nota: Se `ng-annotate` rileva che l'iniezione è già stata fatta (p.e. `@ngInject` è stato rilevato), non duplicherà il codice di `$inject`.
@@ -1975,14 +1982,18 @@ Invece usa la più semplice sintassi setter.
     function AvengersController(){ }
     ```
 
-### Nomi delle factory
+### Nomi delle factory e dei service
 ###### [Stile [Y125](#stile-y125)]
 
-  - Usa una nomenclatura consistente per tutte le factory dando i nomi a seguito delle loro funzionalità. Usa il camel-case per service e factory. Evita di pre-nominare factory e service con `$`
+  - Usa una nomenclatura consistente per tutte le factory e i service dando i nomi a seguito delle loro funzionalità. Usa il camel-case per service e factory. Evita di pre-nominare factory e service con `$`. Aggiungi il suffisso `Service` a service e factory soltanto quando non è chiaro cosa siano (p. es. quando si tratta di nomi).
 
     *Perché?*: Fornisce un modo consistente per identificare facilmente e referenziare le factory.
     
     *Perché?*: Evita collisione di nomi con factory e servizi di Angular esistenti che usano il prefisso `$`.
+    
+    *Perché?*: Service con nomi evidenti quali `logger` on richiedono il suffisso.
+    
+    *Perché?*: Nomi di service quali `avengers` sono nomi, richiedono in suffisso e dovrebbero essere nominati `avengersService`.
 
     ```javascript
     /**
@@ -1997,6 +2008,26 @@ Invece usa la più semplice sintassi setter.
     function logger(){ }
     ```
 
+    ```javascript
+    /**
+     * consigliato
+     */
+
+    // credit.service.js
+    angular
+        .module
+        .factory('creditService', creditService);
+
+    function creditService() { }
+
+    // credit.service.js
+    angular
+        .module
+        .service('customersService', customersService);
+
+    function customersService() { }
+    ```
+    
 ### Nomi dei componenti directive
 ###### [Stile [Y126](#stile-y126)]
 
@@ -2409,7 +2440,53 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: Alcuni IDE cominciano ad integrarsi con Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com). Quando usi Gulp, usa [Karma](https://github.com/karma-runner/karma) direttamente e non con un plugin dal momento che le API possono essere richiamate direttamente.
+
+    ```javascript
+    /* consigliato */
+
+    // Esempio di Gulp che usa direttamente Karma
+    function startTests(singleRun, done) {
+        var child;
+        var excludeFiles = [];
+        var fork = require('child_process').fork;
+        var karma = require('karma').server;
+        var serverSpecs = config.serverIntegrationSpecs;
+
+        if (args.startServers) {
+            log('Starting servers');
+            var savedEnv = process.env;
+            savedEnv.NODE_ENV = 'dev';
+            savedEnv.PORT = 8888;
+            child = fork(config.nodeServer);
+        } else {
+            if (serverSpecs && serverSpecs.length) {
+                excludeFiles = serverSpecs;
+            }
+        }
+
+        karma.start({
+            configFile: __dirname + '/karma.conf.js',
+            exclude: excludeFiles,
+            singleRun: !!singleRun
+        }, karmaCompleted);
+
+        ////////////////
+
+        function karmaCompleted(karmaResult) {
+            log('Karma completed');
+            if (child) {
+                log('shutting down the child process');
+                child.kill();
+            }
+            if (karmaResult === 1) {
+                done('karma: tests failed with code ' + karmaResult);
+            } else {
+                done();
+            }
+        }
+    }
+    ```
 
 ### Stubbing e Spying
 ###### [Stile [Y193](#stile-y193)]
