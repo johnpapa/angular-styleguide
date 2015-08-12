@@ -2320,7 +2320,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidates include providers and constants.
 
-    *Why?*: This makes it easier to have a less places for configuration.
+    *Why?*: This makes it easier to have less places for configuration.
 
   ```javascript
   angular
