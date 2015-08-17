@@ -1986,7 +1986,7 @@ ou *Estrutura de Pastas-por-Recurso*
 
     **Por que?**: As orientações LIFT estão todas sendo respeitadas.
 
-    **Por que?**: Ajuda a reduzir o app de tornar-se desordenado através da organização do conteúdo e mantêm alinhado com as diretrizes LIFT.
+    **Por que?**: Através da organização do conteúdo, ajuda a reduzir o app de tornar-se desordenado e mantêm alinhado com as diretrizes LIFT.
 
     **Por que?**: Quando há um grande número de arquivos (10+) localizá-los é mais fácil com estruturas de pastas consistentes e mais difícil em estruturas planas.
 
