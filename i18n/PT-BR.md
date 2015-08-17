@@ -1962,34 +1962,37 @@ ou *Tente manter-se em DRY - Não repita a si mesmo*
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Application Structure
+ou *Estrutura da aplicação*
 
 ### Overall Guidelines
+ou *Orientações gerais*
 
-  -  Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  - Tenha uma visão de curto prazo da implementação e uma visão de longo prazo. Em outras palavras, comece pequeno, mas tenha em mente o caminho que o aplicativo pode tomar. Todos do código do aplicativo vão em uma pasta raiz chamada `app`. Todo o conteúdo é feito com um recurso por arquivo. Cada controlador (controller), serviço (service), módulo (module), visão (view) está em seu próprio arquivo. Todos os scripts de terceiros são armazenados em uma outra pasta raiz e não na pasta `app`. Não foi eu que escrevi esses scripts, então eu não quero que eles baguncem meu aplicativo (`bower_components`,` scripts`, `lib`).
 
-    Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Nota: Encontre mais detalhes sobre essa estrutura em [esse post original sobre a estrutura da aplicação](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions. 
+  - Coloque os componentes que definem o layout geral do aplicativo em uma pasta chamada `layout`. Eles podem incluir uma view e uma controller que agem como recipiente para o app, navegação, menus, áreas de conteúdo, e outras regiões.
 
-    *Why?*: Organizes all layout in a single place re-used throughout the application.
+    **Por que?**: Organize todos os layouts em um único lugar reutilizado em toda a aplicação.
 
 ### Folders-by-Feature Structure
+ou *Estrutura de Pastas-por-Recurso*
 
-  - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed. 
+  - Crie pastas nomeadas para cada recurso que elas representam. Quando uma pasta cresce ao ponto de conter mais de 7 arquivos, comece considerar a criação de uma pasta para eles. O seu limite pode ser diferente, por isso, ajuste conforme necessário.
 
-    *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names. 
+    **Por que?**: O desenvolvedor pode localizar o código, identificar o que cada arquivo representa em resumo, a estrutura é plana como deve ser, e não há nenhum nome repetido ou redundante.
 
-    *Why?*: The LIFT guidelines are all covered.
+    **Por que?**: As orientações LIFT estão todas sendo respeitadas.
 
-    *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    **Por que?**: Através da organização do conteúdo, ajuda a reduzir o app de tornar-se desordenado e mantêm alinhado com as diretrizes LIFT.
 
-    *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    **Por que?**: Quando há um grande número de arquivos (10+) localizá-los é mais fácil com estruturas de pastas consistentes e mais difícil em estruturas planas.
 
     ```javascript
     /**
-     * recommended
+     * recomendado
      */
 
     app/
@@ -2025,15 +2028,15 @@ ou *Tente manter-se em DRY - Não repita a si mesmo*
             session-detail.controller.js  
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Exemplo de estrutura na aplicação](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
 
-      Note: Do not use structuring using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Nota: Não estruture seu aplicativo usando pastas-por-tipo. Isto requer alternar entre várias pastas ao trabalhar em um recurso e fica difícil de manejar quando o aplicativo cresce rapidamente para 5, 10 ou 25+ views e controllers (e outros recursos), o que torna mais difícil do que pasta-por-recurso para localizar arquivos.
 
     ```javascript
     /* 
-    * avoid
-    * Alternative folders-by-type.
-    * I recommend "folders-by-feature", instead.
+    * evite
+    * Alternativa pastas-por-tipo.
+    * Eu recomendo "pastas-por-recurso".
     */
     
     app/
