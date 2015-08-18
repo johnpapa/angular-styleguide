@@ -2218,6 +2218,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
         app.module.js
         app.config.js
         app.routes.js
+        directives.js
         controllers/
             attendees.js
             session-detail.js
@@ -2250,65 +2251,65 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 ## Modularité
 
-### De Nombreux Petits Modules Auto-Suffisants
+### Nombreux petits modules auto-suffisants
 ###### [Style [Y160](#style-y160)]
 
-  - Créez de petits modules qui encapsulent une responsabilité.
+  - Créez de petits modules qui encapsulent une seule responsabilité.
 
-    *Pourquoi ?* : Les Applications modulaires rendent faciles le branchement rapide puisqu'elles permettent aux équipes de développement de construire des sections verticales de l'application et de livrer incrémentalement. Cela signifie que nous pouvons brancher de nouvelles fonctionnalités à mesure que nous les développons.
+    *Pourquoi ?* : Les applications modulaires rendent facile la compossibilité rapide puisqu'elles permettent aux équipes de développement de construire verticalement des sections de l'application et de livrer incrémentalement. Cela signifie que nous pouvons brancher de nouvelles fonctionnalités au fur et à mesure de leur développement.
 
-### Création d'un Module Applicatif
+### Création d'un module applicatif
 ###### [Style [Y161](#style-y161)]
 
   - Créez un module racine pour l'application dont le rôle est d'assembler tous les modules et fonctionnalités de votre application. Nommez-le comme votre application.
 
-    *Pourquoi ?* : Angular encourage la modularité et la séparation des responsabilités. La création d'un module racine pour l'application dont le rôle est de lier ensemble les autres modules fournit un moyen très direct d'ajouter et de retirer des modules à votre application.
+    *Pourquoi ?* : Angular encourage la modularité et la séparation des responsabilités. La création d'un module racine pour l'application dont le rôle est de lier ensemble des autres modules fournit un moyen très direct d'ajouter et de retirer des modules à votre application.
 
-### Garder le Module Applicatif Léger
+### Garder le module applicatif léger
 ###### [Style [Y162](#style-y162)]
 
   - Ne placez dans le module applicatif que la logique d'assemblage de l'application. Laissez les fonctionnalités dans leurs propres modules.
 
-    *Pourquoi ?* : Ajouter des responsabilités supplémentaires à l'application racine pour récupérer des données, afficher des vues, ou toute autre logique non reliée à l'assemblage de l'application trouble le module applicatif rend plus difficile à réutiliser ou éteindre les ensembles de fonctionnalités.
+    *Pourquoi ?* : Ajouter des responsabilités supplémentaires à la racine de l'application pour récupérer des données, afficher des vues, ou toute autre logique non reliée à l'assemblage de l'application trouble le module applicatif et rend plus difficile à réutiliser ou éteindre les ensembles de fonctionnalités.
 
     *Pourquoi ?* : Le module applicatif devient une déclaration qui montre quels modules aident à constituer l'application.
 
-### Les Macro Fonctionnalités en tant que Modules
+### Les macro-fonctionnalités sont des modules
 ###### [Style [Y163](#style-y163)]
 
-  - Créez des modules qui représentent des macro fonctionnalités, comme le layout, les services ré-utilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
+  - Créez des modules qui représentent des macro-fonctionnalités, comme l'agencement graphique (*layout*), les services ré-utilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
 
     *Pourquoi ?* : Les modules auto-suffisants peuvent être ajoutés à l'application avec peu ou pas de friction.
 
-    *Pourquoi ?* : Les sprints ou itérations peuvent se focaliser sur les macro-fonctionnalités et les activer à la fin de l'itération.
+    *Pourquoi ?* : Les sprints ou itérations peuvent être focalisés sur les macro-fonctionnalités. Elles peuvent être activées à la fin de ceux-ci.
 
-    *Pourquoi ?* : Séparer les macros-fonctionnalités rend plus facile les tests des modules en isolation et la réutilisation du code.
+    *Pourquoi ?* : Séparer les macros-fonctionnalités en modules les rend plus facile à tester de façon isolée et à la réutilisation.
 
 ### Les Blocks Ré-Utilisables en tant que Modules
 ###### [Style [Y164](#style-y164)]
 
-  - Créez des modules qui représentent des blocs d'application ré-utilisables pour les services en commun tels que la gestion d'exceptions, les logs, les diagnostics, la sécurité et la gestion des données en locale.
+  - Créez des modules qui représentent des blocs ré-utilisables dans l'application pour les services en commun tels que la gestion des exceptions, les logs, les diagnostics, la sécurité et la gestion des données locale.
 
-    *Pourquoi ?* : Ces types de fonctinnalités sont requises dans de nombreuses application, donc en les gardant séparées dans leur propres modules elles peuvent être génériques par rapport aux applications et peuvent être ré-utilisées pour d'autres applications.
+    *Pourquoi ?* : Ces types de fonctionnalités sont requises dans de nombreuses application, donc en les gardant séparées dans leur propres modules elles peuvent être génériques et peuvent être ré-utilisées pour d'autres applications.
 
-### Dependences Entre Modules
+### Dépendances entre modules
 ###### [Style [Y165](#style-y165)]
 
   - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et ré-utilisables.
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modularité et Dépendences](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
-    *Pourquoi?* : Le module principal de l'appli continent une déclaration rapidement identifible des fonctionnalités de l'application.
+    *Pourquoi?* : Le module principal de l'application continent manifeste des fonctionnalités de l'application.
 
-    *Pourquoi ?* : Chaque groupe de fonctionnalité contient une déclaration de ce dont il dépend, de ce fait il peut être tiré comme dépendance dans d'autres applications et continuer à fonctionner.
+    *Pourquoi ?* : Chaque groupe de fonctionnalités contient une déclaration de ce dont il dépend, de ce fait il peut être importé comme dépendance dans d'autres applications et continuer à fonctionner.
 
-    *Pourquoi ?* : Les fonctionalités propres à l'appli tels que les services de données partagées deviennent faciles à repérer et partager au sein d'un `app.core` (choisissez un nom de votre choix pour ce module.
+    *Pourquoi ?* : Les fonctionnalités propres à l'application telles que les services de données partagées deviennent faciles à repérer et partager au sein d'un `app.core` (choisissez un nom de votre choix pour ce module).
 
-    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisisez-en une qui soit cohérente, suivez les règles des dépendances d'Angular, et la maintenance et la montée en charge sera facilitée.
+    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisissez-en une qui soit cohérente, suivez les règles des dépendances d'Angular, et la maintenance et la montée en charge sera facilitée.
 
-    > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais soumettez votre structure aux critères de cohérence, maintenance, et efficacité.
+    > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais pensez votre structure en termes de cohérence, maintenabilité, et efficacité.
 
-    > Dans de petites applic, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de cette petite application plus facile, mais rendez difficile la ré-utilisation de ces modules en dehors de cette application.
+    > Dans de petites applications, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de petites applications plus facile, mais rend difficile la ré-utilisation de ces modules en dehors de celle-ci.
 
 **[Retour en haut de page](#table-des-matières)**
 
