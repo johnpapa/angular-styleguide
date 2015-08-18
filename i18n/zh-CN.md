@@ -1013,7 +1013,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 **[返回顶部](#目录)**
 
 ## Directives
-###一个dirctive一个文件
+###一个directive一个文件
 ###### [Style [Y070](#style-y070)]
 
   - 一个文件中只创建一个directive，并依照directive来命名文件。 
