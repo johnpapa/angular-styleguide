@@ -2565,31 +2565,31 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 ### Utilisation
 ###### [Style [Y210](#style-y210)]
 
-  - Utilisez de subtiles [animations avec Angular](https://docs.angularjs.org/guide/animations) pour la transition entre les états pour les vues et les éléments visuels premiers. Incluez le [module ngAnimate](https://docs.angularjs.org/api/ngAnimate). Les trois clés sont la subtilité, la fluidité, l'homogénéïté.
+  - Utilisez de subtiles [animations avec Angular](https://docs.angularjs.org/guide/animations) pour les transitions entre les états pour les vues et les éléments visuels de base. Incluez le [module ngAnimate](https://docs.angularjs.org/api/ngAnimate). Les trois clés sont la subtilité, la fluidité, l’homogénéité.
 
-    *Pourquoi ?* : Des animations subtiles peuvent améliorer l'Expérience Utilisateur lorsqu'elles sont utilisées de façon appropriéés.
+    *Pourquoi ?* : Des animations subtiles peuvent améliorer l'expérience utilisateur lorsqu'elles sont utilisées de façon appropriées.
 
-    *Pourquoi ?* : Des animations subtiles peuvent améliorer la performance perçue lorsque les vues changent.
+    *Pourquoi ?* : Des animations subtiles peuvent améliorer les performances perçues lorsque les vues changent.
 
 ### Moins d'une Seconde
 ###### [Style [Y211](#style-y211)]
 
-  - Utilisez de courtes durées pour les animations. Je commence en général par 300 milli secondes et j'ajuste jusqu'à ce que ce soit bien.
+  - Utilisez de courtes durées pour les animations. Je commence en général par 300ms et j'ajuste jusqu'à ce que le résultat soit celui attendu.
 
-    *Pourquoi ?* : Les animations longues peuvent avoir un effet inverse sur l'Expérience Utilisateur et la performance perçue en donnant l'apparence d'une application lente.
+    *Pourquoi ?* : Les animations longues peuvent avoir des effets inverses sur l'expérience utilisateur et les performances perçues en donnant l'impression d'une application lente.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Utilisez [animate.css](http://daneden.github.io/animate.css/) pour les animations conventionnelles.
+  - Utilisez [animate.css](http://daneden.github.io/animate.css/) pour les animations classiques.
 
-    *Pourquoi ?* : Les animations que fournissent animate.css sont rapides, fluides et facile a ajouter à votre application.
+    *Pourquoi ?* : Les animations que fournit animate.css sont rapides, fluides et faciles à ajouter à votre application.
 
-    *Pourquoi ?* : Fournit de la cohérence dans vos animations.
+    *Pourquoi ?* : Fournit de la cohérence à vos animations.
 
-    *Pourquoi ?* : animate.css est largement utilisée et testée.
+    *Pourquoi ?* : animate.css est largement utilisée et testé.
 
-    Note : Voir ce [super post par Matias Niemelä sur les animations d'Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Note : Lire ce [super post par Matias Niemelä sur les animations Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Retour en haut de page](#table-des-matières)**
 
