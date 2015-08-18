@@ -26,7 +26,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   1. [Responsabilité Unique](#responsabilité-unique)
   1. [IIFE](#iife)
   1. [Modules](#modules)
-  1. [Contrôleurs](#controlleurs)
+  1. [Contrôleurs](#controleurs)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Services de données](#services-de-données)
@@ -220,7 +220,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Lorsque vous utilisez un module, évitez d'utiliser une variable en utilisant plutôt le chaînage avec la syntaxe *getter*.
 
-  *Pourquoi ?* : le code est plus lisible et évite les collisions de variables ou les fuites.
+  *Pourquoi ?* : Le code est plus lisible et évite les collisions de variables ou les fuites.
 
   ```javascript
   /* à éviter */
@@ -261,7 +261,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Utilisez des fonctions nommées au lieu de passer des fonction anonymes dans les *callbacks*.
 
-  *Pourquoi ?* : le code plus lisible, est plus facile à déboguer, et réduit l'imbrication des *callbacks*.
+  *Pourquoi ?* : Le code plus lisible, est plus facile à déboguer, et réduit l'imbrication des *callbacks*.
 
   ```javascript
   /* à éviter */
@@ -293,18 +293,18 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Controlleurs
+## Contrôleurs
 
-### La Syntaxe Vue controllerAs
+### Syntaxe de la vue avec `controllerAs`
 ###### [Style [Y030](#style-y030)]
 
-  - Utilisez la syntaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) au lieu de la syntaxe de `controlleur classique avec $scope`.
+  - Utilisez la syntaxe avec [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) au lieu de la syntaxe classique avec `$scope`.
 
-  *Pourquoi ?* : Les controlleurs sont construits, recréés, et fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
+  *Pourquoi ?* : Les contrôleurs sont construits, recréés, et fournissent une unique nouvelle instance. La syntaxe utilisant `controllerAs` est plus proche de celle d'un constructeur Javascript que la syntaxe classique avec `$scope`.
 
-  *Pourquoi ?* : Il encourage l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
+  *Pourquoi ?* : Elle encourage l'usage du *binding* entre un objet (avec la notation pointée) et la vue (ex. `customer.name` au lieu de `name`). Elle est plus contextuelle, plus facile à lire, et évite tout problème de référence qui peut arriver sans la notation « point ».
 
-  *Pourquoi ?* : Permet d'éviter l'usage des appels à `$parent` dans les Vues avec des controlleurs imbriqués.
+  *Pourquoi ?* : Elle permet d'éviter l'usage des appels à `$parent` dans les vues avec des contrôleurs imbriqués.
 
   ```html
   <!-- à éviter -->
@@ -320,16 +320,16 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   </div>
   ```
 
-### La Syntaxe de Controlleur controllerAs
+### Syntaxe du contrôleur avec `controllerAs`
 ###### [Style [Y031](#style-y031)]
 
-  - Utilisez la syntaxe `controllerAs` au lieu de la syntaxe de `controlleur classique avec $scope`.
+  - Utilisez la syntaxe avec `controllerAs` au lieu de la syntaxe de classique avec `$scope`.
 
-  - La syntaxe `controllerAs` utilise `this` à l'intérieur des controlleurs qui se font relier au `$scope`.
+  - La syntaxe avec `controllerAs` utilise `this` à l'intérieur des contrôleurs qui se fait *binder* à `$scope` implicitement.
 
-  *Pourquoi ?* : `controllerAs` est un sucre syntaxique sur le `$scope`. Vous pouvez toujours vous relier à la Vue et toujours accéder aux métodes du `$scope`.
+  *Pourquoi ?* : `controllerAs` est une simplification (sucre) syntaxique de `$scope`. Vous pouvez toujours vous *binder* dans la vue et accéder aux méthodes de `$scope`.
 
-  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes du `$scope` à l'intérieur d'un controlleur alors qu'il serait par ailleurs meilleur de les éviter ou de les déplacer dans une factory. Considérez utiliser le `$scope` dans une factory, ou seulement si nécessaire dans un controlleur. Par exemple lorsqu'il faut publier ou souscrire des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le controlleur.
+  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes de `$scope` à l'intérieur d'un contrôleur. Il est par ailleurs, meilleure pratique de les éviter dans les contrôleurs mais plutôt de les déplacer dans une factory. Considérez utiliser `$scope` dans un contrôleur seulement si nécessaire. Par exemple lorsqu'il faut publier ou souscrire à des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le contrôleur.
 
   ```javascript
   /* à éviter */
@@ -347,12 +347,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### controllerAs avec vm
+### `controllerAs` avec `vm`
 ###### [Style [Y032](#style-y032)]
 
-  - Utilisez une variable de capture pour `this` quand vous utilisez la syntaxe `controllerAs`. Choisissez un nom de variable consistant tel que `vm`, qui signifie ViewModel.
+  - Utilisez une variable de capture pour `this` quand vous utilisez la syntaxe avec `controllerAs`. Choisissez un nom de variable consistent tel que `vm` (pour « ViewModel »).
 
-  *Pourquoi ?* : Le mot clé `this` est contextuel et son utilisation au sein d'une fonction à l'intérieur d'un controlleur pourrait changer son contexte. Capturer le contexte de `this` évite de rencontrer ce problème.
+  *Pourquoi ?* : `this` est contextuel et son utilisation au sein d'une fonction à l'intérieur d'un contrôleur pourrait faire changer son contexte. Capturer le contexte de `this` évite de rencontrer ce problème.
 
   ```javascript
   /* à éviter */
@@ -371,14 +371,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-  Note : Vous pouvez évitez n'importe quel avertissement [jshint](http://www.jshint.com/) en plaçant le commentaire ci-dessous au dessus de la ligne de code. Cependant, ce n'est pas nécesaire lorsque la fonction est nommée en utilisant la CasseEnMajuscule, puisque cette convention signifie que c'est une fonction constructeur, ce qu'est un controlleur en Angular.
+  Note : Vous pouvez évitez n'importe quel avertissement [jshint](http://www.jshint.com/) en plaçant le commentaire suivant au dessus de la ligne de code. Cependant, il n'est pas nécessaire lorsque la fonction est nommée en utilisant la CasseEnMajuscule, puisque cette convention signifie que c'est la fonction est un constructeur. C'est précisément la nature d'un contrôleur dans Angular.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note : Lors de la création de watchs dans un controlleur en utilisant `controller as`, vous pouvez watcher les membres `vm.*` en utilisant la syntaxe suivante. (Créez des watchs avec prudence puisqu'ils ajoutent plus de charge au cycle de digest.)
+  Note : Lors de la création de *watchers* dans un contrôleur en utilisant `controlleAs`, vous pouvez *watcher* les différents `vm.*` en utilisant la syntaxe suivante. (Créez des *watchers* avec prudence puisqu'ils ajoutent plus de charge au cycle de *digest*.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -396,15 +396,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### Les Membres Bindable au Début
+### Placement des membres *bindables* au début
 ###### [Style [Y033](#style-y033)]
 
-  - Placez les membres bindables au début du controlleur, par ordre alphabétique, et non pas dispersés à travers le code du controlleur.
+  - Placez les membres *bindables* au début du contrôleur, par ordre alphabétique, et non pas dispersés à travers le code du contrôleur.
 
-  *Pourquoi ?* : Placer les membres bindables au début permet de faciliter la lecture et vous aide à identifier instantanément quels membres du controlleur peut être bindé et utilisés dans la Vue.
+  *Pourquoi ?* : Placer les membres *bindables* au début permet de faciliter la lecture et vous aide à identifier instantanément quels membres du contrôleur peuvent-être *bindés* et utilisés dans la vue.
 
-  *Pourquoi ?* : Placer les fonction anonymes sur la même ligne peut être facile, mais lorsque ces fonctions ont plus d'une ligne de code elles peuvent réduire la lisibilité. Définir les fonctions sous les membres bindables (les fonctions seront hissées) déplace les détails d'implémentation en bas, guardant les membres bindables en haut,
-  Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+  *Pourquoi ?* : Définir des fonctions anonymes *in-line* peut être facile, mais lorsque ces fonctions font plus d'une ligne de code elles peuvent réduire la lisibilité. Définir les fonctions sous les membres *bindables* (les fonctions seront *hoistées*) déplace les détails d'implémentation en bas, gardant les membres *bindables* en haut,
 
   ```javascript
   /* avoid */
@@ -450,9 +449,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       }
   ```
 
-    ![Les Controlleur Utilisant "Au dessus de la Réduction"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Contrôleur utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
-  Note : Si la fonction est un one-liner, considérez de la garder bien en haut, tant que la lisibilité n'est pas affectée.
+  Note : Si la fonction est un *oneliner* vous pouvez la garder en haut du contrôleur, tant que la lisibilité n'est pas affectée.
 
   ```javascript
   /* à éviter */
@@ -462,11 +461,11 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
           /**
-           * lines
-           * of
+           * Nombreuses lignes
+           * de
            * code
-           * affects
-           * readability
+           * affectant
+           * la lisibilité
            */
       };
       vm.search = search;
@@ -476,35 +475,35 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   ```javascript
   /* recommandé */
-  function Sessions(dataservice) {
+  function Sessions(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // Le one-liner est acceptable
+      vm.refresh = sessionDataService.refresh; // *oneliner* acceptable
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
   ```
 
-### Déclaration de Fonctions pour Cacher les Détails d'Implémentation
+### Déclaration des fonctions pour cacher les détails d'implémentation
 ###### [Style [Y034](#style-y034)]
 
-  - Utilisez les déclarations de fonctions pour cacher les détails d'implémentation. Gardez vos membres bindables tout en haut. Quand vous avez besoin de binder une fonction dans un controlleur, faites-la pointer vers la déclaration de la fonction plus bas dans le fichier. Ceci est directement lié à la section des Membres Bindable au Début. Pour plus de détails, vous pouvez lire [cet article](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilisez les déclarations de fonctions pour cacher les détails d'implémentation. Gardez vos membres *bindables* en haut. Quand vous avez besoin de *binder* une fonction dans un contrôleur, faites-la pointer vers la déclaration de la fonction plus bas dans le fichier. Ceci est directement lié à la section du placement des membres *bindables* au début. Pour plus de détails, vous pouvez lire [cet article](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Pourquoi ?* : Placer les membres bindables en haut rend plus facile la lecture et vous aide instantanément à identifier quels membres du controlleur peuvent être bindés et utilisés dans la Vue. (Même chose que plus haut.)
+    *Pourquoi ?* : Placer les membres *bindables* en haut facilite la lecture et vous aide instantanément à identifier quels membres du contrôleur peuvent être *bindés* et utilisés dans la vue.
 
-    *Pourquoi ?* : Placer les détails d'implémentation d'une fonction plus bas dans le fichier déplace cette complexité en dehors du regard ainsi vous pouvez ne voir que les choses importantes en haut.
+    *Pourquoi ?* : Placer les détails d'implémentation d'une fonction plus bas dans le fichier permet de masquer la complexité. Ainsi vous ne pouvez voir que les choses importantes en haut.
 
-    *Pourquoi ?* : Les déclarations de fichiers sont remontées donc il n'y a aucun problème à utiliser une fonction avant qu'elle ne soit définie (alors que ça le serait avec les expressions de fonction).
+    *Pourquoi ?* : Les déclarations de fonctions sont *hoistées* donc il n'y a pas problème à utiliser une fonction avant qu'elle ne soit définie (alors que ça serait le cas avec les expressions de fonction).
 
-    *Pourquoi ?* : Vous ne vous préocuperez plus des déclarations de fonctions déplaçant `var a` avant `var b` cassant ainsi votre code car `a` dépend de `b`.
+    *Pourquoi ?* : Vous ne vous préoccuperez plus des déclarations de fonctions déplaçant `var a` avant `var b` cassant ainsi votre code car `a` dépendait de `b`.
 
-    *Pourquoi ?* : L'ordre est critique avec les expressions de fonction
+    *Pourquoi ?* : L'ordre est critique avec les expressions de fonctions.
 
   ```javascript
   /**
-   * à éviter
-   * L'utilisation des expressions de fonction.
+   * Evitez
+   * l'utilisation des expressions de fonctions.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -530,13 +529,13 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-  Remarquez que les choses importantes sont dispersées dans l'exemple précédent. Dans l'exemple ci-dessous, remarquez que les choses importantes sont tout en haut. Par exemple, les membres bindés au controlleur tels que `vm.avengers` et `vm.title`. Les détails d'implémentation sont plus bas dessous. C'est simplement plus facile à lire.
+  Remarquez que dans l'exemple précédent les choses importantes sont dispersées. Dans l'exemple ci-dessous, vous noterez que le contenu important est en haut. Par exemple, les membres *bindables* au contrôleur tels que `vm.avengers` ou `vm.title`. Les détails d'implémentation sont plus bas. C'est simplement plus facile à lire.
 
   ```javascript
   /*
    * recommandé
-   * L'utilisation des déclarations de fonction
-   * et les membres bindables tout en haut.
+   * Utilisation des déclarations de fonction
+   * et les membres bindables au début.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -561,16 +560,18 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### Déplacer la Logique des Controlleurs
+### Déplacez la logique métier dans les services
 ###### [Style [Y035](#style-y035)]
 
-  - Déplacer la logique d'un controlleur en la déléguant à des services et des factories.
+  - Déplacer la logique d'un contrôleur en la déléguant à des services ou *factories*.
 
-    *Pourquoi ?* : La logique peut être ré-utilisée par plusieurs controlleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
+    *Pourquoi ?* : La logique peut être ré-utilisée par plusieurs contrôleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
 
-    *Pourquoi ?* : La logique d'un service peut plus facilement être isolée dans un test unitaire, tandis que la logique d'appel dans le controlleur peut facilement être mockée.
+    *Pourquoi ?* : La logique dans un service peut être facilement isolée pour les tests unitaires, tandis que la logique d'appel dans un contrôleur peut facilement être *mockée*.
 
-    *Pourquoi ?* : Cela supprime des dépendances et cache les détails d'implémentation au controlleur.
+    *Pourquoi ?* : Cela supprime des dépendances et cache les détails d'implémentation au contrôleur.
+
+    *Pourquoi ?* : Permet de garder le contrôleur le plus minimal et focalisé possible.
 
   ```javascript
 
@@ -583,22 +584,21 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
       function checkCredit() {
           var settings = {};
-          // Obtenir l'URL de base du service credit à partir de la config
-          // Positionne les headers requis pour le service credit
+          // Obtenir l'URL de base du service crédit à partir de la config
+          // Positionne les headers requis pour le service crédit
           // Prépare l'URL query string ou l'objet de données avec les données de requête.
-          // Ajoute les infos d'identification de l'utilsiateur afin que le service obtienne
-          // les bons droits de limite credit pour cet utilisateur.
-          // Utilise JSONP pour ce navigateur s'il ne supporte pas CORS
+          // Ajoute les infos d'identification de l'utilisateur afin que le service obtienne les bons droits de limite credit pour cet utilisateur.
+          // Utilise JSONP pour ce navigateur s'il ne supporte pas les CORS
           return $http.get(settings)
               .then(function(data) {
-           // Décompresse les données JSON dans l'objet réponse
-           // afin de rechercher maxRemainingAmount
-                 vm.isCreditOk = vm.total <= maxRemainingAmount
+                // Décompresse les données JSON dans l'objet de réponse
+                  // afin de rechercher maxRemainingAmount
+                vm.isCreditOk = vm.total <= maxRemainingAmount
               })
               .catch(function(error) {
                  // Interpréter l'erreur
                  // Gérer le timeout ? Réessayer ? Essayer un service alternatif ?
-                 // Re-rejetter avec une erreur appropriée à la vue de l'utilisateur
+                 // Re-rejeter avec une erreur appropriée de l'utilisateur final
               });
       };
   }
@@ -614,27 +614,27 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
-      .then(function(isOk) { vm.isCreditOk = isOk; })
+            .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
   }
   ```
 
-### Gardez des Controlleurs Focalisés
+### Gardez les contrôleurs focalisés
 ###### [Style [Y037](#style-y037)]
 
-  - Définir un controlleur pour une vue, et n'essayez pas de ré-utiliser le controlleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers des factories et gardez le controlleur simple et focalisé sur sa vue.
+  - Définissez un contrôleur pour une vue, et n'essayez pas de ré-utiliser le contrôleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers les *factories* et gardez le contrôleur simple et focalisé sur sa vue.
 
-    *Pourquoi ?*: La réutilisation de controlleurs sur plusieurs vues est fragile et une bonne couverture de tests de bout en bout ("end to end" ou "e2e") est requise afin d'assurer la stabilité dans les grosses applications.
+    *Pourquoi ?*: La réutilisation des contrôleurs sur plusieurs vues est fragilisante pour l'application et une bonne couverture de tests *end-to-end* (*e2e*) est requise afin d'assurer la stabilité sur l'ensemble d'une grosse application.
 
-### Assigner les Controlleurs
+### Assignation des contrôleurs
 ###### [Style [Y038](#style-y038)]
 
-  - Lorsqu'un controlleur doit être associé à une vue et qu'un composant pourrait être ré-utilisé par d'autres controlleurs ou vues, définissez les controlleurs avec leurs routes.
+  - Lorsqu'un contrôleur doit être associé à une vue et qu'un composant pourraient être ré-utilisés par d'autres contrôleurs ou vues, définissez les contrôleurs avec leurs routes.
 
-    Note : Si une Vue est chargée via d'autres moyens que la route, alors utilisez la syntaxe `ng-controller="Avengers as vm"`.
+    Note : Si une vue est chargée via d'autres moyens qu'une route, alors utilisez la syntaxe avec `ng-controller="Avengers as vm"`.
 
-    *Pourquoi ?* : Associer le controlleur dans la route permet que différentes routes invoquent d'autres paires de controlleurs et vues. Lorsque les controlleurs sont assignés dans la vue avec [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), cette vue est toujours associée avec le même controlleur.
+    *Pourquoi ?* : Associer le contrôleur dans la route permet à différentes routes d'invoquer d'autres paires contrôleur-vue. Lorsque les contrôleurs sont assignés dans la vue avec [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), cette vue est toujours associée avec le même contrôleur.
 
  ```javascript
   /* à éviter - lorsque l'utilisation avec une route et une association dynamique est voulue */
@@ -901,11 +901,11 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Refactorer la logique pour faire les opérations sur les données et les interactions avec la donnée dans une factory. Rendez les services de données responsables des appels ajax, du local storage, du stockage en mémoire, ou toute autre opérations sur les données.
 
-    *Pourquoi ?* : La responsabilité du controlleur est la présentation et l'assemblage des informations pour la vue. Il ne devrait pas se soucier de la façon dont la donnée est récupérée, mais seulement de la façon de la demander. Séparer des services de données déplace la logique du 'comment récupérer une donnée' dans ce service de donnée, et laisse le controlleur plus simple et plus focalisé sur la vue.
+    *Pourquoi ?* : La responsabilité du contrôleur est la présentation et l'assemblage des informations pour la vue. Il ne devrait pas se soucier de la façon dont la donnée est récupérée, mais seulement de la façon de la demander. Séparer des services de données déplace la logique du 'comment récupérer une donnée' dans ce service de donnée, et laisse le contrôleur plus simple et plus focalisé sur la vue.
 
-    *Pourquoi ?* : Cela le rend plus facile à tester (en mockant ou avec le vrai) les appels aux données lorsque l'on teste un controlleur qui utilise un service de données.
+    *Pourquoi ?* : Cela le rend plus facile à tester (en mockant ou avec le vrai) les appels aux données lorsque l'on teste un contrôleur qui utilise un service de données.
 
-    *Pourquoi ?* : L'implémentation d'un service de données peut avoir du code très spécifique pour gérer le référentiel des données. Celà peut inclure des entêtes, la façon de dialoguer avec la donnée, ou des dépendances vers d'autres services tels que $http. La séparation de la logique vers un service de données encapsule cette logique dans un unique endroit en cachant les détails d'implémentation du consommateur externe (peut-être un controlleur), en rendant également plus simple les changements d'implémentation.
+    *Pourquoi ?* : L'implémentation d'un service de données peut avoir du code très spécifique pour gérer le référentiel des données. Celà peut inclure des entêtes, la façon de dialoguer avec la donnée, ou des dépendances vers d'autres services tels que $http. La séparation de la logique vers un service de données encapsule cette logique dans un unique endroit en cachant les détails d'implémentation du consommateur externe (peut-être un contrôleur), en rendant également plus simple les changements d'implémentation.
 
   ```javascript
   /* Recommandé */
@@ -938,12 +938,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-    Note : Le service de données est appellé depuis des consommateurs, tels que des controlleurs, en leur cachant l'implémentation, comme le montre l'éxemple ci-dessous.
+    Note : Le service de données est appellé depuis des consommateurs, tels que des contrôleurs, en leur cachant l'implémentation, comme le montre l'éxemple ci-dessous.
 
   ```javascript
   /* Recommandé */
 
-  // un controlleur qui appelle la factory du service de données
+  // un contrôleur qui appelle la factory du service de données
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -1194,15 +1194,15 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Directives et ControllerAs
 ###### [Style [Y075](#style-y075)]
 
-  - Utilisez la syntaxe `controller as` avec une directive pour être cohérent avec l'utilisation de `controller as` pour l'association de la vue et du controlleur.
+  - Utilisez la syntaxe `controller as` avec une directive pour être cohérent avec l'utilisation de `controller as` pour l'association de la vue et du contrôleur.
 
     *Pourquoi ?* : Ça fait sens et ce n'est pas difficile.
 
-    Note : La directive ci-dessous démontre une façon parmis d'autres d'utiliser le scope à l'intérieur de la fonction link et dans un controlleur de directive, par l'utilisation de controllerAs. J'ai in-liné le template que pour le mettre au même endroit.
+    Note : La directive ci-dessous démontre une façon parmis d'autres d'utiliser le scope à l'intérieur de la fonction link et dans un contrôleur de directive, par l'utilisation de controllerAs. J'ai in-liné le template que pour le mettre au même endroit.
 
     Note : Concernant l'injection de dépendance, voir [Identifier Manuellement les Dépendances](#manual-annotating-for-dependency-injection).
 
-    Note : Remarquez que le controlleur de la directive est à l'extérieur de la closure de la directive. Cette façon de faire évite le problème des injections plus disponibles après le `return`.
+    Note : Remarquez que le contrôleur de la directive est à l'extérieur de la closure de la directive. Cette façon de faire évite le problème des injections plus disponibles après le `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1260,9 +1260,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 ###### [Style [Y076](#style-y076)]
 
-  - Utilisez `bindToController = true` lorsque vous utilisez la syntaxe `controller as` avec une directive quand vous voulez binder le scope externe au scope du controlleur de la directive.
+  - Utilisez `bindToController = true` lorsque vous utilisez la syntaxe `controller as` avec une directive quand vous voulez binder le scope externe au scope du contrôleur de la directive.
 
-    *Pourquoi ?* : Cela rend plus facile de binder le scope externe au scope du controlleur de la directive.
+    *Pourquoi ?* : Cela rend plus facile de binder le scope externe au scope du contrôleur de la directive.
 
     Note : `bindToController` a été introduit à partir de Angular 1.3.0.
 
@@ -1307,18 +1307,18 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Résolution des Promesses pour un Controlleur
+## Résolution des Promesses pour un Contrôleur
 
 ### Promesses d'Activation du Controller
 ###### [Style [Y080](#style-y080)]
 
-  - Résolvez la logique de démarrage d'un controlleur dans une fonction `activate`.
+  - Résolvez la logique de démarrage d'un contrôleur dans une fonction `activate`.
 
-    *Pourquoi ?* : Placer la logique de démarrage toujours au même endroit permet de le rendre plus facile à localiser, plus cohérent à tester, et permet d'éviter la dispersion de la logique d'activation à travers le controlleur.
+    *Pourquoi ?* : Placer la logique de démarrage toujours au même endroit permet de le rendre plus facile à localiser, plus cohérent à tester, et permet d'éviter la dispersion de la logique d'activation à travers le contrôleur.
 
-    *Pourquoi ?* : La fonction `activate` d'un controlleur rend pratique la ré-utilisation de la logique pour un refraichissement du controlleur ou de la vue, garde cette logique à un seul endroit, envoie l'utilisateur plus rapidement à la Vue, rend les animations faciles sur la `ng-view` ou l'`ui-view`, et c'est rendu plus vif à l'utilisateur.
+    *Pourquoi ?* : La fonction `activate` d'un contrôleur rend pratique la ré-utilisation de la logique pour un refraichissement du contrôleur ou de la vue, garde cette logique à un seul endroit, envoie l'utilisateur plus rapidement à la Vue, rend les animations faciles sur la `ng-view` ou l'`ui-view`, et c'est rendu plus vif à l'utilisateur.
 
-    Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le controlleur, utilisez une [résolution de route](#style-y081) à la place.
+    Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le contrôleur, utilisez une [résolution de route](#style-y081) à la place.
 
   ```javascript
   /* à éviter */
@@ -1357,15 +1357,15 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Promesses de Résolution de Route
 ###### [Style [Y081](#style-y081)]
 
-  - Lorsqu'un controlleur dépend d'une promesse qui doit être résolue avant qu'un controlleur soit activé, résolvez ces dépendances dans le `$routeProvider`. Si vous avez besoin d'annuler une route sous certaines conditions avant que le controlleur soit activé, utilisez un resolver de route.
+  - Lorsqu'un contrôleur dépend d'une promesse qui doit être résolue avant qu'un contrôleur soit activé, résolvez ces dépendances dans le `$routeProvider`. Si vous avez besoin d'annuler une route sous certaines conditions avant que le contrôleur soit activé, utilisez un resolver de route.
 
   - Utilisez un resolver de route dès lors que vous voulez décider d'annuler la route avant même de commencer à naviguer vers la Vue.
 
-    *Pourquoi ?* : Un controlleur pourrait avoir besoin de données avant qu'il se charge. Cette donnée pourrait venir d'une promesse via une factory personnalisée ou de  [$http](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [resolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du controlleur s'éxécute, ainsi on peut prendre des actions basées sur cette donnée à partir de la promesse.
+    *Pourquoi ?* : Un contrôleur pourrait avoir besoin de données avant qu'il se charge. Cette donnée pourrait venir d'une promesse via une factory personnalisée ou de  [$http](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [resolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du contrôleur s'éxécute, ainsi on peut prendre des actions basées sur cette donnée à partir de la promesse.
 
-    *Pourquoi ?* : Le code s'éxécute après la route et dans la fonction activate du controlleur. La Vue commence à se charger tout de suite. Le data binding démarre quand la promesse d'activation se résoud. Une animation de "chargement" peut être affichée pendant que la vue opère la transition (via `ng-view` ou `ui-view`).
+    *Pourquoi ?* : Le code s'éxécute après la route et dans la fonction activate du contrôleur. La Vue commence à se charger tout de suite. Le data binding démarre quand la promesse d'activation se résoud. Une animation de "chargement" peut être affichée pendant que la vue opère la transition (via `ng-view` ou `ui-view`).
 
-    Note : Le code s'éxécute avant la route via une promesse. Le rejet de la promesse annule le routage. Sa résolution met la nouvelle vue en attente de la résolution du routage. Une animation de "chargement" peut être affichée avant la résolution et lorsque la vue entre en transition. Si vous voulez aller à la Vue plus vite et que vous n'avez pas besoin d'un point pour décider si vous voulez atteindre la Vue, il est conseillé d'utiliser la [technique de l'activation de controlleur](#style-y080) à la place.
+    Note : Le code s'éxécute avant la route via une promesse. Le rejet de la promesse annule le routage. Sa résolution met la nouvelle vue en attente de la résolution du routage. Une animation de "chargement" peut être affichée avant la résolution et lorsque la vue entre en transition. Si vous voulez aller à la Vue plus vite et que vous n'avez pas besoin d'un point pour décider si vous voulez atteindre la Vue, il est conseillé d'utiliser la [technique de l'activation de contrôleur](#style-y080) à la place.
 
   ```javascript
   /* à éviter */
@@ -1466,7 +1466,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Eviter l'utilisation de la syntaxe raccourcie de déclaration des dépendances sans utiliser une approche sûre pour la minification.
 
-    *Pourquoi ?* : Les paramètres du composant (ex: controlleur, factory, etc.) seront converties en variables mutilées. Par exemple, ˋcommonˋet ˋdataserviceˋ deviendraient ˋaˋet ˋbˋ et ne seraient pas trouvées par Angular.
+    *Pourquoi ?* : Les paramètres du composant (ex: contrôleur, factory, etc.) seront converties en variables mutilées. Par exemple, ˋcommonˋet ˋdataserviceˋ deviendraient ˋaˋet ˋbˋ et ne seraient pas trouvées par Angular.
 
     ```javascript
     /* à éviter - non sûr pour la minification */
@@ -1529,7 +1529,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-    Note : Lorsque votre fonction est sous une instruction de return, le $inject peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez vous en sortir en bougeant le controlleur en dehors de la directive.
+    Note : Lorsque votre fonction est sous une instruction de return, le $inject peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez vous en sortir en bougeant le contrôleur en dehors de la directive.
 
     ```javascript
     /* À éviter */
@@ -1840,7 +1840,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
      * possibilités couramment rencontrées.
      */
 
-    // Controlleurs
+    // Contrôleurs
     avengers.js
     avengers.controller.js
     avengersController.js
@@ -1856,7 +1856,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
      * recommandé
      */
 
-    // controlleurs
+    // contrôleurs
     avengers.controller.js
     avengers.controller.spec.js
 
@@ -1882,13 +1882,13 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     avenger-profile.directive.spec.js
     ```
 
-  Note : Une autre convention courante consiste à nommer les fichiers de controlleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions étant maintenues avec un suffixe par type. Les controlleurs étant les les types de composant les plus courants, ça permet d'économiser la frappe au clavier tout en étant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe. Ma préference est `avengers.controller.js`.
+  Note : Une autre convention courante consiste à nommer les fichiers de contrôleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions étant maintenues avec un suffixe par type. Les contrôleurs étant les les types de composant les plus courants, ça permet d'économiser la frappe au clavier tout en étant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe. Ma préference est `avengers.controller.js`.
 
     ```javascript
     /**
      * recommandé
      */
-    // Controlleurs
+    // Contrôleurs
     avengers.js
     avengers.spec.js
     ```
@@ -1912,12 +1912,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     avenger-profile.directive.spec.js
     ```
 
-### Nommage des Controlleurs
+### Nommage des Contrôleurs
 ###### [Style [Y123](#style-y123)]
 
-  - Utilisez des noms cohérents pour tous les controlleurs nommés d'après leur fonctionnalité. Utilisez le CamelCaseEnMajuscule, puisque ce sont des constructeurs.
+  - Utilisez des noms cohérents pour tous les contrôleurs nommés d'après leur fonctionnalité. Utilisez le CamelCaseEnMajuscule, puisque ce sont des constructeurs.
 
-    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les controlleurs.
+    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les contrôleurs.
 
     *Pourquoi ?* : Le CamelCaseEnMajuscules est la convention pour identifier les objets qui peuvent être instanciés avec un controleur.
 
@@ -1934,10 +1934,10 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     function HeroAvengersController() { }
     ```
 
-### Suffixe des Noms de Controlleurs
+### Suffixe des Noms de Contrôleurs
 ###### [Style [Y124](#style-y124)]
 
-  - Ajoutez au nom du controlleur le suffixe ˋControllerˋ.
+  - Ajoutez au nom du contrôleur le suffixe ˋControllerˋ.
 
     *Pourquoi ?* : Le suffixe ˋControllerˋ est utilisé souvent et il est plus explicitement descriptif.
 
@@ -2066,7 +2066,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Lorsque vous regardez un fichier vous devriez instantanément savoir ce qu'il contient ce qu'il représente.
 
-    *Pourquoi ?* : Vous passez moins de temps à fouiller et vous perdre pour cherche le code, et devenez de plus en plus efficient. Si ça implique des noms de fichier plus long, alors d'accord. Soyez descriptif avec les noms de fichier et leur contenu ne doit contenir exactement qu'un seul composant. Éviter les fichier avec plusieurs controlleurs, plusieurs services, ou un mélange. On pourrait admettre une exception à cette règle si j'ai un ensemble de fonctionnalités très petites qui sont toutes reliées entre elles, elles sont toujours facilement identifiables.
+    *Pourquoi ?* : Vous passez moins de temps à fouiller et vous perdre pour cherche le code, et devenez de plus en plus efficient. Si ça implique des noms de fichier plus long, alors d'accord. Soyez descriptif avec les noms de fichier et leur contenu ne doit contenir exactement qu'un seul composant. Éviter les fichier avec plusieurs contrôleurs, plusieurs services, ou un mélange. On pourrait admettre une exception à cette règle si j'ai un ensemble de fonctionnalités très petites qui sont toutes reliées entre elles, elles sont toujours facilement identifiables.
 
 ### Plat
 ###### [Style [Y143](#style-y143)]
@@ -2089,14 +2089,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Règles Générales
 ###### [Style [Y150](#style-y150)]
 
-  -  Vous devez avoir une vue court terme et une vision à long terme. En d'autres mots, commencez petit et garder en tête là où en est votre application. Tout le code de l'appli va dans un répertoire racine nommé `app`. Tout contenu fonctionnel doit être rangé dans son propre fichier. Chaque controlleur, service, module, vue doit avoir son propre fichier. Tous les scripts provenant de fournisseurs extérieurs doivent être rangés dans un autre répertoire racine et non dans le répertoire `app`. Le code que l'on écrit pas soi-même ne doit pas se mélanger avec son appli (`bower_components`, `script`, `lib`).
+  -  Vous devez avoir une vue court terme et une vision à long terme. En d'autres mots, commencez petit et garder en tête là où en est votre application. Tout le code de l'appli va dans un répertoire racine nommé `app`. Tout contenu fonctionnel doit être rangé dans son propre fichier. Chaque contrôleur, service, module, vue doit avoir son propre fichier. Tous les scripts provenant de fournisseurs extérieurs doivent être rangés dans un autre répertoire racine et non dans le répertoire `app`. Le code que l'on écrit pas soi-même ne doit pas se mélanger avec son appli (`bower_components`, `script`, `lib`).
 
     Note : Vous trouverez plus de détails et les justifications derrière la structure sur [ce post original sur la structure des applications](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
-  - Placez les composants qui définissent le layout principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une vue noyau et le controlleur devrait agir comme conteneur pour l'appli, la navigation, les menus, les zones de contenu, et les autres régions.
+  - Placez les composants qui définissent le layout principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une vue noyau et le contrôleur devrait agir comme conteneur pour l'appli, la navigation, les menus, les zones de contenu, et les autres régions.
 
     *Pourquoi ?* : Organise tout le layout à un seul endroit réutilisé dans l'application.
 
@@ -2154,7 +2154,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
       ![Structure d'une Appli Exemple](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
-      Note : N'utilisez pas une structuration de répertoires-par-type. Cela requiert de se déplacer entre de multiples répertoires lorsqu'on travaille sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application grossit à 5, 10 ou plus de 25 vues et controlleurs (et autres), ce qui complique la localisation par rapport à des répertoires-par-fonctionnalité.
+      Note : N'utilisez pas une structuration de répertoires-par-type. Cela requiert de se déplacer entre de multiples répertoires lorsqu'on travaille sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application grossit à 5, 10 ou plus de 25 vues et contrôleurs (et autres), ce qui complique la localisation par rapport à des répertoires-par-fonctionnalité.
 
     ```javascript
     /*
@@ -2777,7 +2777,7 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
     - Dans un fichier de type JavaScript, tapez ces commandes suivies par la touche `TAB`
 
     ```javascript
-    ngcontroller // crée un controlleur Angular
+    ngcontroller // crée un contrôleur Angular
     ngdirective // crée une directive Angular
     ngfactory // crée une factory Angular
     ngmodule // crée un module Angular
@@ -2804,7 +2804,7 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
     - Dans un fichier de type JavaScript, tapez ces commandes suivies de la touche `TAB` :
 
     ```javascript
-    ng-c // crée un controlleur Angular
+    ng-c // crée un contrôleur Angular
     ng-f // crée une factory Angular
     ng-m // crée un module Angular
     ```
