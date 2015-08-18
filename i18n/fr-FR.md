@@ -207,7 +207,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   ```javascript
   /* recommandé */
   angular
-    	.module('app', [
+      .module('app', [
           'ngAnimate',
           'ngRoute',
           'app.shared',
@@ -246,8 +246,8 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point et après.
 
-	  - Utilisez `angular.module('app', []);` pour setter un module.
-	  - Utilisez `angular.module('app');` pour getter un module.
+    - Utilisez `angular.module('app', []);` pour setter un module.
+    - Utilisez `angular.module('app');` pour getter un module.
 
 ### Fonctions Nommées ou Anonymes
 ###### [Style [Y024](#style-y024)]
@@ -293,11 +293,11 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Utilisez la syntaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) au lieu de la syntaxe de `controlleur classique avec $scope`.
 
-	*Pourquoi ?* : Les controlleurs sont construits, recréés, et fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
+  *Pourquoi ?* : Les controlleurs sont construits, recréés, et fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
 
-	*Pourquoi ?* : Il encourage l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
+  *Pourquoi ?* : Il encourage l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
 
-	*Pourquoi ?* : Permet d'éviter l'usage des appels à `$parent` dans les Vues avec des controlleurs imbriqués.
+  *Pourquoi ?* : Permet d'éviter l'usage des appels à `$parent` dans les Vues avec des controlleurs imbriqués.
 
   ```html
   <!-- à éviter -->
@@ -584,8 +584,8 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
           // Utilise JSONP pour ce navigateur s'il ne supporte pas CORS
           return $http.get(settings)
               .then(function(data) {
-	         // Décompresse les données JSON dans l'objet réponse
-	         // afin de rechercher maxRemainingAmount
+           // Décompresse les données JSON dans l'objet réponse
+           // afin de rechercher maxRemainingAmount
                  vm.isCreditOk = vm.total <= maxRemainingAmount
               })
               .catch(function(error) {
@@ -607,7 +607,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
       function checkCredit() {
          return creditService.isOrderTotalOk(vm.total)
-			.then(function(isOk) { vm.isCreditOk = isOk; })
+      .then(function(isOk) { vm.isCreditOk = isOk; })
             .catch(showServiceError);
       };
   }
@@ -1709,7 +1709,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     Note : Une autre possibilité serait de surcharger le service au lieu d'utiliser un décorateur. C'est une bonne possibilité, mais si vou voulez garder le comportement par défaut et l'étendre, un décorateur est plus approprié.
 
-  	```javascript
+    ```javascript
     /* recommandé */
     angular
         .module('blocks.exception')
@@ -1739,7 +1739,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
             toastr.error(exception.msg, errorData);
         };
     }
-  	```
+    ```
 
 ### Catcher d'Exceptions
 ###### [Style [Y111](#style-y111)]
