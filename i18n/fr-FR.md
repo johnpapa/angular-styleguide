@@ -1470,17 +1470,17 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Annoter Manuellement pour l'Injection de Dépendances
+## Annotation manuelle pour l'injection de dépendances
 
-### Non Sur pour la Minification
+### Risques pour la minification
 ###### [Style [Y090](#style-y090)]
 
-  - Eviter l'utilisation de la syntaxe raccourcie de déclaration des dépendances sans utiliser une approche sûre pour la minification.
+  - Évitez l'utilisation de la syntaxe raccourcie pour déclaration de dépendances. Ulilisez plutôt une approche compatible avec la minification.
 
-    *Pourquoi ?* : Les paramètres du composant (ex: contrôleur, factory, etc.) seront converties en variables mutilées. Par exemple, ˋcommonˋet ˋdataserviceˋ deviendraient ˋaˋet ˋbˋ et ne seraient pas trouvées par Angular.
+    *Pourquoi ?* : Les paramètres des composants (ex: contrôleur, *factory*, etc.) vont êtres convertis en variables raccourcies. Par exemple, ˋcommonˋ et ˋdataserviceˋ deviendraient ˋaˋ et ˋbˋ et ne seraient pas trouvées par Angular.
 
     ```javascript
-    /* à éviter - non sûr pour la minification */
+    /* à éviter - non compatible avec la minification */
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1489,23 +1489,23 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-    Ce code pourrait produire des variables mutilées après minification et en cela provoquer des erreurs à l'éxécution.
+    Ce code pourrait produire des variables raccourcies après minification et provoquer des erreurs à l’exécution.
 
     ```javascript
-    /* à éviter - non sûr pour la minification */
+    /* à éviter - non compatible avec la minification */
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Identifier Manuellement les Dépendances
+### Identification manuelle des dépendances
 ###### [Style [Y091](#style-y091)]
 
-  - Utilisez ˋ$injectˋpour identifier manuellement vos dépendances de composants Angular.
+  - Utilisez ˋ$injectˋ pour identifier manuellement les dépendances de vos composants Angular.
 
-    *Pourquoi ? * : Cette technique est la même que celle utilisée par [`ng-annotate`](https://github.com/olov/ng-annotate), que je recommande pour automatiser la création de dépendances sûres pour la minification. Si ˋng-annotateˋ détecte que l'injection a déjà été faite, celà ne la dupliquera pas.
+    *Pourquoi ? * : Cette technique réplique celle utilisée par [`ng-annotate`](https://github.com/olov/ng-annotate), que je recommande afin d'automatiser la création de dépendances compatible avec la minification. Si ˋng-annotateˋ détecte que l'injection a déjà été faite, cela ne la dupliquera pas.
 
-    *Pourquoi ?* : Ca préserve vos dépendances d'être vulnérable aux problèmes de minification lorsque les paramètres sont mutilés. Par exemple, ˋcommonˋet ˋdataserviceˋpourraient devenir ˋaˋ et ˋbˋ et ne pas être trouvés par Angular.
+    *Pourquoi ?* : Ça assure la compatibilité de vos dépendances à la minification. Par exemple, ˋcommonˋ et ˋdataserviceˋ pourraient devenir ˋaˋ et ˋbˋ et ne pas être trouvés par Angular.
 
-    *Pourquoi ?* : Eviter de créer en ligne une longue liste de dépendances peut rendre le tableau difficile à lire. De même, il peut entraîner une confusion dans la mesure où le tableau est une série de chaînes de caratères alors que le dernier élément est le nom de la fonction du composant.
+    *Pourquoi ?* : Pour éviter de créer *inline* une longue liste de dépendances car les longs tableaux sont difficiles à lire. De même, cela peut être gênant de voir un tableau composé d'une série de *strings* alors que son dernier élément est un appel à la fonction du composant.
 
     ```javascript
     /* à éviter */
@@ -1540,7 +1540,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-    Note : Lorsque votre fonction est sous une instruction de return, le $inject peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez vous en sortir en bougeant le contrôleur en dehors de la directive.
+    Note : Lorsque votre fonction se situe sous un `return`, le `$inject` peut ne pas être accessible (cela pourrait arriver dans une directive). Vous pouvez vous en sortir en sortant le contrôleur de la directive.
 
     ```javascript
     /* À éviter */
@@ -1550,7 +1550,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
             controller: DashboardPanelController,
             controllerAs: 'vm'
         };
-        return ddo
+        return ddo;
 
         DashboardPanelController.$inject = ['logger']; // Inatteignable
         function DashboardPanelController(logger) {
@@ -1560,7 +1560,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     ```javascript
     /* recommandé */
-    // A l'exterieur d'une définition de directive
+    // à l'exterieur d'une définition de directive
     function outer() {
         var ddo = {
             controller: DashboardPanelController,
@@ -1568,19 +1568,20 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
         };
          return ddo;
     }
+
     DashboardPanelController.$inject = ['logger'];
     function DashboardPanelController(logger) {
     }
     ```
 
-### Identifier Manuellement les Dépendances du Route Resolver
+### Identification manuelle des dépendances du *route resolver*
 ###### [Style [Y092](#style-y092)]
 
-  - Utilisez `$inject pour identifier manuellement vos dépendances du route resolver pour les composants Angular.
+  - Utilisez `$inject` pour identifier manuellement vos dépendances du *route resolver* pour les composants Angular.
 
-    *Pourquoi ?* : Cette technique divise la fonction anonyme pour le route resolver, la rendant plsu facile à lire.
+    *Pourquoi ?* : Cette technique divise la fonction anonyme pour le *route resolver*, le rendant plus facile à lire.
 
-    *Pourquoi ?* : Une instruction `$inject` peut facilement précéder le resolver à manipuler rendant n'importe quelle dépendance sûre à la minification.
+    *Pourquoi ?* : Une instruction `$inject` peut facilement précéder le *resolver* à manipuler rendant n'importe quelle dépendance compatible avec la minification.
 
     ```javascript
     /* recommandé */
