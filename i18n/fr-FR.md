@@ -894,23 +894,23 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Services de Données
+## Services de données
 
-### Séparer les Appels de Données
+### Séparer les appels aux données
 ###### [Style [Y060](#style-y060)]
 
-  - Refactorer la logique pour faire les opérations sur les données et les interactions avec la donnée dans une factory. Rendez les services de données responsables des appels ajax, du local storage, du stockage en mémoire, ou toute autre opérations sur les données.
+  - *Refactorez* la logique pour faire les opérations et interactions avec les données dans une *factory*. Rendez les services de données responsables des appels *XHR*, du *local storage*, du stockage en mémoire, ou de toute autre opération sur les données.
 
-    *Pourquoi ?* : La responsabilité du contrôleur est la présentation et l'assemblage des informations pour la vue. Il ne devrait pas se soucier de la façon dont la donnée est récupérée, mais seulement de la façon de la demander. Séparer des services de données déplace la logique du 'comment récupérer une donnée' dans ce service de donnée, et laisse le contrôleur plus simple et plus focalisé sur la vue.
+    *Pourquoi ?* : Les responsabilités du contrôleur sont la présentation et l'assemblage des informations pour la vue. Il ne devrait pas avoir à se soucier de la façon dont les données sont récupérées mais seulement de la façon de les demander. Séparer les services de données transforme la logique du contrôleur en logique de « À quel service vais-je demander ces données ? ». Le contrôleur esr alors plus simple est plus focalisé sur sa vue.
 
-    *Pourquoi ?* : Cela le rend plus facile à tester (en mockant ou avec le vrai) les appels aux données lorsque l'on teste un contrôleur qui utilise un service de données.
+    *Pourquoi ?* : Cela rend plus facile à tester (*mocké* ou en utilisant le vrai) les appels aux données lorsque l'on teste un contrôleur qui utilise un service de données.
 
-    *Pourquoi ?* : L'implémentation d'un service de données peut avoir du code très spécifique pour gérer le référentiel des données. Celà peut inclure des entêtes, la façon de dialoguer avec la donnée, ou des dépendances vers d'autres services tels que $http. La séparation de la logique vers un service de données encapsule cette logique dans un unique endroit en cachant les détails d'implémentation du consommateur externe (peut-être un contrôleur), en rendant également plus simple les changements d'implémentation.
+    *Pourquoi ?* : L'implémentation d'un service de données peut contenir du code très spécifique pour gérer le système de données. Cela peut inclure des entêtes, la façon de dialoguer avec les données, ou d'autres services tels que `$http`. Séparer la logique vers un service de données permet d'encapsuler cette logique dans un unique endroit en cachant les détails d'implémentation des consommateurs externes (tel qu'un contrôleur), en rendant également plus simple les changements d'implémentation.
 
   ```javascript
   /* Recommandé */
 
-  // une factory service de données
+  // Factory jouant le rôle de service de données
   angular
       .module('app.core')
       .factory('dataservice', dataservice);
@@ -938,12 +938,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-    Note : Le service de données est appellé depuis des consommateurs, tels que des contrôleurs, en leur cachant l'implémentation, comme le montre l'éxemple ci-dessous.
+    Note : Le service de données est appelé par des consommateurs extérieur, tels que des contrôleurs, en leur cachant l'implémentation, comme ci-dessous.
 
   ```javascript
   /* Recommandé */
 
-  // un contrôleur qui appelle la factory du service de données
+  // Contrôleur appelant la factory faisant le service de données
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -972,12 +972,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### Retourner une promesse depuis un appel de donnée
+### Retourner une promesse suite à un appel de données
 ###### [Style [Y061](#style-y061)]
 
-  - Lorsqu'un service de données retourne une promesse telle que $http, retournez une promesse dans votre fonction appelée.
+  - Quand vous appelez un service de données tel que `$http` qui retourne une *promise*, retournez également une *promise* dans votre fonction appelante.
 
-    *Pourquoi ?* : Vous pouvez chainer les promesses entre elles et ajouter des actions après que l'appel des données soit terminé puis résoudre ou rejeter la promesse.
+    *Pourquoi ?* : Vous pouvez chaîner les promesses entre elles et entreprendre d'autres actions après que l'appel soit terminé, puis résoudre ou rejeter la promesse.
 
   ```javascript
   /* recommandé */
@@ -987,13 +987,13 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   function activate() {
       /**
        * Etape 1
-       * Appel la fonction getAvengers pour récupérer
-       * les données avenger et attend la promesse
+       * Appelle la fonction getAvengers pour récupérer
+       * les données «avenger» et attend la promise.
        */
       return getAvengers().then(function() {
           /**
            * Etape 4
-           * Exécute une action à la résolution de la promesse finale
+           * Exécute une action à la résolution de la promise finale.
            */
           logger.info('Activated Avengers View');
       });
@@ -1003,13 +1003,13 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
         /**
          * Etape 2
          * Appel du service de données pour récupérer les données
-         * et attend la promesse
+         * et attend la promesse.
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
                  * Etape 3
-                 * Défini les donnée et résoue la promesse
+                 * Définit les données et résout la promesse.
                  */
                 vm.avengers = data;
                 return vm.avengers;
