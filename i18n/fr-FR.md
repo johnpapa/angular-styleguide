@@ -2313,14 +2313,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Logique de Démarrage
+## Logique d'initialisation
 
 ### Configuration
 ###### [Style [Y170](#style-y170)]
 
-  - Injectez le code à l'intérieur d'une [configuration de module](https://docs.angularjs.org/guide/module#module-loading-dependencies) qui doit être configuré avant l'éxécution de l'appli angular. Parmis les candidats idéaux, on trouve les providers et les constantes.
+  - Injectez le code à l'intérieur d'une [configuration de module](https://docs.angularjs.org/guide/module#module-loading-dependencies) qui doit être configurée avant l’exécution de l'application Angular. Parmi les candidats idéaux, on trouve les *providers* et les constantes.
 
-    *Pourquoi ?* : Ça rend les choses plus faciles d'avoir le moins d'endroits possible pour placer la configuration.
+    *Pourquoi ?* : Cela rend les choses plus faciles d'avoir le moins d'endroits possibles pour la configuration.
 
   ```javascript
   angular
@@ -2347,12 +2347,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### Blocs Run
+### Blocs `run`
 ###### [Style [Y171](#style-y171)]
 
-  - Tout code qui nécessite de s'éxécuter lorsque l'application démarre devrait être déclaré dans une factory, exposé via une fonction, et injecté dans un [bloc run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Tout code qui nécessite de s’exécuter lorsque l'application s'initialise devrait être déclaré dans une *factory*, exposé via une fonction, et injecté dans le [bloc run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *Pourquoi ?* : Le code écrit directement dans un bloc run peut être difficile à tester. Le placer dans une factory le rend plus facile à abstraire et mocker.
+    *Pourquoi ?* : Le code directement écrit dans un bloc `run` peut être difficile à tester. Le placer dans une *factory* le rend plus facile à abstraire et à *mocker*.
 
   ```javascript
   angular
