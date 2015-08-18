@@ -2072,27 +2072,27 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Le Principe LIFT de Structuration de l'Application
+## Architecture L.I.F.T.
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
-  - Structurez votre application afin de pouvoir `L`ocaliser le code plus rapidement, `I`dentifier le code d'un seul coup, garder la structure la plus platte possible (`F`lattest), et essayez (`T`ry) de rester DRY (Don't Repeat Yourself). La structure doit suivre ces 4 règles de bases.
+  - Structurez votre application afin de pouvoir `L`ocaliser le code plus rapidement, `I`dentifier le code d'un seul coup, garder la structure la plus plate possible (`F`lattest), et essayez (`T`ry) de rester DRY (Don't Repeat Yourself). La structure doit suivre ces quatre règles de base.
 
-    *Pourquoi LIFT ?* : Fournit une structure cohérente qui passe bien à l'échelle, qui est modulaire, et facilite l'augmentation de l'efficacité du développeur. Une autre façon de valider la structure de votre application est de vous demander : à quelle vitesse vous pouvez ouvrir et travailler dans tous les fichiés liés à une fonctionnalité ?
+    *Pourquoi ?* : L.I.F.T. fournit une structure cohérente qui peut grossir facilement, qui est modulaire, et augmente facilement l'efficacité de développement. Une autre façon de valider la structure de votre application est de vous demander à quelle vitesse vous pouvez ouvrir et travailler dans tous les fichiers liés à une fonctionnalité.
 
-    Lorsque je trouve que ma structure n'est pas confortable, je reviens en arrière et je revisite les règles LIFT.
+    Lorsque je trouve que ma structure n'est pas confortable, je reviens en arrière et consulte à nouveau les règles L.I.F.T.
 
-    1. `L`ocaliser le code est facile
-    2. `I`dentifier le code d'un coup
-    3. `F`lat (platte) structure autant que possible
-    4. `T`ry (essayer) de rester DRY (Don’t Repeat Yourself, Ne Pas Se Répéter) ou T-DRY
+    1. `L`ocaliser notre code est facile.
+    2. `I`dentifier le code d'un coup.
+    3. `F`lat structure (structure plate) autant que possible.
+    4. `T`ry (Essayer) de ne pas se répéter (T-DRY).
 
 ### Localisation
 ###### [Style [Y141](#style-y141)]
 
   - Rendez la localisation du code intuitive, simple et rapide.
 
-    *Pourquoi ?* : Je trouve que c'est super important pour un projet. Si l'équipe ne peut pas trouver rapidement les fichiers sur lesquels elle doit travailler, ils ne vont pas être en mesure de travailler aussi efficacement que possible, et la structure devra changer. Vous ne connaissez peut-être pas le nom du fichier où la position des fichiers liés, alors les placer dans les endroits les plus intuitifs et proches les uns les autres permet de gagner un paquet de temps. Une structure de répertoire descriptive peut aider à ça.
+    *Pourquoi ?* : Je trouve que c'est super important pour un projet. Si l'équipe ne peut pas trouver rapidement les fichiers sur lesquels elle doit travailler, elle ne va pas être en mesure de travailler aussi efficacement que possible, et la structure doit changer. Vous ne connaissez peut-être pas le nom du fichier où la position des fichiers liés, alors les placer dans les endroits les plus intuitifs et proches les uns les autres permet de gagner beaucoup de temps. Une structure de répertoire descriptive peut aider.
 
     ```
     /bower_components
@@ -2115,23 +2115,23 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Identification
 ###### [Style [Y142](#style-y142)]
 
-  - Lorsque vous regardez un fichier vous devriez instantanément savoir ce qu'il contient ce qu'il représente.
+  - Lorsque vous regardez un fichier vous devriez instantanément savoir ce qu'il contient et représente.
 
-    *Pourquoi ?* : Vous passez moins de temps à fouiller et vous perdre pour cherche le code, et devenez de plus en plus efficient. Si ça implique des noms de fichier plus long, alors d'accord. Soyez descriptif avec les noms de fichier et leur contenu ne doit contenir exactement qu'un seul composant. Éviter les fichier avec plusieurs contrôleurs, plusieurs services, ou un mélange. On pourrait admettre une exception à cette règle si j'ai un ensemble de fonctionnalités très petites qui sont toutes reliées entre elles, elles sont toujours facilement identifiables.
+    *Pourquoi ?* : Vous passez moins de temps à fouiller et vous perdre pour trouver du code, et devenez de plus en plus efficace. Si ça implique des noms de fichier plus long, alors d'accord. Soyez descriptif avec les noms des fichiers et leur contenu ne doit correspondre qu'à un seul composant. Évitez les fichiers avec plusieurs contrôleurs, plusieurs services, ou un mélange. On pourrait admettre une exception à cette règle si j'ai un ensemble de très petites fonctionnalités qui sont toutes reliées entre elles, elles sont toujours facilement identifiables.
 
 ### Plat
 ###### [Style [Y143](#style-y143)]
 
-  - Gardez une structure de répertoire à plat le plus longtemps possible. Lorsque vous avez 7 fichiers ou plus, commencez à penser à séparer.
+  - Gardez une structure de répertoire à plat le plus longtemps possible. Lorsque vous avez sept fichiers ou plus, commencez à penser à séparer.
 
-    *Pourquoi ?* : Personne ne souhaite rechercher dans 7 niveaux de répertoires pour trouver un fichier. Pensez aux menus des sites web… rien de plus profond que 2 niveaux ne devrait être sérieursement pris en considération. Dans une structure de répertoire, il n'y a pas de nombre d'or, mais lorsqu'un répertoire à entre 7 et 10 fichiers, il serait temps de créer des sous-répertoires. Basez cela sur votre niveau de confort. Utilisez une structure plus plate jusqu'à ce qu'il y ait un évident intérêt (pour respecter les autres principes LIFT) à créer un sous-répertoire.
+    *Pourquoi ?* : Personne ne souhaite rechercher dans sept niveaux de répertoires pour trouver un fichier. Pensez aux menus des sites web… Rien de plus profond que deux niveaux ne devrait être sérieusement pris en considération. Dans une structure de répertoire, il n'y a pas de nombre d'or, mais lorsqu'un répertoire à entre sept et dix fichiers, il serait temps de créer des sous-répertoires. Ajustez cela à votre de confort. Utilisez une structure plus plate jusqu'à ce qu'il y ait un intérêt évident (pour respecter les autres principes L.I.F.T.) à créer un sous-répertoire.
 
-### T-DRY (Essayer de respecter DRY)
+### T-DRY (Essayer de ne pas se répéter)
 ###### [Style [Y144](#style-y144)]
 
-  - Ne vous répétez pas (DRY), mais pas bêtement à tout prix ni en sacrifiant la lisibilité.
+  - Ne vous répétez pas (DRY), mais ne sacrifiez pas la lisibilité.
 
-    *Pourquoi ?* : Ne pas se répéter (DRY) est important, mais pas cricial si vous en êtesréduit à sacrifier les autres principes LIFT, c'est que qu'on peut appeller T-DRY (Essayer de ne pas se répéter). Je ne voudrai pas écrire session-view.html pour une vue, parce que, c'est évidemment une vue. Si ce n'est pas évident ou par convention, alors nommez-le.
+    *Pourquoi ?* : Ne pas se répéter (DRY) est important, mais pas critique si vous en êtes réduit à sacrifier les autres principes L.I.F.T, c'est ce qu'on sous-entend par T-DRY. Je ne veux pas écrire `session-view.html` pour une vue parce que c'est trivial. Si ce n'est pas évident ou si la convention le précise alors nommez-le.
 
 **[Retour en haut de page](#table-des-matières)**
 
