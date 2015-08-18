@@ -689,9 +689,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Les Services sont instanciés avec le mot clé `new`, utilisez `this` pour les méthodes publiques et les variables. Puisque ces derniers sont tellement similaires aux factories, utilisez à la place une factory pour la cohérence.
+  - Les services sont instanciés avec le mot clé `new`, utilisez `this` pour les méthodes publiques et les variables. Puisque ces derniers sont tellement similaires aux *factories*, utilisez à la place une *factory* pour la cohérence.
 
-    Note : [Tous les serices Angular services sont des singletons](https://docs.angularjs.org/guide/services). Celà signifie qu'il n'y a qu'une seule instance d'un service donné par injecteur.
+    Note : [Tous les services Angular sont des singletons](https://docs.angularjs.org/guide/services). Cela signifie qu'il n'y a qu'une seule instance d'un service donné par injecteur.
 
   ```javascript
   // service
