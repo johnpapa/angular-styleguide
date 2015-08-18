@@ -1020,16 +1020,16 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 **[Retour en haut de page](#table-des-matières)**
 
 ## Directives
-### Limite de 1 Par Fichier
+### Une directive par fichier
 ###### [Style [Y070](#style-y070)]
 
-  - Créer une directive par fichier. Nommer le fichier en fonction de la directive.
+  - Créez seulement une directive par fichier. Nommer le fichier en fonction de la directive.
 
-    *Pourquoi ?* : C'est facile de placer toutes les directives dans un fichier, mais difficile de les séparer, certains sont partagés par toute l'application, certain par modules, et certain juste par un module.
+    *Pourquoi ?* : Il est facile de placer toutes les directives dans un fichier, mais il l'est moins de les séparer après coup. Certaines sont partagées dans toute l'application, certaines par modules, et certaines juste par un seul module.
 
-    *Pourquoi ?* : Une directive par fichier est plus facilement maintenable.
+    *Pourquoi ?* : Une directive par fichier leur permet d'être plus facilement maintenables.
 
-    > Note : "**Bonne pratique** : Les directives devraient pouvoir s'auto-nettoyer. Vous pouvez utiliser `element.on('$destroy', ...)` ou `scope.$on('$destroy', ...)` pour lancer une fonction de nettoyage quand une directive est enlevée" ... - Documentation d'Angular
+    > Note : "**Bonne pratique** : Les directives devraient pouvoir s'auto-nettoyer. Vous pouvez utiliser `element.on('$destroy', ...)` ou bien `scope.$on('$destroy', ...)` pour lancer une fonction de nettoyage quand une directive est enlevée" ... - Documentation d'Angular
 
   ```javascript
   /* à éviter */
@@ -1038,25 +1038,25 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   angular
       .module('app.widgets')
 
-      /* directive order spécifique pour le module order */
+      /* directive spécifique pour le module order */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* directive sales pouvant être utilisée n'importe où dans l'application sales */
+      /* directive pouvant être utilisée n'importe où dans l'application sales */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* directive spinner pouvant être utilisée n'importe où dans l'application */
+      /* directive pouvant être utilisée n'importe où dans l'application */
       .directive('sharedSpinner', sharedSpinner);
 
   function orderCalendarRange() {
-      /* détails de l'implémentation */
+      /* détails d'implémentation */
   }
 
   function salesCustomerInfo() {
-      /* détails de l'implémentation */
+      /* détails d'implémentation */
   }
 
   function sharedSpinner() {
-      /* détails de l'implémentation */
+      /* détails d'implémentation */
   }
   ```
 
@@ -1065,7 +1065,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   /* calendarRange.directive.js */
 
   /**
-   * @desc directive order spécifique pour le module order pour la compagnie Acme
+   * @desc directive spécifique pour le module order de l'entreprise Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1073,7 +1073,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* détails de l'implémentation */
+      /* détails d'implémentation */
   }
   ```
 
@@ -1082,7 +1082,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   /* customerInfo.directive.js */
 
   /**
-   * @desc directive sales pouvant être utilisée n'importe où dans l'application sales pour la compagnie Acme
+   * @desc directive pouvant être utilisée n'importe où dans l'application sales de l'entreprise Acme
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1090,7 +1090,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       .directive('acmeSalesCustomerInfo', salesCustomerInfo);
 
   function salesCustomerInfo() {
-      /* détails de l'implémentation */
+      /* détails d'implémentation */
   }
   ```
 
@@ -1099,7 +1099,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   /* spinner.directive.js */
 
   /**
-   * @desc directive spinner pouvant être utilisée n'importe où dans l'application pour la compagnie Acme
+   * @desc directive pouvant être utilisée n'importe où dans l'application de l'entreprise Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1107,38 +1107,38 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       .directive('acmeSharedSpinner', sharedSpinner);
 
   function sharedSpinner() {
-      /* détails de l'implémentation */
+      /* détails d'implémentation */
   }
   ```
 
-    Note : Il y a plusieurs options de nommage pour les directives, puisqu'elles peuvent être utilisé par des scopes plus ou moins larges. Choisissez un nom qui rend la directive et son fichier clair et distinct. Des exemples sont définis plus bas, mais regarder la section des noms pour plus de recommandations.
+    Note : Il y a plusieurs options de nommage pour les directives puisqu'elles peuvent être utilisées à des échelles (*scopes*) plus ou moins larges. Choisissez un nom qui rend la directive et son fichier clairs et distincts. Des exemples sont définis plus bas mais regardez la section [nommage](#nommage) pour plus de recommandations.
 
-### Manipuler le DOM dans une Directive
+### Manipuler le DOM dans une directive
 ###### [Style [Y072](#style-y072)]
 
-  - Quand le DOM est directement manipulé, utilisez une directive. Si une alternative peut être utilisé avec le CSS pour définir le style ou les [services d'animation](https://docs.angularjs.org/api/ngAnimate), les templates Angular , [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), mieux vaut les utiliser à la place. Par exemple, si la directive affiche ou cache un élément, utilisez ngHide/ngShow.
+  - Quand vous manipulez le DOM est directement, utilisez une directive. S'il existe des alternatives, comme par exemple le CSS pour définir les styles ou les [services d'animation](https://docs.angularjs.org/api/ngAnimate), les *templates* Angular , [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), utilisez les à la place. Par exemple si la directive affiche ou cache un élément, utilisez ngHide ou ngShow.
 
-    *Pourquoi ?* : La manipulation du DOM peut être difficile à tester, debugger, et il y a souvent une meilleure façon de faire (e.g. CSS, animations, templates)
+    *Pourquoi ?* : La manipulation du DOM peut être difficile à tester, déboguer, et il y a souvent une meilleure façon de faire (ex : CSS, animations, *templates*).
 
-### Fournir un Unique Préfixe de Directive
+### Utiliser un unique préfixe de directive
 ###### [Style [Y073](#style-y073)]
 
-  - Definissez un préfixe de directive court, unique et descriptif tel que `acmeSalesCustomerInfo` et déclaré en HTML comme `acme-sales-customer-info`.
+  - Définissez un unique préfixe de directive court et descriptif comme dans `acmeSalesCustomerInfo` et utilisé dans le HTML de la façon suivante : `acme-sales-customer-info`.
 
-    *Pourquoi ?* : Le préfixe court et unique identifie le contexte et l'origine de la directive. Par exemple, un préfixe `cc-` peut indiquer que la directive fait partie de l'application CodeCamper alors que `acme-` peut indiquer une directive de la companie Acme.
+    *Pourquoi ?* : Un préfixe court et unique identifie le contexte et l'origine de la directive. Par exemple, un préfixe comme `cc-` peut indiquer que la directive fait partie de l'application CodeCamper tandis que `acme-` peut indiquer une directive de l'entreprise Acme.
 
-    Note : Evitez `ng-` car il est réservé pour les directives Angular. Cherchez les directives largement utilisées pour éviter les conflits de nom, tel que `ion-` pour le [Framework Ionic](http://ionicframework.com/).
+    Note : Évitez d'utiliser le préfixe `ng-` car il est réservé pour les directives Angular. Cherchez les directives populaire pour éviter les conflits de nommage, tel que `ion-` pour les directives du framework [Ionic](http://ionicframework.com/).
 
-### Restreindre aux Éléments et aux Attributs
+### Restreindre aux éléments et aux attributs
 ###### [Style [Y074](#style-y074)]
 
-  - Lors de la création d'une directive qui fait du sens comme élément indépendant, permettez la restriction `E` (élément personnalisé) et éventuellement la restriction `A` (attribut personnalisé). En général, s'il devrait avoir son propre contrôle, `E` est le plus indiqué. Le conseil le plus général est de permettre `EA` mais se dirige vers une implémentation en tant qu'élément lorsqu'il est indépendant et en tant qu'attribut lorsqu'il améliore un élément DOM existant.
+  - Lors de la création d'une directive qui fait du sens comme élément indépendant, autorisez la restriction `E` (élément personnalisé) et éventuellement la restriction `A` (attribut personnalisé). En général, s'il devrait avoir son propre contrôle, `E` est le plus indiqué. La convention la plus utilisée est de permettre `EA` mais se dirige vers une implémentation en tant qu'élément lorsque la directive est indépendante et en tant qu'attribut lorsqu'elle augmente son propre élément de DOM.
 
-    *Pourquoi ?* : Çela a du sens.
+    *Pourquoi ?* : Cela a du sens.
 
-    *Pourquoi ?* : Même s'il est autorisé d'utiliser une directive en tant que classe, si la directive agit vraiement comme un élément, elle fait plus de sens en tant qu'élément ou au moins en tant qu'attribut.
+    *Pourquoi ?* : Même s'il est autorisé d'utiliser une directive en tant que classe, si la directive agit vraiment comme un élément, elle fait plus de sens en tant qu'élément ou au moins en tant qu'attribut.
 
-    Note : EA est la valeur par défaut avec Angular 1.3 +
+    Note : EA est la valeur par défaut dans Angular 1.3 +
 
   ```html
   <!-- à éviter -->
@@ -1191,18 +1191,18 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### Directives et ControllerAs
+### Directives et `controllerAs`
 ###### [Style [Y075](#style-y075)]
 
-  - Utilisez la syntaxe `controller as` avec une directive pour être cohérent avec l'utilisation de `controller as` pour l'association de la vue et du contrôleur.
+  - Utilisez la syntaxe avec `controllerAs` avec une directive pour être cohérent avec l'utilisation de `controllerAs` pour l'association de la vue et de son contrôleur.
 
     *Pourquoi ?* : Ça fait sens et ce n'est pas difficile.
 
-    Note : La directive ci-dessous démontre une façon parmis d'autres d'utiliser le scope à l'intérieur de la fonction link et dans un contrôleur de directive, par l'utilisation de controllerAs. J'ai in-liné le template que pour le mettre au même endroit.
+    Note : La directive ci-dessous montre une façon parmi d'autres d'utiliser *scope* à l'intérieur de la fonction `link` et dans un contrôleur de directive, par l'utilisation de `controllerAs`. J'ai *inliné* le template pour tout mettre au même endroit.
 
-    Note : Concernant l'injection de dépendance, voir [Identifier Manuellement les Dépendances](#manual-annotating-for-dependency-injection).
+    Note : Concernant l'injection de dépendances, voir [Annoter manuellement les dépendances à injecter](#annoter-manuellement-les-dépendances-à-injecter).
 
-    Note : Remarquez que le contrôleur de la directive est à l'extérieur de la closure de la directive. Cette façon de faire évite le problème des injections plus disponibles après le `return`.
+    Note : Remarquez que le contrôleur de la directive est à l'extérieur de la *closure* de la directive. Cette façon de faire évite le problème d'indisponibilité des injections après le `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1239,7 +1239,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   ExampleController.$inject = ['$scope'];
 
   function ExampleController($scope) {
-      // Injection du $scope seuelement pour la comparaison
+      // Injection de $scope seulement pour la comparaison
       var vm = this;
 
       vm.min = 3;
@@ -1258,11 +1258,23 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
+  Note : Vous pouvez aussi nommer le contrôleur au moment où vous l'injectez dans la fonction de `link` et accéder aux attributs de la directive en temps que propriétés du contrôleur.
+
+  ```javascript
+  // Alternative to above example
+  function linkFunc(scope, el, attr, vm) {
+      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
+      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+      console.log('LINK: vm.min = %s', vm.min);
+      console.log('LINK: vm.max = %s', vm.max);
+  }
+  ```
+
 ###### [Style [Y076](#style-y076)]
 
-  - Utilisez `bindToController = true` lorsque vous utilisez la syntaxe `controller as` avec une directive quand vous voulez binder le scope externe au scope du contrôleur de la directive.
+  - Utilisez `bindToController = true` lorsque vous utilisez la syntaxe avec `controllerAs` avec une directive quand vous voulez *binder* le *scope* externe au *scope* du contrôleur de la directive.
 
-    *Pourquoi ?* : Cela rend plus facile de binder le scope externe au scope du contrôleur de la directive.
+    *Pourquoi ?* : Cela rend plus facile de *binder* le *scope* externe au *scope* du contrôleur de la directive.
 
     Note : `bindToController` a été introduit à partir de Angular 1.3.0.
 
