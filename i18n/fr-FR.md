@@ -2789,9 +2789,12 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
         "disallowSpacesInsideArrayBrackets": "all",
         "disallowSpacesInsideParentheses": true,
 
-        "validateJSDoc": {
+        "jsDoc": {
+            "checkAnnotations": true,
             "checkParamNames": true,
-            "requireParamTypes": true
+            "requireParamTypes": true,
+            "checkReturnTypes": true,
+            "checkTypes": true
         },
 
         "disallowMultipleLineBreaks": true,
@@ -2799,7 +2802,6 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
         "disallowEmptyBlocks": null,
-        "disallowMultipleLineStrings": null,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
@@ -2815,9 +2817,9 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 ### Globales des Librairies Externes
 ###### [Style [Y240](#style-y240)]
 
-  - Créez une Constante Angular pour les variables gobales des librairies externes.
+  - Créez une constante Angular pour les variables globales des librairies externes.
 
-    *Pourquoi ?* : Fournit un moyen d'injecter des librairies tierces qui seraient sinon des globales. Cela améliore la testabilité du code en vous permettant de savoir plus facilement quelles sont les dépendances de vos composants évite les abstractions qui fuient). Ça vous permet aussi de mocker ces dépendances, là où cela fait sens.
+    *Pourquoi ?* : Fournit un moyen d'injecter des librairies tierces qui seraient sinon des globales. Cela améliore la testabilité du code en vous permettant de savoir plus facilement quelles sont les dépendances de vos composants (et évite de faire des abstractions qui fuient). Ça vous permet aussi de *mocker* ces dépendances, là où cela fait sens.
 
     ```javascript
     // constants.js
@@ -2835,13 +2837,13 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
 ###### [Style [Y241](#style-y241)]
 
-  - Utilisez les constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des contantes ne sont utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
+  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des contentes ne sont pas utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
 
-    *Pourquoi ?* : Une valeur qui peut changer, même rarement, devrait être récupérée d'un service afin de ne pas avoir à changer le code source. Par exemple, une URL pour un service de données pourrait être définit comme constante mais il serait mieux de lire cette valeur par appel à un web service.
+    *Pourquoi ?* : Une valeur qui peut changer, même rarement, devrait être récupérée d'un service afin de ne pas avoir à changer le code source. Par exemple, une URL pour un service de données pourrait être définie comme constante mais il serait mieux de lire cette valeur par appel à un web service.
 
-    *Pourquoi ?* : Les constantes peuvent être injectées dans un composant angular, y compris les providers.
+    *Pourquoi ?* : Les constantes peuvent être injectées dans un composant Angular, y compris les *providers*.
 
-    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être ré-utilisés dans d'autres applications, chacun de ces modules individiuel devrait pouvoir fonctioner tout seul, y compris avec les constantes dépendantes.
+    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être ré-utilisés dans d'autres applications, chacun de ces modules individuels devrait pouvoir fonctionner tout seul, y compris avec les constantes dépendantes.
 
     ```javascript
     // Constantes utilisées par toute l'appli
