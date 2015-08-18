@@ -1612,13 +1612,13 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Utilisez [ng-annotate](//github.com/olov/ng-annotate) pour [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) et commentez les fonctions qui nécessitent l'injection de dépendances automatique en utilisant `/** @ngInject */`.
 
-    *Pourquoi ?* : Ca préserve votre code de n'importe quelle dépendance qui pourrait ne pas utiliser les pratiques sûres à la minification.
+    *Pourquoi ?* : Cela prévient votre code d'erreur provenant de dépendances n'utilisant pas les bonnes pratiques au regard de la minification.
 
-    *Pourquoi ?*: [`ng-min`](https://github.com/btford/ngmin) est déprécié.
+    *Pourquoi ?*: [`ng-min`](https://github.com/btford/ngmin) est obsolète.
 
-    >Je préfère Gulp car ça me paraît plus facile à écrire, lire et débugger.
+    >Je préfère Gulp car ça me paraît plus facile à écrire, lire et déboguer.
 
-    Le code suivant n'utilise pas de dépendances sûres à la minification.
+    Le code suivant n'utilise pas de dépendances compatibles avec la minification.
 
     ```javascript
     angular
@@ -1638,7 +1638,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-    Lorsque le code ci-dessus est éxécuté par ng-annotate il produira le résultat suivant avec l'annotation ˋ$injectˋ et deviendra sûr à la minification.
+    Lorsque le code ci-dessus sera exécuté par `ng-annotate`, il produira le résultat suivant avec l'annotation ˋ$injectˋ et deviendra alors compatible avec la minification.
 
     ```javascript
     angular
@@ -1660,9 +1660,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Note : Si ˋng-annotateˋ détecte que l'injection a déjà été faite (ex : ˋ@ngInjectˋ a été détécté), il ne dupliquera pas le code ˋ$injectˋ.
+    Note : Si ˋng-annotateˋ détecte que l'injection a déjà été faite (ex : ˋ@ngInjectˋ a été détecté), il ne dupliquera pas le code ˋ$injectˋ.
 
-    Note : Lors de l'utilisation d'un route resolver, vous pouvez préfixer la fonction de résolution avec `/* @ngInject */` et cela produira le code proprepement annoté, en gardant toute dépendance injectée sûre à la minification.
+    Note : Lors de l'utilisation d'un *route resolver*, vous pouvez préfixer la fonction de résolution avec `/* @ngInject */` et cela produira le code proprement annoté, en gardant toutes les dépendances injectées compatibles avec la minification.
 
     ```javascript
     // En utilisant les annotations @ngInject
@@ -1681,17 +1681,17 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-    > Note : A partir d'Angular 1.3, utilisez le paramètre ˋngStrictDiˋ de la directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Avec ce paramètre, l'injecteur sera créé en mode "strict-di" qui rendra fera échouer les invocations de fonctions de l'application qui n'utilisent pas explicitement les annotation de fonction (ceci peut ne pas être sûr à la minification). Débugger les informations qui seront logguées dans la console peut aider à débusquer le code à l'origine.
+    > Note : A partir d'Angular 1.3, utilisez le paramètre ˋngStrictDiˋ de la directive [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) pour détecter un potentiel oubli. Avec ce paramètre, l'injecteur sera créé en mode "strict-di" qui fera échouer les invocations de fonctions de l'application qui n'utiliseraient pas explicitement les annotations de fonctions (et qui rendraient l'application non-minifiable). Des infos de débogage seront alors logguées dans la console pour aider à retrouver code à l'origine de l'alerte. Je préfère utiliser `ng-strict-di` uniquement pour le débogage.
     `<body ng-app="APP" ng-strict-di>`
 
-### Utilisation de Gulp ou Grunt pour ng-annotate
+### Utilisation de Gulp ou Grunt pour `ng-annotate`
 ###### [Style [Y101](#style-y101)]
 
-  - Utilisez [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ou [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) dans une tâche de build automatisée. Injectez `/* @ngInject */` avant toute fonction qui possède des dépendances.
+  - Utilisez [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ou [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) dans une tâche de *build* automatisée. Injectez `/* @ngInject */` avant toute fonction qui a des dépendances.
 
-    *Pourquoi ?* : ng-annotate va intercepter la plupart des dépendances, mais parfois va nécessiter des indices grâce à l'utilisation de la syntaxe `/* @ngInject */ˋ.
+    *Pourquoi ?* : `ng-annotate` va intercepter la plupart des dépendances, mais parfois va nécessiter des indices grâce à l'utilisation de l'ajout de `/* @ngInject */ˋ.
 
-    Le code ci-dessous est un exemple d'une tâche gulp qui utilise ngAnnotate
+    Le code ci-dessous est un exemple d'une tâche gulp qui utilise `ngAnnotate`
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
