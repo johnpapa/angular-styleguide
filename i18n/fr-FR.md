@@ -1319,18 +1319,17 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Résolution des Promesses pour un Contrôleur
-
-### Promesses d'Activation du Controller
+## Résolution des *promises* pour un contrôleur
+### *Promises* d'activation du contrôleur
 ###### [Style [Y080](#style-y080)]
 
-  - Résolvez la logique de démarrage d'un contrôleur dans une fonction `activate`.
+  - Résolvez la logique d'initialisation d'un contrôleur dans une fonction `activate`.
 
-    *Pourquoi ?* : Placer la logique de démarrage toujours au même endroit permet de le rendre plus facile à localiser, plus cohérent à tester, et permet d'éviter la dispersion de la logique d'activation à travers le contrôleur.
+    *Pourquoi ?* : Placer la logique d'initialisation toujours au même endroit permet de la rendre plus facile à localiser, plus cohérente à tester, et permet d'éviter sa dispersion à travers le contrôleur.
 
-    *Pourquoi ?* : La fonction `activate` d'un contrôleur rend pratique la ré-utilisation de la logique pour un refraichissement du contrôleur ou de la vue, garde cette logique à un seul endroit, envoie l'utilisateur plus rapidement à la Vue, rend les animations faciles sur la `ng-view` ou l'`ui-view`, et c'est rendu plus vif à l'utilisateur.
+    *Pourquoi ?* : La fonction `activate` du contrôleur rend pratique la ré-utilisation de la logique pour un rafraîchissement du contrôleur ou de la vue, garde cette logique en un seul endroit, envoie la vue à l'utilisateur plus rapidement, rend les animations faciles sur `ng-view` ou `ui-view` et rend l'interface plus réactive pour l'utilisateur.
 
-    Note : Si vous avez besoin d'annuler sous conditions la route avant de vous mettre à utiliser le contrôleur, utilisez une [résolution de route](#style-y081) à la place.
+    Note : Si vous avez besoin d'annuler de façon conditionnelle la route avant d'utiliser le contrôleur, utilisez la [résolution de route](#style-y081) à la place.
 
   ```javascript
   /* à éviter */
@@ -1366,18 +1365,18 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
   ```
 
-### Promesses de Résolution de Route
+### *Promises* de résolution de route
 ###### [Style [Y081](#style-y081)]
 
-  - Lorsqu'un contrôleur dépend d'une promesse qui doit être résolue avant qu'un contrôleur soit activé, résolvez ces dépendances dans le `$routeProvider`. Si vous avez besoin d'annuler une route sous certaines conditions avant que le contrôleur soit activé, utilisez un resolver de route.
+  - Lorsqu'un contrôleur dépend d'une *promise* qui doit être résolue avant que le contrôleur soit activé, résolvez ces dépendances dans le `$routeProvider` avant que la logique du contrôleur soit exécutée. Si vous avez besoin d'annuler une route de façon conditionnelle avant que le contrôleur soit activé, utilisez un *resolver* de route.
 
-  - Utilisez un resolver de route dès lors que vous voulez décider d'annuler la route avant même de commencer à naviguer vers la Vue.
+  - Utilisez un *resolver* de route quand vous voulez pouvoir décider d'annuler la route avant même de commencer à naviguer vers la vue.
 
-    *Pourquoi ?* : Un contrôleur pourrait avoir besoin de données avant qu'il se charge. Cette donnée pourrait venir d'une promesse via une factory personnalisée ou de  [$http](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [resolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du contrôleur s'éxécute, ainsi on peut prendre des actions basées sur cette donnée à partir de la promesse.
+    *Pourquoi ?* : Un contrôleur pourrait avoir besoin de données avant de se charger. Ces données pourraient provenir d'une promesse via une *factory* ou de [`$http`](https://docs.angularjs.org/api/ng/service/$http). Utiliser une [résolution de route](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permet à la promesse de se résoudre avant que la logique du contrôleur s’exécute, alors seulement, on peut exécuter les actions basées sur les données fournies via la *promises*.
 
-    *Pourquoi ?* : Le code s'éxécute après la route et dans la fonction activate du contrôleur. La Vue commence à se charger tout de suite. Le data binding démarre quand la promesse d'activation se résoud. Une animation de "chargement" peut être affichée pendant que la vue opère la transition (via `ng-view` ou `ui-view`).
+    *Pourquoi ?* : Le code s’exécute après la route et dans la fonction `activate` du contrôleur. La vue commence à se charger tout de suite. Le *data-binding* démarre quand la *promise* d'activation se résout. Une animation de « chargement » peut être affichée pendant la transition (via `ng-view` ou `ui-view`).
 
-    Note : Le code s'éxécute avant la route via une promesse. Le rejet de la promesse annule le routage. Sa résolution met la nouvelle vue en attente de la résolution du routage. Une animation de "chargement" peut être affichée avant la résolution et lorsque la vue entre en transition. Si vous voulez aller à la Vue plus vite et que vous n'avez pas besoin d'un point pour décider si vous voulez atteindre la Vue, il est conseillé d'utiliser la [technique de l'activation de contrôleur](#style-y080) à la place.
+    Note : Le code s’exécute avant la route via une *promise*. Le rejet de la promesse annule le routage. Sa résolution met la future vue en attente de la résolution du routage. Une animation de « chargement » peut être affichée avant la résolution et lorsque la vue change d'état. Si vous voulez aller à la vue plus vite et que vous n'avez pas besoin d'une étape pour décider si vous pouvez l'atteindre, il est conseillé d'utiliser à la place la [technique de la fonction `activate` dans le contrôleur](#style-y080).
 
   ```javascript
   /* à éviter */
@@ -1389,7 +1388,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       var vm = this;
       // non-résolue
       vm.movies;
-      // résolue de façon asynchrone
+      // résolu de façon asynchrone
       movieService.getMovies().then(function(response) {
           vm.movies = response.movies;
       });
@@ -1430,7 +1429,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   }
    ```
 
-    Note : L'exemple ci-dessous montre que la résolution de routage pointe vers une fonction nommée, laquelle est plus facile à débugguer et dont l'injection de dépendance est plus facile à gérer.
+    Note : L'exemple ci-dessous montre que la résolution du routage pointe vers une fonction nommée, laquelle est plus facile à déboguer et dont l'injection de dépendance est plus facile à gérer.
 
   ```javascript
   /* encore mieux */
@@ -1467,7 +1466,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Note : Les dépendances dans l'exemple de code sur `movieService` ne sont pas directement compatibles avec la minification. Pour les détails sur la façon de rendre ce code compatible avec la minification, voir la section sur l'[injection de dépendance](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
+    Note : Les dépendances sur `movieService` dans l'exemple ne sont pas directement compatibles avec le processus de minification. Pour plus de détails sur la façon de rendre ce code minifiable sans risques, voir la section sur l'[injection de dépendances](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
 
 **[Retour en haut de page](#table-des-matières)**
 
