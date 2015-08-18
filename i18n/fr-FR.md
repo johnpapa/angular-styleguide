@@ -1,16 +1,12 @@
-# Le Guide de Style Angular
+# Charte stylistique Angular
 
-*Le guide d'un point de vue personnel sur le style Angular par [@john_papa](//twitter.com/john_papa)*
+*Guide de style par subjectif pour Angular par [@john_papa](//twitter.com/john_papa)*
 
-*Translated by [Eric Lemerdy](https://github.com/ericlemerdy)*
+Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'applications Angular, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de développement avec [Angular](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein de diverses équipes.
 
->The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+Le but de ce guide de style est de proposer des conseils sur le développement d'applications Angular en exposant les conventions que j'utilise et plus important encore, pourquoi je les ai choisies.
 
-Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application Angular, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [Angular](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
-
-Le but de ce guide de style est de proposer des conseils sur le développement d'applications Angular en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
-
->Si vous appréciez ce guide, visitez mon cours [Angular Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight.
+>Si vous appréciez ce guide, visitez mon cours [Angular Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight qui va de pair avec ce guide.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
