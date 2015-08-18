@@ -16,7 +16,7 @@ Ne jamais travailler en vase clos. J'ai trouvé que la communauté Angular est u
 Beaucoup de mes styles proviennent des nombreuses séances de pair programming avec [Ward Bell](http://twitter.com/wardbell). Mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
 
 ## Visualiser les styles dans une application d'exemple
-Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est utile de pouvoir les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces modèles. Vous pouvez trouver l'[application d'exemple (intitulée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le **forker**. [Les instructions pour l’exécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est utile de pouvoir les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces modèles. Vous pouvez trouver l'[application d'exemple (intitulée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le *forker*. [Les instructions pour l’exécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
 [Les traductions de ce guide stylistique pour Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
@@ -61,7 +61,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Règle d'unicité
 ###### [Style [Y001](#style-y001)]
 
-  - Définir un composant par fichier.
+  - Définissez un composant par fichier.
 
   L'exemple suivant définit le module `app` et ses dépendances, définit un contrôleur, et définit une factory le tout dans le même fichier.
 
@@ -112,10 +112,10 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 **[Retour en haut de page](#table-des-matières)**
 
 ## IIFE
-### Les fermetures (**closures**) JavaScript
+### Les fermetures (*closures*) JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Encapsuler les composants Angular dans une **Immediately Invoked Function Expression** (IIFE) ou Expression de Fonction Immédiatement Invoquée.
+  - Encapsulez les composants Angular dans une *Immediately Invoked Function Expression* (IIFE) ou Expression de Fonction Immédiatement Invoquée.
 
   *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables et de fonctions ne vivent plus longtemps que prévu dans le scope global, ce qui aide aussi à éviter les collisions de variables.
 
@@ -172,25 +172,25 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Note : Pour des raisons de concision seulement, le reste des exemples de ce guide seront pas écrits avec la syntaxe IIFE.
 
-  - Note : Les IIFE empêchent le code de test d'atteindre des membres privés, comme les expressions régulières ou les fonctions utilitaires (**helpers**), qu'il est souvent meilleur de tester indépendamment. Cependant, vous pouvez les tester à travers les membres accessibles ou en les exposant à travers leur propre composant. Par exemple en les plaçant dans leur propre factory ou constante.
+  - Note : Les IIFE empêchent le code de test d'atteindre des membres privés, comme les expressions régulières ou les fonctions utilitaires (*helpers*), qu'il est souvent meilleur de tester indépendamment. Cependant, vous pouvez les tester à travers les membres accessibles ou en les exposant à travers leur propre composant. Par exemple en les plaçant dans leur propre factory ou constante.
 
 **[Retour en haut de page](#table-des-matières)**
 
 ## Modules
 
-### Éviter les Collisions de Nommage
+### Éviter les collisions de nommage
 ###### [Style [Y020](#style-y020)]
 
-  - Utilisez des conventions de nommages uniques avec des séparations pour les sous-modules.
+  - Utilisez des conventions de nommages uniques avec des séparateurs pour les sous-modules.
 
-  *Pourquoi ?* : Les noms uniques aident à éviter les collisions de nom de module. Les séparateurs aident à définir les modules et leur hiérarchie de sous-modules. Par exemple, `app` pourrait être le module racine tandis que `app.dashboard` et `app.users` serait les modules qui sont utilisés en tant que dépendances de `app`.
+  *Pourquoi ?* : Les noms uniques aident à éviter les collisions de nom de module. Les séparateurs aident à définir les modules et la hiérarchie de leurs sous-modules. Par exemple, `app` pourrait être le module principal (*root*) tandis que `app.dashboard` et `app.users` seraient des sous-modules utilisés en tant que dépendances de `app`.
 
-### Définitions (i.e. Setters)
+### Mutateurs (*Setters*)
 ###### [Style [Y021](#style-y021)]
 
-  - Déclarer des modules sans variable en utilisant la syntaxe setter.
+  - Déclarez les modules sans variables en utilisant la syntaxe *setter*.
 
-  *Pourquoi ?* : Avec 1 composant par fichier, on ne devrait pas avoir besoin d'introduire une variable pour le module.
+  *Pourquoi ?* : Avec un composant par fichier, on ne devrait pas avoir besoin d'introduire une variable pour le module.
 
   ```javascript
   /* à éviter */
@@ -202,7 +202,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   ]);
   ```
 
-  Utilisez à la place la syntaxe setter simple.
+  Utilisez à la place la syntaxe *setter*.
 
   ```javascript
   /* recommandé */
@@ -215,12 +215,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       ]);
   ```
 
-### Getters
+### Accesseurs (*Getters*)
 ###### [Style [Y022](#style-y022)]
 
-  - Lorsque vous utilisez un module, évitez d'utiliser une variable en utilisant plutôt le chaînage avec la syntaxe du getter.
+  - Lorsque vous utilisez un module, évitez d'utiliser une variable en utilisant plutôt le chaînage avec la syntaxe *getter*.
 
-  *Pourquoi ?* : Cela produit du code plus lisible et évite les collisions de variable ou les fuites.
+  *Pourquoi ?* : le code est plus lisible et évite les collisions de variables ou les fuites.
 
   ```javascript
   /* à éviter */
@@ -242,19 +242,26 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Setting ou Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Ne settez qu'une fois et gettez pour toutes les autres instances.
+  - N'utilisez le *setter* qu'une fois et le *getter* pour toutes les autres instances.
 
-  *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point et après.
+  *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point.
 
-    - Utilisez `angular.module('app', []);` pour setter un module.
-    - Utilisez `angular.module('app');` pour getter un module.
+  ```javascript
+  /* recommended */
 
-### Fonctions Nommées ou Anonymes
+  // pour setter un module
+  angular.module('app', []);
+
+  // pour getter un module
+  angular.module('app');
+  ```
+
+### Fonctions nommées ou anonymes
 ###### [Style [Y024](#style-y024)]
 
-  - Utilisez des fonctions nommées au lieu de passer une fonction anonyme comme callback.
+  - Utilisez des fonctions nommées au lieu de passer des fonction anonymes dans les *callbacks*.
 
-  *Pourquoi ?* : Celà produit du code plus lisible, est plus facile à débugguer, et réduit la quantité de code callback imbriqué.
+  *Pourquoi ?* : le code plus lisible, est plus facile à déboguer, et réduit l'imbrication des *callbacks*.
 
   ```javascript
   /* à éviter */
@@ -265,7 +272,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   ```
 
   ```javascript
-  /* recommendé */
+  /* recommandé */
 
   // dashboard.js
   angular
@@ -307,7 +314,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   ```
 
   ```html
-  <!-- recommendé -->
+  <!-- recommandé -->
   <div ng-controller="Customer as customer">
      {{ customer.name }}
   </div>
