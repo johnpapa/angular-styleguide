@@ -2387,15 +2387,15 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Le Test
-Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelques unes de mes recommandations sur les fondamentaux du test unitaire avec des liens pour plus déinformation.
+## Tests
+Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut quelques unes de mes recommandations sur les bases des tests unitaires avec des liens pour plus d'informations.
 
-### Écriture des Tests avec les Stories
+### Écrire les tests avec des scenarii
 ###### [Style [Y190](#style-y190)]
 
-  - Écrivez un ensemble de tests pour chaque story. Commencer avec un test vide et complétez-les à mesure que vous écrivez le code pour la story.
+  - Écrivez un ensemble de tests pour chaque scenario. Commencer avec un test vide et complétez-les à mesure que vous écrivez le code pour le scenario.
 
-    *Pourquoi ?* : Écrire les descriptions de tests aident à définir clairement ce que votre story devra faire, ne devra pas faire et comment mesurer l'avancement.
+    *Pourquoi ?* : Écrire les descriptions de tests aident à définir clairement ce que votre scenario devra faire, ne devra pas faire et comment mesurer la réussite.
 
     ```javascript
     it('should have Avengers controller', function() {
@@ -2417,12 +2417,12 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
     // et ainsi de suite
     ```
 
-### Librairie de Test
+### Librairie de test
 ###### [Style [Y191](#style-y191)]
 
   - Utilisez [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) pour les tests unitaires.
 
-    *Pourquoi ?* : Jasmine et Mocha sont toutes deux largement utilisées dans la communauté Angular. Toutes les deux stables, bien maintenues, et fournissant des fonctionnalités robustes de test.
+    *Pourquoi ?* : Jasmine et Mocha sont toutes deux largement utilisées dans la communauté Angular. Toutes les deux sont stables, bien maintenues, et fournissent des fonctionnalités de test robustes.
 
     Note : Lorsque vous utilisez Mocha, utilisez aussi une librairie d'assertion telle que [Chai](http://chaijs.com). Je prefère Mocha.
 
@@ -2431,78 +2431,122 @@ Les tests unitaires aident à maintenir un code propre, ainsi, j'ai inclu quelqu
 
   - Utilisez [Karma](http://karma-runner.github.io) comme lanceur de test.
 
-    *Pourquoi ?* : Karma est facile à configurer pour lancer les tests une fois ou automatiquement lorsqu'un changement est fait dans le code.
+    *Pourquoi ?* : Karma est facile à configurer pour lancer les tests ponctuellement ou automatiquement lorsqu'un changement est fait dans le code.
 
-    *Pourquoi ?* : Karma s'intègre facilement dans votre processus d'Intégration Continue soit tout seul ou par Grunt ou Gulp.
+    *Pourquoi ?* : Karma s'intègre facilement dans votre processus d'intégration continue soit seul ou via Grunt ou Gulp.
 
     *Pourquoi ?* : Quelques EDI commencent à s'intégrer avec Karma, c'est le cas de [WebStorm](http://www.jetbrains.com/webstorm/) et [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Pourquoi ?* : Karma fonctionne bien avec les leaders de l'automatisation de tâches tel que [Grunt](http://www.gruntjs.com) (avec [grunt-karma](https://github.com/karma-runner/grunt-karma)) ou [Gulp](http://www.gulpjs.com) (avec [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *Pourquoi ?* : Karma fonctionne bien avec les principaux outils d'automatisation de tâches tel que [Grunt](http://www.gruntjs.com) (avec [grunt-karma](https://github.com/karma-runner/grunt-karma)) ou [Gulp](http://www.gulpjs.com). Si vous utilisez Gulp, utilisez [Karma](https://github.com/karma-runner/karma) directement plutôt que via un plugin, son API peut s'utiliser directement.
 
-### Les Stubs et les Spy
+    ```javascript
+    /* recommended */
+
+    // Exemple de Gulp fonctionnant directement avec Karma
+    function startTests(singleRun, done) {
+        var child;
+        var excludeFiles = [];
+        var fork = require('child_process').fork;
+        var karma = require('karma').server;
+        var serverSpecs = config.serverIntegrationSpecs;
+
+        if (args.startServers) {
+            log('Starting servers');
+            var savedEnv = process.env;
+            savedEnv.NODE_ENV = 'dev';
+            savedEnv.PORT = 8888;
+            child = fork(config.nodeServer);
+        } else {
+            if (serverSpecs && serverSpecs.length) {
+                excludeFiles = serverSpecs;
+            }
+        }
+
+        karma.start({
+            configFile: __dirname + '/karma.conf.js',
+            exclude: excludeFiles,
+            singleRun: !!singleRun
+        }, karmaCompleted);
+
+        ////////////////
+
+        function karmaCompleted(karmaResult) {
+            log('Karma completed');
+            if (child) {
+                log('shutting down the child process');
+                child.kill();
+            }
+            if (karmaResult === 1) {
+                done('karma: tests failed with code ' + karmaResult);
+            } else {
+                done();
+            }
+        }
+    }
+    ```
+
+### `stub` et les `spy`
 ###### [Style [Y193](#style-y193)]
 
-  - Utilisez [Sinon](http://sinonjs.org/) pour les stubs et les spy.
+  - Utilisez [Sinon](http://sinonjs.org/) pour les `stub` et les `spy`.
 
-    *Pourquoi ?* : Sinon fonctionne bien avec Jasmine et Mocha et étend les fonctionnalités de stub et de spy qu'ils offrent.
+    *Pourquoi ?* : Sinon fonctionne bien avec Jasmine et Mocha et étend les fonctionnalités de `stub` et de `spy` qu'ils offrent.
 
     *Pourquoi ?* : Sinon rend plus facile l'alternance entre Jasmine et Mocha, si vous voulez essayer les deux.
 
-    *Pourquoi ?* : Sinon a des messages descriptifs quand les tests ne valident pas les assertions.
+    *Pourquoi ?* : Sinon fournit des messages descriptifs quand les tests ne valident pas les assertions.
 
-
-### Navigateur sans Interface Graphique
+### Navigateur sans interface graphique
 ###### [Style [Y194](#style-y194)]
 
-  - Utilisez [PhantomJS](http://phantomjs.org/) pour éxécuter les tests sur un serveur.
+  - Utilisez [PhantomJS](http://phantomjs.org/) pour exécuter les tests sur un serveur.
 
-    *Pourquoi?* : PhantomJS est un navigateur sans interface graphique qui peut vous aider à éxécuter les tests sans avoir besoin d'un navigateur "visuel". Ainsi vous n'avez pas besoin d'installer Chrome, Safari, IE, ou d'autres navigateurs sur votre serveur.
+    *Pourquoi?* : PhantomJS est un navigateur sans interface graphique qui peut vous aider à exécuter les tests sans avoir besoin d'un navigateur "visuel". Ainsi vous n'avez pas besoin d'installer Chrome, Safari, IE, ou d'autres navigateurs sur votre serveur.
 
-    Note : Que cela ne vous dispense pas de tester sur tous les navigateurs dans votre environnement, d'après les clients que vous ciblez.
+    Note : Que cela ne vous dispense pas de tester sur tous les navigateurs dans votre environnement,en fonction des clients que vous ciblez.
 
-### Analyse de Code
+### Analyse du code
 ###### [Style [Y195](#style-y195)]
 
   - Exécutez JSHint sur vos tests.
 
-    *Pourquoi ?* : Les tests sont du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
+    *Pourquoi ?* : Les tests' c'est aussi du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
 
-### Atténuation des Règles JSHint avec les Golbales sur les Tests
+### Assouplissement des règles de JSHint avec les variables globales dans les tests
 ###### [Style [Y196](#style-y196)]
 
-  - Relaxez les règles sur votre code de test afin de permettre l'usage des globales telles que `describe` et `expect`. Relaxez les règles pour les expressions, de la même façon qu'avec Mocha.
+  - Assouplissez les règles sur votre code de test afin de permettre l'usage des variables globales courantes telles que `describe` et `expect`. Assouplissez les règles pour les expressions puisque Mocha les utilise.
 
-    *Pourquoi ?* : Vos tests sont du code et requièrent à ce titre la même attention avec les mêmes règles de qualité de code que votre code de production. Cependant, les variables globales utilisées par les frameworks de test, par exemple, peuvent être relaxées en les incluants dans les spécifications de test.
+    *Pourquoi ?* : Vos tests sont du code et requièrent à ce titre la même attention avec les mêmes règles de qualité de code que votre code de production. Cependant, les variables globales utilisées par les *frameworks* de test, par exemple, peuvent être négligées en les incluant dans les spécifications de test.
 
     ```javascript
     /* jshint -W117, -W030 */
     ```
-    Ou laors vous pouvez rajouter ça à votre fichier d'option JSHint.
+    Ou alors vous pouvez rajouter le snippet suivant à votre fichier d'options JSHint.
 
     ```javascript
     "jasmine": true,
     "mocha": true,
     ```
 
-
-  ![Outils de Test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Outils de test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
 ### Organizing Tests
 ###### [Style [Y197](#style-y197)]
 
-  - Placez les fichiers des tests unitaires (specs) côte-à-côte du code client. Placez les specs qui couvrent l'intégration avec le serveur ou les celles qui testent plusieurs composants dans un répertoire `tests` séparé.
+  - Placez les fichiers des tests unitaires (specs) à parallèlement du code client. Placez les specs qui sont en charge de l'intégration avec le serveur ou les celles qui testent plusieurs composants dans un répertoire `tests` séparé.
 
-    *Pourquoi ?* : Les tests unitaires sont en corrélation directe avec un composant spécifique et un fichier dans le code source.
+    *Pourquoi ?* : Les tests unitaires sont en corrélation directe avec les composants et fichiers qu'ils testent dans le code source.
 
-    *Pourquoi ?* : Il est plus facile de les mettre à jour pluisqu'ils sont toujours les uns en face des autres. Quand vous développez, que vous fassiez du TDD, des tests en meme temps que l'implémentation ou des tests après l'implémentation, les specs sont côte-à-côte et jamais loin ni des yeux ni de l'esprit, et ainsi ils ont plus de chance d'etre maintenus ce qui permet aussi de tenir une bonne couverture de code.
+    *Pourquoi ?* : Il est plus facile de les mettre à jour puisqu'ils sont toujours visibles. Quand vous développez, que vous fassiez du TDD, des tests en même temps que l'implémentation ou des tests après l'implémentation, les spécifications ne sont jamais loin ni des yeux ni de l'esprit, et ainsi ils ont plus de chance d'être maintenus, ce qui permet aussi de tenir une bon *coverage*.
 
     *Pourquoi ?* : Quand vous mettez à jour le code source, il est plus facile de mettre à jour les tests en même temps.
 
-    *Pourquoi ?* : Les placer côte-à-côte les rend plus facile à trouver et facile à déplacer si vous déplacez les sources.
+    *Pourquoi ?* : Les placer en parallèle les rend plus facile à trouver et facile à déplacer si vous déplacez les sources.
 
-    *Pourquoi ?* : Avoir les specs proches permet au lecteur du code source d'apprendre comment le composant est supposé être utilisé et découvrir les limitations connues.
+    *Pourquoi ?* : Avoir les spécifications proches permet au lecteur d'apprendre comment le composant est supposé être utilisé et découvrir ses limitations connues.
 
-    *Pourquoi ?* : La séparation des specs afin qu'ils ne soient pas inclus dans le build est facile avec grunt ou gulp.
+    *Pourquoi ?* : Séparer les spécifications de test afin qu'ils ne soient pas inclus dans le *build* est facile avec grunt ou gulp.
 
     ```
     /src/client/app/customers/customer-detail.controller.js
