@@ -2135,34 +2135,34 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Structure de l'Application
+## Architecture de l'application
 
-### Règles Générales
+### Règles globales
 ###### [Style [Y150](#style-y150)]
 
-  -  Vous devez avoir une vue court terme et une vision à long terme. En d'autres mots, commencez petit et garder en tête là où en est votre application. Tout le code de l'appli va dans un répertoire racine nommé `app`. Tout contenu fonctionnel doit être rangé dans son propre fichier. Chaque contrôleur, service, module, vue doit avoir son propre fichier. Tous les scripts provenant de fournisseurs extérieurs doivent être rangés dans un autre répertoire racine et non dans le répertoire `app`. Le code que l'on écrit pas soi-même ne doit pas se mélanger avec son appli (`bower_components`, `script`, `lib`).
+  -  Vous devez avoir une vue court terme et une vision à long terme. En d'autres mots, commencez petit et gardez en tête là où veut aller votre application. Tout le code de l'application va dans un répertoire de départ nommé `app` à la racine du projet. Tout élément fonctionnel doit être rangé dans son propre et unique fichier. Chaque contrôleur, service, module, vue doit avoir son propre fichier. Tous les scripts externes doivent être rangés dans un autre répertoire à la racine du projet et non dans le répertoire `app`. Le code que l'on a pas écrit ne doit pas se mélanger avec le code de l'application (`bower_components`, `script`, `lib`).
 
-    Note : Vous trouverez plus de détails et les justifications derrière la structure sur [ce post original sur la structure des applications](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Note : Vous trouverez plus de détails et de justifications concernant l'architecture sur [ce post original sur la structure des applications](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
 
-  - Placez les composants qui définissent le layout principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une vue noyau et le contrôleur devrait agir comme conteneur pour l'appli, la navigation, les menus, les zones de contenu, et les autres régions.
+  - Placez les composants qui définissent l'agencement visuel principal de l'application dans un répertoire nommé `layout`. Il devrait inclure une « vue-enveloppe » et le contrôleur devrait agir comme conteneur pour l'application, la navigation, les menus, les zones de contenu, et les autres régions.
 
-    *Pourquoi ?* : Organise tout le layout à un seul endroit réutilisé dans l'application.
+    *Pourquoi ?* : Cela organise tout l'agencement visuel à un seul endroit réutilisé dans toute l'application.
 
-### Structure en Répertoires-par-Fonctionnalités
+### Structure « répertoire-fonctionnalité »
 ###### [Style [Y152](#style-y152)]
 
-  - Créez des répertoires nommés d'après les fonctionnalités qu'elles représentent. Lorsqu'un répertoire grossit jusqu'à atteindre plus de 7 fichiers, commencez à penser la création d'un répertoire pour ceux-ci. Si votre seuil est différent, ajustez-le au besoin.
+  - Créez des répertoires nommés d'après les fonctionnalités qu'elles représentent. Lorsqu'un répertoire grossit jusqu'à atteindre plus de sept fichiers, commencez à penser la création d'un sous-répertoire pour ceux-ci. Si votre seuil est différent, ajustez au besoin.
 
-    *Pourquoi ?* : Un développeur peut localiser, identifier ce que représente chaque fichier en sune seule fois, la structure est aussi plate que possible, et il n'y a ni répétitions ni noms redondants.
+    *Pourquoi ?* : Un développeur peut localiser, identifier ce que représente chaque fichier en une seule fois, la structure est aussi plate que possible, et il n'y a ni répétitions ni redondance de nommage.
 
-    *Pourquoi ?* : Les règles LIFT sont toutes couvertes.
+    *Pourquoi ?* : Les règles L.I.F.T. sont toutes respectées.
 
-    *Pourquoi ?* : Aide à diminuer l'entropie de l'appli en organizant le contenu et en le maintenant aligné avec les principes LIFT.
+    *Pourquoi ?* : Aide à diminuer l'entropie de l'application en organisant le contenu et en le maintenant en accord avec les principes L.I.F.T.
 
-    *Pourquoi ?* : Lorsqu'il y a de nombreux fichiers (+ de 10) les repérer est plus facile avec une structure de répertoires cohérente et plus difficile dans une structure à plat.
+    *Pourquoi ?* : Lorsqu'il y a de nombreux fichiers (plus de dix), les repérer est plus facile avec une structure de répertoires cohérente que dans une structure à plat.
 
     ```javascript
     /**
@@ -2203,15 +2203,15 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
             session-detail.controller.js
     ```
 
-      ![Structure d'une Appli Exemple](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Image d'un exemple de structure d'application](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
-      Note : N'utilisez pas une structuration de répertoires-par-type. Cela requiert de se déplacer entre de multiples répertoires lorsqu'on travaille sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application grossit à 5, 10 ou plus de 25 vues et contrôleurs (et autres), ce qui complique la localisation par rapport à des répertoires-par-fonctionnalité.
+      Note : N'utilisez pas une structuration « répertoire-type ». Cela requiert de se déplacer entre de multiples répertoires lors du travail sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application passe de à cinq, dix ou plus de vingt-cinq vues et contrôleurs (et autres fonctionnalités), ce qui complique la localisation par rapport à une structure en « répertoire-fonctionnalité ».
 
     ```javascript
     /*
     * à éviter
-    * Trouver une alternative aux répertoires-par-type.
-    * Je vous conseille les "répertoires-par-fonctionnalité", à la place.
+    * Alternative aux « répertoires-type » :
+    * Je vous conseille les « répertoires-fonctionnalité »
     */
 
     app/
