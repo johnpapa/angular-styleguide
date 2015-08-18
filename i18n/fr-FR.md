@@ -10,10 +10,10 @@ Le but de ce guide de style est de proposer des conseils sur le développement d
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Suprématie de la Communauté et Remerciements
-Ne jamais travailler dans le vide. J'ai trouvé que la communauté Angular est un incroyable groupe dont les membres ont à coeur de partager leurs expériences. Ainsi, un ami et expert Angular Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
+## Remerciements individuels et à la communauté
+Ne jamais travailler en vase clos. J'ai trouvé que la communauté Angular est une incroyable communauté dont les membres ont à cœur de partager leurs expériences. Ainsi, avec mon ami et expert d'Angular, Todd Motto, nous avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [le guide de style de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire votre propre avis sur son approche et en quoi elle diverge.
 
-De nombreux de mes styles proviennent des maintes scéances de pair programming que [Ward Bell](http://twitter.com/wardbell) et moi avons eu. Même si nous n'étions pas toujours d'accord, mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
+Beaucoup de mes styles proviennent des nombreuses séances de pair programming avec [Ward Bell](http://twitter.com/wardbell). Mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
 
 ## Visualiser les Styles dans une Application d'Exemple
 Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a été utile de les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces motifs. Vous pouvez trouver l'[application d'exemple (appellée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le dupliquer pour le modifier. [Les instructions pour l'éxécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
