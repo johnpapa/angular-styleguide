@@ -2724,11 +2724,12 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
 ## JSCS
 
-### Use an Options File
+### Utiliser un fichier de configuration
 ###### [Style [Y235](#style-y235)]
-  - Utilisez JSCS pour valider votre style de code pour votre JavaScript et pensez à personnaliser vos options pour JSCS et de l'inclure dans votre gestionnaire de versionning. Vous pouvez consulter la [documentation de JSCS](http://www.jscs.info) pour voir les détails et les options.
 
-    *Pourquoi ?* : Fournit une premiere alerte avant de commiter sur votre gestionnaire de versionning.
+  - Utilisez JSCS pour valider vos styles de code pour votre JavaScript et pensez à personnaliser vos options pour JSCS et de l'inclure dans votre gestionnaire de versioning. Vous pouvez consulter la [documentation de JSCS](http://www.jscs.info) pour voir les détails et les options.
+
+    *Pourquoi ?* : Fournit une première alerte avant de *commiter* sur votre gestionnaire de versioning.
 
     *Pourquoi ?* : Permet d'assurer une cohérence au sein de votre équipe.
 
