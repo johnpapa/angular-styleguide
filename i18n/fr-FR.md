@@ -58,33 +58,33 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 ## Responsabilité Unique
 
-### La règle de l'unicité
+### Règle d'unicité
 ###### [Style [Y001](#style-y001)]
 
-  - Définir 1 composant par fichier.
+  - Définir un composant par fichier.
 
-  L'exemple suivant définit le module `app` et ses dépendances, définit un controlleur, et définit une factory le tout dans le même fichier.
+  L'exemple suivant définit le module `app` et ses dépendances, définit un contrôleur, et définit une factory le tout dans le même fichier.
 
   ```javascript
   /* à éviter */
   angular
-    	.module('app', ['ngRoute'])
-    	.controller('SomeController', SomeController)
-    	.factory('someFactory', someFactory);
+      .module('app', ['ngRoute'])
+      .controller('SomeController', SomeController)
+      .factory('someFactory', someFactory);
 
   function SomeController() { }
 
   function someFactory() { }
   ```
 
-	Les même composants sont maintenant séparés dans leurs propres fichiers.
+  Les même composants sont maintenant séparés dans leurs propres fichiers.
 
   ```javascript
   /* recommandé */
 
   // app.module.js
   angular
-    	.module('app', ['ngRoute']);
+     .module('app', ['ngRoute']);
   ```
 
   ```javascript
@@ -92,8 +92,8 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   // someController.js
   angular
-    	.module('app')
-    	.controller('SomeController', SomeController);
+      .module('app')
+      .controller('SomeController', SomeController);
 
   function SomeController() { }
   ```
@@ -103,8 +103,8 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   // someFactory.js
   angular
-    	.module('app')
-    	.factory('someFactory', someFactory);
+      .module('app')
+      .factory('someFactory', someFactory);
 
   function someFactory() { }
   ```
