@@ -1719,14 +1719,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 ## Gestion des Exceptions
 
-### decorateurs
+### Décorateurs
 ###### [Style [Y110](#style-y110)]
 
-  - Utilisez un [decorateur](https://docs.angularjs.org/api/auto/service/$provide#decorator), au moment de la configuration en utilisant le service [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sur le service [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) pour effecture des actions personnalisées lorsque des exceptions se produisent.
+  - Utilisez un [décorateur](https://docs.angularjs.org/api/auto/service/$provide#decorator), au moment de la configuration en utilisant le service [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), sur le service [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) pour effectuer des actions personnalisées lorsque des exceptions se produisent.
 
-    *Pourquoi ?* : Fournir un moyen cohérent pour gérer les exceptions non interceptées d'Angular pendant le développement ou à l'éxécution.
+    *Pourquoi ?* : Cela fournit un moyen cohérent pour gérer les exceptions non interceptées d'Angular pendant le développement ou à l’exécution.
 
-    Note : Une autre possibilité serait de surcharger le service au lieu d'utiliser un décorateur. C'est une bonne possibilité, mais si vou voulez garder le comportement par défaut et l'étendre, un décorateur est plus approprié.
+    Note : Une autre possibilité serait de surcharger le service au lieu d'utiliser un décorateur. C'est une bonne option, mais si vous voulez vous conformer au comportement standard et l'étendre, un décorateur est plus approprié.
 
     ```javascript
     /* recommandé */
@@ -1751,8 +1751,8 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
             };
             /**
              * On pourrait ajouter l'erreur à une collection d'un service,
-             * ajouter les erreurs au $rootScope, loguer les erreurs vers un serveur distant,
-             * ou loguer locallement. Ou rejetter directement. C'est entièrement votre choix.
+             * ajouter les erreurs au $rootScope, loguer les erreurs sur un serveur distant,
+             * ou les loguer localement. Ou alors  les rejeter directement. C'est entièrement votre choix.
              * throw exception;
              */
             toastr.error(exception.msg, errorData);
@@ -1760,14 +1760,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-### Catcher d'Exceptions
+### Intercepteurs d'exceptions
 ###### [Style [Y111](#style-y111)]
 
-  - Créer une factory qui expose une interface pour attraper et gérer correctement les exceptions.
+  - Créez une *factory* qui expose une interface pour intercepter et gérer correctement les exceptions.
 
-    *Pourquoi ?* : Fournir un moyen cohérent pour gérer les exception qui peuvent être déclenchées dans votre code (par example, pendant un appel Ajax ou lors d'un échec d'une promesse).
+    *Pourquoi ?* : Cela fournit un moyen cohérent pour intercepter les exceptions qui peuvent être déclenchées dans votre code (par exemple, pendant une requête XHR ou lors d'un échec de *promise*).
 
-    Note : Le catcher d'axception est bon pour attraper et réagir à des exceptions spécifiques provenant d'appels dont vous savez qu'elles sont déclenchées. Par exemple, lorsque on fait un appel Ajax pour récuppérer des données d'un serveur distant et que vous voulez attraper n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celui-ci.
+    Note : Le intercepteur d'exceptions est bon pour intercepter et réagir à des exceptions spécifiques potentielles provenant d'appels qui pourraient en produire. Par exemple, lorsque on fait une requête XHR pour récupérer des données d'un service web distant et que vous voulez intercepter n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celles-ci.
 
     ```javascript
     /* recommandé */
@@ -1791,33 +1791,46 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     }
     ```
 
-### Erreurs de Routage
+### Erreurs de routage
 ###### [Style [Y112](#style-y112)]
 
-  - Gérez et loguez toute erreur de routage en utilisant [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Gérez et loguez toutes les erreurs de routage en utilisant [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *Pourquoi ?* : Fournir un moyen cohérent de gérer les erreurs de routage.
+    *Pourquoi ?* : Pour fournir un moyen cohérent de gestion des erreurs de routage.
 
-    *Pourquoi ?* : Fournir potentiellement une meilleure expérience utilisateur si une erreur de routage se produit et les rediriger vers un écran convivial avec plus de détails ou les possibilités de s'en sortir.
+    *Pourquoi ?* : Pour fournir potentiellement une meilleure expérience utilisateur si une erreur de routage se produit et rediriger vers un écran approprié avec plus de détails ou les possibilités pour s'en sortir.
 
     ```javascript
     /* recommandé */
+    var handlingRouteChangeError = false;
+
     function handleRoutingErrors() {
         /**
-         * Annulation du routage:
-         * Sur une erreur de routage, aller au dashboard.
-         * Fournir une clause de sortie s'il essaye de le faire deux fois.
+         * Annulation du routage :
+         * sur une erreur de routage, aller au dashboard.
+         * Fournit une clause de sortie s'il essaye de le faire deux fois.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
-                var destination = (current && (current.title || current.name || current.loadedTemplateUrl)) ||
+                if (handlingRouteChangeError) { return; }
+                handlingRouteChangeError = true;
+                var destination = (current && (current.title ||
+                    current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
-                var msg = 'Error routing to ' + destination + '. ' + (rejection.msg || '');
+                var msg = 'Error routing to ' + destination + '. ' +
+                    (rejection.msg || '');
+
                 /**
                  * Loguer éventuellement en utilisant un service personnalisé ou $log.
                  * (N'oubliez pas d'injecter votre service personnalisé)
                  */
                 logger.warning(msg, [current]);
+
+                /**
+                 * Lors d'une erreur de routage aller sur une autre route / état.
+                 */
+                $location.path('/');
+
             }
         );
     }
