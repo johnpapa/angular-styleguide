@@ -2645,14 +2645,14 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## JS Hint
+## JSHint
 
-### Utilisation d'un Fichier d'Options
+### Utilisation d'un fichier d'options
 ###### [Style [Y230](#style-y230)]
 
-  - Utilisez JS Hint pour éplucher votre JavaScript et assurez-vous d'avoir personnalisé le fichier d'options JS Hint et incluez le dans le système de gestion de versions. Voir la [doc de JS Hint](http://www.jshint.com/docs/) pour les détails de chaque option.
+  - Utilisez JSHint pour analyser votre JavaScript et assurez-vous d'avoir personnalisé son fichier d'options et incluez le dans le système de versioning. Lire la [documentation de JSHint](http://www.jshint.com/docs/) pour avoir les détails de chaque option.
 
-    *Pourquoi ?* : Fournit une première alerte avant de committer son code dans le système de gestion de version.
+    *Pourquoi ?* : Cela fournit une première alerte avant de *committer* son code dans le système de versioning.
 
     *Pourquoi ?* : Fournit de la cohérence dans votre équipe.
 
