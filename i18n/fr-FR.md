@@ -15,8 +15,8 @@ Ne jamais travailler en vase clos. J'ai trouvé que la communauté Angular est u
 
 Beaucoup de mes styles proviennent des nombreuses séances de pair programming avec [Ward Bell](http://twitter.com/wardbell). Mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
 
-## Visualiser les Styles dans une Application d'Exemple
-Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a été utile de les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces motifs. Vous pouvez trouver l'[application d'exemple (appellée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le dupliquer pour le modifier. [Les instructions pour l'éxécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+## Visualiser les styles dans une application d'exemple
+Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est utile de pouvoir les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces modèles. Vous pouvez trouver l'[application d'exemple (intitulée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le **forker**. [Les instructions pour l’exécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
 [Des traductions de ce guide stylistique Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
