@@ -2598,15 +2598,15 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 ### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - Si vous prévoyez de produire de la documentation de code, utilisez la syntaxe [`jsDoc`](http://usejsdoc.org/) pour documenter les noms de fonction, leur description, paramètres et valeurs de renvoi. Utilisez `@namespace` et `memberOf` pour s'adapter à la structure de votre appli.
+  - Si vous prévoyez de documenter votre code source, utilisez la syntaxe [`jsDoc`](http://usejsdoc.org/) pour documenter les noms des fonctions, leur descriptions, paramètres et valeurs de retour. Utilisez `@namespace` et `memberOf` pour s'adapter à l'architecture de votre application.
 
-    *Pourquoi ?* : Vous pouvez générer (et re-générer) la documentation à partir de votre code, au lieu de l'écrire de zéro.
+    *Pourquoi ?* : Vous pouvez générer (et re-générer) la documentation à partir de votre code, au lieu de l'écrire intégralement.
 
-    *Pourquoi ?* : Fournit de la cohérence en utilisant un outil industriel commun.
+    *Pourquoi ?* : Cela permet d'avoir de la cohérence grâce un outil industriel standard.
 
     ```javascript
     /**
-     * Factory de Logger
+     * Factory de logger
      * @namespace Factories
      */
     (function() {
@@ -2629,8 +2629,8 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
           /**
            * @name logError
-           * @desc Loggue les errors
-           * @param {String} msg Le message à logguer
+           * @desc Logue les erreurs
+           * @param {String} msg Le message à loguer
            * @returns {String}
            * @memberOf Factories.Logger
            */
