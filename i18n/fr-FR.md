@@ -1840,29 +1840,29 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
 ## Nommage
 
-### Règles de Nommage
+### Conventions de nommage
 ###### [Style [Y120](#style-y120)]
 
-  - Utilisez des noms cohérents pour tous les composants en utilisant un pattern qui décrit la fonctionnalité de ce composant puis (éventuellement) son type. Le pattern que je recommande est `fonctionnalité.type.js`. Il y a 2 noms pour la plupart des resources:
-    *   le nom du fichier (`avengers.controller.js`)
-    *   le nom du composant déclaré à Angular (`AvengersController`)
+  - Utilisez des noms cohérents pour tous les composants en utilisant un motif qui décrit la fonctionnalité du composant puis (éventuellement) son type. Le motif que je recommande est `fonctionnalité.type.js`. Il y a deux noms pour la plupart des ressources :
+    * le nom du fichier (`avengers.controller.js`)
+    * le nom du composant déclaré à Angular (`AvengersController`)
 
-    *Pourquoi ?* : Les conventions de nommage donnent une façon cohérente de s'y retrouver en un clin d'oeil. La cohérence dans tout le projet est vitale. La cohérence au sein de l'équipe est importante. La cohérence dans l'entreprise apporte une efficacité redoutable.
+    *Pourquoi ?* : Les conventions de nommage permettent de de nommer de façon cohérente et de retrouver du contenu en un clin d'œil. La cohérence à toute l'échelle du projet est vitale. La cohérence au sein d'une équipe est importante. La cohérence dans une entreprise apporte une efficacité redoutable.
 
-    *Pourquoi ?* : Les conventions de nommage doivent simplement vous aider à naviguer dans le code plus vite et le rendre plus facile à comprendre.
+    *Pourquoi ?* : Les conventions de nommage doivent simplement vous aider à naviguer dans votre code plus vite et le rendre plus facile à comprendre.
 
-### Nom des Fichiers de Fonctionnalités
+### Nom des fichiers de fonctionnalités
 ###### [Style [Y121](#style-y121)]
 
-  - Utilisez des noms cohérents pour tous les composants qui suivent un pattern qui décrit la fonctionnalité d'un composant et (éventuellent) son type. Le pattern que je recommande est `fonctionnalité.type.js`.
+  - Utilisez des noms cohérents pour tous les composants qui suivent un motif qui décrit leur fonctionnalité et (éventuellement) leur type. Le motif que je recommande est `fonctionnalité.type.js`.
 
     *Pourquoi ?* : Offre une façon cohérente d'identifier rapidement les composants.
 
-    *Pourquoi ?* : Fournit un pattern matching pour automatiser des tâches.
+    *Pourquoi ?* : Permet de faire *matcher* par nom de fichier au sein d'un processus d'automatisation.
 
     ```javascript
     /**
-     * possibilités couramment rencontrées.
+     * Options courantes
      */
 
     // Contrôleurs
@@ -1907,7 +1907,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     avenger-profile.directive.spec.js
     ```
 
-  Note : Une autre convention courante consiste à nommer les fichiers de contrôleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions étant maintenues avec un suffixe par type. Les contrôleurs étant les les types de composant les plus courants, ça permet d'économiser la frappe au clavier tout en étant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe. Ma préference est `avengers.controller.js`.
+  Note : Une autre convention courante consiste à nommer les fichiers des contrôleurs sans le mot `controller` dans le nom de fichier comme `avengers.js`au lieu de `avengers.controller.js`. Toutes les autres conventions tiennent à garder le suffixe du type. Le contrôleur étant le type de composant le plus courant, cela permet alors d'économiser à la frappe tout en restant facilement identifiable. Je vous conseille de choisir une convention et de vous y tenir dans toute l'équipe. Ma préference est `avengers.controller.js`.
 
     ```javascript
     /**
@@ -1918,14 +1918,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     avengers.spec.js
     ```
 
-### Nommage des Fichiers de Test
+### Nommage des fichiers de test
 ###### [Style [Y122](#style-y122)]
 
-  - Les spécifications du nommage des tests est similaire à celui du composant qu'il teste avec un suffixe `spec`.
+  - Le nommage des spécifications de test est similaire à celui des celui du composant qu'il teste avec le suffixe `spec`.
 
     *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement les composants.
 
-    *Pourquoi ?* : Permet le pattern matching pour [karma](http://karma-runner.github.io/) ou d'autres moteurs de tests.
+    *Pourquoi ?* : Permet de faire *matcher* par nom de fichier dans [karma](http://karma-runner.github.io/) ou d'autres moteurs de tests.
 
     ```javascript
     /**
@@ -1940,11 +1940,11 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Nommage des Contrôleurs
 ###### [Style [Y123](#style-y123)]
 
-  - Utilisez des noms cohérents pour tous les contrôleurs nommés d'après leur fonctionnalité. Utilisez le CamelCaseEnMajuscule, puisque ce sont des constructeurs.
+  - Utilisez des noms cohérents pour tous les contrôleurs nommés d'après leur fonctionnalité. Utilisez le UpperCamelCase pour les contrôleurs, car ce sont des constructeurs.
 
     *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les contrôleurs.
 
-    *Pourquoi ?* : Le CamelCaseEnMajuscules est la convention pour identifier les objets qui peuvent être instanciés avec un controleur.
+    *Pourquoi ?* : Le UpperCamelCase est la convention pour identifier les objets qui peuvent être instanciés avec un constructeur.
 
     ```javascript
     /**
@@ -1959,12 +1959,12 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     function HeroAvengersController() { }
     ```
 
-### Suffixe des Noms de Contrôleurs
+### Suffixe du nom des contrôleurs
 ###### [Style [Y124](#style-y124)]
 
   - Ajoutez au nom du contrôleur le suffixe ˋControllerˋ.
 
-    *Pourquoi ?* : Le suffixe ˋControllerˋ est utilisé souvent et il est plus explicitement descriptif.
+    *Pourquoi ?* : Le suffixe ˋControllerˋ est souvent utilisé et il est explicite.
 
     ```javascript
     /**
@@ -1979,12 +1979,18 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     function AvengersController(){ }
     ```
 
-### Nommage des Factory
+### Nommage des *factory* et des services
 ###### [Style [Y125](#style-y125)]
 
-  - Utilisez des noms cohérents pour toutes les foactories nommées d'après la fonctionnalitée. Utilisez le camel-case pour les services et les factories.
+  - Utilisez des noms cohérents pour toutes les *factories* et les services nommés d'après leur fonctionnalités. Utilisez le lowerCamelCase pour les services et les *factories*. Évitez de préfixer les *factories* et les services par `$`. N'ajoutez le suffixe `Service` à leurs noms uniquement si sa nature n'est pas claire (par exemple dans le cas des noms).
 
-    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les factories.
+    *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les *factories* et les services.
+
+    *Pourquoi ?* : Permet d'éviter les collisions avec les services et *factories* d'Angular qui ont déjà le préfixe `$`.
+
+    *Pourquoi ?* : Les services aux noms explicites tels que `logger` n'ont pas besoin d'être préfixés.
+
+    *Pourquoi ?* : Des alias tels que 'avengers' sont des noms et ont besoin d'un suffixe. Ce dernier doit être nommé `avengersService`.
 
     ```javascript
     /**
@@ -1999,10 +2005,30 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
     function logger(){ }
     ```
 
-### Nommage des Directives de Composants
+    ```javascript
+    /**
+     * recommended
+     */
+
+    // credit.service.js
+    angular
+        .module
+        .factory('creditService', creditService);
+
+    function creditService() { }
+
+    // credit.service.js
+    angular
+        .module
+        .service('customersService', customersService);
+
+    function customersService() { }
+    ```
+
+### Nommage des directives
 ###### [Style [Y126](#style-y126)]
 
-  - Utilisez des noms cohérents pour toutes les directives en utilisant le camel-case. Utilisez un préfixe court pour décrire le domaine à laquelle les directives appartiennent (exemples : préfixe de la société ou préfixe du projet).
+  - Utilisez des noms cohérents pour toutes les directives en utilisant le lowerCamelCase. Utilisez un préfixe court pour décrire le domaine auquel les directives appartiennent (par exemple le préfixe de la société ou du projet).
 
     *Pourquoi ?* : Fournit une façon cohérente d'identifier rapidement et de référencer les composants.
 
@@ -2024,25 +2050,25 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Modules
 ###### [Style [Y127](#style-y127)]
 
-  - Lorqu'il y a de multiples modules, le fichier du module principal est nommé ˋapp.module.jsˋ tandis que les autres modules dépendants sont nommés d'après ce qu'ils représentent. Par exemple, un module d'admin est nommé ˋadmin.module.jsˋ. Les noms des modules déclarés seraient respectivement ˋappˋ et ˋadminˋ.
+  - Lorqu'il y a de multiples modules, nommez le fichier du module principal ˋapp.module.jsˋ et nommez les autres modules qui en sont dépendants d'après ce qu'ils représentent. Par exemple, nommez un module d'administration ˋadmin.module.jsˋ. Les noms des modules déclarés seraient alors respectivement ˋappˋ et ˋadminˋ.
 
-    *Pourquoi ?* : Fournit de la cohérence pour les applications multi-modules, et pour les applications qui grossissent.
+    *Pourquoi ?* : Fournit de la cohérence pour les applications modulaires, et pour prévoir l'extension des applications.
 
-    *Pourquoi ?* : Fournit une façon aisée d'utiliser l'automatisation des tâches afin de charger toutes les définitions de modules en premier, puis ensuite tous les autres fichiers angular (pour l'assemblage).
+    *Pourquoi ?* : Fournit une façon aisée d'utiliser des processus d'automatisation des tâches afin de charger toutes les définitions de modules en premier, puis ensuite tous les autres fichiers Angular (pour l'assemblage).
 
 ### Configuration
 ###### [Style [Y128](#style-y128)]
 
-  - Séparer la configuration d'un module dans son propre fichier nommé d'après le module. Un fichier de configuration du module principal ˋappˋ est nommé ˋapp.config.jsˋ (ou simplement ˋconfig.jsˋ). Une configuration pour un module nommé ˋadmin.module.jsˋ est nommé ˋadmin.config.jsˋ.
+  - Séparez la configuration d'un module dans son propre fichier nommé d'après le module. Un fichier de configuration du module principal ˋappˋ est nommé ˋapp.config.jsˋ (ou simplement ˋconfig.jsˋ). Une configuration pour un module nommé ˋadmin.module.jsˋ est nommé ˋadmin.config.jsˋ.
 
-    *Pourquoi ?* : Sépare la configuration de la définition du module, du composant et du code actif.
+    *Pourquoi ?* : Sépare la configuration de la définition du module, des composants et du code actif.
 
-    *Pourquoi ?* : Fournit un endroit bien identifié pour mettre la configuration d'un module.
+    *Pourquoi ?* : Fournit un endroit bien identifié pour régler la configuration d'un module.
 
 ### Routes
 ###### [Style [Y129](#style-y129)]
 
-  - Séparez la configuration de la route dans son propre fichier. Un exemple pourrait être ˋapp.route.jsˋ pour le module principal et ˋadmin.route.jsˋ pour le module d'ˋadminˋ. Même pour de petites applications, il est préférable de privilégier cette séparation du reste de la configuration.
+  - Séparez la configuration du routage dans son propre fichier. Un exemple pourrait être ˋapp.route.jsˋ pour le module principal et ˋadmin.route.jsˋ pour le module d'administration. Même pour de petites applications, il est préférable de privilégier cette séparation du reste de la configuration.
 
 **[Retour en haut de page](#table-des-matières)**
 
