@@ -112,14 +112,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 **[Retour en haut de page](#table-des-matières)**
 
 ## IIFE
-### Les Closures JavaScript
+### Les fermetures (**closures**) JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Encapsuler les composants Angular dans une Immediately Invoked Function Expression (IIFE) ou Expression de Fonction Immédiatement Invoquée.
+  - Encapsuler les composants Angular dans une **Immediately Invoked Function Expression** (IIFE) ou Expression de Fonction Immédiatement Invoquée.
 
-  *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables et de fonctions ne vivent plus longtemps qu'attendu dans le scope global, ce qui aide aussi à éviter les collisions de variables.
+  *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables et de fonctions ne vivent plus longtemps que prévu dans le scope global, ce qui aide aussi à éviter les collisions de variables.
 
-  *Pourquoi ?* : Lorsque votre code est minifié et embarqué dans un unique fichier pour le déploiement dans un serveur de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE protège contre ces derniers en fournissant un scope de variable pour chaque fichier.
+  *Pourquoi ?* : Lorsque votre code est minifié et embarqué dans un unique fichier pour le déploiement dans un serveur de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE vous protège contre ces dernières en fournissant un scope différent pour chaque fichier.
 
   ```javascript
   /* à éviter */
@@ -128,7 +128,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       .module('app')
       .factory('logger', logger);
 
-  // la fonction de logger est ajoutée en tant que variable globale
+  // la fonction logger est ajoutée en tant que variable globale
   function logger() { }
 
   // storage.js
@@ -170,9 +170,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   })();
   ```
 
-  - Note : Pour des raisons de concision seulement, le reste des examples de ce guide peuvent avoir omis la syntaxe IIFE.
+  - Note : Pour des raisons de concision seulement, le reste des exemples de ce guide seront pas écrits avec la syntaxe IIFE.
 
-  - Note : Les IIFE empêchent le code code de test d'atteindre des membres privés comme des expressions régulières ou des fonctions helper ce qui est bon pour tester unitairement directement indépendamment. Cependant, vous pouvez les tester à travers des membres accessibles ou en les exposant à travers leur propre composant. Par exemple en plaçant des fonctions helper, des expressions régulières ou des constantes dans leur propre factory ou contante.
+  - Note : Les IIFE empêchent le code de test d'atteindre des membres privés, comme les expressions régulières ou les fonctions utilitaires (**helpers**), qu'il est souvent meilleur de tester indépendamment. Cependant, vous pouvez les tester à travers les membres accessibles ou en les exposant à travers leur propre composant. Par exemple en les plaçant dans leur propre factory ou constante.
 
 **[Retour en haut de page](#table-des-matières)**
 
