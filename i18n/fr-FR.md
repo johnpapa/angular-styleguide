@@ -3106,18 +3106,17 @@ Le routage côté client est important pour créer un flux de navigation entre l
 **[Retour en haut de page](#table-des-matières)**
 
 ## Automatisation des Tâches
-Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer des tâches automatisées. Gulp favorise le code plutôt que la configuration tandis que Grunt tend vers la configuration plutôt que le code. Je préfère personnellement Gulp car il me semble plus facile à lire et écrire, mais les deux sont excellents.
+Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer des tâches automatisées. Gulp favorise le code plutôt que la configuration tandis que Grunt tend vers la configuration plutôt que le code. À titre personnel je préfère Gulp car il me semble plus facile à lire et écrire, mais les deux sont excellents.
 
-> Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course(http://jpapa.me/gulpps)
-> Vous pouvez en lire plus sur Gulp et ses patterns pour l'automatisation des taches dans mon cours sur [Pluralsight](http://jpapa.me/gulpps).
+> Apprenez-en plus sur Gulp et les *patterns* pour l'automatisation en allant voir [mon cours sur Pluralsight](http://jpapa.me/gulpps)
 
 ###### [Style [Y400](#style-y400)]
 
   - Utilisez l'automatisation des tâches pour lister les fichiers de définition de module `*.module.js` avant tout autre fichier JavaScript de l'application.
 
-    *Pourquoi ?* : Angular a besoin que la définition des modules soit déclarée avant qu'ils puissent être utilisés.
+    *Pourquoi ?* : Angular a besoin que la définition des modules soit faire avant qu'ils puissent être utilisés.
 
-    *Pourquoi ?* : Nommer les modules avec un pattern spécifique tel que `*.module.js` les rends faciles à aller chercher avec une expression englobante et à les lister en premier.
+    *Pourquoi ?* : Nommer les modules avec un pattern spécifique tel que `*.module.js` les rends faciles à aller chercher avec une expression régulière et à les lister.
 
     ```javascript
     var clientApp = './src/client/app/';
