@@ -2986,12 +2986,12 @@ Utilisez des *templates* de fichiers ou des *snippets* pour vous aider à suivre
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Generateur Yeoman
+## Générateur Yeoman
 ###### [Style [Y260](#style-y260)]
 
-Vous pouvez utiliser le [générateur yeoman HotTowel](http://jpapa.me/yohottowel) pour créer une appli pour démarrer avec Angular en suivant ce guide de style.
+Vous pouvez utiliser le [générateur Yeoman HotTowel](http://jpapa.me/yohottowel) pour créer une application Angular qui servira de point de départ et qui suis cette charte stylistique.
 
-1. Installer generator-hottowel
+1. Installer `generator-hottowel`
 
   ```
   npm install -g generator-hottowel
@@ -3004,7 +3004,7 @@ Vous pouvez utiliser le [générateur yeoman HotTowel](http://jpapa.me/yohottowe
   cd myapp
   ```
 
-3. Éxécuter le générateur
+3. Exécuter le générateur
 
   ```
   yo hottowel helloWorld
