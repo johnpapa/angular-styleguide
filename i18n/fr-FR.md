@@ -25,7 +25,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   1. [Français](i18n/fr-FR.md) par [Eric Le Merdy](https://github.com/ericlemerdy), [Xavier Haniquaut](https://github.com/xavhan)
   1. [Allemand](i18n/de-DE.md) par [Michael Seeger](https://github.com/miseeger), [Sascha Hagedorn](https://github.com/saesh), [Johannes Weber](https://github.com/johannes-weber)
-  1. [Italien](i18n/it-IT.md) par [Angelo Chiello] (@angelochiello)
+  1. [Italien](i18n/it-IT.md) par [Angelo Chiello](https://github.com/angelochiello)
   1. [Japonais](i18n/ja-JP.md) par [@noritamago](https://github.com/noritamago)
   1. [Macédonien](i18n/mk-MK.md) par [Aleksandar Bogatinov](https://github.com/Bogatinov)
   1. [Portugais brésilien](i18n/PT-BR.md) par [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)

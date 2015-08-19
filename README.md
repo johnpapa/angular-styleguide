@@ -25,7 +25,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   1. [French](i18n/fr-FR.md) by [Eric Le Merdy](https://github.com/ericlemerdy), [Xavier Haniquaut] (@xavhan)
   1. [German](i18n/de-DE.md) by [Michael Seeger](https://github.com/miseeger), [Sascha Hagedorn](https://github.com/saesh), [Johannes Weber](https://github.com/johannes-weber)
-  1. [Italian](i18n/it-IT.md) by [Angelo Chiello] (@angelochiello)
+  1. [Italian](i18n/it-IT.md) by [Angelo Chiello](https://github.com/angelochiello)
   1. [Japanese](i18n/ja-JP.md) by [@noritamago](https://github.com/noritamago)
   1. [Macedonian](i18n/mk-MK.md) by [Aleksandar Bogatinov](https://github.com/Bogatinov)
   1. [Portuguese-Brazil](i18n/PT-BR.md) by [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)
