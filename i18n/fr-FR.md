@@ -3134,14 +3134,14 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
 
 ###### [Style [Y420](#style-y420)]
 
-  - Évitez d'utiliser les filtres pour scanner toutes les propriété de l'arborescence d'un objet complexe. Utilisez les filtres pour sélectionner des propriétés.
+  - Évitez d'utiliser les filtres pour scanner toutes les propriétés de l'arborescence d'un objet complexe. Utilisez les filtres pour sélectionner des propriétés.
 
-    *Pourquoi ?*: les filtres peuvent être surutilisés et peuvent avoir des effets négatifs sur les performances s'ils ne sont pas utilisés de façon appropriée. Par exemple, quand un filtre touche un gros objet dont l'arborescence est profonde.
+    *Pourquoi ?*: les filtres peuvent être sur-utilisés et peuvent avoir des effets négatifs sur les performances s'ils ne sont pas utilisés de façon appropriée. Par exemple, quand un filtre touche un gros objet dont l'arborescence est profonde.
 
 **[Back to top](#table-of-contents)**
 
-## Documentation Angular
-Pour tout le reste, la référence des API, allez voir la [documentation Angular](//docs.angularjs.org/api).
+## Documentation
+Pour tout le reste, allez voir la [documentation de l'API d'Angular](//docs.angularjs.org/api).
 
 ## Contribuer
 
