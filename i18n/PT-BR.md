@@ -2091,7 +2091,7 @@ ou *Crie um módulo da aplicação*
     **Por que?**: Angular incentiva padrões de modularidade e de separação. Criando um módulo raiz da aplicação cujo papel é o de amarrar os outros módulos juntos, fica muito simples de adicionar ou remover módulos na sua aplicação.
 
 ### Keep the App Module Thin
-ou *Matenha o módulo da aplicação leve*
+ou *Mantenha o módulo da aplicação leve*
 
   - Somente coloque a lógica para reunir o aplicativo no módulo da aplicação. Deixe os recursos em seus próprios módulos.
 
