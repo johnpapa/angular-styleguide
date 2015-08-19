@@ -2819,7 +2819,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   - 你可以把它们导入到WebStorm设置中:
 
-    - 下载[WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true) 
+    - 下载[WebStorm Angular file templates and snippets](https://github.com/johnpapa/angular-styleguide/blob/master/assets/webstorm-angular-file-template.settings.jar?raw=true) 
     - 打开WebStorm点击`File`菜单
     - 选择`Import Settings`菜单选项
     - 选择文件点击`OK`
