@@ -2,10 +2,6 @@
 
 *Le guide d'un point de vue personnel sur le style Angular par [@john_papa](//twitter.com/john_papa)*
 
-*Translated by [Eric Lemerdy](https://github.com/ericlemerdy)*
-
->The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
-
 Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'application Angular, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de dévelopement avec [Angular](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein des équipes.
 
 Le but de ce guide de style est de proposer des conseils sur le développement d'applications Angular en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
@@ -23,7 +19,19 @@ De nombreux de mes styles proviennent des maintes scéances de pair programming 
 Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a été utile de les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces motifs. Vous pouvez trouver l'[application d'exemple (appellée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le dupliquer pour le modifier. [Les instructions pour l'éxécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
-[Des traductions de ce guide stylistique Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
+[Les traductions de ce guide stylistique pour Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues grace à la communauté et peuvent être trouvées ici.
+
+>La [version originale](http://jpapa.me/ngstyles) (en anglais) est la base de traduction, elle est maintenue et mise à jour prioritairement.
+
+  1. [Français](i18n/fr-FR.md) par [Eric Le Merdy](https://github.com/ericlemerdy), [Xavier Haniquaut](https://github.com/xavhan)
+  1. [Allemand](i18n/de-DE.md) par [Michael Seeger](https://github.com/miseeger), [Sascha Hagedorn](https://github.com/saesh), [Johannes Weber](https://github.com/johannes-weber)
+  1. [Italien](i18n/it-IT.md) par [Angelo Chiello](https://github.com/angelochiello)
+  1. [Japonais](i18n/ja-JP.md) par [@noritamago](https://github.com/noritamago)
+  1. [Macédonien](i18n/mk-MK.md) par [Aleksandar Bogatinov](https://github.com/Bogatinov)
+  1. [Portugais brésilien](i18n/PT-BR.md) par [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)
+  1. [Russe](i18n/ru-RU.md) par [Vasiliy Mazhekin](https://github.com/mazhekin)
+  1. [Chinois simplifié](i18n/zh-CN.md) par [Zhao Ke](https://github.com/natee)
+  1. [Espagnol](i18n/es-ES.md) par [Alberto Calleja](https://github.com/AlbertoImpl), [Gilberto](https://github.com/ingilniero)
 
 ## Table des matières
 

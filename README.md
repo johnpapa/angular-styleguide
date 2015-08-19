@@ -19,7 +19,19 @@ Many of my styles have been from the many pair programming sessions [Ward Bell](
 While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Translations
-[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) are maintained by the community and can be found here.
+[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) are maintained thanks to the community and can be found here.
+
+>The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
+
+  1. [French](i18n/fr-FR.md) by [Eric Le Merdy](https://github.com/ericlemerdy), [Xavier Haniquaut] (@xavhan)
+  1. [German](i18n/de-DE.md) by [Michael Seeger](https://github.com/miseeger), [Sascha Hagedorn](https://github.com/saesh), [Johannes Weber](https://github.com/johannes-weber)
+  1. [Italian](i18n/it-IT.md) by [Angelo Chiello](https://github.com/angelochiello)
+  1. [Japanese](i18n/ja-JP.md) by [@noritamago](https://github.com/noritamago)
+  1. [Macedonian](i18n/mk-MK.md) by [Aleksandar Bogatinov](https://github.com/Bogatinov)
+  1. [Portuguese-Brazil](i18n/PT-BR.md) by [Vinicius Sabadim Fernandes](https://github.com/vinicius-sabadim)
+  1. [Russian](i18n/ru-RU.md) by [Vasiliy Mazhekin](https://github.com/mazhekin)
+  1. [Simplified Chinese](i18n/zh-CN.md) by [Zhao Ke](https://github.com/natee)
+  1. [Spanish](i18n/es-ES.md) by [Alberto Calleja](https://github.com/AlbertoImpl), [Gilberto](https://github.com/ingilniero)
 
 ## Table of Contents
 
