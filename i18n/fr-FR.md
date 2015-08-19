@@ -3013,25 +3013,95 @@ Vous pouvez utiliser le [générateur Yeoman HotTowel](http://jpapa.me/yohottowe
 **[Retour en haut de page](#table-des-matières)**
 
 ## Routage
-Le routage côté client est important pour créer un flux de navigation entre les vues et la composition des vues constituées de nombreux plus petits templates et directives.
+Le routage côté client est important pour créer un flux de navigation entre les vues et composer des vues constituées de nombreux *templates* et directives de plus petites tailles.
 
 ###### [Style [Y270](#style-y270)]
 
-  - Utilisez [Routeur AngularUI](http://angular-ui.github.io/ui-router/) pour faire le routage côté client.
+  - Utilisez le [routeur d'AngularUI](http://angular-ui.github.io/ui-router/) pour faire le routage côté client.
 
-    *Pourquoi ?* : UI Router offre toutes les fonctionnalités du routeur Angular plus quelques autres parmis lesquels les routes imbriquées et les états.
+    *Pourquoi ?* : `ui-router` offre toutes les fonctionnalités du routeur d'Angular et en ajoute quelques unes parmi lesquelles les routes imbriquées et les états.
 
-    *Pourquoi ?* : La syntaxe est quasiement similaire au routeur Angular et il est facile de migrer à UI Router.
+    *Pourquoi ?* : La syntaxe est similaire à celle du routeur Angular par défaut et il est facile de migrer vers `ui-router`.
+
+    - Note: Vous pouvez utiliser un *provider* tel que `routerHelperProvider` montré ci-dessous pour vous aidez à configurer les états à travers les fichiers pendant la phase de `run`.
+
+    ```javascript
+    // customers.routes.js
+    angular
+        .module('app.customers')
+        .run(appRun);
+
+    /* @ngInject */
+    function appRun(routerHelper) {
+        routerHelper.configureStates(getStates());
+    }
+
+    function getStates() {
+        return [
+            {
+                state: 'customer',
+                config: {
+                    abstract: true,
+                    template: '<ui-view class="shuffle-animation"/>',
+                    url: '/customer'
+                }
+            }
+        ];
+    }
+    ```
+
+    ```javascript
+    // routerHelperProvider.js
+    angular
+        .module('blocks.router')
+        .provider('routerHelper', routerHelperProvider);
+
+    routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
+    /* @ngInject */
+    function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
+        /* jshint validthis:true */
+        this.$get = RouterHelper;
+
+        $locationProvider.html5Mode(true);
+
+        RouterHelper.$inject = ['$state'];
+        /* @ngInject */
+        function RouterHelper($state) {
+            var hasOtherwise = false;
+
+            var service = {
+                configureStates: configureStates,
+                getStates: getStates
+            };
+
+            return service;
+
+            ///////////////
+
+            function configureStates(states, otherwisePath) {
+                states.forEach(function(state) {
+                    $stateProvider.state(state.state, state.config);
+                });
+                if (otherwisePath && !hasOtherwise) {
+                    hasOtherwise = true;
+                    $urlRouterProvider.otherwise(otherwisePath);
+                }
+            }
+
+            function getStates() { return $state.get(); }
+        }
+    }
+    ```
 
 ###### [Style [Y271](#style-y271)]
 
   - Définissez les routes pour les vues d'un module à l'endroit où elles existent. Chaque module devrait contenir le routage de ses vues.
 
-    *Pourquoi ?* : Chaque module devrait avoir la cohérence de définir ses propres routes.
+    *Pourquoi ?* : Chaque module devrait être indépendant.
 
-    *Pourquoi ?* : Si on ajoute ou enlève un module, on souhaite que l'appli ne contienne que les routes vers des vues existantes.
+    *Pourquoi ?* : Si on ajoute ou enlève un module, on souhaite que l'application ne contienne que des routes qui aboutissent sur des vues existantes.
 
-    *Pourquoi ?* : Cela rend facile l'activation ou la désactivation de portions de l'application sans se préoccuper des routes orphelines.
+    *Pourquoi ?* : Cela rend facile l'activation ou la désactivation de portions de l'application sans se préoccuper d'avoir des routes orphelines.
 
 **[Retour en haut de page](#table-des-matières)**
 
