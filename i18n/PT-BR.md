@@ -2074,56 +2074,68 @@ ou *Estrutura de Pastas-por-Recurso*
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
 ## Modularity
+ou *Modularidade*
   
 ### Many Small, Self Contained Modules
+ou *Muitos módulos pequenos e independentes*
 
-  - Create small modules that encapsulate one responsibility.
+  - Crie pequenos módulos que encapsulem uma única responsabilidade.
 
-    *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally.  This means we can plug in new features as we develop them.
+    **Por que?**: Aplicações modulares tornam fácil o acoplamento, pois permitem que as equipes de desenvolvimento construam fatias verticais das aplicações e juntem tudo de forma incremental. Isto significa que podemos acoplar novos recursos enquanto os desenvolvemos.
 
 ### Create an App Module
+ou *Crie um módulo da aplicação*
 
-  - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+- Crie um módulo raiz para a aplicação, cujo papel é: reunir todos os outros módulos e funcionalidades da sua aplicação. Nomeie ele de acordo com a sua aplicação.
 
-    *Why?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    **Por que?**: Angular incentiva padrões de modularidade e de separação. Criando um módulo raiz da aplicação cujo papel é o de amarrar os outros módulos juntos, fica muito simples de adicionar ou remover módulos na sua aplicação.
 
 ### Keep the App Module Thin
+ou *Mantenha o módulo da aplicação leve*
 
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
+  - Somente coloque a lógica para reunir o aplicativo no módulo da aplicação. Deixe os recursos em seus próprios módulos.
 
     *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+    **Por que?**: Colocar funções adicionais na raiz da aplicação para obter dados remoto, modos de exibição, ou outra lógica não relacionada com o acoplamento do aplicativo, torna mais difícil reutilizar os recursos ou mesmo, desligá-los.
+
+    **Por que?**: O módulo da aplicação torna-se um manifesto que descreve os módulos que ajudam a definir a aplicação.
 
 ### Feature Areas are Modules
+ou *Áreas de recursos são módulos*
 
-  - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+  - Crie módulos que representem áreas de recursos, como: layout, serviços compartilhados e reutilizados, dashboards e recursos específicos do aplicativo (por exemplo, clientes, administrativo, vendas).
 
-    *Why?*: Self contained modules can be added to the application will little or no friction.
+    **Por que?**: Módulos independentes podem ser adicionados na aplicação com pouco ou nenhum esforço.
 
-    *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    **Por que?**: Sprints ou iterações podem focar em áreas de recursos e acoplá-los na aplicação ao fim da sprint ou iteração.
 
-    *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code. 
+    **Por que²**: Separando as áreas de recursos em módulos, fica fácil de testar os módulos em isolamento e de reutilizar o código.
 
 ### Reusable Blocks are Modules
+ou *Blocos reutilizáveis são módulos*
 
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+- Crie módulos que representam blocos reutilizáveis da aplicação para serviços comuns, como: tratamento de exceção, log, diagnósticos, segurança e armazenamento local.
 
-    *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    **Por que?**: Esses tipos de recursos são necessários em muitas aplicações, então mantê-los separados em seus próprios módulos os torna genéricos e assim, podem ser reutilizados em diferentes aplicações.
 
 ### Module Dependencies
+ou *Dependências do módulo*
 
-  - The application root module depends on the app specific feature modules, the feature modules have no direct dependencies, the cross-application modules depend on all generic modules.
+  - O módulo raiz da aplicação depende de módulos de recursos específicos do aplicativo e de qualquer módulo compartilhado ou reutilizado.
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Moduluaridade e Dependências](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
-    *Why?*: The main app module contains a quickly identifiable manifest of the application's features. 
+    **Por que?**: O módulo principal do aplicativo contém um rápido manifesto para identificar os recursos da aplicação.
 
-    *Why?*: Cross application features become easier to share. The features generally all rely on the same cross application modules, which are consolidated in a single module (`app.core` in the image).
+    **Por que?**: Cada área de recurso contém um manifesto mostrando as suas dependências, assim, ela pode ser colocada como uma dependência em outras aplicação e ainda continuar funcionando.
 
-    *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    **Por que?**: Recursos intra-aplicação como serviços compartilhados de dados, tornam-se muito mais fácil de localizar e compartilhar atráves do `app.core` (escolha o seu nome favorito para esse módulo).
 
-    Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows AngularJS's dependency rules, and is easy to maintain and scale.
+    Nota: Essa é uma estratégia para consistência. Existem muitas outras boas opções. Escolha uma que seja consistente, que siga as regras de dependência do Angular, e que seja fácil de manter e escalar.
 
-    > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind. 
+    > As minhas estruturas podem variar ligeiramente entre os projetos, mas todas elas seguem estas diretrizes para estrutura e modularidade. A implementação pode variar dependendo dos recursos e do time. Em outras palavras, não fique preso somente a uma estrutura mas justifique sua estrutura usando consistência, facilidade de manutenção e eficiência em mente.
+
+    > Em um aplicativo pequeno, você também pode considerar colocar todas as dependẽncias compartilhadas no módulo principal do aplicativo, onde os módulos de recursos não tem dependências diretas. Isso torna mais fácil de manter a aplicação, mas torna mais difícil de reutilizar os módulos fora dessa aplicação.
 
 **[De volta ao topo](#tabela-de-conte%C3%BAdo)**
 
