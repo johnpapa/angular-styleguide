@@ -3145,18 +3145,18 @@ Pour tout le reste, allez voir la [documentation de l'API d'Angular](//docs.angu
 
 ## Contribuer
 
-Créez d'abord un problème pour discuter de potentiels changements ou ajouts. Si vous avez des questions sur le guide, je vous encourage à les rapporter comme problèmes dans le référentiel. Si vous trouvez une erreur de frappe, créez une pull request. L'idée est de garder le contenu à jour et d'utiliser les fonctionnalités natives de github pour aider à raporter les problèmes et les pull requests, lesquels sont recherchables via google. Pourquoi ? Parce que d'autres pourraient avoir la même question ! Vous en apprendrez plus ci-dessous pour savoir comment contribuer.
+Créez d'abord une *issue* pour discuter de potentiels changements ou ajouts à faire. Si vous avez des questions sur le guide, je vous encourage à les soumettre en temps qu'*issues*. Si vous trouvez des erreurs de frappe, créez une *pull request*. L'idée est de garder le contenu à jour et d'utiliser les fonctionnalités natives de Github pour aider à retracer l'évolution de ce dernier via les *issues* et les *pull requests*, lesquels sont indexées par Google. Pourquoi ? Parce que si vous vous posez une question, il y a des chances que quelqu'un d'autre se la soit posé ! Vous en apprendrez plus ci-dessous pour savoir comment contribuer.
 
-*En contribuant à ce référentiel, vous acceptez de rendre votre contenu accessible le sujet de la licence de ce référentiel.*
+*En contribuant à ce dépôt, vous acceptez de rendre votre contenu accessible en accord avec la licence du dépôt.*
 
 ### Processus
-    1. Discuter des changements dans une Issue GitHub.
-    2. Ouvrir une Pull Request sur la branche develop, référencer l'Issue, et expliquer le changement et la raison pour laquelle ce changement est pertinent.
-    3. La Pull Request sera évaluée et soit mergée ou abandonnée.
+    1. Discuter des changements dans une *issue* GitHub.
+    2. Ouvrir une *pull request* sur la branche `develop`, référencer l'*issue*, et expliquer le changement et la raison pour laquelle ce changement est pertinent.
+    3. La *pull request* sera évaluée et *mergée* ou refusée.
 
 ## License
 
-_tldr; Utilisez ce guide. Les attributions sont appréciées._
+en bref; Utilisez ce guide. Les attributions sont appréciées._
 
 ### Copyright
 
