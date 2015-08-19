@@ -2862,44 +2862,46 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Templates de Fichiers et Fragments
-Utilisez des templates de fichier ou des fragments pour vous aider à suivre des styles et des patterns cohérents. Voici des templates et/ou fragments pour quelques uns des éditeurs de texte pour le développement web et EDIs.
+## Modèles de fichiers et *snippets*
+Utilisez des *templates* de fichiers ou des *snippets* pour vous aider à suivre des styles et des *patterns* cohérents. Voici des *templates* et/ou *snippets* pour quelques uns des éditeurs de texte pour le développement web et EDIs.
 
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - Fragments Angular qui suivent ces styles et règles.
+  - *Snippets* Angular conformes avec ces styles et règles.
 
-    - Téléchargez les [Fragments Angular pour Sublime](assets/sublime-angular-snippets.zip?raw=true)
-    - Placez-les dans votre répertoire Package
+    - Téléchargez les [Snippets Angular pour Sublime](assets/sublime-angular-snippets.zip?raw=true)
+    - Placez-les dans votre répertoire `Package`
     - Redémarrez Sublime
     - Dans un fichier de type JavaScript, tapez ces commandes suivies par la touche `TAB`
 
     ```javascript
-    ngcontroller // crée un contrôleur Angular
-    ngdirective // crée une directive Angular
-    ngfactory // crée une factory Angular
-    ngmodule // crée un module Angular
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 ### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - Les templates de fichier qui suivent ces styles et règles peuvent être trouvées sur [SideWaffle](http://www.sidewaffle.com)
+  - Les *templates* de fichiers qui suivent ces styles et règles peuvent être trouvées sur [SideWaffle](http://www.sidewaffle.com)
 
     - Téléchargez l'extension [SideWaffle](http://www.sidewaffle.com) pour Visual Studio (fichier vsix)
-    - Éxécutez le fichier vsix
+    - Exécutez le fichier vsix
     - Re-démarrez Visual Studio
 
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Les fragments Angular et templates de fichiers qui suivent le style et les règles. Vous pouvez les importer dans les paramètres de WebStorm :
+  - Vous pouvez importer dans les paramètres de WebStormLes les *templates* de fichiers et les *snippets* Angular qui suivent ces styles et ces règles :
 
-    - Téléchargez les [templates de fichier et fragments WebStorm pour Angular](assets/webstorm-angular-file-template.settings.jar?raw=true)
+    - Téléchargez les [*templates* de fichiers et *snippets* WebStorm pour Angular](assets/webstorm-angular-file-template.settings.jar?raw=true)
     - Ouvrez WebStorm et allez dans le menu `File`
     - Choisissez le menu `Import Settings`
-    - Sélectionnez le fichier et clickez sur `OK`
+    - Sélectionnez le fichier et cliquez sur `OK`
     - Dans un fichier de type JavaScript, tapez ces commandes suivies de la touche `TAB` :
 
     ```javascript
@@ -2908,7 +2910,81 @@ Utilisez des templates de fichier ou des fragments pour vous aider à suivre des
     ng-m // crée un module Angular
     ```
 
- **[Retour en haut de page](#table-des-matières)**
+### Atom
+###### [Style [Y253](#style-y253)]
+
+  - *Snippets* Angular qui suivent ces styles et ces règles.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    or
+    - Ouvrez Atom puis son *package manager* (Packages -> Settings View -> Install Packages/Themes)
+    - Cherchez le *package* 'angularjs-styleguide-snippets'
+    - Cliquez sur 'Install' pour installer le *package*
+
+  - Dans un fichier JavaScript tapez ces commandes suivies de `TAB` :
+
+    ```javascript
+    ngcontroller // Crée un contrôleur Angular
+    ngdirective // Crée une directive Angular
+    ngfactory // Crée une factory Angular
+    ngmodule // Crée un module Angular
+    ngservice // Crée un service Angular
+    ngfilter // Crée un filter Angular
+    ```
+
+### Brackets
+###### [Style [Y254](#style-y254)]
+
+  - *Snippets* Angular qui suivent ces styles et ces règles.
+    - Téléchargez les [*snippets* Angular pour Brackets](assets/brackets-angular-snippets.yaml?raw=true).
+    - Brackets Extension manager ( File > Extension manager )
+    - Installez ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets).
+    - Cliquez sur l'ampoule dans la marge droite de Brackets.
+    - Cliquez sur `Settings` puis sur `Import`
+    - Choisissez le fichier et sélectionnez `skip`ou `override`.
+    - Cliquez sur `Start Import`
+
+  - Dans un fichier JavaScript tapez ces commandes suivies de `TAB` :
+
+    ```javascript
+    // Snippets de fichiers complets avec IIFE
+    ngcontroller // Crée un controller Angular
+    ngdirective  // Crée une directive Angular
+    ngfactory    // Crée une factory Angular
+    ngapp        // Crée un module Angular
+    ngservice    // Crée un service Angular
+    ngfilter     // Crée un filter Angular
+
+    // Snippets à chaîner
+    ngmodule     // Crée an Angular module getter
+    ngstate      // Crée an Angular UI Router state définition
+    ngconfig     // Définit une fonction de configuration
+    ngrun        // Définit une fonction run
+    ngroute      // Définit une clause `when` pour ngRoute
+    ngtranslate  // Utilise le service `$translate` avec sa promise
+    ```
+
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - *Snippets* pour vim qui suivent ces styles et ces règles.
+
+    - Téléchargez les [*snippets* vim pour Angular](assets/vim-angular-snippets?raw=true)
+    - Réglez [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - Copiez les *snippets* dans le répertoire approprié.
+
+    ```javascript
+    ngcontroller // Crée un contrôleur Angular
+    ngdirective  // Crée une directive Angular
+    ngfactory    // Crée une factory Angular
+    ngmodule     // Crée un module Angular
+    ngservice    // Crée un service Angular
+    ngfilter     // Crée un filter Angular
+    ```
+
+
+**[Retour en haut de page](#table-des-matières)**
 
 ## Generateur Yeoman
 ###### [Style [Y260](#style-y260)]
