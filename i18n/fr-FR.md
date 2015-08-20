@@ -2,8 +2,6 @@
 
 *Guide de style par subjectif pour Angular par [@john_papa](//twitter.com/john_papa)*
 
-*Traduit par [Eric Lemerdy](https://github.com/ericlemerdy) et [Xavier Haniquaut](https://github.com/xavhan)*
-
 Si vous cherchez un guide de style pour la syntaxe, les conventions, et la structuration d'applications Angular, alors vous êtes au bon endroit. Ces styles sont basés sur mon expérience de développement avec [Angular](//angularjs.org), mes présentations, [mes cours sur Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) et mon travail au sein de diverses équipes.
 
 Le but de ce guide de style est de proposer des conseils sur le développement d'applications Angular en exposant les conventions que j'utilise et plus important encore, pourquoi je les ai choisies.
