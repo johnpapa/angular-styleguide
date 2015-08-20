@@ -1,6 +1,6 @@
 # Charte stylistique Angular
 
-*Guide de style par subjectif pour Angular par [@john_papa](//twitter.com/john_papa)*
+*Guide de style subjectif pour Angular par [@john_papa](//twitter.com/john_papa)*
 
 *Traduit par [Eric Lemerdy](https://github.com/ericlemerdy) et [Xavier Haniquaut](https://github.com/xavhan)*
 
@@ -172,7 +172,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   })();
   ```
 
-  - Note : Pour des raisons de concision seulement, le reste des exemples de ce guide seront pas écrits avec la syntaxe IIFE.
+  - Note : Pour des raisons de concision seulement, le reste des exemples de ce guide ne seront pas écrits avec la syntaxe IIFE.
 
   - Note : Les IIFE empêchent le code de test d'atteindre des membres privés, comme les expressions régulières ou les fonctions utilitaires (*helpers*), qu'il est souvent meilleur de tester indépendamment. Cependant, vous pouvez les tester à travers les membres accessibles ou en les exposant à travers leur propre composant. Par exemple en les plaçant dans leur propre factory ou constante.
 
