@@ -2974,6 +2974,12 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
     - copy snippets to snippet directory
 
+  - vim UltiSnips snippets that follow these styles and guidelines.
+
+    - Download the [vim Angular UltiSnips snippets](assets/vim-angular-ultisnips?raw=true)
+    - set [UltiSnips](https://github.com/SirVer/ultisnips)
+    - copy snippets to UltiSnips directory
+
     ```javascript
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
