@@ -1610,7 +1610,7 @@ Invece usa la più semplice sintassi setter.
 ### ng-annotate
 ###### [Stile [Y100](#stile-y100)]
 
-  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/** @ngInject */`
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/* @ngInject */`
 
     *Perché?*: Questo salvaguarda il tuo codice da ogni dipendenza che non segua le pratiche a prova di minificazione
 
