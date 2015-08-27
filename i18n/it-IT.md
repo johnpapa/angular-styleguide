@@ -2967,7 +2967,12 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     - Scarica gli [snippet vim per Angular](assets/vim-angular-snippets?raw=true)
     - setta [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
     - copia gli snippets nella directory snippet
+    
+  - snippet vim UltiSnips che seguono questi stilili e linee guida.
 
+    - Scarica gli [snippet vim Angular UltiSnips](assets/vim-angular-ultisnips?raw=true)
+    - setta [UltiSnips](https://github.com/SirVer/ultisnips)
+    - copia gli snippet nella directory UltiSnips
     ```javascript
     ngcontroller // crea un controller Angular
     ngdirective  // crea una directive Angular
