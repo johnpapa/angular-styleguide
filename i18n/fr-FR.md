@@ -901,7 +901,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - *Refactorez* la logique pour faire les opérations et interactions avec les données dans une *factory*. Rendez les services de données responsables des appels *XHR*, du *local storage*, du stockage en mémoire, ou de toute autre opération sur les données.
 
-    *Pourquoi ?* : Les responsabilités du contrôleur sont la présentation et l'assemblage des informations pour la vue. Il ne devrait pas avoir à se soucier de la façon dont les données sont récupérées mais seulement de la façon de les demander. Séparer les services de données transforme la logique du contrôleur en logique de « À quel service vais-je demander ces données ? ». Le contrôleur esr alors plus simple est plus focalisé sur sa vue.
+    *Pourquoi ?* : Les responsabilités du contrôleur sont la présentation et l'assemblage des informations pour la vue. Il ne devrait pas avoir à se soucier de la façon dont les données sont récupérées mais seulement de la façon de les demander. Séparer les services de données transforme la logique du contrôleur en logique de « À quel service vais-je demander ces données ? ». Le contrôleur est alors plus simple est plus focalisé sur sa vue.
 
     *Pourquoi ?* : Cela rend plus facile à tester (*mocké* ou en utilisant le vrai) les appels aux données lorsque l'on teste un contrôleur qui utilise un service de données.
 
@@ -1116,7 +1116,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Manipuler le DOM dans une directive
 ###### [Style [Y072](#style-y072)]
 
-  - Quand vous manipulez le DOM est directement, utilisez une directive. S'il existe des alternatives, comme par exemple le CSS pour définir les styles ou les [services d'animation](https://docs.angularjs.org/api/ngAnimate), les *templates* Angular , [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), utilisez les à la place. Par exemple si la directive affiche ou cache un élément, utilisez ngHide ou ngShow.
+  - Quand vous manipulez le DOM directement, utilisez une directive. S'il existe des alternatives, comme par exemple le CSS pour définir les styles ou les [services d'animation](https://docs.angularjs.org/api/ngAnimate), les *templates* Angular , [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), utilisez les à la place. Par exemple si la directive affiche ou cache un élément, utilisez ngHide ou ngShow.
 
     *Pourquoi ?* : La manipulation du DOM peut être difficile à tester, déboguer, et il y a souvent une meilleure façon de faire (ex : CSS, animations, *templates*).
 
@@ -1767,7 +1767,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Cela fournit un moyen cohérent pour intercepter les exceptions qui peuvent être déclenchées dans votre code (par exemple, pendant une requête XHR ou lors d'un échec de *promise*).
 
-    Note : Le intercepteur d'exceptions est bon pour intercepter et réagir à des exceptions spécifiques potentielles provenant d'appels qui pourraient en produire. Par exemple, lorsque on fait une requête XHR pour récupérer des données d'un service web distant et que vous voulez intercepter n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celles-ci.
+    Note : L'intercepteur d'exceptions est bon pour intercepter et réagir à des exceptions spécifiques potentielles provenant d'appels qui pourraient en produire. Par exemple, lorsque on fait une requête XHR pour récupérer des données d'un service web distant et que vous voulez intercepter n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celles-ci.
 
     ```javascript
     /* recommandé */
@@ -2305,7 +2305,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Les fonctionnalités propres à l'application telles que les services de données partagées deviennent faciles à repérer et partager au sein d'un `app.core` (choisissez un nom de votre choix pour ce module).
 
-    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisissez-en une qui soit cohérente, suivez les règles des dépendances d'Angular, et la maintenance et la montée en charge sera facilitée.
+    Note : C'est une stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisissez-en une qui soit cohérente, qui suit les règles des dépendances d'Angular, et qui facilite la maintenance et la montée en charge.
 
     > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais pensez votre structure en termes de cohérence, maintenabilité, et efficacité.
 
@@ -2388,9 +2388,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 **[Retour en haut de page](#table-des-matières)**
 
 ## Tests
-Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut quelques unes de mes recommandations sur les bases des tests unitaires avec des liens pour plus d'informations.
+Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclus quelques unes de mes recommandations sur les bases des tests unitaires avec des liens pour plus d'informations.
 
-### Écrire les tests avec des scenarii
+### Écrire les tests avec des scenario
 ###### [Style [Y190](#style-y190)]
 
   - Écrivez un ensemble de tests pour chaque scenario. Commencer avec un test vide et complétez-les à mesure que vous écrivez le code pour le scenario.
@@ -2510,7 +2510,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
   - Exécutez JSHint sur vos tests.
 
-    *Pourquoi ?* : Les tests' c'est aussi du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
+    *Pourquoi ?* : Les tests c'est aussi du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
 
 ### Assouplissement des règles de JSHint avec les variables globales dans les tests
 ###### [Style [Y196](#style-y196)]
@@ -2531,10 +2531,10 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
   ![Outils de test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
-### Organizing Tests
+### Organisation des tests
 ###### [Style [Y197](#style-y197)]
 
-  - Placez les fichiers des tests unitaires (specs) à parallèlement du code client. Placez les specs qui sont en charge de l'intégration avec le serveur ou les celles qui testent plusieurs composants dans un répertoire `tests` séparé.
+  - Placez les fichiers des tests unitaires (specs) parallèle au code client. Placez les specs qui sont en charge de l'intégration avec le serveur ou celles qui testent plusieurs composants dans un répertoire `tests` séparé.
 
     *Pourquoi ?* : Les tests unitaires sont en corrélation directe avec les composants et fichiers qu'ils testent dans le code source.
 
@@ -2837,7 +2837,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
 ###### [Style [Y241](#style-y241)]
 
-  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des contentes ne sont pas utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
+  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des constantes ne sont utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
 
     *Pourquoi ?* : Une valeur qui peut changer, même rarement, devrait être récupérée d'un service afin de ne pas avoir à changer le code source. Par exemple, une URL pour un service de données pourrait être définie comme constante mais il serait mieux de lire cette valeur par appel à un web service.
 
@@ -3114,7 +3114,7 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
 
   - Utilisez l'automatisation des tâches pour lister les fichiers de définition de module `*.module.js` avant tout autre fichier JavaScript de l'application.
 
-    *Pourquoi ?* : Angular a besoin que la définition des modules soit faire avant qu'ils puissent être utilisés.
+    *Pourquoi ?* : Angular a besoin que la définition des modules soit faite avant qu'ils puissent être utilisés.
 
     *Pourquoi ?* : Nommer les modules avec un pattern spécifique tel que `*.module.js` les rends faciles à aller chercher avec une expression régulière et à les lister.
 
