@@ -329,7 +329,7 @@ Invece usa la più semplice sintassi setter.
 
   *Perché?*: `controllerAs` è una semplificazione sintattica per `$scope`. Puoi ancora fare il binding con la View ed accedere ai metodi di `$scope`.
 
-  *Perché?*: Aiuta ad evitare la tentazione ad usare i metodi di `$scope` dentro un controller quando sarebbe meglio evitare o spostarli in una factory. Considera l'uso di `$scope` in una factory o, se in un controller, soltanto quando necessario. Per esempio, quando si pubblicano o sottoscrivono eventi usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera di spostare questi tipi di utilizzi in una facotry e di invocarli da un controller.
+  *Perché?*: Aiuta ad evitare la tentazione ad usare i metodi di `$scope` dentro un controller quando sarebbe meglio evitare o spostarli in una factory quindi referenziarli dal controller. Considera l'uso di `$scope` in un controller soltanto quando necessario. Per esempio, quando si pubblicano o sottoscrivono eventi usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera di spostare questi tipi di utilizzi in una facotry e di invocarli da un controller.
 
   ```javascript
   /* evitare */
@@ -1610,7 +1610,7 @@ Invece usa la più semplice sintassi setter.
 ### ng-annotate
 ###### [Stile [Y100](#stile-y100)]
 
-  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/** @ngInject */`
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/* @ngInject */`
 
     *Perché?*: Questo salvaguarda il tuo codice da ogni dipendenza che non segua le pratiche a prova di minificazione
 
@@ -2967,7 +2967,12 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     - Scarica gli [snippet vim per Angular](assets/vim-angular-snippets?raw=true)
     - setta [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
     - copia gli snippets nella directory snippet
+    
+  - snippet vim UltiSnips che seguono questi stilili e linee guida.
 
+    - Scarica gli [snippet vim Angular UltiSnips](assets/vim-angular-ultisnips?raw=true)
+    - setta [UltiSnips](https://github.com/SirVer/ultisnips)
+    - copia gli snippet nella directory UltiSnips
     ```javascript
     ngcontroller // crea un controller Angular
     ngdirective  // crea una directive Angular
