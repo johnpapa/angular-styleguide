@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE codetemplates PUBLIC "-//NetBeans//DTD Editor Code Templates settings 1.0//EN" "http://www.netbeans.org/dtds/EditorCodeTemplates-1_0.dtd">
+<codetemplates>
+    <codetemplate abbreviation="ngcontroller" xml:space="preserve">
+        <code><![CDATA[(function() {
+    'use strict';
+
+    angular
+        .module('${module}', [])
+        .controller('${Controller}', ${Controller});
+
+    ${Controller}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${Controller}(${dependencies}){
+        var vm = this;
+        vm.${property} = '${Controller}';
+        ${cursor}
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+        }
+    }
+})();]]></code>
+        <description><![CDATA[Controller]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngstate" xml:space="preserve">
+        <code><![CDATA[.state('${state}', {
+    url: '${/url}'
+    templateUrl: '${template}.html',
+    controller: '${Controller}'
+    controllerAs: '${vm}'
+})${6:}]]></code>
+        <description><![CDATA[UI-Router state]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngvalue" xml:space="preserve">
+        <code><![CDATA[.value('${name}', ${value});]]></code>
+        <description><![CDATA[Value]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngtranslate" xml:space="preserve">
+        <code><![CDATA[$translate(['${key1}']).then(function(translations){
+    ${value} = translations['${key1}'];
+});]]></code>
+        <description><![CDATA[$translate service]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngdirective" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}',[])
+        .directive('${directive}', ${directive});
+
+    ${directive}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${directive}(${dependencies}) {
+        // Usage:
+        //
+        // Creates:
+        //
+        var directive = {
+            bindToController: true,
+            controller: ${Controller},
+            controllerAs: '${vm}',
+            link: link,
+            restrict: 'A',
+            scope: {}
+        };
+        return directive;
+
+        function link(scope, element, attrs, controller) {
+            ${cursor}
+        }
+    }
+
+    ${Controller}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${Controller}(${dependencies}) {
+    }
+})();]]></code>
+        <description><![CDATA[Directive]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngmodule" xml:space="preserve">
+        <code><![CDATA[angular
+    .module('${module}')${cursor}]]></code>
+        <description><![CDATA[Module getter]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngwhen" xml:space="preserve">
+        <code><![CDATA[.when('/${url}', {
+    templateUrl: '${template}.html',
+    controller: '${Controller}',
+    controllerAs: '${vm}'
+})${cursor}]]></code>
+        <description><![CDATA[ngRoute 'when']]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngrun" xml:space="preserve">
+        <code><![CDATA[.run(${runFn})
+
+${runFn}.$inject = ['${dependencies}'];
+
+/* @ngInject */
+function ${runFn} (${dependencies}) {
+    ${cursor}
+}]]></code>
+        <description><![CDATA[Run phase function]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngapp" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}', [
+            '${dependencies}'
+        ]);
+})();]]></code>
+        <description><![CDATA[Module definition]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngservice" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}',[])
+        .service('${Service}', ${Service});
+
+    ${Service}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${Service}(${dependencies}) {
+        this.${func} = ${func};
+
+        ////////////////
+
+        function ${func}() {
+            ${cursor}
+        }
+    }
+})();]]></code>
+        <description><![CDATA[Service]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngconfig" xml:space="preserve">
+        <code><![CDATA[.config(${configuration})
+
+${configuration}.$inject = ['${dependencies}'];
+
+/* @ngInject */
+function ${configuration} (${dependencies}) {
+    ${cursor}
+}]]></code>
+    </codetemplate>
+    <codetemplate abbreviation="ngfilter" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}',[])
+        .filter('${filter}', ${filter});
+
+    function ${filter}() {
+        ${cursor}
+        return ${filter}Filter;
+
+        ////////////////
+
+        function ${filter}Filter(${parameters}) {
+            return ${parameters};
+        };
+    }
+})();]]></code>
+        <description><![CDATA[Filter]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngfactory" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+    angular
+        .module('${module}',[])
+        .factory('${factory}', ${factory});
+
+    ${factory}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${factory}(${dependencies}){
+        var exports = {
+            ${func}: ${func}
+        };
+        ${cursor}
+
+        return exports;
+
+        ////////////////
+
+        function ${func}() {
+            
+        }
+    }
+})();]]></code>
+        <description><![CDATA[Factory]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngconst" xml:space="preserve">
+        <code><![CDATA[.constant('${name}', ${value});]]></code>
+        <description><![CDATA[Constant]]></description>
+    </codetemplate>
+</codetemplates>
