@@ -2988,7 +2988,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
     ```
-### vim
+### Visual Studio Code
 
 ###### [Style [Y256](#style-y256)]
 
