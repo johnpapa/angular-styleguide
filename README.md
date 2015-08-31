@@ -2988,7 +2988,22 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
     ```
+### vim
 
+###### [Style [Y256](#style-y256)]
+
+  - [Visual Studio Code](http://code.visualstudio.com) snippets that follow these styles and guidelines.
+
+    - Download the [VS Code Angular snippets](assets/vscode-snippets/javascript.json?raw=true)
+    - copy snippets to snippet directory, or alternatively copy and paste the snippets into your existing ones
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ```
 
 **[Back to top](#table-of-contents)**
 
