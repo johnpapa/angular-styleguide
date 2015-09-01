@@ -78,7 +78,7 @@
 			"",
 			"\tangular",
 			"\t\t.module('${Module}')",
-			"\t\t.factory('${Directive}', ${Directive});",
+			"\t\t.directive('${Directive}', ${Directive});",
 			"",
 			"\t${Directive}.$inject = ['${dependency1}'];",
 			"\tfunction ${Directive}(${dependency1}) {",
