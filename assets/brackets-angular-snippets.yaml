@@ -1,0 +1,230 @@
+- trigger: ngfilter
+  description: "Filter"
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+
+            angular
+                .module('${1:module}')
+                .filter('${2:filter}', ${2:filter});
+
+            function ${2:filter}() {
+                ${4:}
+                return ${2:filter}Filter;
+
+                ////////////////
+
+                function ${2:filter}Filter(${3:parameters}) {
+                    return ${3:parameters};
+                };
+            }
+        })();
+
+- trigger: ngservice
+  description: "Service"
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+
+            angular
+                .module('${1:module}')
+                .service('${2:Service}', ${2:Service});
+
+            ${2:Service}.$inject = ['${3:dependencies}'];
+
+            /* @ngInject */
+            function ${2:Service}(${3:dependencies}) {
+                this.${4:func} = ${4:func};
+
+                ////////////////
+
+                function ${4:func}() {
+                    ${5:}
+                }
+            }
+        })();
+
+- trigger: ngapp
+  description: "Module definition"
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+
+            angular
+                .module('${1:module}', [
+                    '${2:dependencies}'
+                ]);
+        })();
+
+- trigger: ngfactory
+  description: "Factory"
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+            angular
+                .module('${1:module}')
+                .factory('${2:factory}', ${2:factory});
+
+            ${2:factory}.$inject = ['${3:dependencies}'];
+
+            /* @ngInject */
+            function ${2: Factory}(${3:dependencies}){
+                var exports = {
+                    ${4:func}: ${4:func}
+                };
+                ${5:}
+
+                return exports;
+
+                ////////////////
+
+                function ${4:func}() {
+                }
+            }
+        })();
+
+- trigger: ngdirective
+  description: "Directive"
+  scope: javascript
+  text: |
+        (function () {
+            'use strict';
+
+            angular
+                .module('${1:module}')
+                .directive('${2:directive}', ${2:directive});
+
+            ${2:directive}.$inject = ['${3:dependencies}'];
+
+            /* @ngInject */
+            function ${2: directive}(${3:dependencies}) {
+                // Usage:
+                //
+                // Creates:
+                //
+                var directive = {
+                    bindToController: true,
+                    controller: ${4:Controller},
+                    controllerAs: '${5:vm}',
+                    link: link,
+                    restrict: 'A',
+                    scope: {}
+                };
+                return directive;
+
+                function link(scope, element, attrs, controller) {
+                    ${7:}
+                }
+            }
+
+            ${4:Controller}.$inject = ['${6:dependencies}'];
+
+            /* @ngInject */
+            function ${4:Controller}(${6:dependencies}) {
+            }
+        })();
+
+- trigger: ngcontroller
+  description: "Controller"
+  scope: javascript
+  text: |
+        (function() {
+            'use strict';
+
+            angular
+                .module('${1:module}')
+                .controller('${2:Controller}', ${2:Controller});
+
+            ${2:Controller}.$inject = ['${3:dependencies}'];
+
+            /* @ngInject */
+            function ${2:Controller}(${3:dependencies}){
+                var vm = this;
+                vm.${4:property} = '${2:Controller}';
+                ${5:}
+
+                activate();
+
+                ////////////////
+
+                function activate() {
+                }
+            }
+        })();
+
+- trigger: ngwhen
+  description: "ngRoute 'when'"
+  scope: javascript
+  text: |
+        .when('/${1:url}', {
+            templateUrl: '${2:template}.html',
+            controller: '${3:Controller}',
+            controllerAs: '${4:vm}'
+        })${5:}
+
+- trigger: ngstate
+  description: "UI-Router state"
+  scope: javascript
+  text: |
+        .state('${1:state}', {
+            url: '${2:/url}'
+            templateUrl: '${3:template}.html',
+            controller: '${4:Controller}'
+            controllerAs: '${5:vm}'
+        })${6:}
+
+- trigger: ngmodule
+  description: "Module getter"
+  scope: javascript
+  text: |
+        angular
+            .module('${1:module}')${2:}
+- trigger: ngconst
+  description: "Constant"
+  scope: javascript
+  text: |
+        .constant('${1:name}', ${2:value});
+
+- trigger: ngvalue
+  description: "Value"
+  scope: javascript
+  text: |
+        .value('${1:name}', ${2:value});
+
+- trigger: ngconfig
+  description: "Config phase function"
+  scope: javascript
+  text: |
+        .config(${1:configuration})
+
+        ${1:configuration}.$inject = ['${2:dependencies}'];
+
+        /* @ngInject */
+        function ${1:configuration} (${2:dependencies}) {
+            ${3:}
+        }
+
+- trigger: ngrun
+  description: "Run phase function"
+  scope: javascript
+  text: |
+        .run(${1:runFn})
+
+        ${1:runFn}.$inject = ['${2:dependencies}'];
+
+        /* @ngInject */
+        function ${1:runFn} (${2:dependencies}) {
+            ${3:}
+        }
+
+- trigger: ngtranslate
+  description: "$translate service"
+  scope: javascript
+  text: |
+        $translate(['${1:key1}']).then(function(translations){
+            ${2:value} = translations['${3:key1}'];
+        });

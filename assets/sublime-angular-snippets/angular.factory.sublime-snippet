@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .factory('${2:factory}', ${2:factory});
+
+    ${2:factory}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+
+    /* @ngInject */
+    function ${2:Factory}(${3:dependencies}) {
+        var service = {
+            ${4:func}: ${4:func}
+        };
+        return service;
+
+        ////////////////
+
+        function ${4:function}() {
+        }
+    }
+})();
+]]></content>
+    <tabTrigger>ngfactory</tabTrigger>
+    <scope>text.plain, source.js</scope>
+</snippet>

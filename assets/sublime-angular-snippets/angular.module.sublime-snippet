@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}', [
+            '${2:dependencies}'
+        ]);
+})();
+]]></content>
+    <tabTrigger>ngmodule</tabTrigger>
+    <scope>text.plain, source.js</scope>
+</snippet>
