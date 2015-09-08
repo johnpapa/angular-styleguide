@@ -36,6 +36,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Minification and Annotation](#minification-and-annotation)
   1. [Exception Handling](#exception-handling)
   1. [Naming](#naming)
+  1. [CommonJS Techniques](#commonjs)
   1. [Application Structure LIFT Principle](#application-structure-lift-principle)
   1. [Application Structure](#application-structure)
   1. [Modularity](#modularity)
@@ -2070,6 +2071,54 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
 
+
+**[Back to top](#table-of-contents)**
+
+## CommonJS Techniques
+
+### Include an index.js file in each feature folder
+###### [Style [Y200](#style-y200)]
+
+  - Each feature should already be seperated in it's own folder. By adding an `index.js` file, we can just use `require(./path/to/feature/folder)` and the `index.js` file will be picked up.
+
+  *Why?*: Group all of the dependencies for each feature in a common place.
+
+
+### Include all Angular boilerplate in the index.js file
+##### [Style [Y201](#style-y201)]
+
+  - Angular boiler plate includes stuff like `angular.module('app').controller('SomeController', SomeController)` where `SomeController` is a function that defines a controller
+
+  *Why?*: Creates one place to do all angular specific work
+
+### Create angular objects in seperate files and export
+##### [Style [Y202](#style-y202)]
+
+  - Since the angular specific code is grouped in the `index.js` file, we can create succinct controllers, services or directives in seperate files so `some.controller.js` would look like: 
+
+  ```javascript
+  /**
+   * recommended
+   */
+
+  // index.js
+  
+  var SomeController = require("./some.controller.js");
+  
+  angular
+      .module
+      .controller('SomeController', SomeController);
+
+  // some.controller.js
+  module.exports = SomeController;
+
+  function SomeController(){
+    var vm = this;
+
+    vm.another = "another"
+  }
+  ```
+
 **[Back to top](#table-of-contents)**
 
 ## Application Structure LIFT Principle
@@ -3006,6 +3055,23 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ```
 
+### vim
+###### [Style [Y255](#style-y255)]
+
+  - vim snippets that follow these styles and guidelines.
+
+    - Download the [vim Angular snippets](assets/vim-angular-snippets?raw=true)
+    - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - copy snippets to snippet directory
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator
