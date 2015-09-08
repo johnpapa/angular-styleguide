@@ -2094,7 +2094,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Create angular objects in seperate files and export
 ##### [Style [Y202](#style-y202)]
 
-  - Since the angular specific code is grouped in the `index.js` file, we can create succint controllers, services or directives in seperate files so `some.controller.js` would look like: 
+  - Since the angular specific code is grouped in the `index.js` file, we can create succinct controllers, services or directives in seperate files so `some.controller.js` would look like: 
 
   ```javascript
   /**
@@ -3053,7 +3053,6 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngfactory    // creates an Angular factory
     ngmodule     // creates an Angular module
     ngservice    // creates an Angular service
->>>>>>> johnpapa/master
     ```
 
 ### vim
