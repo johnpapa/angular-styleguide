@@ -1,60 +1,60 @@
-# Angular Style Guide
+# Angular Stil Rehberi
 
-*Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*[@john_papa]'dan Takımlar için seçeneklendirilmiş stil rehberi(//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
+Eğer Angular projeleriniz için seçeneklendirilmiş bir sintaks, yöntem ve yapılandırma rehberi arıyorsanız, buyrun gelin. Bu stiller benim [Angular](//angularjs.org) sunumlarım, [Pluralsight eğitim kurslarım](http://pluralsight.com/training/Authors/Details/john-papa) ve takım çalışmalarımdan edindiğim deneyimlerle oluşturulmuştur.
 
-The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
+Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi neden bu yöntemleri seçtiğimi açıklayarak, Angular aplikasyonlarınızı geliştirirken size yol göstermektir.
 
->If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
+>Eğer bu rehberi beğendiyseniz, [Angular Patterns: Clean Code](http://jpapa.me/ngclean) isimli kursuma Pluralsight sitesinden bir bakın. Bu rehberle pekiltirici olacaktır.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Community Awesomeness and Credit
-Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, a friend and Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
+## Topluluk Aşmışlığı ve Referanslar
+Asla izole olarak çalışmayın. Angular topluluğunu, deneyimlerini paylaşma konusunda tutukulu buluyorum. Örneğin, arkadaşım ve bir Angular uzmanı Todd Motto ile birçok stil ve yöntem üzerinde işbirliği yaptık. Birçoğunda hemfikir olduk, birkaçında farklı yollar izledik. [Todd'un rehberi'ni](https://github.com/toddmotto/angularjs-styleguide) de onun yaklaşımını anlamak ve karşılaştırma yapmak için incelemenizi öneririm
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
+Bir çok yöntem [Ward Bell](http://twitter.com/wardbell) ile yaptığımız eşli programlama seanslarında ortaya çıktı. Arkadaşım Ward bu rehberin nihai evrimine büyük katkılarda bulundu.
 
-## See the Styles in a Sample App
-While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+## Örnek uygulama üzerinde yöntemler
+Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deneyimlemenin yardımcı olacaığını düşünüyorum. Bu rehbere, bu rehberdeki yöntemleri ve tasarım desenlerini kullanan örnek bir uygulama eşlik ediyor. Bu uygulamayı [burada](https://github.com/johnpapa/ng-demos), `modular` klasörünün altında bulabilirsiniz. Üzerinde denemeler yapmaktan çekinmeyin. [Çalıştırma talimatları readme dosyasındadır](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
-##Translations
-[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) are maintained by the community and can be found here.
+##Çeviriler
+[Bu Angular rehberinin çevirileri](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) gönüllü yardımcılar tarafından sağlanmaktadır
 
-## Table of Contents
+## İçerik
 
-  1. [Single Responsibility](#single-responsibility)
+  1. [Tek İşlevsellik](#single-responsibility)
   1. [IIFE](#iife)
-  1. [Modules](#modules)
-  1. [Controllers](#controllers)
-  1. [Services](#services)
-  1. [Factories](#factories)
-  1. [Data Services](#data-services)
-  1. [Directives](#directives)
-  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
-  1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
-  1. [Minification and Annotation](#minification-and-annotation)
-  1. [Exception Handling](#exception-handling)
-  1. [Naming](#naming)
-  1. [Application Structure LIFT Principle](#application-structure-lift-principle)
-  1. [Application Structure](#application-structure)
-  1. [Modularity](#modularity)
-  1. [Startup Logic](#startup-logic)
-  1. [Angular $ Wrapper Services](#angular--wrapper-services)
-  1. [Testing](#testing)
-  1. [Animations](#animations)
-  1. [Comments](#comments)
+  1. [Modüller](#modules)
+  1. [Kontrolörler (Controller)](#controllers)
+  1. [Servisler](#services)
+  1. [Fabrikalar (Factories)](#factories)
+  1. [Veri Servisleri](#data-services)
+  1. [Direktifler (Directives)](#directives)
+  1. [Promise'leri Kontrolörler için çözümleme](#resolving-promises-for-a-controller)
+  1. [Bağımlılık yerleştirmesinin manüel anotasyonu](#manual-annotating-for-dependency-injection)
+  1. [Sıkıştırma ve Anotasyon](#minification-and-annotation)
+  1. [Kuraldışı durum işleme](#exception-handling)
+  1. [İsimlendirme](#naming)
+  1. [Uygulama yapısı ve LIFT Prensibi](#application-structure-lift-principle)
+  1. [Uygulama Yapısı](#application-structure)
+  1. [Modülerlik](#modularity)
+  1. [Başlangıç Mantığı](#startup-logic)
+  1. [Angular $ sarmalayıcı servisleri](#angular--wrapper-services)
+  1. [Testler](#testing)
+  1. [Animasyonlar](#animations)
+  1. [Yorumlar](#comments)
   1. [JSHint](#js-hint)
   1. [JSCS](#jscs)
-  1. [Constants](#constants)
-  1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [Yeoman Generator](#yeoman-generator)
-  1. [Routing](#routing)
-  1. [Task Automation](#task-automation)
-  1. [Filters](#filters)
+  1. [Sabit değerler](#constants)
+  1. [Dosya Şablonları ve Snippetler](#file-templates-and-snippets)
+  1. [Yeoman ana yapı üreticisi](#yeoman-generator)
+  1. [Yönlendirme](#routing)
+  1. [Görev Otomasyonu](#task-automation)
+  1. [Filtreler](#filters)
   1. [Angular Docs](#angular-docs)
-  1. [Contributing](#contributing)
-  1. [License](#license)
+  1. [Katkıda bulunmak](#contributing)
+  1. [Lisans](#license)
 
 ## Single Responsibility
 
