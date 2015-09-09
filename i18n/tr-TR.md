@@ -1,6 +1,6 @@
 # Angular Stil Rehberi
 
-*[@john_papa]'dan Takımlar için seçeneklendirilmiş stil rehberi(//twitter.com/john_papa)*
+*[@john_papa](//twitter.com/john_papa)'dan Takımlar için seçeneklendirilmiş stil rehberi*
 
 Eğer Angular projeleriniz için seçeneklendirilmiş bir sintaks, yöntem ve yapılandırma rehberi arıyorsanız, buyrun gelin. Bu stiller benim [Angular](//angularjs.org) sunumlarım, [Pluralsight eğitim kurslarım](http://pluralsight.com/training/Authors/Details/john-papa) ve takım çalışmalarımdan edindiğim deneyimlerle oluşturulmuştur.
 
@@ -56,17 +56,16 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   1. [Katkıda bulunmak](#contributing)
   1. [Lisans](#license)
 
-## Single Responsibility
+## Tek İşlevsellik
 
-### Rule of 1
-###### [Style [Y001](#style-y001)]
+### Kural 1
+###### [Stil [Y001](#style-y001)]
 
-  - Define 1 component per file.
-
-  The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.
-
+  - Her dosyaya yalnızca bir komponent tanımlayın.
+  Göreceğimiz örnek `app` modülünü ve bağımlılıklarını, konrolörünü ve fabrikasını aynı dosyada tanımlıyor.
+  
   ```javascript
-  /* avoid */
+  /* sakınılacak stil */
   angular
       .module('app', ['ngRoute'])
       .controller('SomeController', SomeController)
@@ -76,11 +75,11 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   function someFactory() { }
   ```
-
-  The same components are now separated into their own files.
+  
+  Bu örnekte ise aynı komponentler farklı dosyalara ayrılmış durumdalar
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
 
   // app.module.js
   angular
@@ -88,7 +87,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
 
   // someController.js
   angular
@@ -99,7 +98,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
 
   // someFactory.js
   angular
@@ -109,26 +108,26 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   function someFactory() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
 ## IIFE
-### JavaScript Closures
-###### [Style [Y010](#style-y010)]
+### JavaScript Kapsamları(Closures)
+###### [Stil [Y010](#style-y010)]
+  - Angular komponentlerinizi Hemen Çalışan Fonksiyon İfadeleri (HÇFİ) ile kapsayın 
+  > *Not: Hemen Çalışan Fonksiyon İfadeleri İngilizcede (Immediately Invoked Function Expression) olarak geçer. Bu fonksiyon bloğu içerisinde kalan kısım, tanımlanmasının ardından hemen çalıştırılır, fonksiyonun çağrılmasını beklemez* 
 
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
-
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
-
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  *Neden?*: HÇFİ değişkenleri evrensel olarak tanımlanmaktan çıkarır. Bu yöntem değişkenlerin ve fonksiyonların evrensel olarak beklenenden daha uzun tanımlı kalmasını ve aynı isimde olan değişken ve fonksiyonlarla çakışmasını engeller. 
+  
+  *Neden?*: Kodunuz sıkıştırıldığı zaman ve üretim ortamın için tek bir javascript dosyası halinde paketlendiğinde, birçok yerel ve evrensel değişken için çakışma hataları alabilirsiniz. HÇFİ sizi bu çakışmalara karşı korur ve her dosya için kendi değişken kapsamını tanımlar.
 
   ```javascript
-  /* avoid */
+  /* sakınılacak stil */
   // logger.js
   angular
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable
+  // logger fonksiyonu evrensel olarak tanımlanıyor
   function logger() { }
 
   // storage.js
@@ -136,15 +135,15 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable
+  // storage fonksiyonu evrensel olarak tanımlanıyor
   function storage() { }
   ```
 
   ```javascript
   /**
-   * recommended
+   * önerilen stil
    *
-   * no globals are left behind
+   * evrensel tanımlamamız yok
    */
 
   // logger.js
@@ -170,11 +169,11 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
+  - Not: Dökümanın sadeliğini korumak namına, bundan sonraki örneklerin HÇFS fonksiyonları içinde tanımlandığını farzedin. 
 
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+  - Not: HÇFİ'ler test kodunuzun fonksiyona özel değişkenlere erişmenizi engeller (Regular Expression, Yardımcı fonksiyonlar gibi). O yüzden bu fonksiyonları kendi başlarına test etmek daha iyidir. Ama yine de bu özel fonksiyonları komponentin dışından erişilebilir kılarak test edebilirsiniz.
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
 ## Modules
 
