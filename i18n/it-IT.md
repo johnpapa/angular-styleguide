@@ -2016,7 +2016,7 @@ Invece usa la più semplice sintassi setter.
 
     function creditService() { }
 
-    // credit.service.js
+    // customer.service.js
     angular
         .module
         .service('customersService', customersService);
