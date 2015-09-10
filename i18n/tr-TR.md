@@ -28,7 +28,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   1. [Modüller](#modules)
   1. [Kontrolörler (Controller)](#controllers)
   1. [Servisler](#services)
-  1. [Fabrikalar (Factories)](#factories)
+  1. [Factory'ler](#factories)
   1. [Veri Servisleri](#data-services)
   1. [Direktifler (Directives)](#directives)
   1. [Promise'leri Kontrolörler için çözümleme](#resolving-promises-for-a-controller)
@@ -294,7 +294,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 ## Kontrolörler (Controllers)
 
-### controllerAs Sintaksı
+### controllerAs View Sintaksı
 ###### [Stil [Y030](#style-y030)]
 
   - [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) sintaksını klasik $scope'lu kntrolöer sintaksına tercih edin. 
@@ -319,19 +319,19 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   </div>
   ```
 
-### controllerAs Controller Syntax
-###### [Style [Y031](#style-y031)]
+### controllerAs Kontrolör Sintaksı
+###### [Stil [Y031](#style-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - `controllerAs` sintaksını klasik $scope'lu kntrolöer sintaksına tercih edin.
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - `controllerAs` sintaksı kontrolör içerisinde `this` kelimesini kullanır ve $scope'a bağlanırç
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *Neden?*: `controllerAs` `$scope` için bir sintaks süslemedir. Hala View'a bağlayabilir ve `$scope` fonksiyonlarına ulaşabilirsiniz.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller.
+  *Neden?*: `$scope` metodlarının bir Factory içerisinde tanımlanıp kontrolör içerisinde çağrılmasındansa, kontrolör içerisinde direk kullanılması eğilimine engel olur. `$scope`'u kontrolör içerisinde sadece ihtiyaç olduğunda kullanın. Örneğin [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast) veya [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) kullanırkenö bunları bir factory içine taşıyıp, kontrolör içerisinden çağırın.
 
   ```javascript
-  /* avoid */
+  /* kaçınılan stil */
   function Customer($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -339,22 +339,22 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* önerilen stil - ama bir sonraki bölüme bakın */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
   }
   ```
 
-### controllerAs with vm
-###### [Style [Y032](#style-y032)]
+### vm ile controllerAs
+###### [Stil [Y032](#style-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - `controllerAs` sintaksını kullanırken `this` kelimesi için yakalayıcı bir değişken kullanın. `vm` gibi tutarlı bir isim seçin. `vm`, ViewModel'in kısaltılmışıdır.
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *Neden?*: `this` kelimesi kullanıldığı yere göre içeriğini değiştirebilir. Baştan yakalayıcı bir değişkene atayarak hep aynı içeriği tutması sağlanır.
 
   ```javascript
-  /* avoid */
+  /* kaçınılan stil */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -362,7 +362,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
   function Customer() {
       var vm = this;
       vm.name = {};
@@ -370,14 +370,14 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Not: [jshint](http://www.jshint.com/) uyarılarını kodun üstüne yorum ekleyerek engelleyebilirsiniz. Eğer fonksiyonunu UpperCasing yöntemi ile isimlendirdiyse buna ihtiyaç olmaz. Çünkü bu yöntem bu fonksiyonun bir constructor fonksiyonu olduğunu belirtir, ki Angular kontrolörleri de bir constructor fonksiyonudur.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Not: vm değişkenlerini izlerken ($watch) aşağıdaki sintaksı kullanabilirsiniz. (İzleme yaratırken dikkatli olunmalıdır. Çümkü digest cycle'a yük bindrir.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -395,17 +395,17 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Bindable Members Up Top
+### Bağlanacaklar Yukarı
 ###### [Style [Y033](#style-y033)]
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Bağlanacak olan değişkenleri kontrolör fonksiyonuzda aflabetik sıralanmış olarak tepeye koyun. Kod içerisinde dağılmış olarak bırakmayın.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View.
+    *Neden?*: Bağlancak değişkenleri tepeye koymak kod okunabilirliğini arttırır ve bir bakışta View'a hangi değişkenlerin bağlanacağını görebilirsiniz.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+    *Neden?*: Anonim fonksiyonlar yaratmak hızlı ve kolaydır, ama bu fonksiyonlar bir satırdan fazla olurlarsa okunabilirliği düşürürler. Fonksiyonları bağlanabilir değişkenlerin altında tanımlarsanız (JavaScript'in hoisting özelliği ile yukarı taşınacaklardır) kodun okunması daha kolay olur. 
 
   ```javascript
-  /* avoid */
+  /* kaçınılacak stil */
   function Sessions() {
       var vm = this;
 
@@ -423,7 +423,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
   function Sessions() {
       var vm = this;
 
@@ -450,10 +450,10 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  Not: Eğer fonksiyon bir satıra sığıyorsa, okunabilirlik etkilenmez ve bağlanacak değişkenlerle beraber tutulabilir. 
 
   ```javascript
-  /* avoid */
+  /* kaçınılacak stil */
   function Sessions(data) {
       var vm = this;
 
@@ -473,7 +473,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
   function Sessions(sessionDataService) {
       var vm = this;
 
