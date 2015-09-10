@@ -10,7 +10,7 @@ Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Topluluk Aşmışlığı ve Referanslar
+## Topluluğun Aşmışlığı ve Referanslar
 Asla izole olarak çalışmayın. Angular topluluğunu, deneyimlerini paylaşma konusunda tutukulu buluyorum. Örneğin, arkadaşım ve bir Angular uzmanı Todd Motto ile birçok stil ve yöntem üzerinde işbirliği yaptık. Birçoğunda hemfikir olduk, birkaçında farklı yollar izledik. [Todd'un rehberi'ni](https://github.com/toddmotto/angularjs-styleguide) de onun yaklaşımını anlamak ve karşılaştırma yapmak için incelemenizi öneririm
 
 Bir çok yöntem [Ward Bell](http://twitter.com/wardbell) ile yaptığımız eşli programlama seanslarında ortaya çıktı. Arkadaşım Ward bu rehberin nihai evrimine büyük katkılarda bulundu.
@@ -169,30 +169,30 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   })();
   ```
 
-  - Not: Dökümanın sadeliğini korumak namına, bundan sonraki örneklerin HÇFS fonksiyonları içinde tanımlandığını farzedin. 
+  - Not: Dökümanın sadeliğini korumak namına, bundan sonraki örneklerin HÇFİ fonksiyonları içinde tanımlandığını farzedin. 
 
   - Not: HÇFİ'ler test kodunuzun fonksiyona özel değişkenlere erişmenizi engeller (Regular Expression, Yardımcı fonksiyonlar gibi). O yüzden bu fonksiyonları kendi başlarına test etmek daha iyidir. Ama yine de bu özel fonksiyonları komponentin dışından erişilebilir kılarak test edebilirsiniz.
 
 **[İçerik Listesi](#table-of-contents)**
 
-## Modules
+## Modüller
 
-### Avoid Naming Collisions
-###### [Style [Y020](#style-y020)]
+### İsim Çakışmalarından Kaçının
+###### [Stil [Y020](#style-y020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - Alt modüller için eşsiz isimlendirme yöntemleri kullanın.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *Neden?*: Eşsiz isimler modül isimlerinin çakışmasını engeller. Ayraçlar modüller ve alt modüller arasındaki hiyerarşiyi kurmaya yardımcı olur. Örneğin `app` sizin ana modülünüz olsun. `app.dashboard` ve `app.users` modülleri alt modülleriniz olur ve `app` modülüne bağımlılık olarak eklenirler.
 
-### Definitions (aka Setters)
-###### [Style [Y021](#style-y021)]
+### Modül Tanımlama Yöntemi (Setters)
+###### [Stil [Y021](#style-y021)]
 
-  - Declare modules without a variable using the setter syntax.
+  - Modüllerinizi bir değişkene atama yapmadan setter sintaksını kullanarak tanımlayın.
 
-  *Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  *Neden?*: Her komponent için bir dosya yöntemi ile, nadiren modülünüzü bir değişkene atama ihtiyacı hissedersiniz. 
 
   ```javascript
-  /* avoid */
+  /* kaçınılacak stil */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -201,10 +201,10 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ]);
   ```
 
-  Instead use the simple setter syntax.
+  Setter sintaksı kullanımı
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
   angular
       .module('app', [
           'ngAnimate',
@@ -214,15 +214,15 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
       ]);
   ```
 
-### Getters
-###### [Style [Y022](#style-y022)]
+### Modüle Ulaşma Yöntemi
+###### [Stil [Y022](#style-y022)]
 
-  - When using a module, avoid using a variable and instead use chaining with the getter syntax.
+  - Modülünüze ulaşıp kullanırken değişkene atamak yerine getter sintaksını zincirleyerek kullanın.
 
-  *Why?*: This produces more readable code and avoids variable collisions or leaks.
+  *Neden?*: Bu yöntem kodunuzu daha okunabilir kılar ve değişken çakışmalarını ve sızıntılarını engeller.
 
   ```javascript
-  /* avoid */
+  /* kaçınılacak stil */
   var app = angular.module('app');
   app.controller('SomeController', SomeController);
 
@@ -230,7 +230,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
   angular
       .module('app')
       .controller('SomeController', SomeController);
@@ -238,32 +238,32 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   function SomeController() { }
   ```
 
-### Setting vs Getting
-###### [Style [Y023](#style-y023)]
+### Yaratma ve Kullanma
+###### [Stil [Y023](#style-y023)]
 
-  - Only set once and get for all other instances.
+  - Modülünüzü sadece bir kere yaratın ve diğer durumlar için getter sintaksını kullanın.
 
-  *Why?*: A module should only be created once, then retrieved from that point and after.
+  *Neden?*: Modül sadece birkere yaratılmalıdır. Sonrasında bu yaratılan modül kullanılırç
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
 
-  // to set a module
+  // modül yaratılır
   angular.module('app', []);
 
-  // to get a module
+  // modül kullanılır
   angular.module('app');
   ```
 
-### Named vs Anonymous Functions
+### İsimli ve Anonoim Fonksiyonlar
 ###### [Style [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - Modülünüzün komponentlerinin fonksiyonlarını isimli fonksiyonlar olarak tanımlayın.
 
-  *Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Neden?*: Bu yöntem kodunuzu daha okunabilir kılar ve hata ayıklamak için kolaylık sağlar. Ayrcıa iç içe geçmiş fonksiyon bloklarının önüne geçcer.
 
   ```javascript
-  /* avoid */
+  /* kaçınılacak stil */
   angular
       .module('app')
       .controller('Dashboard', function() { })
@@ -271,7 +271,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
 
   // dashboard.js
   angular
@@ -290,30 +290,30 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
-## Controllers
+## Kontrolörler (Controllers)
 
-### controllerAs View Syntax
-###### [Style [Y030](#style-y030)]
+### controllerAs Sintaksı
+###### [Stil [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) sintaksını klasik $scope'lu kntrolöer sintaksına tercih edin. 
 
-  *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+  *Neden?*: Kontrolörler `new` kelimesi ile yaratılır ve uygulamanız içerisinde sadece bir örneği bulunur. `controllerAs` yöntemi JavaScript'in constructor yapısına daha yakındır.
 
-  *Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+  *Nden?*: View katmanında noktalı notasyonun kullanımını teşvik eder. (örneğin `customer.name` yerine `name`). Bu yöntem daha kolay okunur ve referans problemlerinin oluşmasını engeller.
 
-  *Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+  *Neden?*: İçiçe olan kontrolörlerde veriye ulaşırken `$parent` kullanmanızı engeller.
 
   ```html
-  <!-- avoid -->
+  <!-- kaçınılacak stil -->
   <div ng-controller="Customer">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- önerilen stil -->
   <div ng-controller="Customer as customer">
       {{ customer.name }}
   </div>
