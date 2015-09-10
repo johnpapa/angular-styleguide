@@ -2016,7 +2016,7 @@ Invece usa la più semplice sintassi setter.
 
     function creditService() { }
 
-    // credit.service.js
+    // customer.service.js
     angular
         .module
         .service('customersService', customersService);
@@ -2981,6 +2981,24 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngservice    // crea un service Angular
     ngfilter     // crea un filter Angular
     ```
+
+### Visual Studio Code
+
+###### [Stile [Y256](#stile-y256)]
+
+  - Snippet [Visual Studio Code](http://code.visualstudio.com) che seguono questi stili e linee guida.
+
+    - Scarica gli [snippet VS Code Angular](assets/vscode-snippets/javascript.json?raw=true)
+    - copia gli snippet nella directory snippet o, in alternativa, copia ed incolla gli snippet in quella esistente.
+
+    ```javascript
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngmodule     // crea un modulo Angular
+    ngservice    // crea un service Angular
+    ```
+
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Generatore Yeoman
