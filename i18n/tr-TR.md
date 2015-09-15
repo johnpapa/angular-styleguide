@@ -484,25 +484,25 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
       vm.title = 'Sessions';
   ```
 
-### Function Declarations to Hide Implementation Details
-###### [Style [Y034](#style-y034)]
+### Fonksiyon Tanımlamaları ve İmplementasyon Detaylarının Saklanması
+###### [Stil [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Kontrolörünüzde bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve kontrolöer içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Neden?*: Fonksiyonun implementasyonunu dosya içerisinde daha aşağılara taşımak kompleks kısımları göz önünden uzak tutar ve asıl önemli olan kısma odaklanmayı sağlarç 
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Neden?*: Fonksiyon tanımlamaları(declerations) JavaScript'in *hoisting* özelliğinden faydalandığı için fonksiyonun tanımlamasından önce çağrılmasından endişe duymaya gerek yoktur. (Fonksiyon eşitlemeleri(expression) için bu durum geçerli değildir)
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Neden?*: Fonksiyon tanımlamaları ile değişkenlerin yerlerini değiştirirken kodunuz kırılır mı diye endişe duymaya gerek yoktur. 
 
-    *Why?*: Order is critical with function expressions
+    *Neden?*: Fonksiyon eşitlemelerinde sıra önemlidir.
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions.
+   * kaçınılacak stil
+   * Fonksiyon eşitlemeleri kullanmak.
    */
   function Avengers(avengersService, logger) {
       var vm = this;
@@ -528,13 +528,13 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Bir önceki örnekte önemli olan noktaların kod içerisinde nasıld dağıldığına dikkat edin. Aşağıdaki örnekte, önemli olan kısım yukarıda toplanmıştır. Örneğin, kontrolöere bağlı `vm.avengers` ve `vm.title` öğeleri. İmplementasyonun detayları aşağıda yer alıyor. Kodu okumak böyle daha kolay.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * önerilen stil
+   * Fonksiyon tanımlamaları kullanarak
+   * bağlanacakları yukarı taşımak.
    */
   function Avengers(avengersService, logger) {
       var vm = this;
@@ -559,22 +559,22 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Defer Controller Logic to Services
+### Mantıksal kodu Kontrolörlerden Servislere Kaydırın
 ###### [Style [Y035](#style-y035)]
 
-  - Defer logic in a controller by delegating to services and factories.
+  - Kontrolör içerisindeki mantıksal kodu servisler ve factory'ler aracılığıyle yönetin. 
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    *Neden?*: Mantıksal kod servislere taşınırsa farklı kontrolörlerde tekrar terkrar kullanılabilir.
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    *Neden?*: Servise taşınmış mantıksal kod daha kolay test edilebilir ve kontrolör içerisinde kolayca taklit edilebilir(mocking)
 
-    *Why?*: Removes dependencies and hides implementation details from the controller.
+    *Neden?*: Kontrolörden bağımlılıkları kaldırır ve implementasyon detaylarını gizler.
 
-    *Why?*: Keeps the controller slim, trim, and focused.
+    *Neden?*: Kontrolörü kısa ve öz tutar.
 
   ```javascript
 
-  /* avoid */
+  /* kaçınılacak stil */
   function Order($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -583,28 +583,27 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
       function checkCredit() {
           var settings = {};
-          // Get the credit service base URL from config
-          // Set credit service required headers
-          // Prepare URL query string or data object with request data
-          // Add user-identifying info so service gets the right credit limit for this user.
-          // Use JSONP for this browser if it doesn't support CORS
+          // Konfigürasyonlardan URL'yi al
+          // Gerekli header'ları belirler
+          // URL'yi gerekli parametrelerle hazırla
+          // Kullanıcıyı belirleyecek veriyi ekle ki bu kullanıcı için doğru limit bulunsun
+          // CORS desteklemeyen tarayıcılar için JSONP kullan
           return $http.get(settings)
               .then(function(data) {
-               // Unpack JSON data in the response object
-                 // to find maxRemainingAmount
+               // Response ile gelen JSON objesinden maksimum kalan tutarı al
                  vm.isCreditOk = vm.total <= maxRemainingAmount
               })
               .catch(function(error) {
-                 // Interpret error
-                 // Cope w/ timeout? retry? try alternate service?
-                 // Re-reject with appropriate error for a user to see
+                 // Hatayı işlet
+                 // Tekrar dene? Başka bir servisi dene?
+                 // Kullanıcıya anlayabileceği uygun bir hata göster
               });
       };
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
   function Order(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -619,24 +618,24 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Keep Controllers Focused
-###### [Style [Y037](#style-y037)]
+### Kontrolörün Odağını Koruyun
+###### [Stil [Y037](#style-y037)]
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
+  - Bir kontrolörü bir view tanımlayın ve başka view'lar için kullanmaya çalışmayın. Onun yerine tekrar kullanılabilir mantıksal kodu farcory'lere taşıyıp, kontrolörü sade ve view'a odaklı bırakın.
 
-    *Why?*: Reusing controllers with several views is brittle and good end-to-end (e2e) test coverage is required to ensure stability across large applications.
+    *Neden?*: Kontrolörleri değişik view'larla birlikte kullanmak kodu kırılgan yapar ve iyi bir uçtan uca test kapsamı için kararlılık gereklidir.
 
-### Assigning Controllers
-###### [Style [Y038](#style-y038)]
+### Kontrolör Atamaları
+###### [Stil [Y038](#style-y038)]
 
-  - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes.
+  - Eğer bir kontrolör bir view ile eşleşmek zorunda ise ve o view başka kontrolörler tarafından da kullanılıyorsa, o zaman kontrolörü router serviyesinde tanımlayın.
 
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax.
+    Not: Eğer view router dışında başka biryerden yükleniyorsa, view içerisinde `ng-controller="Avengers as vm"` sintaksını kullanın.
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    *Neden?*: Kontrolörü router ile eşlemek, farklı route'ların farklı kontrolör ve view eşlerini çağırmasına olanak sağlar. Eğer kontrolör [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) yöntemi kullanılarak view ile eşlendiyse, o view hep o kontrolörü kullanacaktır.
 
  ```javascript
-  /* avoid - when using with a route and dynamic pairing is desired */
+  /* kaçınılacak stil */
 
   // route-config.js
   angular
@@ -658,7 +657,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
   ```javascript
-  /* recommended */
+  /* önerilen stil */
 
   // route-config.js
   angular
@@ -681,7 +680,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
 ## Services
 
