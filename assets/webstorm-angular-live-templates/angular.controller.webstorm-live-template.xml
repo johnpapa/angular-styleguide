@@ -1,4 +1,4 @@
-<templateSet group="angular-styleguide">
+<templateSet group="angular-styleguide-controller">
     <template name="ngcontroller" value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .controller('$ControllerName$', $ControllerName$);&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        var vm = this;&#10;        vm.title = '$ControllerName$';&#10;&#10;        activate();&#10;&#10;        ////////////////&#10;&#10;        function activate() {&#10;            $END$&#10;        }&#10;    }&#10;&#10;})();" description="Creates an Angular controller" toReformat="true" toShortenFQNames="true">
         <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true" />
         <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true" />
