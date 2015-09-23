@@ -2911,6 +2911,8 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
     ```
+    
+  *Individual templates are also available for download within the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
 
 ### Atom
 ###### [Style [Y253](#style-y253)]
