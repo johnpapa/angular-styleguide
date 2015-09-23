@@ -2896,18 +2896,20 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Angular snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  - Angular live templates that follow these styles and guidelines.
 
-    - Download the [WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true)
-    - Open WebStorm and go to the `File` menu
-    - Choose the `Import Settings` menu option
-    - Select the file and click `OK`
+    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates.xml?raw=true)
+    - Place it in your [templates folder](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Restart WebStorm
     - In a JavaScript file type these commands followed by a `TAB`:
 
     ```javascript
-    ng-c // creates an Angular controller
-    ng-f // creates an Angular factory
-    ng-m // creates an Angular module
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
     ```
 
 ### Atom
