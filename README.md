@@ -2020,9 +2020,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     // customer.service.js
     angular
         .module
-        .service('customersService', customersService);
+        .service('customerService', customerService);
 
-    function customersService() { }
+    function customerService() { }
     ```
 
 ### Directive Component Names
