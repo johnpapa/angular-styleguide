@@ -148,7 +148,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    */
 
   // logger.js
-  (function() {
+  (function(angular) {
       'use strict';
 
       angular
@@ -156,10 +156,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           .factory('logger', logger);
 
       function logger() { }
-  })();
+  })(window.angular);
 
   // storage.js
-  (function() {
+  (function(angular) {
       'use strict';
 
       angular
@@ -167,7 +167,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           .factory('storage', storage);
 
       function storage() { }
-  })();
+  })(window.angular);
   ```
 
   - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
