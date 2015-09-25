@@ -1,6 +1,6 @@
 <templateSet group="angular-styleguide-filter">
     <template name="ngfilter"
-              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .filter('$filterName$', $filterName$);&#10;&#10;    function $filterName$() {&#10;        return $filterName$Filter;&#10;&#10;        ////////////////&#10;&#10;        function $filterName$Filter($parameters$) {&#10;            return $parameters$;&#10;        } $END$&#10;    }&#10;&#10;})();"
+              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .filter('$filterName$', $filterName$);&#10;&#10;    function $filterName$() {&#10;        return $filterName$Filter;&#10;&#10;        ////////////////&#10;&#10;        function $filterName$Filter($parameters$) {&#10;            return $parameters$;&#10;        }&#10;    }&#10;&#10;})();&#10;&#10;$END$"
               description="Creates an Angular filter" toReformat="true" toShortenFQNames="true">
         <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
         <variable name="filterName" expression="" defaultValue="&quot;filterName&quot;" alwaysStopAt="true"/>
