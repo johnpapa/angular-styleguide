@@ -1,9 +1,7 @@
 <templateSet group="angular-styleguide-module">
-    <template name="ngmodule"
-              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$', [&#10;            '$dependency$'&#10;        ]); $END$&#10;&#10;})();"
-              description="Creates an Angular module" toReformat="true" toShortenFQNames="true">
-        <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
-        <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
+    <template name="ngmodule" value="angular&#10;    .module('$moduleName$')&#10;    $END$"
+              description="Creates an Angular module getter" toReformat="false" toShortenFQNames="true">
+        <variable name="moduleName" expression="" defaultValue="&quot;module&quot;" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>

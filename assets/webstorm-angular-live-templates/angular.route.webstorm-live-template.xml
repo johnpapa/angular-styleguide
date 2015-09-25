@@ -1,11 +1,11 @@
-<templateSet group="angular-styleguide-controller">
-    <template name="ngcontroller"
-              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .controller('$ControllerName$', $ControllerName$);&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        var vm = this;&#10;        vm.title = '$ControllerName$';&#10;&#10;        activate();&#10;&#10;        ////////////////&#10;&#10;        function activate() {&#10;            $activateFunction$&#10;        }&#10;    }&#10;&#10;})();&#10;&#10;$END$"
-              description="Creates an Angular controller" toReformat="true" toShortenFQNames="true">
-        <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
+<templateSet group="angular-styleguide-route">
+    <template name="ngroute"
+              value=".when('/$url$', {&#10;    templateUrl: '$template$.html',&#10;    controller: '$ControllerName$',&#10;    controllerAs: '$vm$'&#10;})$END$"
+              description="Defines an Angular ngRoute 'when' definition" toReformat="false" toShortenFQNames="true">
+        <variable name="url" expression="" defaultValue="&quot;url&quot;" alwaysStopAt="true"/>
+        <variable name="template" expression="" defaultValue="&quot;template&quot;" alwaysStopAt="true"/>
         <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true"/>
-        <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
-        <variable name="activateFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="vm" expression="" defaultValue="&quot;vm&quot;" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
