@@ -267,7 +267,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* avoid */
   angular
       .module('app')
-      .controller('Dashboard', function() { })
+      .controller('DashboardController', function() { })
       .factory('logger', function() { });
   ```
 
@@ -277,9 +277,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   // dashboard.js
   angular
       .module('app')
-      .controller('Dashboard', Dashboard);
+      .controller('DashboardController', DashboardController);
 
-  function Dashboard() { }
+  function DashboardController() { }
   ```
 
   ```javascript
@@ -308,14 +308,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```html
   <!-- avoid -->
-  <div ng-controller="Customer">
+  <div ng-controller="CustomerController">
       {{ name }}
   </div>
   ```
 
   ```html
   <!-- recommended -->
-  <div ng-controller="Customer as customer">
+  <div ng-controller="CustomerController as customer">
       {{ customer.name }}
   </div>
   ```
@@ -333,7 +333,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* avoid */
-  function Customer($scope) {
+  function CustomerController($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
   }
@@ -341,7 +341,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended - but see next section */
-  function Customer() {
+  function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
@@ -356,7 +356,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* avoid */
-  function Customer() {
+  function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
@@ -364,7 +364,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Customer() {
+  function CustomerController() {
       var vm = this;
       vm.name = {};
       vm.sendMessage = function() { };
@@ -407,7 +407,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* avoid */
-  function Sessions() {
+  function SessionsController() {
       var vm = this;
 
       vm.gotoSession = function() {
@@ -425,7 +425,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Sessions() {
+  function SessionsController() {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -455,7 +455,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* avoid */
-  function Sessions(data) {
+  function SessionsController(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -475,7 +475,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Sessions(sessionDataService) {
+  function SessionsController(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -505,7 +505,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    * avoid
    * Using function expressions.
    */
-  function Avengers(avengersService, logger) {
+  function AvengersController(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -537,7 +537,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
    * Using function declarations
    * and bindable members up top.
    */
-  function Avengers(avengersService, logger) {
+  function AvengersController(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
@@ -576,7 +576,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```javascript
 
   /* avoid */
-  function Order($http, $q, config, userInfo) {
+  function OrderController($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.isCreditOk;
@@ -606,7 +606,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Order(creditService) {
+  function OrderController(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.isCreditOk;
@@ -654,7 +654,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```html
   <!-- avengers.html -->
-  <div ng-controller="Avengers as vm">
+  <div ng-controller="AvengersController as vm">
   </div>
   ```
 
@@ -946,11 +946,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   // controller calling the dataservice factory
   angular
       .module('app.avengers')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['dataservice', 'logger'];
+  AvengersController.$inject = ['dataservice', 'logger'];
 
-  function Avengers(dataservice, logger) {
+  function AvengersController(dataservice, logger) {
       var vm = this;
       vm.avengers = [];
 
@@ -1333,7 +1333,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* avoid */
-  function Avengers(dataservice) {
+  function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -1347,7 +1347,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  function Avengers(dataservice) {
+  function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -1382,9 +1382,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* avoid */
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  function Avengers(movieService) {
+  function AvengersController(movieService) {
       var vm = this;
       // unresolved
       vm.movies;
@@ -1407,7 +1407,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: function(movieService) {
@@ -1420,10 +1420,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   // avengers.js
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['moviesPrepService'];
-  function Avengers(moviesPrepService) {
+  AvengersController.$inject = ['moviesPrepService'];
+  function AvengersController(moviesPrepService) {
       var vm = this;
       vm.movies = moviesPrepService.movies;
   }
@@ -1443,7 +1443,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: moviesPrepService
@@ -1458,10 +1458,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   // avengers.js
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['moviesPrepService'];
-  function Avengers(moviesPrepService) {
+  AvengersController.$inject = ['moviesPrepService'];
+  function AvengersController(moviesPrepService) {
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
@@ -1483,9 +1483,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     /* avoid - not minification-safe*/
     angular
         .module('app')
-        .controller('Dashboard', Dashboard);
+        .controller('DashboardController', DashboardController);
 
-    function Dashboard(common, dataservice) {
+    function DashboardController(common, dataservice) {
     }
     ```
 
@@ -1493,7 +1493,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     ```javascript
     /* avoid - not minification-safe*/
-    angular.module('app').controller('Dashboard', d);function d(a, b) { }
+    angular.module('app').controller('DashboardController', d);function d(a, b) { }
     ```
 
 ### Manually Identify Dependencies
@@ -1511,7 +1511,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     /* avoid */
     angular
         .module('app')
-        .controller('Dashboard',
+        .controller('DashboardController',
             ['$location', '$routeParams', 'common', 'dataservice',
                 function Dashboard($location, $routeParams, common, dataservice) {}
             ]);
@@ -1521,7 +1521,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     /* avoid */
     angular
       .module('app')
-      .controller('Dashboard',
+      .controller('DashboardController',
           ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
 
     function Dashboard($location, $routeParams, common, dataservice) {
@@ -1532,11 +1532,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     /* recommended */
     angular
         .module('app')
-        .controller('Dashboard', Dashboard);
+        .controller('DashboardController', DashboardController);
 
     Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
 
-    function Dashboard($location, $routeParams, common, dataservice) {
+    function DashboardController($location, $routeParams, common, dataservice) {
     }
     ```
 
@@ -1623,10 +1623,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     angular
         .module('app')
-        .controller('Avengers', Avengers);
+        .controller('AvengersController', AvengersController);
 
     /* @ngInject */
-    function Avengers(storage, avengerService) {
+    function AvengersController(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
@@ -1643,10 +1643,10 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```javascript
     angular
         .module('app')
-        .controller('Avengers', Avengers);
+        .controller('AvengersController', AvengersController);
 
     /* @ngInject */
-    function Avengers(storage, avengerService) {
+    function AvengersController(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
@@ -1657,7 +1657,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         }
     }
 
-    Avengers.$inject = ['storage', 'avengerService'];
+    AvengersController.$inject = ['storage', 'avengerService'];
     ```
 
     Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
@@ -1670,7 +1670,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         $routeProvider
             .when('/avengers', {
                 templateUrl: 'avengers.html',
-                controller: 'Avengers',
+                controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: { /* @ngInject */
                     moviesPrepService: function(movieService) {
@@ -1907,7 +1907,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team. My preference is `avengers.controller.js`.
+  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team. My preference is `avengers.controller.js` identifying the `AvengersController`.
 
     ```javascript
     /**
