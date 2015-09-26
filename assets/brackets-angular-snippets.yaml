@@ -102,10 +102,6 @@
 
             /* @ngInject */
             function ${2: directive}(${3:dependencies}) {
-                // Usage:
-                //
-                // Creates:
-                //
                 var directive = {
                     bindToController: true,
                     controller: ${4:Controller},
