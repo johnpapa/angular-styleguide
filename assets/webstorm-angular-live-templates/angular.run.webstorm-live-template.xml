@@ -4,7 +4,7 @@
               description="Defines a run phase function" toReformat="false" toShortenFQNames="true">
         <variable name="runName" expression="" defaultValue="&quot;Name&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
-        <variable name="runNameFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="runNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>

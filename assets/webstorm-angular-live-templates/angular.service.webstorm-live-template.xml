@@ -6,7 +6,7 @@
         <variable name="ServiceName" expression="" defaultValue="&quot;ServiceName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
         <variable name="functionName" expression="" defaultValue="&quot;functionName&quot;" alwaysStopAt="true"/>
-        <variable name="functionNameFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="functionNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
