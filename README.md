@@ -2970,10 +2970,10 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
     // These are partial snippets intended to chained
     ngmodule     // creates an Angular module getter
-    ngstate      // creates an Angular UI Router state defintion
+    ngstate      // creates an Angular UI Router state definition
     ngconfig     // defines a configuration phase function
     ngrun        // defines a run phase function
-    ngroute      // defines an Angular ngRoute 'when' definition
+    ngwhen      // defines an Angular ngRoute 'when' definition
     ngtranslate  // uses $translate service with its promise
     ```
 
