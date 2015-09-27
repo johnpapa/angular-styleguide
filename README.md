@@ -1534,7 +1534,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
+    DashboardController.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
 
     function DashboardController($location, $routeParams, common, dataservice) {
     }
