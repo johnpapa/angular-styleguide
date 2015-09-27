@@ -1,0 +1,36 @@
+<templateSet group="angular-styleguide-state">
+    <template name="ngstate"
+              value=".state('$state$', {&#10;    url: '/$url$',&#10;    templateUrl: '$template$.html',&#10;    controller: '$ControllerName$',&#10;    controllerAs: '$vm$'&#10;})$END$"
+              description="Creates an Angular UI Router state defintion" toReformat="false" toShortenFQNames="true">
+        <variable name="state" expression="" defaultValue="&quot;state&quot;" alwaysStopAt="true"/>
+        <variable name="url" expression="" defaultValue="&quot;url&quot;" alwaysStopAt="true"/>
+        <variable name="template" expression="" defaultValue="&quot;template&quot;" alwaysStopAt="true"/>
+        <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true"/>
+        <variable name="vm" expression="" defaultValue="&quot;vm&quot;" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML_TEXT" value="false"/>
+            <option name="HTML" value="false"/>
+            <option name="XSL_TEXT" value="false"/>
+            <option name="XML" value="false"/>
+            <option name="XML_TEXT" value="false"/>
+            <option name="JSON" value="false"/>
+            <option name="JSP" value="false"/>
+            <option name="CSS_PROPERTY_VALUE" value="false"/>
+            <option name="CSS_DECLARATION_BLOCK" value="false"/>
+            <option name="CSS_RULESET_LIST" value="false"/>
+            <option name="CSS" value="false"/>
+            <option name="CUCUMBER_FEATURE_FILE" value="false"/>
+            <option name="JAVA_SCRIPT" value="false"/>
+            <option name="JS_EXPRESSION" value="false"/>
+            <option name="JSX_HTML" value="false"/>
+            <option name="JS_STATEMENT" value="true"/>
+            <option name="TypeScript" value="false"/>
+            <option name="Handlebars" value="false"/>
+            <option name="HAML" value="false"/>
+            <option name="JADE" value="false"/>
+            <option name="CoffeeScript" value="false"/>
+            <option name="DART" value="false"/>
+            <option name="OTHER" value="false"/>
+        </context>
+    </template>
+</templateSet>

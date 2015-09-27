@@ -1,0 +1,37 @@
+<templateSet group="angular-styleguide-directive">
+    <template name="ngdirective"
+              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .directive('$directiveName$', $directiveName$);&#10;&#10;    $directiveName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $directiveName$($dependency$) {&#10;        var directive = {&#10;            bindToController: true,&#10;            controller: $ControllerName$,&#10;            controllerAs: 'vm',&#10;            link: link,&#10;            restrict: 'A',&#10;            scope: {}&#10;        };&#10;        return directive;&#10;&#10;        function link(scope, element, attrs) {&#10;            $linkFunction$&#10;        }&#10;    }&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        $ControllerNameFunction$&#10;    }&#10;&#10;})();&#10;&#10;$END$"
+              description="Creates an Angular controller" toReformat="true" toShortenFQNames="true">
+        <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
+        <variable name="directiveName" expression="" defaultValue="&quot;directiveName&quot;" alwaysStopAt="true"/>
+        <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
+        <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true"/>
+        <variable name="linkFunction" expression="" defaultValue="" alwaysStopAt="true"/>
+        <variable name="ControllerNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML_TEXT" value="false"/>
+            <option name="HTML" value="false"/>
+            <option name="XSL_TEXT" value="false"/>
+            <option name="XML" value="false"/>
+            <option name="XML_TEXT" value="false"/>
+            <option name="JSON" value="false"/>
+            <option name="JSP" value="false"/>
+            <option name="CSS_PROPERTY_VALUE" value="false"/>
+            <option name="CSS_DECLARATION_BLOCK" value="false"/>
+            <option name="CSS_RULESET_LIST" value="false"/>
+            <option name="CSS" value="false"/>
+            <option name="CUCUMBER_FEATURE_FILE" value="false"/>
+            <option name="JAVA_SCRIPT" value="false"/>
+            <option name="JS_EXPRESSION" value="false"/>
+            <option name="JSX_HTML" value="false"/>
+            <option name="JS_STATEMENT" value="true"/>
+            <option name="TypeScript" value="false"/>
+            <option name="Handlebars" value="false"/>
+            <option name="HAML" value="false"/>
+            <option name="JADE" value="false"/>
+            <option name="CoffeeScript" value="false"/>
+            <option name="DART" value="false"/>
+            <option name="OTHER" value="false"/>
+        </context>
+    </template>
+</templateSet>
