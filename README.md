@@ -1062,7 +1062,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  /* calendarRange.directive.js */
+  /* calendar-range.directive.js */
 
   /**
    * @desc order directive that is specific to the order module at a company named Acme
@@ -1079,7 +1079,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```javascript
   /* recommended */
-  /* customerInfo.directive.js */
+  /* customer-info.directive.js */
 
   /**
    * @desc sales directive that can be used anywhere across the sales app at a company named Acme
