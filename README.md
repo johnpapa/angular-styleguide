@@ -1217,6 +1217,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var directive = {
           restrict: 'EA',
           templateUrl: 'app/feature/example.directive.html',
+		  scope: {},
           bindToController: {
               max: '='
           },
@@ -1290,6 +1291,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var directive = {
           restrict: 'EA',
           templateUrl: 'app/feature/example.directive.html',
+		  scope: {},
           bindToController: {
               max: '='
           },
