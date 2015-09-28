@@ -1217,13 +1217,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var directive = {
           restrict: 'EA',
           templateUrl: 'app/feature/example.directive.html',
-          scope: {
+          bindToController: {
               max: '='
           },
           link: linkFunc,
           controller: ExampleController,
-          controllerAs: 'vm',
-          bindToController: true // because the scope is isolated
+          controllerAs: 'vm'
       };
 
       return directive;
@@ -1272,11 +1271,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 ###### [Style [Y076](#style-y076)]
 
-  - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
+  - Use `bindToController` instead of `scope` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
 
     *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
 
-    Note: `bindToController` was introduced in Angular 1.3.0.
+    Note: `bindToController` was introduced in Angular 1.4.0.
 
   ```html
   <div my-example max="77"></div>
@@ -1291,12 +1290,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var directive = {
           restrict: 'EA',
           templateUrl: 'app/feature/example.directive.html',
-          scope: {
+          bindToController: {
               max: '='
           },
           controller: ExampleController,
-          controllerAs: 'vm',
-          bindToController: true
+          controllerAs: 'vm'
       };
 
       return directive;
