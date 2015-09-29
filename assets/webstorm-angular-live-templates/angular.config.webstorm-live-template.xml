@@ -1,8 +1,8 @@
 <templateSet group="angular-styleguide-config">
     <template name="ngconfig"
-              value=".config($config$)&#10;&#10;$config$.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function $config$ ($dependency$) {&#10;    $configFunction$&#10;}$END$"
+              value=".config($configName$)&#10;&#10;$configName$.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function $configName$($dependency$) {&#10;    $configFunction$&#10;}$END$"
               description="Defines a configuration phase function" toReformat="false" toShortenFQNames="true">
-        <variable name="config" expression="" defaultValue="&quot;config&quot;" alwaysStopAt="true"/>
+        <variable name="configName" expression="" defaultValue="&quot;configName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
         <variable name="configFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
