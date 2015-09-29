@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+.run(run${1:runName})
+
+run${1:runName}.\$inject = ['${2:dependency}'];
+
+/* @ngInject */
+function run${1:runName}(${2:dependency}) {
+    ${3}
+}
+]]></content>
+    <tabTrigger>ngrun</tabTrigger>
+    <scope>text.plain, source.js</scope>
+    <description>Defines a run phase function</description>
+</snippet>
