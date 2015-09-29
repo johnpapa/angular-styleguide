@@ -1,110 +1,113 @@
 - trigger: ngfilter
-  description: "Filter"
+  description: "Creates an Angular filter"
   scope: javascript
   text: |
-        (function () {
+        (function() {
             'use strict';
 
             angular
-                .module('${1:module}')
-                .filter('${2:filter}', ${2:filter});
+                .module('${1:moduleName}')
+                .filter('${2:filterName}', ${2:filterName});
 
-            function ${2:filter}() {
-                ${4:}
-                return ${2:filter}Filter;
+            function ${2:filterName}() {
+                return ${2:filterName}Filter;
 
                 ////////////////
 
-                function ${2:filter}Filter(${3:parameters}) {
+                function ${2:filterName}Filter(${3:parameters}) {
                     return ${3:parameters};
-                };
+                }
             }
+
         })();
 
 - trigger: ngservice
-  description: "Service"
+  description: "Creates an Angular service"
   scope: javascript
   text: |
-        (function () {
+        (function() {
             'use strict';
 
             angular
-                .module('${1:module}')
-                .service('${2:Service}', ${2:Service});
+                .module('${1:moduleName}')
+                .service('${2:ServiceName}', ${2:ServiceName});
 
-            ${2:Service}.$inject = ['${3:dependencies}'];
+            ${2:ServiceName}.$inject = ['${3:dependency}'];
 
             /* @ngInject */
-            function ${2:Service}(${3:dependencies}) {
-                this.${4:func} = ${4:func};
+            function ${2:ServiceName}(${3:dependency}) {
+                this.${4:functionName} = ${4:functionName};
 
                 ////////////////
 
-                function ${4:func}() {
-                    ${5:}
+                function ${4:functionName}() {
+                    ${5}
                 }
             }
+
         })();
 
 - trigger: ngapp
-  description: "Module definition"
+  description: "Creates an Angular module setter"
   scope: javascript
   text: |
-        (function () {
+        (function() {
             'use strict';
 
             angular
-                .module('${1:module}', [
-                    '${2:dependencies}'
+                .module('${1:moduleName}', [
+                    '${2:dependency}'${3}
                 ]);
+
         })();
 
 - trigger: ngfactory
-  description: "Factory"
+  description: "Creates an Angular factory"
   scope: javascript
   text: |
-        (function () {
+        (function() {
             'use strict';
-            angular
-                .module('${1:module}')
-                .factory('${2:factory}', ${2:factory});
 
-            ${2:factory}.$inject = ['${3:dependencies}'];
+            angular
+                .module('${1:moduleName}')
+                .factory('${2:factoryName}', ${2:factoryName});
+
+            ${2:factoryName}.$inject = ['${3:dependency}'];
 
             /* @ngInject */
-            function ${2: Factory}(${3:dependencies}){
-                var exports = {
-                    ${4:func}: ${4:func}
+            function ${2:factoryName}(${3:dependency}) {
+                var service = {
+                    ${4:functionName}: ${4:functionName}
                 };
-                ${5:}
-
-                return exports;
+                return service;
 
                 ////////////////
 
-                function ${4:func}() {
+                function ${4:functionName}() {
+                    ${5}
                 }
             }
+
         })();
 
 - trigger: ngdirective
-  description: "Directive"
+  description: "Creates an Angular directive"
   scope: javascript
   text: |
-        (function () {
+        (function() {
             'use strict';
 
             angular
-                .module('${1:module}')
-                .directive('${2:directive}', ${2:directive});
+                .module('${1:moduleName}')
+                .directive('${2:directiveName}', ${2:directiveName});
 
-            ${2:directive}.$inject = ['${3:dependencies}'];
+            ${2:directiveName}.$inject = ['${3:dependency}'];
 
             /* @ngInject */
-            function ${2: directive}(${3:dependencies}) {
+            function ${2:directiveName}(${3:dependency}) {
                 var directive = {
                     bindToController: true,
-                    controller: ${4:Controller},
+                    controller: ${4:ControllerName},
                     controllerAs: '${5:vm}',
                     link: link,
                     restrict: 'A',
@@ -112,113 +115,118 @@
                 };
                 return directive;
 
-                function link(scope, element, attrs, controller) {
-                    ${7:}
+                function link(scope, element, attrs) {
+                    ${6}
                 }
             }
 
-            ${4:Controller}.$inject = ['${6:dependencies}'];
+            ${4:ControllerName}.$inject = ['${3:dependency}'];
 
             /* @ngInject */
-            function ${4:Controller}(${6:dependencies}) {
+            function ${4:ControllerName}(${3:dependency}) {
+                ${7}
             }
+
         })();
 
 - trigger: ngcontroller
-  description: "Controller"
+  description: "Creates an Angular controller"
   scope: javascript
   text: |
         (function() {
             'use strict';
 
             angular
-                .module('${1:module}')
-                .controller('${2:Controller}', ${2:Controller});
+                .module('${1:moduleName}')
+                .controller('${2:ControllerName}', ${2:ControllerName});
 
-            ${2:Controller}.$inject = ['${3:dependencies}'];
+            ${2:ControllerName}.$inject = ['${3:dependency}'];
 
             /* @ngInject */
-            function ${2:Controller}(${3:dependencies}){
+            function ${2:ControllerName}(${3:dependency}) {
                 var vm = this;
-                vm.${4:property} = '${2:Controller}';
-                ${5:}
+                vm.title = '${2:ControllerName}';
 
                 activate();
 
                 ////////////////
 
                 function activate() {
+                    ${4}
                 }
             }
+
         })();
 
-- trigger: ngwhen
-  description: "ngRoute 'when'"
+- trigger: ngroute
+  description: "Defines an Angular ngRoute 'when' definition"
   scope: javascript
   text: |
         .when('/${1:url}', {
             templateUrl: '${2:template}.html',
-            controller: '${3:Controller}',
+            controller: '${3:ControllerName}',
             controllerAs: '${4:vm}'
-        })${5:}
+        })
 
 - trigger: ngstate
-  description: "UI-Router state"
+  description: "Creates an Angular UI Router state definition"
   scope: javascript
   text: |
         .state('${1:state}', {
-            url: '${2:/url}'
+            url: '/${2:url}',
             templateUrl: '${3:template}.html',
-            controller: '${4:Controller}'
+            controller: '${4:ControllerName}',
             controllerAs: '${5:vm}'
-        })${6:}
+        })
 
 - trigger: ngmodule
-  description: "Module getter"
+  description: "Creates an Angular module getter"
   scope: javascript
   text: |
         angular
-            .module('${1:module}')${2:}
+            .module('${1:moduleName}')
+            ${2}
+            
 - trigger: ngconst
-  description: "Constant"
+  description: "Creates an Angular constant"
   scope: javascript
   text: |
         .constant('${1:name}', ${2:value});
 
 - trigger: ngvalue
-  description: "Value"
+  description: "Creates an Angular value"
   scope: javascript
   text: |
         .value('${1:name}', ${2:value});
 
 - trigger: ngconfig
-  description: "Config phase function"
+  description: "Defines a configuration phase function"
   scope: javascript
   text: |
-        .config(${1:configuration})
-
-        ${1:configuration}.$inject = ['${2:dependencies}'];
+        .config(${1:configName}Config)
+        
+        ${1:configName}Config.$inject = ['${2:dependency}'];
 
         /* @ngInject */
-        function ${1:configuration} (${2:dependencies}) {
-            ${3:}
+        function ${1:configName}Config(${2:dependency}) {
+            ${3}
         }
 
 - trigger: ngrun
-  description: "Run phase function"
+  description: "Defines a run phase function"
   scope: javascript
   text: |
-        .run(${1:runFn})
+        .run(run${1:runName})
 
-        ${1:runFn}.$inject = ['${2:dependencies}'];
+        run${1:runName}.$inject = ['${2:dependency}'];
 
         /* @ngInject */
-        function ${1:runFn} (${2:dependencies}) {
-            ${3:}
+        function run${1:runName}(${2:dependency}) {
+            ${3}
         }
 
 - trigger: ngtranslate
-  description: "$translate service"
+  description: "Creates an Angular $translate service"
   scope: javascript
   text: |
         $translate(['${1:key1}']).then(function(translations){
