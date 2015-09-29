@@ -5,7 +5,7 @@
         <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
         <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
-        <variable name="activateFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="activateFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
@@ -33,12 +33,13 @@
         </context>
     </template>
     <template name="ngdirective"
-              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .directive('$directiveName$', $directiveName$);&#10;&#10;    $directiveName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $directiveName$($dependency$) {&#10;        var directive = {&#10;            bindToController: true,&#10;            controller: $ControllerName$,&#10;            controllerAs: 'vm',&#10;            link: link,&#10;            restrict: 'A',&#10;            scope: {}&#10;        };&#10;        return directive;&#10;&#10;        function link(scope, element, attrs) {&#10;            $linkFunction$&#10;        }&#10;    }&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        $ControllerNameFunction$&#10;    }&#10;&#10;})();&#10;&#10;$END$"
+              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .directive('$directiveName$', $directiveName$);&#10;&#10;    $directiveName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $directiveName$($dependency$) {&#10;        var directive = {&#10;            bindToController: true,&#10;            controller: $ControllerName$,&#10;            controllerAs: '$vm$',&#10;            link: link,&#10;            restrict: 'A',&#10;            scope: {}&#10;        };&#10;        return directive;&#10;&#10;        function link(scope, element, attrs) {&#10;            $linkFunction$&#10;        }&#10;    }&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        $ControllerNameFunction$&#10;    }&#10;&#10;})();&#10;&#10;$END$"
               description="Creates an Angular controller" toReformat="true" toShortenFQNames="true">
         <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
         <variable name="directiveName" expression="" defaultValue="&quot;directiveName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
         <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true"/>
+        <variable name="vm" expression="" defaultValue="&quot;vm&quot;" alwaysStopAt="true"/>
         <variable name="linkFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <variable name="ControllerNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
@@ -74,7 +75,7 @@
         <variable name="factoryName" expression="" defaultValue="&quot;factoryName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
         <variable name="functionName" expression="" defaultValue="&quot;functionName&quot;" alwaysStopAt="true"/>
-        <variable name="functionNameFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="functionNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
@@ -171,7 +172,7 @@
         <variable name="ServiceName" expression="" defaultValue="&quot;ServiceName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
         <variable name="functionName" expression="" defaultValue="&quot;functionName&quot;" alwaysStopAt="true"/>
-        <variable name="functionNameFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="functionNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
@@ -199,11 +200,11 @@
         </context>
     </template>
     <template name="ngconfig"
-              value=".config($config$)&#10;&#10;$config$.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function $config$ ($dependency$) {&#10;    $configFunction$&#10;}$END$"
+              value=".config($configName$Config)&#10;&#10;$configName$Config.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function $configName$Config($dependency$) {&#10;    $configNameFunction$&#10;}$END$"
               description="Defines a configuration phase function" toReformat="false" toShortenFQNames="true">
-        <variable name="config" expression="" defaultValue="&quot;config&quot;" alwaysStopAt="true"/>
+        <variable name="configName" expression="" defaultValue="&quot;configName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
-        <variable name="configFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="configNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
@@ -265,11 +266,11 @@
         </context>
     </template>
     <template name="ngrun"
-              value=".run(run$runName$)&#10;&#10;run$runName$.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function run$runName$ ($dependency$) {&#10;    $runNameFunction$&#10;}$END$"
+              value=".run(run$runName$)&#10;&#10;run$runName$.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function run$runName$($dependency$) {&#10;    $runNameFunction$&#10;}$END$"
               description="Defines a run phase function" toReformat="false" toShortenFQNames="true">
         <variable name="runName" expression="" defaultValue="&quot;Name&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
-        <variable name="runNameFunction" expression="" defaultValue="&quot;code&quot;" alwaysStopAt="true"/>
+        <variable name="runNameFunction" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="HTML_TEXT" value="false"/>
             <option name="HTML" value="false"/>
