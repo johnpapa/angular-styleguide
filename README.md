@@ -2877,7 +2877,11 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
     ```javascript
     // These are full file snippets containing an IIFE
+<<<<<<< HEAD
     ngapp        // creates an Angular module setter
+=======
+    ngapp     // creates an Angular module setter
+>>>>>>> Update README to reflect updates to Style Y250 and Style Y254
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
