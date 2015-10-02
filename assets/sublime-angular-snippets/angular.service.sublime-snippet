@@ -7,7 +7,7 @@
         .module('${1:moduleName}')
         .service('${2:ServiceName}', ${2:ServiceName});
 
-    ${2:ServiceName}.\$inject = ['${3:dependency}'];
+    ${2:ServiceName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
     /* @ngInject */
     function ${2:ServiceName}(${3:dependency}) {

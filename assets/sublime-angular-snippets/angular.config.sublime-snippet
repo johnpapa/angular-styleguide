@@ -2,7 +2,7 @@
     <content><![CDATA[
 .config(${1:configName}Config)
 
-${1:configName}Config.\$inject = ['${2:dependency}'];
+${1:configName}Config.\$inject = [${2/(\$(\w+)|\w+)/'$1'/g}];
 
 /* @ngInject */
 function ${1:configName}Config(${2:dependency}) {

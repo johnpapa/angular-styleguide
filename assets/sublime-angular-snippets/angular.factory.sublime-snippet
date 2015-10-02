@@ -7,7 +7,7 @@
         .module('${1:moduleName}')
         .factory('${2:factoryName}', ${2:factoryName});
 
-    ${2:factoryName}.\$inject = ['${3:dependency}'];
+    ${2:factoryName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
     /* @ngInject */
     function ${2:factoryName}(${3:dependency}) {
