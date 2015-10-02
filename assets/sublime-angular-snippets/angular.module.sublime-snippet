@@ -2,7 +2,7 @@
     <content><![CDATA[
     angular
         .module('${1:moduleName}')
-        ${2}
+        ${0}
 ]]></content>
     <tabTrigger>ngmodule</tabTrigger>
     <scope>text.plain, source.js</scope>
