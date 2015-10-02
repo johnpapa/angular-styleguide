@@ -7,7 +7,7 @@
         .module('${1:moduleName}')
         .directive('${2:directiveName}', ${2:directiveName});
 
-    ${2:directiveName}.\$inject = ['${3:dependency}'];
+    ${2:directiveName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
     /* @ngInject */
     function ${2:directiveName}(${3:dependency}) {
@@ -26,7 +26,7 @@
         }
     }
 
-    ${4:ControllerName}.\$inject = ['${3:dependency}'];
+    ${4:ControllerName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
     /* @ngInject */
     function ${4:ControllerName}(${3:dependency}) {

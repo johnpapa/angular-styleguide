@@ -2,7 +2,7 @@
     <content><![CDATA[
 .run(run${1:runName})
 
-run${1:runName}.\$inject = ['${2:dependency}'];
+run${1:runName}.\$inject = [${2/(\$(\w+)|\w+)/'$1'/g}];
 
 /* @ngInject */
 function run${1:runName}(${2:dependency}) {
