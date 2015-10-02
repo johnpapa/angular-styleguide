@@ -2877,6 +2877,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
     ```javascript
 <<<<<<< HEAD
+<<<<<<< HEAD
     // These are full file snippets containing an IIFE
 <<<<<<< HEAD
     ngapp        // creates an Angular module setter
@@ -2885,12 +2886,22 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 >>>>>>> Update README to reflect updates to Style Y250 and Style Y254
 =======
 >>>>>>> Fix merge conflict
+=======
+    // These are full file snippets containing an IIFE
+    ngapp        // creates an Angular module setter
+>>>>>>> Update README to include changes made to Style Y250 and Y255
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
+    ngservice    // creates an Angular service    
+    
+    // These are partial snippets intended to be chained
+    ngconfig     // defines a configuration phase function
+    ngmodule     // creates an Angular module getter
+    ngroute      // defines an Angular ngRoute 'when' definition
+    ngrun        // defines a run phase function    
+    ngstate      // creates an Angular UI Router state definition
     ```
 
 ### Visual Studio
@@ -2940,7 +2951,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngstate      // creates an Angular UI Router state definition
     ```
     
-  *Individual live templates are also available for download within the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
+  *Individual live templates can be downloaded from the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
 
 ### Atom
 ###### [Style [Y253](#style-y253)]
