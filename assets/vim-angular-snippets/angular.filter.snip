@@ -1,19 +1,22 @@
 snippet ngfilter
 options head
-  (function() {
-      'use strict';
-  
-      angular
-          .module('${1:module}')
-          .filter('${2:filter}', $2);
-  
-      function $2() {
-          return $2Filter;
-  
-          ////////////////
-          function $2Filter(${3:params}) {
-              return $3;
-          };
-      }
-  
-  })();
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}')
+        .filter('${2:filterName}', ${2:filterName});
+
+    function ${2:filterName}() {
+        return ${2:filterName}Filter;
+
+        ////////////////
+
+        function ${2:filterName}Filter(${3:parameters}) {
+            return ${3:parameters};
+        }
+    }
+
+})();
+
+${0}

@@ -1,0 +1,13 @@
+snippet ngapp
+options head
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}', [
+            '${2:dependency}'${3:,}
+        ]);
+
+})();
+
+${0}

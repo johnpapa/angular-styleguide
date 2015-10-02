@@ -1,19 +1,25 @@
 snippet ngservice
 options head
-  (function() {
-      'use strict';
-  
-      angular
-          .module('${1:module}')
-          .service('${2:Service}', $2);
-  
-      /* @ngInject */
-      function $2(${3:dependencies}) {
-          this.${4:func} = $4;
-  
-          ////////////////
-  
-          function $4() {
-          }
-      }
-  })();
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}')
+        .service('${2:ServiceName}', ${2:ServiceName});
+
+    ${2:ServiceName}.\$inject = ['${3:#:dependency}'];
+
+    /* @ngInject */
+    function ${2:ServiceName}(${3:#:dependency}) {
+        this.${4:functionName} = ${4:functionName};
+
+        ////////////////
+
+        function ${4:functionName}() {
+            ${5}
+        }
+    }
+
+})();
+
+${0}

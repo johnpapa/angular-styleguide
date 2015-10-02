@@ -1,22 +1,28 @@
 snippet ngfactory
 options head
-  (function() {
-      'use strict';
-  
-      angular
-          .module('${1:module}')
-          .factory('${2:factory}', $2);
-  
-      /* @ngInject */
-      function $2(${3:dependencies}) {
-          var service = {
-              ${4:func}: $4
-          };
-          return service;
-  
-          ////////////////
-  
-          function $4() {
-          }
-      }
-  })();
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}')
+        .factory('${2:factoryName}', ${2:factoryName});
+
+    ${2:factoryName}.\$inject = ['${3:#:dependency}'];
+
+    /* @ngInject */
+    function ${2:factoryName}(${3:#:dependency}) {
+        var service = {
+            ${4:functionName}: ${4:functionName}
+        };
+        return service;
+
+        ////////////////
+
+        function ${4:functionName}() {
+            ${5}
+        }
+    }
+
+})();
+
+${0}
