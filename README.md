@@ -2876,12 +2876,20 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
+    // These are full file snippets containing an IIFE
+    ngapp        // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
+    ngservice    // creates an Angular service    
+    
+    // These are partial snippets intended to be chained
+    ngconfig     // defines a configuration phase function
+    ngmodule     // creates an Angular module getter
+    ngroute      // defines an Angular ngRoute 'when' definition
+    ngrun        // defines a run phase function    
+    ngstate      // creates an Angular UI Router state definition
     ```
 
 ### Visual Studio
@@ -2912,7 +2920,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
     ```javascript
     // These are full file snippets containing an IIFE
-    ngapp     // creates an Angular module setter
+    ngapp        // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
@@ -3000,12 +3008,20 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - copy snippets to UltiSnips directory
 
     ```javascript
+    // These are full file snippets containing an IIFE
+    ngapp     // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
+    ngservice    // creates an Angular service    
+    
+    // These are partial snippets intended to be chained
+    ngconfig     // defines a configuration phase function
+    ngmodule     // creates an Angular module getter
+    ngroute      // defines an Angular ngRoute 'when' definition
+    ngrun        // defines a run phase function    
+    ngstate      // creates an Angular UI Router state definition
     ```
 
 ### Visual Studio Code
