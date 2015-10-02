@@ -5,7 +5,7 @@
 
     angular
         .module('${1:moduleName}', [
-            '${2:dependency}'${3}
+            '${2:dependency}'${3:,}
         ]);
 
 })();
