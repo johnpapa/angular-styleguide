@@ -1,0 +1,9 @@
+snippet ngconfig
+.config(${1:configName}Config)
+
+${1:configName}Config.\$inject = ['${2:#:dependency}'];
+
+/* @ngInject */
+function ${1:configName}Config(${2:#:dependency}) {
+    ${3}
+}${0}

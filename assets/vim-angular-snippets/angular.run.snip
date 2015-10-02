@@ -1,0 +1,9 @@
+snippet ngrun
+.run(run${1:runName})
+
+run${1:runName}.\$inject = ['${2:#:dependency}'];
+
+/* @ngInject */
+function run${1:runName}(${2:#:dependency}) {
+    ${3}
+}${0}

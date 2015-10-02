@@ -1,22 +1,28 @@
 snippet ngcontroller
 options head
-  (function() {
-      'use strict';
-  
-      angular
-          .module('${1:module}')
-          .controller('${2:Controller}Controller', $2Controller);
-  
-      /* @ngInject */
-      function $2Controller(${3:dependencies}) {
-          var vm = this;
-          vm.title = '$2Controller';
-  
-          activate();
-  
-          ////////////////
-  
-          function activate() {
-          }
-      }
-  })();
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}')
+        .controller('${2:ControllerName}', ${2:ControllerName});
+
+    ${2:ControllerName}.\$inject = ['${3:#:dependency}'];
+
+    /* @ngInject */
+    function ${2:ControllerName}(${3:#:dependency}) {
+        var vm = this;
+        vm.title = '${2:ControllerName}';
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+            ${4}
+        }
+    }
+
+})();
+
+${0}
