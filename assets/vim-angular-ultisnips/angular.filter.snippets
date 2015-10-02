@@ -1,0 +1,22 @@
+snippet ngfilter "Creates an Angular filter" b
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}')
+        .filter('${2:filterName}', ${2:filterName});
+
+    function ${2:filterName}() {
+        return ${2:filterName}Filter;
+
+        ////////////////
+
+        function ${2:filterName}Filter(${3:parameters}) {
+            return ${3:parameters};
+        }
+    }
+
+})();
+
+${0}
+endsnippet

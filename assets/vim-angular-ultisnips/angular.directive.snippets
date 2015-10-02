@@ -1,0 +1,38 @@
+snippet ngdirective "Creates an Angular directive" b
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}')
+        .directive('${2:directiveName}', ${2:directiveName});
+
+    ${2:directiveName}.\$inject = ['${3:dependency}'];
+
+    /* @ngInject */
+    function ${2:directiveName}(${3:dependency}) {
+        var directive = {
+            bindToController: true,
+            controller: ${4:ControllerName},
+            controllerAs: '${5:vm}',
+            link: link,
+            restrict: 'A',
+            scope: {}
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+            ${6}
+        }
+    }
+
+    ${4:ControllerName}.\$inject = ['${3:dependency}'];
+
+    /* @ngInject */
+    function ${4:ControllerName}(${3:dependency}) {
+        ${7}
+    }
+
+})();
+
+${0}
+endsnippet

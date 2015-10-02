@@ -1,0 +1,13 @@
+snippet ngapp "Creates an Angular module setter" b
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:moduleName}', [
+            '${2:dependency}'${3:,}
+        ]);
+
+})();
+
+${0}
+endsnippet
