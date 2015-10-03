@@ -2913,7 +2913,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - Angular live templates that follow these styles and guidelines.
 
-    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
+    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/angular.templates.xml?raw=true)
     - Place it in your [templates](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html) folder
     - Restart WebStorm
     - In a JavaScript file type these commands followed by a `TAB`:
