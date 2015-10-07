@@ -329,7 +329,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller.
+  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
 
   ```javascript
   /* avoid */
@@ -2910,16 +2910,16 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
     ngfilter     // creates an Angular filter
-    ngservice    // creates an Angular service    
-    
+    ngservice    // creates an Angular service
+
     // These are partial snippets intended to be chained
     ngconfig     // defines a configuration phase function
     ngmodule     // creates an Angular module getter
     ngroute      // defines an Angular ngRoute 'when' definition
-    ngrun        // defines a run phase function    
+    ngrun        // defines a run phase function
     ngstate      // creates an Angular UI Router state definition
     ```
-    
+
   *Individual templates are also available for download within the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
 
 ### Atom
