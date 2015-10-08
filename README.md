@@ -2876,20 +2876,8 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // These are full file snippets containing an IIFE
-<<<<<<< HEAD
-    ngapp        // creates an Angular module setter
-=======
-    ngapp     // creates an Angular module setter
->>>>>>> Update README to reflect updates to Style Y250 and Style Y254
-=======
->>>>>>> Fix merge conflict
-=======
     // These are full file snippets containing an IIFE
     ngapp        // creates an Angular module setter
->>>>>>> Update README to include changes made to Style Y250 and Y255
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
@@ -2925,15 +2913,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
   - Angular live templates that follow these styles and guidelines.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/angular.templates.xml?raw=true)
-=======
-    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
->>>>>>> Add file templates to WebStorm
-=======
-    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/angular.templates.xml?raw=true)
->>>>>>> Shorten file naming convention. Update README link.
     - Place it in your [templates](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html) folder
     - Restart WebStorm
     - In a JavaScript file type these commands followed by a `TAB`:
