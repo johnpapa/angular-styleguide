@@ -90,7 +90,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```javascript
   /* recommended */
 
-  // someController.js
+  // some.controller.js
   angular
       .module('app')
       .controller('SomeController', SomeController);
