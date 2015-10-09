@@ -396,6 +396,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
+  Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability. Avoid overly verbose names that are cumbersome to type.
+
+  ```html
+  <!-- avoid -->
+  <input ng-model="customerProductItemVm.text">
+  ```
+
+  ```html
+  <!-- recommended -->
+  <input ng-model="productVm.id">
+  ```
+
 ### Bindable Members Up Top
 ###### [Style [Y033](#style-y033)]
 
