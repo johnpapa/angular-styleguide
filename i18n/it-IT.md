@@ -2140,7 +2140,7 @@ Invece usa la più semplice sintassi setter.
 ### Linee guida generali
 ###### [Stile [Y150](#stile-y150)]
 
-  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutto il contenuto rispetta 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze party sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
+  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutto il contenuto rispetta 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze parti sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
 
     Nota: Trovi più dettagli e le motivazioni di questa struttura nel [post originale sulla struttura delle applicazioni](http://www.johnpapa.net/angular-app-structuring-guidelines/) (in inglese).
 
@@ -2302,7 +2302,7 @@ Invece usa la più semplice sintassi setter.
 
     *Perché?*: Ogni area di funzionalità contiene un manifesto di ciò da cui dipende, in modo tale da poter essere usato come dipendenza in altre applicazioni e continuare a funzionare.
 
-    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (scegli il nome che più di piaccia per questo modulo).
+    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (scegli il nome che più ti piace per questo modulo).
 
     Nota: Questa è una strategia per la consistenza. Ci sono diverse buone opzioni in questo caso. Scegline una che sia consistente, segua le regole delle dipendenze di Angular e sia facile da manutenere e scalare.
 
