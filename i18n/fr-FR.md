@@ -329,7 +329,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   *Pourquoi ?* : `controllerAs` est une simplification (sucre) syntaxique de `$scope`. Vous pouvez toujours vous *binder* dans la vue et accéder aux méthodes de `$scope`.
 
-  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes de `$scope` à l'intérieur d'un contrôleur. Il est par ailleurs, meilleure pratique de les éviter dans les contrôleurs mais plutôt de les déplacer dans une factory. Considérez utiliser `$scope` dans un contrôleur seulement si nécessaire. Par exemple lorsqu'il faut publier ou souscrire à des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le contrôleur.
+  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes de `$scope` à l'intérieur d'un contrôleur. Il est par ailleurs, meilleure pratique de les éviter dans les contrôleurs mais plutôt de les déplacer dans une factory. Considérez l'utilisation de `$scope` dans un contrôleur seulement si nécessaire. Par exemple lorsqu'il faut publier ou souscrire à des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le contrôleur.
 
   ```javascript
   /* à éviter */
@@ -451,7 +451,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     ![Contrôleur utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
-  Note : Si la fonction est un *oneliner* vous pouvez la garder en haut du contrôleur, tant que la lisibilité n'est pas affectée.
+  Note : Si la fonction est un *oneliner*, vous pouvez la garder en haut du contrôleur, tant que la lisibilité n'est pas affectée.
 
   ```javascript
   /* à éviter */
@@ -565,7 +565,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Déplacer la logique d'un contrôleur en la déléguant à des services ou *factories*.
 
-    *Pourquoi ?* : La logique peut être ré-utilisée par plusieurs contrôleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
+    *Pourquoi ?* : La logique peut être réutilisée par plusieurs contrôleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
 
     *Pourquoi ?* : La logique dans un service peut être facilement isolée pour les tests unitaires, tandis que la logique d'appel dans un contrôleur peut facilement être *mockée*.
 
@@ -623,14 +623,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Gardez les contrôleurs focalisés
 ###### [Style [Y037](#style-y037)]
 
-  - Définissez un contrôleur pour une vue, et n'essayez pas de ré-utiliser le contrôleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers les *factories* et gardez le contrôleur simple et focalisé sur sa vue.
+  - Définissez un contrôleur pour une vue, et n'essayez pas de réutiliser le contrôleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers les *factories* et gardez le contrôleur simple et focalisé sur sa vue.
 
     *Pourquoi ?*: La réutilisation des contrôleurs sur plusieurs vues est fragilisante pour l'application et une bonne couverture de tests *end-to-end* (*e2e*) est requise afin d'assurer la stabilité sur l'ensemble d'une grosse application.
 
 ### Assignation des contrôleurs
 ###### [Style [Y038](#style-y038)]
 
-  - Lorsqu'un contrôleur doit être associé à une vue et qu'un composant pourraient être ré-utilisés par d'autres contrôleurs ou vues, définissez les contrôleurs avec leurs routes.
+  - Lorsqu'un contrôleur doit être associé à une vue et qu'un composant pourraient être réutilisés par d'autres contrôleurs ou vues, définissez les contrôleurs avec leurs routes.
 
     Note : Si une vue est chargée via d'autres moyens qu'une route, alors utilisez la syntaxe avec `ng-controller="Avengers as vm"`.
 
@@ -1327,7 +1327,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Placer la logique d'initialisation toujours au même endroit permet de la rendre plus facile à localiser, plus cohérente à tester, et permet d'éviter sa dispersion à travers le contrôleur.
 
-    *Pourquoi ?* : La fonction `activate` du contrôleur rend pratique la ré-utilisation de la logique pour un rafraîchissement du contrôleur ou de la vue, garde cette logique en un seul endroit, envoie la vue à l'utilisateur plus rapidement, rend les animations faciles sur `ng-view` ou `ui-view` et rend l'interface plus réactive pour l'utilisateur.
+    *Pourquoi ?* : La fonction `activate` du contrôleur rend pratique la réutilisation de la logique pour un rafraîchissement du contrôleur ou de la vue, garde cette logique en un seul endroit, envoie la vue à l'utilisateur plus rapidement, rend les animations faciles sur `ng-view` ou `ui-view` et rend l'interface plus réactive pour l'utilisateur.
 
     Note : Si vous avez besoin d'annuler de façon conditionnelle la route avant d'utiliser le contrôleur, utilisez la [résolution de route](#style-y081) à la place.
 
@@ -2277,7 +2277,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Les macro-fonctionnalités sont des modules
 ###### [Style [Y163](#style-y163)]
 
-  - Créez des modules qui représentent des macro-fonctionnalités, comme l'agencement graphique (*layout*), les services ré-utilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
+  - Créez des modules qui représentent des macro-fonctionnalités, comme l'agencement graphique (*layout*), les services réutilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
 
     *Pourquoi ?* : Les modules auto-suffisants peuvent être ajoutés à l'application avec peu ou pas de friction.
 
@@ -2285,17 +2285,17 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Séparer les macros-fonctionnalités en modules les rend plus facile à tester de façon isolée et à la réutilisation.
 
-### Les Blocks Ré-Utilisables en tant que Modules
+### Les Blocks Réutilisables en tant que Modules
 ###### [Style [Y164](#style-y164)]
 
-  - Créez des modules qui représentent des blocs ré-utilisables dans l'application pour les services en commun tels que la gestion des exceptions, les logs, les diagnostics, la sécurité et la gestion des données locale.
+  - Créez des modules qui représentent des blocs réutilisables dans l'application pour les services en commun tels que la gestion des exceptions, les logs, les diagnostics, la sécurité et la gestion des données locale.
 
-    *Pourquoi ?* : Ces types de fonctionnalités sont requises dans de nombreuses application, donc en les gardant séparées dans leur propres modules elles peuvent être génériques et peuvent être ré-utilisées pour d'autres applications.
+    *Pourquoi ?* : Ces types de fonctionnalités sont requises dans de nombreuses application. Donc en les gardant séparées dans leur propres modules, elles peuvent être génériques et peuvent être réutilisées pour d'autres applications.
 
 ### Dépendances entre modules
 ###### [Style [Y165](#style-y165)]
 
-  - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et ré-utilisables.
+  - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et réutilisables.
 
     ![Modularité et Dépendences](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
@@ -2309,7 +2309,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais pensez votre structure en termes de cohérence, maintenabilité, et efficacité.
 
-    > Dans de petites applications, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de petites applications plus facile, mais rend difficile la ré-utilisation de ces modules en dehors de celle-ci.
+    > Dans de petites applications, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de petites applications plus facile, mais rend difficile la réutilisation de ces modules en dehors de celle-ci.
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -2600,7 +2600,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclus
 
   - Si vous prévoyez de documenter votre code source, utilisez la syntaxe [`jsDoc`](http://usejsdoc.org/) pour documenter les noms des fonctions, leur descriptions, paramètres et valeurs de retour. Utilisez `@namespace` et `memberOf` pour s'adapter à l'architecture de votre application.
 
-    *Pourquoi ?* : Vous pouvez générer (et re-générer) la documentation à partir de votre code, au lieu de l'écrire intégralement.
+    *Pourquoi ?* : Vous pouvez générer (et regénérer) la documentation à partir de votre code, au lieu de l'écrire intégralement.
 
     *Pourquoi ?* : Cela permet d'avoir de la cohérence grâce un outil industriel standard.
 
@@ -2837,13 +2837,13 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclus
 
 ###### [Style [Y241](#style-y241)]
 
-  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des constantes ne sont utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
+  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des constantes ne sont utilisées que par un module qui peut être réutilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
 
     *Pourquoi ?* : Une valeur qui peut changer, même rarement, devrait être récupérée d'un service afin de ne pas avoir à changer le code source. Par exemple, une URL pour un service de données pourrait être définie comme constante mais il serait mieux de lire cette valeur par appel à un web service.
 
     *Pourquoi ?* : Les constantes peuvent être injectées dans un composant Angular, y compris les *providers*.
 
-    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être ré-utilisés dans d'autres applications, chacun de ces modules individuels devrait pouvoir fonctionner tout seul, y compris avec les constantes dépendantes.
+    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être réutilisés dans d'autres applications, chacun de ces modules individuels devrait pouvoir fonctionner tout seul, y compris avec les constantes dépendantes.
 
     ```javascript
     // Constantes utilisées par toute l'appli
@@ -2891,7 +2891,7 @@ Utilisez des *templates* de fichiers ou des *snippets* pour vous aider à suivre
 
     - Téléchargez l'extension [SideWaffle](http://www.sidewaffle.com) pour Visual Studio (fichier vsix)
     - Exécutez le fichier vsix
-    - Re-démarrez Visual Studio
+    - Redémarrez Visual Studio
 
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
