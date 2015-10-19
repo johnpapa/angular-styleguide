@@ -1237,7 +1237,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
               max: '='
           },
           link: linkFunc,
-          controller: ExampleController,
+          controller: ExampleController, 
+          // note: This would be 'ExampleController' (the exported controller name, as string)
+          // if referring to a defined controller in its separate file.
           controllerAs: 'vm',
           bindToController: true // because the scope is isolated
       };
