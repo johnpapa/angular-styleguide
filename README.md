@@ -433,6 +433,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       };
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
@@ -459,6 +460,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       function search() {
         /* */
       }
+  }
   ```
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
@@ -483,6 +485,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
@@ -495,6 +498,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
 ### Function Declarations to Hide Implementation Details
