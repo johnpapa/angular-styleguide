@@ -2594,7 +2594,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   - Use short durations for animations. I generally start with 300ms and adjust until appropriate.
 
-    *Why?*: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
+    *Why?*: Long animations can have the reverse effect on User Experience and perceived performance by giving the appearance of a slow application.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]
