@@ -218,7 +218,7 @@ ou *Evitando Colisão de Nomes*
 
 ### *Getters*
 
-  - Quando usando um módulo, evite usar uma variável. Em vez disso, use encadeamento com a sintaxe *getter*.
+  - Ao usar um módulo, evite usar uma variável. Em vez disso, use encadeamento com a sintaxe *getter*.
 
   **Por que?** Isso produz um código mais legível e evita colisão de variáveis ou vazamentos.
 
@@ -1223,7 +1223,7 @@ ou *Ativação de promessas no controlador*
 
     **Por que?**: Colocando a lógica de inicialização em um lugar consistente no controlador (controller), torna mais fácil de localizar, mais consistente para testar e ajuda a evitar o espalhamento da lógica de inicialização pelo controlador (controller).
 
-    Nota: Se vocẽ precisa cancelar a rota condicionalmente antes de utilizar o controlador (controller), utilize uma resolução de rota (route resolve).
+    Nota: Se você precisa cancelar a rota condicionalmente antes de utilizar o controlador (controller), utilize uma resolução de rota (route resolve).
 
   ```javascript
   /* evite */
@@ -1262,7 +1262,7 @@ ou *Ativação de promessas no controlador*
 ### Route Resolve Promises
 ou *Resolução de promessas na rota*
 
-  - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se vocẽ precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
+  - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se você precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
 
     **Por que?**: Um controlador (controller) pode precisar de dados antes de ser carregado. Esses dados podem vir de uma promessa (promise) através de uma factory personalizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Utilizar [resolução de rota (route resolve)](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite as promessas (promises) serem resolvidas antes da lógica do controlador (controller) ser executada, então ele pode executar ações através dos dados dessa promessa (promise).
 
@@ -1611,7 +1611,7 @@ ou *decoradores*
 ### Exception Catchers
 ou *Coletores de exceção*
 
-  - Criar um factory que expôe uma interface para capturar e tratar adequadamente as exceções.
+  - Criar um factory que expõe uma interface para capturar e tratar adequadamente as exceções.
 
     **Por que?**: Fornece uma forma consistente de coletar exceções que podem ser lançadas no seu código (ex. durante uma chamada XHR ou uma promessa (promise) que falhou).
 
