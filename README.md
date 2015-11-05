@@ -1,5 +1,9 @@
 # Angular Style Guide
 
+## Angular Team Endorsed
+Special thanks to Igor Minar, lead on the Angular team, for reviewing and contributing feedback for this guide, and entrusting me to shepherd this guide.
+
+## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
 If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
@@ -1237,7 +1241,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
               max: '='
           },
           link: linkFunc,
-          controller: ExampleController, 
+          controller: ExampleController,
           // note: This would be 'ExampleController' (the exported controller name, as string)
           // if referring to a defined controller in its separate file.
           controllerAs: 'vm',
