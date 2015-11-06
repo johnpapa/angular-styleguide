@@ -1,7 +1,7 @@
 # Angular Style Guide
 
 ## Angular Team Endorsed
-Special thanks to Igor Minar, lead on the Angular team, for reviewing and contributing feedback for this guide, and entrusting me to shepherd this guide.
+Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
 
 ## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
