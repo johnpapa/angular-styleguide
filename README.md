@@ -935,9 +935,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app.core')
       .factory('dataservice', dataservice);
 
-  dataservice.$inject = ['$http', 'logger'];
-
-  function dataservice($http, logger) {
+  dataservice.$inject = ['$http','logger'];
+  function dataservice  ( $http , logger ) {
       return {
           getAvengers: getAvengers
       };
@@ -968,9 +967,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app.avengers')
       .controller('AvengersController', AvengersController);
 
-  AvengersController.$inject = ['dataservice', 'logger'];
-
-  function AvengersController(dataservice, logger) {
+  AvengersController.$inject = ['dataservice','logger'];
+  function AvengersController  ( dataservice , logger ) {
       var vm = this;
       vm.avengers = [];
 
@@ -1259,8 +1257,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
 
   ExampleController.$inject = ['$scope'];
-
-  function ExampleController($scope) {
+  function ExampleController  ( $scope ) {
       // Injecting $scope just for comparison
       var vm = this;
 
@@ -1445,7 +1442,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .controller('AvengersController', AvengersController);
 
   AvengersController.$inject = ['moviesPrepService'];
-  function AvengersController(moviesPrepService) {
+  function AvengersController  ( moviesPrepService ) {
       var vm = this;
       vm.movies = moviesPrepService.movies;
   }
@@ -1483,7 +1480,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .controller('AvengersController', AvengersController);
 
   AvengersController.$inject = ['moviesPrepService'];
-  function AvengersController(moviesPrepService) {
+  function AvengersController  ( moviesPrepService ) {
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
@@ -1556,9 +1553,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
-
-    function DashboardController($location, $routeParams, common, dataservice) {
+    DashboardController.$inject = ['$location','$routeParams','common','dataservice'];
+    function DashboardController  ( $location , $routeParams , common , dataservice ) {
     }
     ```
 
@@ -1575,7 +1571,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         return ddo;
 
         DashboardPanelController.$inject = ['logger']; // Unreachable
-        function DashboardPanelController(logger) {
+        function DashboardPanelController  ( logger ) {
         }
     }
     ```
@@ -1592,7 +1588,25 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
 
     DashboardPanelController.$inject = ['logger'];
-    function DashboardPanelController(logger) {
+    function DashboardPanelController  ( logger ) {
+    }
+    ```
+
+    Note: Align vertically $inject elements and arguments to visualize in a glance that both lists matches.
+
+    ```javascript
+    /* avoid */
+    
+    DashboardController.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
+    function DashboardController($location, $routeParams, common, dataservice) {
+    }
+    ```
+
+    ```javascript
+    /* recommended */
+    
+    DashboardController.$inject = ['$location','$routeParams','common','dataservice'];
+    function DashboardController  ( $location , $routeParams , common , dataservice ) {
     }
     ```
 
@@ -1620,7 +1634,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     }
 
     moviesPrepService.$inject = ['movieService'];
-    function moviesPrepService(movieService) {
+    function moviesPrepService  ( movieService ) {
         return movieService.getMovies();
     }
     ```
@@ -1757,14 +1771,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .config(exceptionConfig);
 
     exceptionConfig.$inject = ['$provide'];
-
-    function exceptionConfig($provide) {
+    function exceptionConfig  ( $provide ) {
         $provide.decorator('$exceptionHandler', extendExceptionHandler);
     }
 
-    extendExceptionHandler.$inject = ['$delegate', 'toastr'];
-
-    function extendExceptionHandler($delegate, toastr) {
+    extendExceptionHandler.$inject = ['$delegate','toastr'];
+    function extendExceptionHandler  ( $delegate , toastr ) {
         return function(exception, cause) {
             $delegate(exception, cause);
             var errorData = {
@@ -1798,8 +1810,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         .factory('exception', exception);
 
     exception.$inject = ['logger'];
-
-    function exception(logger) {
+    function exception  ( logger ) {
         var service = {
             catcher: catcher
         };
@@ -2349,10 +2360,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .config(configure);
 
-  configure.$inject =
-      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
-
-  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
+  configure.$inject = ['routerHelperProvider','exceptionHandlerProvider','toastr'];
+  function configure  ( routerHelperProvider , exceptionHandlerProvider , toastr ) {
       exceptionHandlerProvider.configure(config.appErrorPrefix);
       configureStateHelper();
 
@@ -2381,9 +2390,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       .module('app')
       .run(runBlock);
 
-  runBlock.$inject = ['authenticator', 'translator'];
-
-  function runBlock(authenticator, translator) {
+  runBlock.$inject = ['authenticator','translator'];
+  function runBlock  ( authenticator , translator ) {
       authenticator.initialize();
       translator.initialize();
   }
@@ -3112,7 +3120,6 @@ Client-side routing is important for creating a navigation flow between views an
         .module('blocks.router')
         .provider('routerHelper', routerHelperProvider);
 
-    routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
     /* @ngInject */
     function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
         /* jshint validthis:true */
@@ -3120,7 +3127,6 @@ Client-side routing is important for creating a navigation flow between views an
 
         $locationProvider.html5Mode(true);
 
-        RouterHelper.$inject = ['$state'];
         /* @ngInject */
         function RouterHelper($state) {
             var hasOtherwise = false;
