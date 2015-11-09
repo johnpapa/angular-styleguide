@@ -26,33 +26,33 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
   1. [Responsabilité Unique](#responsabilité-unique)
   1. [IIFE](#iife)
   1. [Modules](#modules)
-  1. [Contrôleurs](#controleurs)
+  1. [Contrôleurs](#contrôleurs)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Services de données](#services-de-données)
   1. [Directives](#directives)
-  1. [Résolution de promesses pour un contrôleur](#résolution-de-promesses-pour-un-contrôleur)
-  1. [Annoter manuellement les dépendances à injecter](#annoter-manuellement-les-dépendances-à-injecter)
+  1. [Résolution de promesses pour un contrôleur](#résolution-des-promises-pour-un-contrôleur)
+  1. [Annoter manuellement les dépendances à injecter](#annotation-manuelle-pour-linjection-de-dépendances)
   1. [Minification et annotation](#minification-et-annotation)
   1. [Gestion des exceptions](#gestion-des-exceptions)
   1. [Nommage](#nommage)
   1. [Architecture L.I.F.T.](#architecture-lift)
   1. [Architecture de l'application](#architecture-de-lapplication)
   1. [Modularité](#modularité)
-  1. [Logique d'initialisation](#logique-d-initialisation)
-  1. [Services $ d'Angular](#services-dollar-d-angular)
+  1. [Logique d'initialisation](#logique-dinitialisation)
+  1. [Services $ d'Angular](#les-services--dangular)
   1. [Tests](#tests)
   1. [Animations](#animations)
   1. [Commentaires](#commentaires)
-  1. [JSHint](#js-hint)
+  1. [JSHint](#jshint)
   1. [JSCS](#jscs)
   1. [Constantes](#constantes)
-  1. [Templates et snippets](#templates-et-snippets)
+  1. [Templates et snippets](#modèles-de-fichiers-et-snippets)
   1. [Générateur Yeoman](#générateur-yeoman)
   1. [Routage](#routage)
-  1. [Automatisation des tâches](#automatisation-des-taches)
+  1. [Automatisation des tâches](#automatisation-des-tâches)
   1. [Filtres](#filtres)
-  1. [Documentation Angular](#documentation-angular)
+  1. [Documentation Angular](#documentation)
   1. [Contribuer](#contribuer)
   1. [Licence](#license)
 
@@ -2810,7 +2810,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclus
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Constantes
 
@@ -3138,7 +3138,7 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
 
     *Pourquoi ?*: les filtres peuvent être sur-utilisés et peuvent avoir des effets négatifs sur les performances s'ils ne sont pas utilisés de façon appropriée. Par exemple, quand un filtre touche un gros objet dont l'arborescence est profonde.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Documentation
 Pour tout le reste, allez voir la [documentation de l'API d'Angular](//docs.angularjs.org/api).
