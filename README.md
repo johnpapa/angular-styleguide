@@ -791,12 +791,11 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   /* recommended */
   function dataService() {
       var someValue = '';
-      var service = {
+      return {
           save: save,
           someValue: someValue,
           validate: validate
       };
-      return service;
 
       ////////////
 
