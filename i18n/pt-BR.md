@@ -1965,15 +1965,15 @@ ou *Estrutura da aplicação*
 ### Overall Guidelines
 ou *Orientações gerais*
 
-  - Tenha uma visão de curto prazo da implementação e uma visão de longo prazo. Em outras palavras, comece pequeno, mas tenha em mente o caminho que o aplicativo pode tomar. Todos do código do aplicativo vão em uma pasta raiz chamada `app`. Todo o conteúdo é feito com um recurso por arquivo. Cada controlador (controller), serviço (service), módulo (module), visão (view) está em seu próprio arquivo. Todos os scripts de terceiros são armazenados em uma outra pasta raiz e não na pasta `app`. Não foi eu que escrevi esses scripts, então eu não quero que eles baguncem meu aplicativo (`bower_components`,` scripts`, `lib`).
+  - Tenha uma visão de curto prazo da implementação e uma visão de longo prazo. Em outras palavras, comece pequeno, mas tenha em mente o caminho que o aplicativo pode tomar. Todo o código do aplicativo vai em uma pasta raiz chamada `app`. Todo o conteúdo é feito com um recurso por arquivo. Cada controlador (controller), serviço (service), módulo (module), visão (view) está em seu próprio arquivo. Todos os scripts de terceiros são armazenados em uma outra pasta raiz e não na pasta `app`. Não fui eu quem escreveu esses scripts, então eu não quero que eles baguncem meu aplicativo (`bower_components`,` scripts`, `lib`).
 
     Nota: Encontre mais detalhes sobre essa estrutura em [esse post original sobre a estrutura da aplicação](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 
-  - Coloque os componentes que definem o layout geral do aplicativo em uma pasta chamada `layout`. Eles podem incluir uma view e uma controller que agem como recipiente para o app, navegação, menus, áreas de conteúdo, e outras regiões.
+  - Coloque os componentes que definem o layout geral do aplicativo em uma pasta chamada `layout`. Eles podem incluir uma view e um controller que agem como recipiente para o app, navegação, menus, áreas de conteúdo, e outras regiões.
 
-    **Por que?**: Organize todos os layouts em um único lugar reutilizado em toda a aplicação.
+    **Por que?**: Organiza todos os layouts em um único lugar reutilizado em toda a aplicação.
 
 ### Folders-by-Feature Structure
 ou *Estrutura de Pastas-por-Recurso*
