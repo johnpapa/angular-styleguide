@@ -2688,7 +2688,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "forin": true,
         "freeze": true,
         "latedef": "nofunc",
-        "newcap": true,
         "noarg": true,
         "nonbsp": true,
         "nonew": true,
@@ -2823,7 +2822,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
         "requireMultipleVarDecl": null,
-        "requireParenthesesAroundIIFE": true
+        "requireParenthesesAroundIIFE": true,
+        "requireCapitalizedConstructors": true
     }
     ```
 
