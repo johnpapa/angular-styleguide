@@ -2716,7 +2716,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "loopfunc": true,
         "maxerr": false,
         "moz": false,
-        "multistr": false,
         "notypeof": false,
         "proto": false,
         "scripturl": false,
