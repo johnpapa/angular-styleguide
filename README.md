@@ -2690,7 +2690,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "latedef": "nofunc",
         "newcap": true,
         "noarg": true,
-        "noempty": true,
         "nonbsp": true,
         "nonew": true,
         "plusplus": false,
@@ -2820,7 +2819,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
-        "disallowEmptyBlocks": null,
+        "disallowEmptyBlocks": true,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
