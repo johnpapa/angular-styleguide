@@ -2704,7 +2704,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "maxdepth": 5,
         "maxstatements": 40,
         "maxcomplexity": 8,
-        "maxlen": 120,
 
         "asi": false,
         "boss": false,
