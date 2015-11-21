@@ -2687,7 +2687,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "es3": false,
         "forin": true,
         "freeze": true,
-        "indent": 4,
         "latedef": "nofunc",
         "newcap": true,
         "noarg": true,
