@@ -2693,7 +2693,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "nonbsp": true,
         "nonew": true,
         "plusplus": false,
-        "quotmark": "single",
         "undef": true,
         "unused": false,
         "strict": false,
