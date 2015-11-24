@@ -1,7 +1,7 @@
 <templateSet group="angular-styleguide-directive">
     <template name="ngdirective"
               value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .directive('$directiveName$', $directiveName$);&#10;&#10;    $directiveName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $directiveName$($dependency$) {&#10;        var directive = {&#10;            bindToController: true,&#10;            controller: $ControllerName$,&#10;            controllerAs: 'vm',&#10;            link: link,&#10;            restrict: 'A',&#10;            scope: {}&#10;        };&#10;        return directive;&#10;&#10;        function link(scope, element, attrs) {&#10;            $linkFunction$&#10;        }&#10;    }&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        $ControllerNameFunction$&#10;    }&#10;&#10;})();&#10;&#10;$END$"
-              description="Creates an Angular controller" toReformat="true" toShortenFQNames="true">
+              description="Creates an Angular directive" toReformat="true" toShortenFQNames="true">
         <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
         <variable name="directiveName" expression="" defaultValue="&quot;directiveName&quot;" alwaysStopAt="true"/>
         <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
