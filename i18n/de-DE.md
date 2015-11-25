@@ -2,10 +2,6 @@
 
 *Dogmatischer Angular Styleguide für Teams von John Papa [@john_papa](//twitter.com/john_papa)*
 
-*Translated by [miseeger](https://github.com/miseeger)*
-
->The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
-
 Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten Sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](http://pluralsight.com/training/Authors/Details/john-papa) und der Arbeit in Teams.
 
 Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angular-Anwendungen bereitzustellen, indem ich die Konventionen, die ich nutze, zeige und - wichtiger als das - beschreibe, warum ich sie wähle.
@@ -29,36 +25,36 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
-  1. [Module](#modules)
-  1. [Controller](#controllers)
+  1. [Module](#module)
+  1. [Controller](#controller)
   1. [Services](#services)
   1. [Factories](#factories)
-  1. [Dataservices](#data-services)
-  1. [Direktiven](#directives)
-  1. [Promises für einen Controller auflösen](#resolving-promises-for-a-controller)
-  1. [Manuelle Code-Anmerkungen für das Einfügen von Abhängigkeiten (Dependency Injection)](#manual-annotating-for-dependency-injection)
-  1. [Minifizierung und Code-Anmerkungen](#minification-and-annotation)
-  1. [Fehlerbehandlung](#exception-handling)
-  1. [Namensgebung](#naming)
-  1. [Anwendungsstruktur: LIFT Prinzip](#application-structure-lift-principle)
-  1. [Anwendungsstruktur](#application-structure)
-  1. [Modularität](#modularity)
-  1. [Startlogik](#startup-logic)
+  1. [Datenservices](#datenservices)
+  1. [Direktiven](#direktiven)
+  1. [Promises für einen Controller auflösen](#promises-für-einen-controller-auflösen)
+  1. [Manuelle Code-Anmerkungen für das Einfügen von Abhängigkeiten (Dependency Injection)](#manuelle-code-anmerkungen-für-das-einfügen-von-abhängigkeiten-dependency-injection)
+  1. [Minifizierung und Code-Anmerkungen](#minifizierung-und-code-anmerkungen)
+  1. [Fehlerbehandlung](#fehlerbehandlung)
+  1. [Namensgebung](#namensgebung)
+  1. [Anwendungsstruktur: LIFT Prinzip](#anwendungsstruktur-das-lift-prinzip)
+  1. [Anwendungsstruktur](#anwendungsstruktur)
+  1. [Modularität](#modularität)
+  1. [Startlogik](#startlogik)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
-  1. [Testen](#testing)
-  1. [Animationen](#animations)
-  1. [Kommentare](#comments)
+  1. [Testen](#testen)
+  1. [Animationen](#animationen)
+  1. [Kommentare](#kommentare)
   1. [JS Hint](#js-hint)
   1. [JSCS](#jscs)
-  1. [Konstanten](#constants)
-  1. [Dateitemplates und Snippets](#file-templates-and-snippets)
+  1. [Konstanten](#konstanten)
+  1. [Dateitemplates und Snippets](#dateitemplates-und-snippets)
   1. [Yeoman Generator](#yeoman-generator)
   1. [Routing](#routing)
-  1. [Automatisierung von Aufgaben](#task-automation)
-  1. [Filter](#filters)
-  1. [Angular Dokumentation](#angular-docs)
-  1. [Beiträge](#contributing)
-  1. [Lizenz](#license)
+  1. [Automatisierung von Aufgaben](#automatisierung-von-aufgaben)
+  1. [Filter](#filter)
+  1. [Angular Dokumentation](#angular-dokumentation)
+  1. [Beiträge](#beiträge)
+  1. [Lizenz](#lizenz)
 
 ## Single Responsibility
 
@@ -121,10 +117,10 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Packen Sie Angular-Komponenten in eine Funktion, die sich sofort selbst ausführt (Immediately Invoked Function Expression, kurz: IIFE).
 
-  *Warum?*: Eine IIFE entfernt Variablen aus dem global scope. Dies verhindert, dass Variablen- und Funktionsdeklarationen länger als erwartet im global scope bleiben. Und es verhindert zusätzlich, Kollisionen bei Variablen zu verhindern. 
-  
-  *Warum?*: Wird Ihr Code für das Deployment auf einem Produktionsserver minifiziert und in einer einzigen Datei zusammengepackt, kann es zur Kollision von Variablen (auch globalen) kommen. Eine IIFE schützt Sie hiervor, indem sie den Gültigkeitsbereich der Variablen auf die jeweilige Datei beschränkt. 
-   
+  *Warum?*: Eine IIFE entfernt Variablen aus dem global scope. Dies verhindert, dass Variablen- und Funktionsdeklarationen länger als erwartet im global scope bleiben. Und es verhindert zusätzlich, Kollisionen bei Variablen zu verhindern.
+
+  *Warum?*: Wird Ihr Code für das Deployment auf einem Produktionsserver minifiziert und in einer einzigen Datei zusammengepackt, kann es zur Kollision von Variablen (auch globalen) kommen. Eine IIFE schützt Sie hiervor, indem sie den Gültigkeitsbereich der Variablen auf die jeweilige Datei beschränkt.
+
   ```javascript
   /* zu vermeiden */
   // logger.js
@@ -187,7 +183,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Benutzen Sie eindeutige Namenskonventionen mit Trennzeichen für Untermodule.
 
-  *Warum?*: Eindeutige Namen helfen Kollisionen bei Modulnamen zu verhindern. Trennzeichen helfen bei der Definition von Modulen und deren Untermodul-Hierarchie. Zum Beispiel kann `app` Ihr Root-Modul sein, während `app.dashboard` und `app.users` Module sein können, die von `app` als Abhängigkeiten genutzt werden. 
+  *Warum?*: Eindeutige Namen helfen Kollisionen bei Modulnamen zu verhindern. Trennzeichen helfen bei der Definition von Modulen und deren Untermodul-Hierarchie. Zum Beispiel kann `app` Ihr Root-Modul sein, während `app.dashboard` und `app.users` Module sein können, die von `app` als Abhängigkeiten genutzt werden.
 
 ### Definitionen (auch: Setter)
 ###### [Style [Y021](#style-y021)]
@@ -622,7 +618,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Definieren Sie einen Controller für einen View und versuchen Sie nicht, diesen Controller für weitere Views zu verwenden. Verlagern Sie stattdessen wiederzuverwendende Logik in Factories und halten Sie den Controller einfach und ausgerichtet auf seinen View.
 
-    *Warum?*: Controller in mehreren Views wiederzuverwenden ist kritisch und bedingt eine gute End-Zu-End (e2e) Testabdeckung, um die Stabilität in großen Anwendungen zu garantieren. 
+    *Warum?*: Controller in mehreren Views wiederzuverwenden ist kritisch und bedingt eine gute End-Zu-End (e2e) Testabdeckung, um die Stabilität in großen Anwendungen zu garantieren.
 
 
 ### Controller zuweisen
@@ -802,7 +798,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
     *Warum?*: Das Platzieren der Implementierungsdetails einer Funktion weiter unten in der Datei, hält diese Codemenge außer Sicht und Sie sehen die wichtigen Dinge am Anfang.
 
     *Warum?*: Funktionsdeklarationen werden "nach oben gezogen" (sog. Hoisting), so dass es keine Probleme damit gibt, ob eine Funktion vor ihrer Benutzung deklariert werden sollte (wie es bei Funktionsausdrücken der Fall wäre).
- 
+
     *Warum?*: Sie müssen sich niemals Sorgen darum machen, wenn Sie in Funktionsdeklarationen `var a` vor `var b` platzieren, weil `a` von `b` abhängig ist.
 
     *Warum?*: Die Reihenfolge ist kritisch in Funktionsausdrücken.
@@ -974,7 +970,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Wenn Sie einen Datenservice ansprechen, der einen Promise wie `$http` zurückliefert, so liefern Sie in Ihrer aufrufenden Funktion ebenso einen Promise zurück.
 
-    *Warum?*: Sie können die Promises aneinanderhängen und weitere Aktionen ausführen, wenn der Datenabruf beendet ist und den Promise im Erfolgsfall entweder auflöst oder bei Fehlschlagen zurückweist. 
+    *Warum?*: Sie können die Promises aneinanderhängen und weitere Aktionen ausführen, wenn der Datenabruf beendet ist und den Promise im Erfolgsfall entweder auflöst oder bei Fehlschlagen zurückweist.
 
   ```javascript
   /* empfohlen */
@@ -984,7 +980,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   function activate() {
       /**
        * Schritt 1
-       * Bei der getAvengers Funktion nach den Avenger-Daten 
+       * Bei der getAvengers Funktion nach den Avenger-Daten
        * fragen und auf den Promise warten
        */
       return getAvengers().then(function() {
@@ -999,7 +995,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   function getAvengers() {
         /**
          * Schritt 2
-         * Beim Datenservice nach den Daten fragen und 
+         * Beim Datenservice nach den Daten fragen und
          * auf den Promise warten
          */
         return dataservice.getAvengers()
@@ -1022,7 +1018,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Erstellen Sie eine Direktive pro Datei. Benennen Sie die Datei nach der Direktive.
 
-    *Warum?*: Es ist einfach, alle Direktiven in einer Datei zu halten, aber schwer, sie dann wieder herauszulösen sodass sie zwischen Anwendungen oder Modulen ausgetauscht werden können oder einfach nur in einem Modulzu genutzt werden. 
+    *Warum?*: Es ist einfach, alle Direktiven in einer Datei zu halten, aber schwer, sie dann wieder herauszulösen sodass sie zwischen Anwendungen oder Modulen ausgetauscht werden können oder einfach nur in einem Modulzu genutzt werden.
 
     *Warum?*: Eine Direktive pro Datei ist einfach zu warten.
 
@@ -1062,7 +1058,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   /* calendarRange.directive.js */
 
   /**
-   * @desc Bestell-Direktive, die speziell für das Bestell-Modul der Firma Acme bestimmt ist. 
+   * @desc Bestell-Direktive, die speziell für das Bestell-Modul der Firma Acme bestimmt ist.
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1426,7 +1422,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   }
   ```
 
-    Anmerkung: Das untenstehende Beispiel zeigt die Stellen, an denen die Route mit einer benannten Funktion aufgelöst wird. Das ist einfacher zu debuggen und vereinfacht auch die Handhabung von Dependency Injection. 
+    Anmerkung: Das untenstehende Beispiel zeigt die Stellen, an denen die Route mit einer benannten Funktion aufgelöst wird. Das ist einfacher zu debuggen und vereinfacht auch die Handhabung von Dependency Injection.
 
   ```javascript
   /* noch besser */
@@ -1472,7 +1468,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Unsichere Minifizierung
 ###### [Style [Y090](#style-y090)]
 
-  - Vermeiden Sie es, die kurze Deklarationssyntax für Abhängigkeiten ohne einen für die Minifizierung sicheren Ansatz zu verwenden. 
+  - Vermeiden Sie es, die kurze Deklarationssyntax für Abhängigkeiten ohne einen für die Minifizierung sicheren Ansatz zu verwenden.
 
     *Warum?*: Die Parameter der Komponente (z. B. Controller, Factory, etc.) werden in abgekürzte Variablen gewandelt. So kann zum Beispiel aus `common` und `dataservice` ein `a` oder `b` werden, was von Angular nicht gefunden wird.
 
@@ -1607,7 +1603,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Benutzen Sie [ng-annotate](//github.com/olov/ng-annotate) für [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com) und versehen Sie die Funktionen mit den notwendigen `/** @ngInject */`-Kommentaren, die für die "automatische" Dependency Injection genutzt werden sollen. 
+  - Benutzen Sie [ng-annotate](//github.com/olov/ng-annotate) für [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com) und versehen Sie die Funktionen mit den notwendigen `/** @ngInject */`-Kommentaren, die für die "automatische" Dependency Injection genutzt werden sollen.
 
     *Warum?*: Dies schützt Ihren Code vor Abhängigkeiten, die keiner minifizierungssicheren Technik entsprechen.
 
@@ -1748,9 +1744,9 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
             };
             /**
              * Der Fehler könnte zu einer Liste im Service oder
-             * zum $rootScope hinzugefügt werden oder bei einem 
-             * Remote-Webserver oder lokal protokolliert oder 
-             * einfach wieder hart "geworfen" werden. Es obliegt 
+             * zum $rootScope hinzugefügt werden oder bei einem
+             * Remote-Webserver oder lokal protokolliert oder
+             * einfach wieder hart "geworfen" werden. Es obliegt
              * ganz Ihnen.
              *
              * throw exception;
@@ -1844,7 +1840,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Richtlinien der Namensgebung
 ###### [Style [Y120](#style-y120)]
 
-  - Benutzen Sie stimmige Namen für alle Komponenten, einem Muster folgend, welches die Hauptfunktionen (Features) einer Komponente und dann (optional) ihren Typ beschreibt. 
+  - Benutzen Sie stimmige Namen für alle Komponenten, einem Muster folgend, welches die Hauptfunktionen (Features) einer Komponente und dann (optional) ihren Typ beschreibt.
   Meine empfohlenes Muster ist `feature.typ.js`. Es gibt zwei zu vergebene Namen für die meisten Komponenten:
     * der Dateiname (`avengers.controller.js`)
     * der Name der bei Angular zu registrierenden Komponente (`AvengersController`)
@@ -2054,7 +2050,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
-  - LIFT steht für `L`ocate (auffinden), `I`dentify (identifizieren), `F`lat (flach), T`ry to stay DRY` (versuchen Sie, Ihren Code nicht zu wiederholen). Das bedeutet also, Sie sollten Ihre Anwendung so strukturieren, dass Sie Ihren Code schnell auffinden und auf einen Blick identifizieren können, für was der Code gut ist. Dabei sollten Sie die Struktur so flach wie möglich halten. Vermeiden Sie es unbedingt, Ihren Code zu wiederholen.   
+  - LIFT steht für `L`ocate (auffinden), `I`dentify (identifizieren), `F`lat (flach), T`ry to stay DRY` (versuchen Sie, Ihren Code nicht zu wiederholen). Das bedeutet also, Sie sollten Ihre Anwendung so strukturieren, dass Sie Ihren Code schnell auffinden und auf einen Blick identifizieren können, für was der Code gut ist. Dabei sollten Sie die Struktur so flach wie möglich halten. Vermeiden Sie es unbedingt, Ihren Code zu wiederholen.
 
     *Warum LIFT?*: Bietet eine konsistente und gut skalierbare Struktur, ist modular und macht es einfacher die Effizienz eines Entwicklers zu steigern, weil er seinen Code schneller finden kann. Prüfen Sie Ihre Anwendungsstruktur, indem Sie sich fragen: Wie schnell kann ich all die Dateien, die zu einem Feature gehören öffnen und mit ihnen arbeiten?"
 
@@ -2095,7 +2091,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Wenn Sie einen Dateinamen sehen, sollten Sie sofort wissen, was die Datei beinhaltet und für was sie steht.
 
-    *Warum?*: Sie brauchen weniger Zeit, um nach Ihrem Code zu suchen und werden so effizienter. Wenn das bedeutet, dass Sie längere Dateinamen brauchen, dann sei es so. Seien Sie beschreibend bei der Namensvergabe und sorgen Sie dafür, dass eine Datei nur eine Komponente enthält. Vermeiden Sie Dateien mir mehreren Controllern, Services oder gar mit beidem. Ich weiche von dieser Regel ab, wenn ich sehr kleine Features habe, die alle miteinander verbunden und leicht identifizierbar sind. 
+    *Warum?*: Sie brauchen weniger Zeit, um nach Ihrem Code zu suchen und werden so effizienter. Wenn das bedeutet, dass Sie längere Dateinamen brauchen, dann sei es so. Seien Sie beschreibend bei der Namensvergabe und sorgen Sie dafür, dass eine Datei nur eine Komponente enthält. Vermeiden Sie Dateien mir mehreren Controllern, Services oder gar mit beidem. Ich weiche von dieser Regel ab, wenn ich sehr kleine Features habe, die alle miteinander verbunden und leicht identifizierbar sind.
 
 ### Flat (flache Struktur)
 ###### [Style [Y143](#style-y143)]
@@ -2769,8 +2765,8 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
   - Benutzen Sie Konstanten für Werte, die sich nicht ändern und nicht aus einem anderen Service kommen. Wenn Konstanten nur für ein bestimmtes Modul gebraucht werden, welches zudem wiederverwendbar sein soll, dann platzieren Sie die Konstanten in einer Datei (pro Modul) und benennen Sie die Datei nach dem Modul. Bis dahin halten Sie die Konstanten im Hauptmodul in einer `constants.js`-Datei.
 
-    *Warum?*: Ein Wert, der sich ändert - wenn auch nur unregelmäßig - sollte von einem Service ermittelt werden, so dass er nicht im Quellcode geändert werden muss. Zum Beispiel könnte eine URL für einen Datenservice in einer Konstanten abgelegt werden. Besser wäre es aber, diesen Wert über einen WebService zu ermitteln. 
-    
+    *Warum?*: Ein Wert, der sich ändert - wenn auch nur unregelmäßig - sollte von einem Service ermittelt werden, so dass er nicht im Quellcode geändert werden muss. Zum Beispiel könnte eine URL für einen Datenservice in einer Konstanten abgelegt werden. Besser wäre es aber, diesen Wert über einen WebService zu ermitteln.
+
     *Warum?*: Konstanten können in jede Angular-Komponente (auch in einen Provider) eingefügt werden.
 
     *Warum?*: Ist eine Anwendung in Module unterteilt, die in anderen Anwendungen genutzt werden können, so sollte jedes alleinstehende Modul für sich selbst funktionieren, eingeschlossen seiner Konstanten.
@@ -3036,7 +3032,7 @@ Das Routing auf der Client-Seite ist für die Erstellung eines Navigationsflusse
 **[Zurück zum Anfang](#table-of-contents)**
 
 ## Automatisierung von Aufgaben
-Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grund Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
+Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grunt Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
 
 > Erfahren Sie mehr über Gulp und Muster für die Automatisierung von Aufgaben in meinem [Gulp Pluralsight Kurs](http://jpapa.me/gulpps)
 
@@ -3051,7 +3047,7 @@ Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgab
     ```javascript
     var clientApp = './src/client/app/';
 
-    // Immer zuerst die Moduldateien 
+    // Immer zuerst die Moduldateien
     var files = [
       clientApp + '**/*.module.js',
       clientApp + '**/*.js'

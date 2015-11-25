@@ -2,15 +2,13 @@
 
 *[@john_papa](//twitter.com/john_papa)によるチームのための頑固なAngularスタイルガイド*
 
-*Translation by [@noritamago](https://github.com/noritamago)*
-
->The [original English version](http://jpapa.me/ngstyles) is the source of truth, as it is maintained and updated first.
-
 もしあなたがAngularのシンタックス、規約、そしてアプリケーション構成のための頑固なスタイルガイドを探しているなら、どうぞいらっしゃい！本スタイルは、[Angular](//angularjs.org)を用いた私の開発経験やプレゼンテーション、[Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) 、そしてチームでの作業に基づいたものです。
 
 このスタイルガイドの目的は、私が実践している規約だけでなく、私がそれを行う理由を示すことによって、Angularアプリケーションを構築する手引きとなることです。
 
 >もしあなたがこのガイドを気に入ったのなら、Pluralsightにある [Angular Patterns: Clean Code](http://jpapa.me/ngclean) の私のコースもチェックして下さい。
+
+[![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
 あなたは決して1人でありません！Angularのコミュニティは、自身の経験を共有することに情熱的な素晴らしい集団です。実際、友人でありAngularのエキスパートでもある Todd Motto と私は、共同で多くのスタイルや規約をまとめました。一部意見が分かれましたが、概ね合意できるものでした。彼のアプローチと本スタイルとの比較のため、是非 [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) をチェックすることをお勧めします。
@@ -1483,9 +1481,9 @@
     function Dashboard(common, dataservice) {
     }
     ```
-  
+
     このコードはMinifyされたときにマングルされた変数が生成され実行エラーになるかもしれません。
-    
+
     ```javascript
     /* avoid - not minification-safe*/
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
@@ -1999,7 +1997,7 @@
 ### Directive Component Names
 ###### [Style [Y126](#style-y126)]
 
-  - 全てのディレクトリにキャメルケースで一貫性を取れた名前を用いて下さい。そのディレクティブが属する範囲を表す短いプリフィックス(例としては会社やプロジェクトのプリフィックス)を用いて下さい。 
+  - 全てのディレクトリにキャメルケースで一貫性を取れた名前を用いて下さい。そのディレクティブが属する範囲を表す短いプリフィックス(例としては会社やプロジェクトのプリフィックス)を用いて下さい。
 
     *なぜ ?*: 参照するべきコンポーネントと素早く特定する一貫性の取れた方法を与えます。
 
@@ -2404,7 +2402,7 @@
 
     *なぜ ?*: Karmaは一度だけ実行するか、コードが変更されたときに自動的に実行するかを簡単に設定することができます。
 
-    *なぜ ?*: Karmaは自前のテストランナーもしくはGruntやGulpを用いた継続的なインテグレーションのプロセスに容易に接続することができます。 
+    *なぜ ?*: Karmaは自前のテストランナーもしくはGruntやGulpを用いた継続的なインテグレーションのプロセスに容易に接続することができます。
 
     *なぜ ?*: [WebStorm](http://www.jetbrains.com/webstorm/) や [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225)などのいくつかのIDEはKarmaを統合し始めています。
 
@@ -2910,7 +2908,7 @@
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
 
-このスタイルガイドに沿ったAngularのアプリケーションを作る良いスタートポイントとして、[HotTowel yeoman generator](http://jpapa.me/yohottowel)を使うことができます。 
+このスタイルガイドに沿ったAngularのアプリケーションを作る良いスタートポイントとして、[HotTowel yeoman generator](http://jpapa.me/yohottowel)を使うことができます。
 
 1. generator-hottowelをインストール
 
@@ -3082,7 +3080,7 @@ _tldr; Use this guide. Attributions are appreciated._
 ### Copyright
 
 Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
- 
+
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

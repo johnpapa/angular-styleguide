@@ -102,10 +102,6 @@
 
             /* @ngInject */
             function ${2: directive}(${3:dependencies}) {
-                // Usage:
-                //
-                // Creates:
-                //
                 var directive = {
                     bindToController: true,
                     controller: ${4:Controller},
@@ -171,9 +167,9 @@
   scope: javascript
   text: |
         .state('${1:state}', {
-            url: '${2:/url}'
+            url: '${2:/url}',
             templateUrl: '${3:template}.html',
-            controller: '${4:Controller}'
+            controller: '${4:Controller}',
             controllerAs: '${5:vm}'
         })${6:}
 
