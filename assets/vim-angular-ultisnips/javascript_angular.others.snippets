@@ -1,0 +1,36 @@
+snippet ngconfig
+.config(${1:config});
+
+$1.\$inject = [${2/(\$(\w+)|\w+)/'$1'/g}];
+
+/* @ngInject */
+function $1(${2:dependencies}) {
+$0
+}
+endsnippet
+
+snippet ngrun
+.run(${1:run});
+
+$1.\$inject = [${2/(\$(\w+)|\w+)/'$1'/g}];
+
+/* @ngInject */
+function $1(${2:dependencies}) {
+$0
+}
+endsnippet
+
+snippet ngstate
+.state('${1:state}', {
+	url: '/${2:url}',
+	templateUrl: '${3:template}.html',
+	controller: '${4:name}Controller',
+	controllerAs: '${5:vm}'
+	})$0
+endsnippet
+
+snippet nggetmodule
+angular
+	.module('${1:module}')
+	$0
+endsnippet
