@@ -1,32 +1,16 @@
-# Angular Style Guide
-
-## Angular Team Endorsed
-Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
+# Stella Angular and JavaScript Style Guide
 
 ## Purpose
-*Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
+The purpose of this is to set provide a rough guide for JavaScript and Angular syntax, conventions, and structuring. To support the building of the Stella Application. The main ideology is to set a style of coding that provides a capable foundation to improve maintainability, readability and performant code.
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
+## Credit and ammendments
+Never work in a vacuum. If you find any other resource or have any questions about any of this guide; please speak up - so we can improve the guidelines and maintain a robust codebase.
 
-The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
-
->If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
-
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
-
-## Community Awesomeness and Credit
-Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, a friend and Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
-
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
-
-## See the Styles in a Sample App
-While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
-
-##Translations
-[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) are maintained by the community and can be found here.
+This guide is based on https://github.com/johnpapa/angular-styleguide
 
 ## Table of Contents
-
+  1. [JavaScript Style Guide](#javascript-style-guide)
+  1. [Use of plugins and librarys](#use-of-plugints-and-librarys)
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
   1. [Modules](#modules)
@@ -59,6 +43,16 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Angular Docs](#angular-docs)
   1. [Contributing](#contributing)
   1. [License](#license)
+
+## JavaScript Style Guide
+To provide a better code base we will be using [Babel](https://babeljs.io/), this is a ES6 to ES5 compliler. It creates a better code base with stronger structure to code. It has some limitations to what can be converted to ES5 so please take care and fully study babel's guides to understand what can not be easily compiled.
+
+To accompany this guide, it is highly recommended to fully read the [Airbnb JavaScript styleguide](https://github.com/airbnb/javascript). It provides great insight into improving JavaScript code to make it more maintainable and readable.
+
+## Use of plugins and librarys
+When deciding to use and librarys or plugins please consider the use of them carefully, evaluate it's benefits and negatives and the overhead.
+
+Before using a library please consult others to get there opionion and get it signed of by a team lead. It must also be highlighted that additional use of plugins and librarys should be minimised where possible, as it causes large overheads on page load. All JavaScript files get interpreted upon initialization of a page it can build up affecting load times significantly.
 
 ## Single Responsibility
 
