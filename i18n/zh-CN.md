@@ -1,5 +1,9 @@
 # Angular规范
 
+## Angular Team Endorsed
+非常感谢领导Angular团队的Igor Minar对本指南做出的审查和贡献，并且委托我继续打理本指南。
+
+## 目的
 *Angular规范[@john_papa](//twitter.com/john_papa)*
 
 如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的规范，那么你来对地方了。这里所包含的内容是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
@@ -318,7 +322,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 	*为什么？*：`controllerAs` 是`$scope`的语法修饰，你仍然可以绑定到View上并且访问 `$scope`的方法。
 
-	*为什么？*：避免在controller中使用 `$scope`，最好不用它们或是把它们移到一个factory中。factory中可以考虑使用`$scope`，controller中只在需要时候才使用`$scope`，例如当使用[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit)， [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast)，或者 [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on)来发布和订阅事件时，可以考虑把这些调用挪到factory当中，并从controller中调用。
+	*为什么？*：避免在controller中使用 `$scope`，最好不用它们或是把它们移到一个factory中。factory中可以考虑使用`$scope`，controller中只在需要时候才使用`$scope`，例如当使用[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit)， [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast)，或者 [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on)。
 
   ```javascript
   /* avoid */
@@ -383,16 +387,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
       });
   }
   ```
+ 
+###置顶绑定成员
 
-
-###可绑定成员放到顶部
 ###### [Style [Y033](#style-y033)]
 
   - 把可绑定的成员放到controller的顶部，按字母排序，并且不要通过controller的代码传播。
 
-  *为什么？*：易读，可以让你立即识别controller中的哪些成员可以在View中绑定和使用。
-
-  *为什么？*：虽然设置单行匿名函数很容易，但是当这些函数的代码超过一行时，这将极大降低代码的可读性。在可绑定成员下面定义函数（这些函数被提出来），把具体的实现细节放到下面，可绑定成员放到顶部，这会提高代码的可读性。
+  *为什么？*：虽然设置单行匿名函数很容易，但是当这些函数的代码超过一行时，这将极大降低代码的可读性。在可绑定成员下面定义函数（这些函数被提出来），把具体的实现细节放到下面，可绑定成员置顶，这会提高代码的可读性。 
 
   ```javascript
   /* avoid */
@@ -477,13 +479,13 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ###函数声明隐藏实现细节
 ###### [Style [Y034](#style-y034)]
 
-  - 使用函数声明来隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个在文件的后面会出现函数声明。更多详情请看[这里](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code)。
-
+  - 使用函数声明来隐藏实现细节，置顶绑定成员，当你需要在controller中绑定一个函数时，把它指向一个在文件的后面会出现函数声明。更多详情请看[这里](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code)。
+    
   *为什么？*：易读，易识别哪些成员可以在View中绑定和使用。
 
   *为什么？*：把函数的实现细节放到后面，你可以更清楚地看到重要的东西。
 
-  *为什么？*：由于函数声明会被提到顶部，所以没有必要担心在声明它之前就使用函数的问题。
+  *为什么？*：由于函数声明会被置顶，所以没有必要担心在声明它之前就使用函数的问题。
 
   *为什么？*：你再也不用担心当 `a`依赖于 `b`时，把`var a`放到`var b`之前会中断你的代码的函数声明问题。
 
@@ -726,7 +728,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     注：[所有的Angular services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
-###可访问的成员放到顶部###
+###可访问的成员置顶###
 ###### [Style [Y052](#style-y052)]
 
   - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service（它的接口）中可调用的成员暴露到顶部，
@@ -735,7 +737,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：当文件内容很长时，这可以避免需要滚动才能看到暴露了哪些东西。
 
-    *为什么？*：虽然你可以随意写一个函数，但当函数代码超过一行时就会降低可读性并造成滚动。通过把实现细节放下面、可调用接口放到顶部的返回service的方式来定义可调用的接口，从而使代码更加易读。
+    *为什么？*：虽然你可以随意写一个函数，但当函数代码超过一行时就会降低可读性并造成滚动。通过把实现细节放下面、把可调用接口置顶的形式返回service的方式来定义可调用的接口，从而使代码更加易读。
 
   ```javascript
   /* avoid */
@@ -786,13 +788,13 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ###函数声明隐藏实现细节
 ###### [Style [Y053](#style-y053)]
 
-  - 函数声明隐藏实现细节，把绑定成员放到顶部，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
+  - 函数声明隐藏实现细节，置顶绑定成员，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
 
     *为什么？*：易读，易识别哪些成员可以在View中绑定和使用。
 
     *为什么？*：把函数的实现细节放到后面，你可以更清楚地看到重要的东西。
 
-    *为什么？*：由于函数声明会被提到顶部，所以没有必要担心在声明它之前就使用函数的问题。
+    *为什么？*：由于函数声明会被置顶，所以没有必要担心在声明它之前就使用函数的问题。
 
     *为什么？*：你再也不用担心当 `a`依赖于 `b`时，把`var a`放到`var b`之前会中断你的代码的函数声明问题。
 
