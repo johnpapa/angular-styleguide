@@ -1,5 +1,9 @@
 # Angular Style Guide
 
+## Angular Team Endorsed
+Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
+
+## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
 If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
@@ -396,6 +400,18 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
+  Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability. Avoid overly verbose names that are cumbersome to type.
+
+  ```html
+  <!-- avoid -->
+  <input ng-model="customerProductItemVm.text">
+  ```
+
+  ```html
+  <!-- recommended -->
+  <input ng-model="productVm.id">
+  ```
+
 ### Bindable Members Up Top
 ###### [Style [Y033](#style-y033)]
 
@@ -421,6 +437,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       };
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
@@ -447,6 +464,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       function search() {
         /* */
       }
+  }
   ```
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
@@ -471,6 +489,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
@@ -483,6 +502,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
 ### Function Declarations to Hide Implementation Details
@@ -1222,6 +1242,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           },
           link: linkFunc,
           controller: ExampleController,
+          // note: This would be 'ExampleController' (the exported controller name, as string)
+          // if referring to a defined controller in its separate file.
           controllerAs: 'vm',
           bindToController: true // because the scope is isolated
       };
@@ -2576,7 +2598,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
   - Use short durations for animations. I generally start with 300ms and adjust until appropriate.
 
-    *Why?*: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
+    *Why?*: Long animations can have the reverse effect on User Experience and perceived performance by giving the appearance of a slow application.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]

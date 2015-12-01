@@ -218,7 +218,7 @@ ou *Evitando Colisão de Nomes*
 
 ### *Getters*
 
-  - Quando usando um módulo, evite usar uma variável. Em vez disso, use encadeamento com a sintaxe *getter*.
+  - Ao usar um módulo, evite usar uma variável. Em vez disso, use encadeamento com a sintaxe *getter*.
 
   **Por que?** Isso produz um código mais legível e evita colisão de variáveis ou vazamentos.
 
@@ -1223,7 +1223,7 @@ ou *Ativação de promessas no controlador*
 
     **Por que?**: Colocando a lógica de inicialização em um lugar consistente no controlador (controller), torna mais fácil de localizar, mais consistente para testar e ajuda a evitar o espalhamento da lógica de inicialização pelo controlador (controller).
 
-    Nota: Se vocẽ precisa cancelar a rota condicionalmente antes de utilizar o controlador (controller), utilize uma resolução de rota (route resolve).
+    Nota: Se você precisa cancelar a rota condicionalmente antes de utilizar o controlador (controller), utilize uma resolução de rota (route resolve).
 
   ```javascript
   /* evite */
@@ -1262,7 +1262,7 @@ ou *Ativação de promessas no controlador*
 ### Route Resolve Promises
 ou *Resolução de promessas na rota*
 
-  - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se vocẽ precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
+  - Quando o controlador (controller) depende de uma promessa ser resolvida, resolva as dependências no `$routeProvider` antes da lógica do controlador (controller) ser executada. Se você precisa cancelar a rota condicionalmente antes do controlador (controller) ser ativado, utilize uma resolução de rota (route resolve).
 
     **Por que?**: Um controlador (controller) pode precisar de dados antes de ser carregado. Esses dados podem vir de uma promessa (promise) através de uma factory personalizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Utilizar [resolução de rota (route resolve)](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite as promessas (promises) serem resolvidas antes da lógica do controlador (controller) ser executada, então ele pode executar ações através dos dados dessa promessa (promise).
 
@@ -1611,7 +1611,7 @@ ou *decoradores*
 ### Exception Catchers
 ou *Coletores de exceção*
 
-  - Criar um factory que expôe uma interface para capturar e tratar adequadamente as exceções.
+  - Criar um factory que expõe uma interface para capturar e tratar adequadamente as exceções.
 
     **Por que?**: Fornece uma forma consistente de coletar exceções que podem ser lançadas no seu código (ex. durante uma chamada XHR ou uma promessa (promise) que falhou).
 
@@ -1965,15 +1965,15 @@ ou *Estrutura da aplicação*
 ### Overall Guidelines
 ou *Orientações gerais*
 
-  - Tenha uma visão de curto prazo da implementação e uma visão de longo prazo. Em outras palavras, comece pequeno, mas tenha em mente o caminho que o aplicativo pode tomar. Todos do código do aplicativo vão em uma pasta raiz chamada `app`. Todo o conteúdo é feito com um recurso por arquivo. Cada controlador (controller), serviço (service), módulo (module), visão (view) está em seu próprio arquivo. Todos os scripts de terceiros são armazenados em uma outra pasta raiz e não na pasta `app`. Não foi eu que escrevi esses scripts, então eu não quero que eles baguncem meu aplicativo (`bower_components`,` scripts`, `lib`).
+  - Tenha uma visão de curto prazo da implementação e uma visão de longo prazo. Em outras palavras, comece pequeno, mas tenha em mente o caminho que o aplicativo pode tomar. Todo o código do aplicativo vai em uma pasta raiz chamada `app`. Todo o conteúdo é feito com um recurso por arquivo. Cada controlador (controller), serviço (service), módulo (module), visão (view) está em seu próprio arquivo. Todos os scripts de terceiros são armazenados em uma outra pasta raiz e não na pasta `app`. Não fui eu quem escreveu esses scripts, então eu não quero que eles baguncem meu aplicativo (`bower_components`,` scripts`, `lib`).
 
     Nota: Encontre mais detalhes sobre essa estrutura em [esse post original sobre a estrutura da aplicação](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 
-  - Coloque os componentes que definem o layout geral do aplicativo em uma pasta chamada `layout`. Eles podem incluir uma view e uma controller que agem como recipiente para o app, navegação, menus, áreas de conteúdo, e outras regiões.
+  - Coloque os componentes que definem o layout geral do aplicativo em uma pasta chamada `layout`. Eles podem incluir uma view e um controller que agem como recipiente para o app, navegação, menus, áreas de conteúdo, e outras regiões.
 
-    **Por que?**: Organize todos os layouts em um único lugar reutilizado em toda a aplicação.
+    **Por que?**: Organiza todos os layouts em um único lugar reutilizado em toda a aplicação.
 
 ### Folders-by-Feature Structure
 ou *Estrutura de Pastas-por-Recurso*

@@ -3032,7 +3032,7 @@ Das Routing auf der Client-Seite ist für die Erstellung eines Navigationsflusse
 **[Zurück zum Anfang](#table-of-contents)**
 
 ## Automatisierung von Aufgaben
-Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grund Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
+Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grunt Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
 
 > Erfahren Sie mehr über Gulp und Muster für die Automatisierung von Aufgaben in meinem [Gulp Pluralsight Kurs](http://jpapa.me/gulpps)
 
