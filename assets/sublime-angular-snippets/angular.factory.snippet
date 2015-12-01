@@ -1,31 +1,31 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 (function() {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('${1:moduleName}')
-        .factory('${2:factoryName}', ${2:factoryName});
+	angular
+		.module('${1:moduleName}')
+		.factory('${2:factoryName}', ${2:factoryName});
 
-    ${2:factoryName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+	${2:factoryName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
-    /* @ngInject */
-    function ${2:factoryName}(${3:dependency}) {
-        var service = {
-            ${4:functionName}: ${4:functionName}
-        };
-        return service;
+	/* @ngInject */
+	function ${2:factoryName}(${3:dependency}) {
+		var service = {
+			${4:functionName}: ${4:functionName}
+		};
+		return service;
 
-        ////////////////
+		////////////////
 
-        function ${4:functionName}() {
-            ${5}
-        }
-    }
+		function ${4:functionName}() {
+			${5}
+		}
+	}
 
 })();
 ]]></content>
-    <tabTrigger>ngfactory</tabTrigger>
-    <scope>text.plain, source.js</scope>
-    <description>Creates an Angular factory</description>
+	<tabTrigger>ngfactory</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Creates an Angular factory</description>
 </snippet>

@@ -1,41 +1,41 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 (function() {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('${1:moduleName}')
-        .directive('${2:directiveName}', ${2:directiveName});
+	angular
+		.module('${1:moduleName}')
+		.directive('${2:directiveName}', ${2:directiveName});
 
-    ${2:directiveName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+	${2:directiveName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
-    /* @ngInject */
-    function ${2:directiveName}(${3:dependency}) {
-        var directive = {
-            bindToController: true,
-            controller: ${4:ControllerName},
-            controllerAs: '${5:vm}',
-            link: link,
-            restrict: 'A',
-            scope: {}
-        };
-        return directive;
+	/* @ngInject */
+	function ${2:directiveName}(${3:dependency}) {
+		var directive = {
+			bindToController: true,
+			controller: ${4:ControllerName},
+			controllerAs: '${5:vm}',
+			link: link,
+			restrict: 'A',
+			scope: {}
+		};
+		return directive;
 
-        function link(scope, element, attrs) {
-            ${6}
-        }
-    }
+		function link(scope, element, attrs) {
+			${6}
+		}
+	}
 
-    ${4:ControllerName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+	${4:ControllerName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
-    /* @ngInject */
-    function ${4:ControllerName}(${3:dependency}) {
-        ${7}
-    }
+	/* @ngInject */
+	function ${4:ControllerName}(${3:dependency}) {
+		${7}
+	}
 
 })();
 ]]></content>
-    <tabTrigger>ngdirective</tabTrigger>
-    <scope>text.plain, source.js</scope>
-    <description>Creates an Angular directive</description>
+	<tabTrigger>ngdirective</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Creates an Angular directive</description>
 </snippet>

@@ -1,25 +1,25 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 (function() {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('${1:moduleName}')
-        .filter('${2:filterName}', ${2:filterName});
+	angular
+		.module('${1:moduleName}')
+		.filter('${2:filterName}', ${2:filterName});
 
-    function ${2:filterName}() {
-        return ${2:filterName}Filter;
+	function ${2:filterName}() {
+		return ${2:filterName}Filter;
 
-        ////////////////
+		////////////////
 
-        function ${2:filterName}Filter(${3:parameters}) {
-            return ${3:parameters};
-        }
-    }
+		function ${2:filterName}Filter(${3:parameters}) {
+			return ${3:parameters};
+		}
+	}
 
 })();
 ]]></content>
-    <tabTrigger>ngfilter</tabTrigger>
-    <scope>text.plain, source.js</scope>
-    <description>Creates an Angular filter</description>
+	<tabTrigger>ngfilter</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Creates an Angular filter</description>
 </snippet>

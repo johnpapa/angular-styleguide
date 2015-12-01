@@ -1,15 +1,15 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 .run(run${1:runName})
 
 run${1:runName}.\$inject = [${2/(\$(\w+)|\w+)/'$1'/g}];
 
 /* @ngInject */
 function run${1:runName}(${2:dependency}) {
-    ${3}
+	${3}
 }
 ]]></content>
-    <tabTrigger>ngrun</tabTrigger>
-    <scope>text.plain, source.js</scope>
-    <description>Defines a run phase function</description>
+	<tabTrigger>ngrun</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Defines a run phase function</description>
 </snippet>

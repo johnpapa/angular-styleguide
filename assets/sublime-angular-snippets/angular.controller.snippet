@@ -1,31 +1,31 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 (function() {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('${1:moduleName}')
-        .controller('${2:ControllerName}', ${2:ControllerName});
+	angular
+		.module('${1:moduleName}')
+		.controller('${2:ControllerName}', ${2:ControllerName});
 
-    ${2:ControllerName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
+	${2:ControllerName}.\$inject = [${3/(\$(\w+)|\w+)/'$1'/g}];
 
-    /* @ngInject */
-    function ${2:ControllerName}(${3:dependency}) {
-        var vm = this;
-        vm.title = '${2:ControllerName}';
+	/* @ngInject */
+	function ${2:ControllerName}(${3:dependency}) {
+		var vm = this;
+		vm.title = '${2:ControllerName}';
 
-        activate();
+		activate();
 
-        ////////////////
+		////////////////
 
-        function activate() {
-            ${4}
-        }
-    }
+		function activate() {
+			${4}
+		}
+	}
 
 })();
 ]]></content>
-    <tabTrigger>ngcontroller</tabTrigger>
-    <scope>text.plain, source.js</scope>
-    <description>Creates an Angular controller</description>
+	<tabTrigger>ngcontroller</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Creates an Angular controller</description>
 </snippet>

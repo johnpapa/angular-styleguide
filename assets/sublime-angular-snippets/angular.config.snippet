@@ -1,15 +1,15 @@
 <snippet>
-    <content><![CDATA[
+	<content><![CDATA[
 .config(${1:configName}Config)
 
 ${1:configName}Config.\$inject = [${2/(\$(\w+)|\w+)/'$1'/g}];
 
 /* @ngInject */
 function ${1:configName}Config(${2:dependency}) {
-    ${3}
+	${3}
 }
 ]]></content>
-    <tabTrigger>ngconfig</tabTrigger>
-    <scope>text.plain, source.js</scope>
-    <description>Defines a configuration phase function</description>
+	<tabTrigger>ngconfig</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Defines a configuration phase function</description>
 </snippet>
