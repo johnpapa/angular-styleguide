@@ -1280,7 +1280,6 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 ###### [Stil [Y076](#style-y076)]
 
-  - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
   - `controller as` sintaksını kullanırken `bindToController = true` seçeneğini kullanın. Bu dış $scope'u direktifin kontrolör $scope'una bağlamanızı sağlar.
 
     *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
@@ -1386,8 +1385,6 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     *Neden?*: Kod route'dan ve controller'ın aktivasyon fonksiyonundan sonra çalıştırılır. View hemen yüklenir. Data binding aktivasyon promise'i çözümlendikten hemen sonra yapılır. Bir “meşgul” animasyonu view geçişi esnasında gösterilebilir (`ng-view` veya `ui-view`)
 
-    Note: The code executes before the route via a promise. Rejecting the promise cancels the route. Resolve makes the new view wait for the route to resolve. A “busy” animation can be shown before the resolve and through the view transition. If you want to get to the View faster and do not require a checkpoint to decide if you can get to the View, consider the [controller `activate` technique](#style-y080) instead.
-    
     Note: Kod route'dan önce promise aracılığı ile çalıştırılır. Reject olan promise route'u iptal eder. Resolve olması view'ın route promise'inin çözülmesini bekletir. Bir meşgul” animasyonu resolve'dan önce ve view geçişi süresince gösterilebilir. Eğer view'ın daha hızlı yüklenmesini istiyorsanız ve view'ın yüklenebilir olup olmadığını kontrol ettiğiniz bir nokta yok ise [controller `activate` tekniği](#style-y080)'ni kullanın.
 
   ```javascript
@@ -1478,21 +1475,23 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    Note: Örnek kodun `movieService` bağımlılığı minification işlemi için uygun değildir. Minification uyumlu hale getirme detayları için [dependency injection](#manual-annotating-for-dependency-injection) ve [minification and annotation](#minification-and-annotation) bölümlerine bakın.
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
-## Manual Annotating for Dependency Injection
+## Manuel Annotation ve Dependency Injection
 
-### UnSafe from Minification
-###### [Style [Y090](#style-y090)]
+### Minification Uyumluluk
+###### [Stil [Y090](#style-y090)]
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - Bağımlılıkları belirlerken kısayol sintaksını kullanmaktan kaçının.
 
     *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
+    
+    *Neden?*: Component'e aid değişkenler (controller, factory, etc) minification işlemi sonrası karıştırılmış değişkenlere çevrilecektir. Örneğin, `common` ve `dataservice`, `a` ve `b` değişkenlerine dönüşebilir ve Angular tarafından bulunamayabilir.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* sakınılacak stil - minification uyumlu değil*/
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1501,26 +1500,26 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Bu kod minificationdan sonra karışık değişkenler üretebilir ve runtime hataları ile karşılaşabilirsiniz.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* sakınılacak stil - minification uyumlu değil*/
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Manually Identify Dependencies
-###### [Style [Y091](#style-y091)]
+### Manuel Olarak Bağımlılıkları Tanımlamak
+###### [Stil [Y091](#style-y091)]
 
-  - Use `$inject` to manually identify your dependencies for Angular components.
+  - Angular component'lerinize manuel olarak bağımlılıklarınızı tanımlamak için `$inject` kullanın.
 
-    *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *Neden?*: Bu teknik [`ng-annotate`](https://github.com/olov/ng-annotate) tarafından kullanılan tekniği taklit eder, ki benim minification uyumlu bağımlılıkları otomatik olarak yaratmak için önerdiğim yöntemdir. Eğer `ng-annotate` bir bağımlılığın daha önceden eklendiğini farkederse, bu bağımlılığı çoklamaz.
 
-    *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
+    *Neden?*: Bu bağımlılıklarınızın minification sürecinde değiştirilirken hataya açık hale gelmelerini engeller. `common` ve `dataservice`, `a` ve `b` haline gelebilir ve Angular tarafından bulunamayabilir.
 
-    *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function.
+    *Neden?*: Uzun array listelerini okumak zor olacağından satıriçinde bağımlılık tanımlamaktan kaçının. Ayrıca array'iniz string serilerinden oluşurken son elemanının bir fonksiyon olması kafa karıştırıcı olabilir.
 
     ```javascript
-    /* avoid */
+    /* kaçınılacak stil */
     angular
         .module('app')
         .controller('Dashboard',
@@ -1530,7 +1529,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     ```
 
     ```javascript
-    /* avoid */
+    /* kaçınılacak stil */
     angular
       .module('app')
       .controller('Dashboard',
@@ -1541,7 +1540,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     ```
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
     angular
         .module('app')
         .controller('Dashboard', Dashboard);
@@ -1552,11 +1551,11 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-    Note: When your function is below a return statement the `$inject` may be unreachable (this may happen in a directive). You can solve this by moving the Controller outside of the directive.
+    Not: Eğer fonksiyonunuz bir return statement'ının altındaysa `$inject` ulaşılmaz hale gelebilir (directive içerisinde bu durum gerçekleşebilir). Bunu controller'ı directive dışarısına taşıyarak çözebilirsiniz.
 
     ```javascript
-    /* avoid */
-    // inside a directive definition
+    /* sakınılacak stil */
+    // directive tanımlaması içerisinde
     function outer() {
         var ddo = {
             controller: DashboardPanelController,
@@ -1571,7 +1570,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     ```
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
     // outside a directive definition
     function outer() {
         var ddo = {
@@ -1586,17 +1585,17 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-### Manually Identify Route Resolver Dependencies
-###### [Style [Y092](#style-y092)]
+### Manuel Olarak Route Resolver Bağımlılıklarını Tanımlamak
+###### [Stil [Y092](#style-y092)]
 
-  - Use `$inject` to manually identify your route resolver dependencies for Angular components.
+  - Angular component'lerinize manuel olarak bağımlılıklarınızı tanımlamak için `$inject` kullanın.
 
-    *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *Neden?*: Bu teknik route resolver için anonim fonksiyonu kırar ve okunmasını kolaylaştırır.
 
-    *Why?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *Neden?*: `$inject` kolayca resolver öncesine konulabilir ve bağımlılıkları minification için uygun hale getiirir.
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1615,22 +1614,22 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
-## Minification and Annotation
+## Minification ve Annotation
 
 ### ng-annotate
-###### [Style [Y100](#style-y100)]
+###### [Stil [Y100](#style-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/* @ngInject */`
+  - [Gulp](http://gulpjs.com) ya da [Grunt](http://gruntjs.com) ile birlikte [ng-annotate](//github.com/olov/ng-annotate) kullanın ve otomatik dependency injection'a ihtiyacı olan fonksiyonları `/* @ngInject */` ile yorumlayın
 
-    *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *Neden?*: Bu kodunuzu minification uyumlu yazılması unutulmuş bağımlılıklara karşı korur.
 
-    *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
+    *Neden?*: [`ng-min`](https://github.com/btford/ngmin) artık kullanılmıyor
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    >Ben kişisel olarak Gulp kullanmayı tercih ediyorum. Yazması, okuması ve debug etmesi çok daha kolay.
 
-    The following code is not using minification safe dependencies.
+    Aşağıdaki kod minification uyumlu bağımlılıklar içermemektedir.
 
     ```javascript
     angular
@@ -1650,7 +1649,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Yukarıdaki kod ng-annotate ile çalıştırıldığı zaman ürettiği kod `$inject` annotation'unu içerecek ve minification uyumlu hale gelecek.
 
     ```javascript
     angular
@@ -1672,9 +1671,9 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     Avengers.$inject = ['storage', 'avengerService'];
     ```
 
-    Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Not: Eğer `ng-annotate` bağımlılığın daha önceden eklendiğini anlarsa, `$inject` kodunu çoğaltmayacaktır.
 
-    Note: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Not: Yukarıdaki kod ng-annotate ile çalıştırıldığı zaman ürettiği kod `$inject` annotation'unu içerecek ve minification uyumlu hale gelecek.
 
     ```javascript
     // Using @ngInject annotations
@@ -1693,17 +1692,17 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
+    > Note: Angular 1.3'den itibaren [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive'inin `ngStrictDi` parametresini minification uyumlu olmayan bağımlılıkları yakalamak için kullanabilirsiniz. Bu parametre aktif olduğu zaman injector "strict-di" modunda yaratılacak ve uygulamanın açık annotation kullanmayan fonksiyonların çalışmamasını sağlayacak. Debbuging bilgisi konsola yazılacak ve problemi yaratan fonksiyonu bulacaktır. Ben `ng-strict-di` parametresini sadece debugging için kullanmayı tercih ediyorum.
     `<body ng-app="APP" ng-strict-di>`
 
-### Use Gulp or Grunt for ng-annotate
-###### [Style [Y101](#style-y101)]
+### ng-annotate için Gulp ya da Grunt Kullanın
+###### [Stil [Y101](#style-y101)]
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - Otomatik derleme görevleriniz için [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ya da [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) kullanın. Bağımlılığı olan fonksiyonların başına `/* @ngInject */` satırını koyun.
 
-    *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+    *Neden?*: ng-annotate çoğu bağımlılığı yakalayacaktır, ama bazen `/* @ngInject */` sintaksı ile done vermenizi bekler.
 
-    The following code is an example of a gulp task using ngAnnotate
+    Takip eden kod gulp ve ngAnnotate kullanımına örnektir
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
@@ -1712,10 +1711,10 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
-            // Annotate before uglify so the code get's min'd properly.
+            // uglify etmeden önce annotate edin ki kod düzgün minified olsun.
             .pipe(ngAnnotate({
-                // true helps add where @ngInject is not used. It infers.
-                // Doesn't work with resolve, so we must be explicit there
+                // true helps add where @ngInject is not used.
+                // Resolve ile birlikte çalışmaz. Orası için kesin olarak belirtilmelidir
                 add: true
             }))
             .pipe(bytediff.start())
@@ -1727,21 +1726,21 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
-## Exception Handling
+## Exception Yakalama
 
-### decorators
-###### [Style [Y110](#style-y110)]
+### decorator'ler
+###### [Stil [Y110](#style-y110)]
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) servisinin config aşamasında [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator) kullanın, [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) servisinde exception'u yakaladığınız zaman alacağınız özel aksiyonları tanımlayın.
 
-    *Why?*: Provides a consistent way to handle uncaught Angular exceptions for development-time or run-time.
+    *Neden?*: Geliştirme ve çalıştırma esnasında Angular tarafından yakalanamayan exception'ları yakalamak için tutarlı bir yol sağlar.
 
-    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    Note: Diğer bir yöntem ise decorator kullanmak yerine servisi override etmektir. Bu da iyi bir seçenektir, ancak eğer varsayılan davranışı korumak istiyorsanız. Davranışı değiştirmek istiyorsanız decorator tavsiye edilir.
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
     angular
         .module('blocks.exception')
         .config(exceptionConfig);
@@ -1761,10 +1760,11 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
                 exception: exception,
                 cause: cause
             };
-            /**
-             * Could add the error to a service's collection,
-             * add errors to $rootScope, log errors to remote web server,
-             * or log locally. Or throw hard. It is entirely up to you.
+
+             /**
+             * Hatayı service'in kolleksiyonuna ekleyebilirsiniz,
+             * $rootScope'a ekleyebilirsiniz, uzaktaki bir sunucuya yazabilirsiniz
+             * ya da lokal olarak loglayabilirsiniz. Ya da direk console'a yazdırabilirsinz. Tamamen size kalmış.
              * throw exception;
              */
             toastr.error(exception.msg, errorData);
@@ -1772,17 +1772,17 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-### Exception Catchers
+### Exception Yakalayıcılar
 ###### [Style [Y111](#style-y111)]
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - Exceptionları yakalamak ve yönetmek için bir interface döndüren factory servisi yazın.
 
-    *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *Neden?*: Kodunuzda fırlatılan exceptionların yakalanması için tutarlı bir yol sağlar (e.g. during XHR calls or promise failures).
 
-    Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Not: Exception yakalayıcı çağrılarınızda fırlatılabilecek exceptionları yakalamak ve aksiyon almak için iyi bir yöntemdir. Örneğin, uzaktaki bir web servisinden veri almak için bir XHR çağrısı yaparken, o sunucudan fırlatılan exceptionları yakalamak ve buna göre aksiyon almak isteyebilirsiniz.
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
     angular
         .module('blocks.exception')
         .factory('exception', exception);
@@ -1803,7 +1803,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-### Route Errors
+### Route Hataları
 ###### [Style [Y112](#style-y112)]
 
   - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
