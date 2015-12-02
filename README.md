@@ -333,7 +333,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
+  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller.
 
   ```javascript
   /* avoid */
@@ -2898,12 +2898,20 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
+    // These are full file snippets containing an IIFE
+    ngapp        // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
+    ngservice    // creates an Angular service    
+    
+    // These are partial snippets intended to be chained
+    ngconfig     // defines a configuration phase function
+    ngmodule     // creates an Angular module getter
+    ngroute      // defines an Angular ngRoute 'when' definition
+    ngrun        // defines a run phase function    
+    ngstate      // creates an Angular UI Router state definition
     ```
 
 ### Visual Studio
@@ -2918,31 +2926,38 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
+  - Angular file templates that follow these styles and guidelines.
+
+    - Download the contents of the [webstorm-angular-file-templates](assets/webstorm-angular-file-templates?raw=true) folder
+    - Place it in your [fileTemplates](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html) folder
+    - Restart WebStorm
+    - Go to File > New    
+
   - Angular live templates that follow these styles and guidelines.
 
-    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
-    - Place it in your [templates folder](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/angular.templates.xml?raw=true)
+    - Place it in your [templates](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html) folder
     - Restart WebStorm
     - In a JavaScript file type these commands followed by a `TAB`:
 
     ```javascript
     // These are full file snippets containing an IIFE
-    ngapp     // creates an Angular module setter
+    ngapp        // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
     ngfilter     // creates an Angular filter
-    ngservice    // creates an Angular service
-
+    ngservice    // creates an Angular service    
+    
     // These are partial snippets intended to be chained
     ngconfig     // defines a configuration phase function
     ngmodule     // creates an Angular module getter
     ngroute      // defines an Angular ngRoute 'when' definition
-    ngrun        // defines a run phase function
+    ngrun        // defines a run phase function    
     ngstate      // creates an Angular UI Router state definition
     ```
-
-  *Individual templates are also available for download within the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
+    
+  *Individual live templates can be downloaded from the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
 
 ### Atom
 ###### [Style [Y253](#style-y253)]
@@ -2995,7 +3010,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngstate      // creates an Angular UI Router state definition
     ngconfig     // defines a configuration phase function
     ngrun        // defines a run phase function
-    ngwhen      // defines an Angular ngRoute 'when' definition
+    ngroute      // defines an Angular ngRoute 'when' definition
     ngtranslate  // uses $translate service with its promise
     ```
 
@@ -3015,12 +3030,20 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     - copy snippets to UltiSnips directory
 
     ```javascript
+    // These are full file snippets containing an IIFE
+    ngapp     // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
+    ngservice    // creates an Angular service    
+    
+    // These are partial snippets intended to be chained
+    ngconfig     // defines a configuration phase function
+    ngmodule     // creates an Angular module getter
+    ngroute      // defines an Angular ngRoute 'when' definition
+    ngrun        // defines a run phase function    
+    ngstate      // creates an Angular UI Router state definition
     ```
 
 ### Visual Studio Code

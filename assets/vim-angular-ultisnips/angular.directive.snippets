@@ -1,5 +1,4 @@
-snippet ngdirective
-options head
+snippet ngdirective "Creates an Angular directive" b
 (function() {
     'use strict';
 
@@ -7,10 +6,10 @@ options head
         .module('${1:moduleName}')
         .directive('${2:directiveName}', ${2:directiveName});
 
-    ${2:directiveName}.\$inject = ['${3:#:dependency}'];
+    ${2:directiveName}.\$inject = ['${3:dependency}'];
 
     /* @ngInject */
-    function ${2:directiveName}(${3:#:dependency}) {
+    function ${2:directiveName}(${3:dependency}) {
         var directive = {
             bindToController: true,
             controller: ${4:ControllerName},
@@ -26,13 +25,14 @@ options head
         }
     }
 
-    ${4:ControllerName}.\$inject = ['${3:#:dependency}'];
+    ${4:ControllerName}.\$inject = ['${3:dependency}'];
 
     /* @ngInject */
-    function ${4:ControllerName}(${3:#:dependency}) {
+    function ${4:ControllerName}(${3:dependency}) {
         ${7}
     }
 
 })();
 
 ${0}
+endsnippet

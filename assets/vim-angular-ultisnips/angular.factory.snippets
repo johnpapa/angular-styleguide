@@ -1,5 +1,4 @@
-snippet ngfactory
-options head
+snippet ngfactory "Creates an Angular factory" b
 (function() {
     'use strict';
 
@@ -7,10 +6,10 @@ options head
         .module('${1:moduleName}')
         .factory('${2:factoryName}', ${2:factoryName});
 
-    ${2:factoryName}.\$inject = ['${3:#:dependency}'];
+    ${2:factoryName}.\$inject = ['${3:dependency}'];
 
     /* @ngInject */
-    function ${2:factoryName}(${3:#:dependency}) {
+    function ${2:factoryName}(${3:dependency}) {
         var service = {
             ${4:functionName}: ${4:functionName}
         };
@@ -26,3 +25,4 @@ options head
 })();
 
 ${0}
+endsnippet

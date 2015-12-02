@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+.when('/${1:url}', {
+	templateUrl: '${2:template}.html',
+	controller: '${3:ControllerName}',
+	controllerAs: '${4:vm}'
+})
+]]></content>
+	<tabTrigger>ngroute</tabTrigger>
+	<scope>text.plain, source.js</scope>
+	<description>Defines an Angular ngRoute 'when' definition</description>
+</snippet>

@@ -1,5 +1,4 @@
-snippet ngcontroller
-options head
+snippet ngcontroller "Creates an Angular controller" b
 (function() {
     'use strict';
 
@@ -7,10 +6,10 @@ options head
         .module('${1:moduleName}')
         .controller('${2:ControllerName}', ${2:ControllerName});
 
-    ${2:ControllerName}.\$inject = ['${3:#:dependency}'];
+    ${2:ControllerName}.\$inject = ['${3:dependency}'];
 
     /* @ngInject */
-    function ${2:ControllerName}(${3:#:dependency}) {
+    function ${2:ControllerName}(${3:dependency}) {
         var vm = this;
         vm.title = '${2:ControllerName}';
 
@@ -26,3 +25,4 @@ options head
 })();
 
 ${0}
+endsnippet

@@ -1,5 +1,4 @@
-snippet ngservice
-options head
+snippet ngservice "Creates an Angular service" b
 (function() {
     'use strict';
 
@@ -7,10 +6,10 @@ options head
         .module('${1:moduleName}')
         .service('${2:ServiceName}', ${2:ServiceName});
 
-    ${2:ServiceName}.\$inject = ['${3:#:dependency}'];
+    ${2:ServiceName}.\$inject = ['${3:dependency}'];
 
     /* @ngInject */
-    function ${2:ServiceName}(${3:#:dependency}) {
+    function ${2:ServiceName}(${3:dependency}) {
         this.${4:functionName} = ${4:functionName};
 
         ////////////////
@@ -23,3 +22,4 @@ options head
 })();
 
 ${0}
+endsnippet
