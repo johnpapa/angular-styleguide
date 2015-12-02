@@ -108,7 +108,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   function someFactory() { }
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## IIFE
 ### JavaScript Kapsamları(Closures)
@@ -173,7 +173,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Not: HÇFİ'ler test kodunuzun fonksiyona özel değişkenlere erişmenizi engeller (Regular Expression, Yardımcı fonksiyonlar gibi). O yüzden bu fonksiyonları kendi başlarına test etmek daha iyidir. Ama yine de bu özel fonksiyonları komponentin dışından erişilebilir kılarak test edebilirsiniz.
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Modüller
 
@@ -290,7 +290,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   function logger() { }
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Kontrolörler (Controllers)
 
@@ -680,7 +680,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   </div>
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Servisler
 
@@ -719,7 +719,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Factory'ler
 
@@ -890,7 +890,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Veri Servisleri
 
@@ -1016,7 +1016,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Direktifler (Directives)
 ### Bir Dosyaya Bir Direktif
@@ -1326,7 +1326,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Promise'i Kontrolör İçerisine Çözümlemek
 ### Kontrolör Aktifleştirme Promise'leri
@@ -1477,7 +1477,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
     Note: Örnek kodun `movieService` bağımlılığı minification işlemi için uygun değildir. Minification uyumlu hale getirme detayları için [dependency injection](#manual-annotating-for-dependency-injection) ve [minification and annotation](#minification-and-annotation) bölümlerine bakın.
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Manuel Annotation ve Dependency Injection
 
@@ -1614,7 +1614,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Minification ve Annotation
 
@@ -1726,7 +1726,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Exception Yakalama
 
@@ -1848,7 +1848,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## İsimlendirme
 
@@ -2089,7 +2089,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   
   - Route konfigürasyonlarını ayrı bir dosyaya alın. Ana modül için `app.route.js` ve `admin` modülü için `admin.route.js` şeklinde. Küçük uygulamalar için bile ben bu ayrıma gitmeyi tercih ediyorum.
 
-**[İçerik Listesi](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Uygulama Yapısında LIFT Prensibi
 ### LIFT
@@ -2152,40 +2152,40 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     *Neden?*: Kendini tekrar etmemek önemlidir, ama LIFT'in diğer prensiplerini bozuyorsa önemini yitirir, o yüzden kendinizi tekrar etmemeye çalışın diyorum. Mesela session-view.html diye isimlendirmek istemiyorum çünkü bir view dosyası olduğu çok açık. Eğer açık değilse ya da geleneğiniz buysa o zaman böyle isimlendirin.
 
-**[İçerik Tablosu](#table-of-contents)**
+**[İçerik Tablosu](#icerik-listesi)**
 
 ## Uygulama Yapısı
 
 ### Genel
-###### [Style [Y150](#style-y150)]
+###### [Stil [Y150](#style-y150)]
 
   - Kısa vadeli düşünerek implementasyon yapın ama vizyonunuzu uzun vadeli tutun. Diğer bir deyişle, küçük parçalarla başlayın ama uygulamanın nereye doğru gittiğini aklınızda tutun. Uygulamanın bütün kodu `app` adlı bir klasör altında duracak. Bütün içerik bir dosyaya bir özellik şeklinde olacak. Her controller, servis, modül ve view kendi dosyalarında olacaklar. Bütün 3. parti kütüphaneler başka bir klasör altında toplanmalı, `app` klasörü altında değil. O kodları ben yazmadım ve benim uygulamamı karmaşıklaştırmasını istemiyorum (ör. `bower_components`, `scripts`, `lib`).
 
     Not: Bu yapının hakkında daha fazla bilgi istiyorsanız: [uygulama yapısı hakkındaki orjinal makalem](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
-### Layout
-###### [Style [Y151](#style-y151)]
+### Layout (yerleşim)
+###### [Stil [Y151](#style-y151)]
 
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions.
+  - Genel yerleşimi belirleyen bütün component'leri `layout` klasörü altına koyun. Buna ana view ve controller dosyası , navigasyon, menüler, içerik alanları ve diğer alanlar dahil olabilir.
 
-    *Why?*: Organizes all layout in a single place re-used throughout the application.
+    *Nden?*: Büyün yerleşim öğelerinizi tek bir yerde toplar ve bütün uygulama içerisinde tekrar kullanabilirsiniz.
 
-### Folders-by-Feature Structure
-###### [Style [Y152](#style-y152)]
+### Özelliklere Göre Klasör Yapısı
+###### [Stil [Y152](#style-y152)]
 
-  - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed.
+  - İçerdikleri özelliğe göre klasör isimleri verin. Eğer bir klasör 7'den fazla dosya içermeye başlarsa bir alt klasör yaratmayı düşünün. Alt klasöre bölme limitiniz farklı olabilir, kendinize göre ayarlayın.
 
-    *Why?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names.
+    *Neden?*: Bir yazılımcı kodun yerini bulabilir, tek bakışta ne iş yaptığını anlayabilir, klasör yapısı olabildiğince düz olur ve tekrar eden ve gereksiz isimler olmaz.
 
-    *Why?*: The LIFT guidelines are all covered.
+    *Neden?*: LIFT prensiplerinin hepsini kapsar.
 
-    *Why?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    *Neden?*: İçeriği organize ederek uygulamanın karmaşıklaşmasını azaltır ve LIFT prensipleri ile örtüştürür.
 
-    *Why?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    *Neden?*: Eğer 10'dan fazla dosya varsa bunların yerini tespit etmek tutarlı bir klasör yapısı ile düz klasör yapısına göre daha kolay olur.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     app/
@@ -2222,15 +2222,15 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Örnek Uygulama Yapısı](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
 
-      Note: Do not structure your app using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Not: Uygulamanızı tipe göre klasör yapısı ile oluşturmayın. Bu yüzden bir özellik üzerinde çalışırken birden çok klasör içerisinde çalışmanız gerekir ve dosya sayısı arttıkça sizi hantallaştırır. Özelliğe göre klasör yapısına göre dosyaları bulmak daha zordur.
 
     ```javascript
     /*
-    * avoid
-    * Alternative folders-by-type.
-    * I recommend "folders-by-feature", instead.
+    * sakınılacak stil
+    * Tipe Göre Klasör yöntemi.
+    * Bunun yerine ben İçeriğe Göre Klasörleme yöntemini tercih ediyorum.
     */
 
     app/
@@ -2266,71 +2266,72 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
             topnav.html
     ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Modularity
+## Modülerlik
 
-### Many Small, Self Contained Modules
-###### [Style [Y160](#style-y160)]
+### Küçük, Kendi Başına Yeterli Modüller
+###### [Stil [Y160](#style-y160)]
 
-  - Create small modules that encapsulate one responsibility.
+  - Tek işlevsellik içeren küçük modüller yaratın.
 
-    *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally. This means we can plug in new features as we develop them.
+    *Neden?*: Modüler uygulamalar ile "ekle çalıştır" yapmak daha kolaydır. Takım olarak geliştirmeye olanak sağlar ve dikey kesitlerde uygulamayı beraber geliştirebilirsiniz. Bu sayede yeni bir özelliik geliştirildiğinde uygulamaya hemen ekleyebiliriz.  
 
-### Create an App Module
-###### [Style [Y161](#style-y161)]
+### Bir App Modülü Yaratın
+###### [Stil [Y161](#style-y161)]
 
-  - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+  - Bir ana uygulama modülü yaratın ve bunun rolü  diğer bütün modülleri ve özellikleri bir araya getirmek olsun. Bu modülü uygulamanızın adı ile isimlendirin.
 
-    *Why?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *Neden?*: Angular modülerliği ve ayrıştırma desenlerini destekler. Bütün modüllerinizi bir arada tutan ana bir modül yaratmak çok basit bir şekilde bu modüllere ekleme yada bazılarını çıkarmanıza olanak sağlar.
 
-### Keep the App Module Thin
-###### [Style [Y162](#style-y162)]
 
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
+### App Modülünü Sade Tutun
+###### [Stil [Y162](#style-y162)]
 
-    *Why?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+  - Sadece bütün modülleri bir araya getirme mantığını buraya koyun. Özellikleri modüller kendi içlerinde tutsunlar.
 
-    *Why?*: The app module becomes a manifest that describes which modules help define the application.
+    *Neden?*: App modülüne diğer modülleri birbirine bağlamak dışında veri alma, view gösterme ya da başka işleyiş mantıkları koymanız App modülünüzü bulandırır ve özellik setlerinin tekrar kullanılmasını yada kapsam dışına alınmasını zorlaştırır.
 
-### Feature Areas are Modules
-###### [Style [Y163](#style-y163)]
+    *Neden?*: App modülü bu uygulamanın hangi modüllerden oluştuğunu gösteren bir manifesto haline gelir.
 
-  - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+### Özellik Kapsamları ve Modüller
+###### [Stil [Y163](#style-y163)]
 
-    *Why?*: Self contained modules can be added to the application with little or no friction.
+  - Özellik kapsamlarını ifade eden modüller yaratın; yerleşim, tekrar kullanılan ve paylaşılan servisler, dashboard ve uygulamaya özel özellikler gibi (Ör. kullanıcılar, admin, satış).
 
-    *Why?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    *Neden?*: Kendi başına yeterli modüller uygulamaya çok küçük pürüzlerle eklenir.
 
-    *Why?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code.
+    *Neden?*: Sprint'ler ve iterasyonlar özellik geliştirmeye odaklanabilir ve sprint ya da iterasyon sonunda özellik uygulamaya eklenebilir.
+    
+    *Neden?*: Özellik kapsamlarını modüllere ayırmak onları izole şekilde daha kolay test edilebilir hale getirir ve tekrar kullanılmalarını kolaylaştırır.
 
-### Reusable Blocks are Modules
-###### [Style [Y164](#style-y164)]
+### Tekrar Kullanılabilir Bloklar Modüllerdir
+###### [Stil [Y164](#style-y164)]
 
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+  - Tekrar kullanılabilir uygulama blokları için modüller yaratın. Örneğin exception yakalam, loglama, güvenlik, sistem kontrolü, lokal veri depolama gibi.
 
-    *Why?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    *Neden?*: Bu tarz özelliklere birçok uygulamada ihtiyaç duyulur. Bunları ayrı kendi modüllerinde ayrı tutmak uygulamalar arasında tekrar kullanılmalarına olanak sağlar.
 
-### Module Dependencies
-###### [Style [Y165](#style-y165)]
+### Modül Bağımlılıkları
+###### [Stil [Y165](#style-y165)]
 
-  - The application root module depends on the app specific feature modules and any shared or reusable modules.
+  - Ana uygulama modülü uygulamaya özel modüllere ve paylaşılan, tekrar kullanılabilen modüllere bağlıdır.
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modülerlik ve Bağımlılık](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
 
-    *Why?*: The main app module contains a quickly identifiable manifest of the application's features.
+    *Neden?*: Uygulama ana modülü uygulamanın özelliklerini içeren kolayca tanımlanabilen bir manifestodur.
 
-    *Why?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency in other applications and still work.
+    *Neden?*: Her özellik kapsamı nelere bağımlı olduğunu gösteren bir manifesto içerir, böylece başka uygulamalar içerisine bağımlılık olarak eklendiğinda hala çalışmaya devam eder.
 
-    *Why?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *Neden?*: Paylaşılan veri servisleri gibi uygulamalar arası özellikler kolay bulunabilir ve `app.core`'dan kolay bir şekilde paylaşılabilir (Bu modül için favori isminizi seçin).
 
-    Note: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows Angular's dependency rules, and is easy to maintain and scale.
+    Not: Bu tutarlılığı sağlamak için bi stratejidir. Bunun için birçok iyi seçenek mevcut. Angular'ın bağımlılık kurallarını izleyen, kolay yönetilebilen ve genişleyebilen tutarlı olan birtanesini seçin.
 
-    > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind.
+    > Benim yapılarım projelerim arasında pek fazla değişmez ama hepsi yapı ve modülerlik için bu rehberi izler. İmplementasyon özelliklere ve takıma göre değişkenlik gösterebilir. Bir başka deyişle, kelimesi kelimesine bir yapıya tutunmayın ama tutarlılığı, yönetilebilirliği ve verimi göz önünde bulundurarak yapınızı ayaralayın.
 
-    > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
+    > Küçük bir uygulamada, özelliklerin direk bağımlılığı olmadığı, paylaşılan bütün bağımlılıkları ana modüle koymayı düşünebilirsiniz. Bu küçük uygulamaları daha kolay yönetilebilir hale getirir, ama bu uygulamada kullanılan modülleri bu uygulama dışında kullanmayı zorlaştırır.
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Startup Logic
 
@@ -2386,7 +2387,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Angular $ Wrapper Services
 
@@ -2404,7 +2405,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle Angular's digest cycle thus keeping data binding in sync.
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2577,7 +2578,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
                              /customers.route.spec.js
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Animations
 
@@ -2610,7 +2611,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Comments
 
@@ -2662,7 +2663,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## JS Hint
 
@@ -2739,7 +2740,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## JSCS
 
@@ -2829,7 +2830,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Constants
 
@@ -2879,7 +2880,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         });
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -3025,7 +3026,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
@@ -3051,7 +3052,7 @@ You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to creat
   yo hottowel helloWorld
   ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Routing
 Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
@@ -3144,7 +3145,7 @@ Client-side routing is important for creating a navigation flow between views an
 
     *Why?*: This makes it easy to enable or disable portions of an application without concern over orphaned routes.
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Task Automation
 Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
@@ -3169,7 +3170,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
     ];
     ```
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Filters
 
@@ -3179,7 +3180,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
     *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
 
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -3223,4 +3224,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[Back to top](#icerik-listesi)**
