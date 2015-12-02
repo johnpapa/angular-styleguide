@@ -1806,21 +1806,21 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Route Hataları
 ###### [Style [Y112](#style-y112)]
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Bütün routing hatalarını [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError) kullanarak yakalayın ve loglayın.
 
-    *Why?*: Provides a consistent way to handle all routing errors.
+    *Neden?*: Bütün routing hatalarını yakalamak için tutarlı bir yöntem.
 
-    *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or recovery options.
+    *Neden?*: Potensiyel olarak bir routing hatası yakalandığında kullanıcıları hatanın detayları ve nereye yönlenebileceklerini gördüğü bir sayfaya yönlendirmek daha iyi bir kullanıcı deneyimi sağlar.
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
     var handlingRouteChangeError = false;
 
     function handleRoutingErrors() {
         /**
-         * Route cancellation:
-         * On routing error, go to the dashboard.
-         * Provide an exit clause if it tries to do it twice.
+         * Route iptali:
+         * Hata olduğunda dashboard ekranına git
+         * Eğer iki kere denenirse bir çıkış yapısı sun.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
@@ -1833,13 +1833,13 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
                     (rejection.msg || '');
 
                 /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
+                 * Tercih olarak özel bir servis ya da $log kullanarak logla.
+                 * (Özel servisi inject etmeyi unutma)
                  */
                 logger.warning(msg, [current]);
 
                 /**
-                 * On routing error, go to another route/state.
+                 * Routing hatası aldığında başka bir sayfaya yönlendir.
                  */
                 $location.path('/');
 
@@ -1848,33 +1848,33 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
-## Naming
+## İsimlendirme
 
-### Naming Guidelines
-###### [Style [Y120](#style-y120)]
+### İsimlendirme Rehberi
+###### [Stil [Y120](#style-y120)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    * the file name (`avengers.controller.js`)
-    * the registered component name with Angular (`AvengersController`)
+  - Bütün componentler için, tipini ve içeriğini belirten tutarlı isimler kullanın. Benim tavsiye ettiğim şablon `içerik.tip.js`. Çoğu asset için genelde 2 isim vardır:
+    * dosya adı (`avengers.controller.js`)
+    * Angular'a kayıt olan component ismi (`AvengersController`)
 
-    *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+    *Neden?*: İsimlendirme gelenekleri arananın bir bakışta bulunması için tutarlı bir yol sunar. Proje genelinde tutarlılık hayatidir. Takım içerisinde tutartlılık önemlidir. Şirket içersinde tutartlılık ise inanılmaz bir verim sağlar.
 
-    *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand.
+    *Neden?*: İsimlendirme geleneği, aradığınız kodu basitçe bulmanızı sağlar ve anlaşılmasını kolaylaştırır.
 
-### Feature File Names
-###### [Style [Y121](#style-y121)]
+### İçerik Dosya İsimleri
+###### [Stil [Y121](#style-y121)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - Bütün componentler için, tipini ve içeriğini belirten tutarlı isimler kullanın.
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *Neden?*: Component'leri hızlı bir şekilde tanımlamak için tutarlı bir yol sunar.
 
-    *Why?*: Provides pattern matching for any automated tasks.
+    *Neden?*: Otomatik görevlerde dosya isimleri için pattern matching sağlar.
 
     ```javascript
     /**
-     * common options
+     * yaygın seçenekler
      */
 
     // Controllers
@@ -1890,7 +1890,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     // controllers
@@ -1920,28 +1920,30 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     ```
 
   Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team. My preference is `avengers.controller.js`.
+  
+  Note: Controller dosyalarını isimlendirirken yaygın olan bir diğer gelenek ise `controller` kelimesini dosya isminden çıkarıp `avengers.controller.js` yerine `avengers.js` olarak bırakmaktır. Diğer bütün componentler için son ek tutulur. Controller'lar en yaygın kullanılan component tipidir, bu yüzden `controller` kelimesini çıkartmak bizi fazladan yazı yazmaktan kurtarır ve hala kolayca component'in ne olduğunu anlamamızı sağlar. Benim tavsiyen tek bir geleneğe sadık kalın ve takımınız içerisinde tutarlı olun. Benim tercihim `avengers.controller.js`.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
     // Controllers
     avengers.js
     avengers.spec.js
     ```
 
-### Test File Names
+### Test Dosyası İsimleri
 ###### [Style [Y122](#style-y122)]
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.
+  - Test dosyalarını, test ettikleri component'in ismi ve `spec` son eki ile isimlendirin.
 
-    *Why?*: Provides a consistent way to quickly identify components.
-
-    *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *Neden?*: Component'leri hızlı bir şekilde tanımlamak için tutarlı bir yol sunar.
+    
+    *Neden?*: [karma](http://karma-runner.github.io/) ya da diğer test araçları için bir pattern matching yapısı sunar.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
     avengers.controller.spec.js
     logger.service.spec.js
@@ -1949,18 +1951,18 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     avenger-profile.directive.spec.js
     ```
 
-### Controller Names
+### Controller İsimleri
 ###### [Style [Y123](#style-y123)]
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Bütün controller'lar için içeriklerini ifade eden tutarlı isimlar kullanın. Contructor oldukları için UpperCamelCase yöntemini kullanın.
 
-    *Why?*: Provides a consistent way to quickly identify and reference controllers.
+    *Neden?*: Controller'ları hızlıca ilişkilendirmek için tutarlı bir yol sunar.
 
-    *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *Neden?*: UpperCamelCase isimlendirme yöntemi constructor kullanarak yaratılan objeler için gelenekseldir.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     // avengers.controller.js
@@ -1971,16 +1973,16 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     function HeroAvengersController() { }
     ```
 
-### Controller Name Suffix
+### Controller İsmi Son Eki
 ###### [Style [Y124](#style-y124)]
 
-  - Append the controller name with the suffix `Controller`.
+  - Controller ismine `Controller` son eki ekleyin.
 
-    *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+    *Neden?*: `Controller` son eki daha yaygın kullanılıyor ve daha açıklayıcı.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     // avengers.controller.js
@@ -1991,22 +1993,23 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     function AvengersController() { }
     ```
 
-### Factory and Service Names
+### Factory ve Service İsimleri
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories and services named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`. Only suffix service and factories with `Service` when it is not clear what they are (i.e. when they are nouns).
+  - Bütün Service'ler ve Factory'ler için içeriklerini ifade eden tutarlı isimler kullanın. İsimlendirme yöntemi olarak camel-case kullanın. `$` ön ekini kullanmaktan kaçının.  Ne oldukları tam olarak anlaşılmıyor ise `Service` son ekini kullanın.
 
-    *Why?*: Provides a consistent way to quickly identify and reference factories.
+    *Neden?*: Factory'leri hızlıca ilişkilendirmek için tutarlı bir yol sunar.
 
-    *Why?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
+    *Neden?*: Angular ile birlikte gelen `$` ön ekini kullanan servisler ile çakışmayı önler.
 
-    *Why?*: Clear service names such as `logger` do not require a suffix.
+    *Neden?*: Ne olduğu açık olan `logger` gibi servis isimleri son eke ihtiyaç duymaz.
 
     *Why?*: Service names such as `avengers` are nouns and require a suffix and should be named `avengersService`.
+    *Neden?*: `avengers` gibi servis isimleri isimdir ve son eke ihtiyaç duyar. `avengersService` olarak isimlendirilmelidir.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     // logger.service.js
@@ -2019,7 +2022,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     // credit.service.js
@@ -2037,16 +2040,16 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     function customersService() { }
     ```
 
-### Directive Component Names
-###### [Style [Y126](#style-y126)]
+### Directive İsimleri
+###### [Stil [Y126](#style-y126)]
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Bütün directive'leri camel-case yöntemini kullanarak tutarlı bir şekilde isimlendirin. Directive'in nereye ait olduğunu belirten kısa ön ekler kullanın (firma ya da proje isimlerinin kısaltılmış hali örnek olabilir).
 
-    *Why?*: Provides a consistent way to quickly identify and reference components.
+    *Neden?*: Component'leri hızlıca ilişkilendirmek için tutarlı bir yol sunar.
 
     ```javascript
     /**
-     * recommended
+     * önerilen stil
      */
 
     // avenger-profile.directive.js
@@ -2059,52 +2062,56 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     function xxAvengerProfile() { }
     ```
 
-### Modules
-###### [Style [Y127](#style-y127)]
+### Modüller
+###### [Stil [Y127](#style-y127)]
 
-  - When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+  - Eğer birden fazla modülünüz varsa, ana modül ismi `app.module.js` olarak isimlendirilir ve diğer tüm bağımlılık modülleri sundukları özellikleri ifade edecek şekilde isimlendirlir. Örneğin, admin modülü `admin.module.js` olarak isimlendirilir. Kayıtlı modül isimlerimi `app` ve `admin` olur.
 
-    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *Neden?*: Birçok modülü olan uygulamalar ya da genişleyen büyük uygulamalar için tutarlılık sağlar.
 
-    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *Neden?*: Otomatik görevler içerisinde bütün dosyaları birleştiriyorsanız, önce modülleri daha sonra diğer angular dosyalarını sıralamanıza yardımcı olur.
 
-### Configuration
+### Konfigürasyonlar
 ###### [Style [Y128](#style-y128)]
 
   - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  
+  - Modül konfigüreasyonunu ayrı bir dosyada modülün ismi ile bulundurun. `app` modülünün konfigürasyon dosyasının adı `app.config.js` olmalıdır (ya da basitçe `config.js`). `admin.module.js`'nün konfigürasyon dosyası `admin.config.js` olarak isimlendirilir.
 
-    *Why?*: Separates configuration from module definition, components, and active code.
+    *Neden?*: Konfigürasyonları modül tanımlamalarından, component'lerden ve çalışan koddan ayırır.
 
-    *Why?*: Provides an identifiable place to set configuration for a module.
+    *Neden?*: Modül konfigürasyonlarının yerinin anlaşılmasını kolaylaştırır.
 
-### Routes
-###### [Style [Y129](#style-y129)]
+### Route'lar
+###### [Stil [Y129](#style-y129)]
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
+  
+  - Route konfigürasyonlarını ayrı bir dosyaya alın. Ana modül için `app.route.js` ve `admin` modülü için `admin.route.js` şeklinde. Küçük uygulamalar için bile ben bu ayrıma gitmeyi tercih ediyorum.
 
-**[Back to top](#table-of-contents)**
+**[İçerik Listesi](#table-of-contents)**
 
-## Application Structure LIFT Principle
+## Uygulama Yapısında LIFT Prensibi
 ### LIFT
-###### [Style [Y140](#style-y140)]
+###### [Stil [Y140](#style-y140)]
 
-  - Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines.
+  - Uygulamanızı, kodunuzu kolayca bulup (`L`ocate), bir bakışta tanımlayıp (`I`dentify), en az dallanmış selikde klasörlediğiniz (`F`lattest structure) ve kendinizi tekrar etmediğiniz (`T`ry to stay DRY) bir şekilde yapılandırın. Yapnınız bu 4 temel prensibi izlemeli.
 
-    *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
+    *Neden LIFT?*: Kolaylıkla büyüyebilen tutarlı bir yapı sunar, modülerdir  ve kodlara kolayca ulaşmayı sağlayarak yazılımcı verimini arttırır. Yapınızı kontrol etmenin bir başka yöntemi ise kendinize: Bir özellik eklemek için ihtiyacım olan dosyaları kolayca bulup açabiliyor muyum? diye sormanızdır
 
-    When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines
+    Yapımdan memnun olmadığım zamanlarda geri dönüp LIFT prensibinin kurallarını tekrar gözden geçiriyorum
 
-    1. `L`ocating our code is easy
-    2. `I`dentify code at a glance
-    3. `F`lat structure as long as we can
-    4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
+    1. Kodunuzu kolayca bulabiliyor musunuz? (`L`ocating our code is easy)
+    2. Bir bakışta ne iş yaptığını tanımlayabiliyor musunuz? (`I`dentify code at a glance)
+    3. Çok dallanmamış bir klasör yapınız mı var? (`F`lat structure as long as we can)
+    4. Bir işi tekrar tekrar yapıyor musunuz? (`T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY)
 
-### Locate
-###### [Style [Y141](#style-y141)]
+### Yer Tespiti
+###### [Stil [Y141](#style-y141)]
 
-  - Make locating your code intuitive, simple and fast.
+  - Kodunuzun kolayca tahmin edilebilir bir yerde ve hızlıca ulaşılabilir olduğundan emin olun.
 
-    *Why?*: I find this to be super important for a project. If the team cannot find the files they need to work on quickly, they will not be able to work as efficiently as possible, and the structure needs to change. You may not know the file name or where its related files are, so putting them in the most intuitive locations and near each other saves a ton of time. A descriptive folder structure can help with this.
+    *Neden?*: Bunun bir proje için çok önemli olduğunu düşünüyorum. Eğer takımınız çalışacağı dosyaları kolayca bulamıyorlarsa, verimli bir şekilde çalışamıyorlarsa yapınız değişmeli demektir. Bir dosyanın ve onunla ilintili olan dosyaların nerede olduğunu bilmiyor olabilirsiniz. Dosyları ve ilintili olan dosyaları kolayca tahmin edilebilecek bir klasöre koymak çok zaman kazanmanızı sağlar. Betimleyici bir klasör yapısı size bunu sağlar.
 
     ```
     /bower_components
@@ -2124,37 +2131,37 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
     .bower.json
     ```
 
-### Identify
-###### [Style [Y142](#style-y142)]
+### Tanımlama
+###### [Stil [Y142](#style-y142)]
 
-  - When you look at a file you should instantly know what it contains and represents.
+  - Bir dosyaya baktğınız anda onun ne içerdiğini ve temsil ettiğini anlamalısınız.
 
-    *Why?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
+    *Neden?*: Kodun ne yaptığını anlamak için daha az didiklersiniz ve daha verimli olursunuz. Eğer bunun için daha uzun dosya isimlerine ihtiyaç duyarsanız varsın öyle olsun. Dosya isimleriniz açıklayıcı olsun ve içerisinde sadece bir component bulundursun. Birçok servis ve controller içeren dosyalardan uzak durun. Her dosyada tek bir component kuralının istisnası ancak çok küçük ve ilintili component'lerin aynı dosyada bulunması olabilir.
 
-### Flat
-###### [Style [Y143](#style-y143)]
+### Düz Klasör Yapısı
+###### [Stil [Y143](#style-y143)]
 
-  - Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
+  - Olabildiğince dallanmayan bir klasör yapısı kurun. 7'den fazla dosya bir klasörde oluyorsa alt klasörlere bölmeyi düşünün. 
 
-    *Why?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
+    *Neden?*: Hiçkimse bir dosya bulmak için yedi kat klasör gezmek istemez. Websitelerindeki menüleri düşünün… 2 kademeden derin bir menü yapmadan önce iyice düşünmek gerekir. Klasör yapılarında böyle kesin bir sayı yoktur, ancak bir klasörde 7-10 dosya olursa, alt klasörlere bölmeyi düşünmeye başlayabiliriz. Bu sizin rahat hissetmeniz ile ilgilidir. Gerçekten anlamlı olmadıkça alt klasör oluşturmayın ve düz klasör yapısını koruyun.
 
-### T-DRY (Try to Stick to DRY)
-###### [Style [Y144](#style-y144)]
+### Kendini Tekrar Etmemeye Çalışma (Try to Stick to DRY)
+###### [Stil [Y144](#style-y144)]
 
-  - Be DRY, but don't go nuts and sacrifice readability.
+  - Kendinizi tekrar etmeyin, ama abartıp okunabilirliği azaltmayın.
 
-    *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it.
+    *Neden?*: Kendini tekrar etmemek önemlidir, ama LIFT'in diğer prensiplerini bozuyorsa önemini yitirir, o yüzden kendinizi tekrar etmemeye çalışın diyorum. Mesela session-view.html diye isimlendirmek istemiyorum çünkü bir view dosyası olduğu çok açık. Eğer açık değilse ya da geleneğiniz buysa o zaman böyle isimlendirin.
 
-**[Back to top](#table-of-contents)**
+**[İçerik Tablosu](#table-of-contents)**
 
-## Application Structure
+## Uygulama Yapısı
 
-### Overall Guidelines
+### Genel
 ###### [Style [Y150](#style-y150)]
 
-  - Have a near term view of implementation and a long term vision. In other words, start small but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  - Kısa vadeli düşünerek implementasyon yapın ama vizyonunuzu uzun vadeli tutun. Diğer bir deyişle, küçük parçalarla başlayın ama uygulamanın nereye doğru gittiğini aklınızda tutun. Uygulamanın bütün kodu `app` adlı bir klasör altında duracak. Bütün içerik bir dosyaya bir özellik şeklinde olacak. Her controller, servis, modül ve view kendi dosyalarında olacaklar. Bütün 3. parti kütüphaneler başka bir klasör altında toplanmalı, `app` klasörü altında değil. O kodları ben yazmadım ve benim uygulamamı karmaşıklaştırmasını istemiyorum (ör. `bower_components`, `scripts`, `lib`).
 
-    Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Not: Bu yapının hakkında daha fazla bilgi istiyorsanız: [uygulama yapısı hakkındaki orjinal makalem](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
