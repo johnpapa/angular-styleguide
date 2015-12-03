@@ -2333,14 +2333,14 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Startup Logic
+## Başlangıç Mantığı
 
-### Configuration
-###### [Style [Y170](#style-y170)]
+### Konfigürasyon
+###### [Stil [Y170](#style-y170)]
 
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidates include providers and constants.
+  - Kodunuzu, uygulamanız başlamadan önce çalışacak olan [modül konfigürasyonu](https://docs.angularjs.org/guide/module#module-loading-dependencies) içine koyun. Buraya koyulması beklenenler provider'lar ve constant'lardır.
 
-    *Why?*: This makes it easier to have less places for configuration.
+    *Neden?*: Bu yöntem konfigürasyonların yapılacağı yerleri azaltmayı sağlar.
 
   ```javascript
   angular
@@ -2367,12 +2367,12 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Run Blocks
-###### [Style [Y171](#style-y171)]
+### Run Blokları
+###### [Stil [Y171](#style-y171)]
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Uygulama başladığında çalışması gereken her kod bloğu bir fonksiyon ile dışarı açılan factory içerisinde tanımlanmalıdır, ve [run bloğuna](https://docs.angularjs.org/guide/module#module-loading-dependencies) inject edilmelidir.
 
-    *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+    *Neden?*: Run bloğu içerisinde boşta duran bir kod zor test edilir. Bir factory içerisine koymak soyutlaştırmayı ve mock'lamayı kolaylaştırır.
 
   ```javascript
   angular
@@ -2387,82 +2387,83 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Angular $ Wrapper Services
+## Angular $ Wrapper Servisleri
 
-### $document and $window
-###### [Style [Y180](#style-y180)]
+### $document ve $window
+###### [Stil [Y180](#style-y180)]
 
-  - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
+  - `document` ve `window` yerine [`$document`](https://docs.angularjs.org/api/ng/service/$document) ve [`$window`](https://docs.angularjs.org/api/ng/service/$window) kullanın.
 
-    *Why?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *Neden?*: Bu servisler Angular tarafından yaratılmıştır ve document ve window'a göre daha kolay test edilebilirler. Bu kendiniz için mock document ve window oluşturmanızı engeller.
 
 ### $timeout and $interval
-###### [Style [Y181](#style-y181)]
+###### [Stil [Y181](#style-y181)]
 
-  - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
+  - `setTimeout` and `setInterval` yerine [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) ve [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) kullanın.
 
-    *Why?*: These services are wrapped by Angular and more easily testable and handle Angular's digest cycle thus keeping data binding in sync.
+    *Neden?*: Bu servisler Angular tarafından yaratılmıştır, daha kolay test edilebilirler ve Angular'ın digest cycle'ını yönetebilir ve veriyi senkronize tutabilirler.
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Testing
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+## Test
 
-### Write Tests with Stories
-###### [Style [Y190](#style-y190)]
+Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit test temelleri için önerilerimi linkler ve daha fazla detay ile paylaşıyorum.
 
-  - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
+### Testlerinizi Senaryolar İle Yazın
+###### [Stil [Y190](#style-y190)]
 
-    *Why?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+  - Her senaryo için test kümeleri yazın. Boş bir test ile başlayın ve kodu yazarken içini doldurun.
+
+    *Neden?*: Test tanımlamalarını yazmak senaryonuzun ne yapacağını, ne yapmayacağını ve başarısını nasıl ölçeceğinizi tanımlamaya yardımcı olur.
 
     ```javascript
-    it('should have Avengers controller', function() {
+    it('Avengers controller`ı tanımlı olmalı', function() {
         // TODO
     });
 
-    it('should find 1 Avenger when filtered by name', function() {
+    it('İsme göre filtrelendiğinde 1 Avenger bulmalı', function() {
         // TODO
     });
 
-    it('should have 10 Avengers', function() {
-        // TODO (mock data?)
+    it('10 Avenger olmalı', function() {
+        // TODO (mock veri?)
     });
 
-    it('should return Avengers via XHR', function() {
+    it('Avengerları XHR ile dönmeli', function() {
         // TODO ($httpBackend?)
     });
 
     // and so on
     ```
 
-### Testing Library
-###### [Style [Y191](#style-y191)]
+### Test Kütüphanesi
+###### [Stil [Y191](#style-y191)]
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) for unit testing.
+  - Unit testleriniz için [Jasmine](http://jasmine.github.io/) ya da [Mocha](http://mochajs.org) kullanın.
 
-    *Why?*: Both Jasmine and Mocha are widely used in the Angular community. Both are stable, well maintained, and provide robust testing features.
+    *Neden?*: Jasmine ve Mocha, ikisi de Angular topluluğu tarafından yaygınca kullanılmaktadır. İkisi de istikrarlı, iyi yönetilir, ve sağlam test özellikleri sunuyorlar.
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com). I prefer Mocha.
+    Not: Mocha kullanırken ayrıca [Chai](http://chaijs.com) gibi bir assert kütüphanesi kullanmayı gözönünde bulundurun. Ben Mocha'yı tercih ediyorum.
 
-### Test Runner
-###### [Style [Y192](#style-y192)]
+### Test Çalıştırıcı
+###### [Stil [Y192](#style-y192)]
 
-  - Use [Karma](http://karma-runner.github.io) as a test runner.
+  - Test çalıştırıcısı olarak [Karma](http://karma-runner.github.io)'yı kullanın.
 
-    *Why?*: Karma is easy to configure to run once or automatically when you change your code.
+    *Neden?*: Karma kolay ayarlanabilir ve kodunuzu değiştirdiğinizde otomatik olarak ya da birkereliğine çalışabilir bir araçtır.
 
-    *Why?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *Neden?*: Karma kendi başına ya da Grunt veya Gulp aracılığı ile Continuous Integration sisteminize kolaylıkla dahil olabilir.
 
-    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Neden?*: [WebStorm](http://www.jetbrains.com/webstorm/) ve [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225) gibi bazı IDE'ler Karma ile entegre olmaya başladılar.
 
-    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
+    *Neden?*: Karma, [Grunt](http://www.gruntjs.com) ([grunt-karma](https://github.com/karma-runner/grunt-karma) ile) ve [Gulp](http://www.gulpjs.com) gibi otomatik görev yönetici devleri ile uyumlu çalışır. Gulp kullanırken [Karma](https://github.com/karma-runner/karma)'yı direk olarak API'si ile kullanabilirsiniz.
 
     ```javascript
-    /* recommended */
+    /* önerilen stil */
 
-    // Gulp example with Karma directly
+    // Karman'nın direk kullanıldığı Gulp örneği
     function startTests(singleRun, done) {
         var child;
         var excludeFiles = [];
@@ -2505,68 +2506,70 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-### Stubbing and Spying
-###### [Style [Y193](#style-y193)]
+### Stubbing ve Spying
+###### [Stil [Y193](#style-y193)]
 
-  - Use [Sinon](http://sinonjs.org/) for stubbing and spying.
+  - Stubbing ve spying [Sinon](http://sinonjs.org/) kullanın.
 
-    *Why?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *Neden?*: Sinon, Jasmine ve Mocha ile uyumlu çalışır ve sundukları stubbing ve spying özelliklerini genişletir.
 
-    *Why?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *Neden?*: Sinon, Jasmine ve Karma arasında kolay geçiş sağlar, eğer ikisini de kullanmak istiyorsanız.
 
-    *Why?*: Sinon has descriptive messages when tests fail the assertions.
+    *Neden?*: Sinon, assert'ler hata verdiğin güzel açıklamalı hata mesajları üretir.
 
-### Headless Browser
-###### [Style [Y194](#style-y194)]
+### Head'siz Tarayıcı
+###### [Stil [Y194](#style-y194)]
 
-  - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - Testlerinizi sunucu üzerinde çalıştırmak için [PhantomJS](http://phantomjs.org/) kullanın.
+    
+    *Neden?*: PhantomJS head'siz bir tarayıcıdır ve testlerinizi görsel bir tarayıcıya ihtiyaç duymadan çalıştırabilir. Böylece sunucunuza Chrome, Safari, IE ya da başka bir tarayıcı yüklemek zorunda kalmazsınız.
 
-    *Why?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server.
+    Not: Siz yine de hedef kitlenizin kullanacağı tarayıcıları kendi ortamınızda test etmelisiniz.
 
-    Note: You should still test on all browsers in your environment, as appropriate for your target audience.
-
-### Code Analysis
-###### [Style [Y195](#style-y195)]
+### Kod Analizi
+###### [Stil [Y195](#style-y195)]
 
   - Run JSHint on your tests.
+  - Testlerinizde JSHint kullanın.
 
-    *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Neden?*: Testler de koddur. JSHint kodun hatılı çalışmasına sebep olan kod kalitesi problemlerini denetler.
 
-### Alleviate Globals for JSHint Rules on Tests
-###### [Style [Y196](#style-y196)]
+### JSHint Kurallarını Testler İçin Hafifletmek
+###### [Stil [Y196](#style-y196)]
 
-  - Relax the rules on your test code to allow for common globals such as `describe` and `expect`. Relax the rules for expressions, as Mocha uses these.
+  - `describe` ve `expect` gibi yaygın kullanılan global'lere izin vermesi için kurallarınızı hafifletin. Expression'ları Mocha kullandığı için onları kontrol eden kuralları da hafifletin.
 
-    *Why?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
+    *Neden?*: Testleriniz de birer koddur ve üretim ortamındaki kodunuz gibi onlar da aynı ilgi ve kod kalitesini hakeder. Ancak, test için test frameworkleri tarafından kullanılan global değişkenler için bu kurallar hafifletilmelidir.
 
     ```javascript
     /* jshint -W117, -W030 */
     ```
     Or you can add the following to your JSHint Options file.
+    Ya da aşağıdaki ayarları JSHint konfigürasyon dosyanıza ekleyebilirsiniz
 
     ```javascript
     "jasmine": true,
     "mocha": true,
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Test Araçları](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
-### Organizing Tests
-###### [Style [Y197](#style-y197)]
+### Testleri Organize Etmek
+###### [Stil [Y197](#style-y197)]
 
-  - Place unit test files (specs) side-by-side with your client code. Place specs that cover server integration or test multiple components in a separate `tests` folder.
+  - Test dosyalarınızı(specs) test ettiğiniz dosyalarla yanyana koyun. Birçok component'i ve sunucu entegrasyonunu test eden kodları `tests` klasörüne koyun.
 
-    *Why?*: Unit tests have a direct correlation to a specific component and file in source code.
+    *Neden?*: Unit testlerin kaynak kodundaki component ile doğrudan ilişkisi vardır.
 
-    *Why?*: It is easier to keep them up to date since they are always in sight. When coding whether you do TDD or test during development or test after development, the specs are side-by-side and never out of sight nor mind, and thus more likely to be maintained which also helps maintain code coverage.
+    *Neden?*: Sürekli gözönünde olduklarından güncel tutmak kolay olacaktır. TDD de yapsanız, kod yazarken ya da yazdıktan sonra da test yazsanız, kaynak kodu dosyanızla yanyana olan test dosyası gözünüzden ve aklınızdan kaçmaz, ve böylece güncellenme olasılığı ve kodunuzun test kapsamı artar.
 
-    *Why?*: When you update source code it is easier to go update the tests at the same time.
+    *Neden?*: Kaynak kodunu güncellediğinizde test kodunu da güncellemeniz kolaylaşır.
 
-    *Why?*: Placing them side-by-side makes it easy to find them and easy to move them with the source code if you move the source.
+    *Neden?*: Kaynak kodu ile yanyana koymak test kodlarını bulmayı kolaylaştırır ve taşırken onunla birlikte gitmesini sağlar.
 
-    *Why?*: Having the spec nearby makes it easier for the source code reader to learn how the component is supposed to be used and to discover its known limitations.
+    *Neden?*: Testi yakınlarda tutmak, kaynak kodu okuyan kişinin component'in ne yaptığını ve limitlerini keşfetmesi için testi de okumasını kolaylaştırır.
 
-    *Why?*: Separating specs so they are not in a distributed build is easy with grunt or gulp.
+    *Neden?*: Yayına çıkacak kodun içerisinde testlerin bulunmamasını sağlamak grunt ve gulp ile kolay olur.
 
     ```
     /src/client/app/customers/customer-detail.controller.js
@@ -2578,18 +2581,18 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
                              /customers.route.spec.js
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Animations
+## Animasyonlar
 
-### Usage
-###### [Style [Y210](#style-y210)]
+### Kullanım
+###### [Stil [Y210](#style-y210)]
 
-  - Use subtle [animations with Angular](https://docs.angularjs.org/guide/animations) to transition between states for views and primary visual elements. Include the [ngAnimate module](https://docs.angularjs.org/api/ngAnimate). The 3 keys are subtle, smooth, seamless.
+  - [Angular ile animasyonlar](https://docs.angularjs.org/guide/animations) state'ler arası ve birincil görsel elemanlar için kullanılıyor ise hafif olmalı. [ngAnimate module](https://docs.angularjs.org/api/ngAnimate) modülünü projenize dahil edin. 3 anahtar özellik: hafif, pürüzsüz, teklemeyen.
 
-    *Why?*: Subtle animations can improve User Experience when used appropriately.
+    *Neden?*: Uygun kullanıldığında hafif animasyonlar kullanıcı deneyimini arttırır.
 
-    *Why?*: Subtle animations can improve perceived performance as views transition.
+    *Neden?*: Hafif animasyonlar view geçişleri sırasında hissedilen performansı arttırır.
 
 ### Sub Second
 ###### [Style [Y211](#style-y211)]
