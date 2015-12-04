@@ -1,6 +1,6 @@
 # Guida stilistica ad Angular
 
-## Approvato dal Team di Angular Team
+## Approvato dal Team di Angular
 Uno speciale ringraziamento a Igor Minar, a capo del Team di Angular, per la revisione, aver contribuito al feedback e la fiducia accordatami per la conduzione di queste linee guida.
 
 ## Scopo
