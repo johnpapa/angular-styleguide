@@ -2019,9 +2019,9 @@ Invece usa la più semplice sintassi setter.
     // customer.service.js
     angular
         .module
-        .service('customersService', customersService);
+        .service('customerService', customerService);
 
-    function customersService() { }
+    function customerService() { }
     ```
 
 ### Nomi dei componenti directive
