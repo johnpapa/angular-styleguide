@@ -1,5 +1,9 @@
 # Guida stilistica ad Angular
 
+## Approvato dal Team di Angular Team
+Uno speciale ringraziamento a Igor Minar, a capo del Team di Angular, per la revisione, aver contribuito al feedback e la fiducia accordatami per la conduzione di queste linee guida.
+
+## Scopo
 *Guida stilistica dogmatica ad Angular per i team di [@john_papa](//twitter.com/john_papa)*
 
 Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team.
