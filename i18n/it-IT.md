@@ -267,7 +267,7 @@ Invece usa la più semplice sintassi setter.
   /* evitare */
   angular
       .module('app')
-      .controller('Dashboard', function() { });
+      .controller('DashboardController', function() { });
       .factory('logger', function() { });
   ```
 
@@ -277,9 +277,9 @@ Invece usa la più semplice sintassi setter.
   // dashboard.js
   angular
       .module('app')
-      .controller('Dashboard', Dashboard);
+      .controller('DashboardController', DashboardController);
 
-  function Dashboard() { }
+  function DashboardController() { }
   ```
 
   ```javascript
@@ -308,14 +308,14 @@ Invece usa la più semplice sintassi setter.
 
   ```html
   <!-- evitare -->
-  <div ng-controller="Customer">
+  <div ng-controller="CustomerController">
       {{ name }}
   </div>
   ```
 
   ```html
   <!-- consigliato -->
-  <div ng-controller="Customer as customer">
+  <div ng-controller="CustomerController as customer">
      {{ customer.name }}
   </div>
   ```
@@ -333,7 +333,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Customer($scope) {
+  function CustomerController($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
   }
@@ -341,7 +341,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato - tuttavia vedi la prossima sezione */
-  function Customer() {
+  function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
@@ -356,7 +356,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Customer() {
+  function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
@@ -364,7 +364,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Customer() {
+  function CustomerController() {
       var vm = this;
       vm.name = {};
       vm.sendMessage = function() { };
@@ -407,7 +407,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Sessions() {
+  function SessionsController() {
       var vm = this;
 
       vm.gotoSession = function() {
@@ -425,7 +425,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Sessions() {
+  function SessionsController() {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -455,7 +455,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Sessions(data) {
+  function SessionsController(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -475,7 +475,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Sessions(sessionDataService) {
+  function SessionsController(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -505,7 +505,7 @@ Invece usa la più semplice sintassi setter.
    * evitare
    * Uso di espressioni di funzione.
    */
-  function Avengers(avengersService, logger) {
+  function AvengersController(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -537,7 +537,7 @@ Invece usa la più semplice sintassi setter.
    * Usare dichiarazione di funzione
    * e membri che fanno in binding in alto.
    */
-  function Avengers(avengersService, logger) {
+  function AvengersController(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
@@ -574,7 +574,7 @@ Invece usa la più semplice sintassi setter.
   ```javascript
 
   /* evitare */
-  function Order($http, $q, config, userInfo) {
+  function OrderController($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.isCreditOk;
@@ -605,7 +605,7 @@ Invece usa la più semplice sintassi setter.
   ```javascript
 
   /* consigliato */
-  function Order(creditService) {
+  function OrderController(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.isCreditOk;
@@ -947,11 +947,11 @@ Invece usa la più semplice sintassi setter.
   // controller che chiama la factory del servizio ai dati
   angular
       .module('app.avengers')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['dataservice', 'logger'];
+  AvengersController.$inject = ['dataservice', 'logger'];
 
-  function Avengers(dataservice, logger) {
+  function AvengersController(dataservice, logger) {
       var vm = this;
       vm.avengers = [];
 
@@ -1333,7 +1333,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Avengers(dataservice) {
+  function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -1347,7 +1347,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Avengers(dataservice) {
+  function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -1382,9 +1382,9 @@ Invece usa la più semplice sintassi setter.
   /* evitare */
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  function Avengers(movieService) {
+  function AvengersController(movieService) {
       var vm = this;
       // non risolta
       vm.movies;
@@ -1407,7 +1407,7 @@ Invece usa la più semplice sintassi setter.
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: function(movieService) {
@@ -1420,10 +1420,10 @@ Invece usa la più semplice sintassi setter.
   // avengers.js
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['moviesPrepService'];
-  function Avengers(moviesPrepService) {
+  AvengersController.$inject = ['moviesPrepService'];
+  function AvengersController(moviesPrepService) {
       var vm = this;
       vm.movies = moviesPrepService.movies;
   }
@@ -1443,7 +1443,7 @@ Invece usa la più semplice sintassi setter.
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: moviesPrepService
@@ -1458,10 +1458,10 @@ Invece usa la più semplice sintassi setter.
   // avengers.js
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['moviesPrepService'];
-  function Avengers(moviesPrepService) {
+  AvengersController.$inject = ['moviesPrepService'];
+  function AvengersController(moviesPrepService) {
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
@@ -1483,9 +1483,9 @@ Invece usa la più semplice sintassi setter.
     /* evita - non a prova di minificazione*/
     angular
         .module('app')
-        .controller('Dashboard', Dashboard);
+        .controller('DashboardController', DashboardController);
 
-    function Dashboard(common, dataservice) {
+    function DashboardController(common, dataservice) {
     }
     ```
 
@@ -1493,7 +1493,7 @@ Invece usa la più semplice sintassi setter.
 
     ```javascript
     /* evita - non a prova di minificazione*/
-    angular.module('app').controller('Dashboard', d);function d(a, b) { }
+    angular.module('app').controller('DashboardController', d);function d(a, b) { }
     ```
 
 ### Indentificazione manuale delle dipendenze
@@ -1511,9 +1511,9 @@ Invece usa la più semplice sintassi setter.
     /* evitare */
     angular
         .module('app')
-        .controller('Dashboard',
+        .controller('DashboardController',
             ['$location', '$routeParams', 'common', 'dataservice',
-                function Dashboard($location, $routeParams, common, dataservice) {}
+                function DashboardController($location, $routeParams, common, dataservice) {}
             ]);
     ```
 
@@ -1521,7 +1521,7 @@ Invece usa la più semplice sintassi setter.
     /* evitare */
     angular
       .module('app')
-      .controller('Dashboard',
+      .controller('DashboardController',
          ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
 
     function Dashboard($location, $routeParams, common, dataservice) {
@@ -1532,11 +1532,11 @@ Invece usa la più semplice sintassi setter.
     /* consigliato */
     angular
         .module('app')
-        .controller('Dashboard', Dashboard);
+        .controller('DashboardController', DashboardController);
 
     Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
 
-    function Dashboard($location, $routeParams, common, dataservice) {
+    function DashboardController($location, $routeParams, common, dataservice) {
     }
     ```
 
@@ -1623,10 +1623,10 @@ Invece usa la più semplice sintassi setter.
     ```javascript
     angular
         .module('app')
-        .controller('Avengers', Avengers);
+        .controller('AvengersController', AvengersController);
 
     /* @ngInject */
-    function Avengers(storage, avengerService) {
+    function AvengersController(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
@@ -1643,10 +1643,10 @@ Invece usa la più semplice sintassi setter.
     ```javascript
     angular
         .module('app')
-        .controller('Avengers', Avengers);
+        .controller('AvengersController', AvengersController);
 
     /* @ngInject */
-    function Avengers(storage, avengerService) {
+    function AvengersController(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
@@ -1657,7 +1657,7 @@ Invece usa la più semplice sintassi setter.
         }
     }
 
-    Avengers.$inject = ['storage', 'avengerService'];
+    AvengersController.$inject = ['storage', 'avengerService'];
     ```
 
     Nota: Se `ng-annotate` rileva che l'iniezione è già stata fatta (p.e. `@ngInject` è stato rilevato), non duplicherà il codice di `$inject`.
@@ -1670,7 +1670,7 @@ Invece usa la più semplice sintassi setter.
         $routeProvider
             .when('/avengers', {
                 templateUrl: 'avengers.html',
-                controller: 'Avengers',
+                controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: { /* @ngInject */
                     moviesPrepService: function(movieService) {
@@ -1906,7 +1906,7 @@ Invece usa la più semplice sintassi setter.
     avenger-profile.directive.spec.js
     ```
 
-  Nota: Un'altra convenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team. La mia preferenza va a `avengers.controller.js`.
+  Nota: Un'altra convenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team. La mia preferenza va a `avengers.controller.js` che identifica `AvengersController`.
 
     ```javascript
     /**
