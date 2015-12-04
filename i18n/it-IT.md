@@ -1534,7 +1534,7 @@ Invece usa la più semplice sintassi setter.
         .module('app')
         .controller('DashboardController', DashboardController);
 
-    Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
+    DashboardController.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
 
     function DashboardController($location, $routeParams, common, dataservice) {
     }
