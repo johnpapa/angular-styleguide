@@ -90,7 +90,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   ```javascript
   /* consigliato */
 
-  // someController.js
+  // some.controller.js
   angular
     	.module('app')
     	.controller('SomeController', SomeController);
