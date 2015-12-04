@@ -2594,38 +2594,38 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 
     *Neden?*: Hafif animasyonlar view geçişleri sırasında hissedilen performansı arttırır.
 
-### Sub Second
-###### [Style [Y211](#style-y211)]
+### Saniyenin Altında
+###### [Stil [Y211](#style-y211)]
 
-  - Use short durations for animations. I generally start with 300ms and adjust until appropriate.
+  - Animasyonlarınızı kısa sürelerde tamamlayın. Ben genellikle 300ms ile başlarım ve duruma göre ayarlarım.
 
-    *Why?*: Long animations can have the reverse affect on User Experience and perceived performance by giving the appearance of a slow application.
+    *Neden?*: Uzun animasyonlar kullanıcı deneyimi ve hissedilen performans üzerinde yavaş bir uygulamaymış gibi algılanıp ters etki yaratabilir. 
 
 ### animate.css
-###### [Style [Y212](#style-y212)]
+###### [Stil [Y212](#style-y212)]
 
-  - Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
+  - Geleneksel animasyonlar için [animate.css](http://daneden.github.io/animate.css/) kullanın.
 
-    *Why?*: The animations that animate.css provides are fast, smooth, and easy to add to your application.
+    *Neden?*: animate.css'in sunduğı animasyonlar hızlı, akıcı ve uygulamanıza kolay eklenebilir.
 
-    *Why?*: Provides consistency in your animations.
+    *Neden?*: Animasyonlarınızda tutarlılık sağlar.
 
-    *Why?*: animate.css is widely used and tested.
+    *Neden?*: animate.css yaygınca kullanılıyor ve test edilmiş.
 
-    Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Not: Bu müthiş makaleye göz gezdirin: [Matias Niemelä Angular animations anlatıyor](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi to top](#icerik-listesi)**
 
-## Comments
+## Yorumlar
 
 ### jsDoc
-###### [Style [Y220](#style-y220)]
+###### [Stil [Y220](#style-y220)]
 
-  - If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns. Use `@namespace` and `@memberOf` to match your app structure.
+  - Kodunuz için dökümantasyon yaratmayı planlıyorsanız, [`jsDoc`](http://usejsdoc.org/) sintaksını kullanın. Fonksiyon isimleri, açıklamaları, parametreleri ve ne döndürdüklerini listeleyebilirsiniz. `@namespace` ve `@memberOf` anahtar kelimelerini uygulamanızın yapısı ile eşleştirmek için kullanın.
 
-    *Why?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *Neden?*: Sıfırdan yazmak yere kodunuz üzerinden dökümantasyonunuzu yaratabilirsiniz.
 
-    *Why?*: Provides consistency using a common industry tool.
+    *Neden?*: Yaygın bir araç kullanmak tutarlılık sağlar.
 
     ```javascript
     /**
@@ -2639,7 +2639,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 
       /**
        * @namespace Logger
-       * @desc Application wide logger
+       * @desc Uygulama geneli için logger
        * @memberOf Factories
        */
       function logger($log) {
@@ -2653,7 +2653,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
           /**
            * @name logError
            * @desc Logs errors
-           * @param {String} msg Message to log
+           * @param {String} msg Loglanacak mesaj
            * @returns {String}
            * @memberOf Factories.Logger
            */
@@ -2666,18 +2666,18 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
     })();
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## JS Hint
 
-### Use an Options File
-###### [Style [Y230](#style-y230)]
+### Bir Seçenek Dosyası Kullanın
+###### [Stil [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
+  - JavaScript Kod denetleyicisi olarak JS Hint kullanın ve JS Hint seçeneklerini kendinize göre ayarlamayı unutmayın. Seçeneklerin detayları için [JS Hint dökümantasyonuna](http://www.jshint.com/docs/) bakın.
 
-    *Why?*: Provides a first alert prior to committing any code to source control.
+    *Neden?*: Kodunuzu versiyon kontrol sistemine göndermeden önce size bir ilk uyarı verir.
 
-    *Why?*: Provides consistency across your team.
+    *Neden?*: Takımınız içinde tutarlılık oluşturur.
 
     ```javascript
     {
@@ -2743,18 +2743,18 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
     }
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## JSCS
 
-### Use an Options File
-###### [Style [Y235](#style-y235)]
+### Bir Seçenek Dosyası Kullanın
+###### [Stil [Y235](#style-y235)]
 
-  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://www.jscs.info) for details on the options.
+  - Kod yazım stilinizi kontrol etmek için JSCS kullanın ve JSCS seçeneklerini kendinize göre ayarlamayı unutmayın. Seçeneklerin detayları için [JSCS dökümantasyonuna](http://www.jscs.info) bakın.
 
-    *Why?*: Provides a first alert prior to committing any code to source control.
+    *Neden?*: Kodunuzu versiyon kontrol sistemine göndermeden önce size bir ilk uyarı verir.
 
-    *Why?*: Provides consistency across your team.
+    *Neden?*: Takımınız içinde tutarlılık oluşturur.
 
     ```javascript
     {
@@ -2833,16 +2833,16 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
     }
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Constants
+## Constant'lar
 
-### Vendor Globals
-###### [Style [Y240](#style-y240)]
+### 3. Parti Kütüphane Global'leri
+###### [Stil [Y240](#style-y240)]
 
-  - Create an Angular Constant for vendor libraries' global variables.
+  - 3. parti kütüphanelerin global değişkenleri için birer Angular constant'ı tanımlayın.
 
-    *Why?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+    *Neden?*: 3. parti kütüphaneleri kodunuza inject etmek için bir yol yaratır. Component'lerinizin bağımlılıklarını daha kolay anlamanızı sağlayarak kodunuzun test edilebilirliğini arttırır. (abstraction sızıntılarını engeller). Ayrıca bu bağımlılıkları mock'layabilmenizi sağlar.
 
     ```javascript
     // constants.js
@@ -2858,23 +2858,23 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
     })();
     ```
 
-###### [Style [Y241](#style-y241)]
+###### [Stil [Y241](#style-y241)]
 
-  - Use constants for values that do not change and do not come from another service. When constants are used only for a module that may be reused in multiple applications, place constants in a file per module named after the module. Until this is required, keep constants in the main module in a `constants.js` file.
+  - Değişmeyen ve başka servislerden gelmeyen değerler için constants kullanın. Eğer bu constant'lar birden fazla uygulamada kullanılabilecek bir modüle için yaratılıyor ise, her modül için constant'ları  modül ile aynı isme sahip bir dosyaya koyun. Bu durum gerekli olmadığı takdirde, constant'ları ana modül içerisinde `constants.js` dosyasında tutun. 
 
-    *Why?*: A value that may change, even infrequently, should be retrieved from a service so you do not have to change the source code. For example, a url for a data service could be placed in a constants but a better place would be to load it from a web service.
+    *Neden?*: Değişme olasılığı olan, çok nadir de olsa, değerler bir servisten alınmalıdır, çünkü bu sayede kaynak kodunuzu değiştirmek zorunda kalmazsınız. Örneğin, bir veri servisi için url adresi constant içine yerleştirilebilir, ama daha iyi bir seçenek bunu bir web servisten yüklemek olacaktır.
 
-    *Why?*: Constants can be injected into any angular component, including providers.
+    *Neden?*: Constant'lar angular component'lerine inject edilebilir, buna provider'lar dahildir.
 
-    *Why?*: When an application is separated into modules that may be reused in other applications, each stand-alone module should be able to operate on its own including any dependent constants.
+    *Neden?*: Bir uygulama başka uygulamalarda kullanılabilecek modüllere ayrıldığında, her biri kendi başına bağımlı olduğu constant'lar ile birlikte çalışabilecek durumda olmalıdır.
 
     ```javascript
-    // Constants used by the entire app
+    // Bütün uygulama tarafından kullanılan constant'lar
     angular
         .module('app.core')
         .constant('moment', moment);
 
-    // Constants used only by the sales module
+    // Sadece satış modülünün kullandığı constant'lar
     angular
         .module('app.sales')
         .constant('events', {
@@ -2883,7 +2883,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
         });
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
