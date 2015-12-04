@@ -395,6 +395,17 @@ Invece usa la più semplice sintassi setter.
       });
   }
   ```
+  Nota: Quando lavori con basi di codice molto estese, usare un nome che sia molto descrittivo può facilitare nella cognizione e rintracciabilità. Evita nomi oltremodo lunghi che sono proni ad errori.
+
+  ```html
+  <!-- evitare -->
+  <input ng-model="customerProductItemVm.text">
+  ```
+
+  ```html
+  <!-- consigliato -->
+  <input ng-model="productVm.id">
+  ```
 
 ### Membri che possono fare il bind in alto
 ###### [Stile [Y033](#stile-y033)]
