@@ -432,6 +432,7 @@ Invece usa la più semplice sintassi setter.
       };
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
@@ -458,6 +459,7 @@ Invece usa la più semplice sintassi setter.
       function search() {
         /* */
       }
+  }
   ```
 
     ![Controller che usa "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
@@ -482,6 +484,7 @@ Invece usa la più semplice sintassi setter.
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
@@ -494,6 +497,7 @@ Invece usa la più semplice sintassi setter.
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
