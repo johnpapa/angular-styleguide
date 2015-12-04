@@ -2890,19 +2890,31 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### WebStorm
 ###### [Stile [Y252](#stile-y252)]
 
-  - Snippet Angular e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
+  - Live template per Angular che seguono queste linee guida.
 
-    - Scarica i [file dei template e gli snippet di Angular per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
-    - Apri WebStorm e vai al menù `File`
-    - Scegli la voce di menù `Import Settings`
-    - Seleziona il file e clicca `OK`
+    - Scarica [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
+    - Mettili nella tua Place it in your [cartella dei template](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Riavvia WebStorm
     - In un file JavaScript digita questi comandi seguiti da `TAB`
 
     ```javascript
-    ng-c // crea un controller Angular
-    ng-f // crea una factory Angular
-    ng-m // crea un modulo Angular
-    ```
+    // Questi sono snippet completi che contengono una IIFE
+    ngapp     // crea un modulo setter Angular
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngfilter     // crea un filter Angular
+    ngservice    // crea un service Angular    
+    
+    // Questi sono snippet parziali intesi per essere concatenati
+    ngconfig     // definisce una funzione della fase di configuration
+    ngmodule     // crea un modulo getter Angular
+    ngroute      // crea una definizione Angular 'when' di ngRoute
+    ngrun        // definisce una funzione di fase run    
+    ngstate      // crea una definizione di stato Angular per UI Router
+     ```
+    
+  *Template individuali sono inoltre disponibili per essere scaricati all’interno della cartella [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true)*
 
 ### Atom
 ###### [Stile [Y253](#stile-y253)]
@@ -2955,7 +2967,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngstate      // crea una definizione di stato di UI Router Angular
     ngconfig     // definisce un funzione per la fase di cofigurazione
     ngrun        // definisce una funzione per la fase di esecuzione
-    ngroute      // definisce una ngRoute Angular con la definizione 'when'
+    ngwhen       // definisce una ngRoute Angular con la definizione 'when'
     ngtranslate  // usa il service $translate con le proprie promesse
     ```
 
