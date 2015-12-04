@@ -1239,6 +1239,8 @@ Invece usa la più semplice sintassi setter.
           },
           link: linkFunc,
           controller : ExampleController,
+          // nota: Questo dovrebbe essere 'ExampleController' (il nome del controller esportato, come stringa)
+          // qualora faccia riferimento ad un controller definito nel proprio file separato.
           controllerAs: 'vm',
           bindToController: true // perché lo scope è isolato
       };
