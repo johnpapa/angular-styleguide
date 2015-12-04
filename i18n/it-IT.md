@@ -1064,7 +1064,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  /* calendarRange.directive.js */
+  /* calendar-range.directive.js */
 
   /**
    * @desc directive di ordini che è specifica al modulo ordini in una azienda di nome Acme
@@ -1081,7 +1081,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  /* customerInfo.directive.js */
+  /* customer-info.directive.js */
 
   /**
    * @desc directive delle vendite che può essere usato dovunque nella applicazione di vendita di una azienda di nome Acme
