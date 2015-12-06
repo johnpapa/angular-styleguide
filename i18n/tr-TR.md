@@ -2885,47 +2885,48 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## File Templates and Snippets
-Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
+## Dosya Şablonları ve Snippet'ler
+
+Tutarlı pattern'ler ve stiller için dosya şablonları ve snippet'ler kullanın. Burada bazı web geliştirme editörleri ve IDE'leri için şablon ve snippet'leri bulabilirsiniz.
 
 ### Sublime Text
-###### [Style [Y250](#style-y250)]
+###### [Stil [Y250](#style-y250)]
 
-  - Angular snippets that follow these styles and guidelines.
+  - Bu stil ve rehberleri izleyen Angular snippet'leri
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)
-    - Place it in your Packages folder
-    - Restart Sublime
-    - In a JavaScript file type these commands followed by a `TAB`
+    - [Sublime Angular snippet'leri](assets/sublime-angular-snippets?raw=true) indirin
+    - Packages klasörünün içine koyun
+    - Sublime'ı baştan başlatın
+    - JavaScript dosyalarında bu komutlardan sonra `TAB` tuşuna basın
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
-    ngfilter     // creates an Angular filter
+    ngcontroller // Angular controller'ı yaratır
+    ngdirective  // Angular directive'i yaratır
+    ngfactory    // Angular factory'si yaratır
+    ngmodule     // Angular modülü yaratır
+    ngservice    // Angular service'i yaratır
+    ngfilter     // Angular filtresi yaratır
     ```
 
 ### Visual Studio
-###### [Style [Y251](#style-y251)]
+###### [Stil [Y251](#style-y251)]
 
-  - Angular file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+  - Bu stil ve rehberleri izleyen Angular snippet'leri [SideWaffle](http://www.sidewaffle.com) adresinde bulunabilir
 
-    - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
-    - Run the vsix file
-    - Restart Visual Studio
+    - [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix dosyası) indirin
+    - vsix dosyasını çalıştırın
+    - Visual Studio'yu baştan başlatın
 
 ### WebStorm
-###### [Style [Y252](#style-y252)]
+###### [Stil [Y252](#style-y252)]
 
-  - Angular snippets and file templates that follow these styles and guidelines. You can import them into your WebStorm settings:
+  - Bu stil ve rehberleri izleyen Angular snippet'leri. Webstorm ayarlarınızdan içeri aktarabilirsiniz:
 
-    - Download the [WebStorm Angular file templates and snippets](assets/webstorm-angular-file-template.settings.jar?raw=true)
-    - Open WebStorm and go to the `File` menu
-    - Choose the `Import Settings` menu option
-    - Select the file and click `OK`
-    - In a JavaScript file type these commands followed by a `TAB`:
+    - [WebStorm Angular dosya şablonları ve snippet'leri](assets/webstorm-angular-file-template.settings.jar?raw=true)'ni indirin
+    - WebStorm'u açın ve `File` menüsüne gidin
+    - `Import Settings` seçeneğini seçin
+    - Dosyayı seçin ve `OK` tuşuna basın
+    - JavaScript dosyalarında bu komutlardan sonra `TAB` tuşuna basın
 
     ```javascript
     ng-c // creates an Angular controller
@@ -2934,141 +2935,144 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ```
 
 ### Atom
-###### [Style [Y253](#style-y253)]
+###### [Stil [Y253](#style-y253)]
 
-  - Angular snippets that follow these styles and guidelines.
+  - Bu stil ve rehberleri izleyen Angular snippet'leri.
     ```
     apm install angularjs-styleguide-snippets
     ```
-    or
-    - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
-    - Search for the package 'angularjs-styleguide-snippets'
-    - Click 'Install' to install the package
+    ya da
+    - Atom'u açın, Pakey yöneticisini açın (Packages -> Settings View -> Install Packages/Themes)
+    - 'angularjs-styleguide-snippets' paketini aratın
+    - 'Install' tuşuna basıp paketi yükleyin
 
-  - In a JavaScript file type these commands followed by a `TAB`
+  - JavaScript dosyalarında bu komutlardan sonra `TAB` tuşuna basın
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective // creates an Angular directive
-    ngfactory // creates an Angular factory
-    ngmodule // creates an Angular module
-    ngservice // creates an Angular service
-    ngfilter // creates an Angular filter
+    ngcontroller // Angular controller'ı yaratır
+    ngdirective // Angular directive'i yaratır
+    ngfactory // Angular factory'si yaratır
+    ngmodule // Angular modülü yaratır
+    ngservice // Angular service'i yaratır
+    ngfilter // Angular filtresi yaratır
     ```
 
 ### Brackets
-###### [Style [Y254](#style-y254)]
+###### [Stil [Y254](#style-y254)]
 
-  - Angular snippets that follow these styles and guidelines.
-    - Download the [Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
-    - Brackets Extension manager ( File > Extension manager )
-    - Install ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
-    - Click the light bulb in brackets' right gutter
-    - Click `Settings` and then `Import`
-    - Choose the file and select to skip or override
-    - Click `Start Import`
+  - Bu stil ve rehberleri izleyen Angular snippet'leri.
+    - [Brackets Angular snippet'leri](assets/brackets-angular-snippets.yaml?raw=true)'ni indirin
+    - Brackets Extension Yöneticisini açın ( File > Extension manager )
+    - ['Brackets Snippet'leri (by edc)'](https://github.com/chuyik/brackets-snippets)'ni yükleyin
+    - brackets'in sağ tarafındaki ampule tıklayın
+    - `Settings`'e tıklayın ve `Import` seçeneğini seçin
+    - Dosyayı seçin
+    - `Start Import` seçeneğini seçin
 
-  - In a JavaScript file type these commands followed by a `TAB`
+  - JavaScript dosyalarında bu komutlardan sonra `TAB` tuşuna basın
 
     ```javascript
     // These are full file snippets containing an IIFE
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngapp        // creates an Angular module setter
-    ngservice    // creates an Angular service
-    ngfilter     // creates an Angular filter
+    ngcontroller // Angular controller'ı yaratır
+    ngdirective  // Angular directive'i yaratır
+    ngfactory    // Angular factory'si yaratır
+    ngapp        // Angular modülü yaratır
+    ngservice    // Angular service'i yaratır
+    ngfilter     // Angular filtresi yaratır
 
     // These are partial snippets intended to chained
-    ngmodule     // creates an Angular module getter
-    ngstate      // creates an Angular UI Router state defintion
-    ngconfig     // defines a configuration phase function
-    ngrun        // defines a run phase function
-    ngroute      // defines an Angular ngRoute 'when' definition
-    ngtranslate  // uses $translate service with its promise
+    ngmodule     // Angular module getter'i yaratır
+    ngstate      // Angular UI Router tanımlayıcısı yaratır
+    ngconfig     // konfigürasyon tanımlama fonksiyonu yaratır
+    ngrun        // run bloğu tanımlama fonksiyonu yaratır
+    ngroute      // Angular ngRoute 'when' tanımlama fonksiyonu yaratır
+    ngtranslate  // $translate servisini promise'ile kullanan şablon yaratır
     ```
 
 ### vim
-###### [Style [Y255](#style-y255)]
+###### [Stil [Y255](#style-y255)]
 
-  - vim snippets that follow these styles and guidelines.
+  - Bu stil ve rehberleri izleyen Angular vim snippet'leri.
 
-    - Download the [vim Angular snippets](assets/vim-angular-snippets?raw=true)
-    - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
-    - copy snippets to snippet directory
+    - [vim Angular snippet'leri](assets/vim-angular-snippets?raw=true)'ni indirin
+    - [neosnippet.vim](https://github.com/Shougo/neosnippet.vim) dosyasını indirin
+    - snippet'leri snippet klasörüne kopyalayın
 
-  - vim UltiSnips snippets that follow these styles and guidelines.
 
-    - Download the [vim Angular UltiSnips snippets](assets/vim-angular-ultisnips?raw=true)
-    - set [UltiSnips](https://github.com/SirVer/ultisnips)
-    - copy snippets to UltiSnips directory
+  - Bu stil ve rehberleri izleyen Angular vim UltiSnips snippet'leri.
+
+    - [vim Angular UltiSnips snippet'leri](assets/vim-angular-ultisnips?raw=true)'ni indirin
+    - [UltiSnips](https://github.com/SirVer/ultisnips) dosyasını indirin
+    - snippet'leri UltiSnips klasörüne kopyalayın
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
-    ngfilter     // creates an Angular filter
+    ngcontroller // Angular controller'ı yaratır
+    ngdirective  // Angular directive'i yaratır
+    ngfactory    // Angular factory'si yaratır
+    ngmodule     // Angular modülü yaratır
+    ngservice    // Angular service'i yaratır
+    ngfilter     // Angular filtresi yaratır
     ```
 
 ### Visual Studio Code
 
-###### [Style [Y256](#style-y256)]
+###### [Stil [Y256](#style-y256)]
 
-  - [Visual Studio Code](http://code.visualstudio.com) snippets that follow these styles and guidelines.
+  - [Visual Studio Code](http://code.visualstudio.com) stil ve rehberleri izleyen Angular vim snippet'leri
 
-    - Download the [VS Code Angular snippets](assets/vscode-snippets/javascript.json?raw=true)
+    - [VS Code Angular snippet'leri](assets/vscode-snippets/javascript.json?raw=true)'ni indirin
     - copy snippets to snippet directory, or alternatively copy and paste the snippets into your existing ones
+    - snippet'leri snippet klasörüne kopyalayın, alternatif olarak snippetleri şu andaki snippetlerinizin olduğu yere kopyala/yapıştır yapın
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
+    ngcontroller // Angular controller'ı yaratır
+    ngdirective  // Angular directive'i yaratır
+    ngfactory    // Angular factory'si yaratır
+    ngmodule     // Angular modülü yaratır
+    ngservice    // Angular service'i yaratır
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Yeoman Generator
-###### [Style [Y260](#style-y260)]
+###### [Stil [Y260](#style-y260)]
 
-You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to create an app that serves as a starting point for Angular that follows this style guide.
+[HotTowel yeoman üreticisi](http://jpapa.me/yohottowel)'ni Angular uygulamanız için bir başlangıç noktası yaratmak için ve stilleri takip etmek için kullanabilirsiniz.
 
-1. Install generator-hottowel
+1. generator-hottowel'ı yükleyin
 
   ```
   npm install -g generator-hottowel
   ```
 
-2. Create a new folder and change directory to it
+2. Yeni bir klasör yaratın ve o klasörün içine girin
 
   ```
   mkdir myapp
   cd myapp
   ```
 
-3. Run the generator
+3. Üreticiyi çalıştırın
 
   ```
   yo hottowel helloWorld
   ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
 ## Routing
-Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
 
-###### [Style [Y270](#style-y270)]
+Kullanıcı tarafında, küçük şablonlar ve directive'lerden oluşan view geçişleri için yapılan routing önemlidir.
 
-  - Use the [AngularUI Router](http://angular-ui.github.io/ui-router/) for client-side routing.
+###### [Stil [Y270](#style-y270)]
 
-    *Why?*: UI Router offers all the features of the Angular router plus a few additional ones including nested routes and states.
+  - Kullanıcı tarafındaki routing için [AngularUI Router](http://angular-ui.github.io/ui-router/)'ı kullanın.
 
-    *Why?*: The syntax is quite similar to the Angular router and is easy to migrate to UI Router.
+    *Neden?*: UI Router Angular router'ın sağladığı bütün özellikleri sağlar ayrıca iç içe route ve state'ler için olanak sağlar.
 
-  - Note: You can use a provider such as the `routerHelperProvider` shown below to help configure states across files, during the run phase.
+    *Neden?*: Angular router sintaksına çok benzer ve UI Router'a geçiş yapmak kolaydır.
+
+  - Not: `routerHelperProvider` gibi bir provider kullanarak dosyalar arası state konfigürasyonlarını ayarlama yapabilirsiniz.
 
     ```javascript
     // customers.routes.js
@@ -3138,30 +3142,30 @@ Client-side routing is important for creating a navigation flow between views an
     }
     ```
 
-###### [Style [Y271](#style-y271)]
+###### [Stil [Y271](#style-y271)]
 
-  - Define routes for views in the module where they exist. Each module should contain the routes for the views in the module.
+  - View'lar için route'ları modül içerisinde tanımlayın. Her modül kend view'ları için gerekli olan route'ları barındırmalıdır.
 
-    *Why?*: Each module should be able to stand on its own.
+    *Neden?*: Her modül kendi başına yeterli olmalıdır.
 
-    *Why?*: When removing a module or adding a module, the app will only contain routes that point to existing views.
+    *Neden?*: Bir modülü kaldırırken ya da eklerken, uygulama sadece var olan view'lara giden route'ları içermelidir.
 
-    *Why?*: This makes it easy to enable or disable portions of an application without concern over orphaned routes.
+    *Neden?*: Bu uygulamanın bazu bölümlerini açıp kaparken etrafta ulaşılamayacak route'lar kalmasını engeller.
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Task Automation
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+## Görev Otomasyonu
+Otomatik görevler yaratmak için [Gulp](http://gulpjs.com) ya da [Grunt](http://gruntjs.com) kullanın. Gulp convention over configuration paradigmasını benimserken, Grunt configuration over code prensibini benimser. Ben şahsen Gulp'ı tercih ediyorum. Yazması ve okuması daha kolay geliyor, ama ikisi de çok başarılılar.
 
-> Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course](http://jpapa.me/gulpps)
+> [Gulp Pluralsight kursu](http://jpapa.me/gulpps)mda gulp ve otomatik görevler hakkında daha çok şey öğrenebilirsiniz.
 
-###### [Style [Y400](#style-y400)]
+###### [Stil [Y400](#style-y400)]
 
-  - Use task automation to list module definition files `*.module.js` before all other application JavaScript files.
+  - Modül tanımlayıcı dosyalarını `*.module.js` diğer bütün uygulama JavaScript dosyalarından önce listelemek için otomatik görevleri kullanın.
 
-    *Why?*: Angular needs the module definitions to be registered before they are used.
+    *Neden?*: Angular modüllerin kullanılmadan önce kayıt olmasını bekler.
 
-    *Why?*: Naming modules with a specific pattern such as `*.module.js` makes it easy to grab them with a glob and list them first.
+    *Neden?*: Modülleri `*.module.js` gibi belirgin bir tarz ile isimlendirmeniz onları yakalamanızı ve listelemenizi kolaylaştırır.
 
     ```javascript
     var clientApp = './src/client/app/';
@@ -3173,35 +3177,37 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
     ];
     ```
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Filters
+## Filtreler
 
-###### [Style [Y420](#style-y420)]
+###### [Stil [Y420](#style-y420)]
 
-  - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
+  - Komplek objelerin bütün property'lerini taramak için filtreleri kullanmaktan kaçının. Filtreleri property'leri seçmek için kullanın.
 
-    *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
+    *Neden?*: Filtrelerin kullanımı kolaylıkla suistimal ediliyor ve uygulamanın performansını kötü etkiliyor. Örneğin bir filtrenin büyük ve derin bir objeyi taraması.
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
 
-## Angular docs
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+## Angular dökümantasyonu
 
-## Contributing
+Burada anlatılanların dışındaki herşey için ve API referansı için [Angular dökümantasyonu](//docs.angularjs.org/api)'na bakın.
 
-Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.
+## Katkıda bulunma
 
-*By contributing to this repository you are agreeing to make your content available subject to the license of this repository.*
+Potensiyel değişiklik/eklemeler için öncelikle bir issue açın. Eğer rehber hakkında sorularınız varsa, onları da issue olarak açabilirsiniz. Eğer bir yazım hatası bulursanız pull request açın. Anafikir içeriği güncel tutmak ve github'ın kendi özelliklerini kullanarak bu işi issuelar ve pull request'lerle ilerletmek, bunların hepsi google tarafından indeksleniyor ve aramalar da çıkıyor. Neden? Çünkü bir sorunuz var ise, aynı soruyu başkası da soruyor olabilir! Burada nasıl katkıda bulunabileceğinize dair daha fazla bigi bulabilirsiniz.
 
-### Process
-    1. Discuss the changes in a GitHub issue.
+*Bu repository'ye katkıda bulunarak içeriğinizin bu repository'nin lisansına dahil olduğunu kabul etmiş bulunursunuz.*
+
+### Süreç
+    1. Değişiklikleri bir issue ile tartışın.
     2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
-    3. The Pull Request will be evaluated and either merged or declined.
+    2. Bir Pull Request açın, issue'yu referans gösterin, ve değişikliği açıklayın. Bu değişiklik nasıl bir değer katıyor?
+    3. Pull Requestiniz incelenecektir ve ya merge edilecek ya da geri çevrilecektir.
 
-## License
+## Lisans
 
-_tldr; Use this guide. Attributions are appreciated._
+_uzun lafın kısası; Bu rehberi kullanın. Katkılarınız makbule geçecektir._
 
 ### Copyright
 
@@ -3227,4 +3233,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#icerik-listesi)**
+**[İçerik Listesi](#icerik-listesi)**
