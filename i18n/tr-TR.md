@@ -1,5 +1,9 @@
 # Angular Stil Rehberi
 
+## Angular Ekibinden Destek
+Angular takım lideri Igor Minar'a, rehberimi incelediği, geribildirimde bulunduğu ve rehber olma görevini bana emanet ettiği için özellikle teşekkür ederim.
+
+##Amaç 
 *[@john_papa](//twitter.com/john_papa)'dan Takımlar için seçeneklendirilmiş stil rehberi*
 
 Eğer Angular projeleriniz için seçeneklendirilmiş bir sintaks, yöntem ve yapılandırma rehberi arıyorsanız, buyrun gelin. Bu stiller benim [Angular](//angularjs.org) sunumlarım, [Pluralsight eğitim kurslarım](http://pluralsight.com/training/Authors/Details/john-papa) ve takım çalışmalarımdan edindiğim deneyimlerle oluşturulmuştur.
