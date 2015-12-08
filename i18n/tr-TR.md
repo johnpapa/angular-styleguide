@@ -25,48 +25,48 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ##Çeviriler
 [Bu Angular rehberinin çevirileri](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) gönüllü yardımcılar tarafından sağlanmaktadır
 
-## İçerik
+## İçerik Listesi
 
-  1. [Tek İşlevsellik](#single-responsibility)
+  1. [Tek İşlevsellik](#tek-islevsellik)
   1. [IIFE](#iife)
-  1. [Modüller](#modules)
-  1. [Kontrolörler (Controller)](#controllers)
-  1. [Servisler](#services)
-  1. [Factory'ler](#factories)
-  1. [Veri Servisleri](#data-services)
-  1. [Direktifler (Directives)](#directives)
-  1. [Promise'leri Kontrolörler için çözümleme](#resolving-promises-for-a-controller)
-  1. [Bağımlılık yerleştirmesinin manüel anotasyonu](#manual-annotating-for-dependency-injection)
-  1. [Sıkıştırma ve Anotasyon](#minification-and-annotation)
-  1. [Kuraldışı durum işleme](#exception-handling)
-  1. [İsimlendirme](#naming)
-  1. [Uygulama yapısı ve LIFT Prensibi](#application-structure-lift-principle)
-  1. [Uygulama Yapısı](#application-structure)
-  1. [Modülerlik](#modularity)
-  1. [Başlangıç Mantığı](#startup-logic)
-  1. [Angular $ sarmalayıcı servisleri](#angular--wrapper-services)
-  1. [Testler](#testing)
-  1. [Animasyonlar](#animations)
-  1. [Yorumlar](#comments)
+  1. [Modüller](#moduller)
+  1. [Controller'lar](#controllerlar)
+  1. [Servisler](#servisler)
+  1. [Factory'ler](#factoryler)
+  1. [Veri Servisleri](#veri-servisleri)
+  1. [Directive'ler](#directiveler)
+  1. [Promise'leri Controller'lar İçin Çözümlemek](#promiseleri-controllerlar-icin-cozumlemek)
+  1. [Dependency Injection ve Manuel Annotation](#dependency-injection-ve-manuel-annotation)
+  1. [Minification ve Annotation](#minification-ve-annotation)
+  1. [Exception Yakalama](#exception-yakalama)
+  1. [İsimlendirme](#isimlendirme)
+  1. [Uygulama Yapısı ve LIFT Prensibi](#uygulama-yapisi-ve-lift-prensibi)
+  1. [Uygulama Yapısı](#uygulama-yapisi)
+  1. [Modülerlik](#modulerlik)
+  1. [Başlangıç Mantığı](#baslangic-mantigi)
+  1. [Angular Servisleri](#angular-servisleri)
+  1. [Testler](#testler)
+  1. [Animasyonlar](#animasyonlar)
+  1. [Yorumlar](#yorumlar)
   1. [JSHint](#js-hint)
   1. [JSCS](#jscs)
-  1. [Sabit değerler](#constants)
-  1. [Dosya Şablonları ve Snippetler](#file-templates-and-snippets)
-  1. [Yeoman ana yapı üreticisi](#yeoman-generator)
-  1. [Yönlendirme](#routing)
-  1. [Görev Otomasyonu](#task-automation)
-  1. [Filtreler](#filters)
-  1. [Angular Docs](#angular-docs)
-  1. [Katkıda bulunmak](#contributing)
-  1. [Lisans](#license)
+  1. [Constant'lar](#constantlar)
+  1. [Dosya Şablonları ve Snippetler](#dosya-sablonlari-ve-snippetler)
+  1. [Yeoman Anayapı Üreticisi](#yeoman-anayapı-ureticisi)
+  1. [Routing](#routing)
+  1. [Görev Otomasyonu](#gorev-otomasyonu)
+  1. [Filtreler](#filtreler)
+  1. [Angular Dökümantasyonu](#angular-dokumantasyonu)
+  1. [Katkıda Bulunmak](#katkida-bulunmak)
+  1. [Lisans](#lisans)
 
 ## Tek İşlevsellik
 
 ### Kural 1
 ###### [Stil [Y001](#style-y001)]
 
-  - Her dosyaya yalnızca bir komponent tanımlayın.
-  Göreceğimiz örnek `app` modülünü ve bağımlılıklarını, konrolörünü ve fabrikasını aynı dosyada tanımlıyor.
+  - Her dosyaya yalnızca bir component tanımlayın.
+  Göreceğimiz örnek `app` modülünü ve bağımlılıklarını, conroller'ını ve factory'sini aynı dosyada tanımlıyor.
   
   ```javascript
   /* sakınılacak stil */
@@ -80,7 +80,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   function someFactory() { }
   ```
   
-  Bu örnekte ise aynı komponentler farklı dosyalara ayrılmış durumdalar
+  Bu örnekte ise aynı component'lar farklı dosyalara ayrılmış durumdalar
 
   ```javascript
   /* önerilen stil */
@@ -117,12 +117,12 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ## IIFE
 ### JavaScript Kapsamları(Closures)
 ###### [Stil [Y010](#style-y010)]
-  - Angular komponentlerinizi Hemen Çalışan Fonksiyon İfadeleri (HÇFİ) ile kapsayın 
+  - Angular component'larınızı Hemen Çalışan Fonksiyon İfadeleri (HÇFİ) ile kapsayın 
   > *Not: Hemen Çalışan Fonksiyon İfadeleri İngilizcede (Immediately Invoked Function Expression) olarak geçer. Bu fonksiyon bloğu içerisinde kalan kısım, tanımlanmasının ardından hemen çalıştırılır, fonksiyonun çağrılmasını beklemez* 
 
-  *Neden?*: HÇFİ değişkenleri evrensel olarak tanımlanmaktan çıkarır. Bu yöntem değişkenlerin ve fonksiyonların evrensel olarak beklenenden daha uzun tanımlı kalmasını ve aynı isimde olan değişken ve fonksiyonlarla çakışmasını engeller. 
+  *Neden?*: HÇFİ değişkenleri global olarak tanımlanmaktan çıkarır. Bu yöntem değişkenlerin ve fonksiyonların global olarak beklenenden daha uzun tanımlı kalmasını ve aynı isimde olan değişken ve fonksiyonlarla çakışmasını engeller. 
   
-  *Neden?*: Kodunuz sıkıştırıldığı zaman ve üretim ortamın için tek bir javascript dosyası halinde paketlendiğinde, birçok yerel ve evrensel değişken için çakışma hataları alabilirsiniz. HÇFİ sizi bu çakışmalara karşı korur ve her dosya için kendi değişken kapsamını tanımlar.
+  *Neden?*: Kodunuz sıkıştırıldığı zaman ve üretim ortamın için tek bir javascript dosyası halinde paketlendiğinde, birçok yerel ve global değişken için çakışma hataları alabilirsiniz. HÇFİ sizi bu çakışmalara karşı korur ve her dosya için kendi değişken kapsamını tanımlar.
 
   ```javascript
   /* sakınılacak stil */
@@ -131,7 +131,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
       .module('app')
       .factory('logger', logger);
 
-  // logger fonksiyonu evrensel olarak tanımlanıyor
+  // logger fonksiyonu global olarak tanımlanıyor
   function logger() { }
 
   // storage.js
@@ -139,7 +139,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
       .module('app')
       .factory('storage', storage);
 
-  // storage fonksiyonu evrensel olarak tanımlanıyor
+  // storage fonksiyonu global olarak tanımlanıyor
   function storage() { }
   ```
 
@@ -147,7 +147,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   /**
    * önerilen stil
    *
-   * evrensel tanımlamamız yok
+   * global tanımlamamız yok
    */
 
   // logger.js
@@ -175,7 +175,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Not: Dökümanın sadeliğini korumak namına, bundan sonraki örneklerin HÇFİ fonksiyonları içinde tanımlandığını farzedin. 
 
-  - Not: HÇFİ'ler test kodunuzun fonksiyona özel değişkenlere erişmenizi engeller (Regular Expression, Yardımcı fonksiyonlar gibi). O yüzden bu fonksiyonları kendi başlarına test etmek daha iyidir. Ama yine de bu özel fonksiyonları komponentin dışından erişilebilir kılarak test edebilirsiniz.
+  - Not: HÇFİ'ler test kodunuzun fonksiyona özel değişkenlere erişmenizi engeller (Regular Expression, Yardımcı fonksiyonlar gibi). O yüzden bu fonksiyonları kendi başlarına test etmek daha iyidir. Ama yine de bu özel fonksiyonları component dışından erişilebilir kılarak test edebilirsiniz.
 
 **[İçerik Listesi](#icerik-listesi)**
 
@@ -186,14 +186,14 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Alt modüller için eşsiz isimlendirme yöntemleri kullanın.
 
-  *Neden?*: Eşsiz isimler modül isimlerinin çakışmasını engeller. Ayraçlar modüller ve alt modüller arasındaki hiyerarşiyi kurmaya yardımcı olur. Örneğin `app` sizin ana modülünüz olsun. `app.dashboard` ve `app.users` modülleri alt modülleriniz olur ve `app` modülüne bağımlılık olarak eklenirler.
+  *Neden?*: Eşsiz isimler modül isimlerinin çakışmasını engeller. Ayraçlar, modüller ve alt modüller arasındaki hiyerarşiyi kurmaya yardımcı olur. Örneğin `app` sizin ana modülünüz olsun. `app.dashboard` ve `app.users` modülleri alt modülleriniz olur ve `app` modülüne bağımlılık olarak eklenirler.
 
 ### Modül Tanımlama Yöntemi (Setters)
 ###### [Stil [Y021](#style-y021)]
 
   - Modüllerinizi bir değişkene atama yapmadan setter sintaksını kullanarak tanımlayın.
 
-  *Neden?*: Her komponent için bir dosya yöntemi ile, nadiren modülünüzü bir değişkene atama ihtiyacı hissedersiniz. 
+  *Neden?*: Her component için bir dosya yöntemi ile, nadiren modülünüzü bir değişkene atama ihtiyacı hissedersiniz. 
 
   ```javascript
   /* kaçınılacak stil */
@@ -262,7 +262,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### İsimli ve Anonoim Fonksiyonlar
 ###### [Style [Y024](#style-y024)]
 
-  - Modülünüzün komponentlerinin fonksiyonlarını isimli fonksiyonlar olarak tanımlayın.
+  - Modülünüzün component'lerinin fonksiyonlarını isimli fonksiyonlar olarak tanımlayın.
 
   *Neden?*: Bu yöntem kodunuzu daha okunabilir kılar ve hata ayıklamak için kolaylık sağlar. Ayrcıa iç içe geçmiş fonksiyon bloklarının önüne geçcer.
 
@@ -296,18 +296,18 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Kontrolörler (Controllers)
+## Controller'lar
 
 ### controllerAs View Sintaksı
 ###### [Stil [Y030](#style-y030)]
 
-  - [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) sintaksını klasik $scope'lu kntrolöer sintaksına tercih edin. 
+  - [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) sintaksını klasik $scope'lu controller sintaksına tercih edin. 
 
-  *Neden?*: Kontrolörler `new` kelimesi ile yaratılır ve uygulamanız içerisinde sadece bir örneği bulunur. `controllerAs` yöntemi JavaScript'in constructor yapısına daha yakındır.
+  *Neden?*: Controller'lar `new` kelimesi ile yaratılır ve uygulamanız içerisinde sadece bir örneği bulunur. `controllerAs` yöntemi JavaScript'in constructor yapısına daha yakındır.
 
-  *Nden?*: View katmanında noktalı notasyonun kullanımını teşvik eder. (örneğin `customer.name` yerine `name`). Bu yöntem daha kolay okunur ve referans problemlerinin oluşmasını engeller.
+  *Neden?*: View katmanında noktalı notasyonun kullanımını teşvik eder. (örneğin `customer.name` yerine `name`). Bu yöntem daha kolay okunur ve referans problemlerinin oluşmasını engeller.
 
-  *Neden?*: İçiçe olan kontrolörlerde veriye ulaşırken `$parent` kullanmanızı engeller.
+  *Neden?*: İçiçe olan controller'larda veriye ulaşırken `$parent` kullanmanızı engeller.
 
   ```html
   <!-- kaçınılacak stil -->
@@ -323,16 +323,16 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   </div>
   ```
 
-### controllerAs Kontrolör Sintaksı
+### controllerAs Controller Sintaksı
 ###### [Stil [Y031](#style-y031)]
 
-  - `controllerAs` sintaksını klasik $scope'lu kntrolöer sintaksına tercih edin.
+  - `controllerAs` sintaksını klasik $scope'lu controller sintaksına tercih edin.
 
-  - `controllerAs` sintaksı kontrolör içerisinde `this` kelimesini kullanır ve $scope'a bağlanırç
+  - `controllerAs` sintaksı controller içerisinde `this` kelimesini kullanır ve $scope'a bağlanırç
 
   *Neden?*: `controllerAs` `$scope` için bir sintaks süslemedir. Hala View'a bağlayabilir ve `$scope` fonksiyonlarına ulaşabilirsiniz.
 
-  *Neden?*: `$scope` metodlarının bir Factory içerisinde tanımlanıp kontrolör içerisinde çağrılmasındansa, kontrolör içerisinde direk kullanılması eğilimine engel olur. `$scope`'u kontrolör içerisinde sadece ihtiyaç olduğunda kullanın. Örneğin [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast) veya [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) kullanırkenö bunları bir factory içine taşıyıp, kontrolör içerisinden çağırın.
+  *Neden?*: `$scope` metodlarının bir Factory içerisinde tanımlanıp controller içerisinde çağrılmasındansa, controller içerisinde direk kullanılması eğilimine engel olur. `$scope`'u controller içerisinde sadece ihtiyaç olduğunda kullanın. Örneğin [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast) veya [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) kullanırkenö bunları bir factory içine taşıyıp, controller içerisinden çağırın.
 
   ```javascript
   /* kaçınılan stil */
@@ -374,14 +374,14 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-  Not: [jshint](http://www.jshint.com/) uyarılarını kodun üstüne yorum ekleyerek engelleyebilirsiniz. Eğer fonksiyonunu UpperCasing yöntemi ile isimlendirdiyse buna ihtiyaç olmaz. Çünkü bu yöntem bu fonksiyonun bir constructor fonksiyonu olduğunu belirtir, ki Angular kontrolörleri de bir constructor fonksiyonudur.
+  Not: [jshint](http://www.jshint.com/) uyarılarını kodun üstüne yorum ekleyerek engelleyebilirsiniz. Eğer fonksiyonunu UpperCasing yöntemi ile isimlendirdiyse buna ihtiyaç olmaz. Çünkü bu yöntem bu fonksiyonun bir constructor fonksiyonu olduğunu belirtir, ki Angular controller'ları de bir constructor fonksiyonudur.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Not: vm değişkenlerini izlerken ($watch) aşağıdaki sintaksı kullanabilirsiniz. (İzleme yaratırken dikkatli olunmalıdır. Çümkü digest cycle'a yük bindrir.)
+  Not: vm değişkenlerini izlerken ($watch) aşağıdaki sintaksı kullanabilirsiniz. ($watch yaratırken dikkatli olunmalıdır. Çümkü digest cycle'a yük bindrir.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -402,7 +402,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Bağlanacaklar Yukarı
 ###### [Style [Y033](#style-y033)]
 
-  - Bağlanacak olan değişkenleri kontrolör fonksiyonuzda aflabetik sıralanmış olarak tepeye koyun. Kod içerisinde dağılmış olarak bırakmayın.
+  - Bağlanacak olan değişkenleri controller fonksiyonuzda aflabetik sıralanmış olarak tepeye koyun. Kod içerisinde dağılmış olarak bırakmayın.
 
     *Neden?*: Bağlancak değişkenleri tepeye koymak kod okunabilirliğini arttırır ve bir bakışta View'a hangi değişkenlerin bağlanacağını görebilirsiniz.
 
@@ -491,9 +491,9 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Fonksiyon Tanımlamaları ve İmplementasyon Detaylarının Saklanması
 ###### [Stil [Y034](#style-y034)]
 
-  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Kontrolörünüzde bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
+  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Controller'ınızda bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
 
-    *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve kontrolöer içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
+    *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve controlller içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
 
     *Neden?*: Fonksiyonun implementasyonunu dosya içerisinde daha aşağılara taşımak kompleks kısımları göz önünden uzak tutar ve asıl önemli olan kısma odaklanmayı sağlarç 
 
@@ -532,7 +532,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-  Bir önceki örnekte önemli olan noktaların kod içerisinde nasıld dağıldığına dikkat edin. Aşağıdaki örnekte, önemli olan kısım yukarıda toplanmıştır. Örneğin, kontrolöere bağlı `vm.avengers` ve `vm.title` öğeleri. İmplementasyonun detayları aşağıda yer alıyor. Kodu okumak böyle daha kolay.
+  Bir önceki örnekte önemli olan noktaların kod içerisinde nasıl dağıldığına dikkat edin. Aşağıdaki örnekte, önemli olan kısım yukarıda toplanmıştır. Örneğin, controller'a bağlı `vm.avengers` ve `vm.title` öğeleri. İmplementasyonun detayları aşağıda yer alıyor. Kodu okumak böyle daha kolay.
 
   ```javascript
   /*
@@ -563,18 +563,18 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Mantıksal kodu Kontrolörlerden Servislere Kaydırın
+### Mantıksal kodu Controller'lardan Servislere Kaydırın
 ###### [Style [Y035](#style-y035)]
 
-  - Kontrolör içerisindeki mantıksal kodu servisler ve factory'ler aracılığıyle yönetin. 
+  - Controller içerisindeki mantıksal kodu servisler ve factory'ler aracılığıyle yönetin. 
 
-    *Neden?*: Mantıksal kod servislere taşınırsa farklı kontrolörlerde tekrar terkrar kullanılabilir.
+    *Neden?*: Mantıksal kod servislere taşınırsa farklı controller'larda tekrar terkrar kullanılabilir.
 
-    *Neden?*: Servise taşınmış mantıksal kod daha kolay test edilebilir ve kontrolör içerisinde kolayca taklit edilebilir(mocking)
+    *Neden?*: Servise taşınmış mantıksal kod daha kolay test edilebilir ve controller içerisinde kolayca taklit edilebilir(mocking)
 
-    *Neden?*: Kontrolörden bağımlılıkları kaldırır ve implementasyon detaylarını gizler.
+    *Neden?*: Controller'dan bağımlılıkları kaldırır ve implementasyon detaylarını gizler.
 
-    *Neden?*: Kontrolörü kısa ve öz tutar.
+    *Neden?*: Controller'ı kısa ve öz tutar.
 
   ```javascript
 
@@ -622,21 +622,21 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Kontrolörün Odağını Koruyun
+### Controller'ın Odağını Koruyun
 ###### [Stil [Y037](#style-y037)]
 
-  - Bir kontrolörü bir view tanımlayın ve başka view'lar için kullanmaya çalışmayın. Onun yerine tekrar kullanılabilir mantıksal kodu farcory'lere taşıyıp, kontrolörü sade ve view'a odaklı bırakın.
+  - Bir controller'ı bir view tanımlayın ve başka view'lar için kullanmaya çalışmayın. Onun yerine tekrar kullanılabilir mantıksal kodu farcory'lere taşıyıp, controller'ı sade ve view'a odaklı bırakın.
 
-    *Neden?*: Kontrolörleri değişik view'larla birlikte kullanmak kodu kırılgan yapar ve iyi bir uçtan uca test kapsamı için kararlılık gereklidir.
+    *Neden?*: Controller'ları değişik view'larla birlikte kullanmak kodu kırılgan yapar ve iyi bir uçtan uca test kapsamı için kararlılık gereklidir.
 
-### Kontrolör Atamaları
+### Controller Atamaları
 ###### [Stil [Y038](#style-y038)]
 
-  - Eğer bir kontrolör bir view ile eşleşmek zorunda ise ve o view başka kontrolörler tarafından da kullanılıyorsa, o zaman kontrolörü router serviyesinde tanımlayın.
+  - Eğer bir controller bir view ile eşleşmek zorunda ise ve o view başka controller'lar tarafından da kullanılıyorsa, o zaman controller'ı router serviyesinde tanımlayın.
 
     Not: Eğer view router dışında başka biryerden yükleniyorsa, view içerisinde `ng-controller="Avengers as vm"` sintaksını kullanın.
 
-    *Neden?*: Kontrolörü router ile eşlemek, farklı route'ların farklı kontrolör ve view eşlerini çağırmasına olanak sağlar. Eğer kontrolör [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) yöntemi kullanılarak view ile eşlendiyse, o view hep o kontrolörü kullanacaktır.
+    *Neden?*: Controller'ı router ile eşlemek, farklı route'ların farklı controller ve view eşlerini çağırmasına olanak sağlar. Eğer controller [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController) yöntemi kullanılarak view ile eşlendiyse, o view hep o controller'ı kullanacaktır.
 
  ```javascript
   /* kaçınılacak stil */
@@ -799,9 +799,9 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Fonksiyon Tanımlamaları ve İmplementasyon Detaylarının Saklanması
 ###### [Stil [Y053](#style-y053)]
 
-  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Kontrolörünüzde bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
+  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Controller'ınızda bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
 
-    *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve kontrolöer içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
+    *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve controller içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
 
     *Neden?*: Fonksiyonun implementasyonunu dosya içerisinde daha aşağılara taşımak kompleks kısımları göz önünden uzak tutar ve asıl önemli olan kısma odaklanmayı sağlarç 
 
@@ -903,9 +903,9 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Veri işlemlerinizi ve işleme mantığınızı bir factory servisine alarak kodunuzu düzenleyin. Veri servislerini sadece ajax çağrıları, verileri lokal depo ya da bellekte saklama, veya diğer veri işlemlerinden sorumlu olacak şekilde tasarlayın.
 
-    *Neden?*: Kontrolörün görevi sadece view için gerekli verileri toplamaktır. Bu verilerin nasıl edinildiği ile ilgilenmez, sadece bu verileri nereden temin edeceğini bilir. Veri servislerini ayırmak, veri işleme mantığını servise taşır ve kontrolörün daha basit kalmasını ve sadece view'a odaklı kalmasını sağlar.
+    *Neden?*: Controller'ın görevi sadece view için gerekli verileri toplamaktır. Bu verilerin nasıl edinildiği ile ilgilenmez, sadece bu verileri nereden temin edeceğini bilir. Veri servislerini ayırmak, veri işleme mantığını servise taşır ve controller'ın daha basit kalmasını ve sadece view'a odaklı kalmasını sağlar.
     
-    *Neden?*: Bu yöntemle veri servisi kullanan kontrolörlerin test edilebilmesini kolaylaştırır.
+    *Neden?*: Bu yöntemle veri servisi kullanan controller'ların test edilebilmesini kolaylaştırır.
 
     *Neden?*: Veri servisi implementasyonu veri havuzlarını yönetmek için çok belirgin bir kod yapısına sahiptir. Bu, veri ile nasıl iletişilebileceğini anlatan header'lar yada `$http` gibi başka servisler içerebilir. Veri işleme mantığını ayırıp bir veri servisinde toplamak bu işlemlerin tek bir yerden yönetilmesini ve implementasyonun bu servisi kullananlardan (örneğin kontolörler) saklanmasını sağlar. Ayrıca implementasyonu değiştirmek kolaylaşır.
 
@@ -941,12 +941,12 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   ```
 
     Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
-    Not: Veri servisi kontrolör gibi onu kullanan yerlerden çağrılır ve aşağıdaki örnekteki gibi implementasyon detaylarını kullanılan yerlerden saklar.
+    Not: Veri servisi controller gibi onu kullanan yerlerden çağrılır ve aşağıdaki örnekteki gibi implementasyon detaylarını kullanılan yerlerden saklar.
 
   ```javascript
   /* önerilen stil */
 
-  // veri servisi factroy'sini çağıran kontrolör
+  // veri servisi factroy'sini çağıran controller
   angular
       .module('app.avengers')
       .controller('Avengers', Avengers);
@@ -1022,19 +1022,19 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Direktifler (Directives)
-### Bir Dosyaya Bir Direktif
+## Directive'ler
+### Bir Dosyaya Bir Directive
 ###### [Stil [Y070](#style-y070)]
 
   - Create one directive per file. Name the file for the directive.
 
-  - Her bir direktif için ayrı bir dosya yaratın ve dosyanın adını direktifin adı ile aynı tutun.
+  - Her bir directive için ayrı bir dosya yaratın ve dosyanın adını directive'in adı ile aynı tutun.
 
-    *Why?*: Bütün direktifleri bir dosya içerisinde toplamak kolaydır, ancak daha sonra bu direktifleri ayırıp farklı uygulamalarda, modüllerde kullanmak zorlaşır.
+    *Why?*: Bütün directive'leri bir dosya içerisinde toplamak kolaydır, ancak daha sonra bu directive'leri ayırıp farklı uygulamalarda, modüllerde kullanmak zorlaşır.
 
-    *Why?*: Her dosyada bir direktifin olması sürdürülebilirliği kolaylaştırır.
+    *Why?*: Her dosyada bir directive'in olması sürdürülebilirliği kolaylaştırır.
 
-    > Not: "**En iyi uygulama**: Direktifler kendilerini temizlemelilerdir. `element.on('$destroy', ...)` ya da `scope.$on('$destroy', ...)` kullanarak direktif kaldırıldığında bir temizlik fonksiyonu çalıştırabilirsiniz" ... Angular dökümantasyonundan.
+    > Not: "**En iyi uygulama**: Directive'ler kendilerini temizlemelilerdir. `element.on('$destroy', ...)` ya da `scope.$on('$destroy', ...)` kullanarak directive kaldırıldığında bir temizlik fonksiyonu çalıştırabilirsiniz" ... Angular dökümantasyonundan.
 
   ```javascript
   /* sakınılacak stil */
@@ -1043,13 +1043,13 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   angular
       .module('app.widgets')
 
-      /* order modülüne özel direktif */
+      /* order modülüne özel directive */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales uygulamasının heryerinde kullanılabilecek bir direktif */
+      /* sales uygulamasının heryerinde kullanılabilecek bir directive */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* bütün uygulamalarda kullanılabilecek bir direktif */
+      /* bütün uygulamalarda kullanılabilecek bir directive */
       .directive('sharedSpinner', sharedSpinner);
 
   function orderCalendarRange() {
@@ -1070,7 +1070,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   /* calendarRange.directive.js */
 
   /**
-   * @desc order modülüne özel direktif
+   * @desc order modülüne özel directive
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1087,7 +1087,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   /* customerInfo.directive.js */
 
   /**
-   * @desc uygulama içerisinde heryede kullanılabilecek sales direktifi
+   * @desc uygulama içerisinde heryede kullanılabilecek sales directive'i
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1104,7 +1104,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   /* spinner.directive.js */
 
   /**
-   * @desc bütün uygulamalarda kullanılabilecek spinner direktifi
+   * @desc bütün uygulamalarda kullanılabilecek spinner directive'i
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1118,37 +1118,37 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
 
-    Not: Direktifler için birçok isimlendirme seçeneği mevcut, özellikle dar ya da geniş kapsamda kullanılanlar için. Direktifi ve dosya ismini belirgin ve açık ifade edecek isimler seçin. Aşağıda bazı örnekler bulabilirsiniz, ama daha fazla tavsiye için [İsimlendirme](#naming) bölümüne bakın.
+    Not: Directive'ler için birçok isimlendirme seçeneği mevcut, özellikle dar ya da geniş kapsamda kullanılanlar için. Directive'i ve dosya ismini belirgin ve açık ifade edecek isimler seçin. Aşağıda bazı örnekler bulabilirsiniz, ama daha fazla tavsiye için [İsimlendirme](#naming) bölümüne bakın.
 
-### Direktif İçerisinde DOM Değişiklikleri
+### Directive İçerisinde DOM Değişiklikleri
 ###### [Stil [Y072](#style-y072)]
 
-  - DOM'a direk olark müdahele etmek için direktif kullanın. Eğer CSS kullanmak ya da [animasyon servisleri](https://docs.angularjs.org/api/ngAnimate), Angular şablonlandırma, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ya da [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide) ile amacınıza ulaşabiliyorsanız bu yöntemleri tercih edin. Örneğin eğer bir direktif sadece bir elemanı saklayıp gösteriyorsa ngHide/ngShow kullanın.
+  - DOM'a direk olark müdahele etmek için directive kullanın. Eğer CSS kullanmak ya da [animasyon servisleri](https://docs.angularjs.org/api/ngAnimate), Angular şablonlandırma, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ya da [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide) ile amacınıza ulaşabiliyorsanız bu yöntemleri tercih edin. Örneğin eğer bir directive sadece bir elemanı saklayıp gösteriyorsa ngHide/ngShow kullanın.
 
     *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
     *Neden?*: DOM değişikliklerini test ve debug etmek güç olabilir, ve genellikle daha iyi bir yöntem bulabilirsiniz (örneğin CSS, animasyon, şablonlar)
 
-### Eşsiz Bir Direktif Ön eki Kullanın
+### Eşsiz Bir Directive Ön eki Kullanın
 ###### [Stil [Y073](#style-y073)]
 
   - Eşsiz, kısa ve tanımlayıcı bir ön ek kullanın. Örneğin `acmeSalesCustomerInfo`. HTML'de `acme-sales-customer-info` şeklinde tanımlanır.
 
-    *Neden?*: Eşsiz ön ek direktifin kapsamını ve orijinini ifade eder. Örneğin `cc-` direktifin CodeCamper uygulamasına ait olduğunu ifade ederken, `acme-` bu direktifin Acme firmasına ait olduğunu ifade edevilir
+    *Neden?*: Eşsiz ön ek directive'in kapsamını ve orijinini ifade eder. Örneğin `cc-` directive'in CodeCamper uygulamasına ait olduğunu ifade ederken, `acme-` bu directive'in Acme firmasına ait olduğunu ifade edevilir
 
     Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
     
     Not: `ng-` Angular tafafından kullanıldığı için bu ön eki kullanmaktan kaçının. Ön ekinizi belirlemeden önce çakışmaların önüne geçmek için iyice araştırın. Örneğin `ion-` ön eki [Ionic Framework](http://ionicframework.com/) tarafından kullanılmaktadır.
 
-### Direktifinizin Yazım Türünü Element ve Attribute Olarak Sınırlayın
+### Directive'inizin Yazım Türünü Element ve Attribute Olarak Sınırlayın
 ###### [Stil [Y074](#style-y074)]
 
   - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
   
-  - Kendi başına element olarak anlamlı bir direktif yaratırken restrict `E` (özel element) ve tercihen restrict `A` (özel attribute) kullanın. Genellikle, eğer kendi kendini kontrol eden bir direktif ise `E` uygun olur. Genel olarak `EA` kullanmaya izin verilir ama eğer direktif tek başına bir element ise element(E) olarak, hazırda var olan bir element'i iyileştiren bir direktifse attribute(A) olarak sınırlamaya yönelin.
+  - Kendi başına element olarak anlamlı bir directive yaratırken restrict `E` (özel element) ve tercihen restrict `A` (özel attribute) kullanın. Genellikle, eğer kendi kendini kontrol eden bir directive ise `E` uygun olur. Genel olarak `EA` kullanmaya izin verilir ama eğer directive tek başına bir element ise element(E) olarak, hazırda var olan bir element'i iyileştiren bir directive'se attribute(A) olarak sınırlamaya yönelin.
 
     *Neden?*: Çünkü mantıklı.
 
-    *Neden?*: Direktifi class olarak da kullanmaya olanak sağlansa da, eğer direktif gerçekten kendi başına bir element olarak davranıyorsa element(E) olarak sınırlamak ya da en azından attribute(A) olarak sınırlamak mantıklı olur.
+    *Neden?*: Directive'i class olarak da kullanmaya olanak sağlansa da, eğer directive gerçekten kendi başına bir element olarak davranıyorsa element(E) olarak sınırlamak ya da en azından attribute(A) olarak sınırlamak mantıklı olur.
 
     Not: EA, Angular 1.3 + için varsayılan sınırlandırma seçeneğidir.
 
@@ -1203,18 +1203,18 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-### Direktifler ve controllerAs
+### Directive'ler ve controllerAs
 ###### [Stil [Y075](#style-y075)]
 
-  - Tutarlı olmak için direktifle birlikte `controller as` sintaksını kullanın.
+  - Tutarlı olmak için directive'le birlikte `controller as` sintaksını kullanın.
 
     *Neden?*: Mantıklı ve zor değil.
 
-    Not: Aşağıdaki örnek scope'u link ve direktif kontrolörü içerisinde controllerAs yöntemi ile nasıl kullanılacağını gösterir. Örneğin bölünmemesi amacı ile HTML şablonunu direktif içerisinde tuttum.
+    Not: Aşağıdaki örnek scope'u link ve directive controller'ı içerisinde controllerAs yöntemi ile nasıl kullanılacağını gösterir. Örneğin bölünmemesi amacı ile HTML şablonunu directive içerisinde tuttum.
 
     Not: Bağımlılık Enjeksiyonu (Dependency Injection) ile ilgili olarak , [Manuel Olarak Bağımlılıkları Belirlemek](#manual-annotating-for-dependency-injection) kısmına bakın.
 
-    Not: Direktifin kontrolörünün direktifin kapsamının(closure) dışında olduğunu unutmayın. Bu stil `return`'den sonra enjeksiyonların ulaşılamaz şekilde yaratılması probleminin önüne geçer.
+    Not: Directive'in controller'ının directive'in kapsamının(closure) dışında olduğunu unutmayın. Bu stil `return`'den sonra enjeksiyonların ulaşılamaz şekilde yaratılması probleminin önüne geçer.
 
   ```html
   <div my-example max="77"></div>
@@ -1270,7 +1270,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-    Not: Ayrıca kontrolörü link fonksiyonuna enjekte ederken isimlendirebilirsiniz ve böylece direktif attribute'larına kontrolörün elemanları olarak erişebilirsiniz.
+    Not: Ayrıca controller'ı link fonksiyonuna enjekte ederken isimlendirebilirsiniz ve böylece directive attribute'larına controller'ın elemanları olarak erişebilirsiniz.
 
   ```javascript
   // Yukarıdaki örneğe alternatif
@@ -1284,10 +1284,10 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 ###### [Stil [Y076](#style-y076)]
 
-  - `controller as` sintaksını kullanırken `bindToController = true` seçeneğini kullanın. Bu dış $scope'u direktifin kontrolör $scope'una bağlamanızı sağlar.
+  - `controller as` sintaksını kullanırken `bindToController = true` seçeneğini kullanın. Bu dış $scope'u directive'in controller $scope'una bağlamanızı sağlar.
 
     *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
-    *Neden?*: Dış $scope'u direktifin kontrolörünün $scope'una bağlamayı kolaylaştırır.
+    *Neden?*: Dış $scope'u directive'in controller'ın $scope'una bağlamayı kolaylaştırır.
 
     Not: `bindToController` özelliği Angular 1.3.0 ile birlikte gelmiştir.
 
@@ -1332,17 +1332,17 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Promise'i Kontrolör İçerisine Çözümlemek
-### Kontrolör Aktifleştirme Promise'leri
+## Promise'leri Controller'lar İçin Çözümlemek
+### Controller Aktifleştirme Promise'leri
 ###### [Stil [Y080](#style-y080)]
 
-  - Kontrolörün başlangıç mantığını `activate` fonksiyonu içerisinde çözün.
+  - Controller'ın başlangıç mantığını `activate` fonksiyonu içerisinde çözün.
 
-    *Neden?*: Başlangıç mantığını kontrolör içerisinde tutarlı bir yerde tutmak yerini bulmayı kolaylaştırır, test için tutarlı hale getirir ve başlangıç mantığını kontrolör içerisinde dağıtmaya yardımcı olur.
+    *Neden?*: Başlangıç mantığını controller içerisinde tutarlı bir yerde tutmak yerini bulmayı kolaylaştırır, test için tutarlı hale getirir ve başlangıç mantığını controller içerisinde dağıtmaya yardımcı olur.
 
     *Neden?*: `activate` fonksiyonu başlangıç mantığını controller/View baştan başlatılmak istendiğinde tekrar kullanmaya elverişli hale getirir, mantığı bir arada tutar, kullanıcıyı View'a daha hızlı ulaştırır, `ng-view` ya da `ui-view` için animasyonları kolaylaştırır ve kullanıcıya daha hızlı hissettirir.
 
-    Not: Eğer durumsal olarak route'u kontrolör başlamadan önce iptal etmek istiyorsanız [route resolve](#style-y081) kullanın.
+    Not: Eğer durumsal olarak route'u controller başlamadan önce iptal etmek istiyorsanız [route resolve](#style-y081) kullanın.
 
   ```javascript
   /* sakınılacak stil */
@@ -1483,7 +1483,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Manuel Annotation ve Dependency Injection
+## Dependency Injection ve Manuel Annotation
 
 ### Minification Uyumluluk
 ###### [Stil [Y090](#style-y090)]
@@ -2095,7 +2095,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Uygulama Yapısında LIFT Prensibi
+## Uygulama Yapısı ve LIFT Prensibi
 ### LIFT
 ###### [Stil [Y140](#style-y140)]
 
@@ -2393,7 +2393,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
 **[İçerik Listesi](#icerik-listesi)**
 
-## Angular $ Wrapper Servisleri
+## Angular Servisleri
 
 ### $document ve $window
 ###### [Stil [Y180](#style-y180)]
