@@ -1,14 +1,14 @@
 # Angular Stil Rehberi
 
 ## Angular Ekibinden Destek
-Angular takım lideri Igor Minar'a, rehberimi incelediği, geribildirimde bulunduğu ve rehber olma görevini bana emanet ettiği için özellikle teşekkür ederim.
+Angular takım lideri Igor Minar'a, rehberimi incelediği, geri bildirimde bulunduğu ve rehber olma görevini bana emanet ettiği için özellikle teşekkür ederim.
 
 ##Amaç 
 *[@john_papa](//twitter.com/john_papa)'dan Takımlar için seçeneklendirilmiş stil rehberi*
 
 Eğer Angular projeleriniz için seçeneklendirilmiş bir sintaks, yöntem ve yapılandırma rehberi arıyorsanız, buyrun gelin. Bu stiller benim [Angular](//angularjs.org) sunumlarım, [Pluralsight eğitim kurslarım](http://pluralsight.com/training/Authors/Details/john-papa) ve takım çalışmalarımdan edindiğim deneyimlerle oluşturulmuştur.
 
-Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi neden bu yöntemleri seçtiğimi açıklayarak, Angular aplikasyonlarınızı geliştirirken size yol göstermektir.
+Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi neden bu yöntemleri seçtiğimi açıklayarak, Angular uygulamalarınızı geliştirirken size yol göstermektir.
 
 >Eğer bu rehberi beğendiyseniz, [Angular Patterns: Clean Code](http://jpapa.me/ngclean) isimli kursuma Pluralsight sitesinden bir bakın. Bu rehberle pekiltirici olacaktır.
 
@@ -739,7 +739,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     Not: [Bütün Angular servisleri singleton yapıdadır](https://docs.angularjs.org/guide/services).
 
-### Ulaşışabilirler Yurkarı!
+### Ulaşılabilirler Yukarı!
 ###### [Style [Y052](#style-y052)]
   
   - Servisin çağrılabilen metodlarını  [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) yapısını kullanarak kodun tepesinde tanımlayın.
@@ -980,7 +980,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Promise döndüren bir veri servisini çağırdığınızda, siz de çağrıyı yapan fonksiyona bir Promise döndürün.
 
-    *Why?*: Böylece Promise'lerinizi zincirleyebilirsiniz ve veri çağrısı bitip çöczümlendiğinde sonuca göre aksiyon alabilirsiniz.
+    *Neden?*: Böylece Promise'lerinizi zincirleyebilirsiniz ve veri çağrısı bitip çöczümlendiğinde sonuca göre aksiyon alabilirsiniz.
 
   ```javascript
   /* önerilen stil */
@@ -1026,13 +1026,11 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Bir Dosyaya Bir Directive
 ###### [Stil [Y070](#style-y070)]
 
-  - Create one directive per file. Name the file for the directive.
-
   - Her bir directive için ayrı bir dosya yaratın ve dosyanın adını directive'in adı ile aynı tutun.
 
-    *Why?*: Bütün directive'leri bir dosya içerisinde toplamak kolaydır, ancak daha sonra bu directive'leri ayırıp farklı uygulamalarda, modüllerde kullanmak zorlaşır.
+    *Neden?*: Bütün directive'leri bir dosya içerisinde toplamak kolaydır, ancak daha sonra bu directive'leri ayırıp farklı uygulamalarda, modüllerde kullanmak zorlaşır.
 
-    *Why?*: Her dosyada bir directive'in olması sürdürülebilirliği kolaylaştırır.
+    *Neden?*: Her dosyada bir directive'in olması sürdürülebilirliği kolaylaştırır.
 
     > Not: "**En iyi uygulama**: Directive'ler kendilerini temizlemelilerdir. `element.on('$destroy', ...)` ya da `scope.$on('$destroy', ...)` kullanarak directive kaldırıldığında bir temizlik fonksiyonu çalıştırabilirsiniz" ... Angular dökümantasyonundan.
 
@@ -1125,7 +1123,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - DOM'a direk olark müdahele etmek için directive kullanın. Eğer CSS kullanmak ya da [animasyon servisleri](https://docs.angularjs.org/api/ngAnimate), Angular şablonlandırma, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ya da [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide) ile amacınıza ulaşabiliyorsanız bu yöntemleri tercih edin. Örneğin eğer bir directive sadece bir elemanı saklayıp gösteriyorsa ngHide/ngShow kullanın.
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    *Neden?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
     *Neden?*: DOM değişikliklerini test ve debug etmek güç olabilir, ve genellikle daha iyi bir yöntem bulabilirsiniz (örneğin CSS, animasyon, şablonlar)
 
 ### Eşsiz Bir Directive Ön eki Kullanın
@@ -1286,7 +1284,6 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - `controller as` sintaksını kullanırken `bindToController = true` seçeneğini kullanın. Bu dış $scope'u directive'in controller $scope'una bağlamanızı sağlar.
 
-    *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
     *Neden?*: Dış $scope'u directive'in controller'ın $scope'una bağlamayı kolaylaştırır.
 
     Not: `bindToController` özelliği Angular 1.3.0 ile birlikte gelmiştir.
@@ -1490,8 +1487,6 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Bağımlılıkları belirlerken kısayol sintaksını kullanmaktan kaçının.
 
-    *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
-    
     *Neden?*: Component'e aid değişkenler (controller, factory, etc) minification işlemi sonrası karıştırılmış değişkenlere çevrilecektir. Örneğin, `common` ve `dataservice`, `a` ve `b` değişkenlerine dönüşebilir ve Angular tarafından bulunamayabilir.
 
     ```javascript
@@ -2008,7 +2003,6 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     *Neden?*: Ne olduğu açık olan `logger` gibi servis isimleri son eke ihtiyaç duymaz.
 
-    *Why?*: Service names such as `avengers` are nouns and require a suffix and should be named `avengersService`.
     *Neden?*: `avengers` gibi servis isimleri isimdir ve son eke ihtiyaç duyar. `avengersService` olarak isimlendirilmelidir.
 
     ```javascript
@@ -3205,7 +3199,6 @@ Potensiyel değişiklik/eklemeler için öncelikle bir issue açın. Eğer rehbe
 
 ### Süreç
     1. Değişiklikleri bir issue ile tartışın.
-    2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
     2. Bir Pull Request açın, issue'yu referans gösterin, ve değişikliği açıklayın. Bu değişiklik nasıl bir değer katıyor?
     3. Pull Requestiniz incelenecektir ve ya merge edilecek ya da geri çevrilecektir.
 
