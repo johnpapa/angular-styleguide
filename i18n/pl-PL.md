@@ -20,7 +20,7 @@ Nigdy nie działaj w próżni. Uważam, że społeczność Angular to niesamowit
 Wiele z nich powstały z sesji programowania w parach z [Ward Bell](http://twitter.com/wardbell). Mój przyjaciel Ward napewno miał duży wpływ na ostateczny rozwój tego przewodnika..
 
 ## Przykładowa Aplikacja
-Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za pomocne, aby zobaczyć je w praktyce. Podręcznik ten towarzyszy przykładowej aplikacji, która została napisana wedle wszystkich stylów i wzorców zawartych poniżej. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za pomocne, aby zobaczyć je w praktyce. Podręcznik ten towarzyszy przykładowej aplikacji, która została napisana wedle wszystkich stylów i wzorców zawartych poniżej. [Przykładową Aplikacje (nazwana modular) znajdziesz tutaj](https://github.com/johnpapa/ng-demos) w folderze `modular`. Zapraszam do pobrania oraz klonowania. [Instrukcje znajdziesz w readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Tłumaczenia
 [Tłumaczenia tego przewodnika](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) są utrzymywane przez społeczność.
