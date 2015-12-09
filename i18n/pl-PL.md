@@ -1,31 +1,31 @@
-# Angular Style Guide
+# Przewodnik po Angular
 
-## Angular Team Endorsed
-Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
+## Zatwierdzony przez zespół Angular
+Specjalne podziękowania dla Igor Minar, lidera zespołu Angular, za przegląd, opinie oraz powierzenie mi tego przewodnika.
 
-## Purpose
+## Cel
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
+Jeśli szukasz przewodnika dla składni, konwencji i strukturyzacji aplikacji Angular to właśnie na niego trafiłeś. Poniższy tekst jest na podstawie mojego doświadczenia i rozwoju z [Angular](//angularjs.org), prezentacji, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) oraz pracy w zespołach.
 
-The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
+Celem tego przewodnika jest przedstawienie stylu i wskazówek dotyczących tworzenia aplikacji Angular pokazując konwencje których używam i, co ważniejsze, dlaczego warto je wybrać.
 
->If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
+>Jeśli spodobał ci się ten przewodnik, sprawdź mój [Angular Patterns: Clean Code](http://jpapa.me/ngclean) kurs na Pluralsight który jest dobrym dopełnieniem tego przewodnika.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Community Awesomeness and Credit
-Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, a friend and Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
+## Niesamowita społeczność oraz uznanie
+Nigdy nie działaj w próżni. Uważam, że społeczność Angular to niesamowita grupa, którzy są pasjonatami dzielenia się doświadczeniami. Jeden z nich, przyjaciel oraz ekspert w Angular Todd Motto i Ja współpracowaliśmy nad wieloma wzorcami oraz konwencjami. Zgadzamy się co do większości, ale niektóre nas różnią. Zachęcam was, aby sprawdzić [Przewodnik Todd'a](https://github.com/toddmotto/angularjs-styleguide) aby uzyskać poczucie co do jego podejścia jak i porównania.
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
+Wiele z nich powstały z sesji programowania w parach z [Ward Bell](http://twitter.com/wardbell). Mój przyjaciel Ward napewno miał duży wpływ na ostateczny rozwój tego przewodnika..
 
-## See the Styles in a Sample App
-While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+## Przykładowa Aplikacja
+Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za pomocne, aby zobaczyć je w praktyce. Podręcznik ten towarzyszy przykładowej aplikacji, która została napisana wedle wszystkich stylów i wzorców zawartych poniżej. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
-##Translations
-[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) are maintained by the community and can be found here.
+##Tłumaczenia
+[Tłumaczenia tego przewodnika](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) są utrzymywane przez społeczność.
 
-## Table of Contents
+## Spis treści
 
   1. [Single Responsibility](#single-responsibility)
   1. [IIFE](#iife)
