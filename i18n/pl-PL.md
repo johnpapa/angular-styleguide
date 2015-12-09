@@ -4,7 +4,7 @@
 Specjalne podziękowania dla Igor Minar, lidera zespołu Angular, za przegląd, opinie oraz powierzenie mi tego przewodnika.
 
 ## Cel
-*Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*Przewodnik wzorców Angular dla zespołów napisany przez [@john_papa](//twitter.com/john_papa)*
 
 Jeśli szukasz przewodnika dla składni, konwencji i strukturyzacji aplikacji Angular to właśnie na niego trafiłeś. Poniższy tekst jest na podstawie mojego doświadczenia i rozwoju z [Angular](//angularjs.org), prezentacji, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) oraz pracy w zespołach.
 
