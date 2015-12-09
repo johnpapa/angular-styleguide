@@ -62,12 +62,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
 ## Single Responsibility
 
-### Rule of 1
+### Reguła Wyjątkowości
 ###### [Style [Y001](#style-y001)]
 
-  - Define 1 component per file.
+  - Definicja 1 komponentu w 1 pliku.
 
-  The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.
+  Poniższy przykład definiuję moduł aplikacji `app` i jego zależności, definiuje kontroler oraz fabryki w tym samym pliku.
 
   ```javascript
   /* avoid */
@@ -81,7 +81,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   function someFactory() { }
   ```
 
-  The same components are now separated into their own files.
+  Te same elementy są teraz podzielone na swoje pliki.
 
   ```javascript
   /* recommended */
