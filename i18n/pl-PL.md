@@ -113,7 +113,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   function someFactory() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## IIFE
 ### JavaScript Closures
@@ -178,7 +178,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
   - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Modules
 
@@ -295,7 +295,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Controllers
 
@@ -702,7 +702,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Services
 
@@ -741,7 +741,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Factories
 
@@ -912,7 +912,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Data Services
 
@@ -1037,7 +1037,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Directives
 ### Limit 1 Per File
@@ -1339,7 +1339,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Resolving Promises for a Controller
 ### Controller Activation Promises
@@ -1490,7 +1490,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Manual Annotating for Dependency Injection
 
@@ -1625,7 +1625,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Minification and Annotation
 
@@ -1737,7 +1737,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Exception Handling
 
@@ -1858,7 +1858,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Naming
 
@@ -2092,7 +2092,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Application Structure LIFT Principle
 ### LIFT
@@ -2155,7 +2155,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
     *Why?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Application Structure
 
@@ -2269,7 +2269,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
             topnav.html
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Modularity
 
@@ -2333,7 +2333,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
     > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Startup Logic
 
@@ -2389,7 +2389,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Angular $ Wrapper Services
 
@@ -2407,7 +2407,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle Angular's digest cycle thus keeping data binding in sync.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Testing
 Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
@@ -2580,7 +2580,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
                              /customers.route.spec.js
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Animations
 
@@ -2613,7 +2613,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Comments
 
@@ -2665,7 +2665,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## JS Hint
 
@@ -2742,7 +2742,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## JSCS
 
@@ -2832,7 +2832,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Constants
 
@@ -2882,7 +2882,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         });
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
@@ -3040,7 +3040,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
@@ -3066,7 +3066,7 @@ You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to creat
   yo hottowel helloWorld
   ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Routing
 Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
@@ -3159,7 +3159,7 @@ Client-side routing is important for creating a navigation flow between views an
 
     *Why?*: This makes it easy to enable or disable portions of an application without concern over orphaned routes.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Task Automation
 Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
@@ -3184,7 +3184,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
     ];
     ```
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Filters
 
@@ -3194,7 +3194,7 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
     *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
 
 ## Angular docs
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
@@ -3238,4 +3238,4 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[Back to top](#table-of-contents)**
+**[Powrót do góry](#table-of-contents)**
