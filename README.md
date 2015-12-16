@@ -2665,14 +2665,25 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     })();
     ```
     
+    
     ###### JSDoc types:
     You can document the type of your entity by type name in braces.
     Types can be used with multiple JSDoc annotation such as @param, @return, @property & etc.
+    
     Followings are available variations:
     
-    * Single Type: @param {string} name - name of the author.
-    * Multiple Types: @param {string|number} - id of a book
-    * Arrays of types: @param {string[]} names
+      * Single Type:
+        ```
+        @param {string} name - name of the author.
+        ```
+      * Multiple Types: 
+        ```
+        @param {string|number} - id of a book
+        ```
+      * Arrays of types:
+        ```
+        @param {string[]} names
+        ```
     
     Supported types are: string, Object, boolean, number, Array & etc..
     
@@ -2681,8 +2692,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     ###### Type with description
     For readability purposes you can add a hyphen before the description.
     
-      ```javascript
-      /**
+     ```javascript
+     /**
       * @param {string} msg - Message to log.
       */
       function logError(msg) {
@@ -2694,8 +2705,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     ###### An optional parameter
 
-      ```javascript
-      /**
+     ```javascript
+     /**
       * @param {string} [msg] - Message to log.
       */
       function logError(msg) {
@@ -2710,16 +2721,16 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     ###### Type with default value
 
-        ```javascript
-        /**
-        * @param {string} [msg=Default message] - Message to log.
-        **/
-        function logError(msg) {
-            var loggedMsg = 'Error: ' + msg;
-            $log.error(loggedMsg);
-            return loggedMsg;
-        };
-        ```
+     ```javascript
+     /**
+      * @param {string} [msg=Default message] - Message to log.
+      */
+      function logError(msg) {
+          var loggedMsg = 'Error: ' + msg;
+          $log.error(loggedMsg);
+          return loggedMsg;
+      };
+      ```
 
      Refer to JSDoc types [`document`](http://usejsdoc.org/tags-type.html) for more detailed information on types.
 
