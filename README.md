@@ -2652,8 +2652,8 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
           /**
            * @name logError
            * @desc Logs errors
-           * @param {String} msg - Message to log.
-           * @returns {String}
+           * @param {string} msg - Message to log.
+           * @returns {string}
            * @memberOf Factories.Logger
            */
           function logError(msg) {
