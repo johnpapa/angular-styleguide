@@ -2682,7 +2682,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 
   - Snippets de Angular que siguen estos estilos y directrices.
 
-    - Descarga los [snippets de Angular para Sublime](assets/sublime-angular-snippets.zip?raw=true)
+    - Descarga los [snippets de Angular para Sublime](../assets/sublime-angular-snippets?raw=true)
     - Colócalos en tu directorio de Packages
     - Reinicia Sublime
     - En un archivo de JavaScript escibe estos comandos seguidos de un `TAB`
