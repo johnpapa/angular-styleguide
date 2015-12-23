@@ -13,6 +13,7 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
   1. [Russian](ru-RU.md) by [Vasiliy Mazhekin](https://github.com/mazhekin)
   1. [Simplified Chinese](zh-CN.md) by [Zhao Ke](https://github.com/natee)
   1. [Spanish](es-ES.md) by [Alberto Calleja](https://github.com/AlbertoImpl) and [Gilberto](https://github.com/ingilniero)
+  1. [Turkish](tr-TR.md) by [Uğur Korfalı](https://github.com/kel-sakal-biyik)
 
 
 ## Contributing
