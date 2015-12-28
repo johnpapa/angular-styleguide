@@ -1339,6 +1339,26 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
+### Binding over expression
+###### [Style [Y077](#style-y077)]
+
+  - Use `ng-bind` directive rather than an expression `{{expression}}` whenever this is possible.
+
+  *Why?*: `{{}}` is much slower as it will be refreshed in every `$digest`. On the other hand, ng-bind will watch the variable and only apply when the passed value changes.
+
+  ```html
+  /* avoid */
+  <input type="text" ng-model="model">
+  <span>{{model}}</span>
+  ```
+
+  ```html
+  /* recommended */
+  <input type="text" ng-model="model">
+  <span ng-bind="model"></span>
+  ```
+
+
 **[Back to top](#table-of-contents)**
 
 ## Resolving Promises for a Controller
