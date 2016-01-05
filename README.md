@@ -753,7 +753,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Factories are singletons and return an object that contains the members of the service. Use factories if custom initialization is needed for example, if some properties are conditiona. If only simple singleton is needed, use Service patern
+  - Factories are singletons and return an object that contains the members of the service. Use factories if custom initialization is needed. For example, if some properties of the created object are conditional. If only simple singleton is needed, use Service pattern
 
     Note: [All Angular services are singletons](https://docs.angularjs.org/guide/services).
 
