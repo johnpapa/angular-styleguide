@@ -709,7 +709,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency.
+  - Services are instantiated with the `new` keyword, use `this` for public methods and variables.
 
     Note: [All Angular services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
 
@@ -753,7 +753,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Factories are singletons and return an object that contains the members of the service. Use factories if custom initialization is needed for example, if some properties are conditiona. If only simple singleton is needed, use Service patern
 
     Note: [All Angular services are singletons](https://docs.angularjs.org/guide/services).
 
