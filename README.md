@@ -1472,7 +1472,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
               }
           });
   }
-
+  
+  moviesPrepService.$inject = ['movieService'];
   function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
