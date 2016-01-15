@@ -14,6 +14,7 @@ The [original English version](http://jpapa.me/ngstyles) is the source of truth,
   1. [Simplified Chinese](zh-CN.md) by [Zhao Ke](https://github.com/natee)
   1. [Spanish](es-ES.md) by [Alberto Calleja](https://github.com/AlbertoImpl) and [Gilberto](https://github.com/ingilniero)
   1. [Korean](ko-KR.md) by [Joshua Ji](https://github.com/zirho)
+  1. [Turkish](tr-TR.md) by [Uğur Korfalı](https://github.com/kel-sakal-biyik)
 
 ## Contributing
 Language translations are welcomed and encouraged. The success of these translations depends on the community. I highly encourage new translation contributions and help to keep them up to date.
