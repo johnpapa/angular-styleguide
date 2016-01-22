@@ -62,7 +62,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
 ## Single Responsibility
 
-### Reguła Wyjątkowości
+### Zasada jednej odpowiedzialności
 ###### [Style [Y001](#style-y001)]
 
   - Definicja 1 komponentu w 1 pliku.
@@ -84,7 +84,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   Te same elementy są teraz podzielone na swoje pliki.
 
   ```javascript
-  /* recommended */
+  /* polecane */
 
   // app.module.js
   angular
@@ -92,7 +92,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* javascript */
 
   // some.controller.js
   angular
@@ -103,7 +103,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* javascript */
 
   // someFactory.js
   angular
