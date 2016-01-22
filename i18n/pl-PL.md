@@ -84,7 +84,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   Te same elementy są teraz podzielone na swoje pliki.
 
   ```javascript
-  /* polecane */
+  /* rekomendowane */
 
   // app.module.js
   angular
@@ -92,7 +92,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* javascript */
+  /* rekomendowane */
 
   // some.controller.js
   angular
@@ -103,7 +103,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* javascript */
+  /* rekomendowane */
 
   // someFactory.js
   angular
