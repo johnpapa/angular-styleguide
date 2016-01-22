@@ -116,23 +116,23 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 **[Powrót do góry](#table-of-contents)**
 
 ## IIFE
-### JavaScript Closures
+### Klauzule
 ###### [Style [Y010](#style-y010)]
 
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
+  - Opakuj komponenty Angulara w Immediately Invoked Function Expression (IIFE).
 
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  *Czemu?*: IIFE zapobiega deklaracjii zmiennych i funkcji o globalnych zasiegu, a także pomaga uniknąć niezgodności nazw.
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  *Czemu?*: Kiedy twój kod jest zminimalizowany i zapakowany w jeden plik np dla produkcyjnego zastosowania, możesz mieć kolizje z nazewnictwem twoich zmiennch globalnych, a zmiennych lokalnych. IIFE chroni ciebie przed kolizją zmiennych globalnych i lokalnych ograniczając zasięg zmiennych tylko do jednego pliku.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   // logger.js
   angular
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable
+  // funkcja logger jest dodana jako zmienna globalna
   function logger() { }
 
   // storage.js
@@ -140,15 +140,15 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable
+  // funkcja storage jest dodana jako zmienna globalna
   function storage() { }
   ```
 
   ```javascript
   /**
-   * recommended
+   * rekomendowane
    *
-   * no globals are left behind
+   * bez zmiennych globalnych
    */
 
   // logger.js
@@ -174,10 +174,9 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
+  - Uwaga: Pozostałe komentarze w tym przewodniku mogą pominąć IIFE.
 
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
-
+  - Uwaga: W testowym kodzie IIFE zapobiega w dotarciu do prywatnych metod tj. regularne wyrażenia lub pomocnicze metody, które często dobrze przetestować bezpośrednio. Jednakże, możesz przetestować te metody przez publiczne metody or wystawiając je w komponencie np umieszczając pomocnicze funkcje, wyrażenia regularne i stałe w zdefiniowanej przez siebie w fabryce lub stałej.
 **[Powrót do góry](#table-of-contents)**
 
 ## Modules
