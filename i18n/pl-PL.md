@@ -260,15 +260,15 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   angular.module('app');
   ```
 
-### Named vs Anonymous Functions
+### Funkcje anonimowe vs zwykłe funkcje
 ###### [Style [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - Jeśli to jest callback używaj zwykłych funkcji.
 
-  *Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Czemu?*: Dzięki temu otrzymamy bardziej czytelny kod, łatwiejszy w debugowaniu i redekuje ilość zagnieżdżonych callbacków.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   angular
       .module('app')
       .controller('DashboardController', function() { })
@@ -276,7 +276,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
   // dashboard.js
   angular
