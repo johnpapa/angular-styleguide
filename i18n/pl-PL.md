@@ -246,17 +246,17 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### Setting vs Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Only set once and get for all other instances.
+  - Ustaw tylko raz daną wartość używając setterów. Użyj getterów dla wszystkich innych przypadków.
 
-  *Why?*: A module should only be created once, then retrieved from that point and after.
+  *Czemu?*: Dany moduł powinien być utworzony tylko raz, a następnie importowany z tego miejsca i dalej przenoszony.
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
-  // to set a module
+  // aby ustawić moduł
   angular.module('app', []);
 
-  // to get a module
+  // aby pobrać moduł
   angular.module('app');
   ```
 
