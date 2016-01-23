@@ -177,16 +177,17 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   - Uwaga: Pozostałe komentarze w tym przewodniku mogą pominąć IIFE.
 
   - Uwaga: W testowym kodzie IIFE zapobiega w dotarciu do prywatnych metod tj. regularne wyrażenia lub pomocnicze metody, które często dobrze przetestować bezpośrednio. Jednakże, możesz przetestować te metody przez publiczne metody or wystawiając je w komponencie np umieszczając pomocnicze funkcje, wyrażenia regularne i stałe w zdefiniowanej przez siebie w fabryce lub stałej.
+
 **[Powrót do góry](#table-of-contents)**
 
 ## Modules
 
-### Avoid Naming Collisions
+### Unikaj podobnego nazewnictwa
 ###### [Style [Y020](#style-y020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - Używaj unikalnych nazw z separatorami dla modułów.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *Czemu?*: Unikalne nazwy pomogą uniknąć nazwania dwóch modułów tak samo. Separatory pomagają podczas określania struktury modułów i ich podmodułów. Na przykład `app` może być twoim głównym modułem, podczas gdy `app.dashboard` i `app.users` to podmoduły zależne od `app`.
 
 ### Definitions (aka Setters)
 ###### [Style [Y021](#style-y021)]
