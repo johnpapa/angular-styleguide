@@ -354,12 +354,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### controllerAs with vm
 ###### [Style [Y032](#style-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Use a capture variable for `this` podczas korzystania z `controllerAs`. Wybierz zgodną nazwę zmiennej np `vm`, która oznacza ViewModel.
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *Czemu?*: Słowo `this` jest kontekstowe i kiedy używamy jej wewnątrz funkcji, kontroler może zmienić jego kontekst. Łapiąc kontekst `this` unikamy tego problemu.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
@@ -367,7 +367,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   function CustomerController() {
       var vm = this;
       vm.name = {};
@@ -375,14 +375,14 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Uwaga: Możesz uniknąć wszystkich [jshint](http://www.jshint.com/) powiadomień umieszczając ten komentarz nad linią kodu. Jednakże, nie jest to wymagane, gdy funkcja jest nazwana konwencją UpperCasing. Konwencja mówi, że tak nazwana funkcja jest konstruktorem, a w Angularze jest kontrolerem.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Uwaga: Podczas tworzenia obserwatorów w kontrolerze, używając `controller as`, możesz obserwować metody z `vm.*`. (Create watches with caution as they add more load to the digest cycle.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -403,12 +403,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability. Avoid overly verbose names that are cumbersome to type.
 
   ```html
-  <!-- avoid -->
+  <!-- unikaj -->
   <input ng-model="customerProductItemVm.text">
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- rekomendowane -->
   <input ng-model="productVm.id">
   ```
 
@@ -422,7 +422,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
     *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function SessionsController() {
       var vm = this;
 
@@ -441,7 +441,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   function SessionsController() {
       var vm = this;
 
@@ -469,21 +469,21 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  Uwaga: Jeśli funkcja mieści się w jednej linicje, rozważ umieszczenie jej na samej górze, jeśli nie wpływa na czytelność kodu.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function SessionsController(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
           /**
-           * lines
-           * of
-           * code
-           * affects
-           * readability
+           * linie
+           * kodu
+           * mają wpływ
+           * na jego
+           * czytelność
            */
       };
       vm.search = search;
@@ -493,12 +493,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   function SessionsController(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = sessionDataService.refresh; // 1 liner is OK
+      vm.refresh = sessionDataService.refresh; // 1 jednolinijkowiec jest OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
