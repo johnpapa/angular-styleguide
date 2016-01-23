@@ -189,15 +189,15 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
   *Czemu?*: Unikalne nazwy pomogą uniknąć nazwania dwóch modułów tak samo. Separatory pomagają podczas określania struktury modułów i ich podmodułów. Na przykład `app` może być twoim głównym modułem, podczas gdy `app.dashboard` i `app.users` to podmoduły zależne od `app`.
 
-### Definitions (aka Setters)
+### Definicje (znane jako Setters)
 ###### [Style [Y021](#style-y021)]
 
-  - Declare modules without a variable using the setter syntax.
+  - Definiuj moduły bez zmiennych korzystając definicji.
 
-  *Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  *Czemu?*: Z 1 kompementem na plik jest bardzo niewiele przypadków kiedy musimy zadeklarować zmienną.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -206,10 +206,10 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ]);
   ```
 
-  Instead use the simple setter syntax.
+  Zamiast tego użyj definicji.
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   angular
       .module('app', [
           'ngAnimate',
