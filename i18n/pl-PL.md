@@ -302,23 +302,23 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### controllerAs View Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Stosuj [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) bardziej niż `klasycznego kontrolera z $scope`.
 
-  *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+  *Czemu?*: Zwykłe kontrolery tworzą, aktualizują i dostarczają nowe instancje, jednakże składnia `controllerAs` jest bliższa konstrukcji języka Javascript niż `klasyczna składnia $scope`.
 
-  *Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+  *Czemu?*: Zachęca do łączenia obiektów z Widokiem przez "kropke" (np `customer.name` zamiast `name`), co bardziej pasuje do ogólnego kontekstu, ułatwia czytaniei i unika nakładania się referencji pod tą samą nazwą.
 
-  *Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+  *Czemu?*: Helps avoid using `$parent` calls in Views with nested controllers.
 
   ```html
-  <!-- avoid -->
+  <!-- unikaj -->
   <div ng-controller="CustomerController">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- rekomendowane -->
   <div ng-controller="CustomerController as customer">
       {{ customer.name }}
   </div>
