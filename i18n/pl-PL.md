@@ -194,7 +194,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
   - Definiuj moduły bez zmiennych korzystając definicji.
 
-  *Czemu?*: Z 1 kompementem na plik jest bardzo niewiele przypadków kiedy musimy zadeklarować zmienną.
+  *Czemu?*: Z 1 kompementem na plik jest bardzo niewiele przypadków, kiedy musimy zadeklarować zmienną.
 
   ```javascript
   /* unikaj */
@@ -222,12 +222,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### Getters
 ###### [Style [Y022](#style-y022)]
 
-  - When using a module, avoid using a variable and instead use chaining with the getter syntax.
+  - Podczas inicjacji modułu unikaj przywiązania go do zmiennej. Zamiast tego połącz jego kolejne wywołania.
 
-  *Why?*: This produces more readable code and avoids variable collisions or leaks.
+  *Czemu?*: Dzięki temu otrzymamy bardziej czytelny kod i unikamy podobnego nazewnictwa zmiennych.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   var app = angular.module('app');
   app.controller('SomeController', SomeController);
 
@@ -235,7 +235,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   angular
       .module('app')
       .controller('SomeController', SomeController);
