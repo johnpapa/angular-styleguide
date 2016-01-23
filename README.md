@@ -561,6 +561,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
+      vm.activate = activate;
       vm.title = 'Avengers';
 
       activate();
