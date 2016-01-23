@@ -327,16 +327,16 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### controllerAs Controller Syntax
 ###### [Style [Y031](#style-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - Używaj składni `controllerAs` zamiast `klasycznego kontrolera z $scope`
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - Składnia `controllerAs` używa `this` wewnątrz kontrolera, który jest powiązany ze `$scope`
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *Czemu?*: `controllerAs` is syntactic sugar over `$scope`. Możesz mieć połączenie z View i jednocześnie mieć dostęp do metod ze `$scope`.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
+  *Czemu?*: Pomaga uniknąć zapisywania metod do `$scope` wewnątrz kontrolera, podczas gdy możemy te metody zapisać w oddzielnej klasie lub przenieść metody do fabryki i odnieść się do niego w kontrolerze. Używaj `$scope` w kontrolerze tylko wtedy, kiedy jest to wymagane np kiedy publikujesz i odbierasz eventy używając [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function CustomerController($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -344,7 +344,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* rekomendowane - sprawdź też następny rozdział */
   function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
