@@ -412,14 +412,14 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   <input ng-model="productVm.id">
   ```
 
-### Bindable Members Up Top
+### Powiązane metody na samej górze
 ###### [Style [Y033](#style-y033)]
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Umieść powiązane ze sobą metody na samej górze kontrolera. Posegreguj je alfabetycznie i nie wplataj ich w kodzie samego kontrolera.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View.
+    *Czemu?*: Umieszczając powiązane metody na samej górze ułatwia czytanie i pomaga rozpoznać, które metody można powiązać i użyć w widoku.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+    *Czemu?*: Jednolinijkowe funkcje anonimowe są fajne, bo są krótkie i czytelne. Gdy zajmują one więcej linijek to tracą na swej czytelności. Definiując funkcje pod metodami kontrolera przenosisz szczegóły implementacji na dół mając ciągle powiązane metody z kontrolerem na samej górze.
 
   ```javascript
   /* unikaj */
@@ -505,25 +505,25 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-### Function Declarations to Hide Implementation Details
+### Deklarowanie funkcji aby ukryć detale samej implementacji
 ###### [Style [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Deklaruj funkcje aby ukryć szczegóły implementacji. Trzymaj powiązane z nimi metody na samej górze. Kiedy chcesz powiązać funkcję w kontrolerze, wskaż na funkcję powiązaną gdzieś niżej w pliku. To bezpośrednio przywiązuje metody należące do kontrolera do funkcji zadeklarowanych niżej. Po więcej szczegółów przeczytaj [ten post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *Czemu?*: Umieszczając metody kontrolera na samej górze ułatwia czytanie i odrazu możesz rozpoznać, które metody są użyte w View.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Czemu?*: Umieszczenie implementacji funkcji pod metodami kontrolera sprawi, że po otwarciu pliku z kontrolerem zobaczysz najpierw wszystkie metody kontrolera.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Czemu?*: Funkcje są zadeklarowane więc nie ma powodów, aby używać ich wcześniej tak jak to ma miejsce podczas wyrażeń funkcyjnych.
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Czemu?*: Nigdy nie będziesz musiał się martwić o kolejność deklaracji funkcji, ponieważ deklarując `var a` przed `var b` może zespuć twój kod jeśli `a` zależy od `b`.  
 
-    *Why?*: Order is critical with function expressions
+    *Czemu?*: Porządek jest istotny podczas korzystania z wyrażeń funkcyjnych.
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions.
+   * unikaj
+   * Użycie wyrażeń funkcyjnych.
    */
   function AvengersController(avengersService, logger) {
       var vm = this;
@@ -549,13 +549,13 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Zauważ, że w powyższym przykładzie metody kontrolera są rozmieszczone w całym kontrolerze. W przykładzie poniżej, metody kontrolera są na samej górze np `vm.avengers` and `vm.title`. Szczegółowa implementacja jest umieszczona pod metodami kontrolera.
 
   ```javascript
   /*
    * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * Użycie zadeklarowanych funkcji
+   * i powiązanych z nimi metod na samej górze.
    */
   function AvengersController(avengersService, logger) {
       var vm = this;
