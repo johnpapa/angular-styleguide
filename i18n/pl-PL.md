@@ -62,7 +62,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
 ## Single Responsibility
 
-### Reguła Wyjątkowości
+### Zasada jednej odpowiedzialności
 ###### [Style [Y001](#style-y001)]
 
   - Definicja 1 komponentu w 1 pliku.
@@ -84,7 +84,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   Te same elementy są teraz podzielone na swoje pliki.
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
   // app.module.js
   angular
@@ -92,7 +92,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
   // some.controller.js
   angular
@@ -103,7 +103,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
   // someFactory.js
   angular
@@ -116,23 +116,23 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 **[Powrót do góry](#table-of-contents)**
 
 ## IIFE
-### JavaScript Closures
+### Klauzule
 ###### [Style [Y010](#style-y010)]
 
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
+  - Opakuj komponenty Angulara w Immediately Invoked Function Expression (IIFE).
 
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  *Czemu?*: IIFE zapobiega deklaracjii zmiennych i funkcji o globalnych zasiegu, a także pomaga uniknąć niezgodności nazw.
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  *Czemu?*: Kiedy twój kod jest zminimalizowany i zapakowany w jeden plik np dla produkcyjnego zastosowania, możesz mieć kolizje z nazewnictwem twoich zmiennch globalnych, a zmiennych lokalnych. IIFE chroni ciebie przed kolizją zmiennych globalnych i lokalnych ograniczając zasięg zmiennych tylko do jednego pliku.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   // logger.js
   angular
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable
+  // funkcja logger jest dodana jako zmienna globalna
   function logger() { }
 
   // storage.js
@@ -140,15 +140,15 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable
+  // funkcja storage jest dodana jako zmienna globalna
   function storage() { }
   ```
 
   ```javascript
   /**
-   * recommended
+   * rekomendowane
    *
-   * no globals are left behind
+   * bez zmiennych globalnych
    */
 
   // logger.js
@@ -174,30 +174,30 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
+  - Uwaga: Pozostałe komentarze w tym przewodniku mogą pominąć IIFE.
 
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+  - Uwaga: W testowym kodzie IIFE zapobiega w dotarciu do prywatnych metod tj. regularne wyrażenia lub pomocnicze metody, które często dobrze przetestować bezpośrednio. Jednakże, możesz przetestować te metody przez publiczne metody or wystawiając je w komponencie np umieszczając pomocnicze funkcje, wyrażenia regularne i stałe w zdefiniowanej przez siebie w fabryce lub stałej.
 
 **[Powrót do góry](#table-of-contents)**
 
 ## Modules
 
-### Avoid Naming Collisions
+### Unikaj podobnego nazewnictwa
 ###### [Style [Y020](#style-y020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - Używaj unikalnych nazw z separatorami dla modułów.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *Czemu?*: Unikalne nazwy pomogą uniknąć nazwania dwóch modułów tak samo. Separatory pomagają podczas określania struktury modułów i ich podmodułów. Na przykład `app` może być twoim głównym modułem, podczas gdy `app.dashboard` i `app.users` to podmoduły zależne od `app`.
 
-### Definitions (aka Setters)
+### Definicje (znane jako Setters)
 ###### [Style [Y021](#style-y021)]
 
-  - Declare modules without a variable using the setter syntax.
+  - Definiuj moduły bez zmiennych korzystając definicji.
 
-  *Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  *Czemu?*: Z 1 kompementem na plik jest bardzo niewiele przypadków, kiedy musimy zadeklarować zmienną.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -206,10 +206,10 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ]);
   ```
 
-  Instead use the simple setter syntax.
+  Zamiast tego użyj definicji.
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   angular
       .module('app', [
           'ngAnimate',
@@ -222,12 +222,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### Getters
 ###### [Style [Y022](#style-y022)]
 
-  - When using a module, avoid using a variable and instead use chaining with the getter syntax.
+  - Podczas inicjacji modułu unikaj przywiązania go do zmiennej. Zamiast tego połącz jego kolejne wywołania.
 
-  *Why?*: This produces more readable code and avoids variable collisions or leaks.
+  *Czemu?*: Dzięki temu otrzymamy bardziej czytelny kod i unikamy podobnego nazewnictwa zmiennych.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   var app = angular.module('app');
   app.controller('SomeController', SomeController);
 
@@ -235,7 +235,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   angular
       .module('app')
       .controller('SomeController', SomeController);
@@ -246,29 +246,29 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### Setting vs Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Only set once and get for all other instances.
+  - Ustaw tylko raz daną wartość używając setterów. Użyj getterów dla wszystkich innych przypadków.
 
-  *Why?*: A module should only be created once, then retrieved from that point and after.
+  *Czemu?*: Dany moduł powinien być utworzony tylko raz, a następnie importowany z tego miejsca i dalej przenoszony.
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
-  // to set a module
+  // aby ustawić moduł
   angular.module('app', []);
 
-  // to get a module
+  // aby pobrać moduł
   angular.module('app');
   ```
 
-### Named vs Anonymous Functions
+### Funkcje anonimowe vs zwykłe funkcje
 ###### [Style [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - Jeśli to jest callback używaj zwykłych funkcji.
 
-  *Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Czemu?*: Dzięki temu otrzymamy bardziej czytelny kod, łatwiejszy w debugowaniu i redekuje ilość zagnieżdżonych callbacków.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   angular
       .module('app')
       .controller('DashboardController', function() { })
@@ -276,7 +276,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
 
   // dashboard.js
   angular
@@ -302,23 +302,23 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### controllerAs View Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Stosuj [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) bardziej niż `klasycznego kontrolera z $scope`.
 
-  *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+  *Czemu?*: Zwykłe kontrolery tworzą, aktualizują i dostarczają nowe instancje, jednakże składnia `controllerAs` jest bliższa konstrukcji języka Javascript niż `klasyczna składnia $scope`.
 
-  *Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+  *Czemu?*: Zachęca do łączenia obiektów z Widokiem przez "kropke" (np `customer.name` zamiast `name`), co bardziej pasuje do ogólnego kontekstu, ułatwia czytaniei i unika nakładania się referencji pod tą samą nazwą.
 
-  *Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+  *Czemu?*: Helps avoid using `$parent` calls in Views with nested controllers.
 
   ```html
-  <!-- avoid -->
+  <!-- unikaj -->
   <div ng-controller="CustomerController">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- rekomendowane -->
   <div ng-controller="CustomerController as customer">
       {{ customer.name }}
   </div>
@@ -327,16 +327,16 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### controllerAs Controller Syntax
 ###### [Style [Y031](#style-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - Używaj składni `controllerAs` zamiast `klasycznego kontrolera z $scope`
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - Składnia `controllerAs` używa `this` wewnątrz kontrolera, który jest powiązany ze `$scope`
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *Czemu?*: `controllerAs` is syntactic sugar over `$scope`. Możesz mieć połączenie z View i jednocześnie mieć dostęp do metod ze `$scope`.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
+  *Czemu?*: Pomaga uniknąć zapisywania metod do `$scope` wewnątrz kontrolera, podczas gdy możemy te metody zapisać w oddzielnej klasie lub przenieść metody do fabryki i odnieść się do niego w kontrolerze. Używaj `$scope` w kontrolerze tylko wtedy, kiedy jest to wymagane np kiedy publikujesz i odbierasz eventy używając [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function CustomerController($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -344,7 +344,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* rekomendowane - sprawdź też następny rozdział */
   function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
@@ -354,12 +354,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 ### controllerAs with vm
 ###### [Style [Y032](#style-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Use a capture variable for `this` podczas korzystania z `controllerAs`. Wybierz zgodną nazwę zmiennej np `vm`, która oznacza ViewModel.
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *Czemu?*: Słowo `this` jest kontekstowe i kiedy używamy jej wewnątrz funkcji, kontroler może zmienić jego kontekst. Łapiąc kontekst `this` unikamy tego problemu.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
@@ -367,7 +367,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   function CustomerController() {
       var vm = this;
       vm.name = {};
@@ -375,14 +375,14 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Uwaga: Możesz uniknąć wszystkich [jshint](http://www.jshint.com/) powiadomień umieszczając ten komentarz nad linią kodu. Jednakże, nie jest to wymagane, gdy funkcja jest nazwana konwencją UpperCasing. Konwencja mówi, że tak nazwana funkcja jest konstruktorem, a w Angularze jest kontrolerem.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Uwaga: Podczas tworzenia obserwatorów w kontrolerze, używając `controller as`, możesz obserwować metody z `vm.*`. (Create watches with caution as they add more load to the digest cycle.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -403,12 +403,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability. Avoid overly verbose names that are cumbersome to type.
 
   ```html
-  <!-- avoid -->
+  <!-- unikaj -->
   <input ng-model="customerProductItemVm.text">
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- rekomendowane -->
   <input ng-model="productVm.id">
   ```
 
@@ -422,7 +422,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
     *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function SessionsController() {
       var vm = this;
 
@@ -441,7 +441,7 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   function SessionsController() {
       var vm = this;
 
@@ -469,21 +469,21 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  Uwaga: Jeśli funkcja mieści się w jednej linicje, rozważ umieszczenie jej na samej górze, jeśli nie wpływa na czytelność kodu.
 
   ```javascript
-  /* avoid */
+  /* unikaj */
   function SessionsController(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
       vm.refresh = function() {
           /**
-           * lines
-           * of
-           * code
-           * affects
-           * readability
+           * linie
+           * kodu
+           * mają wpływ
+           * na jego
+           * czytelność
            */
       };
       vm.search = search;
@@ -493,12 +493,12 @@ Pomimo tego że ten przewodnik wyjaśnia *co*, *dlaczego* i *jak*, Uważam to za
   ```
 
   ```javascript
-  /* recommended */
+  /* rekomendowane */
   function SessionsController(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = sessionDataService.refresh; // 1 liner is OK
+      vm.refresh = sessionDataService.refresh; // 1 jednolinijkowiec jest OK
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
