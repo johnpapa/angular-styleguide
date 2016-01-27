@@ -599,7 +599,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function OrderController($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
-      vm.isCreditOk;
+      vm.isCreditOk = false;
       vm.total = 0;
 
       function checkCredit() {
@@ -629,7 +629,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function OrderController(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
-      vm.isCreditOk;
+      vm.isCreditOk = false;
       vm.total = 0;
 
       function checkCredit() {
