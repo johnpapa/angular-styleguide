@@ -2582,23 +2582,23 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 **[Powrót do góry](#table-of-contents)**
 
-## Animations
+## Animacje
 
-### Usage
+### Jak używać
 ###### [Style [Y210](#style-y210)]
 
-  - Use subtle [animations with Angular](https://docs.angularjs.org/guide/animations) to transition between states for views and primary visual elements. Include the [ngAnimate module](https://docs.angularjs.org/api/ngAnimate). The 3 keys are subtle, smooth, seamless.
+  - Używaj łagodnych [animacji w Angularze](https://docs.angularjs.org/guide/animations) pomiędzy kolejnymi stanami w widokach i typowych elementach. Uwzględnij też w swoim kodzie [moduł ngAnimate](https://docs.angularjs.org/api/ngAnimate). Trzy szczególne cechy animacji to: łagodność, płynność i gładkość.
 
-    *Why?*: Subtle animations can improve User Experience when used appropriately.
+    *Czemu?*: Łagodne animacje, użyte poprawnie, mogą poprawić User Experience.
 
-    *Why?*: Subtle animations can improve perceived performance as views transition.
+    *Czemu?*: Łagodne animacje mogą poprawić dostrzeganą wydajność pomiędzy przejściami widoków.
 
 ### Sub Second
 ###### [Style [Y211](#style-y211)]
 
-  - Use short durations for animations. I generally start with 300ms and adjust until appropriate.
+  - Używaj krótkich animacji. Osobiście zaczynam od 300ms, a potem tylko dopasowuje do moich preferencji.
 
-    *Why?*: Long animations can have the reverse effect on User Experience and perceived performance by giving the appearance of a slow application.
+    *Czemu?*: Długie animacje moga zdziałać odwrotny efekt względem zamierzonego. Użytkownik może postrzegać nasz serwis jako wolny.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]
