@@ -2620,11 +2620,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns. Use `@namespace` and `@memberOf` to match your app structure.
+  - Jeśli chcesz mieć automatyczną dokumentację, użyj [`jsDoc`](http://usejsdoc.org/) aby udokumentować funkcje, opisy, argumenty i wynik funkcji. Używaj `@namespace` i `@memberOf` aby powiązać dokument z kodem aplikacji.
 
-    *Why?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *Czemu?*: Możesz generować (i przegenerować) dokumentacje twojego kodu, zamiast za każdym razem pisać ją od nowa.
 
-    *Why?*: Provides consistency using a common industry tool.
+    *Czemu?*: Jest powszechnie używany.
 
     ```javascript
     /**
