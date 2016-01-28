@@ -2672,11 +2672,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Use an Options File
 ###### [Style [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
+  - Używaj JS Hint do sprawdzania zgodności twojego kodu JavaScript. Dostosuj opcje JS Hint do twojego kodu i uruchamiaj przy każdej kontroli. Zobacz [dokumentacje JS Hint](http://www.jshint.com/docs/) aby sprawdzić szczegółowe opcje.
 
-    *Why?*: Provides a first alert prior to committing any code to source control.
+    *Czemu?*: Zgłasza ostrzeżenia, gdy kod nie przechodzi kontroli.
 
-    *Why?*: Provides consistency across your team.
+    *Czemu?*: Zapewnia jednolity kod w projekcie.
 
     ```javascript
     {
