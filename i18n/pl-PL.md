@@ -2603,15 +2603,15 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
+  - Używaj [animate.css](http://daneden.github.io/animate.css/) aby dodać animacje.
 
-    *Why?*: The animations that animate.css provides are fast, smooth, and easy to add to your application.
+    *Czemu?*: Animacje, które dostajemy od animate.css są szybkie, gładkie, i łatwe do dodania w kodzie.
 
-    *Why?*: Provides consistency in your animations.
+    *Czemu?*: Dostarczaja zwięzłości twoich animacji.
 
-    *Why?*: animate.css is widely used and tested.
+    *Czemu?*: animate.css jest szeroko używany i przetestowany.
 
-    Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Uwaga: Przeczytaj [naprawde dobry artykuł o animacjach w angularze autorstwa Matias Niemelä](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Powrót do góry](#table-of-contents)**
 
@@ -2620,7 +2620,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - Jeśli chcesz mieć automatyczną dokumentację, użyj [`jsDoc`](http://usejsdoc.org/) aby udokumentować funkcje, opisy, argumenty i wynik funkcji. Używaj `@namespace` i `@memberOf` aby powiązać dokument z kodem aplikacji.
+  - Jeśli chcesz mieć automatyczną dokumentację, użyj [`jsDoc`](http://usejsdoc.org/) aby udokumentować funkcje, opisy, argumenty i wynik funkcji. Używaj `@namespace` i `@memberOf` aby powiązać dokumentacje z kodem aplikacji.
 
     *Czemu?*: Możesz generować (i przegenerować) dokumentacje twojego kodu, zamiast za każdym razem pisać ją od nowa.
 
