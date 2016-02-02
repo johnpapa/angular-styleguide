@@ -1520,12 +1520,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   - The `catch` block of a promise must return a rejected promise to maintain the exception in the promise chain.
 
+  - Always handle exceptions in services/factories.
+
     *Why?*: If the `catch` block does not return a rejected promise, the caller of the promise will not know an exception occurred. The caller's `then` will execute. Thus, the user may never know what happened.
 
     *Why?*: To avoid swallowing errors and misinforming the user.
 
     Note: Consider putting any exception handling in a function in a shared module and service.
-
 
   ```javascript
   /* avoid */
