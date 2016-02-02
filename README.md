@@ -136,8 +136,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   *Why?*: Small functions help avoid hidden bugs that come with large functions that share variables with external scope, create unwanted closures, or unwanted coupling with dependencies.
 
-  *Why?*: Small functions are easier to maintain.
-
 
 **[Back to top](#table-of-contents)**
 
