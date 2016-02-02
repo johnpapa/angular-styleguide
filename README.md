@@ -35,7 +35,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Factories](#factories)
   1. [Data Services](#data-services)
   1. [Directives](#directives)
-  1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
+  1. [Resolving Promises](#resolving-promises)
   1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
   1. [Minification and Annotation](#minification-and-annotation)
   1. [Exception Handling](#exception-handling)
@@ -135,7 +135,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   *Why?*: Small functions are easier to maintain.
 
   *Why?*: Small functions help avoid hidden bugs that come with large functions that share variables with external scope, create unwanted closures, or unwanted coupling with dependencies.
-
 
 **[Back to top](#table-of-contents)**
 
@@ -1365,7 +1364,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 **[Back to top](#table-of-contents)**
 
-## Resolving Promises for a Controller
+## Resolving Promises
 ### Controller Activation Promises
 ###### [Style [Y080](#style-y080)]
 
@@ -1513,6 +1512,67 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
     Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+
+**[Back to top](#table-of-contents)**
+
+### Handling Exceptions with Promises
+###### [Style [Y082](#style-y082)]
+
+  - The `catch` block of a promise must return a rejected promise to maintain the exception in the promise chain.
+
+    *Why?*: If the `catch` block does not return a rejected promise, the caller of the promise will not know an exception occurred. The caller's `then` will execute. Thus, the user may never know what happened.
+
+    *Why?*: To avoid swallowing errors and misinforming the user.
+
+    Note: Consider putting any exception handling in a function in a shared module and service.
+
+
+  ```javascript
+  /* avoid */
+
+  function getCustomer(id) {
+      return $http.get('/api/customer/' + id)
+          .then(getCustomerComplete)
+          .catch(getCustomerFailed);
+
+      function getCustomerComplete(data, status, headers, config) {
+          return data.data;
+      }
+
+      function getCustomerFailed(e) {
+          var newMessage = 'XHR Failed for getCustomer'
+          if (e.data && e.data.description) {
+            newMessage = newMessage + '\n' + e.data.description;
+          }
+          e.data.description = newMessage;
+          logger.error(newMessage);
+          // ***
+          // Notice there is no return of the rejected promise
+          // ***
+      }
+  }
+
+  /* recommended */
+  function getCustomer(id) {
+      return $http.get('/api/customer/' + id)
+          .then(getCustomerComplete)
+          .catch(getCustomerFailed);
+
+      function getCustomerComplete(data, status, headers, config) {
+          return data.data;
+      }
+
+      function getCustomerFailed(e) {
+          var newMessage = 'XHR Failed for getCustomer'
+          if (e.data && e.data.description) {
+            newMessage = newMessage + '\n' + e.data.description;
+          }
+          e.data.description = newMessage;
+          logger.error(newMessage);
+          return $q.reject(e);
+      }
+  }
+  ```
 
 **[Back to top](#table-of-contents)**
 
