@@ -2368,7 +2368,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Create an App Module
 ###### [Style [Y161](#style-y161)]
 
-  - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
+  - Create an application root module whose role is to pull together all of the modules and features of your application. Name this for your application.
 
     *Why?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
 
