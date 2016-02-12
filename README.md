@@ -48,8 +48,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Testing](#testing)
   1. [Animations](#animations)
   1. [Comments](#comments)
-  1. [JSHint](#js-hint)
-  1. [JSCS](#jscs)
+  1. [ESLint](#eslint)
   1. [Constants](#constants)
   1. [File Templates and Snippets](#file-templates-and-snippets)
   1. [Yeoman Generator](#yeoman-generator)
@@ -396,13 +395,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       vm.name = {};
       vm.sendMessage = function() { };
   }
-  ```
-
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
-
-  ```javascript
-  /* jshint validthis: true */
-  var vm = this;
   ```
 
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
@@ -1801,7 +1793,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     The following code is an example of a gulp task using ngAnnotate
 
     ```javascript
-    gulp.task('js', ['jshint'], function() {
+    gulp.task('js', ['eslint'], function() {
         var source = pkg.paths.js;
 
         return gulp.src(source)
@@ -2619,7 +2611,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Alleviate Globals for ESLint Rules on Tests
 ###### [Style [Y196](#style-y196)]
 
   - Relax the rules on your test code to allow for common globals such as `describe` and `expect`. Relax the rules for expressions, as Mocha uses these.
@@ -2627,13 +2619,14 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
 
     ```javascript
-    /* jshint -W117, -W030 */
+    /* eslint-env jasmine, mocha */
     ```
-    Or you can add the following to your JSHint Options file.
+    Or you can add the following to your ESLint Options file.
 
-    ```javascript
-    "jasmine": true,
-    "mocha": true,
+    ```yaml
+    env:
+      jasmine: true
+      mocha: true
     ```
 
   ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
@@ -2752,169 +2745,384 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
 **[Back to top](#table-of-contents)**
 
-## JS Hint
+## ESLint
 
 ### Use an Options File
 ###### [Style [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
+  - Use ESLint for linting your JavaScript and be sure to customize the ESLint options file and include in source control. See the [ESLint docs](http://eslint.org/docs/user-guide/configuring) for details on the options.
+
 
     *Why?*: Provides a first alert prior to committing any code to source control.
 
     *Why?*: Provides consistency across your team.
 
-    ```javascript
-    {
-        "bitwise": true,
-        "camelcase": true,
-        "curly": true,
-        "eqeqeq": true,
-        "es3": false,
-        "forin": true,
-        "freeze": true,
-        "immed": true,
-        "indent": 4,
-        "latedef": "nofunc",
-        "newcap": true,
-        "noarg": true,
-        "noempty": true,
-        "nonbsp": true,
-        "nonew": true,
-        "plusplus": false,
-        "quotmark": "single",
-        "undef": true,
-        "unused": false,
-        "strict": false,
-        "maxparams": 10,
-        "maxdepth": 5,
-        "maxstatements": 40,
-        "maxcomplexity": 8,
-        "maxlen": 120,
+    *Why?*: Has pretty much the same linting capabilities as [JS Hint](http://www.jshint.com/) and [JSCS docs](http://www.jscs.info) combined.
 
-        "asi": false,
-        "boss": false,
-        "debug": false,
-        "eqnull": true,
-        "esnext": false,
-        "evil": false,
-        "expr": false,
-        "funcscope": false,
-        "globalstrict": false,
-        "iterator": false,
-        "lastsemic": false,
-        "laxbreak": false,
-        "laxcomma": false,
-        "loopfunc": true,
-        "maxerr": false,
-        "moz": false,
-        "multistr": false,
-        "notypeof": false,
-        "proto": false,
-        "scripturl": false,
-        "shadow": false,
-        "sub": true,
-        "supernew": false,
-        "validthis": false,
-        "noyield": false,
+  - Use [eslint-plugin-angular](https://www.npmjs.com/package/eslint-plugin-angular)
 
-        "browser": true,
-        "node": true,
+    *Why?*: This plugin enforces a stricter coding style regarding AngularJS.
 
-        "globals": {
-            "angular": false,
-            "$": false
-        }
-    }
+    *Why?*: This plugin enforces some compatibility with this styleguide.
+
+  - Use a two ESLint files. One for the configuration files, another for the source code.
+
+    *Why?*: Rules applied to the source and test files are not necessarily useful for the configuration files.
+
+    *Why?*: ESLint will search up the directory tree for a `.eslintrc` file. So the rules applied in root folder `.eslintrc` will be inherited by the one in the source directory.
+
+    The following two `.eslintrc` files explicitly specify all rules regarding AngularJS in ESLint 1.4.3 and eslint-plugin-angular 0.12.0. This means ES6 and NodeJS  specific options are not mentioned.
+
+    ```yaml
+    # <project root>/.eslintrc
+    env:
+      node: true
+
+    rules:
+      # http://eslint.org/docs/rules/#possible-errors
+      comma-dangle:
+        - 2
+        - never
+      no-cond-assign: 2
+      no-console: 2
+      no-constant-condition: 2
+      no-control-regex: 2
+      no-debugger: 2
+      no-dupe-args: 2
+      no-dupe-keys: 2
+      no-duplicate-case: 2
+      no-empty-character-class: 2
+      no-empty: 2
+      no-ex-assign: 2
+      no-extra-boolean-cast: 2
+      no-extra-parens:
+        - 2
+        - all
+      no-extra-semi: 2
+      no-func-assign: 2
+      no-inner-declarations: 2
+      no-invalid-regexp: 2
+      no-irregular-whitespace: 2
+      no-negated-in-lhs: 2
+      no-obj-calls: 2
+      no-regex-spaces: 2
+      no-sparse-arrays: 2
+      no-unreachable: 2
+      use-isnan: 2
+      valid-jsdoc: 0
+      valid-typeof: 2
+      no-unexpected-multiline: 2
+
+      # http://eslint.org/docs/rules/#best-practices
+      accessor-pairs:
+        - 2
+        - getWithoutSet: false
+          setWithoutGet: true
+      block-scoped-var: 2
+      complexity: 0
+      consistent-return: 0
+      curly:
+        - 2
+        - all
+      default-case: 0
+      dot-notation: 2
+      dot-location:
+        - 2
+        - property
+      eqeqeq: 2
+      guard-for-in: 0
+      no-alert: 2
+      no-caller: 2
+      no-div-regex: 0
+      no-else-return: 2
+      no-empty-label: 0
+      no-eq-null: 2
+      no-eval: 2
+      no-extend-native: 2
+      no-extra-bind: 2
+      no-fallthrough: 2
+      no-floating-decimal: 2
+      no-implicit-coercion: 2
+      no-implied-eval: 2
+      no-iterator: 2
+      no-labels: 2
+      no-lone-blocks: 2
+      no-loop-func: 2
+      no-multi-spaces: 2
+      no-multi-str: 2
+      no-native-reassign: 2
+      no-new-func: 2
+      no-new-wrappers: 2
+      no-new: 0
+      no-octal-escape: 2
+      no-octal: 2
+      no-param-reassign: 0
+      no-process-env: 0
+      no-proto: 2
+      no-redeclare: 2
+      no-return-assign: 2
+      no-script-url: 2
+      no-self-compare: 2
+      no-sequences: 2
+      no-throw-literal: 2
+      no-unused-expressions: 2
+      no-useless-call: 2
+      no-useless-concat: 2
+      no-void: 2
+      no-warning-comments: 0
+      no-with: 2
+      radix: 0
+      vars-on-top: 0
+      wrap-iife:
+        - 2
+        - outside
+      yoda: 2
+
+      # http://eslint.org/docs/rules/#strict-mode
+      strict:
+        - 2
+        - global
+
+      # http://eslint.org/docs/rules/#variables
+      init-declarations: 0
+      no-catch-shadow: 2
+      no-delete-var: 2
+      # Can't occur, because 'no-labels' is enabled.
+      no-label-var: 0
+      no-shadow-restricted-names: 2
+      no-shadow: 2
+      no-undef-init: 2
+      no-undef: 2
+      no-undefined: 0
+      no-unused-vars:
+        - 2
+        - vars: all
+          args: after-used
+      no-use-before-define:
+        - 2
+        - nofunc
+
+      # http://eslint.org/docs/rules/#nodejs
+      # Not applied
+
+      # http://eslint.org/docs/rules/#stylistic-issues
+      array-bracket-spacing:
+        - 2
+        - never
+      block-spacing:
+        - 2
+        - never
+      brace-style:
+        - 2
+        - 1tbs
+        - allowSingleLine: false
+      camelcase:
+        - 2
+        - properties: always
+      comma-spacing:
+        - 2
+        - before: false
+          after: true
+      comma-style:
+        - 2
+        - last
+      computed-property-spacing:
+        - 2
+        - never
+      consistent-this:
+        - 0
+      eol-last: 2
+      func-names: 0
+      func-style:
+        - 2
+        - declaration
+      id-length: 0
+      id-match: 0
+      indent:
+        - 2
+        - 2
+        - SwitchCase: 1
+      jsx-quotes: 0
+      key-spacing:
+        - 2
+        - beforeColon: false
+          afterColon: true
+      lines-around-comment: 0
+      linebreak-style:
+        - 2
+        - unix
+      max-nested-callbacks: 0
+      new-cap: 2
+      new-parens: 2
+      newline-after-var: 0
+      no-array-constructor: 2
+      no-continue: 0
+      no-inline-comments: 0
+      no-lonely-if: 2
+      # Implied by 'indent'
+      no-mixed-spaces-and-tabs: 0
+      no-multiple-empty-lines:
+        - 2
+        - max: 2
+      no-nested-ternary: 2
+      no-new-object: 2
+      no-restricted-syntax: 0
+      no-spaced-func: 2
+      no-ternary: 0
+      no-trailing-spaces: 2
+      no-underscore-dangle: 0
+      no-unneeded-ternary: 2
+      object-curly-spacing:
+        - 2
+        - never
+      one-var:
+        - 2
+        - never
+      operator-assignment:
+        - 2
+        - always
+      operator-linebreak:
+        - 2
+        - after
+      padded-blocks:
+        - 2
+        - never
+      quote-props:
+        - 2
+        - as-needed
+      quotes:
+        - 2
+        - single
+        - avoid-escape
+      require-jsdoc: 0
+      semi-spacing:
+        - 2
+        - before: false
+          after: true
+      semi: 2
+      sort-vars:
+        - 2
+        - ignoreCase: true
+      space-after-keywords:
+        - 2
+        - always
+      space-before-keywords:
+        - 2
+        - always
+      space-before-blocks:
+        - 2
+        - always
+      space-before-function-paren:
+        - 2
+        - never
+      space-in-parens:
+        - 2
+        - never
+      space-infix-ops: 2
+      space-return-throw-case: 2
+      space-unary-ops:
+        - 2
+        - words: true
+          nonwords: false
+      spaced-comment:
+        - 2
+        - always
+      wrap-regex: 0
+
+      # http://eslint.org/docs/rules/#ecmascript-6
+      # Not used.
+
+      # http://eslint.org/docs/rules/#legacy
+      max-depth: 0
+      max-len:
+        - 2
+        - 120
+        - 4
+        - ignoreComments: false
+          ignoreUrls: true
+      max-params: 0
+      max-statements: 0
+      no-bitwise: 0
+      no-plusplus: 0
     ```
 
-**[Back to top](#table-of-contents)**
+    ```yaml
+    # <project root>/src/.eslintrc
+    plugins:
+      - angular
 
-## JSCS
+    env:
+      node: false
 
-### Use an Options File
-###### [Style [Y235](#style-y235)]
+    globals:
+      angular: true
 
-  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://www.jscs.info) for details on the options.
-
-    *Why?*: Provides a first alert prior to committing any code to source control.
-
-    *Why?*: Provides consistency across your team.
-
-    ```javascript
-    {
-        "excludeFiles": ["node_modules/**", "bower_components/**"],
-
-        "requireCurlyBraces": [
-            "if",
-            "else",
-            "for",
-            "while",
-            "do",
-            "try",
-            "catch"
-        ],
-        "requireOperatorBeforeLineBreak": true,
-        "requireCamelCaseOrUpperCaseIdentifiers": true,
-        "maximumLineLength": {
-          "value": 100,
-          "allowComments": true,
-          "allowRegex": true
-        },
-        "validateIndentation": 4,
-        "validateQuoteMarks": "'",
-
-        "disallowMultipleLineStrings": true,
-        "disallowMixedSpacesAndTabs": true,
-        "disallowTrailingWhitespace": true,
-        "disallowSpaceAfterPrefixUnaryOperators": true,
-        "disallowMultipleVarDecl": null,
-
-        "requireSpaceAfterKeywords": [
-          "if",
-          "else",
-          "for",
-          "while",
-          "do",
-          "switch",
-          "return",
-          "try",
-          "catch"
-        ],
-        "requireSpaceBeforeBinaryOperators": [
-            "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
-            "&=", "|=", "^=", "+=",
-
-            "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
-            "|", "^", "&&", "||", "===", "==", ">=",
-            "<=", "<", ">", "!=", "!=="
-        ],
-        "requireSpaceAfterBinaryOperators": true,
-        "requireSpacesInConditionalExpression": true,
-        "requireSpaceBeforeBlockStatements": true,
-        "requireLineFeedAtFileEnd": true,
-        "disallowSpacesInsideObjectBrackets": "all",
-        "disallowSpacesInsideArrayBrackets": "all",
-        "disallowSpacesInsideParentheses": true,
-
-        "jsDoc": {
-            "checkAnnotations": true,
-            "checkParamNames": true,
-            "requireParamTypes": true,
-            "checkReturnTypes": true,
-            "checkTypes": true
-        },
-
-        "disallowMultipleLineBreaks": true,
-
-        "disallowCommaBeforeLineBreak": null,
-        "disallowDanglingUnderscores": null,
-        "disallowEmptyBlocks": null,
-        "disallowTrailingComma": null,
-        "requireCommaBeforeLineBreak": null,
-        "requireDotNotation": null,
-        "requireMultipleVarDecl": null,
-        "requireParenthesesAroundIIFE": true
-    }
+    rules:
+      angular/angularelement: 2
+      angular/component-limit:
+        - 2
+        - 1
+      angular/controller-as: 2
+      angular/controller-as-route: 2
+      angular/controller-as-vm: 2
+      angular/controller-name:
+        - 2
+        - /[A-Z][a-zA-Z]*Controller$/
+      angular/deferred: 2
+      angular/definedundefined: 0
+      angular/di:
+        - 2
+        - function
+      angular/di-order: 2
+      angular/di-unused: 2
+      angular/directive-name:
+        - 2
+        - <directive prefix>
+      angular/directive-restrict:
+        - 2
+        - explicit: never
+      angular/document-service: 2
+      angular/empty-controller: 2
+      angular/file-name: 2
+      angular/filter-name: 2
+      angular/foreach: 0
+      angular/function-type: 2
+      angular/interval-service: 2
+      angular/json-functions: 2
+      angular/log: 0
+      angular/module-dependency-order:
+        - 2
+        - prefix: <module prefix>
+      angular/module-getter: 2
+      angular/module-name:
+        - 2
+        - <module prefix>
+      angular/module-setter: 2
+      angular/no-angular-mock: 2
+      angular/no-controller: 0
+      angular/no-cookiestore: 2
+      angular/no-digest: 2
+      angular/no-http-callback: 2
+      angular/no-inline-template:
+        - 2
+        - allowSimple: true
+      angular/no-jquery-angularelement: 2
+      angular/no-private-call: 2
+      angular/no-service-method: 2
+      angular/no-services: 2
+      angular/on-watch: 2
+      angular/service-name: 2
+      angular/timeout-service: 2
+      angular/typecheck-array: 0
+      angular/typecheck-boolean: 0
+      angular/typecheck-date: 0
+      angular/typecheck-function: 0
+      angular/typecheck-number: 0
+      angular/typecheck-object: 0
+      angular/typecheck-regexp: 0
+      angular/typecheck-string: 0
+      angular/watchers-execution: 0
+      angular/window-service: 2
     ```
 
 **[Back to top](#table-of-contents)**
@@ -3200,7 +3408,6 @@ Client-side routing is important for creating a navigation flow between views an
     routerHelperProvider.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
     /* @ngInject */
     function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
-        /* jshint validthis:true */
         this.$get = RouterHelper;
 
         $locationProvider.html5Mode(true);
