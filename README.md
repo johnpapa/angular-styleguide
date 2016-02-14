@@ -6,7 +6,7 @@ Special thanks to Igor Minar, lead on the Angular team, for reviewing, contribut
 ## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
+If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
@@ -15,9 +15,9 @@ The purpose of this style guide is to provide guidance on building Angular appli
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
-Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, a friend and Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
+Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, a friend and Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angular-styleguide) to get a sense for his approach and how it compares.
 
-Many of my styles have been from the many pair programming sessions [Ward Bell](http://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
+Many of my styles have been from the many pair programming sessions [Ward Bell](https://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
 
 ## See the Styles in a Sample App
 While this guide explains the *what*, *why* and *how*, I find it helpful to see them in practice. This guide is accompanied by a sample application that follows these styles and patterns. You can find the [sample application (named modular) here](https://github.com/johnpapa/ng-demos) in the `modular` folder. Feel free to grab it, clone it, or fork it. [Instructions on running it are in its readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
@@ -398,7 +398,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Note: You can avoid any [jshint](http://jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
 
   ```javascript
   /* jshint validthis: true */
@@ -531,7 +531,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
 
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
 
@@ -771,7 +771,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Single Responsibility
 ###### [Style [Y050](#style-y050)]
 
-  - Factories should have a [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Factories should have a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
@@ -783,7 +783,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
 
-  - Expose the callable members of the service (its interface) at the top, using a technique derived from the [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expose the callable members of the service (its interface) at the top, using a technique derived from the [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked).
 
@@ -1794,7 +1794,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Use Gulp or Grunt for ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - Use [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
 
     *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
 
@@ -2542,9 +2542,9 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
 
-    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](https://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
-    *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
+    *Why?*: Karma works well with task automation leaders such as [Grunt](http://gruntjs.com/) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://gulpjs.com/). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
 
     ```javascript
     /* recommended */
@@ -2757,7 +2757,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Use an Options File
 ###### [Style [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://www.jshint.com/docs/) for details on the options.
+  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://jshint.com/docs/) for details on the options.
 
     *Why?*: Provides a first alert prior to committing any code to source control.
 
@@ -2834,7 +2834,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Use an Options File
 ###### [Style [Y235](#style-y235)]
 
-  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://www.jscs.info) for details on the options.
+  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://jscs.info/) for details on the options.
 
     *Why?*: Provides a first alert prior to committing any code to source control.
 
@@ -3112,7 +3112,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
 ###### [Style [Y256](#style-y256)]
 
-  - [Visual Studio Code](http://code.visualstudio.com) snippets that follow these styles and guidelines.
+  - [Visual Studio Code](https://code.visualstudio.com/) snippets that follow these styles and guidelines.
 
     - Download the [VS Code Angular snippets](assets/vscode-snippets/javascript.json?raw=true)
     - copy snippets to snippet directory, or alternatively copy and paste the snippets into your existing ones
