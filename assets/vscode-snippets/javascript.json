@@ -6,11 +6,13 @@
 			"'use strict';",
 			"",
 			"\tangular",
-			"\t\t.module('${Module}')",
-			"\t\t.controller('${Controller}Controller', ${Controller}Controller);",
+			"\t\t.module('${moduleName}')",
+			"\t\t.controller('${ControllerName}', ${ControllerName});",
 			"",
-			"\t${Controller}Controller.$inject = ['${dependency1}'];",
-			"\tfunction ${Controller}Controller(${dependency1}) {",
+			"\t${ControllerName}.$inject = ['${dependency}'];",
+		  	"",
+		  	"\t/* @ngInject */",
+			"\tfunction ${ControllerName}(${dependency}) {",
 			"\t\tvar vm = this;",
 			"\t\t$0",
 			"",
@@ -22,7 +24,7 @@
 			"\t}",
 			"})();"
 		],
-		"description": "Angular 1 controller"
+		"description": "Angular Controller"
 	},
 	"Angular Service": {
 		"prefix": "ngservice",
@@ -31,19 +33,21 @@
 			"'use strict';",
 			"",
 			"\tangular",
-			"\t\t.module('${Module}')",
-			"\t\t.service('${Service}', ${Service});",
+			"\t\t.module('${moduleName}')",
+			"\t\t.service('${ServiceName}', ${ServiceName});",
 			"",
-			"\t${Service}.$inject = ['${dependency1}'];",
-			"\tfunction ${Service}(${dependency1}) {",
-			"\t\tthis.${exposedFn} = ${exposedFn};",
+			"\t${ServiceName}.$inject = ['${dependency}'];",
+		  	"",
+		  	"\t/* @ngInject */",
+			"\tfunction ${ServiceName}(${dependency}) {",
+			"\t\tthis.${functionName} = ${functionName};",
 			"\t\t$0",
 			"\t\t////////////////",
-			"\t\tfunction ${exposedFn}() { }",
+			"\t\tfunction ${functionName}() { }",
 			"\t}",
 			"})();"
 		],
-		"description": "Angular 1 service"
+		"description": "Angular Service"
 	},
 	"Angular Factory": {
 		"prefix": "ngfactory",
@@ -52,23 +56,25 @@
 			"'use strict';",
 			"",
 			"\tangular",
-			"\t\t.module('${Module}')",
-			"\t\t.factory('${Service}', ${Service});",
+			"\t\t.module('${moduleName}')",
+			"\t\t.factory('${ServiceName}', ${ServiceName});",
 			"",
-			"\t${Service}.$inject = ['${dependency1}'];",
-			"\tfunction ${Service}(${dependency1}) {",
+			"\t${ServiceName}.$inject = ['${dependency}'];",
+		  	"",
+		  	"\t/* @ngInject */",
+			"\tfunction ${ServiceName}(${dependency}) {",
 			"\t\tvar service = {",
-			"\t\t\t${exposedFn}:${exposedFn}",
+			"\t\t\t${functionName}:${functionName}",
 			"\t\t};",
 			"\t\t$0",
 			"\t\treturn service;",
 			"",
 			"\t\t////////////////",
-			"\t\tfunction ${exposedFn}() { }",
+			"\t\tfunction ${functionName}() { }",
 			"\t}",
 			"})();"
 		],
-		"description": "Angular 1 factory"
+		"description": "Angular Factory"
 	},
 	"Angular Directive": {
 		"prefix": "ngdirective",
@@ -77,18 +83,20 @@
 			"\t'use strict';",
 			"",
 			"\tangular",
-			"\t\t.module('${Module}')",
-			"\t\t.directive('${Directive}', ${Directive});",
+			"\t\t.module('${moduleName}')",
+			"\t\t.directive('${directiveName}', ${directiveName});",
 			"",
-			"\t${Directive}.$inject = ['${dependency1}'];",
-			"\tfunction ${Directive}(${dependency1}) {",
+			"\t${directiveName}.$inject = ['${dependency}'];",
+		    "",
+		  	"\t/* @ngInject */",
+			"\tfunction ${directiveName}(${dependency}) {",
 			"\t\t// Usage:",
 			"\t\t//",
 			"\t\t// Creates:",
 			"\t\t//",
 			"\t\tvar directive = {",
 			"\t\t    bindToController: true,",
-			"\t\t    controller: ${Controller}Controller,",
+			"\t\t    controller: ${ControllerName},",
 			"\t\t    controllerAs: '${vm}',",
 			"\t\t    link: link,",
 			"\t\t    restrict: 'A',",
@@ -101,12 +109,12 @@
 			"\t\t}",
 			"\t}",
 			"\t/* @ngInject */",
-			"\tfunction ${Controller}Controller () {",
+			"\tfunction ${ControllerName}() {",
 			"\t\t$0",
 			"\t}",
 			"})();"
 		],
-		"description": "Angular 1 directive"
+		"description": "Angular Directive"
 	},
 	"Angular Module": {
 		"prefix": "ngmodule",
@@ -119,6 +127,6 @@
 			"\t]);",
 			"})();"
 		],
-		"description": "Angular 1 module"
+		"description": "Angular Module"
 	}
 }
