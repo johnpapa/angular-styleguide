@@ -2772,16 +2772,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "es3": false,
         "forin": true,
         "freeze": true,
-        "immed": true,
-        "indent": 4,
         "latedef": "nofunc",
-        "newcap": true,
         "noarg": true,
-        "noempty": true,
         "nonbsp": true,
         "nonew": true,
         "plusplus": false,
-        "quotmark": "single",
         "undef": true,
         "unused": false,
         "strict": false,
@@ -2789,7 +2784,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "maxdepth": 5,
         "maxstatements": 40,
         "maxcomplexity": 8,
-        "maxlen": 120,
 
         "asi": false,
         "boss": false,
@@ -2807,7 +2801,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         "loopfunc": true,
         "maxerr": false,
         "moz": false,
-        "multistr": false,
         "notypeof": false,
         "proto": false,
         "scripturl": false,
@@ -2908,12 +2901,13 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
         "disallowCommaBeforeLineBreak": null,
         "disallowDanglingUnderscores": null,
-        "disallowEmptyBlocks": null,
+        "disallowEmptyBlocks": true,
         "disallowTrailingComma": null,
         "requireCommaBeforeLineBreak": null,
         "requireDotNotation": null,
         "requireMultipleVarDecl": null,
-        "requireParenthesesAroundIIFE": true
+        "requireParenthesesAroundIIFE": true,
+        "requireCapitalizedConstructors": true
     }
     ```
 
