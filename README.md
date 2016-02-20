@@ -2766,7 +2766,6 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     ```javascript
     {
         "bitwise": true,
-        "camelcase": true,
         "curly": true,
         "eqeqeq": true,
         "es3": false,
