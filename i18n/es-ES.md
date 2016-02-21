@@ -793,9 +793,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la fábrica se pueden accesar externamente.
 
-    *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complegidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
+    *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complejidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
 
-    *¿Por qué?*: Las declaraciones de las funciones son "elevedas" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fueran funciones en forma de expresión).
+    *¿Por qué?*: Las declaraciones de las funciones son "elevadas" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fueran funciones en forma de expresión).
 
     *¿Por qué?*: No tendrás que preocuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
