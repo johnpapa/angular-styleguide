@@ -7,7 +7,7 @@ There are multiple versions of Angular, and thus there are multiple versions of 
 [The Angular 1 Style Guide is located here](https://github.com/johnpapa/angular-styleguide/tree/master/a1/README.md).
 
 ### Angular 2 Style Guide
-**COMING SOON**
+[The **D R A F T** Angular 1 Style Guide is located here](https://github.com/johnpapa/angular-styleguide/tree/master/a2/README.md).
 
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
