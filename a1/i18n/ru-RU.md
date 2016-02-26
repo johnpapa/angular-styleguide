@@ -8,7 +8,7 @@
 
 >Если это руководство вам понравится, то вы можете также оценить мой курс [Angular Patterns: Clean Code](http://jpapa.me/ngclean), который размещен на сайте Pluralsight.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Признательность сообществу и коллегам
 Никогда не работайте в вакууме. Я считаю AngularJS-сообщество невероятно открытым, которое активно обменивается опытом и заботится об этом. Также как и мой друг Todd Motto (отличный Angular эксперт), я работал со многими стилями и соглашениями. Мы с ним сходимся во многом, но иногда и противоречим друг другу. Я предлагаю вам ознакомиться с курсом [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) дабы почувствовать разницу подходов.

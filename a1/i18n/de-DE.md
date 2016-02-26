@@ -8,7 +8,7 @@ Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angu
 
 >Wenn Sie diese Anleitung mögen, dann besuchen Sie meinen Kurs [Angular Patterns: Clean Code] (http://jpapa.me/ngclean) auf Pluralsight, der eine Begleitung zu dieser Anleitung darstellt.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Außergewöhnliche Community und Anerkennung
 Arbeite niemals im leeren Raum. Ich finde, dass die Angular-Community eine unglaubliche Gruppe ist, die ihre Erfahrung mit Leidenschaft teilt. Also haben ein Freund und Angular-Experte, Todd Motto, und ich viele Vorlagen und Konventionen zusammengetragen. Bei den meisten sind wir uns einig, und bei ein paar sind wir verschiedener Meinung. Ich möchte Sie ermutigen, sich [Todd's Guidelines](https://github.com/toddmotto/angularjs-styleguide) anzusehen, um ein Gespür für seinen Ansatz zu entwickeln und ihn vergleichen zu können.

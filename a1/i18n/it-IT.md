@@ -12,7 +12,7 @@ L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione
 
 >Se ti piace questa guida, dai un'occhiata al mio corso [Angular Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight come complemento a questa guida.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Eccezionalità della comunità e riconoscimenti
 Mai lavorare nel vuoto. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
