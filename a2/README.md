@@ -1,5 +1,5 @@
 # Angular 2 Style Guide **D R A F T**
-Style Guides require experience building applications with the tools. My style guide for Angular 1 was based on years of experience with Angular 1, collaboration with other Angular experts, and conributions from the Angular core team. Nobody has the same massive experience with Angular 2, and thus the Angular 2 Style Guide is a work in progress.
+Style Guides require experience building applications with the tools. My style guide for Angular 1 was based on years of experience with Angular 1, collaboration with other Angular experts, and contributions from the Angular core team. Nobody has the same massive experience with Angular 2, and thus the Angular 2 Style Guide is a work in progress.
 
 My intent is to release the guide as a living document. Guidelines that we are comfortable recommending will be included. By wary and definately ask questions when someone, including me, publishes a guide :)
 
