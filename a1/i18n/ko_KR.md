@@ -11,7 +11,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 이 스타일 가이드의 목적은 Angular 어플리케이션을 만드는 길잡이 역할을 하기 위함이며 더 나아가 왜 내가 이런 것들을 선택했는지 보여주기 위함입니다.
 >만약 이 가이드가 마음에 든다면 Pluralsight 에 올려놓은 저의 강의를 참고하시기 바랍니다. [Angular Patterns: Clean Code](http://jpapa.me/ngclean)
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
 저는 Angular 커뮤니티의 대단함을 알게 되었습니다. 그들은 자신들의 경험을 공유하는데 열정적이기 때문입니다. 나의 친구이자 Angular 전문가인 Todd Motto 와 나는 많은 스타일과 컨벤션을 위해 공동작업을 하였습니다. 대부분 우리는 서로 동의하였지만 어떤 부분에서는 의견이 갈렸습니다. Todd의 접근방법이 궁금하고 이를 비교해보고 싶으신 분들은 다음 링크에 가서 확인해보시면 좋을 것 같습니다 [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide).

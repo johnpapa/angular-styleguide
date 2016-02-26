@@ -12,7 +12,7 @@ Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi
 
 >Eğer bu rehberi beğendiyseniz, [Angular Patterns: Clean Code](http://jpapa.me/ngclean) isimli kursuma Pluralsight sitesinden bir bakın. Bu rehberle pekiltirici olacaktır.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Topluluğun Aşmışlığı ve Referanslar
 Asla izole olarak çalışmayın. Angular topluluğunu, deneyimlerini paylaşma konusunda tutukulu buluyorum. Örneğin, arkadaşım ve bir Angular uzmanı Todd Motto ile birçok stil ve yöntem üzerinde işbirliği yaptık. Birçoğunda hemfikir olduk, birkaçında farklı yollar izledik. [Todd'un rehberi'ni](https://github.com/toddmotto/angularjs-styleguide) de onun yaklaşımını anlamak ve karşılaştırma yapmak için incelemenizi öneririm
