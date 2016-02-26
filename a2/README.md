@@ -168,6 +168,12 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
 **[Back to top](#table-of-contents)**
 
+## Factories
+
+  **example coming soon**
+
+**[Back to top](#table-of-contents)**
+
 ## Data Services
 
 ### Separate Data Calls
