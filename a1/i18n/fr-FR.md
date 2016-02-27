@@ -449,7 +449,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       }
   ```
 
-    ![Contrôleur utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Contrôleur utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Note : Si la fonction est un *oneliner*, vous pouvez la garder en haut du contrôleur, tant que la lisibilité n'est pas affectée.
 
@@ -792,7 +792,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   De cette façon, les *bindings* sont répliqués à travers l'objet de capture, les valeurs primitives ne peuvent pas se mettre à jour toutes seules grâce au *revealing module pattern*.
 
-    ![Factories utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Déclaration des fonctions pour cacher les détails d'implémentation
 ###### [Style [Y053](#style-y053)]
@@ -2203,7 +2203,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
             session-detail.controller.js
     ```
 
-      ![Image d'un exemple de structure d'application](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Image d'un exemple de structure d'application](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Note : N'utilisez pas une structuration « répertoire-type ». Cela requiert de se déplacer entre de multiples répertoires lors du travail sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application passe de à cinq, dix ou plus de vingt-cinq vues et contrôleurs (et autres fonctionnalités), ce qui complique la localisation par rapport à une structure en « répertoire-fonctionnalité ».
 
@@ -2297,7 +2297,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et réutilisables.
 
-    ![Modularité et Dépendences](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modularité et Dépendences](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Pourquoi?* : Le module principal de l'application continent manifeste des fonctionnalités de l'application.
 
@@ -2529,7 +2529,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclus
     "mocha": true,
     ```
 
-  ![Outils de test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Outils de test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Organisation des tests
 ###### [Style [Y197](#style-y197)]

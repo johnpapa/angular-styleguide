@@ -440,7 +440,7 @@
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Замечание: Если функция однострочная, то разместите и ее наверху, но так чтобы это не усложняло читабельность.
 
@@ -781,7 +781,7 @@
 
 Такой способ привязки реализовывается во всем объекте, и приватные члены не моут быть изменены из-за примененного паттерна Revealing Module.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Определения Функций для Скрытия Деталей Реализации
 ###### [Style [Y053](#style-y053)]
@@ -2099,7 +2099,7 @@
             session-detail.controller.js
     ```
 
-      ![Пример Структуры Приложения](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Пример Структуры Приложения](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Замечание: Не используйте структуру папки-по-типу. Так файлы одной функциональности разбрасываются по нескольким папкам, и далее все быстро становится очень громоздким. Как только в приложении создаются 5, 10, или 25+ представлений и контроллеров (и других компонентов), то работа становится очень сложной, в отличиии от структуры папки-по-функциональностям.
 
@@ -2192,7 +2192,7 @@
 
   - Корневой модуль приложения зависит от специфичных функциональных модулей и от любых общих или повторно используемых модулей.
 
-    ![Модульность и Зависимости](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Модульность и Зависимости](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Почему?*: Главный модуль приложения содержит хорошо читаемый манифест функциональностей приложения.
 
@@ -2370,7 +2370,7 @@
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
 
-  ![Средства Тестирования](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Средства Тестирования](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Организация Тестов
 ###### [Style [Y197](#style-y197)]

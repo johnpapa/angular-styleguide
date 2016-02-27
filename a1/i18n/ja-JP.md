@@ -442,7 +442,7 @@
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Note: もし関数がワンライナーであれば、可読性に影響が無い限り上に置いたままにすることを検討して下さい。
 
@@ -2172,7 +2172,7 @@
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Note: folders-by-typeを使って構造化をしてはいけません。一つの機能が、5、10、25以上のビューやコントローラ(また他の機能)からなるときにアプリが肥大化してきます。そのとき複数のフォルダに移動する必要がありますが、ファイルを配置するのはfolder-by-featureよりも難しいでしょう。
 
@@ -2266,7 +2266,7 @@
 
   - ルートのモジュールは、アプリケーションスペシフィックなモジュールや共有または再利用されるモジュールに依存します。
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *なぜ ?*: メインのアプリケーションのモジュールは、アプリケーションの機能を素早く特定可能なマニュフェストを含みます。
 
@@ -2452,7 +2452,7 @@
     "mocha": true,
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Organizing Tests
 ###### [Style [Y197](#style-y197)]

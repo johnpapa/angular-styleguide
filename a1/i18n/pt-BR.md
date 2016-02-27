@@ -2121,7 +2121,7 @@ ou *Dependências do módulo*
 
   - O módulo raiz da aplicação depende de módulos de recursos específicos do aplicativo e de qualquer módulo compartilhado ou reutilizado.
 
-    ![Moduluaridade e Dependências](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Moduluaridade e Dependências](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     **Por que?** O módulo principal do aplicativo contém um rápido manifesto para identificar os recursos da aplicação.
 
