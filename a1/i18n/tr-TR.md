@@ -452,7 +452,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Not: Eğer fonksiyon bir satıra sığıyorsa, okunabilirlik etkilenmez ve bağlanacak değişkenlerle beraber tutulabilir. 
 
@@ -794,7 +794,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   Primitif değerler revealing module pattern yöntemi kullanıldığında güncellenemezler.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Fonksiyon Tanımlamaları ve İmplementasyon Detaylarının Saklanması
 ###### [Stil [Y053](#style-y053)]
@@ -2220,7 +2220,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
             session-detail.controller.js
     ```
 
-      ![Örnek Uygulama Yapısı](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Örnek Uygulama Yapısı](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Not: Uygulamanızı tipe göre klasör yapısı ile oluşturmayın. Bu yüzden bir özellik üzerinde çalışırken birden çok klasör içerisinde çalışmanız gerekir ve dosya sayısı arttıkça sizi hantallaştırır. Özelliğe göre klasör yapısına göre dosyaları bulmak daha zordur.
 
@@ -2315,7 +2315,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Ana uygulama modülü uygulamaya özel modüllere ve paylaşılan, tekrar kullanılabilen modüllere bağlıdır.
 
-    ![Modülerlik ve Bağımlılık](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modülerlik ve Bağımlılık](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Neden?*: Uygulama ana modülü uygulamanın özelliklerini içeren kolayca tanımlanabilen bir manifestodur.
 
@@ -2550,7 +2550,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
     "mocha": true,
     ```
 
-  ![Test Araçları](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Test Araçları](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Testleri Organize Etmek
 ###### [Stil [Y197](#style-y197)]

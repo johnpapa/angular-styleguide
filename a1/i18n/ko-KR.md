@@ -472,7 +472,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
   }
   ```
 
-    !["Above the Fold"를 사용하는 컨트롤러](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    !["Above the Fold"를 사용하는 컨트롤러](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   주의: 만약 코드 가독성에 영향을 주지않고 1줄이라면 그냥 위쪽에 두어도 됩니다.
 
@@ -817,7 +817,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 
   호스트 오브젝트 내에서 이런 식의 바인딩이 반영이 되어서, 원시 값들은 모듈 패턴 노출 방식으로 업데이트 되지 않습니다.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
@@ -2234,7 +2234,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
             session-detail.controller.js
     ```
 
-      ![심플한 앱 구조](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![심플한 앱 구조](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       주의: 타입별로 묶어서 폴더를 만드는 식으로 앱 구조를 만들지 마세요. 한 가지 기능에 대해서 일하려면 여러 폴더를 옮겨 다녀야 합니다. 이는 앱이 5, 10 또는 25 이상의 뷰와 컨트롤러(또는 다른 기능들)를 갖게되면 기능으로 나뉜 폴더일 경우보다 금방 거추장스러워 집니다.
 
@@ -2329,7 +2329,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 
   - 어플리케이션의 루트 모듈은 앱 특화된 기능모듈 그리고 재사용되고 공유된 모듈들에 의존하게 됩니다.
 
-    ![모듈화 그리고 의존성](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![모듈화 그리고 의존성](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *이유*: 주요 앱 모듈은 어플리케이션의 기능들을 빠르게 구분할 수 있는 목록을 가지고 있습니다.
 
@@ -2562,7 +2562,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
     "mocha": true,
     ```
 
-  ![테스팅 도구들](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![테스팅 도구들](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 
 ### Organizing Tests

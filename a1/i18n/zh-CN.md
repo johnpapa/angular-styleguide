@@ -440,7 +440,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
       }
   ```
 
-  ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+  ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   注：如果一个函数就是一行，那么只要不影响可读性就把它放到顶部。
 
@@ -783,7 +783,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   这种绑定方式复制了宿主对象，原始值不会随着暴露模块模式的使用而更新。
 
-  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+  ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ###函数声明隐藏实现细节
 ###### [Style [Y053](#style-y053)]
@@ -2170,7 +2170,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
             session-detail.controller.js
     ```
 
-    ![实例App结构](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+    ![实例App结构](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
     注意：不要使用按类型划分文件夹结构，因为如果这样的话，当做一个功能时，需要在多个文件夹中来回切换。当应用程序有5个、10个，甚至是25个以上的view、controller（或其他feature）时，这种方式将迅速变得不实用，这就使得它定位文件比按功能分文件夹的方式要困难的多。
 
@@ -2264,7 +2264,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   - 应用程序根模块依赖于应用程序特定的功能模块、共享的和可复用的模块。
 
-    ![模块化和依赖](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![模块化和依赖](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *为什么？*：主程序模块包含一个能快速识别应用程序功能的清单。
 
@@ -2450,7 +2450,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     "mocha": true,
     ```
 
-  ![测试工具](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![测试工具](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### 组织测试
 ###### [Style [Y197](#style-y197)]
