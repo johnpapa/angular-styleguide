@@ -1,0 +1,26 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ngcontroller
+# key: ngcontroller
+# binding: direct-keybinding
+# --
+
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .controller('${2:Controller}Controller', $2Controller);
+
+    /* @ngInject */
+    function $2Controller(${3:dependencies}) {
+        var vm = this;
+        vm.title = '$2Controller';
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+        }
+    }
+})();

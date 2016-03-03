@@ -1,0 +1,14 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ngmodule
+# key: ngmodule
+# binding: direct-keybinding
+# --
+
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}', [
+            '${2:dependencies}'
+        ]);
+})();
