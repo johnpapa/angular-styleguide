@@ -109,7 +109,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```javascript
   /* recommended */
 
-  // someFactory.js
+  // some.factory.js
   angular
       .module('app')
       .factory('someFactory', someFactory);
