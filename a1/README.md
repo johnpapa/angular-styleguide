@@ -406,7 +406,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
   ```html
-  <input ng-model="vm.title"/>
+  <div ng-controller="SomeController as vm">
+    <input ng-model="vm.title"/>
+  </div>
   ```
 
   ```javascript
@@ -425,12 +427,30 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```html
   <!-- avoid -->
-  <input ng-model="customerProductItemVm.text">
+  <div ng-controller="SomeController as customerProductItemVm">
+    <input ng-model="customerProductItemVm.title">
+  </div>
   ```
 
   ```html
   <!-- recommended -->
-  <input ng-model="productVm.id">
+  <div ng-controller="SomeController as productVm">
+    <input ng-model="productVm.title">
+  </div>
+  ```
+
+  Note: In this case, you'll need to use `productVm.*` to watch controller's member properly:
+  
+  ```javascript
+  function SomeController($scope, $log) {
+      var vm = this;
+      vm.title = 'Some Title';
+
+      $scope.$watch('productVm.title', function(current, original) {
+          $log.info('productVm.title was %s', original);
+          $log.info('productVm.title is now %s', current);
+      });
+  }
   ```
 
 ### Bindable Members Up Top
