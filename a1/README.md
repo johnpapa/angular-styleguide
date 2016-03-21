@@ -425,12 +425,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   ```html
   <!-- avoid -->
-  <input ng-model="customerProductItemVm.text">
+  <input ng-model="customerProductItemVm.title">
   ```
 
   ```html
   <!-- recommended -->
-  <input ng-model="productVm.id">
+  <input ng-model="productVm.title">
   ```
 
 ### Bindable Members Up Top
