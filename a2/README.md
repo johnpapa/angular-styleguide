@@ -127,7 +127,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
   }
   ```
 
-  ```javascript
+  ```typescript
   /* recommended */
 
   // hero.service.ts
@@ -186,16 +186,58 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
 ## Components
 
-### Bindable Members Up Top
+### Member Sequence
 ###### [Style [A2-033](#style-a2-033)]
 
-  - Place bindable members at the top of the component, alphabetized, and not spread through the component code.
+  - Place properties up top, then public functions, then private functions, alphabetized, and not spread through the component code.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the component can be bound and used in the View.
+    *Why?*: Placing members in a consistent sequence makes it easy to read and helps you instantly identify which members of the component serve which purpose.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+  ```typescript
+  /* recommended */
+  export class ToastComponent implements OnInit {
+    // private fields
+    private _defaults = {
+      title: '',
+      message: 'May the Force be with You'
+    };
+    private _toastElement: any;
 
-  **example coming soon**
+    // public properties
+    title: string;
+    message: string;
+
+    // ctor
+    constructor(toastService: ToastService) {
+      toastService.activate = this.activate.bind(this);
+    }
+
+    // public functions
+    activate(message = this._defaults.message, title = this._defaults.title) {
+      this.title = title;
+      this.message = message;
+      this._show();
+    }
+
+    ngOnInit() {
+      this._toastElement = document.getElementById('toast');
+    }
+
+    // private functions
+    private _show() {
+      console.log(this.message);
+      this._toastElement.style.opacity = 1;
+      this._toastElement.style.zIndex = 9999;
+
+      window.setTimeout(() => this._hide(), 2500);
+    }
+
+    private _hide() {
+      this._toastElement.style.opacity = 0;
+      window.setTimeout(() => this._toastElement.style.zIndex = 0, 400);
+    }
+  }
+  ```
 
 ### Defer Logic to Services
 ###### [Style [A2-035](#style-a2-035)]
