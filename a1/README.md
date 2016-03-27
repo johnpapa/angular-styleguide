@@ -63,7 +63,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Rule of 1
 ###### [Style [Y001](#style-y001)]
 
-  - Define 1 component per file, recommended to be less than 500 lines of code.
+  - Define 1 component per file, recommended to be less than 400 lines of code.
 
   *Why?*: One component per file promotes easier unit testing and mocking.
 

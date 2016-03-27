@@ -1,8 +1,8 @@
 # Angular 2 Style Guide **D R A F T**
-Style Guides require experience building applications with the tools. My style guide for Angular 1 was based on years of experience with Angular 1, collaboration with other Angular experts, and contributions from the Angular core team. Nobody has the same massive experience with Angular 2, and thus the Angular 2 Style Guide is a work in progress.
+Style Guides require experience building applications with the tools. My style guide for Angular 1 was based on years of experience with Angular 1, collaboration with other Angular experts, and contributions from the Angular core team. Nobody has the equivalent  massive experience with Angular 2, and thus the Angular 2 Style Guide is a work in progress.
 
 My intent is to release the guide as a living document. Guidelines that we are comfortable recommending will be included. Be wary and definitely ask questions when someone, including me, publishes a guide :)
-d
+
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
 
@@ -42,7 +42,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 ### Rule of 1
 ###### [Style [A2-001](#style-a2-001)]
 
-  - Define 1 component per file, recommended to be less than 500 lines of code.
+  - Define 1 component per file, recommended to be less than 400 lines of code.
 
   *Why?*: One component per file promotes easier unit testing and mocking.
 
@@ -50,9 +50,105 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
   *Why?*: One component per file avoids hidden bugs that often arise when combining components in a file where they may share variables, create unwanted closures, or unwanted coupling with dependencies.
 
-  The following example defines the `app` module and its dependencies, defines a component, and defines a factory all in the same file.
+  The following example defines the `AppComponent`, handles the bootstrapping, and shared functions all in the same file.
+  
+  The key is to make the code more reusable, easier to read, and less mistake prone.
 
-  **example coming soon**
+  ```javascript
+  /* avoid */
+  import { bootstrap } from 'angular2/platform/browser';
+  import { Component, OnInit } from 'angular2/core';
+
+  @Component({
+    selector: 'my-app',
+    template: `
+        <h1>{{title}}</h1>
+        <pre>{{heroes | json}}</pre>  
+      `,
+    styleUrls: ['app/app.component.css']
+  })
+  export class AppComponent implements OnInit{
+    public title = 'Tour of Heroes';
+
+    public heroes: Hero[] = [];
+
+    ngOnInit() {
+      getHeroes().then(heroes => this.heroes = heroes);
+    }
+  }
+
+  bootstrap(AppComponent, []);
+
+  function getHeroes() {
+    return // some promise of data;
+  }  
+  ```
+  
+  The same components are now separated into their own files.
+
+  ```javascript
+  /* recommended */
+
+  // main.ts
+  import { bootstrap } from 'angular2/platform/browser';
+  import { AppComponent } from './app.component';
+
+  bootstrap(AppComponent, []);
+  ```
+  
+  ```javascript
+  /* recommended */
+
+  // app.component.ts
+  import { Component, OnInit } from 'angular2/core';
+
+  import { Hero } from './hero';
+  import { HeroService } from './hero.service';
+
+  @Component({
+    selector: 'my-app',
+    template: `
+        <h1>{{title}}</h1>
+        <pre>{{heroes | json}}</pre>  
+      `,
+    styleUrls: ['app/app.component.css'],
+    providers: [HeroService]
+  })
+  export class AppComponent implements OnInit{
+    public title = 'Tour of Heroes';
+
+    public heroes: Hero[] = [];
+
+    ngOnInit() {
+      this._heroService.getHeroes().then(heroes => this.heroes = heroes);
+    }
+  }
+  ```
+
+  ```javascript
+  /* recommended */
+
+  // hero.service.ts
+  import { Injectable } from 'angular2/core';
+  import { HEROES } from './mock-heroes';
+
+  @Injectable()
+  export class HeroService {
+    getHeroes() {
+      return Promise.resolve(HEROES);
+    }
+  }
+  ```
+
+  ```javascript
+  /* recommended */
+
+  // hero.ts
+  export class Hero {
+    id: number;
+    name: string;
+  }
+  ```
 
 **[Back to top](#table-of-contents)**
 
@@ -81,9 +177,6 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
   - Use unique naming conventions with separators for sub-modules.
 
   *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
-
-### Definitions (aka Setters)
-###### [Style [A2-021](#style-a2-021)]
 
 ## Components
 
