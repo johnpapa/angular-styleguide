@@ -110,17 +110,16 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
   @Component({
     selector: 'my-app',
     template: `
-        <h1>{{title}}</h1>
         <pre>{{heroes | json}}</pre>  
       `,
     styleUrls: ['app/app.component.css'],
     providers: [HeroService]
   })
   export class AppComponent implements OnInit{
-    public title = 'Tour of Heroes';
+    heroes: Hero[] = [];
 
-    public heroes: Hero[] = [];
-
+    constructor(private _heroService: HeroService) {}
+    
     ngOnInit() {
       this._heroService.getHeroes().then(heroes => this.heroes = heroes);
     }
@@ -318,7 +317,64 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     }
   }
   ```
+
+### Providing a Shared Service
+###### [Style [A2-041](#style-a2-041)]
+
+  - Services should be provided to the Angular 2 injector at the top-most component where they will be shared. 
+ 
+    *Why?*: The Angular 2 injector is hierarchical.
+
+    *Why?*: When providing the service to a top level component, that instance is shared and available to all child components of that top level component.
+ 
+    *Why?*: When providing the service to a top level component, that instance is shared and available to all child components of that top level component.
+
+  ```typescript
+  /* recommended */
+
+  // app.component.ts
+  import { Component } from 'angular2/core';
+
+  import { SpeakerListComponent } from './speakers/speaker-list.component';
+  import { SpeakerService } from './common/speaker.service';
+
+  @Component({
+    selector: 'my-app',
+    template: `
+        <my-speakers></my-speakers>  
+      `,
+    directives: [SpeakerListComponent],
+    providers: [SpeakerService]
+  })
+  export class AppComponent { }
+  ```
   
+  ```typescript
+  /* recommended */
+
+  // speaker-list.component.ts
+  import { Component, OnInit } from 'angular2/core';
+
+  import { SpeakerService } from './common/speaker.service';
+  import { Speaker } from './common/speaker';
+
+  @Component({
+    selector: 'my-speakers',
+    template: `
+        <pre>{{speakers | json}}</pre>  
+      `
+  })
+  export class SpeakerListComponent implements OnInit{
+    speakers: Speaker[] = [];
+
+    constructor(private _speakerService: SpeakerService) {}
+
+    ngOnInit() {
+      this._speakerService.getSpeakers().then(speakers => this.speakers = speakers);
+    }
+  }
+  ```
+
 **[Back to top](#table-of-contents)**
 
 ### Single Responsibility
