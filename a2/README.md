@@ -563,23 +563,45 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     
 **[Back to top](#table-of-contents)**
 
-### Directive Component Names
-###### [Style [A2-126](#style-a2-126)]
+### Component Router
+###### [Style [A2-120](#style-a2-120)]
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Separate route configuration into a routing component file, also known as a component router.
 
-    *Why?*: Provides a consistent way to quickly identify and reference components.
+  - Use a `<router-outlet>` in the component router, where the routes will have their component targets display their templates.
+  
+  - Focus the logic in the component router to the routing aspects and its target components. Extract other logic to services and other components.
+  
+    *Why?*: A component that handles routing is known as the component router, thus this follows the Angular 2 routing pattern.
+    
+    *Why?*: A component that handles routing is known as the componenter router.
 
-    **example coming soon**
+    *Why?*: The `<router-outlet>` indicates where the tempalte should be displayed for the target route.
+    
+    ```typescript
+    import { Component } from 'angular2/core';
+    import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
-**[Back to top](#table-of-contents)**
+    import { SpeakersComponent, SpeakerService } from './^speakers';
+    import { DashboardComponent } from './^dashboard';
+    import { NavComponent } from './layout/nav.component';
 
-### Routes
-###### [Style [A2-129](#style-a2-129)]
-
-  - Separate route configuration into a routing component file.
-
-  **example coming soon**
+    @Component({
+      selector: 'my-app',
+      templateUrl: 'app/app.component.html',
+      styleUrls: ['app/app.component.css'],
+      directives: [ROUTER_DIRECTIVES, NavComponent],
+      providers: [
+        ROUTER_PROVIDERS,
+        SpeakerService
+      ]
+    })
+    @RouteConfig([
+      { path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true },
+      { path: '/speakers/...', name: 'Speakers', component: SpeakersComponent },
+    ])
+    export class AppComponent { }
+    ```
 
 **[Back to top](#table-of-contents)**
 
