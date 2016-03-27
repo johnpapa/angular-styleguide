@@ -244,6 +244,8 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
   - Defer logic in a component by delegating to services.
 
+  - Define a component for a view, and try not to reuse the component for other views. Instead, move reusable logic to factories and keep the component simple and focused on its view.
+
     *Why?*: Logic may be reused by multiple components when placed within a service and exposed via a function.
 
     *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the component can be easily mocked.
@@ -294,15 +296,6 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
   }
   ```
 
-### Keep Components Focused
-###### [Style [A2-037](#style-a2-037)]
-
-  - Define a component for a view, and try not to reuse the component for other views. Instead, move reusable logic to factories and keep the component simple and focused on its view.
-
-    *Why?*: Reusing components with several views is brittle and good end-to-end (e2e) test coverage is required to ensure stability across large applications.
-
-  **example coming soon**
-
 **[Back to top](#table-of-contents)**
 
 ## Services
@@ -312,8 +305,20 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
   - Services are singletons and should be used for sharing data and functionality.
 
-  **example coming soon**
+  ```typescript
+  // service  
+  import { Injectable } from 'angular2/core';
+  import { Session } from './session';
 
+  @Injectable()
+  export class HeroService {
+    getHeroes() {
+      return this._http.get('api/sessions')
+        .map((response: Response) => <Session[]>response.json().data)
+    }
+  }
+  ```
+  
 **[Back to top](#table-of-contents)**
 
 ### Single Responsibility
