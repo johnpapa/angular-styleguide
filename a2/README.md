@@ -318,7 +318,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
   }
   ```
 
-### Providing a Shared Service
+### Providing a Service
 ###### [Style [A2-041](#style-a2-041)]
 
   - Services should be provided to the Angular 2 injector at the top-most component where they will be shared. 
@@ -328,6 +328,8 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     *Why?*: When providing the service to a top level component, that instance is shared and available to all child components of that top level component.
  
     *Why?*: This is ideal when a service is sharing methods and has no state, or state that must be shared.
+    
+    *Why?*: This is not ideal when two different components need different instances of a service. In this scenario it would be better to provide the service at the component level that needs the new and separate instance.
     
   ```typescript
   /* recommended */
@@ -374,7 +376,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     }
   }
   ```
-
+  
 **[Back to top](#table-of-contents)**
 
 ### Single Responsibility
