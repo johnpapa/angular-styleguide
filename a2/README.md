@@ -380,27 +380,16 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 **[Back to top](#table-of-contents)**
 
 ### Single Responsibility
-###### [Style [A2-050](#style-a2-050)]
+###### [Style [A2-042](#style-a2-050)]
 
   - Services should have a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a service begins to exceed that singular purpose, a new one should be created.
-
-  **example coming soon**
-
-**[Back to top](#table-of-contents)**
-
-### Singletons
-###### [Style [A2-051](#style-a2-051)]
-
-  - Factories are singletons and return an object that contains the members of the service.
-
-  **example coming soon**
 
 **[Back to top](#table-of-contents)**
 
 ## Data Services
 
 ### Separate Data Calls
-###### [Style [A2-060](#style-a2-060)]
+###### [Style [A2-050](#style-a2-050)]
 
   - Refactor logic for making data operations and interacting with data to a service. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
 
