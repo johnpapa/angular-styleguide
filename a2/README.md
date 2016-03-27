@@ -322,7 +322,34 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
     *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as `$http`. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a component), also making it easier to change the implementation.
 
-  **example coming soon**
+  ```typescript
+  // recommended
+  export class SessionListComponent implements OnInit {
+    sessions: Session[];
+    filteredSessions = this.sessions;
+
+    constructor(private _sessionService: SessionService) { }
+
+    getSessions() {
+      this.sessions = [];
+      this._sessionService.getSessions()
+        .subscribe(sessions => {
+          this.sessions = this.filteredSessions = sessions;
+        },
+        error => {
+          console.log('error occurred here');
+          console.log(error);
+        },
+        () => {
+          console.log('completed');
+        });
+    }
+
+    ngOnInit() {
+      this.getSessions();
+    }
+  }
+  ```
 
 **[Back to top](#table-of-contents)**
 
