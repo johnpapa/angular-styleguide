@@ -70,9 +70,9 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     styleUrls: ['app/app.component.css']
   })
   export class AppComponent implements OnInit{
-    public title = 'Tour of Heroes';
+    title = 'Tour of Heroes';
 
-    public heroes: Hero[] = [];
+    heroes: Hero[] = [];
 
     ngOnInit() {
       getHeroes().then(heroes => this.heroes = heroes);
