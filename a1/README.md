@@ -137,7 +137,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 **[Back to top](#table-of-contents)**
 
 ## IIFE
-### JavaScript Closures
+### JavaScript Scopes
 ###### [Style [Y010](#style-y010)]
 
   - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
