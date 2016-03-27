@@ -151,6 +151,8 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     name: string;
   }
   ```
+  
+  As the app grows, this rule becomes even more important.
 
 **[Back to top](#table-of-contents)**
 
@@ -176,9 +178,11 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 ### Avoid Naming Collisions
 ###### [Style [A2-020](#style-a2-020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - Use unique naming conventions.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *Why?*: Unique names help avoid module name collisions. We import and export modules by the file in which they are contained. Thus the name of the files and their folders is important.
+
+  *Why?*: Names of folders and files should clear convey their intent. For example, `app/speakers/speaker-list.component.ts` may contain a component that manages a list of speakers. The folder and file names clearly convey the meaning, and thus the module import is clear as `import { SpeakerComponent } from './speakers/speaker-list.component'`.
 
 ## Components
 
