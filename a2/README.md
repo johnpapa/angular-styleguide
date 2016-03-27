@@ -563,8 +563,13 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     
 **[Back to top](#table-of-contents)**
 
+## Routing
+Client-side routing is important for creating a navigation flow between a component tree hierarchy, and composing components that are made of many other child components.
+
+**[Back to top](#table-of-contents)**
+
 ### Component Router
-###### [Style [A2-120](#style-a2-120)]
+###### [Style [A2-130](#style-a2-130)]
 
   - Separate route configuration into a routing component file, also known as a component router.
 
@@ -703,19 +708,6 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
 **[Back to top](#table-of-contents)**
 
-## Modularity
-
-### Many Small, Self Contained Modules
-###### [Style [A2-160](#style-a2-160)]
-
-  - Create small modules that encapsulate one responsibility.
-
-    *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally. This means we can plug in new features as we develop them.
-
-  **example coming soon**
-
-**[Back to top](#table-of-contents)**
-
 ## File Templates and Snippets
 Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
 
@@ -726,11 +718,6 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 **[Back to top](#table-of-contents)**
 
 ## Angular CLI
-
-**[Back to top](#table-of-contents)**
-
-## Routing
-Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
 
 **[Back to top](#table-of-contents)**
 
