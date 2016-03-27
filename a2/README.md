@@ -252,7 +252,47 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
     *Why?*: Keeps the component slim, trim, and focused.
 
-  **example coming soon**
+  ```typescript
+  // avoid
+  export class SessionListComponent implements OnInit {
+    sessions: Session[];
+
+    constructor(private _http: Http) { }
+
+    getSessions() {
+      this.sessions = [];
+      this._http.get(sessionsUrl)
+        .map((response: Response) => <Session[]>response.json().data)
+        .catch(this._exceptionService.catchBadResponse)
+        .finally(() => this._spinnerService.hide())
+        .subscribe(sessions => this.sessions = sessions);
+    }
+    
+
+    ngOnInit() {
+      this.getSessions();
+    }
+  }
+  ```
+  
+  ```typescript
+  // recommended
+  export class SessionListComponent implements OnInit {
+    sessions: Session[];
+
+    constructor(private _sessionService: SessionService) { }
+
+    getSessions() {
+      this.sessions = [];
+      this._sessionService.getSessions()
+        .subscribe(sessions => this.sessions = sessions);
+    }
+
+    ngOnInit() {
+      this.getSessions();
+    }
+  }
+  ```
 
 ### Keep Components Focused
 ###### [Style [A2-037](#style-a2-037)]
@@ -289,21 +329,6 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 ###### [Style [A2-051](#style-a2-051)]
 
   - Factories are singletons and return an object that contains the members of the service.
-
-  **example coming soon**
-
-**[Back to top](#table-of-contents)**
-
-### Accessible Members Up Top
-###### [Style [A2-052](#style-a2-052)]
-
-  - Expose the callable members of the service (its interface) at the top
-
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked).
-
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
-
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
 
   **example coming soon**
 
