@@ -714,6 +714,11 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### Visual Studio Code
 
   - [Visual Studio Code](https://code.visualstudio.com/) snippets that follow these styles and guidelines.
+  
+    - [Snippets for VS Code](https://marketplace.visualstudio.com/items?itemName=johnpapa.Angular2)
+    
+    [![Use Extension](https://github.com/johnpapa/vscode-angular2-snippets/raw/master/images/use-extension.gif)](https://marketplace.visualstudio.com/items?itemName=johnpapa.Angular2)
+
 
 **[Back to top](#table-of-contents)**
 
