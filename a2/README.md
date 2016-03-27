@@ -327,8 +327,8 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
     *Why?*: When providing the service to a top level component, that instance is shared and available to all child components of that top level component.
  
-    *Why?*: When providing the service to a top level component, that instance is shared and available to all child components of that top level component.
-
+    *Why?*: This is ideal when a service is sharing methods and has no state, or state that must be shared.
+    
   ```typescript
   /* recommended */
 
