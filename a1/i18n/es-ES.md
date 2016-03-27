@@ -23,8 +23,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 ## Tabla de contenidos
 
-  1. [Responsabilidad
-     Única](#single-responsibility-o-responsabilidad-única)
+  1. [Responsabilidad Única](#single-responsibility-o-responsabilidad-Única)
   1. [IIFE](#iife)
   1. [Módulos](#módulos)
   1. [Controladores](#controladores)
@@ -61,6 +60,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ###### [Style [Y001](#style-y001)]
 
   - Define 1 componente por archivo.
+    
+    *¿Por qué?*: Un componente por archivo promueve pruebas unitarias más fáciles.
+
+    *¿Por qué?*: Un componente por archivo hace que sea mucho más fácil de leer, mantener, y evita colisiones con los equipos en el control de código.
+
+    *¿Por qué?*: Un componente por archivo evita errores ocultos que a menudo surgen cuando se combinan componentes en un archivo donde pueden compartir variables, crear closures (clausuras) no deseadas, o acoplamiento indeseado de dependencias.
 
   El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una fábrica todo en el mismo archivo.
 
