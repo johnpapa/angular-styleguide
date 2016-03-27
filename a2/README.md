@@ -433,7 +433,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 ## Naming
 
 ### Naming Guidelines
-###### [Style [A2-120](#style-a2-120)]
+###### [Style [A2-100](#style-a2-100)]
 
   - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
     * the file name (`avengers.component.ts`)
@@ -443,21 +443,47 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
     *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand.
 
-  **example coming soon**
-
 **[Back to top](#table-of-contents)**
 
-### Feature File Names
-###### [Style [A2-121](#style-a2-121)]
+### File Names
+###### [Style [A2-101](#style-a2-101)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.ts`.
+  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. A recommended pattern is `feature.type.ts`.
+
+  - use dashes to separate words and dots to separate the descriptive name from the type.
 
     *Why?*: Provides a consistent way to quickly identify components.
 
     *Why?*: Provides pattern matching for any automated tasks.
 
+    ```
+    // recommended
+
+    // Bootstrapping file and main entry point
+    main.ts
+    
+    // Components
+    speakers.component.ts
+    speaker-list.component.ts
+    speaker-detail.component.ts
+
+    // Services
+    logger.service.ts
+    speaker.service.ts
+    exception.service.ts
+    filter-text.service.ts
+    
+    // Models
+    session.ts
+    speaker.ts    
+    
+    // Pipes
+    ellipsis.pipe.ts
+    init-caps.pipe.ts
+    ```
+    
 ### Test File Names
-###### [Style [A2-122](#style-a2-122)]
+###### [Style [A2-102](#style-a2-102)]
 
   - Name test specifications similar to the component they test with a suffix of `spec`.
 
@@ -465,52 +491,76 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
     *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
 
-  **example coming soon**
+    ```
+    // recommended
+
+    // Components
+    speakers.component.spec.ts
+    speaker-list.component.spec.ts
+    speaker-detail.component.spec.ts
+
+    // Services
+    logger.service.spec.ts
+    speaker.service.spec.ts
+    exception.service.spec.ts
+    filter-text.service.spec.ts
+    
+    // Pipes
+    ellipsis.pipe.spec.ts
+    init-caps.pipe.spec.ts
+    ```
 
 **[Back to top](#table-of-contents)**
 
 ### Component Names
-###### [Style [A2-123](#style-a2-123)]
+###### [Style [A2-103](#style-a2-103)]
 
-  - Use consistent names for all components named after their feature. Use UpperCamelCase for components, as they are constructors.
+  - Use consistent names for all components named after their feature. Use UpperCamelCase for components' symbols. Match the name of the component to the naming of the file
 
     *Why?*: Provides a consistent way to quickly identify and reference components.
 
     *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
 
-  **example coming soon**
+    ```typescript
+    AppComponent            //app.component.ts
+    SpeakersComponent       //speakers.component.ts
+    SpeakerListComponent    //speaker-list.component.ts
+    SpeakerDetailComponent  //speaker-detail.component.ts
+    ```
 
 **[Back to top](#table-of-contents)**
 
-### Component Name Suffix
-###### [Style [A2-124](#style-a2-124)]
+### Suffixes
+###### [Style [A2-104](#style-a2-104)]
 
   - Append the component name with the suffix `Component`.
 
     *Why?*: The `Component` suffix is more commonly used and is more explicitly descriptive.
 
     ```typescript
-    /**
-     * recommended
-     */
+    // recommended
 
-    // avengers.component.ts
-    export class AvengersComponent { }
+    // speaker-list.component.ts
+    export class SpeakerListComponent { }
     ```
 
 ### Service Names
-###### [Style [A2-125](#style-a2-125)]
+###### [Style [A2-110](#style-a2-110)]
 
-  - Use consistent names for all services named after their feature. Use UpperCamelCase for services. Only suffix service and factories with `Service` when it is not clear what they are (i.e. when they are nouns).
+  - Use consistent names for all services named after their feature. Use UpperCamelCase for services. Only suffix service and factories with `Service` when it is not clear what they are (e.g. when they are nouns).
 
     *Why?*: Provides a consistent way to quickly identify and reference services.
 
     *Why?*: Clear service names such as `logger` do not require a suffix.
 
-    *Why?*: Service names such as `avengers` are nouns and require a suffix and should be named `AvengersService`.
+    *Why?*: Service names such as `Credit` are nouns and require a suffix and should be named with a suffix when it is not obvious if it is a service or something else. 
 
-  **example coming soon**
-
+    ```typescript
+    SpeakerService // speaker.service.ts
+    CreditService  // credit.service.ts
+    Logger         // logger.service.ts
+    ```
+    
 **[Back to top](#table-of-contents)**
 
 ### Directive Component Names
