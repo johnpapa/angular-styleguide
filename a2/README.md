@@ -13,7 +13,9 @@ If you are looking for an opinionated style guide for syntax, conventions, and s
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
->If you like this guide, check out my Angular 2 First Look course **coming soon** to Pluralsight.
+>If you like this guide, check out my [Angular 2 First Look course on Pluralsight](http://jpapa.me/a2ps1stlook).
+
+![Angular 2 First Look](https://s3-us-west-2.amazonaws.com/johnpapa-blog-images/a2-first-look-app.gif)
 
 ## Community Awesomeness and Credit
 Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. Many of my styles have been from the many pair programming sessions [Ward Bell](https://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
