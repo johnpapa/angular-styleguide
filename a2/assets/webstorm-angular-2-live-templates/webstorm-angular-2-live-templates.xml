@@ -14,7 +14,7 @@
       <option name="TypeScript" value="true" />
     </context>
   </template>
-  <template name="ng2-pipe" value="import { Pipe, PipeTransform } from 'angular2/core';&#10;&#10;@Pipe({&#10;    '$name$'&#10;})&#10;&#10;export class $PipeName%Pipe implements PipeTransform {&#10;    transform(value: $valuetype$, args: $argstype$}) : any {&#10;    }&#10;}" description="Angular 2 pipe snippet" toReformat="false" toShortenFQNames="true">
+  <template name="ng2-pipe" value="import { Pipe, PipeTransform } from 'angular2/core';&#10;&#10;@Pipe({&#10;    '$name$'&#10;})&#10;&#10;export class $PipeName%Pipe implements PipeTransform {&#10;    transform(value: $valuetype$, args: $argstype$) : any {&#10;    }&#10;}" description="Angular 2 pipe snippet" toReformat="false" toShortenFQNames="true">
     <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
     <variable name="valuetype" expression="" defaultValue="&quot;valuetype&quot;" alwaysStopAt="true" />
     <variable name="argstype" expression="" defaultValue="&quot;argstype&quot;" alwaysStopAt="true" />
