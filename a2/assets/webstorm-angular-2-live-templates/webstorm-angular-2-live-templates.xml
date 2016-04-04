@@ -1,5 +1,5 @@
 <templateSet group="Angular2">
-  <template name="ng2-component" value="import { Component, OnInit } from 'angular2/core';,&#10;&#10;@Component({&#10;    selector: '$selector$',&#10;    templateUrl: '$path$/$name$.component.html'&#10;})&#10;export class $ComponentName$Component implements OnInit {&#10;    constructor() { }&#10;    &#10;    ngOnInit() { }&#10;}" description="Angular 2 component snippet" toReformat="false" toShortenFQNames="true">
+  <template name="ng2-component" value="import { Component, OnInit } from 'angular2/core';&#10;&#10;@Component({&#10;    selector: '$selector$',&#10;    templateUrl: '$path$/$name$.component.html'&#10;})&#10;export class $ComponentName$Component implements OnInit {&#10;    constructor() { }&#10;    &#10;    ngOnInit() { }&#10;}" description="Angular 2 component snippet" toReformat="false" toShortenFQNames="true">
     <variable name="selector" expression="" defaultValue="&quot;selector&quot;" alwaysStopAt="true" />
     <variable name="path" expression="" defaultValue="&quot;path&quot;" alwaysStopAt="true" />
     <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
@@ -30,7 +30,7 @@
       <option name="TypeScript" value="true" />
     </context>
   </template>
-  <template name="ng2-route-path" value="{ path: '/$path$', name; '$RouteName$', component: $Component$ }" description="Angular 2 route path snippet" toReformat="false" toShortenFQNames="true">
+  <template name="ng2-route-path" value="{ path: '/$path$', name: '$RouteName$', component: $Component$ }" description="Angular 2 route path snippet" toReformat="false" toShortenFQNames="true">
     <variable name="path" expression="" defaultValue="&quot;path&quot;" alwaysStopAt="true" />
     <variable name="RouteName" expression="" defaultValue="&quot;RouteName&quot;" alwaysStopAt="true" />
     <variable name="Component" expression="" defaultValue="&quot;Component&quot;" alwaysStopAt="true" />
@@ -54,7 +54,7 @@
       <option name="TypeScript" value="true" />
     </context>
   </template>
-  <template name="ng2-component-root" value="import { Component } from 'angular2/core';&#10;import { HTTP_PROVIDERS } from 'angular2/http';&#10;import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';&#10;&#10;@Component({&#10;    selector: '$selector$',&#10;    templateUrl: '$path$/$name$.component.html',&#10;    directives: [ROUTER_DIRECTIVES],&#10;    providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS],&#10;})&#10;&#10;@RouteConfig([])&#10;&#10;export class AppComponent {}" description="Angular 2 App root component snippet" toReformat="false" toShortenFQNames="true">
+  <template name="ng2-component-root" value="import { Component } from 'angular2/core';&#10;import { HTTP_PROVIDERS } from 'angular2/http';&#10;import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';&#10;&#10;@Component({&#10;    selector: '$selector$',&#10;    templateUrl: '$path$/$name$.component.html',&#10;    directives: [ROUTER_DIRECTIVES],&#10;    providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS]&#10;})&#10;&#10;@RouteConfig([])&#10;&#10;export class AppComponent {}" description="Angular 2 App root component snippet" toReformat="false" toShortenFQNames="true">
     <variable name="selector" expression="" defaultValue="&quot;selector&quot;" alwaysStopAt="true" />
     <variable name="path" expression="" defaultValue="&quot;path&quot;" alwaysStopAt="true" />
     <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
