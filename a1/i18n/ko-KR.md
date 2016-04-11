@@ -2897,7 +2897,6 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 **[Back to top](#table-of-contents)**
 
 ## File Templates and Snippets
-Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
 파일 템플릿이나 스니펫을 사용하면 일관적인 스타일과 패턴을 지킬수 있습니다. 웹 개발용 에디터와 IDE들에서 사용 가능한 템플릿과 스니펫을 알려 드리겠습니다.
 
 ### Sublime Text
