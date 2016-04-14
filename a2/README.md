@@ -579,9 +579,7 @@ Client-side routing is important for creating a navigation flow between a compon
   
     *Why?*: A component that handles routing is known as the component router, thus this follows the Angular 2 routing pattern.
     
-    *Why?*: A component that handles routing is known as the componenter router.
-
-    *Why?*: The `<router-outlet>` indicates where the tempalte should be displayed for the target route.
+    *Why?*: The `<router-outlet>` indicates where the template should be displayed for the target route.
     
     ```typescript
     import { Component } from 'angular2/core';
