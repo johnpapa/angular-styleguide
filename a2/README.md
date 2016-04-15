@@ -181,7 +181,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
   *Why?*: Unique names help avoid module name collisions. We import and export modules by the file in which they are contained. Thus the name of the files and their folders is important.
 
-  *Why?*: Names of folders and files should clear convey their intent. For example, `app/speakers/speaker-list.component.ts` may contain a component that manages a list of speakers. The folder and file names clearly convey the meaning, and thus the module import is clear as `import { SpeakerComponent } from './speakers/speaker-list.component'`.
+  *Why?*: Names of folders and files should clear convey their intent. For example, `app/speakers/speaker-list.component.ts` may contain a component that manages a list of speakers. The folder and file names clearly convey the meaning, and thus the module import is clear as `import { SpeakerListComponent } from './speakers/speaker-list.component'`.
 
 ## Components
 
