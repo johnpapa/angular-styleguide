@@ -1494,6 +1494,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           });
   }
 
+  moviesPrepService.$inject = ['movieService'];
   function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
@@ -1509,7 +1510,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
 **[Back to top](#table-of-contents)**
 
