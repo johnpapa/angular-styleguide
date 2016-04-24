@@ -311,6 +311,8 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
   @Injectable()
   export class HeroService {
+    constructor(private _http: Http) { }
+
     getHeroes() {
       return this._http.get('api/sessions')
         .map((response: Response) => <Session[]>response.json().data)
