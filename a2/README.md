@@ -223,17 +223,17 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
     }
 
     // private functions
+    private _hide() {
+      this._toastElement.style.opacity = 0;
+      window.setTimeout(() => this._toastElement.style.zIndex = 0, 400);
+    }
+    
     private _show() {
       console.log(this.message);
       this._toastElement.style.opacity = 1;
       this._toastElement.style.zIndex = 9999;
 
       window.setTimeout(() => this._hide(), 2500);
-    }
-
-    private _hide() {
-      this._toastElement.style.opacity = 0;
-      window.setTimeout(() => this._toastElement.style.zIndex = 0, 400);
     }
   }
   ```
