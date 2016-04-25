@@ -14,7 +14,7 @@ If you are looking for an opinionated style guide for syntax, conventions, and s
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
 ## Relocating the Angular 2 Style Guide 
-The Angular 2 Style Guide is being moved to the [Official Angular 2 docs](http://angular.io/docs). I will still be shepherding the guide there, and we will release it very soon!
+The Angular 2 Style Guide is being moved to the [Official Angular 2 docs](https://angular.io/docs/ts/latest/). I will still be shepherding the guide there, and we will release it very soon!
 
 ## Appendix
 
