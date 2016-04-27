@@ -535,7 +535,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Why?*: Function declarations are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
 
     *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
 
@@ -844,7 +844,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
     *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Why?*: Function declarations are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
 
     *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
 
