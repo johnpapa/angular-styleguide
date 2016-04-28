@@ -2093,7 +2093,6 @@ ou *Mantenha o módulo da aplicação leve*
 
   - Somente coloque a lógica para reunir o aplicativo no módulo da aplicação. Deixe os recursos em seus próprios módulos.
 
-    **Por que?** Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
     **Por que?** Colocar funções adicionais na raiz da aplicação para obter dados remoto, modos de exibição, ou outra lógica não relacionada com o acoplamento do aplicativo, torna mais difícil reutilizar os recursos ou mesmo, desligá-los.
 
     **Por que?** O módulo da aplicação torna-se um manifesto que descreve os módulos que ajudam a definir a aplicação.
