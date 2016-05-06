@@ -14,14 +14,12 @@ If you are looking for an opinionated style guide for syntax, conventions, and s
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
 ## Relocating the Angular 2 Style Guide 
-The Angular 2 Style Guide is being moved to the [Official Angular 2 docs](https://angular.io/docs/ts/latest/). I will still be shepherding the guide there, and we will release it very soon!
+The Angular 2 Style Guide has been moved to the [Official Angular 2 docs](http://jpapa.me/ng2styleguide). I will still be shepherding the guide there. It is a living guide ... we'll keep evolving the guide.
 
 ## Appendix
 
 >If you like this guide, check out my [Angular 2 First Look course on Pluralsight](http://jpapa.me/a2ps1stlook).
 
 ![Angular 2 First Look](https://s3-us-west-2.amazonaws.com/johnpapa-blog-images/a2-first-look-app.gif)
-
-For anything else, API reference, check the [Angular 2 documentation](//angular.io).
 
 **[Back to top](#table-of-contents)**
