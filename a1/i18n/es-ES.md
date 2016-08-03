@@ -2,7 +2,7 @@
 
 *Guía de estilos colaborativa de Angular para equipos por [@john_papa](//twitter.com/john_papa)*
 
-Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngulRJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
+Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngularJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
 
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
