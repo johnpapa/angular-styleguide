@@ -23,7 +23,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
 
 ##翻译
-[Angular规范翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/i18n)。
+[Angular规范翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n)。
 
 ##目录
   1. [单一职责](#单一职责)
