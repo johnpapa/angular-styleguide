@@ -2552,7 +2552,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         var child;
         var excludeFiles = [];
         var fork = require('child_process').fork;
-        var karma = require('karma').server;
+        var Server = require('karma').Server;
         var serverSpecs = config.serverIntegrationSpecs;
 
         if (args.startServers) {
@@ -2567,11 +2567,14 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
             }
         }
 
-        karma.start({
-            configFile: __dirname + '/karma.conf.js',
-            exclude: excludeFiles,
-            singleRun: !!singleRun
-        }, karmaCompleted);
+        var karmaOptions = {
+          configFile: __dirname + '/karma.conf.js',
+          exclude: excludeFiles,
+          singleRun: !!singleRun
+        };
+
+        let server = new Server(karmaOptions, karmaCompleted);
+        server.start();
 
         ////////////////
 
