@@ -1,0 +1,26 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ngfactory
+# key: ngfactory
+# binding: direct-keybinding
+# --
+
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .factory('${2:factory}', $2);
+
+    /* @ngInject */
+    function $2(${3:dependencies}) {
+        var service = {
+            ${4:func}: $4
+        };
+        return service;
+
+        ////////////////
+
+        function $4() {
+        }
+    }
+})();
