@@ -1,4 +1,4 @@
-# Angular 1 Style Guide
+﻿# Angular 1 Style Guide
 
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
@@ -2489,6 +2489,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
 
     *Why?*: These services are wrapped by Angular and more easily testable and handle Angular's digest cycle thus keeping data binding in sync.
+
+### $log 
+###### [Style [Y182](#style-y182)]
+
+  - Use [`$log`](https://docs.angularjs.org/api/ng/service/$log) instead of `console.log`.
+
+    *Why?*: These services are wrapped by Angular and simplify debugging and troubleshooting. Debugging can be turned off and on using [`$logProvider`](https://docs.angularjs.org/api/ng/provider/$logProvider).
 
 **[Back to top](#table-of-contents)**
 
