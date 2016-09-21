@@ -2553,7 +2553,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
         var child;
         var excludeFiles = [];
         var fork = require('child_process').fork;
-        var karma = require('karma').server;
+        var Server = require('karma').Server;
         var serverSpecs = config.serverIntegrationSpecs;
 
         if (args.startServers) {
@@ -2568,11 +2568,14 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
             }
         }
 
-        karma.start({
-            configFile: __dirname + '/karma.conf.js',
-            exclude: excludeFiles,
-            singleRun: !!singleRun
-        }, karmaCompleted);
+        var karmaOptions = {
+          configFile: __dirname + '/karma.conf.js',
+          exclude: excludeFiles,
+          singleRun: !!singleRun
+        };
+
+        let server = new Server(karmaOptions, karmaCompleted);
+        server.start();
 
         ////////////////
 
@@ -3123,6 +3126,27 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ```
 
+### Emacs
+###### [Style [Y257](#style-y257)]
+
+  - [Emacs](https://www.gnu.org/software/emacs/) snippets that follow these styles and guidelines.
+
+    - Download the [Emacs Angular snippets](assets/emacs-angular-snippets?raw=true)
+
+      Note that yasnippet categorizes snippets by major mode, and there are several Emacs major modes for editing Javascript code. The snippets are in `js2-mode`, and the other directories contain only a dotfile to reference them there.
+
+    - install [yasnippet](https://github.com/capitaomorte/yasnippet) (`M-x package-install RET yasnippet RET`)
+    - copy snippets to snippet directory, or modify your Emacs init to add snippet directory to `yas-snippet-dirs`
+
+    ```javascript
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngmodule     // creates an Angular module
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+    ```
+    
 **[Back to top](#table-of-contents)**
 
 ## Yeoman Generator

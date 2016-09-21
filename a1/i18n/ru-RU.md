@@ -369,7 +369,7 @@
   var vm = this;
   ```
 
-  Замечание: Когда создаете наблюдающие функции(watcher) в контроллерах типа `controller as`, вы можете наблюдать за переменной следующего вида `vm.*`. (Создавайте наблюдающие функции с предупреждением, что они создают дополнительную нагрузку на цикл digest.)
+  Замечание: Когда создаете наблюдающие функции(watcher) в контроллерах типа `controller as`, вы можете наблюдать за переменной следующего вида `vm.*`. (Создавайте наблюдающие функции с осторожностью, т.к. они добавляют дополнительную нагрузку на цикл digest.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -2618,16 +2618,18 @@
 
   - Angular сниппеты, которые соблюдают приведенные здесь стили и руководства.
 
-    - Скачайте [Sublime Angular сниппеты](assets/sublime-angular-snippets.zip?raw=true)
+    - Скачайте [Sublime Angular сниппеты](https://github.com/johnpapa/angular-styleguide/tree/master/a1/assets/sublime-angular-snippets)
     - Поместите все в вашу папку Packages
     - Перезапустите Sublime
     - В файле JavaScript напечатайте следующие команды после клавиши `TAB`
 
     ```javascript
-    ngcontroller // создает контроллер Angular
-    ngdirective // создает директиву Angular
-    ngfactory // создает фабрику Angular
     ngmodule // создает модуль Angular
+    ngcontroller // создает контроллер Angular
+    ngservice // создает сервис Angular
+    ngfactory // создает фабрику Angular
+    ngdirective // создает директиву Angular
+    ngfilter // создает фильтр Angular
     ```
 
 ### Visual Studio
