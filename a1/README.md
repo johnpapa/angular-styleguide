@@ -414,7 +414,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var vm = this;
       vm.title = 'Some Title';
 
-      $scope.$watch('vm.title', function(current, original) {
+      $scope.$watch(function(){
+          return vm.title;
+      }, function(current, original) {
           $log.info('vm.title was %s', original);
           $log.info('vm.title is now %s', current);
       });
