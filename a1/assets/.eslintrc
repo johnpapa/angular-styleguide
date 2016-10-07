@@ -1,0 +1,133 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "angular": false,
+    "$": false
+  },
+  "rules": {
+    "no-bitwise": 2,
+    "camelcase": [
+      2,
+      {
+        "properties": "never"
+      }
+    ],
+    "curly": [
+      2,
+      "all"
+    ],
+    "eqeqeq": 2,
+    "guard-for-in": 2,
+    "no-extend-native": 2,
+    "wrap-iife": 2,
+    "indent": [
+      2,
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-use-before-define": [
+      2,
+      {
+        "functions": false
+      }
+    ],
+    "new-cap": 2,
+    "no-caller": 2,
+    "no-empty": 2,
+    "no-irregular-whitespace": 2,
+    "no-new": 2,
+    "no-plusplus": 0,
+    "quotes": [
+      2,
+      "single"
+    ],
+    "no-undef": 2,
+    "no-unused-vars": 0,
+    "strict": 0,
+    "max-params": [
+      2,
+      10
+    ],
+    "max-depth": [
+      2,
+      5
+    ],
+    "max-statements": [
+      2,
+      40
+    ],
+    "complexity": [
+      2,
+      8
+    ],
+    "max-len": [
+      2,
+      100
+    ],
+    "semi": 0,
+    "no-cond-assign": 0,
+    "no-debugger": 0,
+    "no-eq-null": 2,
+    "no-eval": 0,
+    "no-unused-expressions": 0,
+    "block-scoped-var": 0,
+    "no-iterator": 0,
+    "linebreak-style": 0,
+    "comma-style": [
+      2,
+      "first"
+    ],
+    "no-loop-func": 2,
+    "no-multi-str": 2,
+    "valid-typeof": 0,
+    "no-proto": 0,
+    "no-script-url": 0,
+    "no-shadow": 2,
+    "dot-notation": 0,
+    "no-new-func": 0,
+    "no-new-wrappers": 0,
+    "no-invalid-this": 0,
+    "require-yield": 0,
+    "operator-linebreak": [
+      2,
+      "after"
+    ],
+    "no-mixed-spaces-and-tabs": 2,
+    "no-trailing-spaces": 2,
+    "space-unary-ops": [
+      2,
+      {
+        "nonwords": false,
+        "overrides": {}
+      }
+    ],
+    "keyword-spacing": [
+      2,
+      {}
+    ],
+    "space-infix-ops": 2,
+    "space-before-blocks": [
+      2,
+      "always"
+    ],
+    "eol-last": 2,
+    "array-bracket-spacing": [
+      2,
+      "never",
+      {
+        "singleValue": true
+      }
+    ],
+    "space-in-parens": [
+      2,
+      "never"
+    ],
+    "valid-jsdoc": 2,
+    "no-multiple-empty-lines": 2
+  }
+}
