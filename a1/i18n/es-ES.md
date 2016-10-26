@@ -2,7 +2,7 @@
 
 *Guía de estilos colaborativa de Angular para equipos por [@john_papa](//twitter.com/john_papa)*
 
-Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngularJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
+Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngularJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), presentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
 
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
@@ -737,7 +737,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Miembros accesibles Arriba
 ###### [Style [Y052](#style-y052)]
 
-  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica derivada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *¿Por qué?*: Colocar los elementos que se llaman arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear).
 
