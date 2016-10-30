@@ -712,7 +712,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           .when('/avengers', {
               templateUrl: 'avengers.html',
               controller: 'Avengers',
-              controllerAs: 'vm'
+              controllerAs: 'avengers'
           });
   }
   ```
