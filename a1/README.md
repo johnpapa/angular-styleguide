@@ -1936,6 +1936,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
                  */
                 $location.path('/');
 
+                handlingRouteChangeError = false;
             }
         );
     }
@@ -2019,7 +2020,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
      * recommended
      */
     // Controllers
-    avengers.js
+    avengers.controller.js
     avengers.spec.js
     ```
 
