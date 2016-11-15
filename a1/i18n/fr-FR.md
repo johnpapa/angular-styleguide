@@ -2017,7 +2017,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     function creditService() { }
 
-    // credit.service.js
+    // customers.service.js
     angular
         .module
         .service('customersService', customersService);
