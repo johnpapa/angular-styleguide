@@ -28,7 +28,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   1. [Módulos](#módulos)
   1. [Controladores](#controladores)
   1. [Servicios](#servicios)
-  1. [Fábricas](#fábricas)
+  1. [Factorías](#factorías)
   1. [Servicios de Datos](#servicios-de-datos)
   1. [Directivas](#directivas)
   1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
@@ -67,7 +67,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Un componente por archivo evita errores ocultos que a menudo surgen cuando se combinan componentes en un archivo donde pueden compartir variables, crear closures (clausuras) no deseadas, o acoplamiento indeseado de dependencias.
 
-  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una fábrica todo en el mismo archivo.
+  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una factoría todo en el mismo archivo.
 
   ```javascript
   /* evitar */
@@ -176,7 +176,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Nota: Para acortar únicamente, el resto de los ejemplos de esta guía podrían omitir la sintaxis IIFE.
 
-  - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia fábrica.
+  - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia factoría.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -326,7 +326,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   *¿Por qué?*: `controllerAs` es azúcar sintáctico sobre el `$scope`. Puedes enlazar a la vista y acceder a los métodos del `$scope`.
 
-  *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una fábrica. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una fábrica e invocarlos desde el controlador.
+  *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una factoría. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una factoría e invocarlos desde el controlador.
 
   ```javascript
   /* evitar */
@@ -562,7 +562,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Diferir la Lógica del Controlador
 ###### [Style [Y035](#style-y035)]
 
-  - Difiera la lógica dentro de un controlador delegándola a servicios y fábricas.
+  - Difiera la lógica dentro de un controlador delegándola a servicios y factorías.
 
     *¿Por qué?*: La lógica podría ser reutilizada por varios controladores cuando la colocas en un servicio y la expones como una función.
 
@@ -620,7 +620,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Mantén tus Controladores Enfocados
 ###### [Style [Y037](#style-y037)]
 
-  - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a fábricas y deja el controlador simple y enfocado en su vista.
+  - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a factorías y deja el controlador simple y enfocado en su vista.
 
     *¿Por qué?*: Reutilizar controladores con varias vistas es arriesgado y necesitarías buena cobertura de tests end to end (e2e) para asegurar que todo funciona bien en la aplicación.
 
@@ -720,17 +720,17 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Fábricas
+## Factorías
 
 ### Responsabilidad Única
 ###### [Style [Y050](#style-y050)]
 
-  - Las fábricas deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una fábrica empiece a exceder el principio de responsabilidad única, una nueva fábrica debe ser creada.
+  - Las factorías deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factoría empiece a exceder el principio de responsabilidad única, una nueva factoría debe ser creada.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Las Fábricas son singleton y devuelven un objeto que contiene las variables del servicio.
+  - Las Factorías son singleton y devuelven un objeto que contiene las variables del servicio.
 
     Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services).
 
@@ -789,14 +789,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   De esta forma se asocian los bindeos desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
 
-    ![Fábricas Usando "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
+    ![Factorías Usando "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Declaración de Funciones para Esconder los Detalles de Implementación
 ###### [Style [Y053](#style-y053)]
 
-  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la fábrica. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factoría. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la fábrica se pueden accesar externamente.
+    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la factoría se pueden accesar externamente.
 
     *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complejidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
 
@@ -1358,7 +1358,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Usa un route resolver cuando decidas cancelar la ruta antes de hacer la transición a la Vista.
 
-    *¿Por qué?*: Un controlador puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una fábrica o de [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite que la promesa se resuelva antes de que la lógica del controlador se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
+    *¿Por qué?*: Un controlador puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una factoría o de [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite que la promesa se resuelva antes de que la lógica del controlador se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
 
     *¿Por qué?*: El código se ejecuta después de la ruta y la función activate del controlador. La Vista empieza a cargar al instante. El bindeo de los datos se ejecutan cuando la promesa del activate se resuelva. Una animación de "Cargando" se puede mostrar durante la transición de la vista (via ng-view o ui-view)
 
@@ -1746,7 +1746,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Cachadores de Excepciones
 ###### [Style [Y111](#style-y111)]
 
-  - Crea una fábrica que exponga una interfaz para cachar y manejar excepciones elegantemente.
+  - Crea una factoría que exponga una interfaz para cachar y manejar excepciones elegantemente.
 
     *¿Por qué?*: Provee de una manera consistente de cachar excepciones que puedan ser arrojadas en tu código (e.g. durante llamadas XHR o promesas que fallaron).
 
@@ -1968,12 +1968,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     function AvengersController() { }
     ```
 
-### Nombres de Fábricas
+### Nombres de Factorías
 ###### [Style [Y125](#style-y125)]
 
-  - Usa nombres consistentes para todas las fábricas nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las fábricas.
+  - Usa nombres consistentes para todas las factorías nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las factorías.
 
-    *¿Por qué?*: Provee una manera consistente de identificar y referenciar fábricas rápidamente.
+    *¿Por qué?*: Provee una manera consistente de identificar y referenciar factorías rápidamente.
 
     ```javascript
     /**
@@ -2311,9 +2311,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Bloques Run
 ###### [Style [Y171](#style-y171)]
 
-  - Cualquier código que necesite ser ejecutado cuando una aplicación arranca debe ser declarado en una fábrica, ser expuesto a través de una función, o inyectado en el [bloque run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Cualquier código que necesite ser ejecutado cuando una aplicación arranca debe ser declarado en una factoría, ser expuesto a través de una función, o inyectado en el [bloque run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *¿Por qué?*: Código que está directamente en un bloque run puede ser difícil de testear. Colocarlo en una fábrica lo hace fácil de abstraer y mockear.
+    *¿Por qué?*: Código que está directamente en un bloque run puede ser difícil de testear. Colocarlo en una factoría lo hace fácil de abstraer y mockear.
 
   ```javascript
   angular
