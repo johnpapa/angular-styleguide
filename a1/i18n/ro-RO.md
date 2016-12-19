@@ -1585,17 +1585,17 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 **[Înapoi sus](#table-of-contents)**
 
-## Manual Annotating for Dependency Injection
+## Adnotare Manuală pentru Injectarea de Dependințe
 
-### UnSafe from Minification
+### NeSigur din Minificare
 ###### [Style [Y090](#style-y090)]
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  -Evită folosirea the sintaxei-scurtătură de declarare de dependințe fără folosirea unei metode sigură pentru minificare.
 
-    *De ce?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
+    *De ce?*: Parametrii componentei (e.g. controller, factory, etc) vor fi convertiți în variabile deformate. De exemplu, `common` și `dataservice` ar putea deveni `a` sau `b` și să nu fie găsiți de Angular.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evită - nesigur pentru minificare */
     angular
         .module('app')
         .controller('DashboardController', DashboardController);
@@ -1604,23 +1604,25 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Acest cod ar putea product variabile deformate și cauza erori în momentul execuției.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evită - nesigur pentru minificare*/
     angular.module('app').controller('DashboardController', d);function d(a, b) { }
     ```
 
-### Manually Identify Dependencies
+### Identificarea Manuală a Dependințelor 
 ###### [Style [Y091](#style-y091)]
 
-  - Use `$inject` to manually identify your dependencies for Angular components.
+  - Folosește `$inject` pentru a identifica manual dependințele pentru componentele Angular.
 
     *De ce?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *De ce?*: Această tehnică oglindește tehnica folosită de [`ng-annotate`](https://github.com/olov/ng-annotate), pe care o recomand pentru automatizarea creației de dependințe sigure pentru minificare. Dacă `ng-annotate` detectează că injectarea s-a făcut deja, el nu o va duplica.
 
     *De ce?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
+    *De ce?*: Acest lucru îți protejează dependințele de la a fi vulnerabile la problemele minificării care apar când parametrii sunt deformați. De exemply, `common` și `dataservice` pot deveni `a` sau `b` și să nu fie găsite de Angular.
 
-    *De ce?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function.
+    *De ce?*: Evită creerea de dependințe in-line atât timp cât listele pot fi greu de citit în array. De asemeanea, poate creea confuzie faptul că array-ul e o serie de string-uri, în timp ce ultimul element este funcția componentei.
 
     ```javascript
     /* evită */
@@ -1655,11 +1657,11 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     }
     ```
 
-    Notă: When your function is below a return statement the `$inject` may be unreachable (this may happen in a directive). You can solve this by moving the Controller outside of the directive.
+    Notă: Când funcția ta e sub un statement de return, `$inject` ar putea fi inaccesibil (posibil să se întâmple într-o directivă). Poți rezolva acest lucru prin mutarea Controller-ului în afara directivei.
 
     ```javascript
     /* evită */
-    // inside a directive definition
+    // înăuntrul definiției unei directive
     function outer() {
         var ddo = {
             controller: DashboardPanelController,
@@ -1667,7 +1669,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
         };
         return ddo;
 
-        DashboardPanelController.$inject = ['logger']; // Unreachable
+        DashboardPanelController.$inject = ['logger']; // Inaccesibil
         function DashboardPanelController(logger) {
         }
     }
@@ -1675,7 +1677,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     ```javascript
     /* recomandat */
-    // outside a directive definition
+    // înafara definiției unei directive
     function outer() {
         var ddo = {
             controller: DashboardPanelController,
@@ -1690,13 +1692,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     ```
 
 ### Manually Identify Route Resolver Dependencies
+### Identificarea Manuală a Dependințelor Resolverului de Rută
 ###### [Style [Y092](#style-y092)]
 
-  - Use `$inject` to manually identify your route resolver dependencies for Angular components.
+  - Folosește `$inject` pentru identificarea dependințelor resolverului de rută pentru componentele Angular.
 
-    *De ce?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *De ce?*: Această tehnică scapă din funcția anonimă a resolverului de rută, făcând lucrurile mai lizibile.
 
-    *De ce?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *De ce?*: Un statement de `$inject` poate preceda cu ușurință resolver-ul pentru a trata facerea dependințelor sigure pentru minificare.
 
     ```javascript
     /* recomandat */
@@ -1720,20 +1723,19 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 **[Înapoi sus](#table-of-contents)**
 
-## Minification and Annotation
+## Minificare și Adnotare
 
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/* @ngInject */`
+  - Folosește [ng-annotate](//github.com/olov/ng-annotate) pentru [Gulp](http://gulpjs.com) sau [Grunt](http://gruntjs.com) și comentează funcțiile ce au nnevoie de injectare automată de dependințe folosind `/* @ngInject */`
 
-    *De ce?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *De ce?*: Acest lucru îți asigură codul împotriva dependințelor ce ar putea să nu folosească metode sigure pentru minificare.
+    *De ce?*: [`ng-min`](https://github.com/btford/ngmin) e depreciat
 
-    *De ce?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
+    >Prefer Gulp fiindcă mi se pare mai ușor de scris, citit, și reparat.
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
-
-    The following code is not using minification safe dependencies.
+    Codul următor nu folosește dependințe sigure pentru minificare.
 
     ```javascript
     angular
@@ -1753,7 +1755,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Când codul de mai sus e rulat prin ng-annotate el va produce următorul output cu adnotarea `$inject` și va deveni sigur pentru minificare.
 
     ```javascript
     angular
@@ -1775,12 +1777,13 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     AvengersController.$inject = ['storage', 'avengerService'];
     ```
 
-    Notă: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Notă: Dacă `ng-annotate` detectează că injectarea s-a făcut deja (e.g. `@ngInject` a fost detectat), el nu va duplica codul de `$inject`.
 
     Notă: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Notă: Când folosești un resolver de rută poți prefixa funcția resolverului cu  `/* @ngInject */` și el va produce cod adnotat corect, păstrând dependințele injectate sigure pentru minificare.
 
     ```javascript
-    // Using @ngInject annotations
+    // Folosind adnotări @ngInject
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1797,16 +1800,17 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     ```
 
     > Notă: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
+    > Notă: Începând cu Angular 1.3 poți folosi parametrul `ngStrictDi` din [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) pentru a detecta dependințele nesigure pentru minificare. Atunci când injectorul este prezent el va fi creat în modul "strict-di" mode, cauzând aplicaâia să eșueze invocarea funcțiilor care nu folosesc adnotare implicită (acestea ar putea să nu fie sigure pentru minificare). Informațile de debug vor fi înregistrate în consolă pentru a ajuta găsirea codului stricat. Prefer să folosesc `ng-strict-di` doar în scopuri de debug.
     `<body ng-app="APP" ng-strict-di>`
 
-### Use Gulp or Grunt for ng-annotate
+### Folosește Gulp sau Grunt pentru ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - Use [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - Folosește [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) sau [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) într-un task de build automatizat. Injectează `/* @ngInject */` înaintea oricărei funcții ce nu are dependințe.
 
-    *De ce?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+    *De ce?*: ng-annotate va prinde majoritatea dependințelor, dar câteodată necesită sugestii folosind sintaxa `/* @ngInject */`.
 
-    The following code is an example of a gulp task using ngAnnotate
+    Următorul cod este un exemplu de task gulp care folosește ngAnnotate
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
