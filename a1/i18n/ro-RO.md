@@ -1819,10 +1819,10 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
         return gulp.src(source)
             .pipe(sourcemaps.init())
             .pipe(concat('all.min.js', {newLine: ';'}))
-            // Annotate before uglify so the code get's min'd properly.
+            // Adnotează înaintea uglificării pentru ca codul să fie minificat corect
             .pipe(ngAnnotate({
-                // true helps add where @ngInject is not used. It infers.
-                // Doesn't work with resolve, so we must be explicit there
+                // true ajută la adăuărui acolo unde @ngInject nu este folosit. Folosește deduceri.
+                // Nu funcționează cu resolve, deci trebuie să fim expliciți aici
                 add: true
             }))
             .pipe(bytediff.start())
@@ -1836,16 +1836,17 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 **[Înapoi sus](#table-of-contents)**
 
-## Exception Handling
+## Tratarea Excepțiilor
 
-### decorators
+### decoratori
 ###### [Style [Y110](#style-y110)]
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
 
-    *De ce?*: Provides a consistent way to handle uncaught Angular exceptions for development-time or run-time.
+  - Folosește un [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator) când faci configurarea folosind serviciul [`$provide`](https://docs.angularjs.org/api/auto/service/$provide), pe serviciul [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) pentru a executa operații custom când se întâmplă excepții.
 
-    Notă: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recomandat.
+    *De ce?*: Furnizează o modalitate consecventă pentru tratarea excepțiilor neprinse din Angular, pentru perioada de development sau cea de execuție.
+
+    Notă: O altă opțiune este să faci override la serviciu în locul folosirii unui decorator. Aceasta ar fi o soluție bună, dar dacă vrei să foloseși comportamentul implicit și să-l extinzi, un decorator e recomandat.
 
     ```javascript
     /* recomandat */
@@ -1869,9 +1870,9 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
                 cause: cause
             };
             /**
-             * Could add the error to a service's collection,
-             * add errors to $rootScope, log errors to remote web server,
-             * or log locally. Or throw hard. It is entirely up to you.
+             * Ai putea adăuga eroarea la colecția unui serviciu,
+             * adăuga eroarea la $rootScope, înregistra eroarea pe un server remote,
+             * sau înregistra local. Sau să faci throw simpl. Depinde doar de tine.
              * throw exception;
              */
             toastr.error(exception.msg, errorData);
@@ -1879,14 +1880,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     }
     ```
 
-### Exception Catchers
+### Prinzători de Excepții
 ###### [Style [Y111](#style-y111)]
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - Crează un factory ce expune o interfață de prindere și tratează grațios excepțiile.
 
-    *De ce?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *De ce?*: Furnizează o metodă consecventă de prindere a excepțiilor ce ar putea fi aruncate în codul tău (e.g. îmn timpul apelurilor XHR sau eșecurilor de promise-uri).
 
-    Notă: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    Notă: Prinzătorul de excepții e bun pentru prinderea și reacționarea la excepții specifice din apeluri care știi că ar putea arunca una. De exemplu, când faci un apel XHR pentru luarea de date de la un serviciu web remote și vrei să prinzi excepțiile de la acel serviciu și să acționezi în mod unic la ele. 
 
     ```javascript
     /* recomandat */
@@ -1910,14 +1911,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     }
     ```
 
-### Route Errors
+### Erori de Rută
 ###### [Style [Y112](#style-y112)]
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - Tratează și înregistrează toate erorile folosind [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
 
-    *De ce?*: Provides a consistent way to handle all routing errors.
+    *De ce?*: Furnizează un mod consecvent de prindere a tuturor erorilor de rutare.
 
-    *De ce?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or recovery options.
+    *De ce?*: Are potențialul de a furniza o experiență mai bună pentru utilizator dacă atunci când se întâmplă erorile de rutare îl redirecționezi spre un ecran prietenos cu mai multe detalii sau opțiuni de redresare. 
 
     ```javascript
     /* recomandat */
@@ -1936,17 +1937,17 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
                 var destination = (current && (current.title ||
                     current.name || current.loadedTemplateUrl)) ||
                     'unknown target';
-                var msg = 'Error routing to ' + destination + '. ' +
+                var msg = 'Eroare la rutarea spre ' + destination + '. ' +
                     (rejection.msg || '');
 
                 /**
-                 * Optionally log using a custom service or $log.
-                 * (Don't forget to inject custom service)
+                 * Opțional, înregistrează folosind un serviciu custom sau $log.
+                 * (Nu uita să injectezi serviciul custom)
                  */
                 logger.warning(msg, [current]);
 
                 /**
-                 * On routing error, go to another route/state.
+                 * La erori de rută, du-te la o altă rută/state.q
                  */
                 $location.path('/');
 
@@ -1959,37 +1960,39 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 ## Naming
 
-### Naming Guidelines
+### Instrucțiuni de Denumire
 ###### [Style [Y120](#style-y120)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recomandat pattern is `feature.type.js`. There are 2 names for most assets:
-    * the file name (`avengers.controller.js`)
-    * the registered component name with Angular (`AvengersController`)
+  - Folosește nume consecvente pentru toate componentele folosind un șablon ce descrie trăsătura componentei și apoi (opțional) tipul său. `trăsăturî.tip.js`. Există 2 nume pentru mai toate elementele:
+    * numele fișierului (`avengers.controller.js`)
+    * numele componentei înregistrate cu Angular (`AvengersController`)
 
     *De ce?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+    *De ce?*: Convențiile de nume ajută la furnizarea unei metode mai consevente de găsire a conținutului dintr-o ochire. Consecvența într-un proiect e vitală. Consecvența cu echipa e importantă. Consecvența într-o companie furnizează eficiență imensă.
 
-    *De ce?*: The naming conventions should simply help you find your code faster and make it easier to understand.
+    *De ce?*: Convențiile de nume ar trebui pur și simplu să te ajută să-ți găsești codul mai repede și să-l facă mai ușor de înțeles.
 
-### Feature File Names
+### Nume de Fișere pe Baza Trăsăturilor
 ###### [Style [Y121](#style-y121)]
 
   - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recomandat pattern is `feature.type.js`.
+  - Folosește nume consecvente pentru toate componentele, urmând un șablon ce descrie trăsătura componentei și apoi (opțional) tipul său. Șablonul meu recomandat este `trăsătură.tip.js`.
 
-    *De ce?*: Provides a consistent way to quickly identify components.
+    *De ce?*: Furnizează o metodă consecventă de a identifica rapid compoenentele.
 
-    *De ce?*: Provides pattern matching for any automated tasks.
+    *De ce?*: Conferă potrivire de șabloane pentru orice taskuri automate.
 
     ```javascript
     /**
-     * common options
+     * opțiuni comune
      */
 
-    // Controllers
+    // Controllere
     avengers.js
     avengers.controller.js
     avengersController.js
 
-    // Services/Factories
+    // Service-uri/Factory-uri
     logger.js
     logger.service.js
     loggerService.js
@@ -2004,47 +2007,48 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     avengers.controller.js
     avengers.controller.spec.js
 
-    // services/factories
+    // servicii/factory-uri
     logger.service.js
     logger.service.spec.js
 
-    // constants
+    // constante
     constants.js
 
-    // module definition
+    // definirea modulelor
     avengers.module.js
 
-    // routes
+    // rute
     avengers.routes.js
     avengers.routes.spec.js
 
-    // configuration
+    // configurare
     avengers.config.js
 
-    // directives
+    // directive
     avenger-profile.directive.js
     avenger-profile.directive.spec.js
     ```
 
   Notă: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team. My preference is `avengers.controller.js` identifying the `AvengersController`.
+  Notă: O altă convenție comună este numirea fișierelor de controller fără folosirea cuvântului `controller` în numele fișierului, precum `avengers.js` în loc de `avengers.controller.js`. Toate celelalte convenții rămân încă valide și ar trebui să folosească un sufix pentru tip. Preferința mea e ca `avengers.controller.js` să identifice `AvengersController`.
 
     ```javascript
     /**
      * recomandat
      */
-    // Controllers
+    // Controllere
     avengers.js
     avengers.spec.js
     ```
 
-### Test File Names
+### Numele Fișierelor de Test
 ###### [Style [Y122](#style-y122)]
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.
+  - Denumește specificațiile de test similar cu componentele pe care le testează cu un sufix al `spec`.
 
-    *De ce?*: Provides a consistent way to quickly identify components.
+    *De ce?*: Conferă o metodă consecventă de identificare a componentelor.
 
-    *De ce?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *De ce?*: Furnizează potrivire de șabloane pentru [karma](http://karma-runner.github.io/) sau alte utilități de teste.
 
     ```javascript
     /**
@@ -2056,14 +2060,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     avenger-profile.directive.spec.js
     ```
 
-### Controller Names
+### Numele Controllerelor
 ###### [Style [Y123](#style-y123)]
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - Folosește nume consecvente pentru toate controllerel numite după trăsăturile lor. Folosește UpperCamelCase pentru controllere, de vreme ce sunt constructori.
 
-    *De ce?*: Provides a consistent way to quickly identify and reference controllers.
+    *De ce?*: Furnizează o metodă consecventă de a identifica și referenția controlere.
 
-    *De ce?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *De ce?*: UpperCamelCase e convenția pentru identificarea unui obiect ce poate fi instanțiat folosind un constructor.
 
     ```javascript
     /**
@@ -2078,12 +2082,12 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     function HeroAvengersController() { }
     ```
 
-### Controller Name Suffix
+### Sufixul Numelui Controllerui
 ###### [Style [Y124](#style-y124)]
 
-  - Append the controller name with the suffix `Controller`.
+  - Adaugă numelui controllerui sufixul `Controller`.
 
-    *De ce?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+    *De ce?*: Sufixul `Controller` e folosit mai des și mai descriptiv.
 
     ```javascript
     /**
@@ -2098,18 +2102,18 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     function AvengersController() { }
     ```
 
-### Factory and Service Names
+### Numele de Factory-uri și Servicii
 ###### [Style [Y125](#style-y125)]
 
-  - Use consistent names for all factories and services named after their feature. Use camel-casing for services and factories. Avoid prefixing factories and services with `$`. Only suffix service and factories with `Service` when it is not clear what they are (i.e. when they are nouns).
+  - Folosește nume consecvente pentru toate factory-urile și serviciile numite după trăsăturile lor. Folosește camel-casing pentru serviii și factory-uri. Evită prefixarea factory-urilor și serviciilor cu `$`. Sufixează serviciile și factory-urile doar cu `Service` atunci când nu e clar ce sunt (i.e. când sunt substantive).
 
-    *De ce?*: Provides a consistent way to quickly identify and reference factories.
+    *De ce?*: Furnizează o metodă rapidă de găsire și referențiere a factory-urilor.
 
-    *De ce?*: Avoids name collisions with built-in factories and services that use the `$` prefix.
+    *De ce?*: Evită conflictele de nume cu factory-urile built-in și cu serviciile ce folosesc prefixul `$`.
 
-    *De ce?*: Clear service names such as `logger` do not require a suffix.
+    *De ce?*: Numele clare de servicii precum `logger` nu au nevoie de un sufix.
 
-    *De ce?*: Service names such as `avengers` are nouns and require a suffix and should be named `avengersService`.
+    *De ce?*: Numele de servicii precum `avengers` sunt substantive și au nevoie de un sufix, deci ar trebui numite `avengersService`.
 
     ```javascript
     /**
@@ -2144,12 +2148,13 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     function customerService() { }
     ```
 
-### Directive Component Names
+### Numele Componentelor Directivelor
 ###### [Style [Y126](#style-y126)]
 
   - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Folosește nume consecvente pentru toate directivele folosind camel-case. Folosește un prefix scurt pentru a descrie zona din care fac parte directivele respective (niște exempl ar fi prefixul companiei sau prefixul proiectului).
 
-    *De ce?*: Provides a consistent way to quickly identify and reference components.
+    *De ce?*: Furnizează un mod consecvent de a identifica și refernția rapid componentele.
 
     ```javascript
     /**
@@ -2166,47 +2171,50 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     function xxAvengerProfile() { }
     ```
 
-### Modules
+### Module
 ###### [Style [Y127](#style-y127)]
 
-  - When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+  - Atunci când sunt mai multe module, fișierul modululului principal se numește `app.module.js` iar celelalte module dependente sunt numite după ceea ce reprezintă. De exemplu, un modul de admin se numește `admin.module.js`. Numele modulelor inregistrate aferente ar fi `app` și `admin`.
 
-    *De ce?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *De ce?*: Conferă consecvență pentru mai aplicații cu mai multe module, și pentru mărirea înspre aplicații mari.
 
-    *De ce?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *De ce?*: Furnizează o metodă ușoară de automatizare a taskurilor pentru a încărca definițiile modulelor prima dată, iar apoi toate celelalte fișiere angular (pentru împachetare).
 
-### Configuration
+### Configurare
 ###### [Style [Y128](#style-y128)]
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - Separă configurația unui modul în fișierul său separat numit după modul. Un fișier de configurare pentru modulul principal `app` se numește `app.config.js` (sau simplu doar `config.js`). Un fișier de configurare pentru un modul de admin `admin.module.js` se numește `admin.config.js`.
 
-    *De ce?*: Separates configuration from module definition, components, and active code.
+    *De ce?*: Separă configurarea de definirea modulelor, a componentelor și de codul activ.
 
-    *De ce?*: Provides an identifiable place to set configuration for a module.
+    *De ce?*: Furnizează un loc identificabil unde să setezi configurarea unui modul.
 
-### Routes
+### Rutele
 ###### [Style [Y129](#style-y129)]
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
+  - Separă cofigurarea rutelor în fișiere lor separate. De exemplu `app.route.js` pentru modulul principal, `admin.route.js` pentru modulul de `admin`. Chiar și în aplicații mai mici prefer separarea de resul configurării.
 
 **[Înapoi sus](#table-of-contents)**
 
-## Application Structure LIFT Principle
+## Structura Aplicației - Principul LIFT
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
-  - Structure your app such that you can `L`ocate your code quickly, `I`dentify the code at a glance, keep the `F`lattest structure you can, and `T`ry to stay DRY. The structure should follow these 4 basic guidelines.
+  - Structurează-ți aplicația în așa fel încât să-ți poți `L`ocaliza codul rapid, `I`dentifica codul rapid, păstrează cea mai plată (`F`lattest) structură posibilă, și încearcă (`T`ry) să rămâi DRY. Structura ar trebui să urmeze aceste 4 orientări de bază:
 
-    *Why LIFT?*: Provides a consistent structure that scales well, is modular, and makes it easier to increase developer efficiency by finding code quickly. Another way to check your app structure is to ask yourself: How quickly can you open and work in all of the related files for a feature?
+    *De ce LIFT?*: Furnizează un mod consecvent de a scala cum trebuie, e modular, și face ca eficiența unui programator să crească prin găsirea codului rapid. O altă metodă de a-ți verifica structura aplicației este: Cât de repede pot să deschid și să lucrez în toate fișierele legate de o funcționalitate?
 
     When I find my structure is not feeling comfortable, I go back and revisit these LIFT guidelines
+    Când consider că structura mea nu e comfortabilă, mă întorc și revizitez aceste orientări LIFT
 
-    1. `L`ocating our code is easy
-    2. `I`dentify code at a glance
+    1. `L`ocalizarea codului tău e ușor
+    2. `I`dentificarea codului se face rapid
     3. `F`lat structure as long as we can
-    4. `T`ry to stay DRY (Don’t Repeat Yourself) or T-DRY
+    3.  Structură plată (`F`lat) atât cât putem
+    4.  Încearcă (`T`ry) să rămâi DRY (Nu te repeta - Don’t Repeat Yourself) sau T-DRY
 
-### Locate
+### Localizează
 ###### [Style [Y141](#style-y141)]
 
   - Make locating your code intuitive, simple and fast.
