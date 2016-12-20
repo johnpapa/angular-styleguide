@@ -1,7 +1,7 @@
 # Ghid stilistic pentru Angular 1
 
 ## Aprobat de Echipa Angular
-Mulțumiri speciale lui Igor Minar, liderul echipei Angular, pentru revizuire, oferire de feedback, și pentru încredințarea mea în păstorirea acestui ghid.
+Mulțumiri speciale lui Igor Minar, liderul echipei Angular, pentru revizuire, dare de feedback, și pentru încrederea pe care mi-a acordat-o în păstorirea acestui ghid.
 
 ## Scop
 *Ghid stilistic opinionat pentru Angular îndreptat spre echipe de [@john_papa](//twitter.com/john_papa)*
@@ -71,7 +71,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   *De ce?*: Un component per fișier face totul mult mai ușor de citit, gestionat, și de a evita conflictele cu echipa în "source control".
 
-  *De ce?*: Un component per fișier evită buguri ascunse care apar frecvent când se combină componentele în fișiere în care se folosesc aceleași variabile, se crează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe. 
+  *De ce?*: Un component per fișier evită buguri ascunse care apar frecvent când se combină componentele în fișiere în care se folosesc aceleași variabile, se creează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe. 
 
   Următorul exemplu definește modulul `app` și dependințele sale, definește un controller, și definește un factory, toate în același fișier.
 
@@ -134,7 +134,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   *De ce?*: Funcțiile mici sunt mai ușor de gestionat.
 
-  *De ce?*: Funcțiile mici ajută evitarea de buguri ascunse care apar frecvent când exist funcții mari care se folosesc de aceleași variabile, care crează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe.
+  *De ce?*: Funcțiile mici ajută evitarea de buguri ascunse care apar frecvent când exist funcții mari care se folosesc de aceleași variabile, care creează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe.
   
 **[Înapoi sus](#table-of-contents)**
 
@@ -406,7 +406,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   var vm = this;
   ```
 
-  Notă: Când creezi un watch într-un controler folosing `controller as`, poti urmări membrul `vm.*` folosing următoarea sintaxă. (Crează watch-uri cu atenție, acestea adaugă timp de execuție ciclului de digest)
+  Notă: Când creezi un watch într-un controler folosing `controller as`, poti urmări membrul `vm.*` folosing următoarea sintaxă. (creează watch-uri cu atenție, acestea adaugă timp de execuție ciclului de digest)
 
   ```html
   <input ng-model="vm.title"/>
@@ -1070,7 +1070,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Limitează-te la 1 per fișier
 ###### [Style [Y070](#style-y070)]
 
-  - Crează o directivă per fișier. Numește fișierul precum directiva.
+  - creează o directivă per fișier. Numește fișierul precum directiva.
 
     *De ce?*: E ușor să arunci toate directivele într-un singur fișier, dar greu să le spargi pe urmă astfel încât unele din ele sunt folosite de mai multe aplicații, unele doar de mai multe module, și altele doar pentru un singur modul.
 
@@ -1251,7 +1251,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     Notă: Cât despre injectarea de dependințe, vezi [Identificarea Manuală a Dependințelor](#manual-annotating-for-dependency-injection).
 
-    Notă: Observă că controllerul directivei este în afara closure-ului directivei. Acest stil elimină problemele unde injectarea se crează ca și cod la care nu se poate ajunge după un `return`.
+    Notă: Observă că controllerul directivei este în afara closure-ului directivei. Acest stil elimină problemele unde injectarea se creează ca și cod la care nu se poate ajunge după un `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1883,7 +1883,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Prinzători de Excepții
 ###### [Style [Y111](#style-y111)]
 
-  - Crează un factory ce expune o interfață de prindere și tratează grațios excepțiile.
+  - creează un factory ce expune o interfață de prindere și tratează grațios excepțiile.
 
     *De ce?*: Furnizează o metodă consecventă de prindere a excepțiilor ce ar putea fi aruncate în codul tău (e.g. îmn timpul apelurilor XHR sau eșecurilor de promise-uri).
 
@@ -2666,22 +2666,21 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
   ![Unelte de Testare](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
-### Organizing Tests
+### Organizarea Testelor
 ###### [Style [Y197](#style-y197)]
 
   - Place unit test files (specs) side-by-side with your client code. Place specs that cover server integration or test multiple components in a separate `tests` folder.
+  - Pune fițierele de unit test (specs) lângă codul tău de client. Pune specificațiile ce acoperă integrarea cu serverul sau testează mai multe componente într-un foloder separat `tests`.
 
-    *De ce?*: Unit tests have a direct correlation to a specific component and file in source code.
+    *De ce?*: Unit testurile au corelare directă cu o componentă și un fișier specific din codul sursă.
 
-    *De ce?*: It is easier to keep them up to date since they are always in sight. When coding whether you do TDD or test during development or test after development, the specs are side-by-side and never out of sight nor mind, and thus more likely to be maintained which also helps maintain code coverage.
+    *De ce?*: E mai ușor să le menții la zi de vreme ce sunt întotdeauna la vedere. Când scrii cod, indiferent dacă faci TDD sau testezi în timpul dezvoltării sau după dezvoltare, specificațiile sunt unua lângă alta și niciodată în afara câmpului vizual sau mental, și deci au mai multe șanse să fie aduse la zi, deci să menții code coverage-ul.
+    *De ce?*: Când faci update la codul sursă e mai ușor să faci update și la teste în același timp.
+    *De ce?*: Punându-le una lângă alta face mai ușoară găsirea lor și mai ușor să le muți împreună cu codul sursă dacă muți sursa.
 
-    *De ce?*: When you update source code it is easier to go update the tests at the same time.
+    *De ce?*: Având specificația aproape, face mai ușoară citirea pentru cititorul codului sursă în scopul înțelegerii cum ar trebui ca o componentă să fie folosită și să descopere limitările acesteia.
 
-    *De ce?*: Placing them side-by-side makes it easy to find them and easy to move them with the source code if you move the source.
-
-    *De ce?*: Having the spec nearby makes it easier for the source code reader to learn how the component is supposed to be used and to discover its known limitations.
-
-    *De ce?*: Separating specs so they are not in a distributed build is easy with grunt or gulp.
+    *De ce?*: Separarea specificațiilor în așa fel încât acestea nu sunt într-un build distribuit e uțor cu grunt sau gulp.
 
     ```
     /src/client/app/customers/customer-detail.controller.js
@@ -2695,53 +2694,53 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
 **[Înapoi sus](#table-of-contents)**
 
-## Animations
+## Animații
 
 ### Usage
 ###### [Style [Y210](#style-y210)]
 
-  - Use subtle [animations with Angular](https://docs.angularjs.org/guide/animations) to transition between states for views and primary visual elements. Include the [ngAnimate module](https://docs.angularjs.org/api/ngAnimate). The 3 keys are subtle, smooth, seamless.
+  - Folosește [animații subtile cu Angular](https://docs.angularjs.org/guide/animations) pentru a tranziționa între stăări și view-uri și pentru elemente vizuale primate. Include [modulul ngAnimate](https://docs.angularjs.org/api/ngAnimate). Cele 3 chei sunt subtile, lin, și continuu.
 
-    *De ce?*: Subtle animations can improve User Experience when used appropriately.
+    *De ce?*: Animațiile subtile pot îmbunătăți experiența utilizatoruli atunci când sunt folosite în mod corespuzător.
 
-    *De ce?*: Subtle animations can improve perceived performance as views transition.
+    *De ce?*: Animațiile subtile pot îmbunătăți peformanța percepută când view-urile tranziționează.
 
-### Sub Second
+### Sub o Secundă
 ###### [Style [Y211](#style-y211)]
 
-  - Use short durations for animations. I generally start with 300ms and adjust until appropriate.
+  - Folosește durate scurte pentru animații. Eu prefer în general să încep cu 300ms și să ajustez până când e corespunzător.
 
-    *De ce?*: Long animations can have the reverse effect on User Experience and perceived performance by giving the appearance of a slow application.
+    *De ce?*: Animațiile lungi pot avea efectul invers asupra experienței utilizatorului și a performanței percepute prin darea unei senzații de aplicație înceată.
 
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
+  - Folosește [animate.css](http://daneden.github.io/animate.css/) pentru animații convenționale.
 
-    *De ce?*: The animations that animate.css provides are fast, smooth, and easy to add to your application.
+    *De ce?*: Animațiile pe care animate.css le oferă sunt rapide, line și foarte ușor de adăugat în aplicație.
 
-    *De ce?*: Provides consistency in your animations.
+    *De ce?*: Conferă consecvență în animații.
 
-    *De ce?*: animate.css is widely used and tested.
+    *De ce?*: animate.css e folosit și testat în mod larg.
 
-    Notă: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Notă: Vezi [acest articol foarte bun al lui Matias Niemelä despre animațiile Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Înapoi sus](#table-of-contents)**
 
-## Comments
+## Comentarii
 
 ### jsDoc
 ###### [Style [Y220](#style-y220)]
 
-  - If planning to produce documentation, use [`jsDoc`](http://usejsdoc.org/) syntax to document function names, description, params and returns. Use `@namespace` and `@memberOf` to match your app structure.
+  - Dacă planifici să produci documentație, folosește sintaxa [`jsDoc`](http://usejsdoc.org/) pentru a documenta numele de funcții, descrierile, parametrii și returnurile. Folosește `@namespace` și `@memberOf` pentru a potrivi structura aplicației.
 
-    *De ce?*: You can generate (and regenerate) documentation from your code, instead of writing it from scratch.
+    *De ce?*: Poți genera (și regenra) documentație din codul tău, în locul scrierii sale de la 0.
 
-    *De ce?*: Provides consistency using a common industry tool.
+    *De ce?*: Folosirea unui tool comun în industri conferă consecvență.
 
     ```javascript
     /**
-     * Logger Factory
+     * Factory-uri de log 
      * @namespace Factories
      */
     (function() {
@@ -2751,7 +2750,7 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
       /**
        * @namespace Logger
-       * @desc Application wide logger
+       * @desc Logger în toată aplicația
        * @memberOf Factories
        */
       function logger($log) {
@@ -2782,14 +2781,15 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
 ## JS Hint
 
-### Use an Options File
+### Folosește un fișier de opțiuni
 ###### [Style [Y230](#style-y230)]
 
   - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://jshint.com/docs/) for details on the options.
+  - Folosește JS Hint pentru linting-ul codului tău JavaScript și asigură-te că personalizezi fișierul JS hint de opțiuni și îl incluzi în source control. Vezi [documentația JS Hint](http://jshint.com/docs/) pentru detalii despre opțiuni.
 
-    *De ce?*: Provides a first alert prior to committing any code to source control.
+    *De ce?*: Furnizează o primă alertă înaintea comiterii codului în source control.
 
-    *De ce?*: Provides consistency across your team.
+    *De ce?*: Furnizează consecvență în echipă.
 
     ```javascript
     {
@@ -2858,14 +2858,14 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
 ## JSCS
 
-### Use an Options File
+### Folosește un Fișier de Opțiuni
 ###### [Style [Y235](#style-y235)]
 
-  - Use JSCS for checking your coding styles your JavaScript and be sure to customize the JSCS options file and include in source control. See the [JSCS docs](http://jscs.info/) for details on the options.
+  - Folosește JSCS pentru verificarea stilului codului tău JavaScript și asigură-te că personalizezi fișierul de opțiuni JSCS și-l incluzi în source control. Vezi [documentația JSCS](http://jscs.info/).
+    
+    *De ce?*: Furnizează o primă alertă înaintea comiterii codului în source control.
 
-    *De ce?*: Provides a first alert prior to committing any code to source control.
-
-    *De ce?*: Provides consistency across your team.
+    *De ce?*: Furnizează consecvență în echipă.
 
     ```javascript
     {
@@ -2946,14 +2946,15 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
 **[Înapoi sus](#table-of-contents)**
 
-## Constants
+## Constante
 
-### Vendor Globals
+### Globale Specifice Furnizorului
 ###### [Style [Y240](#style-y240)]
 
-  - Create an Angular Constant for vendor libraries' global variables.
+  - Creează o Constantă Angular pentru variabilele globale care aparțin biblioteciilor furnizorilor. 
 
     *De ce?*: Provides a way to inject vendor libraries that otherwise are globals. This improves code testability by allowing you to more easily know what the dependencies of your components are (avoids leaky abstractions). It also allows you to mock these dependencies, where it makes sense.
+    *De ce?*: Oferă o metodă de a injecta biblioteci a furnizorilor care altfel sunt globale. Acest lucru îmbunătățește testabilitatea codului prin faptul că îți permite să știi mai ușor care sunt dependințele componentelor tale (evită abstracțiile indiscrete). 
 
     ```javascript
     // constants.js
@@ -2971,16 +2972,16 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
 ###### [Style [Y241](#style-y241)]
 
-  - Use constants for values that do not change and do not come from another service. When constants are used only for a module that may be reused in multiple applications, place constants in a file per module named after the module. Until this is required, keep constants in the main module in a `constants.js` file.
+  - Folosește constante pentru valori ce nu se schimbă și care nu vin dintr-un alt serviciu. Când constantele sunt folosite doar pentru un modul ce ar putea fi folosit în mai multe aplicații, pleasează constantele într-un fișier per modul numit după modul. Până acest lucru e necesar, păstrează constantele din modulul principal într-un fișier `constants.js`.
 
-    *De ce?*: A value that may change, even infrequently, should be retrieved from a service so you do not have to change the source code. For example, a url for a data service could be placed in a constants but a better place would be to load it from a web service.
+    *De ce?*: O valoare ce s-ar putea schimba, până și rar, ar trebui luată dintr-un serviciu, astfel încât tu să nu trebuiască să schimbi codul sursă. De exemplu, un url pentru un serviciu de date ar putea fi pus într-o constant dar un loc mai bun ar fi să-l încarci dintr-un serviciu web.
 
-    *De ce?*: Constants can be injected into any angular component, including providers.
+    *De ce?*: Constantele pot fi injectate în orice component angular, încluzând providerii.
 
-    *De ce?*: When an application is separated into modules that may be reused in other applications, each stand-alone module should be able to operate on its own including any dependent constants.
+    *De ce?*:Când o aplicație e separată în module ce ar putea fi refolosite în alte aplicații, fiecare modul stand-alone ar trebui să poată să opereze pe cont propriu incluzând orice constante dependente.
 
     ```javascript
-    // Constants used by the entire app
+    // Constante folosite de întreaga aplicație
     angular
         .module('app.core')
         .constant('moment', moment);
@@ -2996,18 +2997,18 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
 **[Înapoi sus](#table-of-contents)**
 
-## File Templates and Snippets
-Use file templates or snippets to help follow consistent styles and patterns. Here are templates and/or snippets for some of the web development editors and IDEs.
+## Șabloane de Fișiere și Snippeturi
+Folosește șabloane de fișșier sau snippeturi pentru a ajuta urmarea de stiluri și șabloane consecvente. Aici sunt niște șabloane și/sau snippeturi pentru unele dintre editoarele de web development și IDE-uri. 
 
 ### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
-  - Angular snippets that follow these styles and guidelines.
+  - Snippeturi Angular ce urmează aceste stiluri și ghiduri.
 
-    - Download the [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)
-    - Place it in your Packages folder
-    - Restart Sublime
-    - In a JavaScript file type these commands followed by a `TAB`
+    - Descarcă [Sublime Angular snippets](assets/sublime-angular-snippets?raw=true)
+    - Pune-l în folderul Packages
+    - Restartează Sublime
+    - Într-un fișier JavaScript scrie aceste comenzi urmate de un `TAB`:
 
     ```javascript
     ngcontroller // creates an Angular controller
@@ -3021,24 +3022,25 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
-  - Angular file templates that follow these styles and guidelines can be found at [SideWaffle](http://www.sidewaffle.com)
+  - Snippeturi Angular ce urmează aceste stiluri și ghiduri pot fi găsite pe site-ul [SideWaffle](http://www.sidewaffle.com)
 
     - Download the [SideWaffle](http://www.sidewaffle.com) Visual Studio extension (vsix file)
-    - Run the vsix file
-    - Restart Visual Studio
+    - Descarcă extensia [SideWaffle](http://www.sidewaffle.com) pentru Visual Studio (fișierul vsix)
+    - Rulează fișierul vsix
+    - Restartează Visual Studio
 
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Angular live templates that follow these styles and guidelines.
+  - Live Template-uri Angular ce urmează aceste stiluri și ghiduri.
 
-    - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
-    - Place it in your [templates folder](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
-    - Restart WebStorm
-    - In a JavaScript file type these commands followed by a `TAB`:
+    - Descarcă [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
+    - Pune-l în fișierul tău de [template-uri](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Restartează WebStorm
+    - Într-un fișier JavaScript scrie aceste comenzi urmate de un `TAB`:
 
     ```javascript
-    // These are full file snippets containing an IIFE
+    // Acestea sunt snippet-uri pe fișiere întregi ce conțin IIFE-uri
     ngapp     // creates an Angular module setter
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
@@ -3046,7 +3048,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngfilter     // creates an Angular filter
     ngservice    // creates an Angular service
 
-    // These are partial snippets intended to be chained
+    // Acestea sunt snippet-uri parțiale menite a fi înlănțuite
     ngconfig     // defines a configuration phase function
     ngmodule     // creates an Angular module getter
     ngroute      // defines an Angular ngRoute 'when' definition
@@ -3054,21 +3056,22 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngstate      // creates an Angular UI Router state definition
     ```
 
-  *Individual templates are also available for download within the [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true) folder*
+  *Template-uri individuale sunt de asemenea disponibile pentru descărcare în folder-ul [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true)*
 
 ### Atom
 ###### [Style [Y253](#style-y253)]
 
-  - Angular snippets that follow these styles and guidelines.
+  - Snippet-uri Angular ce urmează aceste stiluri și ghiduri.
+  
     ```
     apm install angularjs-styleguide-snippets
     ```
     or
-    - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
-    - Search for the package 'angularjs-styleguide-snippets'
-    - Click 'Install' to install the package
+    - Deschide Atom, apoi deschide Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Caută pachetul 'angularjs-styleguide-snippets'
+    - Apasă 'Install' pentru a instala pachetul
 
-  - In a JavaScript file type these commands followed by a `TAB`
+  - Într-un fișier JavaScript scrie aceste comenzi, urmate de un `TAB`
 
     ```javascript
     ngcontroller // creates an Angular controller
@@ -3082,16 +3085,16 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### Brackets
 ###### [Style [Y254](#style-y254)]
 
-  - Angular snippets that follow these styles and guidelines.
-    - Download the [Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
+  - Snippet-uri Angular ce urmează aceste stiluri și ghiduri.
+    - Descarcă [Brackets Angular snippets](assets/brackets-angular-snippets.yaml?raw=true)
     - Brackets Extension manager ( File > Extension manager )
-    - Install ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
-    - Click the light bulb in brackets' right gutter
-    - Click `Settings` and then `Import`
-    - Choose the file and select to skip or override
-    - Click `Start Import`
+    - Instalează ['Brackets Snippets (by edc)'](https://github.com/chuyik/brackets-snippets)
+    - Apasă becul din partea din dreapta sus a Brackets
+    - Apasă `Settings` și apoi `Import`
+    - Selectează fișierul și apoi alege dacă faci skip sau override
+    - Apasă `Start Import`
 
-  - In a JavaScript file type these commands followed by a `TAB`
+  - Într-un fișier JavaScript scrie aceste comenzi, urmate de un `TAB`
 
     ```javascript
     // These are full file snippets containing an IIFE
@@ -3114,86 +3117,87 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 ### vim
 ###### [Style [Y255](#style-y255)]
 
-  - vim snippets that follow these styles and guidelines.
+  - Snippet-uri vim ce urmează aceste stiluri și ghiduri.
 
-    - Download the [vim Angular snippets](assets/vim-angular-snippets?raw=true)
-    - set [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
-    - copy snippets to snippet directory
+    - Descarcă [vim Angular snippets](assets/vim-angular-snippets?raw=true)
+    - Setează [neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
+    - Copiază snippet-urile în folder-ul de snippeturi
 
-  - vim UltiSnips snippets that follow these styles and guidelines.
+  - Snippet-uri vim UltiSnips ce urmează aceste stiluri și ghiduri.
 
-    - Download the [vim Angular UltiSnips snippets](assets/vim-angular-ultisnips?raw=true)
-    - set [UltiSnips](https://github.com/SirVer/ultisnips)
-    - copy snippets to UltiSnips directory
+    - Descarcă[vim Angular UltiSnips snippets](assets/vim-angular-ultisnips?raw=true)
+    - Setează [UltiSnips](https://github.com/SirVer/ultisnips)
+    - Copiază snippet-urile în folderul UltiSnips
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
-    ngfilter     // creates an Angular filter
+    ngcontroller // creează un controller Angular
+    ngdirective  // creează o directivă Angular
+    ngfactory    // creează un factory Angular
+    ngmodule     // creează un modul Angular
+    ngservice    // creează un serviciu Angular
+    ngfilter     // creează un filtru Angular
     ```
 
 ### Visual Studio Code
 
 ###### [Style [Y256](#style-y256)]
 
-  - [Visual Studio Code](https://code.visualstudio.com/) snippets that follow these styles and guidelines.
+  - Snippeturi [Visual Studio Code](https://code.visualstudio.com/) ce urmează aceste stiluri și ghiduri.
 
-    - Download the [VS Code Angular snippets](assets/vscode-snippets/javascript.json?raw=true)
-    - copy snippets to snippet directory, or alternatively copy and paste the snippets into your existing ones
+    - Descarcă [VS Code Angular snippets](assets/vscode-snippets/javascript.json?raw=true)
+    - Copiază snippeturile în folder-ul de snippet-uri, sau copiază snippet-urile în cele deja existente
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
+    ngcontroller // creează un controller Angular
+    ngdirective  // creează o directivă Angular
+    ngfactory    // creează un factory Angular
+    ngmodule     // creează un modul Angular
+    ngservice    // creează un serviciu Angular
+    ngfilter     // creează un filtru Angular
     ```
 
 ### Emacs
 ###### [Style [Y257](#style-y257)]
 
-  - [Emacs](https://www.gnu.org/software/emacs/) snippets that follow these styles and guidelines.
+  - Snippet-uri [Emacs](https://www.gnu.org/software/emacs/) ce urmează aceste stiluri și ghiduri.
 
-    - Download the [Emacs Angular snippets](assets/emacs-angular-snippets?raw=true)
+    - Descarcă [Emacs Angular snippets](assets/emacs-angular-snippets?raw=true)
 
-      Note that yasnippet categorizes snippets by major mode, and there are several Emacs major modes for editing Javascript code. The snippets are in `js2-mode`, and the other directories contain only a dotfile to reference them there.
+      Yyasnippet categorizează snippet-urile prin mod-ul major, și sunt mai multe moduri major pentru Emacs pentru editarea codului JavaScript. Snippet-urile sunt în `js2-mode`, și celelalte directoare conțin doar un dotfile ce le referențiază de acolo.
 
-    - install [yasnippet](https://github.com/capitaomorte/yasnippet) (`M-x package-install RET yasnippet RET`)
-    - copy snippets to snippet directory, or modify your Emacs init to add snippet directory to `yas-snippet-dirs`
+    - Instalează [yasnippet](https://github.com/capitaomorte/yasnippet) (`M-x package-install RET yasnippet RET`)
+    - Clpiază snippet-urile în folder-ul de snippeturi, sau modifica init-ul Emacs init ca să adaugi directorul de snippeturi la `yas-snippet-dirs`
 
     ```javascript
-    ngcontroller // creates an Angular controller
-    ngdirective  // creates an Angular directive
-    ngfactory    // creates an Angular factory
-    ngmodule     // creates an Angular module
-    ngservice    // creates an Angular service
-    ngfilter     // creates an Angular filter
+    ngcontroller // creează un controller Angular
+    ngdirective  // creează o directivă Angular
+    ngfactory    // creează un factory Angular
+    ngmodule     // creează un modul Angular
+    ngservice    // creează un serviciu Angular
+    ngfilter     // creează un filtru Angular
     ```
     
 **[Înapoi sus](#table-of-contents)**
 
-## Yeoman Generator
+## Generatorul Yeoman
 ###### [Style [Y260](#style-y260)]
 
-You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to create an app that serves as a starting point for Angular that follows this style guide.
+Poți folosi [generatorul Yeoman HotTowel](http://jpapa.me/yohottowel) pentru a crea o aplicație ce servește ca un punct de plecare pentru Angular ce urmează acest ghid stilistic.
 
-1. Install generator-hottowel
+1. Instalează generator-hottowel
 
   ```
   npm install -g generator-hottowel
   ```
 
-2. Create a new folder and change directory to it
+2. Creează u nou folder și schimbă directorul în el 
 
   ```
   mkdir myapp
   cd myapp
   ```
 
-3. Run the generator
+3. Rulează generatorul
 
   ```
   yo hottowel helloWorld
@@ -3201,18 +3205,18 @@ You can use the [HotTowel yeoman generator](http://jpapa.me/yohottowel) to creat
 
 **[Înapoi sus](#table-of-contents)**
 
-## Routing
-Client-side routing is important for creating a navigation flow between views and composing views that are made of many smaller templates and directives.
+## Rutarea
+Rutarea pe client-side e importantă pentru creerea unui flow de navigație între view-uri și view-uri compuse ce sunt făcute din mai multe șabloane și directive.
 
 ###### [Style [Y270](#style-y270)]
 
-  - Use the [AngularUI Router](http://angular-ui.github.io/ui-router/) for client-side routing.
+  - Folosește [AngularUI Router](http://angular-ui.github.io/ui-router/) pentru rutare pe client-side.
 
-    *De ce?*: UI Router offers all the features of the Angular router plus a few additional ones including nested routes and states.
+    *De ce?*: UI Router oferă toate funcționalitățile unui Angular router plus niște trăsături în plus incluzând rute fiu și stări.
 
-    *De ce?*: The syntax is quite similar to the Angular router and is easy to migrate to UI Router.
+    *De ce?*: Sintaxa e destul de similară cu cea a Angular router, ceea ce face ușoară migrarea spre UI Router .
 
-  - Notă: You can use a provider such as the `routerHelperProvider` shown below to help configure states across files, during the run phase.
+  - Notă: Poți folosi un provider precum cel arătat mai jos - `routerHelperProvider` - pentru a ajuta la configurarea stărilor între fișiere, în timpul fazei de rulare.
 
     ```javascript
     // customers.routes.js
@@ -3284,33 +3288,32 @@ Client-side routing is important for creating a navigation flow between views an
 
 ###### [Style [Y271](#style-y271)]
 
-  - Define routes for views in the module where they exist. Each module should contain the routes for the views in the module.
+  - Define rute pentru view-uri în modulul în care sunt. Fiecare modul ar trebui rutele pentru view-urile din modulul respectiv. 
 
-    *De ce?*: Each module should be able to stand on its own.
+    *De ce?*: Fiecare modul ar trebui să fie capabil să funcționeze pe cont propriu.
 
-    *De ce?*: When removing a module or adding a module, the app will only contain routes that point to existing views.
-
-    *De ce?*: This makes it easy to enable or disable portions of an application without concern over orphaned routes.
+    *De ce?*: Când ștergi un modul sau adaugi un modul, aplicația va conține doar rute ce pointează spre view-uri existente.
+    *De ce?*: Acest lucru face activarea sau dezactivare anuor porțiuni ale aplicației fără griji despre rute orfane.
 
 **[Înapoi sus](#table-of-contents)**
 
-## Task Automation
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+## Automatizarea Task-urilor
+Folosește [Gulp](http://gulpjs.com) sau [Grunt](http://gruntjs.com) pentru creerea de task-uri automate. Gulp tinde spre cod în locul configurărării, în timp ce Grunt tinde spre configurare în locul codului. Eu personal prefer Gulp, fiindcă consider că e mai ușor de scris și citit, dar amândouă sunt excelente.
 
-> Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course](http://jpapa.me/gulpps)
+> Învață mai multe despre gulp și șabloane pentru automatizarea task-urilor în [cursul meu Gulp de pe Pluralsight](http://jpapa.me/gulpps)
 
 ###### [Style [Y400](#style-y400)]
 
-  - Use task automation to list module definition files `*.module.js` before all other application JavaScript files.
+  - Folosește automatizarea taskurilor pentru listarea definițiilor de module `*.module.js` înaintea oricăror altor fișiere JavaScript din aplicație.
 
-    *De ce?*: Angular needs the module definitions to be registered before they are used.
+    *De ce?*: Angular are nevoie ca definițiile de module să fie înregistrate înainte ca acestea să fie folosite.
 
-    *De ce?*: Naming modules with a specific pattern such as `*.module.js` makes it easy to grab them with a glob and list them first.
+    *De ce?*: Numirea modulelor cu un pattern specific, precum `*.module.js` face mai ușoară luarea lor și listarea lor prima dată.
 
     ```javascript
     var clientApp = './src/client/app/';
 
-    // Always grab module files first
+    // Întotdeaună procesează fișierele de module prima dată
     var files = [
       clientApp + '**/*.module.js',
       clientApp + '**/*.js'
@@ -3319,17 +3322,18 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
 **[Înapoi sus](#table-of-contents)**
 
-## Filters
+## Filtre
 
 ###### [Style [Y420](#style-y420)]
 
-  - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
+  - Evită folositrea filtrelor pentru scanarea tuturor proprietăților ale unui obiect complex sau graf. Folosește filtre pentru proprietăți selecte.
 
-    *De ce?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
+    *De ce?*: Filtrele pot foarte ușor fi abuzate și să afecteze performanța dacă nu sunt folosite corect, de exemplu când un filtru procesează un graf de obiect mare și adânc. 
 
 **[Înapoi sus](#table-of-contents)**
 
 ## Angular docs
-For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
+## Documentația Angular
+Pentru orice altceva, referință API, vezi [documentația Angular](//docs.angularjs.org/api).
 
 **[Înapoi sus](#table-of-contents)**
