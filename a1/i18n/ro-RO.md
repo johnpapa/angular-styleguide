@@ -8,23 +8,23 @@ Mulțumiri speciale lui Igor Minar, liderul echipei Angular, pentru revizuire, d
 
 Dacă cauți un ghid stilistic opinionat pentru sintaxă, convenții și structurearea aplicațiilor Angular, atunci pornește de aici. Aceste stiluri sunt bazate pe experiența mea de dezvoltare cu [Angular](//angularjs.org), prezentări, [cursuri de training Pluralsight](http://app.pluralsight.com/author/john-papa) și lucrul în echipe.
 
-Scopul acestui ghid stilistic este acela de a oferi îndrumare pentru crearea de aplicații Angular prin expunereea convențiilor pe care le folosesc și, mai important, de ce le-am ales.
+Scopul acestui ghid stilistic este acela de a oferi îndrumare pentru crearea de aplicații Angular prin expunereea convențiilor pe care le folosesc și, mai important, motivelor pentru care le-am ales.
 
->Dacă îți place acest ghid, vezi și cursul meu [Angular Patterns: Clean Code](http://jpapa.me/ngclean) de la Pluralsight, care este un companion pentru acest ghid.
+> Dacă îți place acest ghid, vezi și cursul meu [Angular Patterns: Clean Code](http://jpapa.me/ngclean) de la Pluralsight, care este un companion pentru acest ghid.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Minunăția comunității și acreditare
-Nu lucra niciodată întrun vid. Observ că comunitatea Angular este un grup incredibil care este pasionat de împărtășirea experiențelor. Din motivul acesta, expertul Angular Todd Motto și eu am colaborat la multe stiluri și convenții. Suntem de-acord la multe dintre ele, iar la unele nu. Te încurajez să vezi [Todd's guidelines](https://github.com/toddmotto/angular-styleguide) ca să-ți faci o părere despre abordarea lui și cum diferă.
+## Minunăția comunității și Acreditare
+Nu lucra niciodată întrun vid. Observ că comunitatea Angular este un grup incredibil care este pasionat de împărtășirea experiențelor. Din motivul acesta, expertul Angular Todd Motto și eu am colaborat la multe stiluri și convenții. Suntem de-acord la multe dintre ele, iar la unele nu. Te încurajez să vezi [Ghidurile lui Todd](https://github.com/toddmotto/angular-styleguide) ca să-ți faci o părere despre abordarea lui și cum diferă de aceasta.
 
-Multe din stilurile mele sunt din multitudinea de sesiuni de pair programming pe care eu și [Ward Bell](https://twitter.com/wardbell) le-am făcut. Prietenul meu Ward a influențat cu siguranță evoluția finală a acestui ghid.
+Multe dintre stilurile mele sunt din multitudinea de sesiuni de pair programming pe care eu și [Ward Bell](https://twitter.com/wardbell) le-am făcut. Prietenul meu Ward a influențat cu siguranță evoluția finală a acestui ghid.
 
 
 ## Vezi stilurile într-o Aplicație-Mostră
-Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca acestea să fie văzute în practică. Acest ghid este acompaniat de o aplicație-mostră ce folosește aceste stiluri și structuri. Poți găsi [aplicația-mostră (numită 'modular') aici](https://github.com/johnpapa/ng-demos) în folderul `modular`. Simte-te liber să o iei, să-i dai 'clone' sau 'fork'. [Instrucțiuni pentru rularea ei găsești în readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca acestea să fie văzute în practică. Acest ghid este acompaniat de o aplicație-mostră ce folosește aceste stiluri și structuri. Poți găsi [aplicația-mostră (numită 'modular') aici](https://github.com/johnpapa/ng-demos) în folderul `modular`. Simte-te liber să o iei, și să-i dai 'clone' sau 'fork'. [Instrucțiuni pentru rularea ei găsești în readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 
-##Translations
+##Traduceri
 [Traduceri ale acestui ghid stilistic pentru Angular](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) sunt gestionate de către comunitate și pot fi găsite aici.
 
 ## Cuprins
@@ -32,7 +32,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   1. [Responsibilitate unică](#single-responsibility)
   1. [IIFE](#iife)
   1. [Module](#modules)
-  1. [Controlere](#controllers)
+  1. [Controllere](#controllers)
   1. [Servicii](#services)
   1. [Factory-uri](#factories)
   1. [Servicii de date](#data-services)
@@ -40,13 +40,13 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   1. [Rezolvarea Promise-urilor](#resolving-promises)
   1. [Adnotarea manuală a Injecției de Dependințe](#manual-annotating-for-dependency-injection)
   1. [Minificare și Adnotare](#minification-and-annotation)
-  1. [Tratarea Excețiilor](#exception-handling)
+  1. [Tratarea Excepțiilor](#exception-handling)
   1. [Denumire](#naming)
-  1. [Structura aplicației - LIFT Principle](#application-structure-lift-principle)
+  1. [Structura aplicației - Principiul LIFT](#application-structure-lift-principle)
   1. [Structura aplicației](#application-structure)
-  1. [Modularitatea](#modularity)
+  1. [Modularitate](#modularity)
   1. [Logica de lansare](#startup-logic)
-  1. [Servicii $ Wrapper](#angular--wrapper-services)
+  1. [Servicii $Wrapper](#angular--wrapper-services)
   1. [Testare](#testing)
   1. [Animații](#animations)
   1. [Comentarii](#comments)
@@ -56,7 +56,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   1. [Șabloane de fișier și snippeturi](#file-templates-and-snippets)
   1. [Generatorul Yeoman](#yeoman-generator)
   1. [Rutare](#routing)
-  1. [Automatiarea taskurilor](#task-automation)
+  1. [Automatizarea taskurilor](#task-automation)
   1. [Filtre](#filters)
   1. [Documentația Angular](#angular-docs)
 
@@ -65,15 +65,15 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Regula 1
 ###### [Style [Y001](#style-y001)]
 
-  - Definește 1 component per fișier, recomandat cu mai puțin de 400 de linii de code.
+  - Definește 1 component per fișier, recomandat cu mai puțin de 400 de linii de cod.
 
-  *De ce?*: Un component per fișier încurajează atât unit testing cât și creerea de date de test mai ușor.
+  *De ce?*: Un component per fișier ușurează atât unit testing-ul cât și creerea de date de test mai ușor.
 
-  *De ce?*: Un component per fișier face totul mult mai ușor de citit, gestionat, și de a evita conflictele cu echipa în "source control".
+  *De ce?*: Un component per fișier face totul mult mai ușor de citit, gestionat, și de a evita conflictele cu echipa în source control.
 
   *De ce?*: Un component per fișier evită buguri ascunse care apar frecvent când se combină componentele în fișiere în care se folosesc aceleași variabile, se creează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe. 
 
-  Următorul exemplu definește modulul `app` și dependințele sale, definește un controller, și definește un factory, toate în același fișier.
+  Următorul exemplu definește modulul `app` și dependințele sale, definește un controller, și un factory, toate în același fișier.
 
   ```javascript
   /* evită */
@@ -128,7 +128,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   *De ce?*: Funcțiile mici sunt mai ușor de citit, mai ușor de testat, în special atunci când fac un singur lucru și au un singur scop.
 
-  *De ce?*: Funcțiile mici încurajează reusabilitatea.
+  *De ce?*: Funcțiile mici încurajează reuzabilitatea.
 
   *De ce?*: Funcțiile mici sunt mai ușor de citit.
 
@@ -139,14 +139,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 **[Înapoi sus](#table-of-contents)**
 
 ## IIFE
-### JavaScript Scopes
+### Scopurile JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Învelește componentele Angular într-o Expresie de Funcție Imediat Invocată (Immediately Invoked Function Expression (IIFE)).
+  - Învelește componentele Angular într-o Expresie de Funcție Imediat-Invocată (Immediately Invoked Function Expression (IIFE)).
 
-  *De ce?*: Un IIFE înlătură variabilele din scopul global. Aceasta previne ca variabilele și declarațiile de funcții să trăiască mai mult decât ar trebui în scopul global, ceea ce totodată ajută la evitarea coliziunilor dintre variabile.
+  *De ce?*: Un IIFE înlătură variabilele din scopul global. Acest lucru previne ca variabilele și declarațiile de funcții să trăiască mai mult decât ar trebui în scopul global, ceea ce totodată ajută la evitarea conflictelor dintre variabile.
 
-  *De ce?*: Când codul tău e minificat și împachetat într-un singur fișier pentru deployment pe un server de producție, ai putea avea coliziuni între variabile și foarte multe variabile globale. Un IIFE te protejează împotriva ambelor probleme oferind scop variabilelor pentru fiecare fișier.
+  *De ce?*: Când codul tău e minificat și împachetat într-un singur fișier pentru deployment pe un server de producție, ai putea avea conflicte între variabile și foarte multe variabile globale. Un IIFE te protejează împotriva ambelor probleme oferind scop variabilelor pentru fiecare fișier.
 
   ```javascript
   /* evită */
@@ -204,7 +204,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 **[Înapoi sus](#table-of-contents)**
 
-## Modules
+## Module
 
 ### Evită coliziunile de denumiri
 ###### [Style [Y020](#style-y020)]
@@ -213,7 +213,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   *De ce?*: Numele unice ajută la evitarea coliziunilor de denumiri a submodulelor. Separatorii ajută la definirea modulelor și a ierarhiei submodulelor lor. De exemplu, `app` ar putea fi modulul tău de bază, iar `app.dashboard` și `app.users` ar putea fi module care să fie folosite ca și dependințe ale `app`.
 
-### Definiții (sau Setteri)
+### Definiri (sau Setteri)
 ###### [Style [Y021](#style-y021)]
 
   - Declară module fără o variabilă folosind sintaxa setter.
@@ -248,7 +248,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Când folosești un modul, evită folosirea unei variabile și folosește înlănțuirea cu sintaxa getter.
 
-  *De ce?*: Aceasta produce cod mai lizibil, și evită coliziunile de variabile sau leakurile.
+  *De ce?*: Acest lucru produce cod mai lizibil, și evită coliziunile de variabile sau scurgerile.
 
   ```javascript
   /* evită */
@@ -267,20 +267,20 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   function SomeController() { }
   ```
 
-### Setarea vs Obținerea
+### Setare vs Obținere
 ###### [Style [Y023](#style-y023)]
 
-  - Setează doar o dată și preia pentru toate celelalte instanțe.
+  - Setează doar o dată și obține pentru toate celelalte instanțe.
 
   *De ce?*: Un modul ar trebui să fie creat doar o dată, și preluat de-acolo-ncolo.
 
   ```javascript
   /* recomandat */
 
-  // to set a module
+  // pentru a seta un modul
   angular.module('app', []);
 
-  // to get a module
+  // pentru a obține un modul
   angular.module('app');
   ```
 
@@ -289,7 +289,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește funcții anonime în locul pasării funcțiilor anonime ca și callback.
 
-  *De ce?*: Produce cod mai lizibil, ușurează cu mult debug-ul, și reduce cantitatea de cod cu multe callback-uri cuibărite
+  *De ce?*: Produce cod mai lizibil, ușurează cu mult debug-ul, și reduce cantitatea de cod cu multe callback-uri cuibărite (??? xD)
 
   ```javascript
   /* evită */
@@ -321,21 +321,20 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 **[Înapoi sus](#table-of-contents)**
 
-## Controlere
+## Controllere
 
 ### Sintaxa pentru View 'controllerAs' 
 ###### [Style [Y030](#style-y030)]
 
-  - Folosește sintaxa [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) în locul `classicei sintaxe controler cu $scope`.
+  - Folosește sintaxa [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) în locul `classicei sintaxe pentru controller cu $scope`.
 
-  *De ce?*: Controlerele sunt construite, "reinnoite", și oferă o singură nouă instanță, iar sintaxa `controllerAs` e mult mai aproape de cea a unui constructor de JavaScript decât cea a `clasicei sintaxe ce $scope`.
+  *De ce?*: Controllerele sunt construite, "reinnoite", și oferă o singură nouă instanță, iar sintaxa `controllerAs` e mult mai aproape de cea a unui constructor de JavaScript decât cea a `clasicei sintaxe cu $scope`.
 
   *De ce?*: încurajează folosirea de binduri cu un obiect "dotted" din View (e.g. `customer.name` în loc de `name`), ceea ce e mult mai contextual, mai ușor de citit, și evită orice probleme de referințe ce-ar putea apărea cu "dotting".
 
-  *De ce?*: Ajută la evitarea de call-uri la `$parent` în View-uri cu controlere in ierarhie.
-
+  *De ce?*: Ajută la evitarea de apeluri la `$parent` în View-uri cu Controllere ierarhizate.
   ```html
-  <!-- avoid -->
+  <!-- evită -->
   <div ng-controller="CustomerController">
       {{ name }}
   </div>
@@ -348,16 +347,16 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   </div>
   ```
 
-### Syntaxa de controler 'controllerAs'
+### Sintaxa de controller 'controllerAs'
 ###### [Style [Y031](#style-y031)]
 
-  - Folosește sintaxa `controllerAs` în locul `sintaxei clasice de controler cu $scope`.
+  - Folosește sintaxa `controllerAs` în locul `sintaxei clasice de controller cu $scope`.
 
-  - Sintaxa `controllerAs` folosește `this` înăuntrul controlerelor, iar acesta este legat de `$scope` 
+  - Sintaxa `controllerAs` folosește `this` înăuntrul controllerelor, iar acesta se leagă de `$scope`.
 
-  *De ce?*: `controllerAs` e syntactic sugar pentru `$scope`. Poți face binduri în continuare la View și să folosești metodele de pe `$scope`.
+  *De ce?*: `controllerAs` e syntactic sugar pentru `$scope`. Poți face binduri în continuare la View și să și folosești metodele de pe `$scope`.
 
-  *De ce?*: Ajută evitarea temptației de a folosit metode ale `$scope` înăuntrul unui controler atunci când, de fapt, ar fi mai bine să le evităm sau să mutăm metoda într-un factory și să facem referință la ea din controler. Încearcă să folosești `$scope` într-un controler doar când e nevoie. De exemplu, atunci când publici sau abonezi evenimente folosind [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), sau[`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
+  *De ce?*: Ajută la evitarea temptației de a folosi metode ale `$scope` înăuntrul unui controller atunci când, de fapt, ar fi mai bine să le evităm sau să mutăm metoda într-un factory și să facem referință la ea din controller. Încearcă să folosești `$scope` într-un controller doar când e nevoie. De exemplu, atunci când publici sau abonezi evenimente folosind [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), sau [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
 
   ```javascript
   /* evită */
@@ -380,7 +379,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește o variabilă de captură pentru `this` când folosești sintaxa `controllerAs`. Alege un nume de variabilă consecvent precum `vm`, care vine de la 'ViewModel'.
 
-  *De ce?*: Keyword-ul `this` este contextual iar atunci când e folosit înăuntrul unei funcții dintr-un controler și-ar putea schimba contextul. Capturarea contextului lui `this` evită întâlnirea acestei probleme.
+  *De ce?*: Keyword-ul `this` este contextual iar atunci când e folosit înăuntrul unei funcții dintr-un controller și-ar putea schimba contextul. Capturarea contextului lui `this` evită întâlnirea acestei probleme.
 
   ```javascript
   /* evită */
@@ -399,14 +398,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   }
   ```
 
-  Notă: Poți evita avertizările [jshint](http://jshint.com/) prin lăsarea unui comentariu deasupra liniei de cod. Totuși, nu este nevoie de aceasta atunci când funcția e denumită folosing UpperCasing, deoarece această conventție înseamnă că este o funcție-constructor, ceea ce și este un controler în Angular. 
+  Notă: Poți evita avertizările [jshint](http://jshint.com/) prin lăsarea unui comentariu deasupra liniei de cod. Totuși, acest lucru nu e necesar atunci când funcția e denumită folosing UpperCasing, deoarece această convenție înseamnă că este o funcție-constructor, ceea ce și este un controller în Angular. 
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Notă: Când creezi un watch într-un controler folosing `controller as`, poti urmări membrul `vm.*` folosing următoarea sintaxă. (creează watch-uri cu atenție, acestea adaugă timp de execuție ciclului de digest)
+  Notă: Când creezi un watch într-un controller folosing `controller as`, poti urmări membrul `vm.*` folosing următoarea sintaxă. (creează watch-uri cu atenție, acestea adaugă timp de execuție ciclului de digest)
 
   ```html
   <input ng-model="vm.title"/>
@@ -427,7 +426,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   Notă: Când lucrezi cu baze de coduri mai mari, folosirea unui nume mai descriptiv ajută la ușurarea căutabilității și la reducerea overheadului cognitiv. Evită nume prea verboase care sunt prea greu de tastat.
 
   ```html
-  <!-- avoid -->
+  <!-- evită -->
   <input ng-model="customerProductItemVm.title">
   ```
 
@@ -439,9 +438,9 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Membrii bindabili sus
 ###### [Style [Y033](#style-y033)]
 
-  - Pleasează membrii bindabili în partea de sus a controlerului, în ordine alfabetică, și nu împrăștiați prin codul controlerului
+  - Pleasează membrii bindabili în partea de sus a controllerului, în ordine alfabetică, și nu împrăștiați prin codul controllerului
 
-    *De ce?*: Plasarea membrilor bindabili sus ușurează lizibilitatea și te ajută să identifici instant care membri ai controlerului pot fi bindabili și folosiți în View.
+    *De ce?*: Plasarea membrilor bindabili sus ușurează lizibilitatea și te ajută să identifici instant care membri ai controllerului pot fi bindabili și folosiți în View.
 
     *De ce?*: Setarea funcțiilor anonime in-line poate fi ușor, dar atunci când funcțiile respective sunt mai mult de o linie de cod ele pot reduce lizibilitatea. Definirea de funcții sub membri bindabili (funcțiile vor fi hoistate) mută detaliile implementarării jos, păstreaza membrii bindabili sus, și face totul mai ușor de citit. 
 
@@ -534,7 +533,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește declarări de funcții pentru a ascunde detaliile implementarării. Păstrează-ți membrii bindabili sus. Când ai nevoie de o funcție într-un controller, pointeaz-o la o declarație de funcție ce apare mai târziu în fișier. Acest lucru e direct legat de secțiunea "Membrii Bindabili Sus". Pentru mai multe detalii vezi [acest post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
 
-    *De ce?*: Plasarea membriilor bindabili sus face mai ușoară citirea și ajută să identifici instant ce membri ai controlerului pot fi folosiți în View. (La fel ca mai sus.)
+    *De ce?*: Plasarea membriilor bindabili sus face mai ușoară citirea și ajută să identifici instant ce membri ai controllerului pot fi folosiți în View. (La fel ca mai sus.)
 
     *De ce?*: Plasarea detaliilor de implementare a unei funcții mai târziu în cod mută toată complexitatea în afara câmpului vizibil, astfel că poți vedea toate lucrurile importante sus.
 
@@ -573,7 +572,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   }
   ```
 
-  Observă că lucrurile importante sunt împrăștiate în exemplul de mai sus. În exemplul de mai jos, observă că lucrurile importante sunt sus. De exemplu, membri legați de controler precum `vm.avengers` și `vm.title`. Detaliile de implementare sun jos. Asta e pur și simplu mai ușor de citit.
+  Observă că lucrurile importante sunt împrăștiate în exemplul de mai sus. În exemplul de mai jos, observă că lucrurile importante sunt sus. De exemplu, membri legați de controller precum `vm.avengers` și `vm.title`. Detaliile de implementare sun jos. Asta e pur și simplu mai ușor de citit.
 
   ```javascript
   /*
@@ -611,7 +610,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     *De ce?*: Logica ar putea fi refolosită de mai multe controllere dacă e pusă într-un serviciu și expusă printr-o funcție
 
-    *De ce?*: Logica într-un serviciu poate fi izolată mult mai ușor într-un unit test, iar logica de apelare dintr-un controler poate fi generată mai ușor.
+    *De ce?*: Logica într-un serviciu poate fi izolată mult mai ușor într-un unit test, iar logica de apelare dintr-un controller poate fi generată mai ușor.
 
     *De ce?*: Înlătură dependințele și ascunde detaliile implementarării din controller.
 
@@ -667,18 +666,18 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Păstrează controllerele focusate
 ###### [Style [Y037](#style-y037)]
 
-  - Definește un controler pentru un view, și încearcă să nu reutilizezi controlerul pentru alte view-uri. În schimb, mută logica reutilizabilă în factory-uri și păstrează controlerul simplu și focusat pe view-ul său.
+  - Definește un controller pentru un view, și încearcă să nu reutilizezi controllerul pentru alte view-uri. În schimb, mută logica reutilizabilă în factory-uri și păstrează controllerul simplu și focusat pe view-ul său.
 
     *De ce?*: Reutilizarea controllerelor cu mai multe view-uri este fragilă și necesită teste end-to-end (e2e) cu acoperire foarte bună pentru a asigura stabilitatea în aplicații mari.
 
-### Asignarea de controlere
+### Asignarea de Controllere
 ###### [Style [Y038](#style-y038)]
 
-  - Când un controller trebuie legat cu un view și unul dintre cele două componente trebuie refolosite de alte controlere sau view-uri, definește controlere și rutele lor.
+  - Când un controller trebuie legat cu un view și unul dintre cele două componente trebuie refolosite de alte Controllere sau view-uri, definește Controllere și rutele lor.
 
     Notă: Dacă un View este încărcat printr-un alt procedeu decât prin rutare, foloselște syntaxa `ng-controller="Avengers as vm"`.
 
-    *De ce?*: Combinarea unui controler în rută permite mai multor rute să invoce diferite perechi de controlere și view-uri. Când controllerele sunt asignat în view folosing  [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), acel view este întotdeauna asociat cu același controller.
+    *De ce?*: Combinarea unui controller în rută permite mai multor rute să invoce diferite perechi de Controllere și view-uri. Când controllerele sunt asignat în view folosing  [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), acel view este întotdeauna asociat cu același controller.
 
  ```javascript
   /* evită - when using with a route and dynamic pairing is desired */
@@ -948,11 +947,11 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Mută codul care face operații de date și interacționează cu date într-un factory. Fă serviciile de date responsabile de apeluri XHR, storage local, stashing în memorie, sau orice alte operații de date. 
 
-    *De ce?*: Responsabilitatea controlerului este de a prezenta și aduna informații pentru view. Lui nu ar trebui să-i pese cum ia datele, ci doar să știe de la cine să le ceară. Separarea serviciilor de date mută logica luării datelor într-un serviciu de date, și lasă controlerul să fie mai simplu și mai focusat pe view.
+    *De ce?*: Responsabilitatea controllerului este de a prezenta și aduna informații pentru view. Lui nu ar trebui să-i pese cum ia datele, ci doar să știe de la cine să le ceară. Separarea serviciilor de date mută logica luării datelor într-un serviciu de date, și lasă controllerul să fie mai simplu și mai focusat pe view.
 
-    *De ce?*: Face mai ușoară testarea și generarea de date false pentru când se testează un controler ce folosește un serviciu de date.
+    *De ce?*: Face mai ușoară testarea și generarea de date false pentru când se testează un controller ce folosește un serviciu de date.
 
-    *De ce?*: Implementarea unui serviciu de date ar putea avea cod foarte specific depozitului de date. Asta ar putea include antete, cum să vorbești datelor, sau alte servicii precum `$http`. Separarea logicii într-un serviciu de date encapsulează această logică într-un singur loc, ascunzând implementarea de utilizatorii externi (poate un controler), și face și mai ușoară o eventuală schimbare a implementării.
+    *De ce?*: Implementarea unui serviciu de date ar putea avea cod foarte specific depozitului de date. Asta ar putea include antete, cum să vorbești datelor, sau alte servicii precum `$http`. Separarea logicii într-un serviciu de date encapsulează această logică într-un singur loc, ascunzând implementarea de utilizatorii externi (poate un controller), și face și mai ușoară o eventuală schimbare a implementării.
 
   ```javascript
   /* recomandat */
@@ -990,7 +989,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   ```javascript
   /* recomandat */
 
-  // controler care apelează factory-ul serviciului de date
+  // controller care apelează factory-ul serviciului de date
   angular
       .module('app.avengers')
       .controller('AvengersController', AvengersController);
@@ -1243,11 +1242,11 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Directive și ControllerAs
 ###### [Style [Y075](#style-y075)]
 
-  - Folosește sintaxa `controller as` cu o directivă pentru a fi consecvent cu folosirea `controller as` cu perechile de view și controler.
+  - Folosește sintaxa `controller as` cu o directivă pentru a fi consecvent cu folosirea `controller as` cu perechile de view și controller.
 
     *De ce?*: Are sens și nu e greu.
 
-    Notă: Directiva de mai jos demonstrează unele din modalitățile pe care poți folosi într-un controler de link / directivă, folosind controllerAs. Am pus șablonul in-line doar ca să am totul în același loc.
+    Notă: Directiva de mai jos demonstrează unele din modalitățile pe care poți folosi într-un controller de link / directivă, folosind controllerAs. Am pus șablonul in-line doar ca să am totul în același loc.
 
     Notă: Cât despre injectarea de dependințe, vezi [Identificarea Manuală a Dependințelor](#manual-annotating-for-dependency-injection).
 
@@ -1271,7 +1270,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
           },
           link: linkFunc,
           controller: ExampleController,
-          // Notă: Acesta ar fi 'ExampleController' (numele controlerului exportat, ca string)
+          // Notă: Acesta ar fi 'ExampleController' (numele controllerului exportat, ca string)
           // dacă s-ar referi la un controller definit în fișierul său separat
           controllerAs: 'vm',
           bindToController: true // fiindcă scope-ul e izolat
@@ -1325,7 +1324,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește `bindToController = true` cănd ai sintaxa `controller as` cu o directivă când dorești să legi scopul extern de scopul controllerului directivei.
 
-    *De ce?*: Face ușoară legarea scopului extern de scopul controlerului directivei.
+    *De ce?*: Face ușoară legarea scopului extern de scopul controllerului directivei.
 
     Notă: `bindToController` a fost introdus în 1.3.0.
 
@@ -1519,22 +1518,22 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Notă: Dependința codului la `movieService` nu este sigur pentru minificare. Pentru detalii despre cum să faci acest cod sigur pentru minificare, vezi secțiunile despre [injectarea de dependințe](#manual-annotating-for-dependency-injection) și despre [minificare și adnotare](#minification-and-annotation).
+    Notă: Dependința codului la `movieService` nu este sigură pentru minificare. Pentru detalii despre cum să faci acest cod sigur pentru minificare, vezi secțiunile despre [injectarea de dependințe](#manual-annotating-for-dependency-injection) și despre [minificare și adnotare](#minification-and-annotation).
 
 **[Înapoi sus](#table-of-contents)**
 
-### Handling Exceptions with Promises
+### Tratarea Excepțiilor cu Promise-uri
 ###### [Style [Y082](#style-y082)]
 
-  - The `catch` block of a promise must return a rejected promise to maintain the exception in the promise chain.
+  - BLock-ul de `catch` block a unui promise trebuie să returneze un promise respinse pentru a păstra excepția în lanțul promise-ului.
 
-  - Always handle exceptions in services/factories.
+  - Tratează întotdeauna excepțiile în servicii/factory-uri.
 
-    *De ce?*: If the `catch` block does not return a rejected promise, the caller of the promise will not know an exception occurred. The caller's `then` will execute. Thus, the user may never know what happened.
+    *De ce?*: Dacă blocul de `catch` nu returnează un promise respinse, apelatorul promise-ului nu va știi că s-a întâmplat o excepție. Metoda de `then` se va executa. Deci, utilizatorul ar putea să nu știe niciodată ce s-a întâmplat. 
 
-    *De ce?*: To avoid swallowing errors and misinforming the user.
+    *De ce?*: Pentru a evita înghițirea erorilor și informarea greșită a utilizatorului.
 
-    Notă: Consider putting any exception handling in a function in a shared module and service.
+    Notă: Ia în considerare punerea tratărilor de excepții într-o funcție într-un modul general sau serviciu.
 
   ```javascript
   /* evită */
@@ -1556,7 +1555,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
           e.data.description = newMessage;
           logger.error(newMessage);
           // ***
-          // Notice there is no return of the rejected promise
+          // Observă că aici nu este nicio returnare a promise-ului respins
           // ***
       }
   }
@@ -2065,7 +2064,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește nume consecvente pentru toate controllerel numite după trăsăturile lor. Folosește UpperCamelCase pentru controllere, de vreme ce sunt constructori.
 
-    *De ce?*: Furnizează o metodă consecventă de a identifica și referenția controlere.
+    *De ce?*: Furnizează o metodă consecventă de a identifica și referenția Controllere.
 
     *De ce?*: UpperCamelCase e convenția pentru identificarea unui obiect ce poate fi instanțiat folosind un constructor.
 
@@ -2192,7 +2191,6 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Rutele
 ###### [Style [Y129](#style-y129)]
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
   - Separă cofigurarea rutelor în fișiere lor separate. De exemplu `app.route.js` pentru modulul principal, `admin.route.js` pentru modulul de `admin`. Chiar și în aplicații mai mici prefer separarea de resul configurării.
 
 **[Înapoi sus](#table-of-contents)**
@@ -2239,57 +2237,58 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
     .bower.json
     ```
 
-### Identify
+### Identifică
 ###### [Style [Y142](#style-y142)]
 
-  - When you look at a file you should instantly know what it contains and represents.
+  - Când vezi un fișier ar trebui să știi instant ce conține și ce reprezintă.
 
-    *De ce?*: You spend less time hunting and pecking for code, and become more efficient. If this means you want longer file names, then so be it. Be descriptive with file names and keeping the contents of the file to exactly 1 component. Avoid files with multiple controllers, multiple services, or a mixture. There are deviations of the 1 per file rule when I have a set of very small features that are all related to each other, they are still easily identifiable.
+    *De ce?*: Petreci mai puțin timp vânând și căutând cod, și devi mai eficient. Dacă acest lucru înseamnă să folosești nume de fișier mai mari, fă-o. Fi descriptiv cu numele fișierelor și păstrează conținutul fișierului la exact 1 per component. Evită fișierele cu mai multe controllere, mai multe servicii, sau o amestecătură. Există devieri de la regula de 1 per fișier atunci când am un set de funcționalități foarte mici care sunt toate legate una de cealaltă, ele fiind în continuare ușor identificabile.
 
-### Flat
+### Plat
 ###### [Style [Y143](#style-y143)]
 
-  - Keep a flat folder structure as long as possible. When you get to 7+ files, begin considering separation.
+  - Păstrează o structură plată a directoarelor pe cât posibil. Când ajungi la mai mult de 7 fișiere, începe să iei în considerare separarea.
 
-    *De ce?*: Nobody wants to search 7 levels of folders to find a file. Think about menus on web sites … anything deeper than 2 should take serious consideration. In a folder structure there is no hard and fast number rule, but when a folder has 7-10 files, that may be time to create subfolders. Base it on your comfort level. Use a flatter structure until there is an obvious value (to help the rest of LIFT) in creating a new folder.
+    *De ce?*: Nimeni nu vrea să caute 7 nivele de foldere ca să găsească un fișier. Gândește-te la meniurile de pe web site-uri .. orice mai adânc de 2 ar trebui să fie revizuit serios. Într-o structură de foldere nu este o regulă rapidă și strictă, dar când un folder are 7-10 fișiere, cam acela ar fi timpul să fie create subfoldere. Bazeaz-o pe nivelul tău de confort. Folosește o structură mai plată până când exista o valoare clară (ca să ajute la restul de LIFT) în creerea folderelor noi.
 
-### T-DRY (Try to Stick to DRY)
+### T-DRY (Încearcă să Rămâi DRY)
 ###### [Style [Y144](#style-y144)]
 
-  - Be DRY, but don't go nuts and sacrifice readability.
+  - Fii DRY, dar nu te du la extrem și sacrifica lizibilitatea.
 
-    *De ce?*: Being DRY is important, but not crucial if it sacrifices the others in LIFT, which is why I call it T-DRY. I don’t want to type session-view.html for a view because, well, it’s obviously a view. If it is not obvious or by convention, then I name it.
+    *De ce?*: Să fii DRY e important, dar nu crucial dacă sacrifică alți membri ai LIFT, motiv pentru care îl și numesc T-DRY. Nu vreau să scriu session-view.html pentru un view pentru că, ei bine, e bineînțeles un view. Dacă nu e clar sau din convenție, atunci îl numesc. 
 
 **[Înapoi sus](#table-of-contents)**
 
-## Application Structure
+## Structura Aplicației
 
-### Overall Guidelines
+### Ghiduri Generale
 ###### [Style [Y150](#style-y150)]
 
-  - Have a near term view of implementation and a long term vision. In other words, start small but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
+  - Să ai o viziune rapidă de implenentare și o viziune largă, de lungă durată. Cu alte cuvinte, începe mic dar ține minte încotro se îndreaptă aplicație. Tot codul aplicației merge într-un folder-rădăcină numit `app`. Tot conținutul e o funcționalitate per fișier. Fiecare controller, serviciu, modul, view e în fișierul său separat. Toate scripturile 3rd party sunt stoacte în alt folder și nu în folder-ul `app`. Nu le-am scris eu și nu vreau ca ele să-mi aglomereze aplicația (`bower_components`, `scripts`, `lib`).
 
-    Notă: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Notă: Găsește mai multe detalii și raționarea din spatele structuri în [acest articol original despre structura aplicației](http://www.johnpapa.net/angular-app-structuring-guidelines/).
 
-### Layout
+### Plan General
 ###### [Style [Y151](#style-y151)]
 
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions.
+  - Pune componentele ce definesc layout-ul general al aplicației într-un folder numit `layout`. Acestea pot include de asemenea un view și un controller și pot fi de asemenea recipient pentru aplicație, navigare, meniuri, zone de conținut, și alte regiuni.
 
-    *De ce?*: Organizes all layout in a single place re-used throughout the application.
+    *De ce?*: Organizează tot layout-ul într-un singur loc refolosit în toatp aplicația.
 
-### Folders-by-Feature Structure
+### Structură Folders-per-Caracteristică
 ###### [Style [Y152](#style-y152)]
 
   - Create folders named for the feature they represent. When a folder grows to contain more than 7 files, start to consider creating a folder for them. Your threshold may be different, so adjust as needed.
+  - Creează foldere numite după funcționalitatea pe care o reprezintă. Când un folder începe să conțină mai mult de 7 fișiere, începe să iei în considerare creearea unui folder pentru ele. Limita ta ar putea să difere, așa că ajustarea e necesară.
 
-    *De ce?*: A developer can locate the code, identify what each file represents at a glance, the structure is flat as can be, and there is no repetitive nor redundant names.
+    *De ce?*: Un programator poate localiza codul, identifica ce reprezintă fiecare fișier dintr-un foc, structura e cât se poate de plată, și nu există nume repetitive sau reduntante.
 
-    *De ce?*: The LIFT guidelines are all covered.
+    *De ce?*: Ghidurile LIFT sunt toate acoperite.
 
-    *De ce?*: Helps reduce the app from becoming cluttered through organizing the content and keeping them aligned with the LIFT guidelines.
+    *De ce?*: Ajută la prevenirea aplicație din a deveni prea aglomerată prin organizarea conținutului și păstrarea lui aliniat cu principiile LIFT.
 
-    *De ce?*: When there are a lot of files (10+) locating them is easier with a consistent folder structures and more difficult in flat structures.
+    *De ce?*: Când există multe fișiere (10+), localizarea lor e mai ușoară cu o structură de foldere consecventă și mai grea în structuri plate.
 
     ```javascript
     /**
@@ -2330,15 +2329,15 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
+      ![Model Structură a Aplicației](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
-      Notă: Do not structure your app using folders-by-type. This requires moving to multiple folders when working on a feature and gets unwieldy quickly as the app grows to 5, 10 or 25+ views and controllers (and other features), which makes it more difficult than folder-by-feature to locate files.
+      Notă: Nu-ți structura aplicația folosind folder-per-tip. Acest lucru necesită mutarea în foldere multiple când lucrezi la o funcționalitate și devine groaie rapid, pe măsură ce aplicație crește la 5, 10 sau 25+ de view-uri și controllere (și alte funcționalități), ceea ce face totul mau greu decât folder-per-caracteristică de a localiza fișierele. 
 
     ```javascript
     /*
-    * avoid
-    * Alternative folders-by-type.
-    * I recommend "folders-by-feature", instead.
+    * evită
+    * Alternativă: foldere-per-tip.
+    * Recomand "folder-per-funcționalitate" în loc.
     */
 
     app/
@@ -2378,46 +2377,49 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 ## Modularity
 
-### Many Small, Self Contained Modules
+### Multe Module Mici, Autonome
 ###### [Style [Y160](#style-y160)]
 
-  - Create small modules that encapsulate one responsibility.
+  - Creează module mici ce encapsulează o singură responsabilitate.
 
-    *De ce?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally. This means we can plug in new features as we develop them.
+    *De ce?*: Aplicațiile modulare fac ușoară folosirea și permit echipelor de dezvlotare să construiască felii verticale ale aplicației și să le livreze incremental. Acest lucru înseamnă că putem adăuga funcționalități noi în timp ce le dezvoltăm.
 
-### Create an App Module
+### Creează un Modul App
 ###### [Style [Y161](#style-y161)]
 
-  - Create an application root module whose role is to pull together all of the modules and features of your application. Name this for your application.
+  - Creează un modul de bază al aplicației al cărui rol să fie agregarea tuturor modulelor și a funcționalităților aplicației tale. Denumește-l bazându-te pe aplicația ta.
 
-    *De ce?*: Angular encourages modularity and separation patterns. Creating an application root module whose role is to tie your other modules together provides a very straightforward way to add or remove modules from your application.
+    *De ce?*: Angular încurajează modulraitatea și șabloanele de separare. Creerea unui modul de bază al cărui rol este să lege celelalte module conferă un mod foarte direct de adăuga și înlătura module din aplicație.
 
-### Keep the App Module Thin
+### Păstrează Modulul Subțire
 ###### [Style [Y162](#style-y162)]
 
-  - Only put logic for pulling together the app in the application module. Leave features in their own modules.
+  - Pune doar logica de agregare în modulul de aplicație. Lasă funcționalitățile în modulele proprii.
 
-    *De ce?*: Adding additional roles to the application root to get remote data, display views, or other logic not related to pulling the app together muddies the app module and make both sets of features harder to reuse or turn off.
+    *De ce?*: Adăugarea de roluri adiționale la rădăcina aplicație pentru luare de date remote, afișare de view-uri, sau altă logică nelegată de agregarea aplicației murdărește modulul aplicației și fac ambele mulțimi de funcționalități mai greu de reutilizat sau dezactivat. 
 
-    *De ce?*: The app module becomes a manifest that describes which modules help define the application.
+    *De ce?*: Modulul app devine un manifest ce descrie ce module contribuie la definirea aplicației.
 
-### Feature Areas are Modules
+### Zonele de Funcționalități sunt Module
 ###### [Style [Y163](#style-y163)]
 
   - Create modules that represent feature areas, such as layout, reusable and shared services, dashboards, and app specific features (e.g. customers, admin, sales).
+  - Creează module ce reprezintă zone de funcționalități, precum layout, servicii partajate și refolosibile, dashboard-uri, și funcționalități specifice aplicației (e.g. customers, admin, sales).
 
-    *De ce?*: Self contained modules can be added to the application with little or no friction.
+    *De ce?*: Module autonome pot fi adăugate la aplicație cu conflict redus sau inexistent.
 
-    *De ce?*: Sprints or iterations can focus on feature areas and turn them on at the end of the sprint or iteration.
+    *De ce?*: Sprinturile sau iterațiile se pot axa pe zone de funcționalitate și să le activeze la sfărșitul sprintului sau iterației.
 
     *De ce?*: Separating feature areas into modules makes it easier to test the modules in isolation and reuse code.
+    *De ce?*: Separarea zonelor viitoare în module face mai ușoară testarea modulelor în izolare și refolosirea codului.
 
-### Reusable Blocks are Modules
+### Blocurile Refolosibile sunt Module
 ###### [Style [Y164](#style-y164)]
 
-  - Create modules that represent reusable application blocks for common services such as exception handling, logging, diagnostics, security, and local data stashing.
+  - Creează module ce reprezintă blocuri refolosibile ale aplicației pentru servicii comune precum tratarea excepțiilor, logarea, diagnoză, securitate, și stashing de date locale.
 
     *De ce?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
+    *De ce?*: Aceste tipuri de funcționalități sunt necesare în multe aplicații, deci prin păstrarea lor separat în modulele lor proprii ele pot fi generale și refolosite în mai multe aplicații.
 
 ### Module Dependencies
 ###### [Style [Y165](#style-y165)]
