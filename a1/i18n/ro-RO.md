@@ -2474,12 +2474,12 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   }
   ```
 
-### Run Blocks
+### Blocuri de rulare
 ###### [Style [Y171](#style-y171)]
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Orice cod ce trebuie să ruleze când o aplicație pornește ar trebui declarat într-un factory, expus printr-o funcție, și injectat î [blocul de rularee](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *De ce?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+    *De ce?*: Codul direct într-un bloc de rulare poate fi greu de testat. Punându-l într-un factory il face mai ușor de abstractizat și generat.
 
   ```javascript
   angular
@@ -2496,80 +2496,84 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
 **[Înapoi sus](#table-of-contents)**
 
-## Angular $ Wrapper Services
+## Servicii Angular $ Wrapper
 
-### $document and $window
+### $document și $window
 ###### [Style [Y180](#style-y180)]
 
-  - Use [`$document`](https://docs.angularjs.org/api/ng/service/$document) and [`$window`](https://docs.angularjs.org/api/ng/service/$window) instead of `document` and `window`.
+  - Folosește [`$document`](https://docs.angularjs.org/api/ng/service/$document) și [`$window`](https://docs.angularjs.org/api/ng/service/$window) în loc de `document` și `window`.
 
     *De ce?*: These services are wrapped by Angular and more easily testable than using document and window in tests. This helps you avoid having to mock document and window yourself.
+    *De ce?*: Aceste servicii sunt învelite de Angular și sunt mai ușor testabile decât folosind document și window in teste. Acest lucru ajută la evitarea generării manuale a 'document' și 'window'.
 
-### $timeout and $interval
+### $timeout și $interval
 ###### [Style [Y181](#style-y181)]
 
   - Use [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) and [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) instead of `setTimeout` and `setInterval` .
+  - Folosește [`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout) și [`$interval`](https://docs.angularjs.org/api/ng/service/$interval) în loc de `setTimeout` și `setInterval` .
 
-    *De ce?*: These services are wrapped by Angular and more easily testable and handle Angular's digest cycle thus keeping data binding in sync.
+    *De ce?*: Aceste servicii sunt învelite de Angular și sunt mai ușor testabile și folosesc ciclul de digest al Angular, deci păstrează data-bind-ul sincronizat.
 
 **[Înapoi sus](#table-of-contents)**
 
 ## Testing
-Unit testing helps maintain clean code, as such I included some of my recommendations for unit testing foundations with links for more information.
+## Testarea
+Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv am inclus niște recomandări pentru unit testing-ul fundațiilor cu link-uri pentru mai multe informații.
 
-### Write Tests with Stories
+### Scrie Teste cu Story-uri
 ###### [Style [Y190](#style-y190)]
 
-  - Write a set of tests for every story. Start with an empty test and fill them in as you write the code for the story.
-
-    *De ce?*: Writing the test descriptions helps clearly define what your story will do, will not do, and how you can measure success.
+  - Scrie un set de teste pentru fiecare story. Începe cu un test gol și umple-le în timp ce scrii codul pentru story.
+    *De ce?*: Scriind descrierea testelor ajută la clarificarea definirii a ceea ce va face un story, a ceea ce nu va face, și cum se poate măsura succesul.
 
     ```javascript
-    it('should have Avengers controller', function() {
+    it('ar trebui să aibă Avengers controller', function() {
         // TODO
     });
 
-    it('should find 1 Avenger when filtered by name', function() {
+    it('ar trebui să găsească 1 Avenger când se filtrează după nume', function() {
         // TODO
     });
 
-    it('should have 10 Avengers', function() {
-        // TODO (mock data?)
+    it('ar trebui să aibă 10 Avengeri', function() {
+        // TODO (generează date?)
     });
 
-    it('should return Avengers via XHR', function() {
+    it('ar trebui să returneze Avengers prin XHR', function() {
         // TODO ($httpBackend?)
     });
 
-    // and so on
+    // și așa mai departe
     ```
 
-### Testing Library
+### Biblioteca de Testare
 ###### [Style [Y191](#style-y191)]
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) for unit testing.
+  - Folosește [Jasmine](http://jasmine.github.io/) sau [Mocha](http://mochajs.org) pentru unit testing.
 
-    *De ce?*: Both Jasmine and Mocha are widely used in the Angular community. Both are stable, well maintained, and provide robust testing features.
+    *De ce?*: Atât Jasmine cât și Mocha sunt frecvente folosite de către comunitatea Angular. Ambele sunt stabile, întreținute bine, și furnizează funcționalități robuste de testare.
 
     Notă: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com). I prefer Mocha.
+    Notă: Când folosești Mocha, consideră de asemenea folosirea unei biblioteci de assert precum [Chai](http://chaijs.com). Eu prefer Mocha.
 
-### Test Runner
+### Rularea Testelor
 ###### [Style [Y192](#style-y192)]
 
-  - Use [Karma](http://karma-runner.github.io) as a test runner.
+  - Folosește [Karma](http://karma-runner.github.io) pentru rularea testelor.
 
-    *De ce?*: Karma is easy to configure to run once or automatically when you change your code.
+    *De ce?*: Karma e ușor de configurat pentru ca să ruleze o dată automat sa automat când faci schimbări în cod.
 
-    *De ce?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
+    *De ce?*: Karma se leagă de procesul tău de Continuous Integration ușor pe cont propriu sau prin intermediul Grunt sau Gulp.
 
-    *De ce?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](https://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *De ce?*: unele IDE-uri încep să se integreze cu Karma, precum [WebStorm](http://www.jetbrains.com/webstorm/) și [Visual Studio](https://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
 
     *De ce?*: Karma works well with task automation leaders such as [Grunt](http://gruntjs.com/) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://gulpjs.com/). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
+    *De ce?*: Karma funcționează bine cu leaderii de automatizare de taskuri precum [Grunt](http://gruntjs.com/) (cu [grunt-karma](https://github.com/karma-runner/grunt-karma)) și [Gulp](http://gulpjs.com/). Când folosești Gulp, folosește [Karma](https://github.com/karma-runner/karma) direct și nu un API, de vreme ce API-ul poate fi apelat direct.
 
     ```javascript
     /* recomandat */
 
-    // Gulp example with Karma directly
+    // Exemplu de Gulp direct cu Karma
     function startTests(singleRun, done) {
         var child;
         var excludeFiles = [];
@@ -2615,51 +2619,52 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     }
     ```
 
-### Stubbing and Spying
+### Stubbing-ul și Spionarea
 ###### [Style [Y193](#style-y193)]
 
-  - Use [Sinon](http://sinonjs.org/) for stubbing and spying.
+  - Folosește [Sinon](http://sinonjs.org/) pentru stubbing și spionare.
 
-    *De ce?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
+    *De ce?*: Sinon funcționează bine atât cu Jasmine cât și cu Mocha și extinde caracteristicile de stubbing și spionare pe care acestea le oferă.
 
-    *De ce?*: Sinon makes it easier to toggle between Jasmine and Mocha, if you want to try both.
+    *De ce?*: Sinon face mai ușoară trecerea între Jasmine și Mocha, dacă vrei să le încerci pe ambele.
 
     *De ce?*: Sinon has descriptive messages when tests fail the assertions.
+    *De ce?*: Sinon are mesaje descriptive pentru când testele eșuază assert-urile.
 
-### Headless Browser
+### Browser Headless 
 ###### [Style [Y194](#style-y194)]
 
-  - Use [PhantomJS](http://phantomjs.org/) to run your tests on a server.
+  - Folosește [PhantomJS](http://phantomjs.org/) pentru a-ți rula testele pe un server.
 
-    *De ce?*: PhantomJS is a headless browser that helps run your tests without needing a "visual" browser. So you do not have to install Chrome, Safari, IE, or other browsers on your server.
+    *De ce?*: PhantomJS e un browser headless ce ajută la rularea testelor tale fără a avea nevoie de un browser "vizual". Așa că nu ai nevoie să instalezi Chrome, Safari, IE, sau alte browsere pe serverul tău.
 
-    Notă: You should still test on all browsers in your environment, as appropriate for your target audience.
+    Notă: Ar trebui, în continuare, să testezi pe toate browserele din mediul tău, mai ales acelea relative pentru utilizatorii tăi.
 
-### Code Analysis
+### Analiza Codului
 ###### [Style [Y195](#style-y195)]
 
-  - Run JSHint on your tests.
+  - Rulează JSHint pe testele tale.
 
-    *De ce?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *De ce?*: Testele sunt cod. JSHint poate identifica probleme de calitate a codului ce pot apărea și cauza test să nu ruleze cum trebuie.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Atenuează Globalele pentru Regulile JSHint despre Teste
 ###### [Style [Y196](#style-y196)]
 
-  - Relax the rules on your test code to allow for common globals such as `describe` and `expect`. Relax the rules for expressions, as Mocha uses these.
+  - Atenuează regulile pe codul tău de test pentru a permite globale comune precum `describe` și `expect`. Atenuează regulile pentru expresii, de vreme ce Mocha le folosește.
 
-    *De ce?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
+    *De ce?*: Testele tale sunt cod și au nevoie de aceași atenție pentru regulile de calitate a codului precum codul tău de producție. Însă variablilele globale folosite de framework-ul de testare de exemplu, pot fi relaxate prin includerea lui "this" în specificațiile de test.
 
     ```javascript
     /* jshint -W117, -W030 */
     ```
-    Or you can add the following to your JSHint Options file.
+    Sau poți adăuga următoarele în fișierul tău de opțiuni JSHint.
 
     ```javascript
     "jasmine": true,
     "mocha": true,
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
+  ![Unelte de Testare](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Organizing Tests
 ###### [Style [Y197](#style-y197)]
