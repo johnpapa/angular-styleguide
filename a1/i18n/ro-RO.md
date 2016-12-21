@@ -2418,38 +2418,38 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Creează module ce reprezintă blocuri refolosibile ale aplicației pentru servicii comune precum tratarea excepțiilor, logarea, diagnoză, securitate, și stashing de date locale.
 
-    *De ce?*: These types of features are needed in many applications, so by keeping them separated in their own modules they can be application generic and be reused across applications.
     *De ce?*: Aceste tipuri de funcționalități sunt necesare în multe aplicații, deci prin păstrarea lor separat în modulele lor proprii ele pot fi generale și refolosite în mai multe aplicații.
 
 ### Module Dependencies
 ###### [Style [Y165](#style-y165)]
 
-  - The application root module depends on the app specific feature modules and any shared or reusable modules.
+  - Modulul de bază al aplicației depinde de module bazate pe funcționalități, specifice aplicației, și pe alte module partajate sau reutilizabile. 
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
+    ![Modularitate și dependințe](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
-    *De ce?*: The main app module contains a quickly identifiable manifest of the application's features.
+    *De ce?*: Modulul de bază al aplicației conține un manifest rapid indentificabil ce conține funcționalitățile aplicației.
 
-    *De ce?*: Each feature area contains a manifest of what it depends on, so it can be pulled in as a dependency in other applications and still work.
+    *De ce?*: Fiecare zonă de funcționalitate conține un manifest a ceea de ce depinde, așa că poate fi luat ca o dependință în alte aplicații și să funcționeze în continuare.
 
-    *De ce?*: Intra-App features such as shared data services become easy to locate and share from within `app.core` (choose your favorite name for this module).
+    *De ce?*: Funcționalități Intra-Aplicație precum serviciile de date partajate devin ușor de localizat și partajat din `app.core` (alege numele tău favorit pentru acest modul)
 
-    Notă: This is a strategy for consistency. There are many good options here. Choose one that is consistent, follows Angular's dependency rules, and is easy to maintain and scale.
+    Notă: Aceasta e o strategie pentru consecvență. Există multe opțiuni bune aici. Alege una ce e consecventă, urmează regulile de pendințe a Angular, și e ușor de întreținut și scala.
 
     > My structures vary slightly between projects but they all follow these guidelines for structure and modularity. The implementation may vary depending on the features and the team. In other words, don't get hung up on an exact like-for-like structure but do justify your structure using consistency, maintainability, and efficiency in mind.
+    > Structurile mele variază ușor între proiecte dar toate urmează aceste reguli pentru structură și modularitate. Implementarea poate varia în funcție de funcționalități și echipă. Cu alte cuvinte, nu te axa pe o structură bătută în cuie, dar construiește structura ta având în vedere consecvență, mentenabilitate, și eficiență.
 
-    > In a small app, you can also consider putting all the shared dependencies in the app module where the feature modules have no direct dependencies. This makes it easier to maintain the smaller application, but makes it harder to reuse modules outside of this application.
+    > Într-o aplicație mică, poți lua în considerare punerea tuturor dependințelor partajate în modulul de bază unde modulele de funcționalități nu au dependințe direct. Acest lucru face mai ușoară întreținerea aplicațiilor mici, dar face mai grea refolosirea acestor module în afara aplicației acesteia.
 
 **[Înapoi sus](#table-of-contents)**
 
-## Startup Logic
+## Logica de Start
 
 ### Configuration
 ###### [Style [Y170](#style-y170)]
 
-  - Inject code into [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) that must be configured before running the angular app. Ideal candidates include providers and constants.
+  - Injectează cod în [configurarea modulului] (https://docs.angularjs.org/guide/module#module-loading-dependencies), ce trebuie să fie configurat înaintea rulării aplicației. Candidații ideali sunt providerii și constantele.
 
-    *De ce?*: This makes it easier to have less places for configuration.
+    *De ce?*: Acest lucru reduce numărul de locuri în care ai configurație.
 
   ```javascript
   angular
