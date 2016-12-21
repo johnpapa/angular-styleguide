@@ -2199,7 +2199,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Fă localizarea codului tău intuitivă, simplă, și rapidă.
 
-    *De ce?*: Observ că acest lucru e super important pentru un proiect. Dacă echipa nu poate găsi rapid fișierele de care au nevoie, ei nu vor putea lucra cât de eficient e posibil, iar structura trebuie să sufere modificări. Posibil să nu știi numele fișierului sau îi sunt fișierele relatate, așa că punerea lor în cele mai intuitive locații și una lângă alta salvează mult timp. O structură de directoare descriptivă poate de asemenea să ajute în această chestiune.  
+    *De ce?*: Observ că acest lucru e super important pentru un proiect. Dacă membri echipei nu pot găsi rapid fișierele de care au nevoie, nu vor putea lucra cât de eficient se poate, iar structura va trebui să sufere modificări. Posibil să nu știi numele fișierului sau care îi sunt fișierele relatate, așa că punerea lor în cele mai intuitive locații și una lângă alta salvează mult timp. O structură de directoare descriptivă poate de asemenea să ajute în această chestiune.  
 
     ```
     /bower_components
