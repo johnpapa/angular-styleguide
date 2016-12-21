@@ -442,7 +442,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     *De ce?*: Plasarea membriilor bindabili sus îmbunătățește lizibilitatea și te ajută să identifici instant care membri ai controllerului pot fi bindabili și folosiți în View.
 
-    *De ce?*: Setarea funcțiilor anonime in-line poate fi ușoară, dar atunci când funcțiile respective sunt constituite din mai mult de o linie de cod ele pot reduce lizibilitatea. Definirea de funcții sub membrii bindabili (funcțiile vor fi hoistate) mută detaliile implementarării jos, păstrează membrii bindabili sus, și face totul mai ușor de citit. 
+    *De ce?*: Setarea funcțiilor anonime in-line poate fi ușoară, dar atunci când funcțiile respective sunt constituite din mai mult de o linie de cod ele pot reduce lizibilitatea. Definirea de funcții sub membrii bindabili (funcțiile vor fi hoistate) mută detaliile implementării jos, păstrează membrii bindabili sus, și face totul mai ușor de citit. 
 
   ```javascript
   /* evită */
@@ -531,7 +531,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Declarări de funcții pentru ascunderea detaliilor de implementare
 ###### [Style [Y034](#style-y034)]
 
-  - Folosește declarări de funcții pentru a ascunde detaliile implementarării. Păstrează-ți membrii bindabili sus. Când ai nevoie de o funcție într-un controller, pointeaz-o la o declarație de funcție ce apare mai târziu în fișier. Acest lucru e direct legat de secțiunea "Membrii Bindabili Sus". Pentru mai multe detalii vezi [acest articol](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
+  - Folosește declarări de funcții pentru a ascunde detaliile implementării. Păstrează-ți membrii bindabili sus. Când ai nevoie de o funcție într-un controller, pointeaz-o la o declarație de funcție ce apare mai târziu în fișier. Acest lucru e direct legat de secțiunea "Membrii Bindabili Sus". Pentru mai multe detalii vezi [acest articol](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
 
     *De ce?*: Punerea membriilor bindabili sus face mai ușoară citirea și ajută să identifici instant ce membri ai controllerului pot fi folosiți în View. (La fel ca mai sus.)
 
@@ -606,13 +606,13 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Mută Logica din Controllere în Servicii
 ###### [Style [Y035](#style-y035)]
 
-  - Scapă de logica dintr-un controller dând-o la servicii și factory-uri
+  - Scapă de logica dintr-un controller dând-o la servicii și factory-uri.
 
     *De ce?*: Logica ar putea fi refolosită de mai multe controllere dacă e pusă într-un serviciu și expusă printr-o funcție
 
     *De ce?*: Logica într-un serviciu poate fi izolată mult mai ușor într-un unit test, iar logica de apelare dintr-un controller poate fi generată mai ușor.
 
-    *De ce?*: Înlătură dependințele și ascunde detaliile implementarării din controller.
+    *De ce?*: Înlătură dependințele și ascunde detaliile implementării din controller.
 
     *De ce?*: Păstrează controller-ul subțire, curat și focusat.
 
@@ -785,9 +785,9 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Expune membrii apelabili ai unui serviciu (interfața sa) sus, folosind o tehnică derivată din șablonul [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
-    *De ce?*: Plasânt membri apelabili sus face mai ușoară citirea și te ajută să identifici instant care membri ai serviciului pot fi apelați și trebuie să fie testați (și/sau generați) 
+    *De ce?*: Plasând membri apelabili sus face mai ușoară citirea și te ajută să identifici instant care membri ai serviciului pot fi apelați și trebuie să fie testați (și/sau generați) 
 
-    *De ce?*: Aceasta este util în special când fișierul devine mai mare și evită nevoii de a face scroll pentru a vedea ce e expus.
+    *De ce?*: Acest lucru este util în special când fișierul devine mai mare și evită nevoia de a face scroll pentru a vedea ce e expus.
 
     *De ce?*: Setarea funcțiilor pe parcurs poate fi ușoară, dar când acele funcții sunt mai mult de o linie de cod ele pot reduce din lizibilitate și cauza mai mult scrolling. Definirea interfeței apelabile prin serviciul returnat mută detaliile de implementare jos, păstrează interfața apelabilă sus, și face totul mai ușor de citit.
 
