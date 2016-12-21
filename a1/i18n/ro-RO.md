@@ -6,7 +6,7 @@ Mulțumiri speciale lui Igor Minar, liderul echipei Angular, pentru revizuire, d
 ## Scop
 *Ghid stilistic dogmatic de Angular pentru echipe de [@john_papa](//twitter.com/john_papa)*
 
-Dacă cauți un ghid stilistic dogmatic pentru sintaxă, convenții și structurearea aplicațiilor Angular, pornește de aici. Aceste stiluri sunt bazate pe experiența mea de dezvoltare cu [Angular](//angularjs.org), prezentări, [cursuri de training Pluralsight](http://app.pluralsight.com/author/john-papa) și lucrul în echipe.
+Dacă cauți un ghid stilistic dogmatic pentru sintaxă, convenții și structurarea aplicațiilor Angular, pornește de aici. Aceste stiluri sunt bazate pe experiența mea de dezvoltare cu [Angular](//angularjs.org), prezentări, [cursuri de training Pluralsight](http://app.pluralsight.com/author/john-papa) și lucrul în echipe.
 
 Scopul acestui ghid stilistic este acela de a oferi îndrumare pentru creerea de aplicații Angular prin expunereea convențiilor pe care le folosesc și, mai important, motivelor pentru care le-am ales.
 
@@ -14,14 +14,14 @@ Scopul acestui ghid stilistic este acela de a oferi îndrumare pentru creerea de
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
-## Minunăția comunității și Acreditare
-Nu lucra niciodată într-un vid. Observ că comunitatea Angular este un grup incredibil care este pasionat de împărtășirea experiențelor. Din motivul acesta, expertul Angular Todd Motto și eu am colaborat la multe stiluri și convenții. Suntem de-acord la multe dintre ele, iar la unele nu. Te încurajez să vezi [Ghidurile lui Todd](https://github.com/toddmotto/angular-styleguide) ca să-ți faci o părere despre abordarea lui și cum diferă de aceasta.
+## Minunăția Comunității și Acreditare
+Nu lucra niciodată într-un vid. Observ că comunitatea Angular este un grup incredibil care este pasionat de împărtășirea experiențelor. Din motivul acesta, expertul Angular Todd Motto și eu am colaborat la multe stiluri și convenții. Suntem de-acord la multe dintre ele, iar la unele nu. Te încurajez să vezi [Ghidurile lui Todd](https://github.com/toddmotto/angular-styleguide) ca să-ți faci o părere despre abordarea lui și cum diferă de acesta.
 
 Multe dintre stilurile mele sunt din multitudinea de sesiuni de pair programming pe care eu și [Ward Bell](https://twitter.com/wardbell) le-am făcut. Prietenul meu Ward a influențat cu siguranță evoluția finală a acestui ghid.
 
 
-## Vezi stilurile într-o Aplicație-Mostră
-Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca acestea să fie văzute în practică. Acest ghid este acompaniat de o aplicație-mostră ce folosește aceste stiluri și structuri. Poți găsi [aplicația-mostră (numită 'modular') aici](https://github.com/johnpapa/ng-demos) în folderul `modular`. Simte-te liber să o iei, și să-i dai 'clone' sau 'fork'. [Instrucțiuni pentru rularea ei găsești în readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+## Vezi stilurile într-o Aplicație-Model
+Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca acestea să fie văzute în practică. Acest ghid este acompaniat de o aplicație-model ce folosește aceste stiluri și structuri. Poți găsi [aplicația-model (numită 'modular') aici](https://github.com/johnpapa/ng-demos) în folderul `modular`. Simte-te liber să o iei și să-i dai 'clone' sau 'fork'. [Instrucțiuni pentru rularea ei găsești în readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 
 ##Traduceri
@@ -69,11 +69,11 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   *De ce?*: Un component per fișier ușurează atât unit testing-ul cât și creerea de date de test mai ușor.
 
-  *De ce?*: Un component per fișier face totul mult mai ușor de citit, gestionat, și de a evita conflictele cu echipa în source control.
+  *De ce?*: Un component per fișier face totul mult mai ușor de citit, gestionat, și de evitat conflictele cu echipa în source control.
 
   *De ce?*: Un component per fișier evită buguri ascunse care apar frecvent când se combină componentele în fișiere în care se folosesc aceleași variabile, se creează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe. 
 
-  Următorul exemplu definește modulul `app` și dependințele sale, definește un controller, și un factory, toate în același fișier.
+  Următorul exemplu definește modulul `app` și dependințele sale, definește un controller și un factory, toate în același fișier.
 
   ```javascript
   /* evită */
@@ -134,7 +134,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   *De ce?*: Funcțiile mici sunt mai ușor de gestionat.
 
-  *De ce?*: Funcțiile mici ajută evitarea de buguri ascunse care apar frecvent când exist funcții mari care se folosesc de aceleași variabile, care creează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe.
+  *De ce?*: Funcțiile mici ajută evitarea de buguri ascunse care apar frecvent când există funcții mari care se folosesc de aceleași variabile, care creează closure-uri nedorite, sau se leagă, în mod nedorit, de dependințe.
   
 **[Înapoi sus](#table-of-contents)**
 
@@ -209,7 +209,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Evită coliziunile de denumiri
 ###### [Style [Y020](#style-y020)]
 
-  - Folosește convenții de denumire unice cu separatori pentru sub-module
+  - Folosește convenții de denumire unice cu separatori pentru sub-module.
 
   *De ce?*: Numele unice ajută la evitarea coliziunilor de denumiri a submodulelor. Separatorii ajută la definirea modulelor și a ierarhiei submodulelor lor. De exemplu, `app` ar putea fi modulul tău de bază, iar `app.dashboard` și `app.users` ar putea fi module care să fie folosite ca și dependințe ale `app`.
 
@@ -289,7 +289,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește funcții denumite în locul pasării funcțiilor anonime ca și callback.
 
-  *De ce?*: Produce cod mai lizibil, ușurează cu mult debug-ul, și reduce cantitatea de cod cu multe callback-uri cuibărite (??? xD)
+  *De ce?*: Produce cod mai lizibil, ușurează debug-ul, și reduce cantitatea de cod cu multe callback-uri cuibărite (??? xD)
 
   ```javascript
   /* evită */
@@ -328,9 +328,9 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Folosește sintaxa [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) în locul `classicei sintaxe pentru controller cu $scope`.
 
-  *De ce?*: Controllerele sunt construite, "reinnoite", și oferă o singură nouă instanță, iar sintaxa `controllerAs` e mult mai aproape de cea a unui constructor de JavaScript decât cea a `clasicei sintaxe cu $scope`.
+  *De ce?*: Controllerele sunt construite, "reînnoite" și oferă o singură nouă instanță, iar sintaxa `controllerAs` e mult mai aproape de cea a unui constructor de JavaScript decât cea a `clasicei sintaxe cu $scope`.
 
-  *De ce?*: încurajează folosirea de binduri cu un obiect "dotted" din View (e.g. `customer.name` în loc de `name`), ceea ce e mult mai contextual, mai ușor de citit, și evită orice probleme de referințe ce-ar putea apărea cu "dotting".
+  *De ce?*: Încurajează folosirea de binduri cu un obiect "dotted" din View (e.g. `customer.name` în loc de `name`), ceea ce e mult mai contextual, mai ușor de citit, și evită orice probleme de referințe ce-ar putea apărea cu "dotting".
 
   *De ce?*: Ajută la evitarea de apeluri la `$parent` în View-uri cu Controllere ierarhizate.
   ```html
@@ -398,14 +398,14 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   }
   ```
 
-  Notă: Poți evita avertizările [jshint](http://jshint.com/) prin lăsarea unui comentariu deasupra liniei de cod. Totuși, acest lucru nu e necesar atunci când funcția e denumită folosing UpperCasing, deoarece această convenție înseamnă că este o funcție-constructor, ceea ce și este un controller în Angular. 
+  Notă: Poți evita avertizările [jshint](http://jshint.com/) prin lăsarea unui comentariu deasupra liniei de cod. Totuși, acest lucru nu e necesar atunci când funcția e denumită folosind UpperCasing, deoarece această convenție înseamnă că este o funcție-constructor, ceea ce și este un controller în Angular. 
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Notă: Când creezi un watch într-un controller folosing `controller as`, poti urmări membrul `vm.*` folosing următoarea sintaxă. (creează watch-uri cu atenție, acestea adaugă timp de execuție ciclului de digest)
+  Notă: Când creezi un watch într-un controller folosind `controller as`, poti urmări membrul `vm.*` folosind următoarea sintaxă. (creează watch-uri cu atenție, acestea adaugă timp de execuție ciclului de digest)
 
   ```html
   <input ng-model="vm.title"/>
@@ -603,7 +603,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   }
   ```
 
-### Defer Controller Logic to Services
+### Mută Logica din Controllere în Servicii
 ###### [Style [Y035](#style-y035)]
 
   - Scapă de logica dintr-un controller dând-o la servicii și factory-uri
@@ -677,10 +677,9 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     Notă: Dacă un View este încărcat printr-un alt procedeu decât prin rutare, foloselște syntaxa `ng-controller="Avengers as vm"`.
 
-    *De ce?*: Combinarea unui controller în rută permite mai multor rute să invoce diferite perechi de Controllere și view-uri. Când controllerele sunt asignat în view folosing  [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), acel view este întotdeauna asociat cu același controller.
+    *De ce?*: Combinarea unui controller în rută permite mai multor rute să invoce diferite perechi de Controllere și view-uri. Când controllerele sunt asignat în view folosind  [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), acel view este întotdeauna asociat cu același controller.
 
  ```javascript
-  /* evită - when using with a route and dynamic pairing is desired */
   /* evită - când este folosit cu o rută iar combinarea dinamică e dorită */
 
   // route-config.js
@@ -773,7 +772,6 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ###### [Style [Y050](#style-y050)]
 
   - Factory-urile ar trebui să aibă o [responsabilitate unică](https://en.wikipedia.org/wiki/Single_responsibility_principle), ce e encapsulată de contextul său. Când un factory începe să depășească acel scop unic, un factory nou trebuie creat.
-  - Factories should have a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
 
 ### Siingletonuri
 ###### [Style [Y051](#style-y051)]
@@ -977,7 +975,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
           }
 
           function getAvengersFailed(error) {
-              logger.error('XHR Failed for getAvengers.' + error.data);
+              logger.error('XHR eșuat pentru getAvengers.' + error.data);
           }
       }
   }
@@ -1286,7 +1284,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   ExampleController.$inject = ['$scope'];
 
   function ExampleController($scope) {
-      // Injecting $scope just for comparison
+      // Injectarea de $scope doar pentru comparație
       var vm = this;
 
       vm.min = 3;
@@ -1305,7 +1303,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-    Notă: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
+    Notă: Poți, de asemenea denumi controller-ul când îl injectezi în funcția de legare și accesezi atributele directivelor ca proprietăți alte controlerului.
 
   ```javascript
   // Alternativă la exemplul de mai sus
@@ -1543,7 +1541,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
       }
 
       function getCustomerFailed(e) {
-          var newMessage = 'XHR Failed for getCustomer'
+          var newMessage = 'XHR eșuat pentur getCustomer'
           if (e.data && e.data.description) {
             newMessage = newMessage + '\n' + e.data.description;
           }
@@ -1915,9 +1913,9 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     function handleRoutingErrors() {
         /**
-         * Route cancellation:
-         * On routing error, go to the dashboard.
-         * Provide an exit clause if it tries to do it twice.
+         * Anularea rutei:
+         * La o eroare de rutare, du-te la dashboard.
+         * Oferă o clauză de ieșire dacă încearcă să o facă de două ori.
          */
         $rootScope.$on('$routeChangeError',
             function(event, current, previous, rejection) {
@@ -2741,7 +2739,7 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
           /**
            * @name logError
            * @desc Logs errors
-           * @param {String} msg Message to log
+           * @param {String} msg Mesaj pentru logare
            * @returns {String}
            * @memberOf Factories.Logger
            */
@@ -3024,11 +3022,11 @@ Folosește șabloane de fișier sau snippeturi pentru a ajuta urmarea de stiluri
     ngservice    // creează un serviciu Angular
 
     // Acestea sunt snippet-uri parțiale menite a fi înlănțuite
-    ngconfig     // defines a configuration phase function
-    ngmodule     // creează un modul Angular getter
-    ngroute      // defines an Angular ngRoute 'when' definition
-    ngrun        // defines a run phase function
-    ngstate      // creates an Angular UI Router state definition
+    ngmodule     // creează un getter de modul Angular
+    ngstate      // creează o definiție de stare pentru Angular UI Router
+    ngconfig     // definește o funcție pentru faza de configurare 
+    ngrun        // definește o funcție pentru faza de rulare
+    ngwhen      // creează o definiție ngRoute cu 'when'
     ```
 
   *Template-uri individuale sunt de asemenea disponibile pentru descărcare în folder-ul [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true)*
