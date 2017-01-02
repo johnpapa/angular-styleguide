@@ -1,6 +1,6 @@
 # Guia de Estilo AngularJS
 
-*Guia de Estilo opinativo de Angular para times. Por [@john_papa](//twitter.com/john_papa)*
+*Guia de Estilo opinativo de Angular para desenvolvedores. Por [@john_papa](//twitter.com/john_papa)*
 
 Se você procura por um guia de estilo opinativo para sintaxe, convenções e estruturação de aplicações AngularJS, então siga em frente! Estes estilos são baseados em minha experiência com desenvolvimento com [AngularJS](//angularjs.org), apresentações, [cursos de treinamento na Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e trabalhando em equipe.
 
@@ -58,9 +58,9 @@ Embora este guia explique o **o quê**, **porque** e **como**, acho útil ver tu
 ## Single Responsibility
 ou *Responsabilidade Única*
 
-### Regra nº 1
+### Regra do 1
 
-  - Defina um componente por arquivo.
+  - Defina 1 componente por arquivo onde contenha menos de 400 linhas de código.
 
   O exemplo seguinte define um módulo `app` e suas dependências, define um controller e define uma factory, todos no mesmo arquivo.
 
