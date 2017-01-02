@@ -1,0 +1,25 @@
+<snippet>
+    <content><![CDATA[(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .component('${2:component}', {
+            bindings: {
+
+            },
+            controller: ${3:Controller}
+
+        });
+
+    ${3:component}.\$inject = [${4/(\$(\w+)|\w+)/'$1'/g}];
+
+    /* @ngInject */
+    function ${3:Controller}(${4:dependencies}) {
+
+    }
+})();
+]]></content>
+    <tabTrigger>ngcomponent</tabTrigger>
+    <scope>text.plain, source.js</scope>
+</snippet>
