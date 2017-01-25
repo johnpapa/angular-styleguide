@@ -2050,7 +2050,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Modules
 ###### [Style [Y127](#style-y127)]
 
-  - Lorqu'il y a de multiples modules, nommez le fichier du module principal ˋapp.module.jsˋ et nommez les autres modules qui en sont dépendants d'après ce qu'ils représentent. Par exemple, nommez un module d'administration ˋadmin.module.jsˋ. Les noms des modules déclarés seraient alors respectivement ˋappˋ et ˋadminˋ.
+  - Lorsqu'il y a de multiples modules, nommez le fichier du module principal ˋapp.module.jsˋ et nommez les autres modules qui en sont dépendants d'après ce qu'ils représentent. Par exemple, nommez un module d'administration ˋadmin.module.jsˋ. Les noms des modules déclarés seraient alors respectivement ˋappˋ et ˋadminˋ.
 
     *Pourquoi ?* : Fournit de la cohérence pour les applications modulaires, et pour prévoir l'extension des applications.
 
