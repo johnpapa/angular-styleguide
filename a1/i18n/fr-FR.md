@@ -19,7 +19,7 @@ Beaucoup de mes styles proviennent des nombreuses séances de pair programming a
 Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est utile de pouvoir les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces modèles. Vous pouvez trouver l'[application d'exemple (intitulée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le *forker*. [Les instructions pour l’exécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
-[Les traductions de ce guide stylistique pour Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
+[Les traductions de ce guide stylistique pour Angular](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
 
 ## Table des matières
 
