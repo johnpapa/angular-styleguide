@@ -2711,7 +2711,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Snippets y arhicos de Angular que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
+  - Snippets y arhivos de Angular que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
 
     - Descarga los [snippets y plantillas de Angular para WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
     - Abre WebStorm y ve al menú `File`
