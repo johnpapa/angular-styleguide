@@ -1550,7 +1550,9 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
           // ***
       }
   }
+  ```
 
+  ```javascript
   /* recommended */
   function getCustomer(id) {
       return $http.get('/api/customer/' + id)
