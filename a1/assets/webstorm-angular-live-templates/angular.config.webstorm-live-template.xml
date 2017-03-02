@@ -1,0 +1,34 @@
+<templateSet group="angular-styleguide-config">
+    <template name="ngconfig"
+              value=".config($config$)&#10;&#10;$config$.$inject = ['$dependency$'];&#10;&#10;/* @ngInject */&#10;function $config$ ($dependency$) {&#10;    $configFunction$&#10;}$END$"
+              description="Defines a configuration phase function" toReformat="false" toShortenFQNames="true">
+        <variable name="config" expression="" defaultValue="&quot;config&quot;" alwaysStopAt="true"/>
+        <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
+        <variable name="configFunction" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML_TEXT" value="false"/>
+            <option name="HTML" value="false"/>
+            <option name="XSL_TEXT" value="false"/>
+            <option name="XML" value="false"/>
+            <option name="XML_TEXT" value="false"/>
+            <option name="JSON" value="false"/>
+            <option name="JSP" value="false"/>
+            <option name="CSS_PROPERTY_VALUE" value="false"/>
+            <option name="CSS_DECLARATION_BLOCK" value="false"/>
+            <option name="CSS_RULESET_LIST" value="false"/>
+            <option name="CSS" value="false"/>
+            <option name="CUCUMBER_FEATURE_FILE" value="false"/>
+            <option name="JAVA_SCRIPT" value="false"/>
+            <option name="JS_EXPRESSION" value="false"/>
+            <option name="JSX_HTML" value="false"/>
+            <option name="JS_STATEMENT" value="true"/>
+            <option name="TypeScript" value="false"/>
+            <option name="Handlebars" value="false"/>
+            <option name="HAML" value="false"/>
+            <option name="JADE" value="false"/>
+            <option name="CoffeeScript" value="false"/>
+            <option name="DART" value="false"/>
+            <option name="OTHER" value="false"/>
+        </context>
+    </template>
+</templateSet>

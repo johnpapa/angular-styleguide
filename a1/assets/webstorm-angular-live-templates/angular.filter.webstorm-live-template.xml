@@ -1,0 +1,34 @@
+<templateSet group="angular-styleguide-filter">
+    <template name="ngfilter"
+              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .filter('$filterName$', $filterName$);&#10;&#10;    function $filterName$() {&#10;        return $filterName$Filter;&#10;&#10;        ////////////////&#10;&#10;        function $filterName$Filter($parameters$) {&#10;            return $parameters$;&#10;        }&#10;    }&#10;&#10;})();&#10;&#10;$END$"
+              description="Creates an Angular filter" toReformat="true" toShortenFQNames="true">
+        <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
+        <variable name="filterName" expression="" defaultValue="&quot;filterName&quot;" alwaysStopAt="true"/>
+        <variable name="parameters" expression="" defaultValue="&quot;parameters&quot;" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML_TEXT" value="false"/>
+            <option name="HTML" value="false"/>
+            <option name="XSL_TEXT" value="false"/>
+            <option name="XML" value="false"/>
+            <option name="XML_TEXT" value="false"/>
+            <option name="JSON" value="false"/>
+            <option name="JSP" value="false"/>
+            <option name="CSS_PROPERTY_VALUE" value="false"/>
+            <option name="CSS_DECLARATION_BLOCK" value="false"/>
+            <option name="CSS_RULESET_LIST" value="false"/>
+            <option name="CSS" value="false"/>
+            <option name="CUCUMBER_FEATURE_FILE" value="false"/>
+            <option name="JAVA_SCRIPT" value="false"/>
+            <option name="JS_EXPRESSION" value="false"/>
+            <option name="JSX_HTML" value="false"/>
+            <option name="JS_STATEMENT" value="true"/>
+            <option name="TypeScript" value="false"/>
+            <option name="Handlebars" value="false"/>
+            <option name="HAML" value="false"/>
+            <option name="JADE" value="false"/>
+            <option name="CoffeeScript" value="false"/>
+            <option name="DART" value="false"/>
+            <option name="OTHER" value="false"/>
+        </context>
+    </template>
+</templateSet>

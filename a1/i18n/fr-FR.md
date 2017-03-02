@@ -8,7 +8,7 @@ Le but de ce guide de style est de proposer des conseils sur le développement d
 
 >Si vous appréciez ce guide, visitez mon cours [Angular Patterns: Clean Code](http://jpapa.me/ngclean) sur Pluralsight qui va de pair avec ce guide.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Remerciements individuels et à la communauté
 Ne jamais travailler en vase clos. J'ai trouvé que la communauté Angular est une incroyable communauté dont les membres ont à cœur de partager leurs expériences. Ainsi, avec mon ami et expert d'Angular, Todd Motto, nous avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [le guide de style de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire votre propre avis sur son approche et en quoi elle diverge.
@@ -19,40 +19,40 @@ Beaucoup de mes styles proviennent des nombreuses séances de pair programming a
 Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est utile de pouvoir les visualiser dans la pratique. Ce guide est accompagné par une application d'exemple qui suit ces styles et ces modèles. Vous pouvez trouver l'[application d'exemple (intitulée modular) ici](https://github.com/johnpapa/ng-demos) dans le répertoire `modular`. Vous pouvez librement le récupérer, le cloner, ou le *forker*. [Les instructions pour l’exécuter sont contenues dans ce readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traductions
-[Les traductions de ce guide stylistique pour Angular](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
+[Les traductions de ce guide stylistique pour Angular](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) sont maintenues par la communauté et peuvent être trouvées ici.
 
 ## Table des matières
 
   1. [Responsabilité Unique](#responsabilité-unique)
   1. [IIFE](#iife)
   1. [Modules](#modules)
-  1. [Contrôleurs](#controleurs)
+  1. [Contrôleurs](#contrôleurs)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Services de données](#services-de-données)
   1. [Directives](#directives)
-  1. [Résolution de promesses pour un contrôleur](#résolution-de-promesses-pour-un-contrôleur)
-  1. [Annoter manuellement les dépendances à injecter](#annoter-manuellement-les-dépendances-à-injecter)
+  1. [Résolution de promesses pour un contrôleur](#résolution-des-promises-pour-un-contrôleur)
+  1. [Annoter manuellement les dépendances à injecter](#annotation-manuelle-pour-linjection-de-dépendances)
   1. [Minification et annotation](#minification-et-annotation)
   1. [Gestion des exceptions](#gestion-des-exceptions)
   1. [Nommage](#nommage)
   1. [Architecture L.I.F.T.](#architecture-lift)
   1. [Architecture de l'application](#architecture-de-lapplication)
   1. [Modularité](#modularité)
-  1. [Logique d'initialisation](#logique-d-initialisation)
-  1. [Services $ d'Angular](#services-dollar-d-angular)
+  1. [Logique d'initialisation](#logique-dinitialisation)
+  1. [Services $ d'Angular](#les-services--dangular)
   1. [Tests](#tests)
   1. [Animations](#animations)
   1. [Commentaires](#commentaires)
-  1. [JSHint](#js-hint)
+  1. [JSHint](#jshint)
   1. [JSCS](#jscs)
   1. [Constantes](#constantes)
-  1. [Templates et snippets](#templates-et-snippets)
+  1. [Templates et snippets](#modèles-de-fichiers-et-snippets)
   1. [Générateur Yeoman](#générateur-yeoman)
   1. [Routage](#routage)
-  1. [Automatisation des tâches](#automatisation-des-taches)
+  1. [Automatisation des tâches](#automatisation-des-tâches)
   1. [Filtres](#filtres)
-  1. [Documentation Angular](#documentation-angular)
+  1. [Documentation Angular](#documentation)
   1. [Contribuer](#contribuer)
   1. [Licence](#license)
 
@@ -329,7 +329,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   *Pourquoi ?* : `controllerAs` est une simplification (sucre) syntaxique de `$scope`. Vous pouvez toujours vous *binder* dans la vue et accéder aux méthodes de `$scope`.
 
-  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes de `$scope` à l'intérieur d'un contrôleur. Il est par ailleurs, meilleure pratique de les éviter dans les contrôleurs mais plutôt de les déplacer dans une factory. Considérez utiliser `$scope` dans un contrôleur seulement si nécessaire. Par exemple lorsqu'il faut publier ou souscrire à des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le contrôleur.
+  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes de `$scope` à l'intérieur d'un contrôleur. Il est par ailleurs, meilleure pratique de les éviter dans les contrôleurs mais plutôt de les déplacer dans une factory. Considérez l'utilisation de `$scope` dans un contrôleur seulement si nécessaire. Par exemple lorsqu'il faut publier ou souscrire à des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le contrôleur.
 
   ```javascript
   /* à éviter */
@@ -449,9 +449,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
       }
   ```
 
-    ![Contrôleur utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Contrôleur utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
-  Note : Si la fonction est un *oneliner* vous pouvez la garder en haut du contrôleur, tant que la lisibilité n'est pas affectée.
+  Note : Si la fonction est un *oneliner*, vous pouvez la garder en haut du contrôleur, tant que la lisibilité n'est pas affectée.
 
   ```javascript
   /* à éviter */
@@ -565,7 +565,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Déplacer la logique d'un contrôleur en la déléguant à des services ou *factories*.
 
-    *Pourquoi ?* : La logique peut être ré-utilisée par plusieurs contrôleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
+    *Pourquoi ?* : La logique peut être réutilisée par plusieurs contrôleurs lorsqu'elle est placée au sein d'un service et exposée via une fonction.
 
     *Pourquoi ?* : La logique dans un service peut être facilement isolée pour les tests unitaires, tandis que la logique d'appel dans un contrôleur peut facilement être *mockée*.
 
@@ -623,14 +623,14 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Gardez les contrôleurs focalisés
 ###### [Style [Y037](#style-y037)]
 
-  - Définissez un contrôleur pour une vue, et n'essayez pas de ré-utiliser le contrôleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers les *factories* et gardez le contrôleur simple et focalisé sur sa vue.
+  - Définissez un contrôleur pour une vue, et n'essayez pas de réutiliser le contrôleur pour d'autres vues. Au lieu de cela, déplacez la logique réutilisable vers les *factories* et gardez le contrôleur simple et focalisé sur sa vue.
 
     *Pourquoi ?*: La réutilisation des contrôleurs sur plusieurs vues est fragilisante pour l'application et une bonne couverture de tests *end-to-end* (*e2e*) est requise afin d'assurer la stabilité sur l'ensemble d'une grosse application.
 
 ### Assignation des contrôleurs
 ###### [Style [Y038](#style-y038)]
 
-  - Lorsqu'un contrôleur doit être associé à une vue et qu'un composant pourraient être ré-utilisés par d'autres contrôleurs ou vues, définissez les contrôleurs avec leurs routes.
+  - Lorsqu'un contrôleur doit être associé à une vue et qu'un composant pourraient être réutilisés par d'autres contrôleurs ou vues, définissez les contrôleurs avec leurs routes.
 
     Note : Si une vue est chargée via d'autres moyens qu'une route, alors utilisez la syntaxe avec `ng-controller="Avengers as vm"`.
 
@@ -792,7 +792,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   De cette façon, les *bindings* sont répliqués à travers l'objet de capture, les valeurs primitives ne peuvent pas se mettre à jour toutes seules grâce au *revealing module pattern*.
 
-    ![Factories utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories utilisant la syntaxe avec les membres bindables au dessus](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Déclaration des fonctions pour cacher les détails d'implémentation
 ###### [Style [Y053](#style-y053)]
@@ -901,7 +901,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - *Refactorez* la logique pour faire les opérations et interactions avec les données dans une *factory*. Rendez les services de données responsables des appels *XHR*, du *local storage*, du stockage en mémoire, ou de toute autre opération sur les données.
 
-    *Pourquoi ?* : Les responsabilités du contrôleur sont la présentation et l'assemblage des informations pour la vue. Il ne devrait pas avoir à se soucier de la façon dont les données sont récupérées mais seulement de la façon de les demander. Séparer les services de données transforme la logique du contrôleur en logique de « À quel service vais-je demander ces données ? ». Le contrôleur esr alors plus simple est plus focalisé sur sa vue.
+    *Pourquoi ?* : Les responsabilités du contrôleur sont la présentation et l'assemblage des informations pour la vue. Il ne devrait pas avoir à se soucier de la façon dont les données sont récupérées mais seulement de la façon de les demander. Séparer les services de données transforme la logique du contrôleur en logique de « À quel service vais-je demander ces données ? ». Le contrôleur est alors plus simple est plus focalisé sur sa vue.
 
     *Pourquoi ?* : Cela rend plus facile à tester (*mocké* ou en utilisant le vrai) les appels aux données lorsque l'on teste un contrôleur qui utilise un service de données.
 
@@ -1116,7 +1116,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Manipuler le DOM dans une directive
 ###### [Style [Y072](#style-y072)]
 
-  - Quand vous manipulez le DOM est directement, utilisez une directive. S'il existe des alternatives, comme par exemple le CSS pour définir les styles ou les [services d'animation](https://docs.angularjs.org/api/ngAnimate), les *templates* Angular , [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), utilisez les à la place. Par exemple si la directive affiche ou cache un élément, utilisez ngHide ou ngShow.
+  - Quand vous manipulez le DOM directement, utilisez une directive. S'il existe des alternatives, comme par exemple le CSS pour définir les styles ou les [services d'animation](https://docs.angularjs.org/api/ngAnimate), les *templates* Angular , [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), utilisez les à la place. Par exemple si la directive affiche ou cache un élément, utilisez ngHide ou ngShow.
 
     *Pourquoi ?* : La manipulation du DOM peut être difficile à tester, déboguer, et il y a souvent une meilleure façon de faire (ex : CSS, animations, *templates*).
 
@@ -1200,7 +1200,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     Note : La directive ci-dessous montre une façon parmi d'autres d'utiliser *scope* à l'intérieur de la fonction `link` et dans un contrôleur de directive, par l'utilisation de `controllerAs`. J'ai *inliné* le template pour tout mettre au même endroit.
 
-    Note : Concernant l'injection de dépendances, voir [Annoter manuellement les dépendances à injecter](#annoter-manuellement-les-dépendances-à-injecter).
+    Note : Concernant l'injection de dépendances, voir [Annoter manuellement les dépendances à injecter](#annotation-manuelle-pour-linjection-de-dépendances).
 
     Note : Remarquez que le contrôleur de la directive est à l'extérieur de la *closure* de la directive. Cette façon de faire évite le problème d'indisponibilité des injections après le `return`.
 
@@ -1327,7 +1327,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Placer la logique d'initialisation toujours au même endroit permet de la rendre plus facile à localiser, plus cohérente à tester, et permet d'éviter sa dispersion à travers le contrôleur.
 
-    *Pourquoi ?* : La fonction `activate` du contrôleur rend pratique la ré-utilisation de la logique pour un rafraîchissement du contrôleur ou de la vue, garde cette logique en un seul endroit, envoie la vue à l'utilisateur plus rapidement, rend les animations faciles sur `ng-view` ou `ui-view` et rend l'interface plus réactive pour l'utilisateur.
+    *Pourquoi ?* : La fonction `activate` du contrôleur rend pratique la réutilisation de la logique pour un rafraîchissement du contrôleur ou de la vue, garde cette logique en un seul endroit, envoie la vue à l'utilisateur plus rapidement, rend les animations faciles sur `ng-view` ou `ui-view` et rend l'interface plus réactive pour l'utilisateur.
 
     Note : Si vous avez besoin d'annuler de façon conditionnelle la route avant d'utiliser le contrôleur, utilisez la [résolution de route](#style-y081) à la place.
 
@@ -1451,7 +1451,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
           });
   }
 
-  function moviePrepService(movieService) {
+  function moviesPrepService(movieService) {
       return movieService.getMovies();
   }
 
@@ -1466,7 +1466,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Note : Les dépendances sur `movieService` dans l'exemple ne sont pas directement compatibles avec le processus de minification. Pour plus de détails sur la façon de rendre ce code minifiable sans risques, voir la section sur l'[injection de dépendances](#manual-annotating-for-dependency-injection) et sur [la minification et les annotations](#minification-and-annotation).
+    Note : Les dépendances sur `movieService` dans l'exemple ne sont pas directement compatibles avec le processus de minification. Pour plus de détails sur la façon de rendre ce code minifiable sans risques, voir la section sur l'[injection de dépendances](#annotation-manuelle-pour-linjection-de-dépendances) et sur [la minification et les annotations](#minification-et-annotation).
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -1767,7 +1767,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Cela fournit un moyen cohérent pour intercepter les exceptions qui peuvent être déclenchées dans votre code (par exemple, pendant une requête XHR ou lors d'un échec de *promise*).
 
-    Note : Le intercepteur d'exceptions est bon pour intercepter et réagir à des exceptions spécifiques potentielles provenant d'appels qui pourraient en produire. Par exemple, lorsque on fait une requête XHR pour récupérer des données d'un service web distant et que vous voulez intercepter n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celles-ci.
+    Note : L'intercepteur d'exceptions est bon pour intercepter et réagir à des exceptions spécifiques potentielles provenant d'appels qui pourraient en produire. Par exemple, lorsque on fait une requête XHR pour récupérer des données d'un service web distant et que vous voulez intercepter n'importe quelles exceptions provenant de ce service uniquement et réagir seulement à celles-ci.
 
     ```javascript
     /* recommandé */
@@ -2017,7 +2017,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     function creditService() { }
 
-    // credit.service.js
+    // customers.service.js
     angular
         .module
         .service('customersService', customersService);
@@ -2050,7 +2050,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Modules
 ###### [Style [Y127](#style-y127)]
 
-  - Lorqu'il y a de multiples modules, nommez le fichier du module principal ˋapp.module.jsˋ et nommez les autres modules qui en sont dépendants d'après ce qu'ils représentent. Par exemple, nommez un module d'administration ˋadmin.module.jsˋ. Les noms des modules déclarés seraient alors respectivement ˋappˋ et ˋadminˋ.
+  - Lorsqu'il y a de multiples modules, nommez le fichier du module principal ˋapp.module.jsˋ et nommez les autres modules qui en sont dépendants d'après ce qu'ils représentent. Par exemple, nommez un module d'administration ˋadmin.module.jsˋ. Les noms des modules déclarés seraient alors respectivement ˋappˋ et ˋadminˋ.
 
     *Pourquoi ?* : Fournit de la cohérence pour les applications modulaires, et pour prévoir l'extension des applications.
 
@@ -2203,7 +2203,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
             session-detail.controller.js
     ```
 
-      ![Image d'un exemple de structure d'application](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Image d'un exemple de structure d'application](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Note : N'utilisez pas une structuration « répertoire-type ». Cela requiert de se déplacer entre de multiples répertoires lors du travail sur une fonctionnalité et cela devient rapidement difficile à manier lorsque l'application passe de à cinq, dix ou plus de vingt-cinq vues et contrôleurs (et autres fonctionnalités), ce qui complique la localisation par rapport à une structure en « répertoire-fonctionnalité ».
 
@@ -2256,7 +2256,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
   - Créez de petits modules qui encapsulent une seule responsabilité.
 
-    *Pourquoi ?* : Les applications modulaires rendent facile la compossibilité rapide puisqu'elles permettent aux équipes de développement de construire verticalement des sections de l'application et de livrer incrémentalement. Cela signifie que nous pouvons brancher de nouvelles fonctionnalités au fur et à mesure de leur développement.
+    *Pourquoi ?* : Les applications modulaires rendent facile la composabilité rapide puisqu'elles permettent aux équipes de développement de construire verticalement des sections de l'application et de livrer incrémentalement. Cela signifie que nous pouvons brancher de nouvelles fonctionnalités au fur et à mesure de leur développement.
 
 ### Création d'un module applicatif
 ###### [Style [Y161](#style-y161)]
@@ -2277,7 +2277,7 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 ### Les macro-fonctionnalités sont des modules
 ###### [Style [Y163](#style-y163)]
 
-  - Créez des modules qui représentent des macro-fonctionnalités, comme l'agencement graphique (*layout*), les services ré-utilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
+  - Créez des modules qui représentent des macro-fonctionnalités, comme l'agencement graphique (*layout*), les services réutilisables et partagés, les dashboards, et les fonctionnalités applicatives spécifiques (par exemple : clients, admin, ventes).
 
     *Pourquoi ?* : Les modules auto-suffisants peuvent être ajoutés à l'application avec peu ou pas de friction.
 
@@ -2285,19 +2285,19 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Séparer les macros-fonctionnalités en modules les rend plus facile à tester de façon isolée et à la réutilisation.
 
-### Les Blocks Ré-Utilisables en tant que Modules
+### Les Blocks Réutilisables en tant que Modules
 ###### [Style [Y164](#style-y164)]
 
-  - Créez des modules qui représentent des blocs ré-utilisables dans l'application pour les services en commun tels que la gestion des exceptions, les logs, les diagnostics, la sécurité et la gestion des données locale.
+  - Créez des modules qui représentent des blocs réutilisables dans l'application pour les services en commun tels que la gestion des exceptions, les logs, les diagnostics, la sécurité et la gestion des données locale.
 
-    *Pourquoi ?* : Ces types de fonctionnalités sont requises dans de nombreuses application, donc en les gardant séparées dans leur propres modules elles peuvent être génériques et peuvent être ré-utilisées pour d'autres applications.
+    *Pourquoi ?* : Ces types de fonctionnalités sont requises dans de nombreuses application. Donc en les gardant séparées dans leur propres modules, elles peuvent être génériques et peuvent être réutilisées pour d'autres applications.
 
 ### Dépendances entre modules
 ###### [Style [Y165](#style-y165)]
 
-  - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et ré-utilisables.
+  - Le module racine de l'application dépend des modules des fonctionnalités spécifiques et de certains modules partagés et réutilisables.
 
-    ![Modularité et Dépendences](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modularité et Dépendences](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Pourquoi?* : Le module principal de l'application continent manifeste des fonctionnalités de l'application.
 
@@ -2305,11 +2305,11 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 
     *Pourquoi ?* : Les fonctionnalités propres à l'application telles que les services de données partagées deviennent faciles à repérer et partager au sein d'un `app.core` (choisissez un nom de votre choix pour ce module).
 
-    Note : C'est un stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisissez-en une qui soit cohérente, suivez les règles des dépendances d'Angular, et la maintenance et la montée en charge sera facilitée.
+    Note : C'est une stratégie pour la cohérence. Il y a ici beaucoup de bons choix. Choisissez-en une qui soit cohérente, qui suit les règles des dépendances d'Angular, et qui facilite la maintenance et la montée en charge.
 
     > Mes structures peuvent varier légèrement entre les projets mais elles suivent toutes ces règles pour la structure et la modularité. L'implémentation peut varier en fonction des fonctionnalités et de l'équipe. En d'autres termes, ne vous paralysez pas sur une structure exactement semblable mais pensez votre structure en termes de cohérence, maintenabilité, et efficacité.
 
-    > Dans de petites applications, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de petites applications plus facile, mais rend difficile la ré-utilisation de ces modules en dehors de celle-ci.
+    > Dans de petites applications, vous pouvez aussi mettre toutes vos dépendances partagées dans le module applicatif où les modules fonctionnels n'ont pas de dépendances directes. Cela pourra rendre la maintenance de petites applications plus facile, mais rend difficile la réutilisation de ces modules en dehors de celle-ci.
 
 **[Retour en haut de page](#table-des-matières)**
 
@@ -2388,9 +2388,9 @@ Bien que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'est ut
 **[Retour en haut de page](#table-des-matières)**
 
 ## Tests
-Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut quelques unes de mes recommandations sur les bases des tests unitaires avec des liens pour plus d'informations.
+Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclus quelques unes de mes recommandations sur les bases des tests unitaires avec des liens pour plus d'informations.
 
-### Écrire les tests avec des scenarii
+### Écrire les tests avec des scenario
 ###### [Style [Y190](#style-y190)]
 
   - Écrivez un ensemble de tests pour chaque scenario. Commencer avec un test vide et complétez-les à mesure que vous écrivez le code pour le scenario.
@@ -2510,7 +2510,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
   - Exécutez JSHint sur vos tests.
 
-    *Pourquoi ?* : Les tests' c'est aussi du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
+    *Pourquoi ?* : Les tests c'est aussi du code. JSHint peut vous aider à identifier les problèmes de qualité de code qui pourrait amener les tests à fonctionner de façon incorrecte.
 
 ### Assouplissement des règles de JSHint avec les variables globales dans les tests
 ###### [Style [Y196](#style-y196)]
@@ -2529,12 +2529,12 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
     "mocha": true,
     ```
 
-  ![Outils de test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Outils de test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
-### Organizing Tests
+### Organisation des tests
 ###### [Style [Y197](#style-y197)]
 
-  - Placez les fichiers des tests unitaires (specs) à parallèlement du code client. Placez les specs qui sont en charge de l'intégration avec le serveur ou les celles qui testent plusieurs composants dans un répertoire `tests` séparé.
+  - Placez les fichiers des tests unitaires (specs) parallèle au code client. Placez les specs qui sont en charge de l'intégration avec le serveur ou celles qui testent plusieurs composants dans un répertoire `tests` séparé.
 
     *Pourquoi ?* : Les tests unitaires sont en corrélation directe avec les composants et fichiers qu'ils testent dans le code source.
 
@@ -2600,7 +2600,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
   - Si vous prévoyez de documenter votre code source, utilisez la syntaxe [`jsDoc`](http://usejsdoc.org/) pour documenter les noms des fonctions, leur descriptions, paramètres et valeurs de retour. Utilisez `@namespace` et `memberOf` pour s'adapter à l'architecture de votre application.
 
-    *Pourquoi ?* : Vous pouvez générer (et re-générer) la documentation à partir de votre code, au lieu de l'écrire intégralement.
+    *Pourquoi ?* : Vous pouvez générer (et regénérer) la documentation à partir de votre code, au lieu de l'écrire intégralement.
 
     *Pourquoi ?* : Cela permet d'avoir de la cohérence grâce un outil industriel standard.
 
@@ -2810,7 +2810,7 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Constantes
 
@@ -2837,13 +2837,13 @@ Les tests unitaires aident à maintenir un code source propre, ainsi j'ai inclut
 
 ###### [Style [Y241](#style-y241)]
 
-  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des contentes ne sont pas utilisées que par un module qui peut être ré-utilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
+  - Utilisez des constantes pour les valeurs qui ne changent pas et ne viennent pas d'un autre service. Quand des constantes ne sont utilisées que par un module qui peut être réutilisé dans d'autres applications, placez les constantes dans un seul fichier par module nommé comme le module. Tant que c'est possible, gardez les constantes dans le module principal dans un fichier `constants.js`.
 
     *Pourquoi ?* : Une valeur qui peut changer, même rarement, devrait être récupérée d'un service afin de ne pas avoir à changer le code source. Par exemple, une URL pour un service de données pourrait être définie comme constante mais il serait mieux de lire cette valeur par appel à un web service.
 
     *Pourquoi ?* : Les constantes peuvent être injectées dans un composant Angular, y compris les *providers*.
 
-    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être ré-utilisés dans d'autres applications, chacun de ces modules individuels devrait pouvoir fonctionner tout seul, y compris avec les constantes dépendantes.
+    *Pourquoi ?* : Quand une application est divisée en modules qui peuvent être réutilisés dans d'autres applications, chacun de ces modules individuels devrait pouvoir fonctionner tout seul, y compris avec les constantes dépendantes.
 
     ```javascript
     // Constantes utilisées par toute l'appli
@@ -2891,7 +2891,7 @@ Utilisez des *templates* de fichiers ou des *snippets* pour vous aider à suivre
 
     - Téléchargez l'extension [SideWaffle](http://www.sidewaffle.com) pour Visual Studio (fichier vsix)
     - Exécutez le fichier vsix
-    - Re-démarrez Visual Studio
+    - Redémarrez Visual Studio
 
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
@@ -3114,7 +3114,7 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
 
   - Utilisez l'automatisation des tâches pour lister les fichiers de définition de module `*.module.js` avant tout autre fichier JavaScript de l'application.
 
-    *Pourquoi ?* : Angular a besoin que la définition des modules soit faire avant qu'ils puissent être utilisés.
+    *Pourquoi ?* : Angular a besoin que la définition des modules soit faite avant qu'ils puissent être utilisés.
 
     *Pourquoi ?* : Nommer les modules avec un pattern spécifique tel que `*.module.js` les rends faciles à aller chercher avec une expression régulière et à les lister.
 
@@ -3138,7 +3138,7 @@ Utilisez [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) pour créer de
 
     *Pourquoi ?*: les filtres peuvent être sur-utilisés et peuvent avoir des effets négatifs sur les performances s'ils ne sont pas utilisés de façon appropriée. Par exemple, quand un filtre touche un gros objet dont l'arborescence est profonde.
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Documentation
 Pour tout le reste, allez voir la [documentation de l'API d'Angular](//docs.angularjs.org/api).

@@ -1,5 +1,9 @@
 # Guida stilistica ad Angular
 
+## Approvato dal Team di Angular
+Uno speciale ringraziamento a Igor Minar, a capo del Team di Angular, per la revisione, aver contribuito al feedback e la fiducia accordatami per la conduzione di queste linee guida.
+
+## Scopo
 *Guida stilistica dogmatica ad Angular per i team di [@john_papa](//twitter.com/john_papa)*
 
 Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team.
@@ -8,7 +12,7 @@ L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione
 
 >Se ti piace questa guida, dai un'occhiata al mio corso [Angular Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight come complemento a questa guida.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Eccezionalità della comunità e riconoscimenti
 Mai lavorare nel vuoto. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
@@ -90,7 +94,7 @@ Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di a
   ```javascript
   /* consigliato */
 
-  // someController.js
+  // some.controller.js
   angular
     	.module('app')
     	.controller('SomeController', SomeController);
@@ -267,7 +271,7 @@ Invece usa la più semplice sintassi setter.
   /* evitare */
   angular
       .module('app')
-      .controller('Dashboard', function() { });
+      .controller('DashboardController', function() { });
       .factory('logger', function() { });
   ```
 
@@ -277,9 +281,9 @@ Invece usa la più semplice sintassi setter.
   // dashboard.js
   angular
       .module('app')
-      .controller('Dashboard', Dashboard);
+      .controller('DashboardController', DashboardController);
 
-  function Dashboard() { }
+  function DashboardController() { }
   ```
 
   ```javascript
@@ -308,14 +312,14 @@ Invece usa la più semplice sintassi setter.
 
   ```html
   <!-- evitare -->
-  <div ng-controller="Customer">
+  <div ng-controller="CustomerController">
       {{ name }}
   </div>
   ```
 
   ```html
   <!-- consigliato -->
-  <div ng-controller="Customer as customer">
+  <div ng-controller="CustomerController as customer">
      {{ customer.name }}
   </div>
   ```
@@ -333,7 +337,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Customer($scope) {
+  function CustomerController($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
   }
@@ -341,7 +345,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato - tuttavia vedi la prossima sezione */
-  function Customer() {
+  function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
@@ -356,7 +360,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Customer() {
+  function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
@@ -364,7 +368,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Customer() {
+  function CustomerController() {
       var vm = this;
       vm.name = {};
       vm.sendMessage = function() { };
@@ -395,6 +399,17 @@ Invece usa la più semplice sintassi setter.
       });
   }
   ```
+  Nota: Quando lavori con basi di codice molto estese, usare un nome che sia molto descrittivo può facilitare nella cognizione e rintracciabilità. Evita nomi oltremodo lunghi che sono proni ad errori.
+
+  ```html
+  <!-- evitare -->
+  <input ng-model="customerProductItemVm.text">
+  ```
+
+  ```html
+  <!-- consigliato -->
+  <input ng-model="productVm.id">
+  ```
 
 ### Membri che possono fare il bind in alto
 ###### [Stile [Y033](#stile-y033)]
@@ -407,7 +422,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Sessions() {
+  function SessionsController() {
       var vm = this;
 
       vm.gotoSession = function() {
@@ -421,11 +436,12 @@ Invece usa la più semplice sintassi setter.
       };
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
   /* consigliato */
-  function Sessions() {
+  function SessionsController() {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -447,15 +463,16 @@ Invece usa la più semplice sintassi setter.
       function search() {
         /* */
       }
+  }
   ```
 
-    ![Controller che usa "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller che usa "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Nota: Se la funzione è di 1 linea considera di poterla lasciare in alto fino a che la leggibilità non ne è compromessa.
 
   ```javascript
   /* evitare */
-  function Sessions(data) {
+  function SessionsController(data) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -471,11 +488,12 @@ Invece usa la più semplice sintassi setter.
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
   ```javascript
   /* consigliato */
-  function Sessions(sessionDataService) {
+  function SessionsController(sessionDataService) {
       var vm = this;
 
       vm.gotoSession = gotoSession;
@@ -483,6 +501,7 @@ Invece usa la più semplice sintassi setter.
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
+  }
   ```
 
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
@@ -505,7 +524,7 @@ Invece usa la più semplice sintassi setter.
    * evitare
    * Uso di espressioni di funzione.
    */
-  function Avengers(avengersService, logger) {
+  function AvengersController(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -537,7 +556,7 @@ Invece usa la più semplice sintassi setter.
    * Usare dichiarazione di funzione
    * e membri che fanno in binding in alto.
    */
-  function Avengers(avengersService, logger) {
+  function AvengersController(avengersService, logger) {
       var vm = this;
       vm.avengers = [];
       vm.getAvengers = getAvengers;
@@ -574,7 +593,7 @@ Invece usa la più semplice sintassi setter.
   ```javascript
 
   /* evitare */
-  function Order($http, $q, config, userInfo) {
+  function OrderController($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.isCreditOk;
@@ -605,7 +624,7 @@ Invece usa la più semplice sintassi setter.
   ```javascript
 
   /* consigliato */
-  function Order(creditService) {
+  function OrderController(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
       vm.isCreditOk;
@@ -792,7 +811,7 @@ Invece usa la più semplice sintassi setter.
   In questo modo i binding si riflettono in tutto l'oggetto host, i valori di base non possono essere solamente aggiornati usando il revealing module pattern.
 
 
-    ![Factory che usano "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factory che usano "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
 ###### [Stile [Y053](#stile-y053)]
@@ -947,11 +966,11 @@ Invece usa la più semplice sintassi setter.
   // controller che chiama la factory del servizio ai dati
   angular
       .module('app.avengers')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['dataservice', 'logger'];
+  AvengersController.$inject = ['dataservice', 'logger'];
 
-  function Avengers(dataservice, logger) {
+  function AvengersController(dataservice, logger) {
       var vm = this;
       vm.avengers = [];
 
@@ -1064,7 +1083,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  /* calendarRange.directive.js */
+  /* calendar-range.directive.js */
 
   /**
    * @desc directive di ordini che è specifica al modulo ordini in una azienda di nome Acme
@@ -1081,7 +1100,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  /* customerInfo.directive.js */
+  /* customer-info.directive.js */
 
   /**
    * @desc directive delle vendite che può essere usato dovunque nella applicazione di vendita di una azienda di nome Acme
@@ -1224,6 +1243,8 @@ Invece usa la più semplice sintassi setter.
           },
           link: linkFunc,
           controller : ExampleController,
+          // nota: Questo dovrebbe essere 'ExampleController' (il nome del controller esportato, come stringa)
+          // qualora faccia riferimento ad un controller definito nel proprio file separato.
           controllerAs: 'vm',
           bindToController: true // perché lo scope è isolato
       };
@@ -1333,7 +1354,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* evitare */
-  function Avengers(dataservice) {
+  function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -1347,7 +1368,7 @@ Invece usa la più semplice sintassi setter.
 
   ```javascript
   /* consigliato */
-  function Avengers(dataservice) {
+  function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
       vm.title = 'Avengers';
@@ -1382,9 +1403,9 @@ Invece usa la più semplice sintassi setter.
   /* evitare */
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  function Avengers(movieService) {
+  function AvengersController(movieService) {
       var vm = this;
       // non risolta
       vm.movies;
@@ -1407,7 +1428,7 @@ Invece usa la più semplice sintassi setter.
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: function(movieService) {
@@ -1420,10 +1441,10 @@ Invece usa la più semplice sintassi setter.
   // avengers.js
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['moviesPrepService'];
-  function Avengers(moviesPrepService) {
+  AvengersController.$inject = ['moviesPrepService'];
+  function AvengersController(moviesPrepService) {
       var vm = this;
       vm.movies = moviesPrepService.movies;
   }
@@ -1443,7 +1464,7 @@ Invece usa la più semplice sintassi setter.
       $routeProvider
           .when('/avengers', {
               templateUrl: 'avengers.html',
-              controller: 'Avengers',
+              controller: 'AvengersController',
               controllerAs: 'vm',
               resolve: {
                   moviesPrepService: moviesPrepService
@@ -1458,10 +1479,10 @@ Invece usa la più semplice sintassi setter.
   // avengers.js
   angular
       .module('app')
-      .controller('Avengers', Avengers);
+      .controller('AvengersController', AvengersController);
 
-  Avengers.$inject = ['moviesPrepService'];
-  function Avengers(moviesPrepService) {
+  AvengersController.$inject = ['moviesPrepService'];
+  function AvengersController(moviesPrepService) {
         var vm = this;
         vm.movies = moviesPrepService.movies;
   }
@@ -1483,9 +1504,9 @@ Invece usa la più semplice sintassi setter.
     /* evita - non a prova di minificazione*/
     angular
         .module('app')
-        .controller('Dashboard', Dashboard);
+        .controller('DashboardController', DashboardController);
 
-    function Dashboard(common, dataservice) {
+    function DashboardController(common, dataservice) {
     }
     ```
 
@@ -1493,7 +1514,7 @@ Invece usa la più semplice sintassi setter.
 
     ```javascript
     /* evita - non a prova di minificazione*/
-    angular.module('app').controller('Dashboard', d);function d(a, b) { }
+    angular.module('app').controller('DashboardController', d);function d(a, b) { }
     ```
 
 ### Indentificazione manuale delle dipendenze
@@ -1511,9 +1532,9 @@ Invece usa la più semplice sintassi setter.
     /* evitare */
     angular
         .module('app')
-        .controller('Dashboard',
+        .controller('DashboardController',
             ['$location', '$routeParams', 'common', 'dataservice',
-                function Dashboard($location, $routeParams, common, dataservice) {}
+                function DashboardController($location, $routeParams, common, dataservice) {}
             ]);
     ```
 
@@ -1521,7 +1542,7 @@ Invece usa la più semplice sintassi setter.
     /* evitare */
     angular
       .module('app')
-      .controller('Dashboard',
+      .controller('DashboardController',
          ['$location', '$routeParams', 'common', 'dataservice', Dashboard]);
 
     function Dashboard($location, $routeParams, common, dataservice) {
@@ -1532,11 +1553,11 @@ Invece usa la più semplice sintassi setter.
     /* consigliato */
     angular
         .module('app')
-        .controller('Dashboard', Dashboard);
+        .controller('DashboardController', DashboardController);
 
-    Dashboard.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
+    DashboardController.$inject = ['$location', '$routeParams', 'common', 'dataservice'];
 
-    function Dashboard($location, $routeParams, common, dataservice) {
+    function DashboardController($location, $routeParams, common, dataservice) {
     }
     ```
 
@@ -1623,10 +1644,10 @@ Invece usa la più semplice sintassi setter.
     ```javascript
     angular
         .module('app')
-        .controller('Avengers', Avengers);
+        .controller('AvengersController', AvengersController);
 
     /* @ngInject */
-    function Avengers(storage, avengerService) {
+    function AvengersController(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
@@ -1643,10 +1664,10 @@ Invece usa la più semplice sintassi setter.
     ```javascript
     angular
         .module('app')
-        .controller('Avengers', Avengers);
+        .controller('AvengersController', AvengersController);
 
     /* @ngInject */
-    function Avengers(storage, avengerService) {
+    function AvengersController(storage, avengerService) {
         var vm = this;
         vm.heroSearch = '';
         vm.storeHero = storeHero;
@@ -1657,7 +1678,7 @@ Invece usa la più semplice sintassi setter.
         }
     }
 
-    Avengers.$inject = ['storage', 'avengerService'];
+    AvengersController.$inject = ['storage', 'avengerService'];
     ```
 
     Nota: Se `ng-annotate` rileva che l'iniezione è già stata fatta (p.e. `@ngInject` è stato rilevato), non duplicherà il codice di `$inject`.
@@ -1670,7 +1691,7 @@ Invece usa la più semplice sintassi setter.
         $routeProvider
             .when('/avengers', {
                 templateUrl: 'avengers.html',
-                controller: 'Avengers',
+                controller: 'AvengersController',
                 controllerAs: 'vm',
                 resolve: { /* @ngInject */
                     moviesPrepService: function(movieService) {
@@ -1906,7 +1927,7 @@ Invece usa la più semplice sintassi setter.
     avenger-profile.directive.spec.js
     ```
 
-  Nota: Un'altra convenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team. La mia preferenza va a `avengers.controller.js`.
+  Nota: Un'altra convenzione comune è dare il nome al file del controller senza la parola `controller` nel nome del file come `avengers.js` invece di `avengers.controller.js`. Tutte le altre convenzioni continuano ancora a mantenere il suffisso del tipo. I controller sono i tipi di componenti più comuni perciò questo risparmia digitazione continuando ad essere facilmente identificabili. Consiglio di scegliere 1 convenzione e rimanere consistente nel tuo team. La mia preferenza va a `avengers.controller.js` che identifica `AvengersController`.
 
     ```javascript
     /**
@@ -2016,12 +2037,12 @@ Invece usa la più semplice sintassi setter.
 
     function creditService() { }
 
-    // credit.service.js
+    // customer.service.js
     angular
         .module
-        .service('customersService', customersService);
+        .service('customerService', customerService);
 
-    function customersService() { }
+    function customerService() { }
     ```
 
 ### Nomi dei componenti directive
@@ -2140,7 +2161,7 @@ Invece usa la più semplice sintassi setter.
 ### Linee guida generali
 ###### [Stile [Y150](#stile-y150)]
 
-  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutto il contenuto rispetta 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze party sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
+  -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutto il contenuto rispetta 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze parti sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
 
     Nota: Trovi più dettagli e le motivazioni di questa struttura nel [post originale sulla struttura delle applicazioni](http://www.johnpapa.net/angular-app-structuring-guidelines/) (in inglese).
 
@@ -2202,7 +2223,7 @@ Invece usa la più semplice sintassi setter.
             session-detail.controller.js
     ```
 
-      ![Struttura dell'App di Esempio](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Struttura dell'App di Esempio](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Nota: Non usare una strutturazione del tipo cartella-per-tipo per la tua app. Questo richiede spostarsi tra molte cartelle quando si lavora su una funzionalità e diventa rapidamente scomodo quando l'app cresce di 5, 10 o più di 25 tra view e controller (ed altre funzionalità), per cui è più difficile rispetto alla localizzazione basata su cartella-per-funzionalità.
 
@@ -2296,13 +2317,13 @@ Invece usa la più semplice sintassi setter.
 
   - Il modulo principale dell'applicazione dipende dai moduli di funzionalità specifiche dell'app e da qualunque altro modulo che sia condiviso o riusabile.
 
-    ![Modularità e Dipendenze](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Modularità e Dipendenze](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Perché?*: Il modulo principale dell'app contiene un manifesto che sia facilmente identificabile con le funzionalità dell'applicazione.
 
     *Perché?*: Ogni area di funzionalità contiene un manifesto di ciò da cui dipende, in modo tale da poter essere usato come dipendenza in altre applicazioni e continuare a funzionare.
 
-    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (scegli il nome che più di piaccia per questo modulo).
+    *Perché?*: Funzionalità intra-app come servizio ai dati condiviso diventano facilmente localizzabili da dentro `app.core` (scegli il nome che più ti piace per questo modulo).
 
     Nota: Questa è una strategia per la consistenza. Ci sono diverse buone opzioni in questo caso. Scegline una che sia consistente, segua le regole delle dipendenze di Angular e sia facile da manutenere e scalare.
 
@@ -2526,7 +2547,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
     "mocha": true,
     ```
 
-  ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Strumenti per i test](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Organizzazione dei test
 ###### [Stile [Y197](#stile-y197)]
@@ -2890,19 +2911,31 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 ### WebStorm
 ###### [Stile [Y252](#stile-y252)]
 
-  - Snippet Angular e file di template che seguono queste linee guida. Le puoi importare dentro i tuoi settaggi di WebStorm:
+  - Live template per Angular che seguono queste linee guida.
 
-    - Scarica i [file dei template e gli snippet di Angular per WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
-    - Apri WebStorm e vai al menù `File`
-    - Scegli la voce di menù `Import Settings`
-    - Seleziona il file e clicca `OK`
+    - Scarica [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
+    - Mettili nella tua Place it in your [cartella dei template](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Riavvia WebStorm
     - In un file JavaScript digita questi comandi seguiti da `TAB`
 
     ```javascript
-    ng-c // crea un controller Angular
-    ng-f // crea una factory Angular
-    ng-m // crea un modulo Angular
-    ```
+    // Questi sono snippet completi che contengono una IIFE
+    ngapp     // crea un modulo setter Angular
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngfilter     // crea un filter Angular
+    ngservice    // crea un service Angular    
+    
+    // Questi sono snippet parziali intesi per essere concatenati
+    ngconfig     // definisce una funzione della fase di configuration
+    ngmodule     // crea un modulo getter Angular
+    ngroute      // crea una definizione Angular 'when' di ngRoute
+    ngrun        // definisce una funzione di fase run    
+    ngstate      // crea una definizione di stato Angular per UI Router
+     ```
+    
+  *Template individuali sono inoltre disponibili per essere scaricati all’interno della cartella [webstorm-angular-live-templates](assets/webstorm-angular-live-templates?raw=true)*
 
 ### Atom
 ###### [Stile [Y253](#stile-y253)]
@@ -2955,7 +2988,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngstate      // crea una definizione di stato di UI Router Angular
     ngconfig     // definisce un funzione per la fase di cofigurazione
     ngrun        // definisce una funzione per la fase di esecuzione
-    ngroute      // definisce una ngRoute Angular con la definizione 'when'
+    ngwhen       // definisce una ngRoute Angular con la definizione 'when'
     ngtranslate  // usa il service $translate con le proprie promesse
     ```
 
@@ -2981,6 +3014,24 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
     ngservice    // crea un service Angular
     ngfilter     // crea un filter Angular
     ```
+
+### Visual Studio Code
+
+###### [Stile [Y256](#stile-y256)]
+
+  - Snippet [Visual Studio Code](http://code.visualstudio.com) che seguono questi stili e linee guida.
+
+    - Scarica gli [snippet VS Code Angular](assets/vscode-snippets/javascript.json?raw=true)
+    - copia gli snippet nella directory snippet o, in alternativa, copia ed incolla gli snippet in quella esistente.
+
+    ```javascript
+    ngcontroller // crea un controller Angular
+    ngdirective  // crea una directive Angular
+    ngfactory    // crea una factory Angular
+    ngmodule     // crea un modulo Angular
+    ngservice    // crea un service Angular
+    ```
+
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Generatore Yeoman

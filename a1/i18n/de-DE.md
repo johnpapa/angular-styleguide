@@ -8,7 +8,7 @@ Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angu
 
 >Wenn Sie diese Anleitung mögen, dann besuchen Sie meinen Kurs [Angular Patterns: Clean Code] (http://jpapa.me/ngclean) auf Pluralsight, der eine Begleitung zu dieser Anleitung darstellt.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Außergewöhnliche Community und Anerkennung
 Arbeite niemals im leeren Raum. Ich finde, dass die Angular-Community eine unglaubliche Gruppe ist, die ihre Erfahrung mit Leidenschaft teilt. Also haben ein Freund und Angular-Experte, Todd Motto, und ich viele Vorlagen und Konventionen zusammengetragen. Bei den meisten sind wir uns einig, und bei ein paar sind wir verschiedener Meinung. Ich möchte Sie ermutigen, sich [Todd's Guidelines](https://github.com/toddmotto/angularjs-styleguide) anzusehen, um ein Gespür für seinen Ansatz zu entwickeln und ihn vergleichen zu können.
@@ -442,7 +442,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Anmerkung: Falls eine Funktion aus nur einer Zeile bestehen sollte, können Sie sich überlegen, diese nach oben zu verlagern, so lange die Lesbarkeit nicht betroffen ist.
 
@@ -786,7 +786,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   So spiegeln sich die Bindungen im gesamten (beinhaltenden) Objekt wieder. Werte können nicht selbständig durch die Offenlegung des Modulmusters geändert werden.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Funktionsdeklarationen, um die Details der Implementierung zu verbergen
 ###### [Style [Y053](#style-y053)]
@@ -2177,7 +2177,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Anmerkung: Strukturieren Sie Ihre Verzeichnisse nicht nach Typ. Das hat zur Folge, dass Sie sich in vielen Verzeichnissen bewegen müssen, um ein einziges Feature bearbeiten zu wollen. Vergrößert sich die Anwendung auf fünf, zehn oder gar mehr als 25 Views und Controller (und andere Features), wird es sehr schnell unhandlich, im Gegensatz zur Organisation der Verzeichnisse nach Features.
 
@@ -2271,7 +2271,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Das Hauptmodul einer Applikation ist abhängig von den applikationsspezifischen Funktionsmodulen und den allgemeingültigen oder wiederverwendbaren Modulen.
 
-    ![Modularität und Abhängigkeiten](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Modularität und Abhängigkeiten](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Warum?*: Das Hauptmodul der Applikation enthält ein schnell ersichtliches Manifest der Anwendungsfunktionen.
 
@@ -2457,7 +2457,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
     "mocha": true,
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Tests organisieren
 ###### [Style [Y197](#style-y197)]
@@ -3032,7 +3032,7 @@ Das Routing auf der Client-Seite ist für die Erstellung eines Navigationsflusse
 **[Zurück zum Anfang](#table-of-contents)**
 
 ## Automatisierung von Aufgaben
-Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grund Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
+Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grunt Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
 
 > Erfahren Sie mehr über Gulp und Muster für die Automatisierung von Aufgaben in meinem [Gulp Pluralsight Kurs](http://jpapa.me/gulpps)
 

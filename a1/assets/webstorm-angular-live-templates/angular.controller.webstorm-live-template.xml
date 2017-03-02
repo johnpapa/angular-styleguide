@@ -1,0 +1,35 @@
+<templateSet group="angular-styleguide-controller">
+    <template name="ngcontroller"
+              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .controller('$ControllerName$', $ControllerName$);&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    /* @ngInject */&#10;    function $ControllerName$($dependency$) {&#10;        var vm = this;&#10;        vm.title = '$ControllerName$';&#10;&#10;        activate();&#10;&#10;        ////////////////&#10;&#10;        function activate() {&#10;            $activateFunction$&#10;        }&#10;    }&#10;&#10;})();&#10;&#10;$END$"
+              description="Creates an Angular controller" toReformat="true" toShortenFQNames="true">
+        <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
+        <variable name="ControllerName" expression="" defaultValue="&quot;ControllerName&quot;" alwaysStopAt="true"/>
+        <variable name="dependency" expression="" defaultValue="&quot;dependency&quot;" alwaysStopAt="true"/>
+        <variable name="activateFunction" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML_TEXT" value="false"/>
+            <option name="HTML" value="false"/>
+            <option name="XSL_TEXT" value="false"/>
+            <option name="XML" value="false"/>
+            <option name="XML_TEXT" value="false"/>
+            <option name="JSON" value="false"/>
+            <option name="JSP" value="false"/>
+            <option name="CSS_PROPERTY_VALUE" value="false"/>
+            <option name="CSS_DECLARATION_BLOCK" value="false"/>
+            <option name="CSS_RULESET_LIST" value="false"/>
+            <option name="CSS" value="false"/>
+            <option name="CUCUMBER_FEATURE_FILE" value="false"/>
+            <option name="JAVA_SCRIPT" value="false"/>
+            <option name="JS_EXPRESSION" value="false"/>
+            <option name="JSX_HTML" value="false"/>
+            <option name="JS_STATEMENT" value="true"/>
+            <option name="TypeScript" value="false"/>
+            <option name="Handlebars" value="false"/>
+            <option name="HAML" value="false"/>
+            <option name="JADE" value="false"/>
+            <option name="CoffeeScript" value="false"/>
+            <option name="DART" value="false"/>
+            <option name="OTHER" value="false"/>
+        </context>
+    </template>
+</templateSet>

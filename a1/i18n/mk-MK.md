@@ -8,7 +8,7 @@
 
 >Ако ви се допаѓа овој водич, тогаш проверете ми го курсот [Angular Patterns: Clean Code](http://jpapa.me/ngclean) на Pluralsight кој е придружник на овој водич.
 
-  [![Angular Шаблон: Чист Код](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Шаблон: Чист Код](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Величествена заедница и заслуга
 Никогаш не работи во вакуум. Јас сметам дека Angular заедницата е неверојатна група кои се страсни за споделување искуство. Како резултат, јас и мојот пријател кој е Angular експерт, Todd Motto соработувавме со многу стилови и конвенции. Се согласуваме на повеќето, додека на останатите се разликуваме. Ве охрабрувам да ги погледнете на [Todd's  guidelines](https://github.com/toddmotto/angular-styleguide) со цел да добиете осет за неговиот пристап и како се споредува.
@@ -423,7 +423,7 @@
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Забелешка: Ако функцијата е 1 линија код, можете да ја поставите горе се додека читливоста не се наруши.
 
@@ -756,7 +756,7 @@
 
  На овој начин поврзувањата се пресликуваат низ објектот, примитивните вредности не можат да се ажурираат самостојно со употреба на Revealing шаблонот на модули.
 
-    ![Фабрики искористуваат "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-2.png)
+    ![Фабрики искористуваат "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Декларации на функции ја кријат имплементацијата
 ###### [Style [Y053](#style-Y053)]
@@ -2105,7 +2105,7 @@
             session-detail.controller.js
     ```
 
-      ![Пробна апликација пример](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-2.png)
+      ![Пробна апликација пример](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Забелешка: Не употребувајте структура со папка-по-тип. Со ова ќе се движите низ повеќе папки кога работите на функционалност што станува потешко како што апликацијата има повеќе од 5, 10 или 25 прегледи и контролери (за други функционалности), а со тоа и потешко за лоцирање на датотеките на таа функционалност.
 
@@ -2192,7 +2192,7 @@
 ###### [Style [Y165](#style-Y165)]
   - Корен модулот на апликацијата зависи од функционалните модули на апликацијата како и било кои заеднички или реискористливи модули.
 
-    ![Модуларност и Зависности](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/modularity-1.png)
+    ![Модуларност и Зависности](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *Зошто?*: Главниот модул на апликацијата содржи манифест од брзо идентифицирани функционалности на апликацијата.
 
@@ -2367,7 +2367,7 @@
     "mocha": true,
     ```
 
-  ![Алатки за тестирање](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
+  ![Алатки за тестирање](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
   ### Организирање на тестови
 ###### [Style [Y197](#style-y197)]

@@ -2,13 +2,13 @@
 
 *Guía de estilos colaborativa de Angular para equipos por [@john_papa](//twitter.com/john_papa)*
 
-Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngulRJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), persentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
+Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngularJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), presentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
 
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
 >Si te gusta esta guía, echa un vistazo al curso de Pluralsight [Angular Patterns: Clean Code](http://jpapa.me/ngclean).
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Asombrosa comunidad y créditos
 Nunca trabajes solo. Personalmente, la comunidad de Angular es un increíble grupo apasionado por compartir experiencias. Como por ejemplo, mi amigo y experto en Angular Todd Motto, con el que he colaborado en muchos de los estilos y convenciones. Estamos de acuerdo en la mayoría, y en otras no. Te recomiendo que le eches un vistazo a [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) para que le des sentido a esta guía y la compares.
@@ -23,13 +23,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 ## Tabla de contenidos
 
-  1. [Responsabilidad
-     Única](#single-responsibility-o-responsabilidad-única)
+  1. [Responsabilidad Única](#single-responsibility-o-responsabilidad-Única)
   1. [IIFE](#iife)
   1. [Módulos](#módulos)
   1. [Controladores](#controladores)
   1. [Servicios](#servicios)
-  1. [Fábricas](#fábricas)
+  1. [Factorías](#factorías)
   1. [Servicios de Datos](#servicios-de-datos)
   1. [Directivas](#directivas)
   1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
@@ -61,8 +60,14 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ###### [Style [Y001](#style-y001)]
 
   - Define 1 componente por archivo.
+    
+    *¿Por qué?*: Un componente por archivo promueve pruebas unitarias más fáciles.
 
-  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una fábrica todo en el mismo archivo.
+    *¿Por qué?*: Un componente por archivo hace que sea mucho más fácil de leer, mantener, y evita colisiones con los equipos en el control de código.
+
+    *¿Por qué?*: Un componente por archivo evita errores ocultos que a menudo surgen cuando se combinan componentes en un archivo donde pueden compartir variables, crear closures (clausuras) no deseadas, o acoplamiento indeseado de dependencias.
+
+  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una factoría todo en el mismo archivo.
 
   ```javascript
   /* evitar */
@@ -171,7 +176,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Nota: Para acortar únicamente, el resto de los ejemplos de esta guía podrían omitir la sintaxis IIFE.
 
-  - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia fábrica.
+  - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia factoría.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -321,7 +326,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   *¿Por qué?*: `controllerAs` es azúcar sintáctico sobre el `$scope`. Puedes enlazar a la vista y acceder a los métodos del `$scope`.
 
-  *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una fábrica. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una fábrica e invocarlos desde el controlador.
+  *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una factoría. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una factoría e invocarlos desde el controlador.
 
   ```javascript
   /* evitar */
@@ -441,7 +446,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Nota: Si la función es de una línea, déjala arriba, siempre y cuando no afecte en la legibilidad.
 
@@ -557,7 +562,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Diferir la Lógica del Controlador
 ###### [Style [Y035](#style-y035)]
 
-  - Difiera la lógica dentro de un controlador delegándola a servicios y fábricas.
+  - Difiera la lógica dentro de un controlador delegándola a servicios y factorías.
 
     *¿Por qué?*: La lógica podría ser reutilizada por varios controladores cuando la colocas en un servicio y la expones como una función.
 
@@ -615,7 +620,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Mantén tus Controladores Enfocados
 ###### [Style [Y037](#style-y037)]
 
-  - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a fábricas y deja el controlador simple y enfocado en su vista.
+  - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a factorías y deja el controlador simple y enfocado en su vista.
 
     *¿Por qué?*: Reutilizar controladores con varias vistas es arriesgado y necesitarías buena cobertura de tests end to end (e2e) para asegurar que todo funciona bien en la aplicación.
 
@@ -715,24 +720,24 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Fábricas
+## Factorías
 
 ### Responsabilidad Única
 ###### [Style [Y050](#style-y050)]
 
-  - Las fábricas deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una fábrica empiece a exceder el principio de responsabilidad única, una nueva fábrica debe ser creada.
+  - Las factorías deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factoría empiece a exceder el principio de responsabilidad única, una nueva factoría debe ser creada.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Las Fábricas son singleton y devuelven un objeto que contiene las variables del servicio.
+  - Las Factorías son singleton y devuelven un objeto que contiene las variables del servicio.
 
     Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services).
 
 ### Miembros accesibles Arriba
 ###### [Style [Y052](#style-y052)]
 
-  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica derivada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *¿Por qué?*: Colocar los elementos que se llaman arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear).
 
@@ -784,18 +789,18 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   De esta forma se asocian los bindeos desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
 
-    ![Fábricas Usando "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factorías Usando "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Declaración de Funciones para Esconder los Detalles de Implementación
 ###### [Style [Y053](#style-y053)]
 
-  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la fábrica. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factoría. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la fábrica se pueden accesar externamente.
+    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la factoría se pueden accesar externamente.
 
-    *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complegidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
+    *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complejidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
 
-    *¿Por qué?*: Las declaraciones de las funciones son "elevedas" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fueran funciones en forma de expresión).
+    *¿Por qué?*: Las declaraciones de las funciones son "elevadas" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fueran funciones en forma de expresión).
 
     *¿Por qué?*: No tendrás que preocuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
@@ -1353,7 +1358,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Usa un route resolver cuando decidas cancelar la ruta antes de hacer la transición a la Vista.
 
-    *¿Por qué?*: Un controlador puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una fábrica o de [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite que la promesa se resuelva antes de que la lógica del controlador se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
+    *¿Por qué?*: Un controlador puede requerir datos antes de que se cargue. Esos datos deben venir desde una promesa a través de una factoría o de [$http](https://docs.angularjs.org/api/ng/service/$http). Usando un [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite que la promesa se resuelva antes de que la lógica del controlador se ejecute, así puedes tomar decisiones basándote en los datos de la promesa.
 
     *¿Por qué?*: El código se ejecuta después de la ruta y la función activate del controlador. La Vista empieza a cargar al instante. El bindeo de los datos se ejecutan cuando la promesa del activate se resuelva. Una animación de "Cargando" se puede mostrar durante la transición de la vista (via ng-view o ui-view)
 
@@ -1741,7 +1746,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Cachadores de Excepciones
 ###### [Style [Y111](#style-y111)]
 
-  - Crea una fábrica que exponga una interfaz para cachar y manejar excepciones elegantemente.
+  - Crea una factoría que exponga una interfaz para cachar y manejar excepciones elegantemente.
 
     *¿Por qué?*: Provee de una manera consistente de cachar excepciones que puedan ser arrojadas en tu código (e.g. durante llamadas XHR o promesas que fallaron).
 
@@ -1963,12 +1968,12 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
     function AvengersController() { }
     ```
 
-### Nombres de Fábricas
+### Nombres de Factorías
 ###### [Style [Y125](#style-y125)]
 
-  - Usa nombres consistentes para todas las fábricas nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las fábricas.
+  - Usa nombres consistentes para todas las factorías nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las factorías.
 
-    *¿Por qué?*: Provee una manera consistente de identificar y referenciar fábricas rápidamente.
+    *¿Por qué?*: Provee una manera consistente de identificar y referenciar factorías rápidamente.
 
     ```javascript
     /**
@@ -2160,7 +2165,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
             session-detail.controller.js
     ```
 
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-2.png)
+      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
 
       Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere mover múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras características), lo que lo hace más difícil que localizar archivos en una aplicación estructura en directorios-por-característica.
 
@@ -2253,7 +2258,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - El módulo raíz de la aplicación depende de módulos de características específicas y cualquier módulo compartido o reusable.
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/modularity-1.png)
+    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
 
     *¿Por qué?*: El módulo principal de la aplicación contiene un manifiesto rápidamente identificable de las características de la aplicación.
 
@@ -2306,9 +2311,9 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Bloques Run
 ###### [Style [Y171](#style-y171)]
 
-  - Cualquier código que necesite ser ejecutado cuando una aplicación arranca debe ser declarado en una fábrica, ser expuesto a través de una función, o inyectado en el [bloque run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Cualquier código que necesite ser ejecutado cuando una aplicación arranca debe ser declarado en una factoría, ser expuesto a través de una función, o inyectado en el [bloque run](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
-    *¿Por qué?*: Código que está directamente en un bloque run puede ser difícil de testear. Colocarlo en una fábrica lo hace fácil de abstraer y mockear.
+    *¿Por qué?*: Código que está directamente en un bloque run puede ser difícil de testear. Colocarlo en una factoría lo hace fácil de abstraer y mockear.
 
   ```javascript
   angular
@@ -2431,7 +2436,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
     /* global sinon, describe, it, afterEach, beforeEach, expect, inject */
     ```
 
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/testing-tools.png)
+  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/testing-tools.png)
 
 ### Organizando las Pruebas
 ###### [Style [Y197](#style-y197)]
@@ -2682,7 +2687,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 
   - Snippets de Angular que siguen estos estilos y directrices.
 
-    - Descarga los [snippets de Angular para Sublime](assets/sublime-angular-snippets.zip?raw=true)
+    - Descarga los [snippets de Angular para Sublime](../assets/sublime-angular-snippets?raw=true)
     - Colócalos en tu directorio de Packages
     - Reinicia Sublime
     - En un archivo de JavaScript escibe estos comandos seguidos de un `TAB`
@@ -2706,7 +2711,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 ### WebStorm
 ###### [Style [Y252](#style-y252)]
 
-  - Snippets y arhicos de Angular que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
+  - Snippets y arhivos de Angular que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
 
     - Descarga los [snippets y plantillas de Angular para WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
     - Abre WebStorm y ve al menú `File`

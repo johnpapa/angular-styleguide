@@ -1,0 +1,23 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ngfilter
+# key: ngfilter
+# binding: direct-keybinding
+# --
+
+(function() {
+    'use strict';
+
+    angular
+        .module('${1:module}')
+        .filter('${2:filter}', $2);
+
+    function $2() {
+        return $2Filter;
+
+        ////////////////
+        function $2Filter(${3:params}) {
+            return $3;
+        };
+    }
+
+})();
