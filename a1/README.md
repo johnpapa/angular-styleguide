@@ -2457,9 +2457,13 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Run Blocks
 ###### [Style [Y171](#style-y171)]
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies). 
+  
+  - Consider using manual bootstrapping techniques, as an alternative for logic that must run prior to running the Angular app.
 
     *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
+
+    *Why?*: Code directly in a run block can cause race conditions for startup logic, as it does not have a way to communicate when asynchronous code in the run block has completed.
 
   ```javascript
   angular
