@@ -915,14 +915,14 @@
           return $http.get('/api/maa')
               .then(getAvengersComplete)
               .catch(getAvengersFailed);
+      }
 
-          function getAvengersComplete(response) {
-              return response.data.results;
-          }
+      function getAvengersComplete(response) {
+            return response.data.results;
+      }
 
-          function getAvengersFailed(error) {
-              logger.error('XHR Failed for getAvengers.' + error.data);
-          }
+      function getAvengersFailed(error) {
+            logger.error('XHR Failed for getAvengers.' + error.data);
       }
   }
   ```
