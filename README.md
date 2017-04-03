@@ -1,8 +1,13 @@
 # Angular Style Guide
 
-# Back-tick my hammock!
 
-[Grave](https://www.fonts.com/content/learning/fontology/level-3/signs-and-symbols/accents)
+
+
+# Back-tick my hammock!
+[Grave](https://www.fonts.com/content/learning/fontology/level-3/signs-and-symbols/accents) FTW!
+
+
+
 
 ## Versions
 There are multiple versions of Angular, and thus there are multiple versions of the guide. Choose your guide appropriately.
