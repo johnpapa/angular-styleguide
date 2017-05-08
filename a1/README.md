@@ -1289,7 +1289,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       vm.min = 3;
       vm.$onInit = onInit;
       
-      ----------
+      //////////
       
       console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
       console.log('CTRL: $scope.vm.max = %s', $scope.vm.max); // undefined in Angular 1.5+
