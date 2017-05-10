@@ -1220,7 +1220,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
           link: linkFunc,
           controller: ExampleController,
             controllerAs: 'vm',
-            bindToController: true // porque el scope is aislado
+            bindToController: true // porque el scope es aislado
         };
 
       return directive;
