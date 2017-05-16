@@ -1235,7 +1235,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Directives and ControllerAs
 ###### [Style [Y075](#style-y075)]
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - Use `controllerAs` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
 
     *Why?*: It makes sense and it's not difficult.
 
