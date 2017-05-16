@@ -59,7 +59,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### La regla del 1
 ###### [Style [Y001](#style-y001)]
 
-  - Define 1 componente por archivo.
+  - Define 1 componente por archivo, es recomendable que sea menor a 400 líneas de código.
     
     *¿Por qué?*: Un componente por archivo promueve pruebas unitarias más fáciles.
 
@@ -627,7 +627,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Asignando Controladores
 ###### [Style [Y038](#style-y038)]
 
-  - Cuando un controlador debe ser asociado a una vista y cada componente puede ser reutilizado por otros controladores o vistas, define controladores con sus rutas.
+  - Cuando un controlador debe ser asociado a una vista y cada componente puede ser reutilizado por otros controladores o vistas, define los controladores con sus rutas.
 
     Nota: Si una Vista es cargada por otra además de por la ruta, entonces usa la sintaxis `ng-controller="Avengers as vm"`.
 
@@ -1014,7 +1014,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-    **[Volver arriba](#tabla-de-contenidos)**
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Directivas
 ### Limitadas a 1 Por Archivo
@@ -1220,7 +1220,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
           link: linkFunc,
           controller: ExampleController,
             controllerAs: 'vm',
-            bindToController: true // porque el scope is aislado
+            bindToController: true // porque el scope es aislado
         };
 
       return directive;
