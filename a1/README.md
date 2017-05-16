@@ -2151,7 +2151,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Directive Component Names
 ###### [Style [Y126](#style-y126)]
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - Use consistent names for all directives using camelCase. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
 
     *Why?*: Provides a consistent way to quickly identify and reference components.
 
