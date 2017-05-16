@@ -1244,6 +1244,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
     Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
+    
+    Note: Life-style hooks were introduced in Angular 1.5. Initialization logic that relies on bindings being present should be put in the controller's $onInit() method, which is guarranteed to always be called after the bindings have been assigned.
 
   ```html
   <div my-example max="77"></div>
@@ -1284,13 +1286,23 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function ExampleController($scope) {
       // Injecting $scope just for comparison
       var vm = this;
-
       vm.min = 3;
-
+      vm.$onInit = onInit;
+      
+      //////////
+      
       console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
-      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max);
+      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max); // undefined in Angular 1.5+
       console.log('CTRL: vm.min = %s', vm.min);
-      console.log('CTRL: vm.max = %s', vm.max);
+      console.log('CTRL: vm.max = %s', vm.max); // undefined in Angular 1.5+
+      
+      // Angular 1.5+ does not bind attributes until calling $onInit();
+      function onInit() {
+          console.log('CTRL-onInit: $scope.vm.min = %s', $scope.vm.min);
+          console.log('CTRL-onInit: $scope.vm.max = %s', $scope.vm.max);
+          console.log('CTRL-onInit: vm.min = %s', vm.min);
+          console.log('CTRL-onInit: vm.max = %s', vm.max);
+      }
   }
   ```
 
@@ -1348,8 +1360,12 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   function ExampleController() {
       var vm = this;
       vm.min = 3;
-      console.log('CTRL: vm.min = %s', vm.min);
-      console.log('CTRL: vm.max = %s', vm.max);
+      vm.$onInit = onInit;
+      
+      function onInit() = {
+          console.log('CTRL: vm.min = %s', vm.min);
+          console.log('CTRL: vm.max = %s', vm.max);
+      }
   }
   ```
 
