@@ -292,8 +292,6 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
 ## Controladores
 
-### controllerAs Sintaxis en la Vista
-###### [Style [Y030](#style-y030)]
 
   - Usa la sintaxis [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controlador con $scope`.
 
@@ -306,6 +304,8 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   ```html
   <!-- evitar -->
   <div ng-controller="Customer">
+### controllerAs Sintaxis en la Vista
+###### [Style [Y030](#style-y030)]
       {{ name }}
   </div>
   ```
@@ -2804,7 +2804,7 @@ Para cualquier otra cosa, refiérete a la API, mira la [documentación de Angula
 
 ## Contribuyendo
 
-Primero abre un issue para discutir cambios/agregados potenciales. Si tienes preguntas acerca de esta guía, siéntete libre de dejarlas como issues en el repositorio. Si encuentras un typo, crea un pull request. La idea es mantener el contenido actualizado y usar las features de github para ayudar a contar la historia con issues y PR’s, los cuales pueden ser encontrados a través de google. ¿Por qué? Porque las probabilidades son que si tu tienes una pregunta, !alguien más también! Puedes aprender más aquí de cómo contribuir.
+Primero abre un issue para discutir cambios/agregados potenciales. Si tienes preguntas acerca de esta guía, siéntete libre de dejarlas como issues en el repositorio. Si encuentras un error de tipografía, crea un pull request. La idea es mantener el contenido actualizado y usar las features de github para ayudar a contar la historia con issues y PR’s, los cuales pueden ser encontrados a través de google. ¿Por qué? Porque las probabilidades son que si tu tienes una pregunta, !alguien más también! Puedes aprender más aquí de cómo contribuir.
 
 *Al contribuir a este repositorio estás acordando hacer tu contenido disponible a ser parte de la licencia de este repositorio.*
 
