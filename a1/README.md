@@ -834,7 +834,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
+![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
