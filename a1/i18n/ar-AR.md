@@ -1,4 +1,4 @@
-# Angular 1 Style Guide
+# دليل أسلوب Angular 1
 
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
