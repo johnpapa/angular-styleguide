@@ -1,7 +1,7 @@
 <div style="direction: rtl">
-# دليل أسلوب Angular 1
+<h1>دليل أسلوب Angular 1</h1>
 
-## تزكية فريق Angular
+<h2> تزكية فريق Angular</h2>
 شكرا خاص لإيغور مينار (Igor Minar)، قائد فريق Angular، من أجل المراجعة، تعقيبات المساهمة، وتوصيتي برعاية هذا الدليل.
 
 ## Purpose
