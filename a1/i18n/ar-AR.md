@@ -1,7 +1,7 @@
 # دليل أسلوب Angular 1
 
-## Angular Team Endorsed
-Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
+## تزكية فريق Angular
+شكرا خاص لإيغور مينار (Igor Minar)، قائد فريق Angular، من أجل المراجعة، تعقيبات المساهمة، وتوصيتي برعاية هذا الدليل.
 
 ## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
