@@ -1,3 +1,4 @@
+<div style="direction: rtl">
 # دليل أسلوب Angular 1
 
 ## تزكية فريق Angular
@@ -3329,3 +3330,4 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 For anything else, API reference, check the [Angular documentation](//docs.angularjs.org/api).
 
 **[Back to top](#table-of-contents)**
+</div>
