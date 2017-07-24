@@ -1,4 +1,4 @@
-<div style="direction: rtl;">
+<div dir="rtl">
 <h1>دليل أسلوب Angular 1</h1>
 
 <h2> تزكية فريق Angular</h2>
