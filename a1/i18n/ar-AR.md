@@ -9,7 +9,7 @@
 
 إذا كنت تبحث عن دليل أسلوب إنحيازي لصياغة، اتفاقيات، وهيكلة تطبيقات Angular، فأنك في المكان المناسب. هذه الأساليب تستند على خبرتي الخاصة في البرمجة/التطوير بواسطة <a href="//angularjs.org">Angular</a>، العروض، دروس <a href="http://app.pluralsight.com/author/john-papa">Pluralsight</a> التدريبية والعمل في فرق.
 
-هدف هذا الدليل هو تقديم التوجيهات لبناء تطبيقات Angular عبر عرض اتفاقيات التي أستعملها، والأهم، لماذا قمت باختيارها.
+هدف هذا الدليل هو تقديم التوجيهات لبناء تطبيقات Angular عبر عرض الاتفاقيات التي أستعملها، والأهم، لماذا قمت باختيارها.
 
 >If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
 
