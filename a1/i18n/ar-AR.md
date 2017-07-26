@@ -5,7 +5,7 @@
 شكرا خاص لإيغور مينار (Igor Minar)، قائد فريق Angular، من أجل المراجعة، تعقيبات المساهمة، وتوصيتي برعاية هذا الدليل.
 
 <h2>هدف</h2>
-*دليل أسلوب Angular إنحيازي لفرق العمل لـ[@john_papa](//twitter.com/john_papa)*
+<i>دليل أسلوب Angular إنحيازي لفرق العمل لـ<a href="//twitter.com/john_papa">@john_papa</a></i>
 
 If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
 
