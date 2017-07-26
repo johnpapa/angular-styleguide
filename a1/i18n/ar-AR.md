@@ -7,8 +7,7 @@
 <h2>هدف</h2>
 <i>دليل أسلوب Angular إنحيازي لفرق العمل لـ<a href="//twitter.com/john_papa">@john_papa</a></i>
 
-إذا كنت تبحث عن دليل أسلوب لإنحيازي لصياغة، اتفاقيات، وهيكلة تطبيقات Angular، فأنك في المكان المناسب. هذه الأساليب تستند على خبرة الخاصة في البرمجة/التطوير بواسطة Angular، العروض، والعمل في فرق.
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
+إذا كنت تبحث عن دليل أسلوب لإنحيازي لصياغة، اتفاقيات، وهيكلة تطبيقات Angular، فأنك في المكان المناسب. هذه الأساليب تستند على خبرة الخاصة في البرمجة/التطوير بواسطة <a href="//angularjs.org">Angular</a>، العروض، دروس <a href="http://app.pluralsight.com/author/john-papa">Pluralsight</a> التدريبية والعمل في فرق.
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
