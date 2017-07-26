@@ -11,7 +11,9 @@
 
 هدف هذا الدليل هو تقديم التوجيهات لبناء تطبيقات Angular عبر عرض الاتفاقيات التي أستعملها، والأهم، لماذا قمت باختيارها.
 
->If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
+<blockquote>
+<p>إذا أعجبك هذا الدليل، الق نظرة على دروسي <a href="http://jpapa.me/ngclean">Angular Patterns: Clean Code</a> على موقع Pluralsight التي هي توجيه لهذا الدليل</p>
+</blockquote>
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
