@@ -489,7 +489,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
+![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
 
@@ -834,7 +834,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
   This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern.
 
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
+![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
@@ -980,7 +980,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
 
   ```javascript
   /* recommended */
@@ -1153,7 +1153,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
+Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
@@ -1314,7 +1314,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-    Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
+Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
 
   ```javascript
   // Alternative to above example
@@ -1489,7 +1489,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-    Note: The example below shows the route resolve points to a named function, which is easier to debug and easier to handle dependency injection.
+Note: The example below shows the route resolve points to a named function, which is easier to debug and easier to handle dependency injection.
 
   ```javascript
   /* even better */
@@ -1526,7 +1526,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
         vm.movies = moviesPrepService.movies;
   }
   ```
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
 
 **[Back to top](#table-of-contents)**
 
