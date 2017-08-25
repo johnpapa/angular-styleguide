@@ -1,6 +1,6 @@
 <templateSet group="angular-styleguide">
     <template name="ngcomponent"
-              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .component('$componentName$', {&#10;            templateUrl: '$templateUrl$'&#10;            controller: $ControllerName$,&#10;            controllerAs: 'vm',&#10;            bindings: {&#10;&#10;            }&#10;        });&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    function $ControllerName$($dependency$) {&#10;        var vm = this;&#10;&#10;    }&#10;&#10;})();&#10;&#10;$END$&#10;"
+              value="(function() {&#10;    'use strict';&#10;&#10;    angular&#10;        .module('$moduleName$')&#10;        .component('$componentName$', {&#10;            templateUrl: '$templateUrl$',&#10;            controller: $ControllerName$,&#10;            controllerAs: 'vm',&#10;            bindings: {&#10;&#10;            }&#10;        });&#10;&#10;    $ControllerName$.$inject = ['$dependency$'];&#10;&#10;    function $ControllerName$($dependency$) {&#10;        var vm = this;&#10;&#10;    }&#10;&#10;})();&#10;&#10;$END$&#10;"
               description="Creates an Angular component" toReformat="true" toShortenFQNames="true">
         <variable name="moduleName" expression="" defaultValue="&quot;moduleName&quot;" alwaysStopAt="true"/>
         <variable name="componentName" expression="" defaultValue="&quot;componentName&quot;" alwaysStopAt="true"/>
