@@ -2414,7 +2414,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
   - Usa [PhantomJS](http://phantomjs.org/) para correr tus pruebas en un servidor.
 
-    *¿Por qué?*: PhantomJS es un navegador headless que ayuda a correr las pruebas necesitar una navegador "visual". Así que no necesitas instalar Chrom, Safari u otros navegadores en tu servidor.
+    *¿Por qué?*: PhantomJS es un navegador headless que ayuda a correr las pruebas necesarias en un navegador "visual". Así que no necesitas instalar Chrome, Safari u otro navegador en tu servidor.
 
     Nota: Aún debes testear en todos los navegadores de tu entorno, así como sea apropiado para tu audiencia meta.
 
