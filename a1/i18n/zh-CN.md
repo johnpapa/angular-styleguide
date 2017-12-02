@@ -22,10 +22,10 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ## 在示例App中了解这些规范
 看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
 
-##翻译
+## 翻译
 [Angular规范翻译版本](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n)。
 
-##目录
+## 目录
   1. [单一职责](#单一职责)
   1. [IIFE](#iife)
   1. [Modules](#modules)
@@ -60,7 +60,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   1. [许可](#许可)
 
 ## 单一职责
-###规则一
+### 规则一
 ###### [Style [Y001](#style-y001)]
 
   - 一个文件只定义一个组件。
@@ -178,14 +178,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## Modules
 
-###避免命名冲突
+### 避免命名冲突
 ###### [Style [Y020](#style-y020)]
 
   - 每一个独立子模块使用唯一的命名约定。
 
   *为什么*：避免冲突，每个模块也可以方便定义子模块。
 
-###定义(aka Setters)
+### 定义(aka Setters)
 ###### [Style [Y021](#style-y021)]
 
   - 不使用任何一个使用了setter语法的变量来定义modules。
@@ -215,7 +215,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     ]);
   ```
 
-###Getters
+### Getters
 ###### [Style [Y022](#style-y022)]
 
   - 使用module的时候，避免直接用一个变量，而是使用getter的链式语法。
@@ -239,7 +239,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   function SomeController() { }
   ```
 
-###Setting vs Getting
+### Setting vs Getting
 ###### [Style [Y023](#style-y023)]
 
   - 只能设置一次。
@@ -249,7 +249,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     - 设置module，`angular.module('app', []);`。
     - 获取module，`angular.module('app');`。
 
-###命名函数 vs 匿名函数
+### 命名函数 vs 匿名函数
 ###### [Style [Y024](#style-y024)]
 
   - 回调函数使用命名函数，不要用匿名函数。
@@ -288,7 +288,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## Controllers
 
-###controllerAs在View中的语法
+### controllerAs在View中的语法
 ###### [Style [Y030](#style-y030)]
 
   - 使用[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。
@@ -313,7 +313,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   </div>
   ```
 
-###controllerAs在controller中的语法
+### controllerAs在controller中的语法
 ###### [Style [Y031](#style-y031)]
 
   - 使用 `controllerAs` 语法代替 `经典的$scope语法` 语法。
@@ -340,7 +340,8 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###controllerAs with vm
+### controllerAs with vm
+
 ###### [Style [Y032](#style-y032)]
 
   - 使用`controllerAs`语法时把`this` 赋值给一个可捕获的变量，选择一个有代表性的名称，例如`vm`代表ViewModel。
@@ -388,7 +389,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###置顶绑定成员
+### 置顶绑定成员
 
 ###### [Style [Y033](#style-y033)]
 
@@ -476,7 +477,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
       vm.title = 'Sessions';
   ```
 
-###函数声明隐藏实现细节
+### 函数声明隐藏实现细节
 ###### [Style [Y034](#style-y034)]
 
   - 使用函数声明来隐藏实现细节，置顶绑定成员，当你需要在controller中绑定一个函数时，把它指向一个在文件的后面会出现函数声明。更多详情请看[这里](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code)。
@@ -552,7 +553,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###把Controller中的逻辑延迟到Service中
+### 把Controller中的逻辑延迟到Service中
 ###### [Style [Y035](#style-y035)]
 
   - 通过委派到service和factory中来延迟controller中的逻辑。
@@ -611,14 +612,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###保持Controller的专一性
+### 保持Controller的专一性
 ###### [Style [Y037](#style-y037)]
 
   - 一个view定义一个controller，尽量不要在其它view中使用这个controller。把可重用的逻辑放到factory中，保证controller只服务于当前视图。
 
     *为什么？*：不同的view用同一个controller是非常不科学的，良好的端对端测试覆盖率对于保证大型应用稳定性是必需的。
 
-###分配Controller
+### 分配Controller
 ###### [Style [Y038](#style-y038)]
 
   - 当一个controller必须匹配一个view时或者任何一个组件可能被其它controller或是view重用时，连同controller的route一起定义。
@@ -677,7 +678,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## Services
 
-###单例
+### 单例
 ###### [Style [Y040](#style-y040)]
 
   - 用`new`实例化service，用`this`实例化公共方法和变量，由于这和factory是类似的，所以为了保持统一，推荐用facotry来代替。
@@ -716,19 +717,19 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## Factories
 
-###单一职责
+### 单一职责
 ###### [Style [Y051](#style-y051)]
 
   - factory应该是[单一职责](http://en.wikipedia.org/wiki/Single_responsibility_principle)，这是由其上下文进行封装的。一旦一个factory将要处理超过单一的目的时，就应该创建一个新的factory。
 
-###单例
+### 单例
 ###### [Style [Y051](#style-y051)]
 
   - facotry是一个单例，它返回一个包含service成员的对象。
 
     注：[所有的Angular services都是单例](https://docs.angularjs.org/guide/services)，这意味着每个injector都只有一个实例化的service。
 
-###可访问的成员置顶###
+### 可访问的成员置顶
 ###### [Style [Y052](#style-y052)]
 
   - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service（它的接口）中可调用的成员暴露到顶部，
@@ -785,7 +786,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
-###函数声明隐藏实现细节
+### 函数声明隐藏实现细节
 ###### [Style [Y053](#style-y053)]
 
   - 函数声明隐藏实现细节，置顶绑定成员，当你需要在controller中绑定一个函数时，把它指向一个函数声明，这个函数声明在文件的后面会出现。
@@ -887,7 +888,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## Data Services
 
-###独立的数据调用
+### 独立的数据调用
 ###### [Style [Y060](#style-y060)]
 
   - 把进行数据操作和数据交互的逻辑放到factory中，数据服务负责XHR请求、本地存储、内存存储和其它任何数据操作。
@@ -963,7 +964,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###数据调用返回一个Promise
+### 数据调用返回一个Promise
 ###### [Style [Y061](#style-y061)]
 
   - 就像`$http`一样，调用数据时返回一个promise，在你的调用函数中也返回一个promise。
@@ -1011,7 +1012,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 **[返回顶部](#目录)**
 
 ## Directives
-###一个directive一个文件
+### 一个directive一个文件
 ###### [Style [Y070](#style-y070)]
 
   - 一个文件中只创建一个directive，并依照directive来命名文件。
@@ -1104,14 +1105,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     注：由于directive使用条件比较广，所以命名就存在很多的选项。选择一个让directive和它的文件名都清楚分明的名字。下面有一些例子，不过更多的建议去看[命名](#命名)章节。
 
-###在directive中操作DOM
+### 在directive中操作DOM
 ###### [Style [Y072](#style-y072)]
 
   - 当需要直接操作DOM的时候，使用directive。如果有替代方法可以使用，例如：使用CSS来设置样式、[animation services](https://docs.angularjs.org/api/ngAnimate)、Angular模板、[`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow)或者[`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide)，那么就直接用这些即可。例如，如果一个directive只是想控制显示和隐藏，用ngHide/ngShow即可。
 
     *为什么？*：DOM操作的测试和调试是很困难的，通常会有更好的方法（CSS、animations、templates）。
 
-###提供一个唯一的Directive前缀
+### 提供一个唯一的Directive前缀
 ###### [Style [Y073](#style-y073)]
 
   - 提供一个短小、唯一、具有描述性的directive前缀，例如`acmeSalesCustomerInfo`在HTML中声明为`acme-sales-customer-info`。
@@ -1120,7 +1121,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     注：避免使用`ng-`为前缀，研究一下其它广泛使用的directive避免命名冲突，例如[Ionic Framework](http://ionicframework.com/)的`ion-`。
 
-###限制元素和属性
+### 限制元素和属性
 ###### [Style [Y074](#style-y074)]
 
   - 当创建一个directive需要作为一个独立元素时，restrict值设置为`E`（自定义元素），也可以设置可选值`A`（自定义属性）。一般来说，如果它就是为了独立存在，用`E`是合适的做法。一般原则是允许`EA`，但是当它是独立的时候这更倾向于作为一个元素来实施，当它是为了增强已存在的DOM元素时则更倾向于作为一个属性来实施。
@@ -1182,7 +1183,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###Directives和ControllerAs
+### Directives和ControllerAs
 ###### [Style [Y075](#style-y075)]
 
   - directive使用`controller as`语法，和view使用`controller as`保持一致。
@@ -1311,7 +1312,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 **[返回顶部](#目录)**
 
 ## 解决Controller的Promises
-###Controller Activation Promises
+### Controller Activation Promises
 ###### [Style [Y080](#style-y080)]
 
   - 在`activate`函数中解决controller的启动逻辑。
@@ -1356,7 +1357,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###Route Resolve Promises
+### Route Resolve Promises
 ###### [Style [Y081](#style-y081)]
 
   - 当一个controller在激活之前，需要依赖一个promise的完成时，那么就在controller的逻辑执行之前在`$routeProvider`中解决这些依赖。如果你需要在controller被激活之前有条件地取消一个路由，那么就用route resolver。
@@ -1487,7 +1488,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   angular.module('app').controller('Dashboard', d);function d(a, b) { }
   ```
 
-###手动添加依赖
+### 手动添加依赖
 ###### [Style [Y091](#style-y091)]
 
   - 用`$inject`手动添加Angular组件所需的依赖。
@@ -1565,7 +1566,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-###手动确定路由解析器依赖
+### 手动确定路由解析器依赖
 ###### [Style [Y092](#style-y092)]
 
   - 用`$inject`手动给Angular组件添加路由解析器依赖。
@@ -1598,7 +1599,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 压缩和注释
 
-###ng-annotate
+### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
   - 在[Gulp](http://gulpjs.com)或[Grunt](http://gruntjs.com)中使用[ng-annotate](//github.com/olov/ng-annotate)，用`/** @ngInject */`对需要自动依赖注入的function进行注释。
@@ -1675,7 +1676,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     > 注意：从Angular 1.3开始，你就可以用[`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp)指令的 `ngStrictDi`参数来检测任何可能失去依赖的地方，当以“strict-di”模式创建injector时，会导致应用程序无法调用不使用显示函数注释的函数（这也许无法安全压缩）。记录在控制台的调试信息可以帮助追踪出问题的代码。我只在需要调试的时候才会用到`ng-strict-di`。
     `<body ng-app="APP" ng-strict-di>`
 
-###使用Gulp或Grunt结合ng-annotate
+### 使用Gulp或Grunt结合ng-annotate
 ###### [Style [Y101](#style-y101)]
 
   - 在自动化任务中使用[gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate)或[grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate)，把`/* @ngInject */`注入到任何有依赖关系函数的前面。
@@ -1703,14 +1704,13 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(pkg.paths.dev));
     });
-
-  ```
+    ```
 
 **[返回顶部](#目录)**
 
 ## 异常处理
 
-###修饰符
+### 修饰符
 ###### [Style [Y110](#style-y110)]
 
   - 使用一个[decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator)，在配置的时候用[`$provide`](https://docs.angularjs.org/api/auto/service/$provide)服务，当发生异常时，在[`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler)服务中执行自定义的处理方法。
@@ -1751,7 +1751,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     }
   	```
 
-###异常捕获器
+### 异常捕获器
 ###### [Style [Y111](#style-y111)]
 
   - 创建一个暴露了一个接口的factory来捕获异常并以合适方式处理异常。
@@ -1782,7 +1782,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     }
     ```
 
-###路由错误
+### 路由错误
 ###### [Style [Y112](#style-y112)]
 
   - 用[`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError)来处理并打印出所有的路由错误信息。
@@ -1831,7 +1831,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 命名
 
-###命名原则
+### 命名原则
 ###### [Style [Y120](#style-y120)]
 
   - 遵循以描述组件功能，然后是类型（可选）的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。大多数文件都有2个名字。
@@ -1842,7 +1842,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：命名约定应该只为代码的检索和沟通提供方便。
 
-###功能文件命名
+### 功能文件命名
 ###### [Style [Y121](#style-y121)]
 
   - 遵循以“描述组件功能.类型（可选）”的方式来给所有的组件提供统一的命名，我推荐的做法是`feature.type.js`。
@@ -1909,7 +1909,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     avengers.spec.js
     ```
 
-###测试文件命名
+### 测试文件命名
 ###### [Style [Y122](#style-y122)]
 
   - 和组件命名差不多，带上一个`spec`后缀。
@@ -1928,7 +1928,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     avenger-profile.directive.spec.js
     ```
 
-###Controller命名
+### Controller命名
 ###### [Style [Y123](#style-y123)]
 
   - 为所有controller提供统一的名称，先特征后名字，鉴于controller是构造函数，所以要采用UpperCamelCase（每个单词首字母大写）的方式。
@@ -1950,7 +1950,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     function HeroAvengers(){ }
     ```
 
-###Controller命名后缀
+### Controller命名后缀
 ###### [Style [Y124](#style-y124)]
 
   - 使用`Controller`。
@@ -1970,7 +1970,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     function AvengersController(){ }
     ```
 
-###Factory命名
+### Factory命名
 ###### [Style [Y125](#style-y125)]
 
   - 一样要统一，对service和factory使用camel-casing（驼峰式，第一个单词首字母小写，后面单词首字母大写）方式。避免使用`$`前缀。
@@ -1992,7 +1992,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     function logger(){ }
     ```
 
-###Directive组件命名
+### Directive组件命名
 ###### [Style [Y126](#style-y126)]
 
   - 使用camel-case方式，用一个短的前缀来描述directive在哪个区域使用（一些例子中是使用公司前缀或是项目前缀）。
@@ -2014,7 +2014,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     function xxAvengerProfile(){ }
     ```
 
-###模块
+### 模块
 ###### [Style [Y127](#style-y127)]
 
   - 当有很多的模块时，主模块文件命名成`app.module.js`，其它依赖模块以它们代表的内容来命名。例如，一个管理员模块命名成`admin.module.js`，它们各自的注册模块名字就是`app`和`admin`。
@@ -2023,7 +2023,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：对使用任务来自动化加载所有模块的定义（先）和其它所有的angular文件（后）提供了一种简单的方式。
 
-###配置
+### 配置
 ###### [Style [Y128](#style-y128)]
 
   - 把一个模块的配置独立到它自己的文件中，以这个模块为基础命名。`app`模块的配置文件命名成`app.config.js`（或是`config.js`），`admin.module.js`的配置文件命名成`admin.config.js`。
@@ -2032,7 +2032,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：为设置模块的配置提供了一个可识别的地方。
 
-###路由
+### 路由
 ###### [Style [Y129](#style-y129)]
 
   - 把路由的配置独立到单独的文件。主模块的路由可能是`app.route.js`，`admin`模块的路由可能是`admin.route.js`。即使是在很小的应用中，我也喜欢把路由的配置从其余的配置中分离出来。
@@ -2040,7 +2040,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 **[返回顶部](#目录)**
 
 ## 应用程序结构的LIFT准则
-###LIFT
+### LIFT
 ###### [Style [Y140](#style-y140)]
 
   - 构建一个可以快速定位（`L`ocate）代码、一目了然地识别（`I`dentify）代码、拥有一个平直（`F`lattest）的结构、尽量（`T`ry）坚持DRY（Don’t Repeat Yourself）的应用程序，其结构应该遵循这4项基本准则。
@@ -2054,7 +2054,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     3. 平直的代码结构（层级不要太多）（F）
     4. 尽量保持不要写重复代码（T）
 
-###Locate
+### Locate
 ###### [Style [Y141](#style-y141)]
 
   - 更直观、更简单、更快捷地定位代码
@@ -2079,21 +2079,21 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   .bower.json
   ```
 
-###Identify
+### Identify
 ###### [Style [Y142](#style-y142)]
 
   - 当你看到一个文件时你应该能够立即知道它包含了什么、代表了什么。
 
     *为什么？*：你花费更少的时间来了解代码代表了什么，并且变得更加高效。如果这意味着你需要更长的名字，那么就这么干吧。文件名一定要具有描述性，保持和文件内容互为一体。避免文件中有多个controller，多个service，甚至是混合的。
 
-###Flat
+### Flat
 ###### [Style [Y143](#style-y143)]
 
   - 尽可能长时间地保持一个平直的文件夹结构，如果你的文件夹层级超过7+，那么就开始考虑分离。
 
     *为什么？*：没有谁想在一个7级文件夹中寻找一个文件，你可以考虑一下网页导航栏有那么多层。文件夹结构没有硬性规则，但是当一个文件夹下的文件有7-10个，那么就是时候创建子文件夹了，文件夹的层级一定要把握好。一直使用一个平直的结构，直到确实有必要（帮助其它的LIFT）创建一个新的文件夹。
 
-###T-DRY（尽量坚持DRY）
+### T-DRY（尽量坚持DRY）
 ###### [Style [Y144](#style-y144)]
 
   - 坚持DRY，但是不要疯了一样的做却牺牲了可读性。
@@ -2104,21 +2104,21 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 应用程序结构
 
-###总规范
+### 总规范
 ###### [Style [Y150](#style-y150)]
 
   - 有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
 
   注：了解实例结构的具体信息看[Angular应用结构](http://www.johnpapa.net/angular-app-structuring-guidelines/)。
 
-###Layout
+### Layout
 ###### [Style [Y151](#style-y151)]
 
   - 把定义应用程序总体布局的组件放到`layout`文件夹中，如导航、内容区等等。
 
     *为什么？*：复用。
 
-###按功能划分文件夹结构
+### 按功能划分文件夹结构
 ###### [Style [Y152](#style-y152)]
 
   - 按照它们代表的功能来给创建的文件夹命名，当文件夹包含的文件超过7个（根据需要自行调整数量限制），就考虑新建文件夹。
@@ -2218,14 +2218,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 模块化
 
-###许多小的、独立的模块
+### 许多小的、独立的模块
 ###### [Style [Y160](#style-y160)]
 
   - 创建只封装一个职责的小模块。
 
     *为什么？*：模块化的应用程序很容易添加新的功能。
 
-###创建一个App Module
+### 创建一个App Module
 ###### [Style [Y161](#style-y161)]
 
   - 创建一个应用程序的根模块，它的职责是把应用程序中所有的模块和功能都放到一起。
@@ -2234,14 +2234,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：应用程序模块变成了一个描述哪些模块有助于定义应用程序的清单。
 
-###保持App Module的精简
+### 保持App Module的精简
 ###### [Style [Y162](#style-y162)]
 
   - app module中只放聚合其它模块的逻辑，具体功能在它们自己的模块中实现。
 
     *为什么？*：添加额外的代码（获取数据、展现视图、其它和聚合模块无关的代码）到app module中使app module变得很糟糕，也使得模块难以重用和关闭。
 
-###功能区域就是模块
+### 功能区域就是模块
 ###### [Style [Y163](#style-y163)]
 
   - 创建代表功能区的模块，例如布局、可重用、共享服务、仪表盘和app的特殊功能（例如客户、管理、销售）。
@@ -2252,14 +2252,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：把功能拆分成不同模块方便测试。
 
-###可重用的块就是模块
+### 可重用的块就是模块
 ###### [Style [Y164](#style-y164)]
 
   - 为通用service创建代表可重用的应用程序块的模块，例如异常处理、日志记录、诊断、安全性和本地数据储藏等模块。
 
     *为什么？*：这些类型的功能在很多应用程序中都需要用到，所以把它们分离到自己的模块中，它们可以变成通用的应用程序，也能被跨应用地进行重用。
 
-###模块依赖
+### 模块依赖
 ###### [Style [Y165](#style-y165)]
 
   - 应用程序根模块依赖于应用程序特定的功能模块、共享的和可复用的模块。
@@ -2336,16 +2336,16 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 **[返回顶部](#目录)**
 
-##Angular $包装服务
+## Angular $包装服务
 
-###$document和$window
+### $document和$window
 ###### [Style [Y180](#style-y180)]
 
   - 用[`$document`](https://docs.angularjs.org/api/ng/service/$document)和[`$window`](https://docs.angularjs.org/api/ng/service/$window)代替`document`和`window`。
 
     *为什么？*：使用内部包装服务将更容易测试，也避免了你自己去模拟document和window。
 
-###$timeout和$interval
+### $timeout和$interval
 ###### [Style [Y181](#style-y181)]
 
   - 用[`$timeout`](https://docs.angularjs.org/api/ng/service/$timeout)和[`$interval`](https://docs.angularjs.org/api/ng/service/$interval)代替`setTimeout`和`setInterval` 。
@@ -2357,7 +2357,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ## 测试
 单元测试有助于保持代码的清晰，因此我加入一些关于单元测试的基础和获取更多信息的链接。
 
-###用故事来编写测试
+### 用故事来编写测试
 ###### [Style [Y190](#style-y190)]
 
   - 给每一个故事都写一组测试，先创建一个空的测试，然后用你给这个故事写的代码来填充它。
@@ -2384,7 +2384,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     // and so on
     ```
 
-###测试库
+### 测试库
 ###### [Style [Y191](#style-y191)]
 
   - 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://mochajs.org)进行单元测试。
@@ -2393,7 +2393,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     注意：使用Mocha时你可以考虑选择一个类似[Chai](http://chaijs.com)的提示库。
 
-###测试运行器
+### 测试运行器
 ###### [Style [Y192](#style-y192)]
 
   - [Karma](http://karma-runner.github.io)。
@@ -2406,7 +2406,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：Karma可以很好的和自动化任务工具如[Grunt](http://www.gruntjs.com)（带有[grunt-karma](https://github.com/karma-runner/grunt-karma)）和[Gulp](http://www.gulpjs.com)（带有[gulp-karma](https://github.com/lazd/gulp-karma)）合作。
 
-###Stubbing和Spying
+### Stubbing和Spying
 ###### [Style [Y193](#style-y193)]
 
   - 用[Sinon](http://sinonjs.org/)。
@@ -2417,7 +2417,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：测试失败Sinon有一个具有描述性的信息。
 
-###Headless Browser
+### Headless Browser
 ###### [Style [Y194](#style-y194)]
 
   - 在服务器上使用[PhantomJS](http://phantomjs.org/)来运行你的测试。
@@ -2426,14 +2426,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     注意：你仍然需要在你的环境下测试所有浏览器，来满足用户的需求。
 
-###代码分析
+### 代码分析
 ###### [Style [Y195](#style-y195)]
 
   -在你的测试上运行JSHint。
 
     *为什么？*：测试也是代码，JSHint能够帮你识别代码中可能导致测试无法正常工作的的质量问题。
 
-###对测试降低全局JSHint规则
+### 对测试降低全局JSHint规则
 ###### [Style [Y196](#style-y196)
 
   - 对你的测试代码放宽规则，这样可以允许使用`describe`和`expect`等类似通用的全局方法。对表达式放宽规则，就行Mocha一样。
@@ -2483,7 +2483,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 动画
 
-###用法
+### 用法
 ###### [Style [Y210](#style-y210)]
 
   - 在页面过渡时使用[Angular动画](https://docs.angularjs.org/guide/animations)，包括[ngAnimate模块](https://docs.angularjs.org/api/ngAnimate)。三个关键点是细微、平滑、无缝。
@@ -2492,14 +2492,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：当视图过渡时，微小的动画可以提高感知性。
 
-###Sub Second
+### Sub Second
 ###### [Style [Y211](#style-y211)]
 
   - 使用短持续性的动画，我一般使用300ms，然后调整到合适的时间。
 
     *为什么？*：长时间的动画容易造成用户认为程序性能太差的影响。
 
-###animate.css
+### animate.css
 ###### [Style [Y212](#style-y212)]
 
   - 传统动画使用[animate.css](http://daneden.github.io/animate.css/)。
@@ -2568,7 +2568,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## JS Hint
 
-###使用一个Options文件
+### 使用一个Options文件
 ###### [Style [Y230](#style-y230)]
 
   - 用JS Hint来分析你的JavaScript代码，确保你自定义了JS Hint选项文件并且包含在源控制里。详细信息：[JS Hint文档](http://www.jshint.com/docs/)。
@@ -2733,7 +2733,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ## 常量
 
-###供应全局变量
+### 供应全局变量
 ###### [Style [Y240](#style-y240)]
 
   - 为供应库中的全局变量创建一个Angular常量。
@@ -2784,7 +2784,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ## 文件模板和片段
 为了遵循一致的规范和模式，使用文件模板和片段，这里有针对一些web开发的编辑器和IDE的模板和（或）片段。
 
-###Sublime Text
+### Sublime Text
 ###### [Style [Y250](#style-y250)]
 
   - Angular片段遵循这些规范。
@@ -2803,7 +2803,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     ngfilter     // creates an Angular filter
     ```
 
-###Visual Studio
+### Visual Studio
 ###### [Style [Y251](#style-y251)]
 
   - Angular文件遵循[SideWaffle](http://www.sidewaffle.com)所介绍的规范。
@@ -2812,7 +2812,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
     - 运行下载的vsix文件
     - 重启Visual Studio
 
-###WebStorm
+### WebStorm
 ###### [Style [Y252](#style-y252)]
 
   - 你可以把它们导入到WebStorm设置中:
@@ -3066,7 +3066,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 *贡献代码到这个仓库就意味着你同意了本仓库的许可证内容*
 
-###过程
+### 过程
     1. 在Github Issue中讨论这个问题。
     2. 拉取一个pull request，引用这个问题，解释你做的修改和为什么要这样做。
     3. pull request将会被进行评估，结果就是合并或是拒绝。
