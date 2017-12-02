@@ -57,6 +57,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   1. [Routing](#routing)
   1. [Task Automation](#task-automation)
   1. [Filters](#filters)
+  1. [Helper Functions](#helper-functions)
   1. [Angular Docs](#angular-docs)
 
 ## Single Responsibility
@@ -3315,13 +3316,86 @@ Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automa
 
 **[Back to top](#table-of-contents)**
 
-## Filters
+## Helper Functions
 
-###### [Style [Y420](#style-y420)]
+Angular 1.x ships with some [helper functions](https://docs.angularjs.org/api/ng/function) whose equivalent functionality can be found within newer versions of JavaScript (e.g. `angular.isArray()`, `angular.forEach()`, etc). In such cases we should favor usage of native JavaScript functions.
 
-  - Avoid using filters for scanning all properties of a complex object graph. Use filters for select properties.
+###### [Style [Y500](#style-y500)]
 
-    *Why?*: Filters can easily be abused and negatively affect performance if not used wisely, for example when a filter hits a large and deep object graph.
+  - Suggestion: Use native JavaScript functions instead of Angular's helper functions whenever possible.
+
+  *Why?*: You can replace a of lot Angular's helper functions with native ES2015+ functionality such as [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) for copying objects and the [Spread Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Copy_an_array) for copying arrays _(ie. `[...arr1]`)_.
+
+  *Why?*: Because these are features that have been made available in the latest versions of JavaScript, but did not exist natively when the Angular helper functions were first written.
+
+  **Example 1**: Replacing `angular.forEach()` and `angular.isArray()`:
+
+  ```javascript
+  var arr = [1, 2, 3];
+
+  // Instead of this:
+  angular.forEach(arr, function(value) {
+    console.log(value);
+  });
+
+  // Try this:
+  arr.forEach(function(value) {
+    console.log(value);
+  });
+  ```
+
+  ```javascript
+  var obj = { hello: 'Hello', world: 'World' };
+
+  // Instead of this:
+  angular.forEach(obj, function(value) {
+    console.log(value);
+  });
+
+  // Try this:
+  Object.keys(obj)
+    .forEach(function(key) {
+      console.log(obj[key]);
+    });
+  ```
+
+  ```javascript
+  // Instead of this:
+  angular.isArray([1, 2, 3]); // true
+  angular.isArray({ hello: 'World' }); // false
+
+  // Try this:
+  Array.isArray([1, 2, 3]); // true
+  Array.isArray({ hello: 'World' }); // false
+  ```
+
+  **Example 2:** Favor usage of JavaScript features (in this case available starting with ES2015) over `angular.copy()` and `angular.extend()`.
+
+  ```javascript
+  var arr1 = [1, 2, 3];
+
+  // Instead of this:
+  var copyArr1 = angular.copy(arr1);
+
+  // Try this:
+  var copyArr1 = [...arr1];
+
+  ```
+
+  ```javascript
+  var obj1 = { hello: 'Hello' };
+  var obj2 = { world: 'World' };
+
+  // Instead of this
+  var mergedObjects = angular.extend({}, obj1, obj2); // {hello: 'Hello', world: 'World'}
+
+  // Try this:
+  var mergedObjects = Object.assign({}, obj1, obj2); // {hello: 'Hello', world: 'World'}
+  ```
+
+  - Note: you might need to use a [polyfill](https://babeljs.io/docs/usage/polyfill/) to take advantage of the latest features of JavaScript for better browser support.
+
+  - Note: Be sure to understand the differences in implementation when using a native JavaScript feature over an Angular helper. For example Angular's `forEach` implementation does not throw an error if you pass it a `null` or `undefined` object, whereas JavaScript's native implementation only works with arrays.
 
 **[Back to top](#table-of-contents)**
 
