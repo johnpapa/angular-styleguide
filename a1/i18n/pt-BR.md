@@ -469,7 +469,7 @@ ou *Controladores*
 
 ### Function Declarations to Hide Implementation Details
 
-  - Utilize declarações de funções para esconder detalhes de implementação. Mantenha seus objetos que necessitam de bind no topo. Quando você precisar fazer o bind de uma função no controller, aponte ela para a declaração de função que aparece no final do arquivo. Ela está ligada diretamente aos objetos que precisam de bind no início do arquivo. Para mais detalhes veja [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilize declarações de funções para esconder detalhes de implementação. Mantenha seus objetos que necessitam de bind no topo. Quando você precisar fazer o bind de uma função no controller, aponte-a para a declaração de função que aparece no final do arquivo. Ela está ligada diretamente aos objetos que precisam de bind no início do arquivo. Para mais detalhes veja [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     **Por quê?** Colocar os objetos que precisam de bind no início torna mais fácil de ler e te ajuda a instantaneamente identificar quais objetos do controller podem ser utilizados na View. (Mesmo do item anterior.)
 
@@ -543,7 +543,7 @@ ou *Controladores*
 
 ### Defer Controller Logic
 
-  - Remova a lógica do controller delegando ela a services e factories.
+  - Remova a lógica do controller delegando-na a services e factories.
 
     **Por quê?** A lógica pode ser reutilizada em múltiplos controllers quando colocada em um service e exposta através de uma função.
 
