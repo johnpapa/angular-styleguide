@@ -1240,7 +1240,7 @@ Note: There are many naming options for directives, especially since they can be
 
     *Why?*: It makes sense and it's not difficult.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place.
+    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs.
 
     Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
