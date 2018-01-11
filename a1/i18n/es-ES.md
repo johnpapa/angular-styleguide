@@ -67,7 +67,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: Un componente por archivo evita errores ocultos que a menudo surgen cuando se combinan componentes en un archivo donde pueden compartir variables, crear closures (clausuras) no deseadas, o acoplamiento indeseado de dependencias.
 
-  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una factoría todo en el mismo archivo.
+  El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y define una factoría todo en el mismo archivo.
 
   ```javascript
   /* evitar */
@@ -121,7 +121,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Envuelve los componentes Angular en una expresión de función que se invoca inmediatamente Immediately Invoked Function Expression (IIFE).
 
-  *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así colisión de variables.
+  *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así la colisión de variables.
 
   *¿Por qué?*: Cuando tu código se minimiza y se empaqueta en un archivo único para desplegar al servidor de producción, podrías tener colisión de variables y muchas variables globales. Una IIFE te protege contra ambos, creando una scope por cada archivo.
 
@@ -2405,7 +2405,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
   - Usa [Sinon](http://sinonjs.org/) para el stubeo y espíar.
 
-    *¿Por qué?*: Sinon funciona bien con ambos Jasmine y Mocha y extiende las características de stubeo y espío que ellos ofrecen.
+    *¿Por qué?*: Sinon funciona bien con ambos Jasmine y Mocha y extiende las características de stubeo y espías que ellos ofrecen.
 
     *¿Por qué?*: Sinon hace más fácil cambiar entre Jasmine y Mocha, si quieres probar ambos.
 
@@ -2416,7 +2416,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
     *¿Por qué?*: PhantomJS es un navegador headless que ayuda a correr las pruebas necesarias en un navegador "visual". Así que no necesitas instalar Chrome, Safari u otro navegador en tu servidor.
 
-    Nota: Aún debes testear en todos los navegadores de tu entorno, así como sea apropiado para tu audiencia meta.
+    Nota: Aún debes testear en todos los navegadores de tu entorno, así como sea apropiado para tu audiencia objetivo.
 
 ### Ánalisis de Código
 ###### [Style [Y195](#style-y195)]
@@ -2476,7 +2476,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
     *¿Por qué?*: Animaciones sutiles pueden mejorar la Experiencia de Usuario cuando son usadas apropiadamente.
 
-    *¿Por qué?*: Animaciones sutiles pueden mejorar el rendimiento percibido como una transición de vista.
+    *¿Por qué?*: Animaciones sutiles pueden mejorar el rendimiento percibidas como una transición de vista.
 
 ### Sub Segundos
 ###### [Style [Y211](#style-y211)]
