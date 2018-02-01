@@ -42,7 +42,7 @@ _tldr; Use this guide. Attributions are appreciated._
 
 ### Copyright
 
-Copyright (c) 2014-2016 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2018 [John Papa](http://johnpapa.net)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining
