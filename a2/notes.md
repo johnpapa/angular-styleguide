@@ -18,7 +18,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
 ## Community Awesomeness and Credit
 Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. Many of my styles have been from the many pair programming sessions [Ward Bell](https://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
 
-##Translations
+## Translations
 Translations of this Angular 2 style guide are maintained by the community. Due to the in flux nature of this guide, I will hold off on accepting contributions for the time being. But I hope to get the same amazing contributions we had for the v1 of the guide!
 
 ## Table of Contents
@@ -149,6 +149,7 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 ###### [Style [A2-040](#style-a2-040)]
 
   - Services are singletons and should be used for sharing data and functionality.
+  - Factories are singletons and return an object that contains the members of the service.
 
   **example coming soon**
 
@@ -163,14 +164,6 @@ Translations of this Angular 2 style guide are maintained by the community. Due 
 
 **[Back to top](#table-of-contents)**
 
-### Singletons
-###### [Style [A2-051](#style-a2-051)]
-
-  - Factories are singletons and return an object that contains the members of the service.
-
-  **example coming soon**
-
-**[Back to top](#table-of-contents)**
 
 ### Accessible Members Up Top
 ###### [Style [A2-052](#style-a2-052)]
