@@ -1,4 +1,4 @@
 # webpack4.x_Demo
-基于webpack4.6.0的多页应用配置，包括常见的插件使用与配置。
-要点都有注释！
-如有帮助，请赐我一颗小星星。
+1.add ts
+2.add multi page entrance
+3.add egg.js
