@@ -2,8 +2,13 @@ const extractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = [
 			{
 				test: /\.tsx?$/,
-				use: "ts-loader",
-				exclude: /node_modules/
+				use: [{
+					loader: "ts-loader",
+					options: {
+						configFile: "tsconfig.1.json"
+					}
+				}],
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.css$/,
