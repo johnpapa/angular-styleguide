@@ -1,0 +1,27 @@
+body{
+	background: greenyellow;
+}
+div{
+	border: 5px solid green;
+	font-size: 20px;
+	background: url(../images/edit.png) repeat;
+}
+img{
+	transform: rotate(45deg);
+}
+
+#head{
+	height: 100px;
+}
+.head{
+	display: block;
+}
+.add{
+	display: block;
+}
+.anthor{
+	display: block;
+}
+.a{
+	color: #fff;
+}

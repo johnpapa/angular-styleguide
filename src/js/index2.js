@@ -1,0 +1,1 @@
+document.querySelector("div").style.background = "red";
