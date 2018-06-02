@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "client": "webpack-dev-server --mode development --content-base"
+    "client": "webpack-dev-server --mode development --inline --hot"
   },
   "keywords": [],
   "author": "",
