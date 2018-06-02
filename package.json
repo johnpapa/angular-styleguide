@@ -1,18 +1,50 @@
 {
   "name": "webpack-demo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "hackernews showcase using typescript && egg",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development --inline --hot",
+    "build": "npm run build-serve && npm run build-client",
+    "start": "egg-scripts start",
     "client": "webpack --watch",
-    "dev": "webpack-dev-server --mode development --inline --hot"
+    "serve": "egg-bin dev -r egg-ts-helper/register",
+    "debug": "egg-bin debug -r egg-ts-helper/register",
+    "test-local": "egg-bin test -r egg-ts-helper/register",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov -r egg-ts-helper/register",
+    "build-client": "webpack --mode production",
+    "build-serve": "ets && tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "autod": "autod",
+    "lint": "tslint .",
+    "clean": "ets clean"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "egg",
+    "typescript"
+  ],
+  "author": "James Liauw",
   "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "egg": "^2.6.0",
+    "egg-scripts": "^2.6.0",
+    "egg-view-nunjucks": "^2.2.0",
+    "moment": "^2.22.0"
+  },
   "devDependencies": {
+    "@types/cheerio": "^0.22.1",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/supertest": "^2.0.0",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "cheerio": "^1.0.0-rc.2",
+    "egg-bin": "^4.6.2",
+    "egg-mock": "^3.16.0",
+    "egg-ts-helper": "^1.4.2",
+    "tslib": "^1.9.0",
+    "tslint": "^4.0.0",
     "autoprefixer": "^8.4.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
@@ -41,9 +73,15 @@
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.2",
     "webpack-dev-server": "^3.1.4",
-    "webpack-merge": "^4.1.2"
+    "webpack-merge": "^4.1.2",
+    "co-mocha": "^1.2.2",
+    "mocha": "^1.18"
   },
-  "dependencies": {
-    "jquery": "^3.3.1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesliauw/angular-styleguide"
+  },
+  "engines": {
+    "node": ">=8.9.0"
   }
 }

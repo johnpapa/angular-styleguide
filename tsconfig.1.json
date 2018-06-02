@@ -7,5 +7,12 @@
       "target": "es5",
       "jsx": "react",
       "allowJs": true
-    }
+    },
+    "exclude": [
+      "app",
+      "config",
+      "test",
+      "typings",
+      "dist"
+    ]
   }
