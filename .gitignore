@@ -20,3 +20,4 @@ config/**/*.map
 app/public
 app/view
 .history
+dist/*
