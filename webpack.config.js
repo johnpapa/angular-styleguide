@@ -5,8 +5,8 @@ const rulesConfig = require("./webpack.rules.js");
 module.exports = {
 	entry: {
 		// 多入口文件
-		a: './src/js/index.js',
-		b: './src/js/index2.js',
+		a: './src/js/index.ts',
+		b: './src/js/index2.ts',
 		jquery: 'jquery'
 	},
 	output: {
@@ -24,9 +24,12 @@ module.exports = {
 		hot: false,   // 开启热更新
 		inline: true,
 	},
-	// devtool: "source-map",  // 开启调试模式
+	devtool: "inline-source-map",  // 开启调试模式
 	module:{
 		rules: rulesConfig
+	},
+	resolve: {
+		extensions: [".tsx", ".ts", ".js",".json"]
 	},
 	// 提取js，lib1名字可改
 	optimization: {

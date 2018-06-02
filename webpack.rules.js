@@ -1,6 +1,11 @@
 const extractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = [
 			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/
+			},
+			{
 				test: /\.css$/,
 				// 不分离的写法
 				// use: ["style-loader", "css-loader"]
@@ -23,12 +28,11 @@ module.exports = [
 
 				})
 			},
-			{
-				test: /\.js$/,
-				use: ["babel-loader"],
-				// 不检查node_modules下的js文件
-				exclude: "/node_modules/"
-			},
+			// {
+			// 	test: /\.js$/,
+			// 	use: ["babel-loader"],
+			// 	exclude: "/node_modules/"
+			// },
 			{
 				test: /\.(png|jpg|gif)$/,
 				use: [{
