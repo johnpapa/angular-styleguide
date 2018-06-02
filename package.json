@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "client": "webpack-dev-server --mode development --inline --hot"
+    "client": "webpack --watch",
+    "dev": "webpack-dev-server --mode development --inline --hot"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "purifycss-webpack": "^0.7.0",
     "style-loader": "^0.21.0",
     "ts-loader": "^4.3.0",
+    "tsconfig-paths-webpack-plugin": "^3.1.3",
     "typescript": "^2.9.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
