@@ -1,8 +1,10 @@
 # webpack4.x_Demo
 1.add ts done
 2.add multi page entrance
-3.add egg.js
+3.add egg.js done
 4.nunjucks support
+5.add sample
+6.add jq support done
 
 # hackernews-async-ts
 
