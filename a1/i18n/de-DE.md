@@ -2,7 +2,7 @@
 
 *Dogmatischer Angular Styleguide für Teams von John Papa [@john_papa](//twitter.com/john_papa)*
 
-Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten Sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](http://pluralsight.com/training/Authors/Details/john-papa) und der Arbeit in Teams.
+Sind Sie auf der Suche nach einem dogmatischen Styleguide zur Syntax, zu Konventionen und zur Struktur von Angular-Anwendungen, dann treten Sie näher. Diese Vorlagen basieren auf meinen Erfahrungen mit [Angular](//angularjs.org), Präsentationen, [Pluralsight Trainingskursen](https://app.pluralsight.com/profile/author/john-papa) und der Arbeit in Teams.
 
 Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angular-Anwendungen bereitzustellen, indem ich die Konventionen, die ich nutze, zeige und - wichtiger als das - beschreibe, warum ich sie wähle.
 
@@ -13,13 +13,13 @@ Der Zweck dieses Styleguides ist es, eine Anleitung für die Erstellung von Angu
 ## Außergewöhnliche Community und Anerkennung
 Arbeite niemals im leeren Raum. Ich finde, dass die Angular-Community eine unglaubliche Gruppe ist, die ihre Erfahrung mit Leidenschaft teilt. Also haben ein Freund und Angular-Experte, Todd Motto, und ich viele Vorlagen und Konventionen zusammengetragen. Bei den meisten sind wir uns einig, und bei ein paar sind wir verschiedener Meinung. Ich möchte Sie ermutigen, sich [Todd's Guidelines](https://github.com/toddmotto/angularjs-styleguide) anzusehen, um ein Gespür für seinen Ansatz zu entwickeln und ihn vergleichen zu können.
 
-Viele meiner Vorlagen entstanden aus Pair-Programming-Sessions, die [Ward Bell](http://twitter.com/wardbell) und ich hatten. Mein Freund Ward hat sicherlich die endgültige Entwicklung dieser Anleitung beeinflusst.
+Viele meiner Vorlagen entstanden aus Pair-Programming-Sessions, die [Ward Bell](https://twitter.com/wardbell) und ich hatten. Mein Freund Ward hat sicherlich die endgültige Entwicklung dieser Anleitung beeinflusst.
 
 ## Schauen Sie sich die Vorlagen in einer Beispielanwendung an
 Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebenso hilfreich, sie auch in der Praxis zu sehen. Diese Anleitung wird von einer Beispielanwendung begleitet, die diesen Vorlagen und Mustern folgt. Sie finden die [Beispielanwendung (namens "modular") hier] (https://github.com/johnpapa/ng-demos) im `modular`-Ordner. Fühlen Sie sich frei, diese zu holen, indem Sie sie clonen oder einen Fork erstellen.[Anweisungen, sie zum Laufen zu bringen, finden Sie im Readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Übersetzungen
-[Übersetzungen dieses Styleguides](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) werden von der Community hier verwaltet.
+[Übersetzungen dieses Styleguides](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) werden von der Community hier verwaltet.
 
 ## Inhaltsverzeichnis
 
@@ -291,7 +291,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### controllerAs View-Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - Ziehen Sie die [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/)-Syntax der `klassischen Controller-Mit-$scope`-Syntax vor.
+  - Ziehen Sie die [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/)-Syntax der `klassischen Controller-Mit-$scope`-Syntax vor.
 
   *Warum?*: Controller werden immer wieder neu erstellt. Man erhält jedes Mal eine neue Instanz und die `controllerAs`-Syntax ist näher an der eines JavaScript-Konstruktors, als die `klassische Controller-Mit-$scope-Syntax`.
 
@@ -364,7 +364,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
   }
   ```
 
-  Anmerkung: Sie können jegliche [jshint](http://www.jshint.com/)-Warnungen unterbinden, indem Sie den Kommentar vor der Codezeile einfügen. Allerdingst ist dies nicht notwendig, wenn die Funktion großgeschrieben ist (UpperCasing). Diese Konvention besagt, dass es sich um eine Konstruktor-Funktion handelt, was einem Controller in Angular entspricht.
+  Anmerkung: Sie können jegliche [jshint](https://jshint.com/)-Warnungen unterbinden, indem Sie den Kommentar vor der Codezeile einfügen. Allerdingst ist dies nicht notwendig, wenn die Funktion großgeschrieben ist (UpperCasing). Diese Konvention besagt, dass es sich um eine Konstruktor-Funktion handelt, was einem Controller in Angular entspricht.
 
   ```javascript
   /* jshint validthis: true */
@@ -481,7 +481,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Funktionsdeklarationen, um Details der Implementierung zu verbergen
 ###### [Style [Y034](#style-y034)]
 
-  - Nutzen Sie Funktionsdeklarationen, um Implementierungsdetails zu verbergen. Halten Sie Ihre zur Bindung vorgesehenen Elemente oben. Wenn Sie eine Controller-Funktion zur Bindung vorsehen müssen, dann lassen Sie diese auf die Funktionsdeklaration zeigen, die weiter unten erscheint. Diese wird direkt an den Abschnitt mit den zur Bindung vorgesehenen Element geknüpft. Mehr erfahren Sie hier in [diesem Beitrag](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Nutzen Sie Funktionsdeklarationen, um Implementierungsdetails zu verbergen. Halten Sie Ihre zur Bindung vorgesehenen Elemente oben. Wenn Sie eine Controller-Funktion zur Bindung vorsehen müssen, dann lassen Sie diese auf die Funktionsdeklaration zeigen, die weiter unten erscheint. Diese wird direkt an den Abschnitt mit den zur Bindung vorgesehenen Element geknüpft. Mehr erfahren Sie hier in [diesem Beitrag](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Warum?*: Die zur Bindung vorgesehenen Elemente am Anfang zu platzieren, erhöht die Lesbarkeit und hilft Ihnen die Elemente zu identifizieren, die gebunden und in einem View genutzt werden können. (Das Gleiche, wie zuvor.)
 
@@ -722,7 +722,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Single Responsibility
 ###### [Style [Y050](#style-y050)]
 
-  - Factories sollten [eine einzige Verantwortung](http://en.wikipedia.org/wiki/Single_responsibility_principle) haben, die in ihrem Kontext gekapselt ist. Wenn eine Factory einmal über diesen einzigen Zweck hinaus erweitert werden muss, dann sollte eine neue Factory erstellt werden.
+  - Factories sollten [eine einzige Verantwortung](https://en.wikipedia.org/wiki/Single_responsibility_principle) haben, die in ihrem Kontext gekapselt ist. Wenn eine Factory einmal über diesen einzigen Zweck hinaus erweitert werden muss, dann sollte eine neue Factory erstellt werden.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
@@ -734,7 +734,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Zugreifbare Bestandteile an den Anfang
 ###### [Style [Y052](#style-y052)]
 
-  - Halten Sie die zugreifbaren Bestandteile eines Service (sein Interface) oben, indem Sie eine Technik anwenden, die aus [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) entlehnt ist.
+  - Halten Sie die zugreifbaren Bestandteile eines Service (sein Interface) oben, indem Sie eine Technik anwenden, die aus [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) entlehnt ist.
 
     *Warum?*: Die zugreifbaren Bestandteile oben zu platzieren, erhöht die Lesbarkeit und hilft Ihnen, schnell zu identifizieren, welche Elemente des Service aufgerufen werden können und getestet (oder simuliert) werden müssen.
 
@@ -791,7 +791,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Funktionsdeklarationen, um die Details der Implementierung zu verbergen
 ###### [Style [Y053](#style-y053)]
 
-  - Benutzen Sie Funktionsdeklarationen, um die Details der Implementierung zu verbergen. Halten Sie Ihre zugreifbaren Bestandteile der Factory ganz oben. Lassen Sie diese auf Funktionsdeklarationen verweisen, die weiter unten in der Datei aufgeführt werden. Mehr erfahren Sie hier in [diesem Beitrag](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Benutzen Sie Funktionsdeklarationen, um die Details der Implementierung zu verbergen. Halten Sie Ihre zugreifbaren Bestandteile der Factory ganz oben. Lassen Sie diese auf Funktionsdeklarationen verweisen, die weiter unten in der Datei aufgeführt werden. Mehr erfahren Sie hier in [diesem Beitrag](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Warum?*: Zugreifbare Elemente am Anfang zu platzieren, erhöht die Lesbarkeit und hilft Ihnen, zu identifizieren, auf welche Funktionen der Factory von außen zugegriffen werden kann.
 
@@ -1120,7 +1120,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
     *Warum?*: Der eindeutige kurze Präfix gibt den Kontext und den Ursprung der Direktive wieder. Ein Prefix wie `cc-` könnte ausweisen, dass die Direktive Teil einer "CodeCamper"-Anwendung ist, wohingegegen `acme-` auf eine Direktive der Firma Acme hinweisen könnte.
 
-    Anmerkung: Vermeiden Sie `ng-`, weil dieser Präfix für Angular-Direktiven reserviert ist. Recherchieren Sie viel genutzte Direktiven, um einem Namenskonflikt wie zum Beispiel mit `ion-` für das [Ionic Framework](http://ionicframework.com/) vorzubeugen.
+    Anmerkung: Vermeiden Sie `ng-`, weil dieser Präfix für Angular-Direktiven reserviert ist. Recherchieren Sie viel genutzte Direktiven, um einem Namenskonflikt wie zum Beispiel mit `ion-` für das [Ionic Framework](https://ionicframework.com/) vorzubeugen.
 
 ### Beschränken Sie Direktiven auf Elemente und Attribute
 ###### [Style [Y074](#style-y074)]
@@ -1603,7 +1603,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Benutzen Sie [ng-annotate](//github.com/olov/ng-annotate) für [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com) und versehen Sie die Funktionen mit den notwendigen `/** @ngInject */`-Kommentaren, die für die "automatische" Dependency Injection genutzt werden sollen.
+  - Benutzen Sie [ng-annotate](//github.com/olov/ng-annotate) für [Gulp](https://gulpjs.com) oder [Grunt](https://gruntjs.com) und versehen Sie die Funktionen mit den notwendigen `/** @ngInject */`-Kommentaren, die für die "automatische" Dependency Injection genutzt werden sollen.
 
     *Warum?*: Dies schützt Ihren Code vor Abhängigkeiten, die keiner minifizierungssicheren Technik entsprechen.
 
@@ -1680,7 +1680,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 ### Gulp oder Grunt für ng-annotate nutzen
 ###### [Style [Y101](#style-y101)]
 
-  - Benutzen Sie [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) oder [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in einer automatisierten Build-Task. Fügen Sie `/* @ngInject */` vor jeder Funktion ein, die Abhängigkeiten hat.
+  - Benutzen Sie [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) oder [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) in einer automatisierten Build-Task. Fügen Sie `/* @ngInject */` vor jeder Funktion ein, die Abhängigkeiten hat.
 
     *Warum?*: ng-annotate erkennt die meisten Abhängigkeiten automatisch, benötigt manchmal aber Hinweise durch die `/* @ngInject */`-Syntax.
 
@@ -2116,7 +2116,7 @@ Während diese Anleitung das *Was*, *Warum* und *Wie* erklärt, finde ich es ebe
 
   - Sie sollten eine kurzfristige und langfristige Sicht auf Ihre Implementierung haben. Das bedeutet: Fangen Sie klein an, behalten Sie dabei aber im Auge, wohin Sie mir Ihrer Anwendung wollen. Jeder Code der Anwendung wird in einem Stammverzeichnis namens `app` abgelegt. Für den Inhalt gilt: Ein Feature pro Datei. Jeder Controller, Service, jedes Modul, jede View befindet sich in ihrer/seiner eigenen Datei. Alle externen Scripts (3rd Party Bibliotheken) werden in einem anderen Stammverzeichnis, nicht aber im `app`-Verzeichnis abgelegt. Ich habe sie nicht geschrieben und ich möchte nicht, dass sie meine Anwendung durcheinander bringen.(`bower_components`, `scripts`, `lib`).
 
-    Anmerkung: Sie finden mehr Details und Gründe für diese Struktur in [diesem Originalbeitrag zur Anwendungsstruktur](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Anmerkung: Sie finden mehr Details und Gründe für diese Struktur in [diesem Originalbeitrag zur Anwendungsstruktur](https://johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2394,11 +2394,11 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 ### Testbibliotheken
 ###### [Style [Y191](#style-y191)]
 
-  - Nutzen Sie [Jasmine](http://jasmine.github.io/) oder [Mocha](http://mochajs.org) für Unit-Tests.
+  - Nutzen Sie [Jasmine](https://jasmine.github.io/) oder [Mocha](https://mochajs.org) für Unit-Tests.
 
     *Warum?*: Die Nutzung von Jasmin und Mocha ist sehr verbreitet in der Angular-Community. Beide sind stabil, gut gepflegt und liefern robuste Testfunktionen.
 
-    Anmerkung: Wenn Sie Mocha nutzen, sollten Sie in Erwägung ziehen, eine sogenannte Assert-Library, wie [Chai](http://chaijs.com) zu nutzen. Ich ziehe dem Mocha vor.
+    Anmerkung: Wenn Sie Mocha nutzen, sollten Sie in Erwägung ziehen, eine sogenannte Assert-Library, wie [Chai](https://www.chaijs.com) zu nutzen. Ich ziehe dem Mocha vor.
 
 ### Testrunner
 ###### [Style [Y192](#style-y192)]
@@ -2409,14 +2409,14 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: Karma hängt sich leicht von allein in einen CI-Prozess (in Grunt oder Gulb) ein.
 
-    *Warum?*: Verschiedene IDEs wie [WebStorm](http://www.jetbrains.com/webstorm/) und [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225) haben damit begonnen, Karma einzubinden.
+    *Warum?*: Verschiedene IDEs wie [WebStorm](http://www.jetbrains.com/webstorm/) und [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs) haben damit begonnen, Karma einzubinden.
 
-    *Warum?*: Karma arbeitet wunderbar mit Task-Managern für Automatisierte Aufgaben wie [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) und [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)) zusammen.
+    *Warum?*: Karma arbeitet wunderbar mit Task-Managern für Automatisierte Aufgaben wie [Grunt](https://gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) und [Gulp](https://gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)) zusammen.
 
 ### Simulation durch "Stubbing" und "Spying"
 ###### [Style [Y193](#style-y193)]
 
-  - Benutzen Sie [Sinon](http://sinonjs.org/) um Komponenten im Rahmen von "Stubbing" und "Spying" (Mocking) zu simulieren.
+  - Benutzen Sie [Sinon](https://sinonjs.org/) um Komponenten im Rahmen von "Stubbing" und "Spying" (Mocking) zu simulieren.
 
     *Warum?*: Sinon arbeitet wunderbar mit Jasmine und Mocha zusammen und erweitert deren Fähigkeiten der Simulation von Komponenten.
 
@@ -2509,7 +2509,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Benutzen Sie [animate.css](http://daneden.github.io/animate.css/) für konventielle Animationen.
+  - Benutzen Sie [animate.css](https://daneden.github.io/animate.css/) für konventielle Animationen.
 
     *Warum?*: Die Animationen von animate.css sind schnell, sanft und einfach zu Ihrer Anwendung hinzuzufügen.
 
@@ -2517,7 +2517,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 
     *Warum?*: animate.css ist weit verbreitet und gut getestet.
 
-    Anmerkung: Schauen Sie sich diesen [tollen Beitrag von Matias Niemelä über Angular Animationen](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html) an.
+    Anmerkung: Schauen Sie sich diesen [tollen Beitrag von Matias Niemelä über Angular Animationen](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html) an.
 
 **[Zurück zum Anfang](#table-of-contents)**
 
@@ -2578,7 +2578,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 ### Nutzen Sie eine Optionsdatei
 ###### [Style [Y230](#style-y230)]
 
-  - Benutzen Sie JS Hint um Ihren JavaScript-Code zu prüfen (Linting) und versichern Sie sich, dass sie die Prüffunktion für sich angepasst haben und die Optionsdatei in Ihrer Quellcodeverwaltung abgelegt haben. Schauen Sie sich die [JS Hint Dokumentation](http://www.jshint.com/docs/) an, um mehr über die Optionen zu erfahren.
+  - Benutzen Sie JS Hint um Ihren JavaScript-Code zu prüfen (Linting) und versichern Sie sich, dass sie die Prüffunktion für sich angepasst haben und die Optionsdatei in Ihrer Quellcodeverwaltung abgelegt haben. Schauen Sie sich die [JS Hint Dokumentation](https://jshint.com/docs/) an, um mehr über die Optionen zu erfahren.
 
     *Warum?*: Erstattet erste Meldung, bevor Sie den Code in die Quellcodeverwaltung übertragen.
 
@@ -2655,7 +2655,7 @@ Unit-Tests tragen dazu bei, sauberen Code zu erhalten. Daher habe ich einige mei
 ### Nutzung und Optionsdatei
 ###### [Style [Y235](#style-y235)]
 
-  - Benutzen Sie JSCS um die Anwendung von Programmier-Richtlinien in Ihrem JavaScript-Code zu prüfen und versichern Sie sich, dass Sie die Prüffunktion für sich angepasst haben und die Optionsdatei in Ihrer Quellcodeverwaltung abgelegt haben. Schauen Sie sich die [JS Hint Dokumentation](http://www.jshint.com/docs/) an, um mehr über die Optionen zu erfahren.
+  - Benutzen Sie JSCS um die Anwendung von Programmier-Richtlinien in Ihrem JavaScript-Code zu prüfen und versichern Sie sich, dass Sie die Prüffunktion für sich angepasst haben und die Optionsdatei in Ihrer Quellcodeverwaltung abgelegt haben. Schauen Sie sich die [JS Hint Dokumentation](https://jshint.com/docs/) an, um mehr über die Optionen zu erfahren.
 
     *Warum?*: Erstattet erste Meldung, bevor Sie den Code in die Quellcodeverwaltung übertragen.
 
@@ -3032,7 +3032,7 @@ Das Routing auf der Client-Seite ist für die Erstellung eines Navigationsflusse
 **[Zurück zum Anfang](#table-of-contents)**
 
 ## Automatisierung von Aufgaben
-Nutzen Sie [Gulp](http://gulpjs.com) oder [Grunt](http://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grunt Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
+Nutzen Sie [Gulp](https://gulpjs.com) oder [Grunt](https://gruntjs.com), um Aufgaben zu automatisieren. Bei Gulp geht der Code vor Konfiguration, bei Grunt Konfiguration vor Code. Ich persönlich bevorzuge Gulp, weil ich denke, es ist einfacher zu lesen und zu schreiben, aber beide sind erstklassig.
 
 > Erfahren Sie mehr über Gulp und Muster für die Automatisierung von Aufgaben in meinem [Gulp Pluralsight Kurs](http://jpapa.me/gulpps)
 
@@ -3086,7 +3086,7 @@ _tldr; Wenden Sie diese Richtlinien an. Beiträge sind willkommen._
 
 ### Copyright
 
-Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](https://johnpapa.net)
 
 ### (Die MIT-Lizenz)
 Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationen (die "Software") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, inklusive und ohne Ausnahme dem Recht, sie zu verwenden, kopieren, ändern, fusionieren, verlegen, verbreiten, unterlizenzieren und/oder zu verkaufen, und Personen, die diese Software erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:

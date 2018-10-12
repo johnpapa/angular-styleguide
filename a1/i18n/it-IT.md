@@ -6,7 +6,7 @@ Uno speciale ringraziamento a Igor Minar, a capo del Team di Angular, per la rev
 ## Scopo
 *Guida stilistica dogmatica ad Angular per i team di [@john_papa](//twitter.com/john_papa)*
 
-Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team.
+Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](https://app.pluralsight.com/profile/author/john-papa) e del lavoro in team.
 
 L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con Angular mostrando le convenzioni che uso e, più importante, perché le uso.
 
@@ -17,13 +17,13 @@ L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione
 ## Eccezionalità della comunità e riconoscimenti
 Mai lavorare nel vuoto. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
 
-Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](http://twitter.com/wardbell) ed io abbiamo avuto. Il mio amico Ward ha di certo una influenza sull'evoluzione finale di questa guida.
+Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](https://twitter.com/wardbell) ed io abbiamo avuto. Il mio amico Ward ha di certo una influenza sull'evoluzione finale di questa guida.
 
 ## Guarda gli stili in una App di Esempio
 Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di aiuto vederle in pratica. Questa guida è accompagnata da una applicazione di esempio che segue questi stili e schemi. Puoi trovare l'[applicazione di esempio (chiamata modular) qui](https://github.com/johnpapa/ng-demos) nella cartella `modular`. Prendila, clonala o fanne un fork liberamente. [Le istruzioni su come eseguirla sono nel proprio readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Traduzioni
-[Traduzioni di questa guida stilistica ad Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sono gestite dalla comunità e possono essere trovate qui.
+[Traduzioni di questa guida stilistica ad Angular](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) sono gestite dalla comunità e possono essere trovate qui.
 
 ## Tavola dei contenuti
 
@@ -302,7 +302,7 @@ Invece usa la più semplice sintassi setter.
 ### Sintassi controllerAs nella View
 ###### [Stile [Y030](#stile-y030)]
 
-  - Usa la sintassi [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) al posto della sintassi `classico controller con $scope`.
+  - Usa la sintassi [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) al posto della sintassi `classico controller con $scope`.
 
   *Perché?*: I controller sono costruiti, creati con "new" e forniti con un nuova istanza singola, inoltre la sintassi `controllerAs` è più somigliante ad un costruttore JavaScript rispetto alla `sintassi classica con $scope`.
 
@@ -375,7 +375,7 @@ Invece usa la più semplice sintassi setter.
   }
   ```
 
-  Nota: Puoi evitare ogni warning di [jshint](http://www.jshint.com/) ponendo il commento sotto riportato al di sopra della linea di codice. Comunque ciò non è richiesto quando la funzione è nominata ConUsoMaiuscole, dal momento che questa convenzione è intesa come funzione costruttore ovvero ciò che un controller è in Angular.
+  Nota: Puoi evitare ogni warning di [jshint](https://jshint.com/) ponendo il commento sotto riportato al di sopra della linea di codice. Comunque ciò non è richiesto quando la funzione è nominata ConUsoMaiuscole, dal momento che questa convenzione è intesa come funzione costruttore ovvero ciò che un controller è in Angular.
 
   ```javascript
   /* jshint validthis: true */
@@ -507,7 +507,7 @@ Invece usa la più semplice sintassi setter.
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
 ###### [Stile [Y034](#stile-y034)]
 
-  - Usa le dichiarazioni di funzione per nascondere i dettagli di implementazione. Tieni i membri che possono fare il binding in alto. Quando necessiti di fare binding a una funzione nel controller, puntalo ad una dichiarazione di funzione che compaia dopo nel file. Questo è direttamente collegabile con la sezione Membri che possono fare il bind posti in alto. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
+  - Usa le dichiarazioni di funzione per nascondere i dettagli di implementazione. Tieni i membri che possono fare il binding in alto. Quando necessiti di fare binding a una funzione nel controller, puntalo ad una dichiarazione di funzione che compaia dopo nel file. Questo è direttamente collegabile con la sezione Membri che possono fare il bind posti in alto. Per ulteriori dettagli guarda [questo post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
 
     *Perché?*: Porre i membri che possono fare il binding in alto rende semplice la lettura ed aiuta l'immediata identificazione dei membri del controller che possono fare il binding ed usati nella View. (Come sopra.)
 
@@ -746,7 +746,7 @@ Invece usa la più semplice sintassi setter.
 ### Singola responsabilità
 ###### [Stile [Y050](#stile-y050)]
 
-  - Le factory dovrebbero avere la [singola responsabilità](http://en.wikipedia.org/wiki/Single_responsibility_principle) che è incapsulata nel proprio contesto. Una volta che una factory eccede quello che è un singolo scopo, dovrebbe essere creata una nuova factory.
+  - Le factory dovrebbero avere la [singola responsabilità](https://en.wikipedia.org/wiki/Single_responsibility_principle) che è incapsulata nel proprio contesto. Una volta che una factory eccede quello che è un singolo scopo, dovrebbe essere creata una nuova factory.
 
 ### Singleton
 ###### [Stile [Y051](#stile-y051)]
@@ -758,7 +758,7 @@ Invece usa la più semplice sintassi setter.
 ### Membri accessibili in alto
 ###### [Stile [Y052](#stile-y052)]
 
-  - Esponi tutti i membri richiamabili del servizio (l'interfaccia) in alto, usando una tecnica derivata dal [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Esponi tutti i membri richiamabili del servizio (l'interfaccia) in alto, usando una tecnica derivata dal [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *Perché?*: Porre i membri richiamabili in alto lo rende semplice da leggere e aiuta ad identificare istantaneamente quali membri del servizio possono essere chiamati ed essere oggetto di unit test (e/o simulati).
 
@@ -816,7 +816,7 @@ Invece usa la più semplice sintassi setter.
 ### Dichiarazioni di funzione per nascondere i dettagli di implementazione
 ###### [Stile [Y053](#stile-y053)]
 
-  - Usa le dichiarazioni di funzioni per nascondere i dettagli di implementazione. Tieni i membri accessibili della factory in alto. Puntali alle dichiarazioni di funzioni che compaiono dopo nel file. Per ulteriori dettagli guarda [questo post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
+  - Usa le dichiarazioni di funzioni per nascondere i dettagli di implementazione. Tieni i membri accessibili della factory in alto. Puntali alle dichiarazioni di funzioni che compaiono dopo nel file. Per ulteriori dettagli guarda [questo post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) (in inglese).
 
     *Perché?*: Porre i membri richiamabili in alto la rende semplice da leggere e aiuta ad identificare istantaneamente quali funzioni della factory possono accessibili esternamente.
 
@@ -1148,7 +1148,7 @@ Invece usa la più semplice sintassi setter.
 
 	*Perché?*: L'unico breve prefisso identifica il contesto delle directive e l'origine. Per esempio un prefisso `cc-` potrebbe indicare che la directive è parte di una app CodeCamper mentre `acme-` potrebbe indicare una direttiva per l'azienda Acme.
 
-	Nota: Evita `ng-` poiché queste sono riservate per le directive di Angular. Cerca directive che sono largamente utilizzate per evitare il conflitto di nomi, come `ion-` per il [Framework Ionic ](http://ionicframework.com/).
+	Nota: Evita `ng-` poiché queste sono riservate per le directive di Angular. Cerca directive che sono largamente utilizzate per evitare il conflitto di nomi, come `ion-` per il [Framework Ionic ](https://ionicframework.com/).
 
 ### Restringi a Elementi and Attributi
 ###### [Stile [Y074](#stile-y074)]
@@ -1631,7 +1631,7 @@ Invece usa la più semplice sintassi setter.
 ### ng-annotate
 ###### [Stile [Y100](#stile-y100)]
 
-  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/* @ngInject */`
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) per [Gulp](https://gulpjs.com) o [Grunt](https://gruntjs.com) e commenta le funzioni che necessitano di automatizzare la dependency injection usando `/* @ngInject */`
 
     *Perché?*: Questo salvaguarda il tuo codice da ogni dipendenza che non segua le pratiche a prova di minificazione
 
@@ -1708,7 +1708,7 @@ Invece usa la più semplice sintassi setter.
 ### Usa Gulp o Grunt per ng-annotate
 ###### [Stile [Y101](#stile-y101)]
 
-  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in un task di automatizzazione delle build. Inietta `/* @ngInject */` prima di qualunque funzione che abbia delle dipendenze.
+  - Usa [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) in un task di automatizzazione delle build. Inietta `/* @ngInject */` prima di qualunque funzione che abbia delle dipendenze.
 
     *Perché?*: ng-annotate carpirà la maggior parte delle dipendenze ma talvolta necessita dell'uso del suggerimento sintattico `/* @ngInject */`.
 
@@ -2163,7 +2163,7 @@ Invece usa la più semplice sintassi setter.
 
   -  Abbi una visione a breve termine dell'implementazione e una a lunga scadenza. In altre parole, parti in piccolo ma tieni in mente su dove l'app è diretta lungo il percorso. Tutto il codice dell'app va nella cartella principale chiamata `app`. Tutto il contenuto rispetta 1 funzione per file. Ogni controller, service, module, view nel proprio file. Tutti gli script di terze parti sono poste in una altra cartella principale e non nella cartella `app`. Non le ho scritte e non voglio facciano disordine nella mia app (`bower_components`, `scripts`, `lib`).
 
-    Nota: Trovi più dettagli e le motivazioni di questa struttura nel [post originale sulla struttura delle applicazioni](http://www.johnpapa.net/angular-app-structuring-guidelines/) (in inglese).
+    Nota: Trovi più dettagli e le motivazioni di questa struttura nel [post originale sulla struttura delle applicazioni](https://johnpapa.net/angular-app-structuring-guidelines/) (in inglese).
 
 ### Layout
 ###### [Stile [Y151](#stile-y151)]
@@ -2440,11 +2440,11 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Librerie per i test
 ###### [Stile [Y191](#stile-y191)]
 
-  - Usa [Jasmine](http://jasmine.github.io/) oppure [Mocha](http://mochajs.org) per lo unit testing.
+  - Usa [Jasmine](https://jasmine.github.io/) oppure [Mocha](https://mochajs.org) per lo unit testing.
 
     *Perché?*: Sia Jasmine che Mocha sono largamente utilizzati nella comunità di Angular. Entrambi son stabili, ben manutenuti e forniscono funzionalità solide per i test.
 
-    Nota: Usando Mocha, tieni in considerazione di usare anche una libreria di asserzione come [Chai](http://chaijs.com). Io preferisco Mocha.
+    Nota: Usando Mocha, tieni in considerazione di usare anche una libreria di asserzione come [Chai](https://www.chaijs.com). Io preferisco Mocha.
 
 ### Esecutori di Test
 ###### [Stile [Y192](#stile-y192)]
@@ -2455,9 +2455,9 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: Karma si aggancia facilmente al tuo processo di Integrazione Continua da solo o attraverso Grunt o Gulp.
 
-    *Perché?*: Alcuni IDE cominciano ad integrarsi con Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Perché?*: Alcuni IDE cominciano ad integrarsi con Karma, come [WebStorm](http://www.jetbrains.com/webstorm/) e [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs).
 
-    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](http://www.gulpjs.com). Quando usi Gulp, usa [Karma](https://github.com/karma-runner/karma) direttamente e non con un plugin dal momento che le API possono essere richiamate direttamente.
+    *Perché?*: Karma lavora bene con leader di automazione di processo quali [Grunt](https://gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) e [Gulp](https://gulpjs.com). Quando usi Gulp, usa [Karma](https://github.com/karma-runner/karma) direttamente e non con un plugin dal momento che le API possono essere richiamate direttamente.
 
     ```javascript
     /* consigliato */
@@ -2508,7 +2508,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Stubbing e Spying
 ###### [Stile [Y193](#stile-y193)]
 
-  - Usa [Sinon](http://sinonjs.org) per lo stubbing e spying.
+  - Usa [Sinon](https://sinonjs.org) per lo stubbing e spying.
 
     *Perché?*: Sinon lavora bene sia con Jasmine che Mocha ed estende le funzionalità di stubbing e spying che questi offrono.
 
@@ -2599,7 +2599,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### animate.css
 ###### [Stile [Y212](#stile-y212)]
 
-  - Usa [animate.css](http://daneden.github.io/animate.css/) per animazioni convenzionali.
+  - Usa [animate.css](https://daneden.github.io/animate.css/) per animazioni convenzionali.
 
     *Perché?*: Le animazione che animate.css fornisce sono veloci, dolci e facili da aggiungere alla tua applicazione.
 
@@ -2607,7 +2607,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 
     *Perché?*: animate.css è ampiamente usato e testato.
 
-    Nota: Leggi questo [ottimo post di Matias Niemelä sulle animazioni di Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Nota: Leggi questo [ottimo post di Matias Niemelä sulle animazioni di Angular](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
@@ -2668,7 +2668,7 @@ Gli unit test aiutano a mantenere il codice più chiaro, perciò ho incluso alcu
 ### Usa un file di opzioni
 ###### [Stile [Y230](#stile-y230)]
 
-  - Usa JS Hint per spazzolare il tuo JavaScript ed assicurati di ritagliare il file di opzioni di JS Hint e di includerlo nel source control. Vedi la [documentazione di JS Hint](http://www.jshint.com/docs/) per i dettagli sulle opzioni.
+  - Usa JS Hint per spazzolare il tuo JavaScript ed assicurati di ritagliare il file di opzioni di JS Hint e di includerlo nel source control. Vedi la [documentazione di JS Hint](https://jshint.com/docs/) per i dettagli sulle opzioni.
 
     *Perché?*: Da un allerta iniziale prima di fare il commit di qualunque codice al source control.
 
@@ -2914,7 +2914,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
   - Live template per Angular che seguono queste linee guida.
 
     - Scarica [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
-    - Mettili nella tua Place it in your [cartella dei template](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Mettili nella tua Place it in your [cartella dei template](https://www.jetbrains.com/help/webstorm/project-and-ide-settings.html)
     - Riavvia WebStorm
     - In un file JavaScript digita questi comandi seguiti da `TAB`
 
@@ -3019,7 +3019,7 @@ Usa file template o snippet che ti aiutino a seguire stili e schemi consistentem
 
 ###### [Stile [Y256](#stile-y256)]
 
-  - Snippet [Visual Studio Code](http://code.visualstudio.com) che seguono questi stili e linee guida.
+  - Snippet [Visual Studio Code](https://code.visualstudio.com/) che seguono questi stili e linee guida.
 
     - Scarica gli [snippet VS Code Angular](assets/vscode-snippets/javascript.json?raw=true)
     - copia gli snippet nella directory snippet o, in alternativa, copia ed incolla gli snippet in quella esistente.
@@ -3154,7 +3154,7 @@ Il routing del lato client è importante al fine di creare in flusso di navigazi
 **[Torna all'inizio](#tavola-dei-contenuti)**
 
 ## Automazione dei processi
-Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) per la creazione di processi automatizzati. Gulp si basa su "codice sopra configurazione" mentre Grunt si basa su "configurazione sopra codice". Personalmente preferisco Gulp poiché lo percepisco come più facile da leggere e scrivere ma entrambi sono eccellenti.
+Usa [Gulp](https://gulpjs.com) o [Grunt](https://gruntjs.com) per la creazione di processi automatizzati. Gulp si basa su "codice sopra configurazione" mentre Grunt si basa su "configurazione sopra codice". Personalmente preferisco Gulp poiché lo percepisco come più facile da leggere e scrivere ma entrambi sono eccellenti.
 
 > Impara di più su Gulp per l'automazione dei processi e pattern in mio [corso Pluralsight su Gulp](http://jpapa.me/gulpps) (in inglese)
 
@@ -3209,7 +3209,7 @@ _tldr; Usa questa guida. I riferimenti sono apprezzati._
 
 ### (The MIT License)
 
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
+Copyright (c) 2014 [John Papa](https://johnpapa.net)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

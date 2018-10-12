@@ -6,7 +6,7 @@ Mulțumiri speciale lui Igor Minar, liderul echipei Angular, pentru revizuire, d
 ## Scop
 *Ghid stilistic dogmatic de Angular pentru echipe de [@john_papa](//twitter.com/john_papa)*
 
-Dacă cauți un ghid stilistic dogmatic pentru sintaxă, convenții și structurarea aplicațiilor Angular, pornește de aici. Aceste stiluri sunt bazate pe experiența mea de dezvoltare cu [Angular](//angularjs.org), prezentări, [cursuri de training Pluralsight](http://app.pluralsight.com/author/john-papa) și lucrul în echipe.
+Dacă cauți un ghid stilistic dogmatic pentru sintaxă, convenții și structurarea aplicațiilor Angular, pornește de aici. Aceste stiluri sunt bazate pe experiența mea de dezvoltare cu [Angular](//angularjs.org), prezentări, [cursuri de training Pluralsight](https://app.pluralsight.com/profile/author/john-papa) și lucrul în echipe.
 
 Scopul acestui ghid stilistic este acela de a oferi îndrumare pentru creerea de aplicații Angular prin expunereea convențiilor pe care le folosesc și, mai important, motivelor pentru care le-am ales.
 
@@ -15,7 +15,7 @@ Scopul acestui ghid stilistic este acela de a oferi îndrumare pentru creerea de
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Minunăția Comunității și Acreditare
-Nu lucra niciodată într-un vid. Observ că comunitatea Angular este un grup incredibil care este pasionat de împărtășirea experiențelor. Din motivul acesta, expertul Angular Todd Motto și eu am colaborat la multe stiluri și convenții. Suntem de-acord la multe dintre ele, iar la unele nu. Te încurajez să vezi [Ghidurile lui Todd](https://github.com/toddmotto/angular-styleguide) ca să-ți faci o părere despre abordarea lui și cum diferă de acesta.
+Nu lucra niciodată într-un vid. Observ că comunitatea Angular este un grup incredibil care este pasionat de împărtășirea experiențelor. Din motivul acesta, expertul Angular Todd Motto și eu am colaborat la multe stiluri și convenții. Suntem de-acord la multe dintre ele, iar la unele nu. Te încurajez să vezi [Ghidurile lui Todd](https://github.com/toddmotto/angularjs-styleguide) ca să-ți faci o părere despre abordarea lui și cum diferă de acesta.
 
 Multe dintre stilurile mele sunt din multitudinea de sesiuni de pair programming pe care eu și [Ward Bell](https://twitter.com/wardbell) le-am făcut. Prietenul meu Ward a influențat cu siguranță evoluția finală a acestui ghid.
 
@@ -326,7 +326,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Sintaxa pentru View 'controllerAs' 
 ###### [Style [Y030](#style-y030)]
 
-  - Folosește sintaxa [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) în locul `classicei sintaxe pentru controller cu $scope`.
+  - Folosește sintaxa [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) în locul `classicei sintaxe pentru controller cu $scope`.
 
   *De ce?*: Controllerele sunt construite, "reînnoite" și oferă o singură nouă instanță, iar sintaxa `controllerAs` e mult mai aproape de cea a unui constructor de JavaScript decât cea a `clasicei sintaxe cu $scope`.
 
@@ -398,7 +398,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
   }
   ```
 
-  Notă: Poți evita avertizările [jshint](http://jshint.com/) prin lăsarea unui comentariu deasupra liniei de cod. Totuși, acest lucru nu e necesar atunci când funcția e denumită folosind UpperCasing, deoarece această convenție înseamnă că este o funcție-constructor, ceea ce și este un controller în Angular. 
+  Notă: Poți evita avertizările [jshint](https://jshint.com/) prin lăsarea unui comentariu deasupra liniei de cod. Totuși, acest lucru nu e necesar atunci când funcția e denumită folosind UpperCasing, deoarece această convenție înseamnă că este o funcție-constructor, ceea ce și este un controller în Angular. 
 
   ```javascript
   /* jshint validthis: true */
@@ -531,7 +531,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Declarări de funcții pentru ascunderea detaliilor de implementare
 ###### [Style [Y034](#style-y034)]
 
-  - Folosește declarări de funcții pentru a ascunde detaliile implementării. Păstrează-ți membrii bindabili sus. Când ai nevoie de o funcție într-un controller, pointeaz-o la o declarație de funcție ce apare mai târziu în fișier. Acest lucru e direct legat de secțiunea "Membrii Bindabili Sus". Pentru mai multe detalii vezi [acest articol](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
+  - Folosește declarări de funcții pentru a ascunde detaliile implementării. Păstrează-ți membrii bindabili sus. Când ai nevoie de o funcție într-un controller, pointeaz-o la o declarație de funcție ce apare mai târziu în fișier. Acest lucru e direct legat de secțiunea "Membrii Bindabili Sus". Pentru mai multe detalii vezi [acest articol](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
 
     *De ce?*: Punerea membriilor bindabili sus face mai ușoară citirea și ajută să identifici instant ce membri ai controllerului pot fi folosiți în View. (La fel ca mai sus.)
 
@@ -840,7 +840,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### Declarații de funcții pentru ascunderea detaliilor de implementare
 ###### [Style [Y053](#style-y053)]
 
-  - Folosește declarații de funcții pentru ascunderea detaliilor de implementare. Păstrează membrii accesibili ai factory-ului sus. Pointează-i spre declarații de funcții care apar mai târziu în fișier. Pentru mai multe detalii vezi [acest articol](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Folosește declarații de funcții pentru ascunderea detaliilor de implementare. Păstrează membrii accesibili ai factory-ului sus. Pointează-i spre declarații de funcții care apar mai târziu în fișier. Pentru mai multe detalii vezi [acest articol](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *De ce?*: Plasarea membriilor accesibili sus face mai totul mai lizibil și te-ajută să identifici instant ce funcții ale factory-ului se pot accesa în exterior.
 
@@ -1170,7 +1170,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
     *De ce?*: Prefixul scurt și unic identifică contextul și originea directivei. De exemplu, un prefix ca `cc-` ar putea indica că directiva face parte dintr-o aplicație CodeCamper, iar `acme-` ar putea indica o directivă pentru compania Acme.
 
-    Notă: Evită `ng-`, deoarece acestea sunt rezervate pentru directivele Angular. Află mai multe despre directivele populare pentru a evita conflictele de nume, precum `ion-` pentru [Framework-ul Ionic](http://ionicframework.com/).
+    Notă: Evită `ng-`, deoarece acestea sunt rezervate pentru directivele Angular. Află mai multe despre directivele populare pentru a evita conflictele de nume, precum `ion-` pentru [Framework-ul Ionic](https://ionicframework.com/).
 
 ### Rămâi la Elemente și Atribute
 ###### [Style [Y074](#style-y074)]
@@ -1717,7 +1717,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Folosește [ng-annotate](//github.com/olov/ng-annotate) pentru [Gulp](http://gulpjs.com) sau [Grunt](http://gruntjs.com) și comentează funcțiile ce au nevoie de injectare automată de dependințe folosind `/* @ngInject */`
+  - Folosește [ng-annotate](//github.com/olov/ng-annotate) pentru [Gulp](https://gulpjs.com) sau [Grunt](https://gruntjs.com) și comentează funcțiile ce au nevoie de injectare automată de dependințe folosind `/* @ngInject */`
 
     *De ce?*: Acest lucru îți asigură codul împotriva dependințelor ce ar putea să nu folosească metode sigure pentru minificare.
     *De ce?*: [`ng-min`](https://github.com/btford/ngmin) e depreciat.
@@ -2249,7 +2249,7 @@ Chiar dacă acest ghid explică *ce*, *de ce* și *cum*, mi se pare folositor ca
 
   - Să ai o viziune rapidă de implementare și o viziune largă, de lungă durată. Cu alte cuvinte, începe mic dar ține minte încotro se îndreaptă aplicația. Tot codul aplicației merge într-un folder-rădăcină numit `app`. Tot conținutul e o funcționalitate per fișier. Fiecare controller, serviciu, modul, view e în fișierul său separat. Toate scripturile 3rd party sunt stocate în alt folder și nu în folder-ul `app`. Nu le-am scris eu și nu vreau ca ele să-mi aglomereze aplicația (`bower_components`, `scripts`, `lib`).
 
-    Notă: Găsește mai multe detalii și raționarea din spatele structuri în [acest articol original despre structura aplicației](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Notă: Găsește mai multe detalii și raționarea din spatele structuri în [acest articol original despre structura aplicației](https://johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Plan General
 ###### [Style [Y151](#style-y151)]
@@ -2526,11 +2526,11 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 ### Biblioteca de Testare
 ###### [Style [Y191](#style-y191)]
 
-  - Folosește [Jasmine](http://jasmine.github.io/) sau [Mocha](http://mochajs.org) pentru unit testing.
+  - Folosește [Jasmine](https://jasmine.github.io/) sau [Mocha](https://mochajs.org) pentru unit testing.
 
     *De ce?*: Atât Jasmine cât și Mocha sunt frecvent folosite de către comunitatea Angular. Ambele sunt stabile, întreținute bine, și furnizează funcționalități robuste de testare.
 
-    Notă: Când folosești Mocha, ia în calcul de asemenea folosirea unei biblioteci de assert precum [Chai](http://chaijs.com). Eu prefer Mocha.
+    Notă: Când folosești Mocha, ia în calcul de asemenea folosirea unei biblioteci de assert precum [Chai](https://www.chaijs.com). Eu prefer Mocha.
 
 ### Rularea Testelor
 ###### [Style [Y192](#style-y192)]
@@ -2541,9 +2541,9 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
     *De ce?*: Karma se leagă de procesul tău de Continuous Integration ușor pe cont propriu sau prin intermediul Grunt sau Gulp.
 
-    *De ce?*: unele IDE-uri încep să se integreze cu Karma, precum [WebStorm](http://www.jetbrains.com/webstorm/) și [Visual Studio](https://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *De ce?*: unele IDE-uri încep să se integreze cu Karma, precum [WebStorm](http://www.jetbrains.com/webstorm/) și [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs).
 
-    *De ce?*: Karma funcționează bine cu leaderii de automatizare de taskuri precum [Grunt](http://gruntjs.com/) (cu [grunt-karma](https://github.com/karma-runner/grunt-karma)) și [Gulp](http://gulpjs.com/). Când folosești Gulp, folosește [Karma](https://github.com/karma-runner/karma) direct și nu un API, de vreme ce API-ul poate fi apelat direct.
+    *De ce?*: Karma funcționează bine cu leaderii de automatizare de taskuri precum [Grunt](https://gruntjs.com/) (cu [grunt-karma](https://github.com/karma-runner/grunt-karma)) și [Gulp](https://gulpjs.com/). Când folosești Gulp, folosește [Karma](https://github.com/karma-runner/karma) direct și nu un API, de vreme ce API-ul poate fi apelat direct.
 
     ```javascript
     /* recomandat */
@@ -2597,7 +2597,7 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 ### Stubbing-ul și Spionarea
 ###### [Style [Y193](#style-y193)]
 
-  - Folosește [Sinon](http://sinonjs.org/) pentru stubbing și spionare.
+  - Folosește [Sinon](https://sinonjs.org/) pentru stubbing și spionare.
 
     *De ce?*: Sinon funcționează bine atât cu Jasmine cât și cu Mocha și extinde caracteristicile de stubbing și spionare pe care acestea le oferă.
 
@@ -2690,7 +2690,7 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Folosește [animate.css](http://daneden.github.io/animate.css/) pentru animații convenționale.
+  - Folosește [animate.css](https://daneden.github.io/animate.css/) pentru animații convenționale.
 
     *De ce?*: Animațiile pe care animate.css le oferă sunt rapide, fluide și foarte ușoare de adăugat în aplicație.
 
@@ -2698,7 +2698,7 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 
     *De ce?*: animate.css e folosit și testat în mod larg.
 
-    Notă: Vezi [acest articol foarte bun al lui Matias Niemelä despre animațiile Angular](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Notă: Vezi [acest articol foarte bun al lui Matias Niemelä despre animațiile Angular](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Înapoi sus](#table-of-contents)**
 
@@ -2759,7 +2759,7 @@ Unit testurile ajută la menținerea curățeniei codului, iar din acest motiv a
 ### Folosește un fișier de opțiuni
 ###### [Style [Y230](#style-y230)]
 
-  - Folosește JS Hint pentru linting-ul codului tău JavaScript și asigură-te că personalizezi fișierul JS hint de opțiuni și îl incluzi în source control. Vezi [documentația JS Hint](http://jshint.com/docs/) pentru detalii despre opțiuni.
+  - Folosește JS Hint pentru linting-ul codului tău JavaScript și asigură-te că personalizezi fișierul JS hint de opțiuni și îl incluzi în source control. Vezi [documentația JS Hint](https://jshint.com/docs/) pentru detalii despre opțiuni.
 
     *De ce?*: Furnizează o primă alertă înaintea comiterii codului în source control.
 
@@ -3008,7 +3008,7 @@ Folosește șabloane de fișier sau snippeturi pentru a ajuta urmarea de stiluri
   - Live Template-uri Angular ce urmează aceste stiluri și ghiduri.
 
     - Descarcă [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
-    - Pune-l în fișierul tău de [template-uri](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Pune-l în fișierul tău de [template-uri](https://www.jetbrains.com/help/webstorm/project-and-ide-settings.html)
     - Restartează WebStorm
     - Într-un fișier JavaScript scrie aceste comenzi urmate de un `TAB`:
 
@@ -3138,7 +3138,7 @@ Folosește șabloane de fișier sau snippeturi pentru a ajuta urmarea de stiluri
 
       Yyasnippet categorizează snippet-urile prin mod-ul major, și sunt mai multe moduri major pentru Emacs pentru editarea codului JavaScript. Snippet-urile sunt în `js2-mode`, și celelalte directoare conțin doar un dotfile ce le referențiază de acolo.
 
-    - Instalează [yasnippet](https://github.com/capitaomorte/yasnippet) (`M-x package-install RET yasnippet RET`)
+    - Instalează [yasnippet](https://github.com/joaotavora/yasnippet) (`M-x package-install RET yasnippet RET`)
     - Copiază snippet-urile în folder-ul de snippeturi, sau modifică init-ul Emacs init ca să adaugi directorul de snippeturi la `yas-snippet-dirs`
 
     ```javascript
@@ -3272,7 +3272,7 @@ Rutarea pe partea de client e importantă pentru creerea unui flow de navigație
 **[Înapoi sus](#table-of-contents)**
 
 ## Automatizarea Task-urilor
-Folosește [Gulp](http://gulpjs.com) sau [Grunt](http://gruntjs.com) pentru creerea de task-uri automate. Gulp tinde spre cod în locul configurării, în timp ce Grunt tinde spre configurare în locul codului. Eu personal prefer Gulp, fiindcă consider că e mai ușor de scris și citit, dar amândouă sunt excelente.
+Folosește [Gulp](https://gulpjs.com) sau [Grunt](https://gruntjs.com) pentru creerea de task-uri automate. Gulp tinde spre cod în locul configurării, în timp ce Grunt tinde spre configurare în locul codului. Eu personal prefer Gulp, fiindcă consider că e mai ușor de scris și citit, dar amândouă sunt excelente.
 
 > Află mai multe despre gulp și șabloane pentru automatizarea task-urilor în [cursul meu Gulp de pe Pluralsight](http://jpapa.me/gulpps)
 

@@ -4,10 +4,10 @@
 There are multiple versions of Angular, and thus there are multiple versions of the guide. Choose your guide appropriately.
 
 ### Angular 1 Style Guide
-[The Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/tree/master/a1/README.md).
+[The Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md).
 
 ### Angular 2 Style Guide
-[The Angular 2 Style Guide](https://github.com/johnpapa/angular-styleguide/tree/master/a2/README.md).
+[The Angular 2 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a2/README.md).
 
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
@@ -15,7 +15,7 @@ Special thanks to Igor Minar, lead on the Angular team, for reviewing, contribut
 ## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
+If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](https://app.pluralsight.com/profile/author/john-papa) and working in teams.
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
@@ -42,7 +42,7 @@ _tldr; Use this guide. Attributions are appreciated._
 
 ### Copyright
 
-Copyright (c) 2014-2016 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2016 [John Papa](https://johnpapa.net)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining

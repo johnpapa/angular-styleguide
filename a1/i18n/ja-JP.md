@@ -2,7 +2,7 @@
 
 *[@john_papa](//twitter.com/john_papa)によるチームのための頑固なAngularスタイルガイド*
 
-もしあなたがAngularのシンタックス、規約、そしてアプリケーション構成のための頑固なスタイルガイドを探しているなら、どうぞいらっしゃい！本スタイルは、[Angular](//angularjs.org)を用いた私の開発経験やプレゼンテーション、[Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa) 、そしてチームでの作業に基づいたものです。
+もしあなたがAngularのシンタックス、規約、そしてアプリケーション構成のための頑固なスタイルガイドを探しているなら、どうぞいらっしゃい！本スタイルは、[Angular](//angularjs.org)を用いた私の開発経験やプレゼンテーション、[Pluralsight training courses](https://app.pluralsight.com/profile/author/john-papa) 、そしてチームでの作業に基づいたものです。
 
 このスタイルガイドの目的は、私が実践している規約だけでなく、私がそれを行う理由を示すことによって、Angularアプリケーションを構築する手引きとなることです。
 
@@ -13,13 +13,13 @@
 ## Community Awesomeness and Credit
 あなたは決して1人でありません！Angularのコミュニティは、自身の経験を共有することに情熱的な素晴らしい集団です。実際、友人でありAngularのエキスパートでもある Todd Motto と私は、共同で多くのスタイルや規約をまとめました。一部意見が分かれましたが、概ね合意できるものでした。彼のアプローチと本スタイルとの比較のため、是非 [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) をチェックすることをお勧めします。
 
-ここで紹介する多くのスタイルは、数多くのペアプログラミングのセッション [Ward Bell](http://twitter.com/wardbell) および私自身が既に持っていたアイデアによるものです。いつも意見が一致した訳ではないですが、友人のWardはこのガイドの最終的な発展に大きく貢献してくれました。
+ここで紹介する多くのスタイルは、数多くのペアプログラミングのセッション [Ward Bell](https://twitter.com/wardbell) および私自身が既に持っていたアイデアによるものです。いつも意見が一致した訳ではないですが、友人のWardはこのガイドの最終的な発展に大きく貢献してくれました。
 
 ## See the Styles in a Sample App
 このガイドは"何を"、"なぜ"、"どのように"行えば良いかという説明をしますが、合わせて実践的に見ていくことが理解に役立つはずです。本ガイドは、スタイルやパターンに沿ったサンプルアプリケーションを [`modular`のディレクトリ](https://github.com/johnpapa/ng-demos) に用意しています。ここから自由に取得しcloneやforkをしてもらって構いません。また [readmeに実行のためのインストラクション](https://github.com/johnpapa/ng-demos/tree/master/modular) もあります。
 
 ## Translations
-[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) がコミュニティによってメンテナンスされており、そこで翻訳を参照することができます。
+[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) がコミュニティによってメンテナンスされており、そこで翻訳を参照することができます。
 
 ## Table of Contents
 
@@ -291,7 +291,7 @@
 ### controllerAs View Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - `典型的な$scopeを使ったcontroller`のシンタックスよりも、[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) を用いて下さい。
+  - `典型的な$scopeを使ったcontroller`のシンタックスよりも、[`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) を用いて下さい。
 
   *なぜ ?*: 全く新規にControllersが生成されると、 単一の新しいインスタンスが生成されます。`controllerAs` のシンタックスは、`典型的な$scopeを使ったcontroller`のシンタックスよりも、JavaScriptのコンストラクタにより近いものとなります。
 
@@ -364,7 +364,7 @@
   }
   ```
 
-  Note: コメントをコードの上部に入れることで [jshint](http://www.jshint.com/) のwarningsを避けることができます。 しかし関数がアッパーケースの場合には不要です。規約的にはそれはコンストラクタであり、Angularではコントローラに当たります。
+  Note: コメントをコードの上部に入れることで [jshint](https://jshint.com/) のwarningsを避けることができます。 しかし関数がアッパーケースの場合には不要です。規約的にはそれはコンストラクタであり、Angularではコントローラに当たります。
 
   ```javascript
   /* jshint validthis: true */
@@ -481,7 +481,7 @@
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y034](#style-y034)]
 
-  - 実装の詳細を隠すために関数宣言を用いて下さい。またバインドされるメンバを先頭に置いて下さい。コントローラの中で関数をバインドするときは、その関数がファイルの後方に現れる関数宣言を指すようにします。これは、「Bindable Members Up Top」のセクションと直接対応しています。 詳細は[このポスト](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) を参照して下さい。
+  - 実装の詳細を隠すために関数宣言を用いて下さい。またバインドされるメンバを先頭に置いて下さい。コントローラの中で関数をバインドするときは、その関数がファイルの後方に現れる関数宣言を指すようにします。これは、「Bindable Members Up Top」のセクションと直接対応しています。 詳細は[このポスト](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) を参照して下さい。
 
     *なぜ ?*: バインドするメンバを先頭に書くことで可読性が上がり、コントローラのどのメンバがバインドされ、ビューの中で使われるのかが即座に特定できます(上記と同じ)。
 
@@ -721,7 +721,7 @@
 ### Single Responsibility
 ###### [Style [Y050](#style-y050)]
 
-  - ファクトリは[単一責任](http://en.wikipedia.org/wiki/Single_responsibility_principle)であるべきであり、そのコンテキストに応じてカプセル化されます。ファクトリが一つの目的を超えて利用され始めた場合は、新しいファクトリが作成されるべきです。
+  - ファクトリは[単一責任](https://en.wikipedia.org/wiki/Single_responsibility_principle)であるべきであり、そのコンテキストに応じてカプセル化されます。ファクトリが一つの目的を超えて利用され始めた場合は、新しいファクトリが作成されるべきです。
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
@@ -733,7 +733,7 @@
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
 
-  - 呼び出し可能なサービスのメンバ(そのインターフェイス)を先頭に公開します。このテクニックは [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) に由来しています。
+  - 呼び出し可能なサービスのメンバ(そのインターフェイス)を先頭に公開します。このテクニックは [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) に由来しています。
 
     *なぜ ?*: 呼び出し可能なメンバを先頭に置くことは可読性に優れ、どのサービスのメンバが呼び出し可能で単体テストされる(モックされる)べきなのかを即座に特定するのに役立ちます。
 
@@ -783,12 +783,12 @@
   ```
 
   このバインディングの方法はホストオブジェクト全体で反映されます。このrevealing module パターンを使うことで単独でプリミティブの値を更新することは出来なくなります。
-    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-2.png)
+    ![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
 
-  - 実装の詳細を隠すために関数宣言を用いて下さい。ファクトリのアクセス可能なメンバを先頭に置いて下さい。それらのメンバがファイルの後方に現れる関数宣言を指すようにします。詳細は[このポスト](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) を参照して下さい。
+  - 実装の詳細を隠すために関数宣言を用いて下さい。ファクトリのアクセス可能なメンバを先頭に置いて下さい。それらのメンバがファイルの後方に現れる関数宣言を指すようにします。詳細は[このポスト](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) を参照して下さい。
 
     *なぜ ?*: アクセス可能なメンバを先頭に書くことで可読性が上がり、ファクトリの中でどの関数が外部からアクセス可能なのか即座に特定できます。
 
@@ -1119,7 +1119,7 @@
 
     *なぜ ?*: ユニークで簡潔なプリフィックスは、ディレクティブのコンテキストと由来を特定します。例えば、`cc-` というプリフィックスは、CodeCamperアプリを示し、`acme-` は Acme companyのためのディレクティブであることを示します。
 
-    Note: `ng-` のようなAngularのdirectivesのためにリザーブされているものは避けて下さい。 名前の衝突を避けるため、[Ionic Framework](http://ionicframework.com/)の`ion-`のように、幅広く利用されているディレクティブを調査して下さい。
+    Note: `ng-` のようなAngularのdirectivesのためにリザーブされているものは避けて下さい。 名前の衝突を避けるため、[Ionic Framework](https://ionicframework.com/)の`ion-`のように、幅広く利用されているディレクティブを調査して下さい。
 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
@@ -1602,7 +1602,7 @@
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - [Gulp](http://gulpjs.com)や[Grunt](http://gruntjs.com)のために[ng-annotate](//github.com/olov/ng-annotate)を使って下さい。自動の依存性の注入が必要となる関数に`/** @ngInject */`というコメントをいれて下さい。
+  - [Gulp](https://gulpjs.com)や[Grunt](https://gruntjs.com)のために[ng-annotate](//github.com/olov/ng-annotate)を使って下さい。自動の依存性の注入が必要となる関数に`/** @ngInject */`というコメントをいれて下さい。
 
     *なぜ ?*: このことはminificationセーフなプラクティスを利用していない依存性からコードを守ります。
 
@@ -1680,7 +1680,7 @@
 ### Use Gulp or Grunt for ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - 自動ビルドのタスクの中で[gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) もしくは [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) を使って下さい。依存性を持つどの関数よりも前に`/* @ngInject */` を注入して下さい。
+  - 自動ビルドのタスクの中で[gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) もしくは [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) を使って下さい。依存性を持つどの関数よりも前に`/* @ngInject */` を注入して下さい。
 
     *なぜ ?*: ng-annotate は大半の依存性を捕捉しますが、`/* @ngInject */`のシンタックスを使ったヒントが時々必要となリます。
 
@@ -2111,7 +2111,7 @@
 
   - 実装に関する短期的な視点と長期的なビジョンを持って下さい。言い換えると、小さく始めるが、アプリがどの方向に向かっているかををしっかりと把握することです。 全てのアプリケーションのコードは`app`という名前のルートのディレクトリ配下に置いて下さい。どのコンテンツもファイル毎に一機能として下さい。コントローラ、サービス、モジュール、ビューのそれぞれを独立したファイルにして下さい。全てのサードパーティのベンダーのスクリプトは別のルートのディレクトリの下に置き、`app`ディレクトリ配下には置かないで下さい。私はそのスクリプトを書いていないですし、それが自分のアプリを散らかしてしまうことも望んでいません(`bower_components`, `scripts`, `lib`)。
 
-    Note: この構造の詳細や理由などは[this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/)を参照して下さい。
+    Note: この構造の詳細や理由などは[this original post on application structure](https://johnpapa.net/angular-app-structuring-guidelines/)を参照して下さい。
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2389,11 +2389,11 @@
 ### Testing Library
 ###### [Style [Y191](#style-y191)]
 
-  - 単体テストには [Jasmine](http://jasmine.github.io/) もしくは [Mocha](http://mochajs.org) を使って下さい。
+  - 単体テストには [Jasmine](https://jasmine.github.io/) もしくは [Mocha](https://mochajs.org) を使って下さい。
 
     *なぜ ?*: Jasmine と Mocha はAngularのコミュニティで幅広く使われています。双方とも安定しており、十分メンテされており、ロバストなテスト機能が与えられます。
 
-    Note: Mochaを用いるときは、合わせて[Chai](http://chaijs.com)といったアサートのライブラリを選ぶことを検討して下さい。私はMochaを好みます。
+    Note: Mochaを用いるときは、合わせて[Chai](https://www.chaijs.com)といったアサートのライブラリを選ぶことを検討して下さい。私はMochaを好みます。
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
@@ -2404,14 +2404,14 @@
 
     *なぜ ?*: Karmaは自前のテストランナーもしくはGruntやGulpを用いた継続的なインテグレーションのプロセスに容易に接続することができます。
 
-    *なぜ ?*: [WebStorm](http://www.jetbrains.com/webstorm/) や [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225)などのいくつかのIDEはKarmaを統合し始めています。
+    *なぜ ?*: [WebStorm](http://www.jetbrains.com/webstorm/) や [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs)などのいくつかのIDEはKarmaを統合し始めています。
 
-    *なぜ ?*: Karmaは[Grunt](http://www.gruntjs.com) (と [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (と [gulp-karma](https://github.com/lazd/gulp-karma))といった自動化のタスク上で正しく動作します。
+    *なぜ ?*: Karmaは[Grunt](https://gruntjs.com) (と [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](https://gulpjs.com) (と [gulp-karma](https://github.com/lazd/gulp-karma))といった自動化のタスク上で正しく動作します。
 
 ### Stubbing and Spying
 ###### [Style [Y193](#style-y193)]
 
-  - スタブやスパイのために [Sinon](http://sinonjs.org/) を使って下さい。
+  - スタブやスパイのために [Sinon](https://sinonjs.org/) を使って下さい。
 
     *なぜ ?*: SinonはJasminとMochaと一緒に正しく動作し、スタブやスパイの機能を拡張します。
 
@@ -2504,7 +2504,7 @@
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - 慣習的なアニメーションには[animate.css](http://daneden.github.io/animate.css/)を使って下さい。
+  - 慣習的なアニメーションには[animate.css](https://daneden.github.io/animate.css/)を使って下さい。
 
     *なぜ ?*: animation.cssが提供するアニメーションは速く、スムーズで、アプリケーションへの追加が容易です。
 
@@ -2512,7 +2512,7 @@
 
     *なぜ ?*: animate.cssは広く利用されておりテストされています。
 
-    Note: この[Matias NiemeläによるAngularのアニメーションの素晴らしいポスト](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)を見て下さい。
+    Note: この[Matias NiemeläによるAngularのアニメーションの素晴らしいポスト](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)を見て下さい。
 
 **[Back to top](#table-of-contents)**
 
@@ -2573,7 +2573,7 @@
 ### Use an Options File
 ###### [Style [Y230](#style-y230)]
 
-  - JavaScriptのコードにlintをかけるためにJS Hintを使って下さい。JS Hintのオプションを必ずカスタマイズしてソースコード管理に含めて下さい。詳細なオプションは[JS Hint docs](http://www.jshint.com/docs/)を参照して下さい。
+  - JavaScriptのコードにlintをかけるためにJS Hintを使って下さい。JS Hintのオプションを必ずカスタマイズしてソースコード管理に含めて下さい。詳細なオプションは[JS Hint docs](https://jshint.com/docs/)を参照して下さい。
 
     *なぜ ?*: ソース管理にコードをコミットする前に最初にアラートが上がります。
 
@@ -3025,7 +3025,7 @@
 
 ## Task Automation
 
-自動タスクの生成に[Gulp](http://gulpjs.com)または[Grunt](http://gruntjs.com)を使って下さい。Gulpはコンフィグレーションをコーディングでリーンに行えます。一方で、Gruntはコードをコンフィグレーションでリーンに行うことができます。個人的には読みやすくまた書きやすいGulpを好みますが両者とも素晴らしいです。
+自動タスクの生成に[Gulp](https://gulpjs.com)または[Grunt](https://gruntjs.com)を使って下さい。Gulpはコンフィグレーションをコーディングでリーンに行えます。一方で、Gruntはコードをコンフィグレーションでリーンに行うことができます。個人的には読みやすくまた書きやすいGulpを好みますが両者とも素晴らしいです。
 
 > 私の[Gulp Pluralsight course](http://jpapa.me/gulpps)でGulpについてやタスクの自動化についてより学ぶことができます。
 
@@ -3079,7 +3079,7 @@ _tldr; Use this guide. Attributions are appreciated._
 
 ### Copyright
 
-Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](https://johnpapa.net)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining

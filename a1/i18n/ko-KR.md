@@ -6,7 +6,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ## Purpose
 *팀환경을 위한 방향을 제시하는 Angular 스타일 가이드 by [@john_papa](//twitter.com/john_papa)*
 
-만약 [Angular](//angularjs.org) 어플리케이션의 문법, 컨벤션, 구조화를 위한 스타일 가이드를 찾고 있다면 제대로 오셨습니다. 여기 제시된 스타일들은 제 팀 단위 개발 경험, 프레젠테이션, [Pluralsight training courses](http://pluralsight.com/training/Authors/Details/john-papa)를 토대로 만들어졌습니다.
+만약 [Angular](//angularjs.org) 어플리케이션의 문법, 컨벤션, 구조화를 위한 스타일 가이드를 찾고 있다면 제대로 오셨습니다. 여기 제시된 스타일들은 제 팀 단위 개발 경험, 프레젠테이션, [Pluralsight training courses](https://app.pluralsight.com/profile/author/john-papa)를 토대로 만들어졌습니다.
 
 이 스타일 가이드의 목적은 Angular 어플리케이션을 만드는 길잡이 역할을 하기 위함이며 더 나아가 왜 내가 이런 것들을 선택했는지 보여주기 위함입니다.
 >만약 이 가이드가 마음에 든다면 Pluralsight 에 올려놓은 저의 강의를 참고하시기 바랍니다. [Angular Patterns: Clean Code](http://jpapa.me/ngclean)
@@ -16,14 +16,14 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ## Community Awesomeness and Credit
 저는 Angular 커뮤니티의 대단함을 알게 되었습니다. 그들은 자신들의 경험을 공유하는데 열정적이기 때문입니다. 나의 친구이자 Angular 전문가인 Todd Motto 와 나는 많은 스타일과 컨벤션을 위해 공동작업을 하였습니다. 대부분 우리는 서로 동의하였지만 어떤 부분에서는 의견이 갈렸습니다. Todd의 접근방법이 궁금하고 이를 비교해보고 싶으신 분들은 다음 링크에 가서 확인해보시면 좋을 것 같습니다 [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide).
 
-제 스타일의 많은 부분은 [Ward Bell](http://twitter.com/wardbell) 과 함께했던 2인 1조의 개발 세션을 통해서 많이 가져왔습니다. 저의 친구 Ward는 이 가이드의 원초적인 전개에 많은 도움을 주었습니다.
+제 스타일의 많은 부분은 [Ward Bell](https://twitter.com/wardbell) 과 함께했던 2인 1조의 개발 세션을 통해서 많이 가져왔습니다. 저의 친구 Ward는 이 가이드의 원초적인 전개에 많은 도움을 주었습니다.
 
 ## See the Styles in a Sample App
 예제 앱에 적용된 스타일을 참고하세요.
 이 가이드가 무엇을, 왜, 어떻게 하는지 다 설명을 하겠지만, 실제로 적용된 것을 보는 게 더 도움이 될 거라고 봅니다. 이 가이드에 제시된 스타일과 양식을 따르는 예제 앱이 함께 제공되고 있습니다. 여기에 가시면 modular 라는 해당 [예제 앱을 modular](https://github.com/johnpapa/ng-demos) 라는 폴더 안에서 보실 수 있습니다. 가서 코드를 확인하시고, 복제하시고, 개입도 해보시기 바랍니다. [실행하는 방법은 readme 에 작성되어 있습니다.](https://github.com/johnpapa/ng-demos/tree/master/modular)
 
 ##Translations
-커뮤니티를 통해 유지보수가 되는 [Angular 스타일 가이드의 번역문](https://github.com/johnpapa/angular-styleguide/tree/master/i18n)들은 여기에서 보실 수 있습니다.
+커뮤니티를 통해 유지보수가 되는 [Angular 스타일 가이드의 번역문](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n)들은 여기에서 보실 수 있습니다.
 
 ## Table of Contents
 
@@ -319,7 +319,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### controllerAs View Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - '전형적인 $scope 을 사용한 콘트롤러' 대신 [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 구문을 사용하세요.
+  - '전형적인 $scope 을 사용한 콘트롤러' 대신 [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 구문을 사용하세요.
 
 
   *이유*: 컨트롤러는 새로이 만들어진 하나의 객채 생성하여 리턴합니다. 그리고 `controllerAs` 구문은 `전형적인 $scope 구문` 보다 더 자바스크립트의 생성자와 흡사하게 작동합니다.
@@ -396,7 +396,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
   }
   ```
 
-  주의: 특정 코드의 바로 윗줄에 특정 코맨트를 추가함으로서 [jshint](http://www.jshint.com/) 경고를 무시하게 할 수 있습니다. 하지만 함수의 이름이 대문자일 경우에는 불필요합니다. 이 경우 함수는 생성자로 여겨지고 그 자체가 Angular에서 컨트롤러이기 때문입니다.
+  주의: 특정 코드의 바로 윗줄에 특정 코맨트를 추가함으로서 [jshint](https://jshint.com/) 경고를 무시하게 할 수 있습니다. 하지만 함수의 이름이 대문자일 경우에는 불필요합니다. 이 경우 함수는 생성자로 여겨지고 그 자체가 Angular에서 컨트롤러이기 때문입니다.
 
 
   ```javascript
@@ -530,7 +530,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y034](#style-y034)]
 
-  - 함수 선언문을 사용하여 구체적인 구현내용을 숨기세요. 바인딩 맴버들은 위쪽에 두세요. 컨트롤러 안에서 함수를 바인딩 하려면 파일 아래쪽에 위치한 함수 선언문을 참조하도록 하세요. 이렇게 하면 바인더블 섹션에 직접적으로 묶여지게 됩니다. 좀 더 구체적인 정보는 여기를 참고하세요 [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - 함수 선언문을 사용하여 구체적인 구현내용을 숨기세요. 바인딩 맴버들은 위쪽에 두세요. 컨트롤러 안에서 함수를 바인딩 하려면 파일 아래쪽에 위치한 함수 선언문을 참조하도록 하세요. 이렇게 하면 바인더블 섹션에 직접적으로 묶여지게 됩니다. 좀 더 구체적인 정보는 여기를 참고하세요 [this post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *이유*: 바인딩할 맴버를 위쪽에 올려두면 뷰에서 어떤 맴버를 사용하는지 즉각적으로 구분하는데 도움이 되고 코드 읽기가 쉬워집니다.
 
@@ -770,7 +770,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Single Responsibility
 ###### [Style [Y050](#style-y050)]
 
-  - 팩토리는 캡슐화 되어 단 [하나의 책임](http://en.wikipedia.org/wiki/Single_responsibility_principle)만 가져야 합니다. 팩토리가 단일 목적을 넘어 사용되게 된다면 다른 팩토리를 만들어야 합니다.
+  - 팩토리는 캡슐화 되어 단 [하나의 책임](https://en.wikipedia.org/wiki/Single_responsibility_principle)만 가져야 합니다. 팩토리가 단일 목적을 넘어 사용되게 된다면 다른 팩토리를 만들어야 합니다.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
@@ -782,7 +782,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Accessible Members Up Top
 ###### [Style [Y052](#style-y052)]
 
-  - 노출하고 싶은 호출 가능한 맴버(인터페이스)들은 서비스의 위쪽에 위치시키세요. 여기 링크에서 제시하는 방식을 사용하세요. [모듈 패턴 파해치기](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - 노출하고 싶은 호출 가능한 맴버(인터페이스)들은 서비스의 위쪽에 위치시키세요. 여기 링크에서 제시하는 방식을 사용하세요. [모듈 패턴 파해치기](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *이유*: 호출 가능한 맴버들을 상단에 배치하는 것은 가독성을 높여주고 어떤 맴버들이 외부로 노출되고 호출 될 수 있는지 그리고 단위 테스트를 해야하는지 순식간에 파악가능하도록 해줍니다.
 
@@ -839,7 +839,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
 
-  - 함수 정의를 사용하여 구체적 구현내용을 숨기세요. 노출시키고 싶은 맴버들을 상단에 배치하세요. 상단의 맴버에서 아래쪽에 정의된 함수들을 할당하세요. 더 자세한 정보는 여기를 보세요. [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - 함수 정의를 사용하여 구체적 구현내용을 숨기세요. 노출시키고 싶은 맴버들을 상단에 배치하세요. 상단의 맴버에서 아래쪽에 정의된 함수들을 할당하세요. 더 자세한 정보는 여기를 보세요. [this post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *이유*: 상단에 접근 가능한 맴버들을 배치함으로서 읽기 쉬운 코드를 만들어주고 외부에서 접근 가능한 팩토리 함수를 즉각적으로 알아볼 수 있도록 도와줍니다.
 
@@ -1169,7 +1169,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 
     *이유*: 유일하고 짧은 접두어는 디렉티브의 문맥과 출신을 파악하게 해줍니다. 예를 들어 `cc-`는 아마 CodeCamper 앱을 지칭하려고 사용되었을 수 있습니다. 또한 `acme-`는 Acme company에서 사용된 디렉티브를 지칭할 수 있습니다.
 
-    주의: `ng-`는 Angular 디렉티브로 예약되어 있기 때문에 사용하지 마세요. 넓게 검색한 후에 충돌이 없는지 확인하고 사용하세요. `ion-` 같은 경우 [Ionic Framework](http://ionicframework.com/) 프로젝트의 접두어로 사용되고 있으니까요.
+    주의: `ng-`는 Angular 디렉티브로 예약되어 있기 때문에 사용하지 마세요. 넓게 검색한 후에 충돌이 없는지 확인하고 사용하세요. `ion-` 같은 경우 [Ionic Framework](https://ionicframework.com/) 프로젝트의 접두어로 사용되고 있으니까요.
 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
@@ -1656,7 +1656,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com)를 사용할 때 [ng-annotate](//github.com/olov/ng-annotate)를 사용하세요. 그리고 `/* @ngInject */`이 코맨트 함수를 사용하여 자동화된 의존성 인젝션을 사용하세요.
+  - [Gulp](https://gulpjs.com) or [Grunt](https://gruntjs.com)를 사용할 때 [ng-annotate](//github.com/olov/ng-annotate)를 사용하세요. 그리고 `/* @ngInject */`이 코맨트 함수를 사용하여 자동화된 의존성 인젝션을 사용하세요.
 
     *이유*: 최소화-안전 방식을 사용하지 않는 의존성 정의를 지켜줍니다.
 
@@ -1733,7 +1733,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Use Gulp or Grunt for ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate)를 사용하여 자동화 코드생성을 하세요. 의존성을 가지고 있는 모든 함수의 앞부분에 `/* @ngInject */`를 넣으세요.
+  - [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate)를 사용하여 자동화 코드생성을 하세요. 의존성을 가지고 있는 모든 함수의 앞부분에 `/* @ngInject */`를 넣으세요.
 
     *이유*: ng-annotate는 대부분의 의존성을 잡아냅니다. 하지만 가끔 `/* @ngInject */`를 이용한 힌트가 필요할 수 있습니다.
 
@@ -2188,7 +2188,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ###### [Style [Y150](#style-y150)]
 
   - 구현을 위한 생각을 가지되, 멀리 보고 고려하세요. 달리 말하자면, 작게 시작하지만 앞으로 얼마나 커질 수 있을지 항상 기억하세요. 모든 앱 코드는 `app`이라는 최상위 폴더에 들어갈 겁니다. 한 파일 안에는 한 가지 기능만 들어갑니다. 컨트롤러, 서비스, 모듈, 뷰는 각각의 파일을 가지고 그안에 넣습니다. 제 3의 외부 코드들은 `app`폴더가 아닌 다른 상위 폴더를 가지게 하세요. 내가 작성한 코드가 아니니 그 것들이 제 앱을 어지럽히기 원치 않으니까요 (`bower_components`, `scripts`, `lib`).
-    주의: 구조를 만드는 것에 좀 더 구체적인 이유를 알고 싶으면 여기를 참고하세요. [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    주의: 구조를 만드는 것에 좀 더 구체적인 이유를 알고 싶으면 여기를 참고하세요. [this original post on application structure](https://johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2467,11 +2467,11 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Testing Library
 ###### [Style [Y191](#style-y191)]
 
-  - [Jasmine](http://jasmine.github.io/) 또는 [Mocha](http://mochajs.org)를 사용하여 단위 테스트를 하세요.
+  - [Jasmine](https://jasmine.github.io/) 또는 [Mocha](https://mochajs.org)를 사용하여 단위 테스트를 하세요.
 
     *이유*: Jasmine과 Mocha 모두 Angular 커뮤니티에서 두루 사용되고 있습니다. 둘다 안정적이고 잘 유지보수 되고 있으며 확실하게 기능 테스트를 할 수 있습니다.
 
-    주의: 모카를 사용할 경우 [Chai](http://chaijs.com)와 같은 assert 라이브러리를 선택하세요. 저는 개인적으로 Mocha를 선호합니다.
+    주의: 모카를 사용할 경우 [Chai](https://www.chaijs.com)와 같은 assert 라이브러리를 선택하세요. 저는 개인적으로 Mocha를 선호합니다.
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
@@ -2482,9 +2482,9 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 
     *이유*: Karma는 그 자체로 또는 Grunt나 Gulp를 이용하여 지속적인 통합을 연결해 진행하기 쉽도록 해줍니다.
 
-    *이유*: 어떤 IDE들은 Karma와 통합하기 시작했습니다. [WebStorm](http://www.jetbrains.com/webstorm/), [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225)
+    *이유*: 어떤 IDE들은 Karma와 통합하기 시작했습니다. [WebStorm](http://www.jetbrains.com/webstorm/), [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs)
 
-    *이유*: [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com)와 같은 자동화 선두주자들과 협업이 아주 좋습니다. Gulp를 사용한다면 [Karma](https://github.com/karma-runner/karma)를 플러그인을 사용하지 않고 직접적으로 API를 호출할 수 있습니다.
+    *이유*: [Grunt](https://gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](https://gulpjs.com)와 같은 자동화 선두주자들과 협업이 아주 좋습니다. Gulp를 사용한다면 [Karma](https://github.com/karma-runner/karma)를 플러그인을 사용하지 않고 직접적으로 API를 호출할 수 있습니다.
 
     ```javascript
     /* recommended */
@@ -2535,7 +2535,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Stubbing and Spying
 ###### [Style [Y193](#style-y193)]
 
-  - 스터빙이나 스파잉을 위해서는 [Sinon](http://sinonjs.org/)를 사용하세요.
+  - 스터빙이나 스파잉을 위해서는 [Sinon](https://sinonjs.org/)를 사용하세요.
 
     *이유*: Sinon은 Jasmine과 Mocha 둘다와 잘 작동하고 스터빙과 스파잉 기능을 이용해 확장할 수 있습니다.
 
@@ -2629,7 +2629,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - 평범한 애니메이션을 위해서는 [animate.css](http://daneden.github.io/animate.css/)를 사용하세요.
+  - 평범한 애니메이션을 위해서는 [animate.css](https://daneden.github.io/animate.css/)를 사용하세요.
 
     *이유*: animate.css이 제공하는 애니메이션들은 빠르고 부드럽고 쉽게 사용할 수 있습니다.
 
@@ -2637,7 +2637,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 
     *이유*: animate.css 널리 사용되고 있고 테스트 되었습니다.
 
-    주의: [Angular 애니메이션에 대한 좋은 포스팅 by Matias Niemelä](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html) 여기를 참고하세요.
+    주의: [Angular 애니메이션에 대한 좋은 포스팅 by Matias Niemelä](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html) 여기를 참고하세요.
 
 **[Back to top](#table-of-contents)**
 
@@ -2698,7 +2698,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 ### Use an Options File
 ###### [Style [Y230](#style-y230)]
 
-  - JS Hint를 사용하여 JavaScript 코드를 청소하세요. JS Hint 옵션 파일을 수정하고 소스 컨트롤에 추가하세요. 구체적인 옵션은 여기를 참고하세요 [JS Hint docs](http://www.jshint.com/docs/).
+  - JS Hint를 사용하여 JavaScript 코드를 청소하세요. JS Hint 옵션 파일을 수정하고 소스 컨트롤에 추가하세요. 구체적인 옵션은 여기를 참고하세요 [JS Hint docs](https://jshint.com/docs/).
 
     *이유*: 소스 컨트롤에 코드를 전송하기 전에 경고를 받을 수 있습니다.
 
@@ -2947,7 +2947,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
   - Angular 라이브 템플릿들은 이 스타일과 가이드라인을 따릅니다.
 
     - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
-    - Place it in your [templates folder](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Place it in your [templates folder](https://www.jetbrains.com/help/webstorm/project-and-ide-settings.html)
     - Restart WebStorm
     - In a JavaScript file type these commands followed by a `TAB`:
 
@@ -3054,7 +3054,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 
 ###### [Style [Y256](#style-y256)]
 
-  - [Visual Studio Code](http://code.visualstudio.com) 스니팻은 이 스타일과 가이드라인을 따릅니다.
+  - [Visual Studio Code](https://code.visualstudio.com/) 스니팻은 이 스타일과 가이드라인을 따릅니다.
 
     - Download the [VS Code Angular snippets](assets/vscode-snippets/javascript.json?raw=true)
     - copy snippets to snippet directory, or alternatively copy and paste the snippets into your existing ones
@@ -3189,7 +3189,7 @@ Angular 팀의 리더인 Igor Minar 에게 특별히 감사합니다. 이 스타
 **[Back to top](#table-of-contents)**
 
 ## Task Automation
-[Gulp](http://gulpjs.com) 또는 [Grunt](http://gruntjs.com)를 사용하여 자동화 처리를 사용하세요. Gulp는 설정보다는 코드 자체에 무게를 더 주는 반면 Grunt는 설정을 더 중요하게 생각합니다. 개인적으로는 읽고 작성하기가 쉬워서 Gulp를 선호합니다. 하지만 둘다 정말 멋집니다.
+[Gulp](https://gulpjs.com) 또는 [Grunt](https://gruntjs.com)를 사용하여 자동화 처리를 사용하세요. Gulp는 설정보다는 코드 자체에 무게를 더 주는 반면 Grunt는 설정을 더 중요하게 생각합니다. 개인적으로는 읽고 작성하기가 쉬워서 Gulp를 선호합니다. 하지만 둘다 정말 멋집니다.
 
 > 여기를 참고하여 gulp 자동화 업무 패턴을 배우세요 [Gulp Pluralsight course](http://jpapa.me/gulpps).
 
@@ -3243,7 +3243,7 @@ _tldr; Use this guide. Attributions are appreciated._
 
 ### Copyright
 
-Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](https://johnpapa.net)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining
