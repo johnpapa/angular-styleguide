@@ -21,7 +21,7 @@ Language translations are welcomed and encouraged. The success of these translat
 
 All translations must preserve the intention of the original document.
 
-> All contributions fall under the [MIT License of this repository](https://github.com/johnpapa/angularjs-styleguide#license). In other words, you would be providing these free to the community.
+> All contributions fall under the [MIT License of this repository](https://github.com/johnpapa/angular-styleguide#license). In other words, you would be providing these free to the community.
 
 ### New Translations
 1. Fork the repository

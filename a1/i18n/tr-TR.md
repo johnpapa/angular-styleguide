@@ -6,7 +6,7 @@ Angular takım lideri Igor Minar'a, rehberimi incelediği, geri bildirimde bulun
 ##Amaç 
 *[@john_papa](//twitter.com/john_papa)'dan Takımlar için seçeneklendirilmiş stil rehberi*
 
-Eğer Angular projeleriniz için seçeneklendirilmiş bir sintaks, yöntem ve yapılandırma rehberi arıyorsanız, buyrun gelin. Bu stiller benim [Angular](//angularjs.org) sunumlarım, [Pluralsight eğitim kurslarım](http://pluralsight.com/training/Authors/Details/john-papa) ve takım çalışmalarımdan edindiğim deneyimlerle oluşturulmuştur.
+Eğer Angular projeleriniz için seçeneklendirilmiş bir sintaks, yöntem ve yapılandırma rehberi arıyorsanız, buyrun gelin. Bu stiller benim [Angular](//angularjs.org) sunumlarım, [Pluralsight eğitim kurslarım](https://app.pluralsight.com/profile/author/john-papa) ve takım çalışmalarımdan edindiğim deneyimlerle oluşturulmuştur.
 
 Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi neden bu yöntemleri seçtiğimi açıklayarak, Angular uygulamalarınızı geliştirirken size yol göstermektir.
 
@@ -17,13 +17,13 @@ Bu rehberin amacı, kullandığım yöntemleri göstererek, hatta daha önemlisi
 ## Topluluğun Aşmışlığı ve Referanslar
 Asla izole olarak çalışmayın. Angular topluluğunu, deneyimlerini paylaşma konusunda tutkulu buluyorum. Örneğin, arkadaşım ve bir Angular uzmanı Todd Motto ile birçok stil ve yöntem üzerinde işbirliği yaptık. Birçoğunda hemfikir olduk, birkaçında farklı yollar izledik. [Todd'un rehberi'ni](https://github.com/toddmotto/angularjs-styleguide) de onun yaklaşımını anlamak ve karşılaştırma yapmak için incelemenizi öneririm
 
-Bir çok yöntem [Ward Bell](http://twitter.com/wardbell) ile yaptığımız eşli programlama seanslarında ortaya çıktı. Arkadaşım Ward bu rehberin nihai evrimine büyük katkılarda bulundu.
+Bir çok yöntem [Ward Bell](https://twitter.com/wardbell) ile yaptığımız eşli programlama seanslarında ortaya çıktı. Arkadaşım Ward bu rehberin nihai evrimine büyük katkılarda bulundu.
 
 ## Örnek uygulama üzerinde yöntemler
 Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deneyimlemenin yardımcı olacaığını düşünüyorum. Bu rehbere, bu rehberdeki yöntemleri ve tasarım desenlerini kullanan örnek bir uygulama eşlik ediyor. Bu uygulamayı [burada](https://github.com/johnpapa/ng-demos), `modular` klasörünün altında bulabilirsiniz. Üzerinde denemeler yapmaktan çekinmeyin. [Çalıştırma talimatları readme dosyasındadır](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Çeviriler
-[Bu Angular rehberinin çevirileri](https://github.com/johnpapa/angular-styleguide/tree/master/i18n) gönüllü yardımcılar tarafından sağlanmaktadır
+[Bu Angular rehberinin çevirileri](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) gönüllü yardımcılar tarafından sağlanmaktadır
 
 ## İçerik Listesi
 
@@ -301,7 +301,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### controllerAs View Sintaksı
 ###### [Stil [Y030](#style-y030)]
 
-  - [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) sintaksını klasik $scope'lu controller sintaksına tercih edin. 
+  - [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) sintaksını klasik $scope'lu controller sintaksına tercih edin. 
 
   *Neden?*: Controller'lar `new` kelimesi ile yaratılır ve uygulamanız içerisinde sadece bir örneği bulunur. `controllerAs` yöntemi JavaScript'in constructor yapısına daha yakındır.
 
@@ -374,7 +374,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
   }
   ```
 
-  Not: [jshint](http://www.jshint.com/) uyarılarını kodun üstüne yorum ekleyerek engelleyebilirsiniz. Eğer fonksiyonunu UpperCasing yöntemi ile isimlendirdiyse buna ihtiyaç olmaz. Çünkü bu yöntem bu fonksiyonun bir constructor fonksiyonu olduğunu belirtir, ki Angular controller'ları de bir constructor fonksiyonudur.
+  Not: [jshint](https://jshint.com/) uyarılarını kodun üstüne yorum ekleyerek engelleyebilirsiniz. Eğer fonksiyonunu UpperCasing yöntemi ile isimlendirdiyse buna ihtiyaç olmaz. Çünkü bu yöntem bu fonksiyonun bir constructor fonksiyonu olduğunu belirtir, ki Angular controller'ları de bir constructor fonksiyonudur.
 
   ```javascript
   /* jshint validthis: true */
@@ -491,7 +491,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Fonksiyon Tanımlamaları ve İmplementasyon Detaylarının Saklanması
 ###### [Stil [Y034](#style-y034)]
 
-  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Controller'ınızda bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
+  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Controller'ınızda bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
 
     *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve controlller içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
 
@@ -730,7 +730,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Tek Sorumluluk
 ###### [Stil [Y050](#style-y050)]
   
-  - Factory'lerin tek sorumluluğu olmalıdır [single responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle), ve kendi içeriğini kapsamalıdır. Factory sorumluluğunun dışına taşmaya başlarsa, bu yeni sorumluluk için ayrı bir factory yaratılmalıdır.
+  - Factory'lerin tek sorumluluğu olmalıdır [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), ve kendi içeriğini kapsamalıdır. Factory sorumluluğunun dışına taşmaya başlarsa, bu yeni sorumluluk için ayrı bir factory yaratılmalıdır.
 
 ### Singleton
 ###### [Stil [Y051](#style-y051)]
@@ -742,7 +742,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Ulaşılabilirler Yukarı!
 ###### [Style [Y052](#style-y052)]
   
-  - Servisin çağrılabilen metodlarını  [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) yapısını kullanarak kodun tepesinde tanımlayın.
+  - Servisin çağrılabilen metodlarını  [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) yapısını kullanarak kodun tepesinde tanımlayın.
 
     *Neden?*: Çağrılabilen metodları kodun tepesinde tanımlamak okunabilirliği arttırır ve bir bakışta bu servisin hangi metodlarının dışarıdan çağırılabileceğini anlamamıza yardımcı olur. Ayrıca hangi metodların unit testlerinin yazılması gerektiği hakkında fikir verir.
 
@@ -799,7 +799,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### Fonksiyon Tanımlamaları ve İmplementasyon Detaylarının Saklanması
 ###### [Stil [Y053](#style-y053)]
 
-  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Controller'ınızda bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
+  - Fonksiyon tanımlamalarınızı implementasyon detaylarını saklamak için kullanın. View'a bağlanacak öğeleri yukarıda tanımlayın. Controller'ınızda bir fonksiyonu bağlama ihtiyacı hissettiğinizde, bu öğeyi bir fonksiyon tanımlamasına eşitleyin. Fonksiyonun implementasyon detaylarını kodun ileriki satırlarında yapın. Bu direk olarak "Bağlanacaklar Yukarı" başlığı ile ilintili. Daha fazla detay için bu [makaleme](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code) bakabilirsiniz.
 
     *Neden?*: Bağlanacak öğeleri yukarı taşımak okumayı kolaylaştırır ve controller içerisinde hangi öğelerin View'a bağlandığını anında görmemizi sağlar.
 
@@ -1133,9 +1133,9 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
     *Neden?*: Eşsiz ön ek directive'in kapsamını ve orijinini ifade eder. Örneğin `cc-` directive'in CodeCamper uygulamasına ait olduğunu ifade ederken, `acme-` bu directive'in Acme firmasına ait olduğunu ifade edevilir
 
-    Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
+    Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](https://ionicframework.com/).
     
-    Not: `ng-` Angular tafafından kullanıldığı için bu ön eki kullanmaktan kaçının. Ön ekinizi belirlemeden önce çakışmaların önüne geçmek için iyice araştırın. Örneğin `ion-` ön eki [Ionic Framework](http://ionicframework.com/) tarafından kullanılmaktadır.
+    Not: `ng-` Angular tafafından kullanıldığı için bu ön eki kullanmaktan kaçının. Ön ekinizi belirlemeden önce çakışmaların önüne geçmek için iyice araştırın. Örneğin `ion-` ön eki [Ionic Framework](https://ionicframework.com/) tarafından kullanılmaktadır.
 
 ### Directive'inizin Yazım Türünü Element ve Attribute Olarak Sınırlayın
 ###### [Stil [Y074](#style-y074)]
@@ -1620,7 +1620,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### ng-annotate
 ###### [Stil [Y100](#style-y100)]
 
-  - [Gulp](http://gulpjs.com) ya da [Grunt](http://gruntjs.com) ile birlikte [ng-annotate](//github.com/olov/ng-annotate) kullanın ve otomatik dependency injection'a ihtiyacı olan fonksiyonları `/* @ngInject */` ile yorumlayın
+  - [Gulp](https://gulpjs.com) ya da [Grunt](https://gruntjs.com) ile birlikte [ng-annotate](//github.com/olov/ng-annotate) kullanın ve otomatik dependency injection'a ihtiyacı olan fonksiyonları `/* @ngInject */` ile yorumlayın
 
     *Neden?*: Bu kodunuzu minification uyumlu yazılması unutulmuş bağımlılıklara karşı korur.
 
@@ -1697,7 +1697,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 ### ng-annotate için Gulp ya da Grunt Kullanın
 ###### [Stil [Y101](#style-y101)]
 
-  - Otomatik derleme görevleriniz için [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) ya da [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) kullanın. Bağımlılığı olan fonksiyonların başına `/* @ngInject */` satırını koyun.
+  - Otomatik derleme görevleriniz için [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) ya da [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) kullanın. Bağımlılığı olan fonksiyonların başına `/* @ngInject */` satırını koyun.
 
     *Neden?*: ng-annotate çoğu bağımlılığı yakalayacaktır, ama bazen `/* @ngInject */` sintaksı ile done vermenizi bekler.
 
@@ -2159,7 +2159,7 @@ Bu rehber *ne*, *neden* ve *nasıl* sorularına odaklanırken, yöntemleri deney
 
   - Kısa vadeli düşünerek implementasyon yapın ama vizyonunuzu uzun vadeli tutun. Diğer bir deyişle, küçük parçalarla başlayın ama uygulamanın nereye doğru gittiğini aklınızda tutun. Uygulamanın bütün kodu `app` adlı bir klasör altında duracak. Bütün içerik bir dosyaya bir özellik şeklinde olacak. Her controller, servis, modül ve view kendi dosyalarında olacaklar. Bütün 3. parti kütüphaneler başka bir klasör altında toplanmalı, `app` klasörü altında değil. O kodları ben yazmadım ve benim uygulamamı karmaşıklaştırmasını istemiyorum (ör. `bower_components`, `scripts`, `lib`).
 
-    Not: Bu yapının hakkında daha fazla bilgi istiyorsanız: [uygulama yapısı hakkındaki orjinal makalem](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Not: Bu yapının hakkında daha fazla bilgi istiyorsanız: [uygulama yapısı hakkındaki orjinal makalem](https://johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout (yerleşim)
 ###### [Stil [Y151](#style-y151)]
@@ -2439,11 +2439,11 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 ### Test Kütüphanesi
 ###### [Stil [Y191](#style-y191)]
 
-  - Unit testleriniz için [Jasmine](http://jasmine.github.io/) ya da [Mocha](http://mochajs.org) kullanın.
+  - Unit testleriniz için [Jasmine](https://jasmine.github.io/) ya da [Mocha](https://mochajs.org) kullanın.
 
     *Neden?*: Jasmine ve Mocha, ikisi de Angular topluluğu tarafından yaygınca kullanılmaktadır. İkisi de istikrarlı, iyi yönetilir, ve sağlam test özellikleri sunuyorlar.
 
-    Not: Mocha kullanırken ayrıca [Chai](http://chaijs.com) gibi bir assert kütüphanesi kullanmayı gözönünde bulundurun. Ben Mocha'yı tercih ediyorum.
+    Not: Mocha kullanırken ayrıca [Chai](https://www.chaijs.com) gibi bir assert kütüphanesi kullanmayı gözönünde bulundurun. Ben Mocha'yı tercih ediyorum.
 
 ### Test Çalıştırıcı
 ###### [Stil [Y192](#style-y192)]
@@ -2454,9 +2454,9 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 
     *Neden?*: Karma kendi başına ya da Grunt veya Gulp aracılığı ile Continuous Integration sisteminize kolaylıkla dahil olabilir.
 
-    *Neden?*: [WebStorm](http://www.jetbrains.com/webstorm/) ve [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225) gibi bazı IDE'ler Karma ile entegre olmaya başladılar.
+    *Neden?*: [WebStorm](http://www.jetbrains.com/webstorm/) ve [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs) gibi bazı IDE'ler Karma ile entegre olmaya başladılar.
 
-    *Neden?*: Karma, [Grunt](http://www.gruntjs.com) ([grunt-karma](https://github.com/karma-runner/grunt-karma) ile) ve [Gulp](http://www.gulpjs.com) gibi otomatik görev yönetici devleri ile uyumlu çalışır. Gulp kullanırken [Karma](https://github.com/karma-runner/karma)'yı direk olarak API'si ile kullanabilirsiniz.
+    *Neden?*: Karma, [Grunt](https://gruntjs.com) ([grunt-karma](https://github.com/karma-runner/grunt-karma) ile) ve [Gulp](https://gulpjs.com) gibi otomatik görev yönetici devleri ile uyumlu çalışır. Gulp kullanırken [Karma](https://github.com/karma-runner/karma)'yı direk olarak API'si ile kullanabilirsiniz.
 
     ```javascript
     /* önerilen stil */
@@ -2507,7 +2507,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 ### Stubbing ve Spying
 ###### [Stil [Y193](#style-y193)]
 
-  - Stubbing ve spying [Sinon](http://sinonjs.org/) kullanın.
+  - Stubbing ve spying [Sinon](https://sinonjs.org/) kullanın.
 
     *Neden?*: Sinon, Jasmine ve Mocha ile uyumlu çalışır ve sundukları stubbing ve spying özelliklerini genişletir.
 
@@ -2602,7 +2602,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 ### animate.css
 ###### [Stil [Y212](#style-y212)]
 
-  - Geleneksel animasyonlar için [animate.css](http://daneden.github.io/animate.css/) kullanın.
+  - Geleneksel animasyonlar için [animate.css](https://daneden.github.io/animate.css/) kullanın.
 
     *Neden?*: animate.css'in sunduğı animasyonlar hızlı, akıcı ve uygulamanıza kolay eklenebilir.
 
@@ -2610,7 +2610,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 
     *Neden?*: animate.css yaygınca kullanılıyor ve test edilmiş.
 
-    Not: Bu müthiş makaleye göz gezdirin: [Matias Niemelä Angular animations anlatıyor](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Not: Bu müthiş makaleye göz gezdirin: [Matias Niemelä Angular animations anlatıyor](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[İçerik Listesi to top](#icerik-listesi)**
 
@@ -2671,7 +2671,7 @@ Unit Test yapmak temiz kodu yönetmeye yardımcı olur, bu yüzden benim unit te
 ### Bir Seçenek Dosyası Kullanın
 ###### [Stil [Y230](#style-y230)]
 
-  - JavaScript Kod denetleyicisi olarak JS Hint kullanın ve JS Hint seçeneklerini kendinize göre ayarlamayı unutmayın. Seçeneklerin detayları için [JS Hint dökümantasyonuna](http://www.jshint.com/docs/) bakın.
+  - JavaScript Kod denetleyicisi olarak JS Hint kullanın ve JS Hint seçeneklerini kendinize göre ayarlamayı unutmayın. Seçeneklerin detayları için [JS Hint dökümantasyonuna](https://jshint.com/docs/) bakın.
 
     *Neden?*: Kodunuzu versiyon kontrol sistemine göndermeden önce size bir ilk uyarı verir.
 
@@ -3016,7 +3016,7 @@ Tutarlı pattern'ler ve stiller için dosya şablonları ve snippet'ler kullanı
 
 ###### [Stil [Y256](#style-y256)]
 
-  - [Visual Studio Code](http://code.visualstudio.com) stil ve rehberleri izleyen Angular vim snippet'leri
+  - [Visual Studio Code](https://code.visualstudio.com/) stil ve rehberleri izleyen Angular vim snippet'leri
 
     - [VS Code Angular snippet'leri](assets/vscode-snippets/javascript.json?raw=true)'ni indirin
     - copy snippets to snippet directory, or alternatively copy and paste the snippets into your existing ones
@@ -3153,7 +3153,7 @@ Kullanıcı tarafında, küçük şablonlar ve directive'lerden oluşan view ge�
 **[İçerik Listesi](#icerik-listesi)**
 
 ## Görev Otomasyonu
-Otomatik görevler yaratmak için [Gulp](http://gulpjs.com) ya da [Grunt](http://gruntjs.com) kullanın. Gulp convention over configuration paradigmasını benimserken, Grunt configuration over code prensibini benimser. Ben şahsen Gulp'ı tercih ediyorum. Yazması ve okuması daha kolay geliyor, ama ikisi de çok başarılılar.
+Otomatik görevler yaratmak için [Gulp](https://gulpjs.com) ya da [Grunt](https://gruntjs.com) kullanın. Gulp convention over configuration paradigmasını benimserken, Grunt configuration over code prensibini benimser. Ben şahsen Gulp'ı tercih ediyorum. Yazması ve okuması daha kolay geliyor, ama ikisi de çok başarılılar.
 
 > [Gulp Pluralsight kursu](http://jpapa.me/gulpps)mda gulp ve otomatik görevler hakkında daha çok şey öğrenebilirsiniz.
 
@@ -3208,7 +3208,7 @@ _uzun lafın kısası; Bu rehberi kullanın. Katkılarınız makbule geçecektir
 
 ### Copyright
 
-Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](https://johnpapa.net)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining

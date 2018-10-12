@@ -1,0 +1,14 @@
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.5'
+
+- script: |
+    gem install awesome_bot
+    whitelist=dev.azure.com,jpapa.me,johnpapa.net
+    awesome_bot --skip-save-results --allow-dupe --white-list $whitelist `find . -name "*.md"`
+  failOnStderr: true
+  displayName: 'Validate links'

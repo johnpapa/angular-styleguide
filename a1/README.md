@@ -6,7 +6,7 @@ Special thanks to Igor Minar, lead on the Angular team, for reviewing, contribut
 ## Purpose
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
+If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](https://app.pluralsight.com/profile/author/john-papa) and working in teams.
 
 The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
 
@@ -15,7 +15,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
-Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angular-styleguide) to get a sense for his approach and how it compares.
+Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. As such, Angular expert Todd Motto and I have collaborated on many styles and conventions. We agree on most, and some we diverge. I encourage you to check out [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) to get a sense for his approach and how it compares.
 
 Many of my styles have been from the many pair programming sessions [Ward Bell](https://twitter.com/wardbell) and I have had. My friend Ward has certainly helped influence the ultimate evolution of this guide.
 
@@ -324,7 +324,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### controllerAs View Syntax
 ###### [Style [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Use the [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
 
   *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
 
@@ -397,7 +397,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  Note: You can avoid any [jshint](http://jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Note: You can avoid any [jshint](https://jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
 
   ```javascript
   /* jshint validthis: true */
@@ -530,7 +530,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
+  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
 
     *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
 
@@ -839,7 +839,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
 
-  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
 
@@ -1169,7 +1169,7 @@ Note: There are many naming options for directives, especially since they can be
 
     *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company.
 
-    Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
+    Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](https://ionicframework.com/).
 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
@@ -1734,7 +1734,7 @@ Note: The code example's dependency on `movieService` is not minification safe o
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/* @ngInject */`
+  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](https://gulpjs.com) or [Grunt](https://gruntjs.com) and comment functions that need automated dependency injection using `/* @ngInject */`
 
     *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
 
@@ -2266,7 +2266,7 @@ Note: The code example's dependency on `movieService` is not minification safe o
 
   - Have a near term view of implementation and a long term vision. In other words, start small but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
-    Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Note: Find more details and reasoning behind the structure at [this original post on application structure](https://johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2548,11 +2548,11 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Testing Library
 ###### [Style [Y191](#style-y191)]
 
-  - Use [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org) for unit testing.
+  - Use [Jasmine](https://jasmine.github.io/) or [Mocha](https://mochajs.org) for unit testing.
 
     *Why?*: Both Jasmine and Mocha are widely used in the Angular community. Both are stable, well maintained, and provide robust testing features.
 
-    Note: When using Mocha, also consider choosing an assert library such as [Chai](http://chaijs.com). I prefer Mocha.
+    Note: When using Mocha, also consider choosing an assert library such as [Chai](https://www.chaijs.com/). I prefer Mocha.
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
@@ -2563,9 +2563,9 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: Karma hooks into your Continuous Integration process easily on its own or through Grunt or Gulp.
 
-    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](https://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *Why?*: Some IDE's are beginning to integrate with Karma, such as [WebStorm](http://www.jetbrains.com/webstorm/) and [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs).
 
-    *Why?*: Karma works well with task automation leaders such as [Grunt](http://gruntjs.com/) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://gulpjs.com/). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
+    *Why?*: Karma works well with task automation leaders such as [Grunt](https://gruntjs.com/) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](https://gulpjs.com/). When using Gulp, use [Karma](https://github.com/karma-runner/karma) directly and not with a plugin as the API can be called directly.
 
     ```javascript
     /* recommended */
@@ -2619,7 +2619,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Stubbing and Spying
 ###### [Style [Y193](#style-y193)]
 
-  - Use [Sinon](http://sinonjs.org/) for stubbing and spying.
+  - Use [Sinon](https://sinonjs.org/) for stubbing and spying.
 
     *Why?*: Sinon works well with both Jasmine and Mocha and extends the stubbing and spying features they offer.
 
@@ -2712,7 +2712,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Use [animate.css](http://daneden.github.io/animate.css/) for conventional animations.
+  - Use [animate.css](https://daneden.github.io/animate.css/) for conventional animations.
 
     *Why?*: The animations that animate.css provides are fast, smooth, and easy to add to your application.
 
@@ -2720,7 +2720,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 
     *Why?*: animate.css is widely used and tested.
 
-    Note: See this [great post by Matias Niemelä on Angular animations](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Note: See this [great post by Matias Niemelä on Angular animations](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Back to top](#table-of-contents)**
 
@@ -2781,7 +2781,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Use an Options File
 ###### [Style [Y230](#style-y230)]
 
-  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](http://jshint.com/docs/) for details on the options.
+  - Use JS Hint for linting your JavaScript and be sure to customize the JS Hint options file and include in source control. See the [JS Hint docs](https://jshint.com/docs/) for details on the options.
 
     *Why?*: Provides a first alert prior to committing any code to source control.
 
@@ -3029,7 +3029,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
   - Angular live templates that follow these styles and guidelines.
 
     - Download the [webstorm-angular-live-templates.xml](assets/webstorm-angular-live-templates/webstorm-angular-live-templates.xml?raw=true)
-    - Place it in your [templates folder](https://www.jetbrains.com/webstorm/help/project-and-ide-settings.html)
+    - Place it in your [templates folder](https://www.jetbrains.com/help/webstorm/project-and-ide-settings.html)
     - Restart WebStorm
     - In a JavaScript file type these commands followed by a `TAB`:
 
@@ -3157,7 +3157,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
 
       Note that yasnippet categorizes snippets by major mode, and there are several Emacs major modes for editing Javascript code. The snippets are in `js2-mode`, and the other directories contain only a dotfile to reference them there.
 
-    - install [yasnippet](https://github.com/capitaomorte/yasnippet) (`M-x package-install RET yasnippet RET`)
+    - install [yasnippet](https://github.com/joaotavora/yasnippet) (`M-x package-install RET yasnippet RET`)
     - copy snippets to snippet directory, or modify your Emacs init to add snippet directory to `yas-snippet-dirs`
 
     ```javascript
@@ -3291,7 +3291,7 @@ Client-side routing is important for creating a navigation flow between views an
 **[Back to top](#table-of-contents)**
 
 ## Task Automation
-Use [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
+Use [Gulp](https://gulpjs.com) or [Grunt](https://gruntjs.com) for creating automated tasks.  Gulp leans to code over configuration while Grunt leans to configuration over code. I personally prefer Gulp as I feel it is easier to read and write, but both are excellent.
 
 > Learn more about gulp and patterns for task automation in my [Gulp Pluralsight course](http://jpapa.me/gulpps)
 

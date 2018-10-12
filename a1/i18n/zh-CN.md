@@ -6,7 +6,7 @@
 ## 目的
 *Angular规范[@john_papa](//twitter.com/john_papa)*
 
-如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的规范，那么你来对地方了。这里所包含的内容是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](http://pluralsight.com/training/Authors/Details/john-papa)。
+如果你正在寻找一些关于语法、约定和结构化的Angular应用的一个有建设性的规范，那么你来对地方了。这里所包含的内容是基于我在团队中使用[Angular](//angularjs.org)的一些经验、一些演讲和[Pluralsight培训课程](https://app.pluralsight.com/profile/author/john-papa)。
 
 这个规范的目的是为构建Angular应用提供指导，当然更加重要的是让大家知道我为什么要选择它们。
 
@@ -17,7 +17,7 @@
 ## Community Awesomeness and Credit
 Angular社区是一个热衷于分享经验的令人难以置信的社区，尽管Todd Motto（他是我的一个朋友，也是Angular专家）和我合作了多种规范和惯例，但是我们也存在着一些分歧。我鼓励你去看看[Todd的指南](https://github.com/toddmotto/angularjs-styleguide)，在那里你能看到我们之间的区别。
 
-我的许多规范都是从大量的程序会话[Ward Bell](http://twitter.com/wardbell)和我所拥有的而来的，我的好友Ward也影响了本规范的最终演变。
+我的许多规范都是从大量的程序会话[Ward Bell](https://twitter.com/wardbell)和我所拥有的而来的，我的好友Ward也影响了本规范的最终演变。
 
 ## 在示例App中了解这些规范
 看示例代码有助于你更好地理解，你可以在`modular`文件夹下找到[命名为modular的示例应用程序](https://github.com/johnpapa/ng-demos)，随便克隆。
@@ -291,7 +291,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### controllerAs在View中的语法
 ###### [Style [Y030](#style-y030)]
 
-  - 使用[`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。
+  - 使用[`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) 语法代替直接用经典的$scope定义的controller的方式。
 
 	*为什么？*：controller被构建的时候，就会有一个新的实例，`controllerAs` 的语法比`经典的$scope语法`更接近JavaScript构造函数。
 
@@ -365,7 +365,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
   }
   ```
 
-  - 注：你可以参照下面的做法来避免 [jshint](http://www.jshint.com/)的警告。但是构造函数（函数名首字母大写）是不需要这个的.
+  - 注：你可以参照下面的做法来避免 [jshint](https://jshint.com/)的警告。但是构造函数（函数名首字母大写）是不需要这个的.
 
   ```javascript
   /* jshint validthis: true */
@@ -480,7 +480,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 函数声明隐藏实现细节
 ###### [Style [Y034](#style-y034)]
 
-  - 使用函数声明来隐藏实现细节，置顶绑定成员，当你需要在controller中绑定一个函数时，把它指向一个在文件的后面会出现函数声明。更多详情请看[这里](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code)。
+  - 使用函数声明来隐藏实现细节，置顶绑定成员，当你需要在controller中绑定一个函数时，把它指向一个在文件的后面会出现函数声明。更多详情请看[这里](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code)。
 
   *为什么？*：易读，易识别哪些成员可以在View中绑定和使用。
 
@@ -720,7 +720,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 单一职责
 ###### [Style [Y051](#style-y051)]
 
-  - factory应该是[单一职责](http://en.wikipedia.org/wiki/Single_responsibility_principle)，这是由其上下文进行封装的。一旦一个factory将要处理超过单一的目的时，就应该创建一个新的factory。
+  - factory应该是[单一职责](https://en.wikipedia.org/wiki/Single_responsibility_principle)，这是由其上下文进行封装的。一旦一个factory将要处理超过单一的目的时，就应该创建一个新的factory。
 
 ### 单例
 ###### [Style [Y051](#style-y051)]
@@ -732,7 +732,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 可访问的成员置顶
 ###### [Style [Y052](#style-y052)]
 
-  - 使用从[显露模块模式](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service（它的接口）中可调用的成员暴露到顶部，
+  - 使用从[显露模块模式](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript)派生出来的技术把service（它的接口）中可调用的成员暴露到顶部，
 
     *为什么？*：易读，并且让你可以立即识别service中的哪些成员可以被调用，哪些成员必须进行单元测试（或者被别人嘲笑）。
 
@@ -1119,7 +1119,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：方便快速识别directive的内容和起源，例如`acme-`可能预示着这个directive是服务于Acme company。
 
-    注：避免使用`ng-`为前缀，研究一下其它广泛使用的directive避免命名冲突，例如[Ionic Framework](http://ionicframework.com/)的`ion-`。
+    注：避免使用`ng-`为前缀，研究一下其它广泛使用的directive避免命名冲突，例如[Ionic Framework](https://ionicframework.com/)的`ion-`。
 
 ### 限制元素和属性
 ###### [Style [Y074](#style-y074)]
@@ -1602,7 +1602,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - 在[Gulp](http://gulpjs.com)或[Grunt](http://gruntjs.com)中使用[ng-annotate](//github.com/olov/ng-annotate)，用`/** @ngInject */`对需要自动依赖注入的function进行注释。
+  - 在[Gulp](https://gulpjs.com)或[Grunt](https://gruntjs.com)中使用[ng-annotate](//github.com/olov/ng-annotate)，用`/** @ngInject */`对需要自动依赖注入的function进行注释。
 
     *为什么？*：可以避免代码中的依赖使用到任何不安全的写法。
 
@@ -1679,7 +1679,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 使用Gulp或Grunt结合ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - 在自动化任务中使用[gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate)或[grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate)，把`/* @ngInject */`注入到任何有依赖关系函数的前面。
+  - 在自动化任务中使用[gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate)或[grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate)，把`/* @ngInject */`注入到任何有依赖关系函数的前面。
 
     *为什么？*：ng-annotate会捕获大部分的依赖关系，但是有时候需要借助于`/* @ngInject */`语法提示。
 
@@ -2109,7 +2109,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   - 有实施的短期看法和长远的目标，换句话说，从小处入手，但是要记住app的走向。app的所有代码都在一个叫做`app`的根目录下，所有的内容都遵循一个功能一个文件，每一个controller、service、module、view都是独立的文件。第三方脚本存放在另外的根文件夹中（`bower_components`、`scripts`、`lib`）。
 
-  注：了解实例结构的具体信息看[Angular应用结构](http://www.johnpapa.net/angular-app-structuring-guidelines/)。
+  注：了解实例结构的具体信息看[Angular应用结构](https://johnpapa.net/angular-app-structuring-guidelines/)。
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2387,11 +2387,11 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 测试库
 ###### [Style [Y191](#style-y191)]
 
-  - 用[Jasmine](http://jasmine.github.io/)或者[Mocha](http://mochajs.org)进行单元测试。
+  - 用[Jasmine](https://jasmine.github.io/)或者[Mocha](https://mochajs.org)进行单元测试。
 
     *为什么？*：Angular社区中Jasmine和Mocha都用的很广，两者都很稳定，可维护性好，提供强大的测试功能。
 
-    注意：使用Mocha时你可以考虑选择一个类似[Chai](http://chaijs.com)的提示库。
+    注意：使用Mocha时你可以考虑选择一个类似[Chai](https://www.chaijs.com)的提示库。
 
 ### 测试运行器
 ###### [Style [Y192](#style-y192)]
@@ -2402,14 +2402,14 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：可以通过自身或是Grunt、Gulp方便地钩入持续集成的进程。
 
-    *为什么？*：一些IDE已经开始集成Karma了，如[WebStorm](http://www.jetbrains.com/webstorm/)和[Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225)。
+    *为什么？*：一些IDE已经开始集成Karma了，如[WebStorm](http://www.jetbrains.com/webstorm/)和[Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs)。
 
-    *为什么？*：Karma可以很好的和自动化任务工具如[Grunt](http://www.gruntjs.com)（带有[grunt-karma](https://github.com/karma-runner/grunt-karma)）和[Gulp](http://www.gulpjs.com)（带有[gulp-karma](https://github.com/lazd/gulp-karma)）合作。
+    *为什么？*：Karma可以很好的和自动化任务工具如[Grunt](https://gruntjs.com)（带有[grunt-karma](https://github.com/karma-runner/grunt-karma)）和[Gulp](https://gulpjs.com)（带有[gulp-karma](https://github.com/lazd/gulp-karma)）合作。
 
 ### Stubbing和Spying
 ###### [Style [Y193](#style-y193)]
 
-  - 用[Sinon](http://sinonjs.org/)。
+  - 用[Sinon](https://sinonjs.org/)。
 
     *为什么？*：Sinon可以和Jasmine和Mocha合作良好，并且可以扩展它们提供的stubbing和spying。
 
@@ -2502,7 +2502,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - 传统动画使用[animate.css](http://daneden.github.io/animate.css/)。
+  - 传统动画使用[animate.css](https://daneden.github.io/animate.css/)。
 
     *为什么？*：css提供的动画是快速的、流畅的、易于添加到应用程序中的。
 
@@ -2510,7 +2510,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
     *为什么？*：animate.css被广泛使用和测试。
 
-    注意：参阅[Matias Niemelä的关于Angular动画的文章](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    注意：参阅[Matias Niemelä的关于Angular动画的文章](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[返回顶部](#目录)**
 
@@ -2571,7 +2571,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 ### 使用一个Options文件
 ###### [Style [Y230](#style-y230)]
 
-  - 用JS Hint来分析你的JavaScript代码，确保你自定义了JS Hint选项文件并且包含在源控制里。详细信息：[JS Hint文档](http://www.jshint.com/docs/)。
+  - 用JS Hint来分析你的JavaScript代码，确保你自定义了JS Hint选项文件并且包含在源控制里。详细信息：[JS Hint文档](https://jshint.com/docs/)。
 
     *为什么？*：提交代码到原版本之前先发出警告。
 
@@ -2817,7 +2817,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
   - 你可以把它们导入到WebStorm设置中:
 
-    - 下载[WebStorm Angular file templates and snippets](https://github.com/johnpapa/angular-styleguide/blob/master/assets/webstorm-angular-file-template.settings.jar?raw=true)
+    - 下载[WebStorm Angular file templates and snippets](../assets/webstorm-angular-file-template.settings.jar?raw=true)
     - 打开WebStorm点击`File`菜单
     - 选择`Import Settings`菜单选项
     - 选择文件点击`OK`
@@ -3023,7 +3023,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 **[返回顶部](#目录)**
 
 ## 任务自动化
-用[Gulp](http://gulpjs.com)或者[Grunt](http://gruntjs.com)来创建自动化任务。Gulp偏向于代码优先原则(code over configuration)而Grunt更倾向于配置优先原则(configuration over code)。我更倾向于使用gulp，因为gulp写起来比较简单。
+用[Gulp](https://gulpjs.com)或者[Grunt](https://gruntjs.com)来创建自动化任务。Gulp偏向于代码优先原则(code over configuration)而Grunt更倾向于配置优先原则(configuration over code)。我更倾向于使用gulp，因为gulp写起来比较简单。
 
 > 可以在我的[Gulp Pluralsight course](http://jpapa.me/gulpps)了解更多gulp和自动化任务的信息
 
@@ -3077,7 +3077,7 @@ Angular社区是一个热衷于分享经验的令人难以置信的社区，尽�
 
 ### Copyright
 
-Copyright (c) 2014-2015 [John Papa](http://johnpapa.net)
+Copyright (c) 2014-2015 [John Papa](https://johnpapa.net)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining

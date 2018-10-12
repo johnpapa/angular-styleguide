@@ -2,7 +2,7 @@
 
 *Guía de estilos colaborativa de Angular para equipos por [@john_papa](//twitter.com/john_papa)*
 
-Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngularJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), presentaciones, [Cursos en Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) y trabajando en equipos.
+Si estás buscando una guía colaborativa sobre sintaxis, convenciones y estructura de aplicaciones con AngularJS, este es el sitio. Estos estilos están basados en mi experiencia desarrollando con [AngularJS](//angularjs.org), presentaciones, [Cursos en Pluralsight](https://app.pluralsight.com/profile/author/john-papa) y trabajando en equipos.
 
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
@@ -13,13 +13,13 @@ El propósito de esta guía de estilos es proporcionar una guía de cómo constr
 ## Asombrosa comunidad y créditos
 Nunca trabajes solo. Personalmente, la comunidad de Angular es un increíble grupo apasionado por compartir experiencias. Como por ejemplo, mi amigo y experto en Angular Todd Motto, con el que he colaborado en muchos de los estilos y convenciones. Estamos de acuerdo en la mayoría, y en otras no. Te recomiendo que le eches un vistazo a [Todd's guidelines](https://github.com/toddmotto/angularjs-styleguide) para que le des sentido a esta guía y la compares.
 
-Muchos de los estilos han salido de las muchas sesiones de pair programming que [Ward Bell](http://twitter.com/wardbell) y yo hemos tenido. Aunque no siempre coincidimos, mi amigo Ward me ha ayudado con la última evolución de esta guía.
+Muchos de los estilos han salido de las muchas sesiones de pair programming que [Ward Bell](https://twitter.com/wardbell) y yo hemos tenido. Aunque no siempre coincidimos, mi amigo Ward me ha ayudado con la última evolución de esta guía.
 
 ## Mira los estilos en la aplicación de ejemplo
 Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta útil verlos en práctica. Esta guía viene acompañada de una aplicación de ejemplo que sigue los estilos y patrones. La puedes encontrar en [aplicación de ejemplo (llamada modular) aquí](https://github.com/johnpapa/ng-demos) dentro del directorio `modular`. Siéntete libre de cogerla, hacerle clone o un fork. [Instrucciones de cómo arrancarla en su readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ## Traducciones
-[Traducciones de esta guía de estilos Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) son mantenidas por la comunidad y las puedes encontrar aquí.
+[Traducciones de esta guía de estilos Angular](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) son mantenidas por la comunidad y las puedes encontrar aquí.
 
 ## Tabla de contenidos
 
@@ -295,7 +295,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### controllerAs Sintaxis en la Vista
 ###### [Style [Y030](#style-y030)]
 
-  - Usa la sintaxis [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controlador con $scope`.
+  - Usa la sintaxis [`controllerAs`](https://johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controlador con $scope`.
 
   *¿Por qué?*: Los Controladores se construyen, renuevan y proporcionan una nueva instancia única, y la sintaxis `controllerAs` se acerca más a eso que la `sintaxis clásica de $scope`.
 
@@ -368,7 +368,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
   }
   ```
 
-  Nota: Puedes evitar los warnings de [jshint](http://www.jshint.com/) escribiendo un comentario encima de la línea de código. Sin embargo no hace falta si el nombre de la función empieza con mayúsculas, ya que esa es la convención para las funciones de los constructores, que es lo que un controller en Angular es.
+  Nota: Puedes evitar los warnings de [jshint](https://jshint.com/) escribiendo un comentario encima de la línea de código. Sin embargo no hace falta si el nombre de la función empieza con mayúsculas, ya que esa es la convención para las funciones de los constructores, que es lo que un controller en Angular es.
 
   ```javascript
   /* jshint validthis: true */
@@ -485,7 +485,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Declaraciones de Funciones para Esconder los Detalles de Implementación
 ###### [Style [Y034](#style-y034)]
 
-  - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Miembros Bindeables Arriba. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Miembros Bindeables Arriba. Para más detalles mira [este post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *¿Por qué?*: Colocar las variables bindeables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la Vista.
 
@@ -725,7 +725,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Responsabilidad Única
 ###### [Style [Y050](#style-y050)]
 
-  - Las factorías deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factoría empiece a exceder el principio de responsabilidad única, una nueva factoría debe ser creada.
+  - Las factorías deben tener una [responsabilidad única](https://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factoría empiece a exceder el principio de responsabilidad única, una nueva factoría debe ser creada.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
@@ -737,7 +737,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Miembros accesibles Arriba
 ###### [Style [Y052](#style-y052)]
 
-  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica derivada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica derivada de [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *¿Por qué?*: Colocar los elementos que se llaman arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear).
 
@@ -794,7 +794,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Declaración de Funciones para Esconder los Detalles de Implementación
 ###### [Style [Y053](#style-y053)]
 
-  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factoría. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factoría. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](https://johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la factoría se pueden accesar externamente.
 
@@ -1124,7 +1124,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
     *¿Por qué?*: El prefijo corto y único identifica el contexto de la directiva y el origen. Por ejemplo el prefijo `cc-` puede indicar que la directiva en particular es parte de la aplicación CodeCamper, mientras que `acme-` pudiera indicar que la directiva es de la compañía Acme.
 
-    Nota: Evita `ng-` ya que está reservado para las directivas AngularJS. Estudia sabiamente las directivas usadas para evitar conflictos de nombres, como `ion-` de [Ionic Framework](http://ionicframework.com/).
+    Nota: Evita `ng-` ya que está reservado para las directivas AngularJS. Estudia sabiamente las directivas usadas para evitar conflictos de nombres, como `ion-` de [Ionic Framework](https://ionicframework.com/).
 
 ### Limitate a Elementos y Atributos
 ###### [Style [Y074](#style-y074)]
@@ -1592,7 +1592,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
 
-  - Usa [ng-annotate](//github.com/olov/ng-annotate) para [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) y comenta funciones que necesiten inyección de dependencias automatizadas usando `/** @ngInject */`
+  - Usa [ng-annotate](//github.com/olov/ng-annotate) para [Gulp](https://gulpjs.com) or [Grunt](https://gruntjs.com) y comenta funciones que necesiten inyección de dependencias automatizadas usando `/** @ngInject */`
 
     *¿Por qué?*: Salvaguarda tu código de cualquier dependencia que pueda no estar usando prácticas de minificación segura.
 
@@ -1669,7 +1669,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 ### Usa Gulp o Grunt para ng-annotate
 ###### [Style [Y101](#style-y101)]
 
-  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) en una tarea de construcción automática. Inyecta `/* @ngInject */` antes de cualquier función que tenga dependecias.
+  - Usa [gulp-ng-annotate](https://www.npmjs.com/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.com/package/grunt-ng-annotate) en una tarea de construcción automática. Inyecta `/* @ngInject */` antes de cualquier función que tenga dependecias.
 
     *¿Por qué?*: ng-annotate atrapará la mayoría de las dependencias, pero algunas veces requiere indicios usando la sintaxis `/* @ngInject */`.
 
@@ -2105,7 +2105,7 @@ Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta úti
 
   - Ten una visión de implementación de corto y largo plazo. En otras palabras, empieza con poco pero ten en mente hacia donde se dirige la aplicación. Todo el código de la aplicación va en el directorio raíz llamado `app`. Todo el contenido es separado en 1 característica por archivo. Cada controlador, servicio, módulo, vista tiene su propio archivo. Todos los vendor scripts de terceros son almacenados en otro directorio raíz y no en el directorio `app`. Si yo no lo escribí no los quiero saturando mi aplicación (`bower_components`, `scripts`, `lib`).
 
-    Nota: Encuentra más detalles y el razonamiento detrás de esta estructura en [este post original sobre la estructura de una aplicación](http://www.johnpapa.net/angular-app-structuring-guidelines/).
+    Nota: Encuentra más detalles y el razonamiento detrás de esta estructura en [este post original sobre la estructura de una aplicación](https://johnpapa.net/angular-app-structuring-guidelines/).
 
 ### Layout
 ###### [Style [Y151](#style-y151)]
@@ -2381,11 +2381,11 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 ### Librería para las Pruebas
 ###### [Style [Y191](#style-y191)]
 
-  - Usa [Jasmine](http://jasmine.github.io/) o [Mocha](http://mochajs.org) para las pruebas unitarias.
+  - Usa [Jasmine](https://jasmine.github.io/) o [Mocha](https://mochajs.org) para las pruebas unitarias.
 
     *¿Por qué?*: Ambas Jasmine y Mocha son usadas ampliamente por la comunidad de AngularJS. Ambas son estables, bien mantenidas, y proveen de características de pruebas robustas.
 
-    Nota: Cuando uses Mocha, también considera elegir una librería como [Chai](http://chaijs.com).
+    Nota: Cuando uses Mocha, también considera elegir una librería como [Chai](https://www.chaijs.com).
 
 ### Test Runner
 ###### [Style [Y192](#style-y192)]
@@ -2396,14 +2396,14 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
     *¿Por qué?*: Karma encaja en tu proceso de Integración Continua fácilmente por sí sola o a través de Grunt o Gulp.
 
-    *¿Por qué?*: Algunos IDE's están comenzando a integrarse con Karma, tal como [WebStorm](http://www.jetbrains.com/webstorm/) y [Visual Studio](http://visualstudiogallery.msdn.microsoft.com/02f47876-0e7a-4f6c-93f8-1af5d5189225).
+    *¿Por qué?*: Algunos IDE's están comenzando a integrarse con Karma, tal como [WebStorm](http://www.jetbrains.com/webstorm/) y [Visual Studio](https://marketplace.visualstudio.com/items?itemName=DanielFisherlennybacon.KarmaVs).
 
-    *¿Por qué?*: Karma funciona bien con líderes de automatización de tareas tales como [Grunt](http://www.gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) y [Gulp](http://www.gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
+    *¿Por qué?*: Karma funciona bien con líderes de automatización de tareas tales como [Grunt](https://gruntjs.com) (con [grunt-karma](https://github.com/karma-runner/grunt-karma)) y [Gulp](https://gulpjs.com) (con [gulp-karma](https://github.com/lazd/gulp-karma)).
 
 ### Stubear y Espíar
 ###### [Style [Y193](#style-y193)]
 
-  - Usa [Sinon](http://sinonjs.org/) para el stubeo y espíar.
+  - Usa [Sinon](https://sinonjs.org/) para el stubeo y espíar.
 
     *¿Por qué?*: Sinon funciona bien con ambos Jasmine y Mocha y extiende las características de stubeo y espío que ellos ofrecen.
 
@@ -2488,7 +2488,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 ### animate.css
 ###### [Style [Y212](#style-y212)]
 
-  - Usa [animate.css](http://daneden.github.io/animate.css/) para animaciones convencionales.
+  - Usa [animate.css](https://daneden.github.io/animate.css/) para animaciones convencionales.
 
     *¿Por qué?*: Las animaciones que animate.css provee son rápidas, fluidas, y fáciles de agregar en tu aplicación.
 
@@ -2496,7 +2496,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 
     *¿Por qué?*: animate.css está ampliamente usado y testeado.
 
-    Nota: Ve este [ excelente post de Matias Niemelä sobre animaciones AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Nota: Ve este [ excelente post de Matias Niemelä sobre animaciones AngularJS](https://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -2557,7 +2557,7 @@ Las pruebas unitarias ayudan a mantener el código limpio, así que incluyo algu
 ### Usa un Archivo de Opciones
 ###### [Style [Y230](#style-y230)]
 
-  - Usa JS Hint para resaltar problemas en tu JavaScript y asegurate de personalizar el arhivo de opciones de JS Hint e incluirlo en el control de versiones. Ve los [JS Hint docs](http://www.jshint.com/docs/) para detalles sobre estas opciones.
+  - Usa JS Hint para resaltar problemas en tu JavaScript y asegurate de personalizar el arhivo de opciones de JS Hint e incluirlo en el control de versiones. Ve los [JS Hint docs](https://jshint.com/docs/) para detalles sobre estas opciones.
 
     *¿Por qué?*: Provee una primera alerta antes de hacer commit de cualquier código al control de versiones.
 
@@ -2777,7 +2777,7 @@ Enrutamiento del lado del Cliente es importante para crear un flujo de navegaci�
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Automatización de Tareas
-Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código. Personalmente yo prefiero Gulp ya que se siente más fácil de leer y escribir, pero ambos son excelentes.
+Usa [Gulp](https://gulpjs.com) o [Grunt](https://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código. Personalmente yo prefiero Gulp ya que se siente más fácil de leer y escribir, pero ambos son excelentes.
 
 ###### [Style [Y400](#style-y400)]
 
@@ -2819,7 +2819,7 @@ _tldr; Usa esta guía. Reconocimientos son apreciados._
 
 ### (The MIT License)
 
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
+Copyright (c) 2014 [John Papa](https://johnpapa.net)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
