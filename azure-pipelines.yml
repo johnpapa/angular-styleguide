@@ -1,0 +1,29 @@
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.5'
+
+- script: |
+    gem install awesome_bot
+    whitelist=jpapa.me,johnpapa.net
+    awesome_bot README.md         --allow-dupe --white-list $whitelist
+    awesome_bot a1/README.md      --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/README.md --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/de-DE.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/es-ES.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/fr-FR.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/it-IT.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/ja-JP.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/ko-KR.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/mk-MK.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/pt-BR.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/ro-RO.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/ru-RU.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/tr-TR.md  --allow-dupe --white-list $whitelist
+    awesome_bot a1/i18n/zh-CN.md  --allow-dupe --white-list $whitelist
+    awesome_bot a2/README.md      --allow-dupe --white-list $whitelist
+    awesome_bot a2/notes.md       --allow-dupe --white-list $whitelist
+  displayName: 'Validate hyperlinks'
