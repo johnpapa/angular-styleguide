@@ -1596,7 +1596,7 @@ Note: The code example's dependency on `movieService` is not minification safe o
 
 ## Manual Annotating for Dependency Injection
 
-### UnSafe from Minification
+### Unsafe from Minification
 ###### [Style [Y090](#style-y090)]
 
   - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
@@ -1805,7 +1805,7 @@ Note: The code example's dependency on `movieService` is not minification safe o
     }
     ```
 
-    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
+    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to use `ng-strict-di` for debugging purposes only.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
@@ -1846,11 +1846,11 @@ Note: The code example's dependency on `movieService` is not minification safe o
 ### decorators
 ###### [Style [Y110](#style-y110)]
 
-  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
+  - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator) at config time, using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service, to perform custom actions when exceptions occur.
 
     *Why?*: Provides a consistent way to handle uncaught Angular exceptions for development-time or run-time.
 
-    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it, a decorator is recommended.
 
     ```javascript
     /* recommended */
@@ -2068,7 +2068,7 @@ Note: The code example's dependency on `movieService` is not minification safe o
 
     *Why?*: Provides a consistent way to quickly identify and reference controllers.
 
-    *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *Why?*: UpperCamelCase is conventional for identifying an object that can be instantiated using a constructor.
 
     ```javascript
     /**
