@@ -1,26 +1,26 @@
 # Guida stilistica ad Angular
 
 ## Approvato dal Team di Angular
-Uno speciale ringraziamento a Igor Minar, a capo del Team di Angular, per la revisione, aver contribuito al feedback e la fiducia accordatami per la conduzione di queste linee guida.
+Uno speciale ringraziamento ad Igor Minar, a capo del Team di Angular, per la revisione, aver contribuito al feedback e la fiducia accordatami per la conduzione di queste linee guida.
 
 ## Scopo
 *Guida stilistica dogmatica ad Angular per i team di [@john_papa](//twitter.com/john_papa)*
 
 Se stai cercando una guida stilistica dogmatica per le sintassi, convenzioni e struttura di applicazioni AngularJS, allora questo fa per te. Gli stili sono basati sulla mia esperienza di sviluppo con [AngularJS](//angularjs.org), presentazioni, [corsi di formazioni di Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) e del lavoro in team.
 
-L'obbiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con Angular mostrando le convenzioni che uso e, più importante, perché le uso.
+L'obiettivo di questa guida stilistica è di fare da vademecum alla costruzione di applicazioni con Angular mostrando le convenzioni che uso e, più importante, perché le uso.
 
 >Se ti piace questa guida, dai un'occhiata al mio corso [Angular Patterns: Clean Code](http://jpapa.me/ngclean) (in inglese) su Pluralsight come complemento a questa guida.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Eccezionalità della comunità e riconoscimenti
-Mai lavorare nel vuoto. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed un esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
+Mai lavorare da soli. Ritengo che la comunità intorno ad Angular sia un gruppo incredibile con la passione di condividere le esperienze. Perciò, Todd Motto, un amico ed esperto di Angular, ed io abbiamo collaborato su molti stili e convenzioni. Su molto siamo d'accordo, su altro meno.  Ti invito a controllare le [linee guida di Todd](https://github.com/toddmotto/angularjs-styleguide) per avere cognizione del suo approccio e di come paragonarle.
 
-Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](http://twitter.com/wardbell) ed io abbiamo avuto. Il mio amico Ward ha di certo una influenza sull'evoluzione finale di questa guida.
+Molti dei mie stili sono frutto di parecchie sessioni di pair programming che [Ward Bell](http://twitter.com/wardbell) ed io abbiamo avuto. Il mio amico Ward ha di certo un'influenza sull'evoluzione finale di questa guida.
 
 ## Guarda gli stili in una App di Esempio
-Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di aiuto vederle in pratica. Questa guida è accompagnata da una applicazione di esempio che segue questi stili e schemi. Puoi trovare l'[applicazione di esempio (chiamata modular) qui](https://github.com/johnpapa/ng-demos) nella cartella `modular`. Prendila, clonala o fanne un fork liberamente. [Le istruzioni su come eseguirla sono nel proprio readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
+Nonostante questa guida spieghi i *cosa*, *come* e *perché*, trovo che sia di aiuto vederle in pratica. Questa guida è accompagnata da un'applicazione d'esempio che segue questi stili e schemi. Puoi trovare l'[applicazione di esempio (chiamata modular) qui](https://github.com/johnpapa/ng-demos) nella cartella `modular`. Prendila, clonala o fanne un fork liberamente. [Le istruzioni su come eseguirla sono nel proprio readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
 ##Traduzioni
 [Traduzioni di questa guida stilistica ad Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) sono gestite dalla comunità e possono essere trovate qui.
