@@ -3036,6 +3036,7 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ```javascript
     // These are full file snippets containing an IIFE
     ngapp     // creates an Angular module setter
+    ngcomponent  // creates and Angular component
     ngcontroller // creates an Angular controller
     ngdirective  // creates an Angular directive
     ngfactory    // creates an Angular factory
