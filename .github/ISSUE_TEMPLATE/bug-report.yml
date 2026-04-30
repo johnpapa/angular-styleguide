@@ -1,0 +1,35 @@
+name: "\U0001F41B Bug Report"
+description: Report an error or inconsistency in the style guide
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the Angular Style Guide! Please provide as much detail as possible.
+  - type: input
+    id: guide-version
+    attributes:
+      label: Which guide?
+      description: Which version of the style guide does this affect?
+      placeholder: "e.g., Angular 1 (a1/README.md) or Angular 2 (a2/README.md)"
+    validations:
+      required: true
+  - type: input
+    id: style-id
+    attributes:
+      label: Style ID (if applicable)
+      description: "The rule ID, e.g., Y001, Y032"
+      placeholder: "e.g., Y032"
+  - type: textarea
+    id: description
+    attributes:
+      label: What's wrong?
+      description: Describe the error, inconsistency, or outdated information
+      placeholder: "The code example in Y032 uses var instead of const/let..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix
+      description: How should it be corrected?

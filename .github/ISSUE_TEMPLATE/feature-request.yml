@@ -1,0 +1,46 @@
+name: "\U0001F4A1 New Style Rule"
+description: Propose a new style rule or convention
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a convention that should be in the guide? Propose it here.
+  - type: input
+    id: guide-version
+    attributes:
+      label: Which guide?
+      description: Which version of the style guide should this be added to?
+      placeholder: "e.g., Angular 1 (a1) or Angular 2 (a2)"
+    validations:
+      required: true
+  - type: input
+    id: rule-title
+    attributes:
+      label: Rule title
+      description: A short, descriptive name for the rule
+      placeholder: "e.g., Use trackBy with ngFor"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's the rule?
+      description: Describe the convention you're proposing
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: "Why?"
+      description: "Explain the rationale — use the *Why?*: format"
+      placeholder: |
+        *Why?*: Using trackBy prevents unnecessary DOM re-renders when the list changes.
+        *Why?*: Without trackBy, Angular destroys and recreates every DOM element on each change detection cycle.
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Code examples
+      description: "Show /* avoid */ and /* recommended */ examples"

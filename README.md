@@ -1,5 +1,7 @@
 # Angular Style Guide
 
+[![AI Ready](https://img.shields.io/badge/AI--Ready-yes-brightgreen?style=flat)](https://github.com/johnpapa/ai-ready)
+
 ## Versions
 There are multiple versions of Angular, and thus there are multiple versions of the guide. Choose your guide appropriately.
 
