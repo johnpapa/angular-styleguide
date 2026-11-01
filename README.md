@@ -6,10 +6,10 @@
 There are multiple versions of Angular, and thus there are multiple versions of the guide. Choose your guide appropriately.
 
 ### Angular 1 Style Guide
-[The Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/tree/master/a1/README.md).
+[The Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/tree/main/a1/README.md).
 
 ### Angular 2 Style Guide
-[The Angular 2 Style Guide](https://github.com/johnpapa/angular-styleguide/tree/master/a2/README.md).
+[The Angular 2 Style Guide](https://github.com/johnpapa/angular-styleguide/tree/main/a2/README.md).
 
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
@@ -23,7 +23,7 @@ The purpose of this style guide is to provide guidance on building Angular appli
 
 >If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
 
-  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
+  [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/main/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
 ## Community Awesomeness and Credit
 Never work in a vacuum. I find that the Angular community is an incredible group who are passionate about sharing experiences. Many of my styles have been from the many pair programming sessions [Ward Bell](https://twitter.com/wardbell) and I have had. My most excellent friend Ward has helped influence the ultimate evolution of these guides.
